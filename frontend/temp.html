@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="winter.css">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="main_nav_bar shadow no_select gradient_blue full_width flex">
+            <div class="flex thrid_width">
+                <div class="nav_bar_text_container flex flex_center cursor">
+                    <img src="../assets/home.svg" width="30px" alt="home">
+                </div>
+                <div class="nav_bar_text_container cursor">
+                    About
+                </div>
+            </div>
+            <div class="thrid_width flex flex_center">
+                <img src="../assets/winter_logo-w.svg" alt="Winter">
+            </div>
+            <div class="thrid_width flex flex_right">
+                <div class="medium button white rounded blue_hover shadow flex flex_center" id="create_button">
+                    <img src="../assets/plus-b.svg" alt="">
+                    create
+                </div>
+                <div class="circle button gold_hover shadow flex flex_center rounded white" id="bell_button">
+                    <img src="../assets/bell_icon-g.svg" alt="">
+                </div>
+                <div class="circle button blue_hover shadow flex flex_center rounded" id="profile_button">
+                    <img src="../assets/Profile-w-b.png" width="55px" alt="">
+                </div>
+            </div>
+            <div class="profile_dropdown white rounded-s thin_blue_border toggle_hide" id="profile_dropdown">
+                <div class="info_dropdown flex gap">
+                    <img class="blue_border rounded" id="profile_pic_dropdown" src="../assets/Profile-w-b.png" width="40px">
+                    <div>
+                        <span class="name_dropdown">Peerawat<br>Ingkhasantatikul</span>
+                        <span class="username_dropdown">@Marklnwza007</span>
+                    </div>
+                </div>
+                <hr class="blue_line">
+                <div class="btn_dropdown">
+                    <img src="../assets/person.svg">
+                    My Profile
+                </div>
+                <hr class="blue_line_dash">
+                <div class="btn_dropdown">
+                    <img src="../assets/activity.svg">
+                    My Activity
+                </div>
+                <hr class="blue_line_dash">
+                <div class="btn_dropdown">
+                    <img src="../assets/star_outline.svg">
+                    My Ratings
+                </div>
+                <hr class="blue_line_dash">
+                <div class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
+                    <img src="../assets/logout.svg">
+                    log out
+                </div>
+            </div>
+        </nav>
+        <script src="winter.js"></script>
+    </body>
+</html>

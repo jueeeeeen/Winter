@@ -239,9 +239,17 @@ main {
     height: 260px;
     padding: 0 14px;
     position: absolute;
-    top: 100%;
-    right: 2px;
+    right: 120px;
     font-weight: 400;
+    display: none;
+}
+
+.profile_dropdown ul {
+    list-style: none;
+}
+
+.toggle_show {
+    display: block;
 }
 
 .toggle_hide {

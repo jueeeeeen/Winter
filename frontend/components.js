@@ -70,7 +70,7 @@ class MainNavbar extends HTMLElement{
                     </button>
                 </li>
             </ul>
-            <div class="profile_dropdown white rounded-s thin_blue_border toggle_hide" id="profile_dropdown">
+            <div class="profile_dropdown white rounded-s thin_blue_border" id="profile_dropdown">
                 <div class="info_dropdown flex gap">
                     <img class="blue_border rounded" id="profile_pic_dropdown" src="assets/Profile-w-b.png" width="40px">
                     <div>
@@ -113,6 +113,10 @@ class MainNavbar extends HTMLElement{
     connectedCallback(){
         this.profile_button = this.querySelector("#profile_button");
         this.profile_dropdown = this.querySelector("#profile_dropdown");
+
+        console.log("Profile button:", this.profile_button);
+        console.log("Profile dropdown:", this.profile_dropdown);
+
         this.profile_button.addEventListener("click", this.toggle_dropdown);
         changeChildImg(this.profile_button, "Profile-b.png", "Profile-w-b.png");
     }
@@ -122,8 +126,8 @@ class MainNavbar extends HTMLElement{
     }
 
     toggle_dropdown() {
-        this.profile_dropdown.classList.toggle("toggle_show");
-        console.log("toggle");
+        this.profile_dropdown.classList.toggle("show");
+        console.log("Toggled class:", this.profile_dropdown.classList);
     }
 }
 
@@ -156,8 +160,6 @@ function toggleInvertColor(element, toggle, img1, img2, color1, color2) {
         }
     }
 }
-
-
 
 var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
 var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");
@@ -195,13 +197,10 @@ var female_icon = document.getElementById("female_icon");
 let toggle_female_select_btn = false;
 toggleInvertColor(female_select_btn, toggle_female_select_btn, "female_icon-w.svg", "female_icon-p.svg", "var(--dark_pink)");
 
-
-
 var back_buttons = document.getElementsByClassName("back_button");
 Array.from(back_buttons).forEach(element => {
     changeChildImg(element, "back-b.svg", "back-w.svg");
 });
-
 
 var bell_button = document.getElementById("bell_button");
 changeChildImg(bell_button, "bell_icon-w.svg", "bell_icon-g.svg");

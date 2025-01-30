@@ -248,12 +248,8 @@ main {
     list-style: none;
 }
 
-.toggle_show {
+.show {
     display: block;
-}
-
-.toggle_hide {
-    display: none;
 }
 
 .info_dropdown {

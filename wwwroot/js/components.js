@@ -1,4 +1,4 @@
-class LoginNavbar extends HTMLElement{
+﻿class LoginNavbar extends HTMLElement{
     constructor(){
         super();
         this.innerHTML = `<nav class="gradient_blue">

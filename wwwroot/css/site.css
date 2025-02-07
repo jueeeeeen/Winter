@@ -1,31 +1,376 @@
-html {
-  font-size: 14px;
+:root{
+  /* dark rainbow */
+  --dark_pink: #FF8AF1;
+  --yellow: #FFCF56;
+  --vivid_blue: #36B2FF;
+
+  /* light rainbow */
+  --light_pink: #FFB7E7;
+  --light_yellow: #FFF1A1;
+  --light_blue: #7FCEFF;
+
+  --medium_blue: #56BEFF;
+
+  --blue00: #56DFF4;
+  --light_blue00: #ADF1FD;
+
+  --bright_blue: #66E6FA;
+
+  --blue01: #77DAFF;
+  --gold: #FDC330;
+  --cyan: #10BBD7;
+
+  --dark_gray: #4D4D4D;
+  --light_gray: #E8E8E8;
+
+  --red: #FF6062;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  background-image: url("assets/page_bg.png");
+}
+
+main {
+  margin: 0 120px;
+}
+
+.gap {
+  gap: 10px;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.no_select {
+  user-select: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.shadow{
+  box-shadow: 0 0 4 0 rgba(0, 0, 0, 0.215)}
+
+.full_width {
+  width: 100%;
+}
+
+.thrid_width {
+  width: 33.33%;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.flex_center {
+  justify-content: center;
+}
+
+.flex_right {
+  justify-content: end;
+}
+
+.center_img {
+  position: relative;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+.h_center {
+  margin: 0 auto;
+}
+
+.gradient_blue {
+  background-image: linear-gradient(to right, var(--blue00), var(--light_blue00));
+}
+
+.blue {
+  background-color: var(--vivid_blue);
+  color: white;
+}
+
+.light_blue {
+  background-color: var(--bright_blue);
+  color: white;
+}
+
+.login_bg{
+  background: url("assets/login_btn_bg.svg") center center;
+  color: white;
+  &:hover {
+      border: 2px solid var(--medium_blue);
+      background: white;
+      color: var(--medium_blue);
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.rainbow{
+  background: linear-gradient(to right, var(--dark_pink), var(--yellow), var(--medium_blue));
 }
 
-html {
+.white {
+  background-color: white;
+  color: var(--medium_blue);
+  box-shadow: 0 0 4 0 rgba(0, 0, 0, 0.215)
+}
+
+.rainbow_border{
+  border: 2px solid ;
+  border-image: linear-gradient(to right, var(--dark_pink), var(--yellow), var(--medium_blue)) 1;
+  background-color: white;
+}
+
+.blue_border {
+  border: 2px solid var(--medium_blue);
+  color: var(--medium_blue);
+  background-color: white;
+}
+
+.thin_blue_border {
+  border: 1px solid var(--medium_blue);
+}
+
+.pink_border {
+  border: 2px solid var(--dark_pink);
+  color: var(--dark_pink);
+  background-color: white;
+}
+
+.rounded-s {
+  border-radius: 10px;
+}
+
+.rounded {
+  border-radius: 5rem;
+}
+
+.left {
   position: relative;
-  min-height: 100%;
+  left: -15px;
 }
 
-body {
-  margin-bottom: 60px;
+.left_rounded {
+  border-radius: 5rem 0 0 5rem;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.right_rounded {
+  border-radius: 0 5rem 5rem 0;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.blue_hover:hover{
+  background-color: var(--medium_blue);
+  color: white;
+}
+
+.white_cyan_hover:hover{
+  background-color: white;
+  border: 2px solid var(--bright_blue);
+  color: var(--cyan);
+}
+
+.gold_hover:hover{
+  background-color: var(--gold);
+}
+
+.nav_bar {
+  position: relative;
+  font-weight:600;
+  font-size: 18px;
+  list-style: none;
+  display: flex;
+  margin: 0 120px;
+}
+
+.nav_bar li{
+  display: flex;
+  align-items: center;
+}
+
+.nav_bar a{
+  text-decoration: none;
+}
+
+.nav_bar a:not(.button, .btn_dropdown){
+  color: white;
+  min-width: 112px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  translate: -50%;
+  left: 50%;
+}
+
+.m_left_auto {
+  margin-left: auto;
+}
+
+.circle {
+  width: 55px;
+  height: 55px;
+}
+
+.small {
+  width: 120px;
+  height: 42px;
+}
+
+.medium {
+  width: 120px;
+  height: 48px;
+}
+
+.profile_dropdown {
+  max-width: 216px;
+  height: 260px;
+  padding: 0 14px;
+  position: absolute;
+  right: 120px;
+  font-weight: 400;
+  display: none;
+}
+
+.profile_dropdown ul {
+  list-style: none;
+}
+
+.show {
+  display: block;
+}
+
+.info_dropdown {
+  width: 188px;
+  height: 70px;
+  line-height: 15px;
+}
+
+.name_dropdown {
+  font-size: 14px;
+  color: var(--dark_gray);
+
+}
+
+.username_dropdown {
+  font-size: 12px;
+  color: gray;
+  line-height: 20px;
+}
+
+.btn_dropdown {
+  width: 188px;
+  height: 30px;
+  margin: 3px 0;
+  color: var(--dark_gray);
+  cursor: pointer;
+  user-select: none;
+  border-radius: 5px;
+  font-size: 16px;
+  &:hover {
+      background-color:var(--light_gray);
+  }
+  img {
+      margin: 0 7px 0 7px;
+      position: relative;
+      top: 4px;
+  }
+}
+
+.log_out_dropdown {
+  width: 150px;
+  height: 30px;
+  color: var(--red);
+  border: 1px solid var(--red);
+  text-align: center;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+  margin-top: 18px;
+  &:hover {
+      background-color: var(--red);
+      color: white;
+  }
+}
+
+hr {
+  margin: 0;
+}
+
+.blue_line {
+  border: 1px solid var(--light_blue00);
+}
+
+.blue_line_dash {
+  border: 1px dashed var(--light_blue00);
+}
+
+.button {
+  margin-right: 12px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 18px;
+  user-select: none;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+}
+
+.lgbtq_select_btn{
+  background-color: white;
+
+  width: 142px;
+  height: 48px;
+
+  line-height: 52px;
+  
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+
+  transition: background-image 0.3s ease;
+}
+
+.gender_select_btn{
+  background-color: white;
+
+  width: 142px;
+  height: 48px;
+
+  line-height: 55px;
+  
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+
+  transition: all 0.3s ease;
+
+}
+
+#male_select_btn:hover::after {
+  content: "male";
+}
+
+#female_select_btn:hover::after {
+  content: "female";
+}
+
+.rainbow_text {
+  background: linear-gradient(to right, var(--dark_pink), var(--yellow), var(--vivid_blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

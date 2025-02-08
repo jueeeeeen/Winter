@@ -139,9 +139,46 @@ class MainNavbar extends HTMLElement{
     }
 }
 
+class SearchBar extends HTMLElement{
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<form class="search-bar shadow" action="/AllActivity" method="get">
+            <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
+            <div class="search-bar-x">
+                <button class="btn" id="clear_search_button">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 1L1 14M1 1L14 14" stroke="var(--gray70)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <button type="submit" class="btn search-bar-search">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.25 18.25L14.2625 14.2625M16.4167 9.08333C16.4167 13.1334 13.1334 16.4167 9.08333 16.4167C5.03325 16.4167 1.75 13.1334 1.75 9.08333C1.75 5.03325 5.03325 1.75 9.08333 1.75C13.1334 1.75 16.4167 5.03325 16.4167 9.08333Z" stroke="var(--white)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </form>`;
+        this.clear_search = this.clear_search.bind(this);
+        this.search_activity = this.search_activity.bind(this);
+    }
+
+    connectedCallback() {
+        this.clear_search_button = this.querySelector("#clear_search_button");
+        this.clear_search_button.addEventListener("click", this.clear_search);
+    }
+
+    clear_search() {
+        this.search_input = this.querySelector("#search_input");
+        console.log(this.search_input);
+        this.search_input.value = "";
+        console.log("clear");
+    }
+}
+
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
+customElements.define("search-bar", SearchBar);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

@@ -8,16 +8,13 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script src="/js/components.js" defer></script>
 </head>
-<body>
-    <header>
-        <main-navbar></main-navbar>
-    </header>
-    
-    <div class="container">
-        <main role="main" class="pb-3">
+    <body>
+        <header>
+            <main-navbar></main-navbar>
+        </header>
+
+        <main role="main">
             @RenderBody()
         </main>
-    </div>
-</body>
-
+    </body>
 </html>

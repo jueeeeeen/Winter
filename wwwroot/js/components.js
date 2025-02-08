@@ -8,7 +8,7 @@ class LoginNavbar extends HTMLElement{
                 <li>
                     <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">Activity</a></li>
                 <li class="logo">
                     <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
@@ -25,7 +25,7 @@ class GuestNavbar extends HTMLElement{
                 <li>
                     <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">Activity</a></li>
                 <li class="logo">
                     <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
@@ -47,32 +47,33 @@ class GuestNavbar extends HTMLElement{
 class MainNavbar extends HTMLElement{
     constructor(){
         super();
-        this.innerHTML = `<nav class="gradient_blue">
-                <ul class="shadow no_select nav_bar">
+        this.innerHTML = 
+            `<nav class="gradient_blue shadow">
+                <ul class="no_select nav_bar">
                 <li>
                     <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">Activity</a></li>
                 <li class="logo">
                     <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
                 <li class="m_left_auto">
-                    <a href="#" class="medium button white rounded blue_hover shadow flex flex_center" id="create_button">
+                    <button class="btn medium w-b round hover-db-w" id="create_button">
                         <img src="assets/plus-b.svg" alt="plus icon">create
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <button class="circle button gold_hover shadow flex flex_center rounded white yellow_hover" id="bell_button">
+                    <button class="btn circle round w-b hover-y-w" id="bell_button">
                         <img src="assets/bell_icon-g.svg" alt="bell">
                     </button>
                 </li>
                 <li>
-                    <button class="circle button blue_hover shadow flex flex_center rounded" id="profile_button">
+                    <button class="btn circle round w-b hover-b-w" id="profile_button">
                         <img src="assets/Profile-w-b.png" width="55px" alt="profile">
                     </button>
                 </li>
             </ul>
-            <div class="profile_dropdown white rounded-s thin_blue_border" id="profile_dropdown">
+            <div class="profile_dropdown w-b-b edge" id="profile_dropdown">
                 <div class="info_dropdown flex gap">
                     <img class="blue_border rounded" id="profile_pic_dropdown" src="assets/Profile-w-b.png" width="40px">
                     <div>
@@ -114,7 +115,6 @@ class MainNavbar extends HTMLElement{
 
     connectedCallback(){
         this.profile_button = this.querySelector("#profile_button");
-        this.profile_dropdown = this.querySelector("#profile_dropdown");
         this.profile_button.addEventListener("click", this.toggle_dropdown);
         change_icon(this.profile_button, "Profile-b.png", "Profile-w-b.png");
 
@@ -133,12 +133,52 @@ class MainNavbar extends HTMLElement{
     }
 
     toggle_dropdown() {
-        this.profile_dropdown.classList.toggle("show");    }
+        this.profile_dropdown = this.querySelector("#profile_dropdown");
+        this.profile_dropdown.classList.toggle("show");
+        console.log(this.profile_dropdown);
+    }
+}
+
+class SearchBar extends HTMLElement{
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<form class="search-bar shadow" action="/AllActivity" method="get">
+            <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
+            <div class="search-bar-x">
+                <button class="btn" id="clear_search_button">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 1L1 14M1 1L14 14" stroke="var(--gray70)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <button type="submit" class="btn search-bar-search">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18.25 18.25L14.2625 14.2625M16.4167 9.08333C16.4167 13.1334 13.1334 16.4167 9.08333 16.4167C5.03325 16.4167 1.75 13.1334 1.75 9.08333C1.75 5.03325 5.03325 1.75 9.08333 1.75C13.1334 1.75 16.4167 5.03325 16.4167 9.08333Z" stroke="var(--white)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </form>`;
+        this.clear_search = this.clear_search.bind(this);
+        this.search_activity = this.search_activity.bind(this);
+    }
+
+    connectedCallback() {
+        this.clear_search_button = this.querySelector("#clear_search_button");
+        this.clear_search_button.addEventListener("click", this.clear_search);
+    }
+
+    clear_search() {
+        this.search_input = this.querySelector("#search_input");
+        console.log(this.search_input);
+        this.search_input.value = "";
+        console.log("clear");
+    }
 }
 
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
+customElements.define("search-bar", SearchBar);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

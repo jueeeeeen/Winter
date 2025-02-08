@@ -23,25 +23,24 @@
   --yellow: #FDC330;
   --green: #65DA8C;
   --pink: #FF90DA;
+
+  --shadow: rgba(0, 0, 0, 0.12);
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "IBM Plex Sans Thai", sans-serif;
+  list-style: none;
 }
 
 html{
-  font-family: "IBM Plex Sans Thai", sans-serif;
   background-image: url("../assets/page_bg.png");
 }
 
 main {
-  margin: 0 120px;
-}
-
-.gap {
-  gap: 10px;
+  margin: 0 6vw;
 }
 
 .cursor {
@@ -56,11 +55,9 @@ main {
   display: none;
 }
 
-.shadow{
-  box-shadow: 0 0 4 0 rgba(0, 0, 0, 0.215)}
 
-.full_width {
-  width: 100%;
+.shadow{
+  box-shadow: 0px 0px 4px 1px var(--shadow);
 }
 
 .thrid_width {
@@ -94,14 +91,8 @@ main {
   background-image: linear-gradient(to right, var(--blue50), var(--blue20));
 }
 
-.blue {
-  background-color: var(--blue90);
-  color: white;
-}
-
-.light_blue {
-  background-color: var(--blue50);
-  color: white;
+.rainbow{
+  background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
 }
 
 .login_bg{
@@ -114,44 +105,10 @@ main {
   }
 }
 
-.rainbow{
-  background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
-}
-
-.white {
-  background-color: white;
-  color: var(--blue80);
-  box-shadow: 0 0 4 0 rgba(0, 0, 0, 0.215)
-}
-
 .rainbow_border{
   border: 2px solid ;
   border-image: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80)) 1;
   background-color: white;
-}
-
-.blue_border {
-  border: 2px solid var(--blue80);
-  color: var(--blue80);
-  background-color: white;
-}
-
-.thin_blue_border {
-  border: 1px solid var(--blue80);
-}
-
-.pink_border {
-  border: 2px solid var(--pink);
-  color: var(--pink);
-  background-color: white;
-}
-
-.rounded-s {
-  border-radius: 10px;
-}
-
-.rounded {
-  border-radius: 5rem;
 }
 
 .left {
@@ -167,28 +124,14 @@ main {
   border-radius: 0 5rem 5rem 0;
 }
 
-.blue_hover:hover{
-  background-color: var(--blue80);
-  color: white;
-}
-
-.white_blue50_hover:hover{
-  background-color: white;
-  border: 2px solid var(--blue50);
-  color: var(--blue50);
-}
-
-.yellow_hover:hover{
-  background-color: var(--yellow);
-}
-
 .nav_bar {
   position: relative;
   font-weight:600;
   font-size: 18px;
   list-style: none;
   display: flex;
-  margin: 0 120px;
+  margin: 0 6vw;
+  gap: 0.7rem;
 }
 
 .nav_bar li{
@@ -200,9 +143,9 @@ main {
   text-decoration: none;
 }
 
-.nav_bar a:not(.button, .btn_dropdown){
+.nav_bar a:not(.button, .btn_dropdown, .medium-btn){
   color: white;
-  min-width: 112px;
+  min-width: 6.5rem;
   height: 64px;
   line-height: 64px;
   text-align: center;
@@ -218,21 +161,6 @@ main {
   margin-left: auto;
 }
 
-.circle {
-  width: 55px;
-  height: 55px;
-}
-
-.small {
-  width: 120px;
-  height: 42px;
-}
-
-.medium {
-  width: 120px;
-  height: 48px;
-}
-
 .profile_dropdown {
   max-width: 216px;
   height: 260px;
@@ -243,13 +171,6 @@ main {
   display: none;
 }
 
-.profile_dropdown ul {
-  list-style: none;
-}
-
-.show {
-  display: block;
-}
 
 .info_dropdown {
   width: 188px;
@@ -317,17 +238,6 @@ hr {
   border: 1px dashed var(--blue20);
 }
 
-.button {
-  margin-right: 12px;
-  transition: background-color 0.2s ease;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 18px;
-  user-select: none;
-  cursor: pointer;
-  text-align: center;
-  border: none;
-}
 
 .lgbtq_select_btn{
   background-color: white;
@@ -357,7 +267,6 @@ hr {
   font-size: 18px;
 
   transition: all 0.3s ease;
-
 }
 
 #male_select_btn:hover::after {
@@ -374,3 +283,111 @@ hr {
   -webkit-text-fill-color: transparent;
 }
 
+/* redo css from here */
+/* button size */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  border: none;
+  gap: 0.25em;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.circle {
+  width: 55px;
+  height: 55px;
+}
+
+.small {
+  min-width: 90px;
+  padding: 0.25em 0.67em;
+  font-size: 1rem;
+  }
+
+.medium {
+  min-width: 120px;
+  padding: 0.45em 0.67em;
+  font-size: 1.125rem;
+  }
+
+.large {
+  padding: 0.4em 0.67em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  }
+
+  .round {
+    border-radius: 2rem;
+  }
+
+  .edge {
+    border-radius: 0.4rem;
+  }
+
+  .w-b-b, .hover-w-b-b:hover {
+    background-color: var(--white);
+    color: var(--blue80);
+    border: 2px solid var(--blue80);
+  }
+
+  .w-b, .hover-w-b:hover {
+    background-color: var(--white);
+    color: var(--blue80);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+
+  .lb-w, .hover-lb-w:hover {
+    background-color: var(--blue40);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+
+  .mb-w, .hover-mb-w:hover {
+    background-color: var(--blue70);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+
+  .lb-w-glow, .hover-lb-w-glow:hover {
+    background-color: var(--blue40);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--blue40);
+  }
+
+  .db-w, .hover-db-w:hover {
+    background-color: var(--blue80);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+
+  .w-r-r, .r-w:hover {
+    background-color: var(--white);
+    color: var(--red);
+    border: 2px solid var(--red);
+  }
+
+  .r-w,  .w-r-r:hover {
+    background-color: var(--red);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+
+  .y-w, .w-y-y:hover, .hover-y-w:hover {
+    background-color: var(--yellow);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+
+  .w-y-y, .y-w:hover, .hover-w-y-y:hover {
+    background-color: var(--white);
+    color: var(--yellow);
+    border: 2px solid var(--yellow);
+  }
+
+/* this class has to be the last one to override other class*/
+.show {
+  display: block;
+}

@@ -8,7 +8,7 @@ class LoginNavbar extends HTMLElement{
                 <li>
                     <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">Activity</a></li>
                 <li class="logo">
                     <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
@@ -25,7 +25,7 @@ class GuestNavbar extends HTMLElement{
                 <li>
                     <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">Activity</a></li>
                 <li class="logo">
                     <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
@@ -47,32 +47,33 @@ class GuestNavbar extends HTMLElement{
 class MainNavbar extends HTMLElement{
     constructor(){
         super();
-        this.innerHTML = `<nav class="gradient_blue">
-                <ul class="shadow no_select nav_bar">
+        this.innerHTML = 
+            `<nav class="gradient_blue shadow">
+                <ul class="no_select nav_bar">
                 <li>
                     <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="#">About</a></li>
+                <li><a href="#">Activity</a></li>
                 <li class="logo">
                     <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
                 <li class="m_left_auto">
-                    <a href="#" class="medium button white rounded blue_hover shadow flex flex_center" id="create_button">
+                    <button class="btn medium w-b round hover-db-w" id="create_button">
                         <img src="assets/plus-b.svg" alt="plus icon">create
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <button class="circle button gold_hover shadow flex flex_center rounded white yellow_hover" id="bell_button">
+                    <button class="btn circle round w-b hover-y-w" id="bell_button">
                         <img src="assets/bell_icon-g.svg" alt="bell">
                     </button>
                 </li>
                 <li>
-                    <button class="circle button blue_hover shadow flex flex_center rounded" id="profile_button">
+                    <button class="btn circle round w-b hover-b-w" id="profile_button">
                         <img src="assets/Profile-w-b.png" width="55px" alt="profile">
                     </button>
                 </li>
             </ul>
-            <div class="profile_dropdown white rounded-s thin_blue_border" id="profile_dropdown">
+            <div class="profile_dropdown w-b-b edge" id="profile_dropdown">
                 <div class="info_dropdown flex gap">
                     <img class="blue_border rounded" id="profile_pic_dropdown" src="assets/Profile-w-b.png" width="40px">
                     <div>
@@ -114,7 +115,6 @@ class MainNavbar extends HTMLElement{
 
     connectedCallback(){
         this.profile_button = this.querySelector("#profile_button");
-        this.profile_dropdown = this.querySelector("#profile_dropdown");
         this.profile_button.addEventListener("click", this.toggle_dropdown);
         change_icon(this.profile_button, "Profile-b.png", "Profile-w-b.png");
 
@@ -133,7 +133,10 @@ class MainNavbar extends HTMLElement{
     }
 
     toggle_dropdown() {
-        this.profile_dropdown.classList.toggle("show");    }
+        this.profile_dropdown = this.querySelector("#profile_dropdown");
+        this.profile_dropdown.classList.toggle("show");
+        console.log(this.profile_dropdown);
+    }
 }
 
 customElements.define("main-navbar", MainNavbar);

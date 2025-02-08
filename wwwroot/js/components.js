@@ -1,4 +1,6 @@
-﻿class LoginNavbar extends HTMLElement{
+﻿var path = "../assets/"
+
+class LoginNavbar extends HTMLElement{
     constructor(){
         super();
         this.innerHTML = `<nav class="gradient_blue">
@@ -38,7 +40,7 @@ class GuestNavbar extends HTMLElement{
 
     connectedCallback(){
         this.nav_login_button = this.querySelector("#nav_login_button");
-        changeChildImg(this.logout_button, "logout-w.svg", "logout.svg");
+        change_icon(this.logout_button, "logout-w.svg", "logout.svg");
     }
 }
 
@@ -60,7 +62,7 @@ class MainNavbar extends HTMLElement{
                     </a>
                 </li>
                 <li>
-                    <button class="circle button gold_hover shadow flex flex_center rounded white" id="bell_button">
+                    <button class="circle button gold_hover shadow flex flex_center rounded white yellow_hover" id="bell_button">
                         <img src="assets/bell_icon-g.svg" alt="bell">
                     </button>
                 </li>
@@ -113,12 +115,17 @@ class MainNavbar extends HTMLElement{
     connectedCallback(){
         this.profile_button = this.querySelector("#profile_button");
         this.profile_dropdown = this.querySelector("#profile_dropdown");
-
-        console.log("Profile button:", this.profile_button);
-        console.log("Profile dropdown:", this.profile_dropdown);
-
         this.profile_button.addEventListener("click", this.toggle_dropdown);
-        changeChildImg(this.profile_button, "Profile-b.png", "Profile-w-b.png");
+        change_icon(this.profile_button, "Profile-b.png", "Profile-w-b.png");
+
+        var bell_button = this.querySelector("#bell_button");
+        change_icon(bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
+
+        var create_button = this.querySelector("#create_button");
+        change_icon(create_button, "plus-w.svg", "plus-b.svg");
+
+        var logout_button = this.querySelector("#logout_button");
+        change_icon(logout_button, "logout-w.svg", "logout.svg");
     }
 
     disconnectedCallback() {
@@ -126,22 +133,20 @@ class MainNavbar extends HTMLElement{
     }
 
     toggle_dropdown() {
-        this.profile_dropdown.classList.toggle("show");
-        console.log("Toggled class:", this.profile_dropdown.classList);
-    }
+        this.profile_dropdown.classList.toggle("show");    }
 }
 
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
 
-function changeChildImg(element, img1, img2) {
+function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {
-        element.firstElementChild.src = "assets/" + img1;
+        element.firstElementChild.src = path + icon_hover;
     }
     
     element.onmouseleave = () => {
-        element.firstElementChild.src = "assets/" + img2;
+        element.firstElementChild.src = path + icon_default;
     }
 }
 
@@ -161,54 +166,44 @@ function toggleInvertColor(element, toggle, img1, img2, color1, color2) {
     }
 }
 
-var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
-var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");
-var lgbtq_icon = document.getElementById("lgbtq_icon");
-let toggle_lgbtq_select_btn = false;
+// var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
+// var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");
+// var lgbtq_icon = document.getElementById("lgbtq_icon");
+// let toggle_lgbtq_select_btn = false;
 
-lgbtq_select_btn.onmouseover = () => {
-    select_lgbtq_txt.style.display = "inline-block";
-}
+// lgbtq_select_btn.onmouseover = () => {
+//     select_lgbtq_txt.style.display = "inline-block";
+// }
 
-lgbtq_select_btn.onmouseleave = () => {
-    select_lgbtq_txt.style.display = "none";
-}
+// lgbtq_select_btn.onmouseleave = () => {
+//     select_lgbtq_txt.style.display = "none";
+// }
 
-lgbtq_select_btn.onclick = () => {
-    toggle_lgbtq_select_btn = !toggle_lgbtq_select_btn;
-    if (toggle_lgbtq_select_btn){
-        lgbtq_select_btn.style.backgroundImage = "linear-gradient(to right, var(--dark_pink), var(--yellow), var(--medium_blue))";
-        select_lgbtq_txt.style.setProperty("-webkit-text-fill-color", "white");
-        lgbtq_icon.src = "../assets/heart-w.svg"; //white
-    }
-    else {
-        lgbtq_select_btn.style.backgroundImage = "none";
-        select_lgbtq_txt.style.setProperty("-webkit-text-fill-color", "transparent");
-        lgbtq_icon.src = "../assets/heart.svg"; //rainbow
-    }
-}
+// lgbtq_select_btn.onclick = () => {
+//     toggle_lgbtq_select_btn = !toggle_lgbtq_select_btn;
+//     if (toggle_lgbtq_select_btn){
+//         lgbtq_select_btn.style.backgroundImage = "linear-gradient(to right, var(--dark_pink), var(--yellow), var(--medium_blue))";
+//         select_lgbtq_txt.style.setProperty("-webkit-text-fill-color", "white");
+//         lgbtq_icon.src = "../assets/heart-w.svg"; //white
+//     }
+//     else {
+//         lgbtq_select_btn.style.backgroundImage = "none";
+//         select_lgbtq_txt.style.setProperty("-webkit-text-fill-color", "transparent");
+//         lgbtq_icon.src = "../assets/heart.svg"; //rainbow
+//     }
+// }
 
-var male_select_btn = document.getElementById("male_select_btn");
-let toggle_male_select_btn = false;
-toggleInvertColor(male_select_btn, toggle_male_select_btn, "male_icon-w.svg", "male_icon-b.svg");
+// var male_select_btn = document.getElementById("male_select_btn");
+// let toggle_male_select_btn = false;
+// toggleInvertColor(male_select_btn, toggle_male_select_btn, "male_icon-w.svg", "male_icon-b.svg");
 
-var female_select_btn = document.getElementById("female_select_btn");
-var female_icon = document.getElementById("female_icon");
-let toggle_female_select_btn = false;
-toggleInvertColor(female_select_btn, toggle_female_select_btn, "female_icon-w.svg", "female_icon-p.svg", "var(--dark_pink)");
+// var female_select_btn = document.getElementById("female_select_btn");
+// var female_icon = document.getElementById("female_icon");
+// let toggle_female_select_btn = false;
+// toggleInvertColor(female_select_btn, toggle_female_select_btn, "female_icon-w.svg", "female_icon-p.svg", "var(--dark_pink)");
 
-var back_buttons = document.getElementsByClassName("back_button");
-Array.from(back_buttons).forEach(element => {
-    changeChildImg(element, "back-b.svg", "back-w.svg");
-});
+// var back_buttons = document.getElementsByClassName("back_button");
+// Array.from(back_buttons).forEach(element => {
+//     change_icon(element, "back-b.svg", "back-w.svg");
+// });
 
-var bell_button = document.getElementById("bell_button");
-changeChildImg(bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
-
-var profile_button = document.getElementById("profile_button");
-
-var create_button = document.getElementById("create_button");
-changeChildImg(create_button, "plus-w.svg", "plus-b.svg");
-
-var logout_button = document.getElementById("logout_button");
-changeChildImg(logout_button, "logout-w.svg", "logout.svg");

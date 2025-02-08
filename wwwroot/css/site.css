@@ -1,29 +1,28 @@
 :root{
-  /* dark rainbow */
-  --dark_pink: #FF8AF1;
-  --yellow: #FFCF56;
-  --vivid_blue: #36B2FF;
+  --blue90: #36B2FF;
 
-  /* light rainbow */
-  --light_pink: #FFB7E7;
-  --light_yellow: #FFF1A1;
-  --light_blue: #7FCEFF;
+  --gray90: #4D4D4D;
+  --gray80: #737373;
+  --gray70: #9F9F9F;
+  --gray60: #C6C6C6;
+  --gray50: #E8E8E8;
+  --white: #FFFFFF;
 
-  --medium_blue: #56BEFF;
+  --blue90: #5FA2FF;
+  --blue80: #56BEFF;
+  --blue70: #7FCEFF;
+  --blue60: #77DAFF;
+  --blue50: #56DFF4;
+  --blue40: #90E1FF;
+  --blue30: #A1D4FF;
+  --blue20: #ADF1FD;
+  --blue10: #DFF9FF;
 
-  --blue00: #56DFF4;
-  --light_blue00: #ADF1FD;
 
-  --bright_blue: #66E6FA;
-
-  --blue01: #77DAFF;
-  --gold: #FDC330;
-  --cyan: #10BBD7;
-
-  --dark_gray: #4D4D4D;
-  --light_gray: #E8E8E8;
-
-  --red: #FF6062;
+  --red: #FF4E4E;
+  --yellow: #FDC330;
+  --green: #65DA8C;
+  --pink: #FF90DA;
 }
 
 * {
@@ -34,7 +33,7 @@
 
 html{
   font-family: "IBM Plex Sans Thai", sans-serif;
-  background-image: url("assets/page_bg.png");
+  background-image: url("../assets/page_bg.png");
 }
 
 main {
@@ -92,16 +91,16 @@ main {
 }
 
 .gradient_blue {
-  background-image: linear-gradient(to right, var(--blue00), var(--light_blue00));
+  background-image: linear-gradient(to right, var(--blue50), var(--blue20));
 }
 
 .blue {
-  background-color: var(--vivid_blue);
+  background-color: var(--blue90);
   color: white;
 }
 
 .light_blue {
-  background-color: var(--bright_blue);
+  background-color: var(--blue50);
   color: white;
 }
 
@@ -109,41 +108,41 @@ main {
   background: url("assets/login_btn_bg.svg") center center;
   color: white;
   &:hover {
-      border: 2px solid var(--medium_blue);
+      border: 2px solid var(--blue80);
       background: white;
-      color: var(--medium_blue);
+      color: var(--blue80);
   }
 }
 
 .rainbow{
-  background: linear-gradient(to right, var(--dark_pink), var(--yellow), var(--medium_blue));
+  background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
 }
 
 .white {
   background-color: white;
-  color: var(--medium_blue);
+  color: var(--blue80);
   box-shadow: 0 0 4 0 rgba(0, 0, 0, 0.215)
 }
 
 .rainbow_border{
   border: 2px solid ;
-  border-image: linear-gradient(to right, var(--dark_pink), var(--yellow), var(--medium_blue)) 1;
+  border-image: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80)) 1;
   background-color: white;
 }
 
 .blue_border {
-  border: 2px solid var(--medium_blue);
-  color: var(--medium_blue);
+  border: 2px solid var(--blue80);
+  color: var(--blue80);
   background-color: white;
 }
 
 .thin_blue_border {
-  border: 1px solid var(--medium_blue);
+  border: 1px solid var(--blue80);
 }
 
 .pink_border {
-  border: 2px solid var(--dark_pink);
-  color: var(--dark_pink);
+  border: 2px solid var(--pink);
+  color: var(--pink);
   background-color: white;
 }
 
@@ -169,18 +168,18 @@ main {
 }
 
 .blue_hover:hover{
-  background-color: var(--medium_blue);
+  background-color: var(--blue80);
   color: white;
 }
 
-.white_cyan_hover:hover{
+.white_blue50_hover:hover{
   background-color: white;
-  border: 2px solid var(--bright_blue);
-  color: var(--cyan);
+  border: 2px solid var(--blue50);
+  color: var(--blue50);
 }
 
-.gold_hover:hover{
-  background-color: var(--gold);
+.yellow_hover:hover{
+  background-color: var(--yellow);
 }
 
 .nav_bar {
@@ -260,7 +259,7 @@ main {
 
 .name_dropdown {
   font-size: 14px;
-  color: var(--dark_gray);
+  color: var(--gray90);
 
 }
 
@@ -274,13 +273,13 @@ main {
   width: 188px;
   height: 30px;
   margin: 3px 0;
-  color: var(--dark_gray);
+  color: var(--gray90);
   cursor: pointer;
   user-select: none;
   border-radius: 5px;
   font-size: 16px;
   &:hover {
-      background-color:var(--light_gray);
+      background-color:var(--gray50);
   }
   img {
       margin: 0 7px 0 7px;
@@ -311,11 +310,11 @@ hr {
 }
 
 .blue_line {
-  border: 1px solid var(--light_blue00);
+  border: 1px solid var(--blue20);
 }
 
 .blue_line_dash {
-  border: 1px dashed var(--light_blue00);
+  border: 1px dashed var(--blue20);
 }
 
 .button {
@@ -370,7 +369,8 @@ hr {
 }
 
 .rainbow_text {
-  background: linear-gradient(to right, var(--dark_pink), var(--yellow), var(--vivid_blue));
+  background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue90));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+

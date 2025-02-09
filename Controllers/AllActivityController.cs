@@ -14,4 +14,11 @@ public class AllActivityController: Controller
         ViewBag.keyword = search_string;
         return View();
     }
+
+    [HttpPost]
+    public IActionResult Index([FromBody] string[] tags)
+    {
+        return Json(new { Tags = tags });
+    }
+
 }

@@ -33,6 +33,7 @@
   box-sizing: border-box;
   font-family: "IBM Plex Sans Thai", sans-serif;
   list-style: none;
+  color: var(--gray80);
 }
 
 input:focus, textarea:focus {
@@ -48,7 +49,7 @@ html{
 }
 
 main {
-  margin: 0 6vw;
+  margin: 0 10vw;
 }
 
 .cursor {
@@ -88,6 +89,9 @@ main {
   justify-content: end;
 }
 
+.gap {
+  gap: 0.5rem;
+}
 .center_img {
   position: relative;
   transform: translateY(-50%);
@@ -307,6 +311,16 @@ hr {
   background-color: var(--white);
 }
 
+.pseudo-btn input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.pseudo-btn {
+  display: inline-block;
+  text-align: center;
+  user-select: none;
+}
+
 .circle {
   width: 55px;
   height: 55px;
@@ -338,13 +352,19 @@ hr {
     border-radius: 0.4rem;
   }
 
-  .w-b-b, .hover-w-b-b:hover {
+  .w-mb-mb, .hover-w-mb-mb:hover {
     background-color: var(--white);
     color: var(--blue80);
     border: 2px solid var(--blue80);
   }
 
-  .w-b, .hover-w-b:hover {
+  .w-bb-bb, .hover-w-bb-bb:hover {
+    background-color: var(--white);
+    color: var(--blue60);
+    border: 2px solid var(--blue60);
+  }
+
+  .w-mb, .hover-w-mb:hover {
     background-color: var(--white);
     color: var(--blue80);
     box-shadow: 0px 0px 4px 1px var(--shadow);
@@ -370,6 +390,12 @@ hr {
 
   .db-w, .hover-db-w:hover {
     background-color: var(--blue80);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+
+  .bb-w, .hover-bb-w:hover {
+    background-color: var(--blue60);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
   }
@@ -403,7 +429,7 @@ hr {
   width: 38%;
   height: 2.5em;
   display: flex;
-  margin: 1rem auto 1rem auto;
+  margin: 1.75rem auto 1rem auto;
   border-radius: 5rem;
   overflow: hidden;
   background-color: var(--white);
@@ -441,7 +467,38 @@ hr {
   transform: scale(1.05);
 }
 
-/* this class has to be the last one to override other class*/
+.pseudo-btn input:checked + label{
+  background-color: var(--blue60);
+  color: var(--white);
+  box-shadow: 0px 0px 4px 1px var(--shadow);
+}
+
+.activity-preview {
+  width: 385px;
+  height: 15.75rem;
+  background-color: white;
+  border-radius: 1.25rem;
+  border: 1px solid var(--gray60);
+  display: grid;
+  grid-template-rows: 4rem 2.25rem 5.25rem 1.75rem 2.5rem;
+  overflow: hidden;
+}
+
+.activity-preview>* {
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+.activity-preview .act-info {
+  display: flex;
+  align-items: center;
+}
+
+.activity-preview .act-info *{
+  flex: 1;
+  margin: 0 auto 0 auto;
+}
+
+/* this class has to be the last one to override other classes*/
 .show {
   display: block;
 }

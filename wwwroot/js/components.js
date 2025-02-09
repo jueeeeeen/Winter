@@ -53,27 +53,27 @@ class MainNavbar extends HTMLElement{
                 <li>
                     <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="#">Activity</a></li>
+                <li><a href="/AllActivity">Activity</a></li>
                 <li class="logo">
                     <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
                 <li class="m_left_auto">
-                    <button class="btn medium w-b round hover-db-w" id="create_button">
+                    <button class="btn medium w-mb round hover-db-w" id="create_button">
                         <img src="assets/plus-b.svg" alt="plus icon">create
                     </button>
                 </li>
                 <li>
-                    <button class="btn circle round w-b hover-y-w" id="bell_button">
+                    <button class="btn circle round w-mb hover-y-w" id="bell_button">
                         <img src="assets/bell_icon-g.svg" alt="bell">
                     </button>
                 </li>
                 <li>
-                    <button class="btn circle round w-b hover-b-w" id="profile_button">
+                    <button class="btn circle round w-mb hover-b-w" id="profile_button">
                         <img src="assets/Profile-w-b.png" width="55px" alt="profile">
                     </button>
                 </li>
             </ul>
-            <div class="profile_dropdown w-b-b edge" id="profile_dropdown">
+            <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
                 <div class="info_dropdown flex gap">
                     <img class="blue_border rounded" id="profile_pic_dropdown" src="assets/Profile-w-b.png" width="40px">
                     <div>
@@ -159,7 +159,6 @@ class SearchBar extends HTMLElement{
             </button>
         </form>`;
         this.clear_search = this.clear_search.bind(this);
-        this.search_activity = this.search_activity.bind(this);
     }
 
     connectedCallback() {
@@ -175,10 +174,104 @@ class SearchBar extends HTMLElement{
     }
 }
 
+class TagsSelector extends HTMLElement{
+    constructor() {
+        super();
+        this.tag_name = this.getAttribute("data-tag_name");
+        this.innerHTML =
+        `<div class="pseudo-btn">
+            <input type="checkbox" name="${this.tag_name}" value="${this.tag_name}" id="tag_${this.tag_name}">
+            <label for="tag_${this.tag_name}" class="btn small round shadow hover-w-bb-bb">${this.tag_name}</label>
+        </div>`;
+        this.input = this.querySelector("input");
+        this.toggle_check = this.toggle_check.bind(this);
+    }
+
+    connectedCallback() {
+        this.input.addEventListener("change", this.toggle_check);
+    }
+
+    disconnectedCallback() {
+        this.input.removeEventListener("change", this.toggle_check);
+    }
+
+    toggle_check() {
+        console.log("toggle");
+        if ((this.tag_name == "All") && (this.input.checked)){
+                document.querySelectorAll('#tag_filter_form input:not([name="All"])').forEach(input => {
+                input.checked = false;
+            });
+        }
+        else{
+            document.querySelector('#tag_filter_form input[name="All"]').checked = false
+        }
+    }
+}
+
+
+class TagFilter extends HTMLElement{
+    constructor(){
+        super()
+        this.innerHTML = 
+        `<form class="flex gap" id="tag_filter_form" action="/AllActivity" method="post">
+            <tag-selector data-tag_name="All"></tag-selector>
+            <tag-selector data-tag_name="Entertain"></tag-selector>
+            <tag-selector data-tag_name="Sport"></tag-selector>
+            <tag-selector data-tag_name="Study"></tag-selector>
+            <tag-selector data-tag_name="Hobby"></tag-selector>
+            <tag-selector data-tag_name="Travel"></tag-selector>
+        </form>
+        `
+
+        this.inputs = this.querySelector('input');
+    }
+
+    connectedCallback() {
+        this.addEventListener("change", (event) => {
+            event.preventDefault();
+            this.submitForm()});
+
+    }
+
+    clear_tags(tag) {
+        this.inputs.forEach(input => {
+            if ((tag != null && input.name == tag) || input.name != "All"){
+                input.checked = false;
+            }
+        });
+    }
+
+    submitForm() {
+        const form = this.querySelector("#tag_filter_form");
+        const selectedTags = [];
+
+        form.querySelectorAll('input:checked').forEach(input => {
+            selectedTags.push(input.value);
+        });
+        
+        // console.log("Selected Tags:", selectedTags);
+
+        fetch(form.action, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(selectedTags)
+        })
+        .then(response => response.json())
+        .then(data => {
+            const tag_list = document.querySelector('#show-tags')
+            tag_list.innerHTML = data["tags"].join(" | ");
+        })
+    }
+}
+
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
 customElements.define("search-bar", SearchBar);
+customElements.define("tag-selector", TagsSelector);
+customElements.define("tag-filter", TagFilter);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

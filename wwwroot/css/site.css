@@ -445,3 +445,24 @@ hr {
 .show {
   display: block;
 }
+
+.select_type {
+  display: flex;
+  background-color: var(--white);
+  width: fit-content;
+  padding: 0em 1em;
+  border-radius: 0.4rem;
+  margin: 5rem 0rem;
+}
+.type{
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--white);
+  width: 8rem;
+  padding: 1em 0.5em;
+  font-size: 1.125rem;
+}
+.type:hover {
+  background-color: var(--shadow);
+}

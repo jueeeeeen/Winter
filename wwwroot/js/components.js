@@ -175,6 +175,8 @@ class SearchBar extends HTMLElement{
     }
 }
 
+
+
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
@@ -204,6 +206,15 @@ function toggleInvertColor(element, toggle, img1, img2, color1, color2) {
             element.firstElementChild.src = "assets/" + img2;
         }
     }
+}
+class Activities extends HTMLElement{
+    constructor() {
+        super();
+        this.innerHTML = `
+
+
+        `};
+    
 }
 
 // var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");

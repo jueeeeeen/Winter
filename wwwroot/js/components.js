@@ -147,15 +147,11 @@ class SearchBar extends HTMLElement{
             <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
             <div class="search-bar-x">
                 <button class="btn" id="clear_search_button">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 1L1 14M1 1L14 14" stroke="var(--gray70)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                    <svg-x></svg-x>
                 </button>
             </div>
             <button type="submit" class="btn search-bar-search">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18.25 18.25L14.2625 14.2625M16.4167 9.08333C16.4167 13.1334 13.1334 16.4167 9.08333 16.4167C5.03325 16.4167 1.75 13.1334 1.75 9.08333C1.75 5.03325 5.03325 1.75 9.08333 1.75C13.1334 1.75 16.4167 5.03325 16.4167 9.08333Z" stroke="var(--white)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg-search></svg-search>
             </button>
         </form>`;
         this.clear_search = this.clear_search.bind(this);
@@ -181,7 +177,7 @@ class TagsSelector extends HTMLElement{
         this.innerHTML =
         `<div class="pseudo-btn">
             <input type="checkbox" name="${this.tag_name}" value="${this.tag_name}" id="tag_${this.tag_name}">
-            <label for="tag_${this.tag_name}" class="btn small round shadow hover-w-bb-bb">${this.tag_name}</label>
+            <label for="tag_${this.tag_name}" class="btn medium round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;
         this.input = this.querySelector("input");
         this.toggle_check = this.toggle_check.bind(this);
@@ -266,12 +262,221 @@ class TagFilter extends HTMLElement{
     }
 }
 
+// replace button with better element later****
+class TagDisplay extends HTMLElement {
+    constructor() {
+        super();
+        this.tag_name = this.getAttribute("data-tag_name");
+        this.innerHTML = `<button class="tag lb-w-w small round shadow">${this.tag_name}</button>`;
+    }
+}
+
+class RequirementTag extends HTMLElement {
+    constructor() {
+        super();
+        this.type = this.getAttribute("data-type");
+        this.value = this.getAttribute("data-value");
+        if (this.type == "age"){
+            this.innerHTML = `<button class="tag w-r-r small round">${this.value}</button>`;
+        }
+        else {
+            if (this.value == "female")
+            {
+                this.innerHTML = `<button class="tag w-p-p small round">${this.value}</button>`;
+            }
+            else if (this.value == "male") {
+                this.innerHTML = `<button class="tag w-mb-mb small round">${this.value}</button>`;
+            }
+            else if (this.value == "lgbtq") {
+                this.innerHTML = `<button class="tag w-rb-rb small"><span>${this.value}</span></button>`;
+            }
+        }
+    }
+}
+
+class ActivityPreview extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+        <div class="activity-preview shadow">
+            <div class="profile-info">
+                <div><img src="../../assets/profile-g.png"></div>
+                <div>
+                    <span>Peerawat Ingkhasantatikul</span>
+                    <svg-male aria-label="Male"></svg-male>
+                </div>
+                <div>
+                    <span>15 Jan 2025 12:59</span>
+                    <span aria-label="review" class="act-pre-review">
+                        <svg-star-sharp></svg-star-sharp>
+                        1.55
+                    </span>
+                </div>
+                <div>2/5</div>
+            </div>
+            <ul class="act-tags-container">
+                <li>
+                    <tag-display data-tag_name="Entertain"></tag-display>
+                </li>
+                <li>
+                    <tag-display data-tag_name="Travel"></tag-display>
+                </li>
+                <li>
+                    <tag-display data-tag_name="Study"></tag-display>
+                </li>
+            </ul>
+            <div class="title">
+                <h2>หาเพื่อนดูหนังครับ</h2>
+            </div>
+            <ul class="act-tags-container">
+                <li>
+                    <req-tag data-type="age" data-value="17-25"></req-tag>
+                </li>
+                <li>
+                    <req-tag data-type="gender" data-value="female"></req-tag>
+                </li>
+                <li>
+                    <req-tag data-type="gender" data-value="male"></req-tag>
+                </li>
+                <li>
+                    <req-tag data-type="gender" data-value="lgbtq"></req-tag>
+                </li>
+            </ul>
+            <ul class="act-info">
+                <li>
+                    <svg-clock></svg-clock><span>13:00 (5 hours)</span>
+                </li>
+                <li>
+                    <svg-calendar></svg-calendar><span>Sat, 18 Jan, 2025</span>
+                </li>
+                <li>
+                    <button class="btn small round mb-w">
+                        join
+                    </button>
+                </li>
+            </ul>
+        </div>`
+    }
+}
+// SVG Components Class
+class BaseSVGElement extends HTMLElement {
+    constructor() {
+        super();
+        this.style.display = "inline-flex";
+    }
+}
+
+
+class SVGCalendar extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = `<svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.3125 7.89996H20.6875M4.6875 1V2.80021M18.0625 1V2.79999M22 5.94999V18.85C22 20.5897 20.433 22 18.5 22H4.5C2.567 22 1 20.5897 1 18.85V5.94999C1 4.21029 2.567 2.79999 4.5 2.79999H18.5C20.433 2.79999 22 4.21029 22 5.94999Z" stroke="#65DA8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        `
+    }
+}
+
+class SVGClock extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = `<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.3146 10.7116L10.2781 10.6752L10.2381 10.6426L10.1875 10.6015V6.3025H10.8125V10.0538V10.468L11.1054 10.7609L11.9979 11.6534L12.0175 11.673L12.0382 11.6915L12.2479 11.8791L11.8529 12.2742L11.6652 12.0645L11.6467 12.0438L11.6271 12.0241L10.3146 10.7116ZM1 10.5C1 5.27728 5.27728 1 10.5 1C15.7227 1 20 5.27728 20 10.5C20 15.7227 15.7227 20 10.5 20C5.27728 20 1 15.7227 1 10.5ZM19.375 10.5C19.375 5.59022 15.4098 1.625 10.5 1.625C5.59022 1.625 1.625 5.59022 1.625 10.5C1.625 15.4098 5.59022 19.375 10.5 19.375C15.4098 19.375 19.375 15.4098 19.375 10.5Z" fill="#FDC330" stroke="#FDC330" stroke-width="2"/>
+        </svg>`;
+    }
+}
+
+class SVGXMark extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = `<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 1L1 14M1 1L14 14" stroke="var(--gray70)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGSearch extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.25 18.25L14.2625 14.2625M16.4167 9.08333C16.4167 13.1334 13.1334 16.4167 9.08333 16.4167C5.03325 16.4167 1.75 13.1334 1.75 9.08333C1.75 5.03325 5.03325 1.75 9.08333 1.75C13.1334 1.75 16.4167 5.03325 16.4167 9.08333Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        `;
+    }
+}
+
+class SVGGenderFemale extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = `<svg width="32" height="37" viewBox="0 0 32 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11.2502 28.5H20.7502M16.0002 20.5833V33.25M16.0002 20.5833C20.3724 20.5833 23.9168 17.0389 23.9168 12.6667C23.9168 8.29441 20.3724 4.75 16.0002 4.75C11.6279 4.75 8.0835 8.29441 8.0835 12.6667C8.0835 17.0389 11.6279 20.5833 16.0002 20.5833Z" stroke="#F78AFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        `;
+    }
+}
+
+class SVGGenderLGBT extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.8265 27.7466C16.3732 27.9066 15.6265 27.9066 15.1732 27.7466C11.3065 26.4266 2.6665 20.92 2.6665 11.5866C2.6665 7.46663 5.9865 4.1333 10.0798 4.1333C12.5065 4.1333 14.6532 5.30663 15.9998 7.11997C17.3465 5.30663 19.5065 4.1333 21.9198 4.1333C26.0132 4.1333 29.3332 7.46663 29.3332 11.5866C29.3332 20.92 20.6932 26.4266 16.8265 27.7466Z" stroke="url(#paint0_linear_206_1029)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs>
+            <linearGradient id="paint0_linear_206_1029" x1="2.6665" y1="16" x2="29.3332" y2="16" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF8AF1"/>
+            <stop offset="0.48" stop-color="#FFCF56"/>
+            <stop offset="1" stop-color="#36B2FF"/>
+            </linearGradient>
+            </defs>
+        </svg>`;
+    }
+}
+
+class SVGGenderMale extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="39" height="39" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_247_858)">
+        <path d="M20.9899 17.7504C17.8982 14.6588 12.8857 14.6588 9.79402 17.7504C6.70237 20.8421 6.70237 25.8546 9.79402 28.9463C12.8857 32.0379 17.8982 32.0379 20.9899 28.9463C24.0815 25.8546 24.0815 20.8421 20.9899 17.7504ZM20.9899 17.7504L29.9466 8.79373M29.9466 8.79373L29.9466 17.7504M29.9466 8.79373L20.9899 8.79373" stroke="#56BEFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_247_858">
+        <rect width="20.6371" height="33.2074" fill="white" transform="translate(24.0054 0.0258789) rotate(45)"/>
+        </clipPath>
+        </defs>
+        </svg>`;
+    }
+}
+
+class SVGStarSharp extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = `<svg width="15" height="15" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 0L11.625 11.625H0L9.6875 19.375L5.8125 31L15.5 23.25L25.1875 31L21.3125 19.375L31 11.625H19.375L15.5 0Z" fill="#FDC330"/>
+        </svg>`;
+    }
+}
+
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
+customElements.define("tag-display", TagDisplay);
+customElements.define("req-tag", RequirementTag);
+customElements.define("act-preview", ActivityPreview);
+
+// SVG Components define
+customElements.define("svg-calendar", SVGCalendar);
+customElements.define("svg-clock", SVGClock);
+customElements.define("svg-x", SVGXMark);
+customElements.define("svg-search", SVGSearch);
+customElements.define("svg-star-sharp", SVGStarSharp);
+customElements.define("svg-male", SVGGenderMale);
+customElements.define("svg-lgbt", SVGGenderLGBT);
+customElements.define("svg-female", SVGGenderFemale);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

@@ -7,12 +7,12 @@
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script src="/js/components.js" defer></script>
+    @RenderSection("styles", required: false)
 </head>
     <body>
         <header>
             <main-navbar></main-navbar>
         </header>
-
         <main role="main">
             @RenderBody()
         </main>

@@ -262,25 +262,25 @@ class TagFilter extends HTMLElement{
     }
 }
 
-class ActivityCardContainer extends HTMLElement {
-    constructor() {
-        super();
-        this.innerHTML = `<div id="all-activities-container"></div>`;
-    }
+// class ActivityCardContainer extends HTMLElement {
+//     constructor() {
+//         super();
+//         this.innerHTML = `<div id="all-activities-container"></div>`;
+//     }
 
-    connectedCallback() {
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch("/AllActivity/GetActivityCards")
-                .then(response => response.json())
-                .then(activities => {
-                    this.container = this.querySelector("#all-activities-container")
-                    activities.forEach(activity => {
-                        this.container.appendChild(new ActivityCard(activity));
-                    });
-                })
-        })
-    }
-}
+//     connectedCallback() {
+//         document.addEventListener("DOMContentLoaded", () => {
+//             fetch("/AllActivity/GetActivityCards")
+//                 .then(response => response.json())
+//                 .then(activities => {
+//                     this.container = this.querySelector("#all-activities-container")
+//                     activities.forEach(activity => {
+//                         this.container.appendChild(new ActivityCard(activity));
+//                     });
+//                 })
+//         })
+//     }
+// }
 
 // replace button with better element later****
 class TagDisplay extends HTMLElement {

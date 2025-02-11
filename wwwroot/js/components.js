@@ -420,6 +420,32 @@ class ActivityCard_test extends HTMLElement {
         </div>`
     }
 }
+
+class Pagination extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = ``;
+    }
+}
+
+class PaginationItem extends HTMLElement {
+    constructor() {
+        super();
+        this.value = this.getAttribute("data-value");
+        if (this.value == "prev") {
+            this.innerHTML = `<button class="pagination-item round"><svg-prev></svg-prev></button>`;
+        }
+        else if (this.value == "..."){
+            this.innerHTML = `<button class="pagination-item round">...</button>`; 
+        }
+        else if (this.value == "next"){
+            this.innerHTML = `<button class="pagination-item round"><svg-next></svg-next></button>`; 
+        }
+        else {
+            this.innerHTML = `<button class="pagination-item round">${this.value}</button>`;
+        }
+    }
+}
 // SVG Components Class
 class BaseSVGElement extends HTMLElement {
     constructor() {
@@ -520,6 +546,26 @@ class SVGStarSharp extends BaseSVGElement {
     }
 }
 
+class SVGPrev extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.4 6L8 10.6L6.6 12L0.6 6L6.6 0L8 1.4L3.4 6Z" fill="#9F9F9F"/>
+        </svg>`;
+    }
+}
+
+class SVGNext extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4.6 6L0 1.4L1.4 0L7.4 6L1.4 12L0 10.6L4.6 6Z" fill="#9F9F9F"/>
+        </svg>`;
+    }
+}
+
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
@@ -530,6 +576,7 @@ customElements.define("tag-display", TagDisplay);
 customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);
 customElements.define("act-card-test", ActivityCard_test);
+customElements.define("pagination-item", PaginationItem);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);
@@ -540,6 +587,8 @@ customElements.define("svg-star-sharp", SVGStarSharp);
 customElements.define("svg-male", SVGGenderMale);
 customElements.define("svg-lgbt", SVGGenderLGBT);
 customElements.define("svg-female", SVGGenderFemale);
+customElements.define("svg-prev", SVGPrev);
+customElements.define("svg-next", SVGNext);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

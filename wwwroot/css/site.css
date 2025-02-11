@@ -43,6 +43,7 @@ input:focus, textarea:focus {
 
 button {
   border: none;
+  background-color: var(--white);
 }
 
 html{
@@ -312,7 +313,7 @@ hr {
   background-color: var(--white);
 }
 
-.pseudo-btn input[type="checkbox"] {
+.pseudo-btn input[type="checkbox"], .pseudo-btn input[type="radio"]{
   visibility: hidden;
 }
 
@@ -467,6 +468,11 @@ hr {
     background-color: var(--white);
     color: var(--pink);
     border: 2px solid var(--pink);
+  }
+
+  .w-g, .hover-w-g{
+    background-color: var(--white);
+    color: var(--gray90);
   }
 
 /* search bar style */
@@ -628,6 +634,32 @@ hr {
   justify-content: center;
   font-weight: 600;
   font-size: 0.875rem;
+}
+
+.pagination-container {
+  width: 20.25em;
+  background-color: var(--white);
+  overflow: hidden;
+  padding: 0.1em 0;
+  margin: 3rem auto;
+}
+
+.pagination-item{
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.25em;
+  height: 2.25em;
+  color: var(--gray70);
+  transition: all 0.3s;
+}
+
+.pagination-container>*:not([data-value="..."]):hover .pagination-item, .pagination-container .pagination-item:hover path{
+  color: var(--blue50);
+  transform: translateY(-0.1em);
+  fill: var(--gray90);
 }
 
 #all-activities-container {

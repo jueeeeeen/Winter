@@ -476,7 +476,7 @@ hr {
   color: var(--gray90);
   margin: 20px;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.75;
 }
 
 .profile-picture {
@@ -488,10 +488,19 @@ hr {
 
 .personal-info {
   color: var(--gray90);
-  margin: 0 0 25px 0;
+  margin: 0 0 2px 0;
   font-size: 16px;
-  text-align: center;
 }
+
+.personal-info input{
+  width: 80%;
+  padding: 5px;
+  border: solid 1px var(--gray60);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .personal-info img {
   width: 30px;
   height: 30px;
@@ -501,7 +510,11 @@ hr {
 .personal-info div {
   display: flex;
   flex-direction: row;
-  margin: 5px;
+  margin: 10px;
+}
+
+.personal-info p {
+  margin-top: 5px;
 }
 
 .profile-rating {
@@ -615,4 +628,136 @@ hr {
   width: 30px;
   height: 30px;
   margin-right: 5px;
+}
+
+.upload-profile-picture {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.upload-profile-button {
+  background-color: var(--red);
+  color: var(--white);
+  width: 150px;
+  height: 30px;
+  padding: 3px;
+  margin: auto;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.upload-profile-button p {
+  margin: 5px 0 0 5px;
+}
+
+fieldset {
+  border: none;
+}
+
+.bio-input {
+  margin: 10px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-input label {
+  color: var(--gray70);
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bio-input textarea {
+  color: var(--gray90);
+  padding-left: 5px;
+  border: 1px solid var(--gray60);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 95%;
+  height: 65px;
+}
+
+.user-fullname {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+.profile-input {
+  color: var(--gray70);
+  margin: 20px 20px 0 20px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-input input {
+  color: var(--gray90);
+  border: 1px solid var(--gray60);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 200px;
+  height: 30px;
+  padding-left: 5px;
+}
+
+.gender-button {
+  display: flex;
+  gap: 0;
+}
+
+.gender-button button{
+  background-color: var(--white);
+  width: 70px;
+  height: 30px;
+}
+
+.gender-button button img {
+  max-height: 100%; 
+    max-width: 100%;
+}
+
+.male-button {
+  border: 2px solid var(--blue80);
+  border-radius: 20px 0 0 20px;
+}
+
+.lgbtq-button {
+  border: solid 2px;
+  border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1;
+}
+
+.female-button {
+  border: 2px solid var(--pink);
+  border-radius: 0 20px 20px 0;
+}
+
+.save-cancel-button {
+  position: fixed;
+  bottom: 10px;
+  right: 185px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.save-cancel-button button {
+  width: 100px;
+  color: var(--white);
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.save-button {
+  background-color: var(--blue70);
+}
+
+.cancel-button {
+  background-color: var(--red);
 }

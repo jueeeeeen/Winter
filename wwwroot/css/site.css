@@ -47,8 +47,6 @@ button {
 
 html{
   background-image: url("../assets/page_bg.png");
-  /* background-image: linear-gradient(to right, var(--blue50), var(--blue20)); */
-
 }
 
 main {
@@ -330,22 +328,22 @@ hr {
 }
 
 .small {
-  min-width: 90px;
+  min-width: 5.625em;
   height: 1.875em;
   padding: 0.25em 0.67em;
   font-size: 1rem;
   }
 
 .medium {
-  min-width: 120px;
+  min-width: 6.67em;
   height: 2.25em;
   padding: 0.45em 0.67em;
   font-size: 1.125rem;
   }
 
 .large {
-  padding: 0.4em 0.67em;
   height: 1.875em;
+  padding: 0.4em 0.67em;
   font-size: 1.25rem;
   font-weight: 600;
   }
@@ -524,8 +522,8 @@ hr {
   margin: 0 0 2rem;
 }
 
-/* Activity preview in AllActivity page */
-.activity-preview {
+/* Activity card in AllActivity page */
+.activity-card {
   width: 24em;
   height: 15.75rem;
   background-color: white;
@@ -537,35 +535,34 @@ hr {
   padding: 0 0.5em;
 }
 
-.activity-preview>* {
+.activity-card > * {
   display: flex;
-  align-items: center;
 }
 
-.activity-preview .title{
+.activity-card .title{
   padding: 0 1em;
   line-height: 1.5;
   overflow: hidden;
   margin: auto 0;
 }
 
-.activity-preview .act-info {
+.activity-card .act-info {
   font-size: 13px;
   justify-content: space-evenly;
 }
 
-.activity-preview .act-tags-container {
+.activity-card .act-tags-container {
   padding: 0.25em 0 0 0;
   gap: 0.25rem;
 }
 
-.activity-preview li{
+.activity-card li{
   gap: 0.5em;
   display: flex;
   align-items: center;
 }
 
-.activity-preview .profile-info {
+.activity-card .profile-info {
   display: grid;
   grid-template-columns: 2.5em auto 3.75em;
   grid-template-rows: 1fr 1fr;
@@ -573,18 +570,18 @@ hr {
   gap:0 0.25em
 }
 
-.activity-preview .profile-info div:nth-child(1){
+.activity-card .profile-info div:nth-child(1){
   grid-area: 1 / 1 / 3 / 2;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.activity-preview .profile-info div:nth-child(1) img {
+.activity-card .profile-info div:nth-child(1) img {
   width: 100%;
 }
 
-.activity-preview .profile-info div:nth-child(2){
+.activity-card .profile-info div:nth-child(2){
   grid-area: 1 / 2 / 2 / 3;
   display: flex;
   align-items: end;
@@ -593,19 +590,19 @@ hr {
   line-height: 1;
 }
 
-.activity-preview .profile-info div:nth-child(2) svg {
+.activity-card .profile-info div:nth-child(2) svg {
   width: 1.5em;
   height: 1.5em;
 }
 
-.activity-preview .profile-info div:nth-child(3){
+.activity-card .profile-info div:nth-child(3){
   grid-area: 2 / 2 / 3 / 3;
   font-size: 0.75em;
   line-height: 1.5;
   display: flex;
 }
 
-.activity-preview .profile-info div:nth-child(3) .act-pre-review{
+.activity-card .profile-info div:nth-child(3) .act-pre-review{
   margin: 0 0 0 0.75em;
   height: 1.2em;
   padding-left: 0.25em;
@@ -615,7 +612,7 @@ hr {
   line-height: 1;
 }
 
-.activity-preview .profile-info div:nth-child(4){
+.activity-card .profile-info div:nth-child(4){
   grid-area: 1 / 3 / 3 / 4;
   font-size: 2em;
   font-weight: bold;
@@ -630,6 +627,7 @@ hr {
   align-items: center;
   justify-content: center;
   font-weight: 600;
+  font-size: 0.875rem;
 }
 
 .all-activities-container {

@@ -1,82 +1,29 @@
 @{
     ViewData["Title"] = "All Activity";
 }
+
 <search-bar></search-bar>
 @* @ViewBag.keyword *@
+@* for showing search keyword that is sent to back *@
 
 <tag-filter></tag-filter>
 
 @* <ul id="show-tags"></ul> *@
+@* for showing selected tags that are sent to back *@
 
-@* <div class="activity-preview shadow">
-    <div class="profile-info">
-        <div><img src="../../assets/profile-g.png"></div>
-        <div>
-            <span>Peerawat Ingkhasantatikul</span>
-            <svg-male aria-label="Male"></svg-male>
-        </div>
-        <div>
-            <span>15 Jan 2025 12:59</span>
-            <span aria-label="review" class="act-pre-review">
-                <svg-star-sharp></svg-star-sharp>
-                1.55
-            </span>
-        </div>
-        <div>2/5</div>
-    </div>
-    <ul class="act-tags-container">
-        <li>
-            <tag-display data-tag_name="Entertain"></tag-display>
-        </li>
-        <li>
-            <tag-display data-tag_name="Travel"></tag-display>
-        </li>
-        <li>
-            <tag-display data-tag_name="Study"></tag-display>
-        </li>
-    </ul>
-    <div class="title">
-        <h2>หาเพื่อนดูหนังครับ</h2>
-    </div>
-    <ul class="act-tags-container">
-        <li>
-            <req-tag data-type="age" data-value="17-25"></req-tag>
-        </li>
-        <li>
-            <req-tag data-type="gender" data-value="female"></req-tag>
-        </li>
-        <li>
-            <req-tag data-type="gender" data-value="male"></req-tag>
-        </li>
-        <li>
-            <req-tag data-type="gender" data-value="lgbtq"></req-tag>
-        </li>
-    </ul>
-    <ul class="act-info">
-        <li>
-            <svg-clock></svg-clock><span>13:00 (5 hours)</span>
-        </li>
-        <li>
-            <svg-calendar></svg-calendar><span>Sat, 18 Jan, 2025</span>
-        </li>
-        <li>
-            <button class="btn small round mb-w">
-                join
-            </button>
-        </li>
-    </ul>
-</div> *@
-<div class="all-activities-container">
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
-    <act-preview></act-preview>
+@*<act-card-test> is for preview only, use <act-card> instead*@
+<div id="all-activities-container">
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
+    <act-card-test></act-card-test>
 </div>
+

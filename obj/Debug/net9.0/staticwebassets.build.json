@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "B++cJKDWMMvMO+/0DdVBX9/PFDoO8KbX5pp57oTmwHQ=",
+  "Hash": "kKZjes54LwAzwwMKiP7uB6rlmr96BNQ1KbcJzPw3UXE=",
   "Source": "Winter-Project",
   "BasePath": "_content/Winter-Project",
   "Mode": "Default",
@@ -59,12 +59,12 @@
       "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\plus-w.svg"
     },
     {
-      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-x1pifhglax.gz",
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-ztgzkwiku4.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "js/components#[.{fingerprint=x1pifhglax}]?.js.gz",
+      "RelativePath": "js/components#[.{fingerprint=ztgzkwiku4}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -73,11 +73,32 @@
       "RelatedAsset": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\js\\components.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "9efp8y1n1t",
-      "Integrity": "MbrEmdF6gdVpCyQ5puX77dq2CJddV2/+v7I6kDscAmo=",
+      "Fingerprint": "d6550e4upt",
+      "Integrity": "i57CMVidK7PucSeuSMEPRkVXmGNwJkVLRpdWlqkE6v4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\js\\components.js"
+    },
+    {
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\7cnkesj4ut-6ltrb4t75v.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/star_sharp#[.{fingerprint=6ltrb4t75v}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\star_sharp.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "osyx0adsak",
+      "Integrity": "aGa/ekUKXeRcMxEIRhz86H5cKxzYyuZ7oKp11ABefGk=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\star_sharp.svg"
     },
     {
       "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\86popbygbx-en00cy2n4q.gz",
@@ -458,6 +479,27 @@
       "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\male_icon-w.svg"
     },
     {
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\s55zpeu1t4-7paffqu032.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/clock#[.{fingerprint=7paffqu032}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\clock.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "m0lbkr6a4q",
+      "Integrity": "Jv+80NEDLdUGyP9fBAOJGY9GY0d3oVjnMakVa2URd2s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\clock.svg"
+    },
+    {
       "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\sdq3kmk0mu-n0tye9eu3k.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -479,12 +521,12 @@
       "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\person.svg"
     },
     {
-      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-d0cumbrusc.gz",
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-qrsfoc4or3.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/site#[.{fingerprint=d0cumbrusc}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=qrsfoc4or3}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -493,8 +535,8 @@
       "RelatedAsset": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "uqqi19vftc",
-      "Integrity": "GpPTnMkcyeHMgRs6cfpMHf4z5jRBV+pBTXbuk8/KcM4=",
+      "Fingerprint": "2blpvzb5fr",
+      "Integrity": "HhPp+PXygmtueBZdp4Gj/Vug3Ye2JSEffq7PYvl0ndQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\css\\site.css"
@@ -519,6 +561,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\female_icon-p.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\wfio4tbbb0-nekybxlw39.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/calendar#[.{fingerprint=nekybxlw39}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\calendar.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "fqarjmwp88",
+      "Integrity": "F7qSScowVNk7tKouXzJsEW3t1wrZRFTIem+s3+0XupE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\calendar.svg"
     },
     {
       "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\x4rliu7old-kvew1291te.gz",
@@ -687,6 +750,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\bell_icon-w.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\calendar.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/calendar#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "nekybxlw39",
+      "Integrity": "MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\calendar.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\clock.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/clock#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7paffqu032",
+      "Integrity": "69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\clock.svg"
     },
     {
       "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\female_icon-p.svg",
@@ -1172,6 +1277,27 @@
       "OriginalItemSpec": "wwwroot\\assets\\star_outline.svg"
     },
     {
+      "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\star_sharp.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/star_sharp#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6ltrb4t75v",
+      "Integrity": "itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\star_sharp.svg"
+    },
+    {
       "Identity": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\white-snowflakes-element-png.webp",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -1312,8 +1438,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "d0cumbrusc",
-      "Integrity": "TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE=",
+      "Fingerprint": "qrsfoc4or3",
+      "Integrity": "mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -1354,8 +1480,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "x1pifhglax",
-      "Integrity": "VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190=",
+      "Fingerprint": "ztgzkwiku4",
+      "Integrity": "CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\components.js"
@@ -2931,6 +3057,602 @@
         {
           "Name": "integrity",
           "Value": "sha256-BaORzBSxQVM5dSxoCTU85nhZqvdbUfB1OfdZfXuqW6Y="
+        }
+      ]
+    },
+    {
+      "Route": "assets/calendar.nekybxlw39.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\wfio4tbbb0-nekybxlw39.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003584229391"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F7qSScowVNk7tKouXzJsEW3t1wrZRFTIem+s3+0XupE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:19:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nekybxlw39"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/calendar.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/calendar.nekybxlw39.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\calendar.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "419"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:19:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nekybxlw39"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/calendar.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/calendar.nekybxlw39.svg.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\wfio4tbbb0-nekybxlw39.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F7qSScowVNk7tKouXzJsEW3t1wrZRFTIem+s3+0XupE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:19:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nekybxlw39"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/calendar.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-F7qSScowVNk7tKouXzJsEW3t1wrZRFTIem+s3+0XupE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/calendar.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\wfio4tbbb0-nekybxlw39.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003584229391"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F7qSScowVNk7tKouXzJsEW3t1wrZRFTIem+s3+0XupE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:19:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/calendar.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\calendar.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "419"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:19:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MQVTybMkncaQ9h7IdV6noefLYm88mLd8E+Qky24oPZU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/calendar.svg.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\wfio4tbbb0-nekybxlw39.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "278"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"F7qSScowVNk7tKouXzJsEW3t1wrZRFTIem+s3+0XupE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:19:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-F7qSScowVNk7tKouXzJsEW3t1wrZRFTIem+s3+0XupE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/clock.7paffqu032.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\s55zpeu1t4-7paffqu032.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002680965147"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "372"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jv+80NEDLdUGyP9fBAOJGY9GY0d3oVjnMakVa2URd2s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:20:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7paffqu032"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/clock.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M="
+        }
+      ]
+    },
+    {
+      "Route": "assets/clock.7paffqu032.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\clock.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "716"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:20:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7paffqu032"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/clock.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M="
+        }
+      ]
+    },
+    {
+      "Route": "assets/clock.7paffqu032.svg.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\s55zpeu1t4-7paffqu032.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "372"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jv+80NEDLdUGyP9fBAOJGY9GY0d3oVjnMakVa2URd2s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:20:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7paffqu032"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/clock.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jv+80NEDLdUGyP9fBAOJGY9GY0d3oVjnMakVa2URd2s="
+        }
+      ]
+    },
+    {
+      "Route": "assets/clock.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\s55zpeu1t4-7paffqu032.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002680965147"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "372"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jv+80NEDLdUGyP9fBAOJGY9GY0d3oVjnMakVa2URd2s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:20:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M="
+        }
+      ]
+    },
+    {
+      "Route": "assets/clock.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\clock.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "716"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:20:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-69qOk9X271dAZQdtOBAQ4wl7JT5Jibd2QFuporq5K2M="
+        }
+      ]
+    },
+    {
+      "Route": "assets/clock.svg.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\s55zpeu1t4-7paffqu032.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "372"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jv+80NEDLdUGyP9fBAOJGY9GY0d3oVjnMakVa2URd2s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 17:20:15 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jv+80NEDLdUGyP9fBAOJGY9GY0d3oVjnMakVa2URd2s="
         }
       ]
     },
@@ -8277,6 +8999,304 @@
       ]
     },
     {
+      "Route": "assets/star_sharp.6ltrb4t75v.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\7cnkesj4ut-6ltrb4t75v.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005128205128"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "194"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aGa/ekUKXeRcMxEIRhz86H5cKxzYyuZ7oKp11ABefGk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 19:10:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ltrb4t75v"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/star_sharp.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg="
+        }
+      ]
+    },
+    {
+      "Route": "assets/star_sharp.6ltrb4t75v.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\star_sharp.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "240"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 19:10:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ltrb4t75v"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/star_sharp.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg="
+        }
+      ]
+    },
+    {
+      "Route": "assets/star_sharp.6ltrb4t75v.svg.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\7cnkesj4ut-6ltrb4t75v.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "194"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aGa/ekUKXeRcMxEIRhz86H5cKxzYyuZ7oKp11ABefGk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 19:10:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6ltrb4t75v"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/star_sharp.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aGa/ekUKXeRcMxEIRhz86H5cKxzYyuZ7oKp11ABefGk="
+        }
+      ]
+    },
+    {
+      "Route": "assets/star_sharp.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\7cnkesj4ut-6ltrb4t75v.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.005128205128"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "194"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aGa/ekUKXeRcMxEIRhz86H5cKxzYyuZ7oKp11ABefGk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 19:10:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg="
+        }
+      ]
+    },
+    {
+      "Route": "assets/star_sharp.svg",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\star_sharp.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "240"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 19:10:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-itnB+KAQpZMAjoLZpUpvYbqCLM2TRuliqs07OAARQfg="
+        }
+      ]
+    },
+    {
+      "Route": "assets/star_sharp.svg.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\7cnkesj4ut-6ltrb4t75v.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "194"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aGa/ekUKXeRcMxEIRhz86H5cKxzYyuZ7oKp11ABefGk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Feb 2025 19:10:00 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aGa/ekUKXeRcMxEIRhz86H5cKxzYyuZ7oKp11ABefGk="
+        }
+      ]
+    },
+    {
       "Route": "assets/white-snowflakes-element-png.0p34gsnt9r.webp",
       "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\assets\\white-snowflakes-element-png.webp",
       "Selectors": [],
@@ -9202,12 +10222,12 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-d0cumbrusc.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-qrsfoc4or3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000441111601"
+          "Quality": "0.000367782273"
         }
       ],
       "ResponseHeaders": [
@@ -9217,15 +10237,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2266"
+          "Value": "2718"
         },
         {
           "Name": "ETag",
-          "Value": "\"GpPTnMkcyeHMgRs6cfpMHf4z5jRBV+pBTXbuk8/KcM4=\""
+          "Value": "\"HhPp+PXygmtueBZdp4Gj/Vug3Ye2JSEffq7PYvl0ndQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 07:40:43 GMT"
+          "Value": "Tue, 11 Feb 2025 05:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9245,13 +10265,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE=\""
+          "Value": "W/\"mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE="
+          "Value": "sha256-mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE="
         }
       ]
     },
@@ -9266,7 +10286,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9346"
+          "Value": "11672"
         },
         {
           "Name": "Content-Type",
@@ -9274,11 +10294,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE=\""
+          "Value": "\"mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 07:40:43 GMT"
+          "Value": "Tue, 11 Feb 2025 05:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9288,13 +10308,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE="
+          "Value": "sha256-mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-d0cumbrusc.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-qrsfoc4or3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9303,7 +10323,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2266"
+          "Value": "2718"
         },
         {
           "Name": "Content-Type",
@@ -9311,11 +10331,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GpPTnMkcyeHMgRs6cfpMHf4z5jRBV+pBTXbuk8/KcM4=\""
+          "Value": "\"HhPp+PXygmtueBZdp4Gj/Vug3Ye2JSEffq7PYvl0ndQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 07:40:43 GMT"
+          "Value": "Tue, 11 Feb 2025 05:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9333,18 +10353,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-GpPTnMkcyeHMgRs6cfpMHf4z5jRBV+pBTXbuk8/KcM4="
+          "Value": "sha256-HhPp+PXygmtueBZdp4Gj/Vug3Ye2JSEffq7PYvl0ndQ="
         }
       ]
     },
     {
-      "Route": "css/site.d0cumbrusc.css",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-d0cumbrusc.gz",
+      "Route": "css/site.qrsfoc4or3.css",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-qrsfoc4or3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000441111601"
+          "Quality": "0.000367782273"
         }
       ],
       "ResponseHeaders": [
@@ -9354,15 +10374,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2266"
+          "Value": "2718"
         },
         {
           "Name": "ETag",
-          "Value": "\"GpPTnMkcyeHMgRs6cfpMHf4z5jRBV+pBTXbuk8/KcM4=\""
+          "Value": "\"HhPp+PXygmtueBZdp4Gj/Vug3Ye2JSEffq7PYvl0ndQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 07:40:43 GMT"
+          "Value": "Tue, 11 Feb 2025 05:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9382,13 +10402,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE=\""
+          "Value": "W/\"mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "d0cumbrusc"
+          "Value": "qrsfoc4or3"
         },
         {
           "Name": "label",
@@ -9396,12 +10416,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE="
+          "Value": "sha256-mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE="
         }
       ]
     },
     {
-      "Route": "css/site.d0cumbrusc.css",
+      "Route": "css/site.qrsfoc4or3.css",
       "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -9411,7 +10431,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9346"
+          "Value": "11672"
         },
         {
           "Name": "Content-Type",
@@ -9419,11 +10439,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE=\""
+          "Value": "\"mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 07:40:43 GMT"
+          "Value": "Tue, 11 Feb 2025 05:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9433,7 +10453,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "d0cumbrusc"
+          "Value": "qrsfoc4or3"
         },
         {
           "Name": "label",
@@ -9441,13 +10461,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-TaqMtOA9MEY2bAy5mtU2MweKvZiJvlUZsvR2IlUQJUE="
+          "Value": "sha256-mriUEjPsejCdNmtBgRBKnO3fWH6UvRntxMVkOn/G+gE="
         }
       ]
     },
     {
-      "Route": "css/site.d0cumbrusc.css.gz",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-d0cumbrusc.gz",
+      "Route": "css/site.qrsfoc4or3.css.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-qrsfoc4or3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9456,7 +10476,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2266"
+          "Value": "2718"
         },
         {
           "Name": "Content-Type",
@@ -9464,11 +10484,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GpPTnMkcyeHMgRs6cfpMHf4z5jRBV+pBTXbuk8/KcM4=\""
+          "Value": "\"HhPp+PXygmtueBZdp4Gj/Vug3Ye2JSEffq7PYvl0ndQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 07:40:43 GMT"
+          "Value": "Tue, 11 Feb 2025 05:47:03 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9486,7 +10506,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "d0cumbrusc"
+          "Value": "qrsfoc4or3"
         },
         {
           "Name": "label",
@@ -9494,7 +10514,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-GpPTnMkcyeHMgRs6cfpMHf4z5jRBV+pBTXbuk8/KcM4="
+          "Value": "sha256-HhPp+PXygmtueBZdp4Gj/Vug3Ye2JSEffq7PYvl0ndQ="
         }
       ]
     },
@@ -9798,12 +10818,12 @@
     },
     {
       "Route": "js/components.js",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-x1pifhglax.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-ztgzkwiku4.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000317561131"
+          "Quality": "0.000198491465"
         }
       ],
       "ResponseHeaders": [
@@ -9813,15 +10833,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3148"
+          "Value": "5037"
         },
         {
           "Name": "ETag",
-          "Value": "\"MbrEmdF6gdVpCyQ5puX77dq2CJddV2/+v7I6kDscAmo=\""
+          "Value": "\"i57CMVidK7PucSeuSMEPRkVXmGNwJkVLRpdWlqkE6v4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 10:57:21 GMT"
+          "Value": "Mon, 10 Feb 2025 20:23:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9841,13 +10861,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190=\""
+          "Value": "W/\"CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190="
+          "Value": "sha256-CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s="
         }
       ]
     },
@@ -9862,7 +10882,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14867"
+          "Value": "22552"
         },
         {
           "Name": "Content-Type",
@@ -9870,11 +10890,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190=\""
+          "Value": "\"CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 10:57:21 GMT"
+          "Value": "Mon, 10 Feb 2025 20:23:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9884,13 +10904,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190="
+          "Value": "sha256-CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s="
         }
       ]
     },
     {
       "Route": "js/components.js.gz",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-x1pifhglax.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-ztgzkwiku4.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9899,7 +10919,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3148"
+          "Value": "5037"
         },
         {
           "Name": "Content-Type",
@@ -9907,11 +10927,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MbrEmdF6gdVpCyQ5puX77dq2CJddV2/+v7I6kDscAmo=\""
+          "Value": "\"i57CMVidK7PucSeuSMEPRkVXmGNwJkVLRpdWlqkE6v4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 10:57:21 GMT"
+          "Value": "Mon, 10 Feb 2025 20:23:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9929,18 +10949,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-MbrEmdF6gdVpCyQ5puX77dq2CJddV2/+v7I6kDscAmo="
+          "Value": "sha256-i57CMVidK7PucSeuSMEPRkVXmGNwJkVLRpdWlqkE6v4="
         }
       ]
     },
     {
-      "Route": "js/components.x1pifhglax.js",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-x1pifhglax.gz",
+      "Route": "js/components.ztgzkwiku4.js",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-ztgzkwiku4.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000317561131"
+          "Quality": "0.000198491465"
         }
       ],
       "ResponseHeaders": [
@@ -9950,15 +10970,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3148"
+          "Value": "5037"
         },
         {
           "Name": "ETag",
-          "Value": "\"MbrEmdF6gdVpCyQ5puX77dq2CJddV2/+v7I6kDscAmo=\""
+          "Value": "\"i57CMVidK7PucSeuSMEPRkVXmGNwJkVLRpdWlqkE6v4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 10:57:21 GMT"
+          "Value": "Mon, 10 Feb 2025 20:23:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9978,13 +10998,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190=\""
+          "Value": "W/\"CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "x1pifhglax"
+          "Value": "ztgzkwiku4"
         },
         {
           "Name": "label",
@@ -9992,12 +11012,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190="
+          "Value": "sha256-CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s="
         }
       ]
     },
     {
-      "Route": "js/components.x1pifhglax.js",
+      "Route": "js/components.ztgzkwiku4.js",
       "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\wwwroot\\js\\components.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -10007,7 +11027,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "14867"
+          "Value": "22552"
         },
         {
           "Name": "Content-Type",
@@ -10015,11 +11035,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190=\""
+          "Value": "\"CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 10:57:21 GMT"
+          "Value": "Mon, 10 Feb 2025 20:23:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10029,7 +11049,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "x1pifhglax"
+          "Value": "ztgzkwiku4"
         },
         {
           "Name": "label",
@@ -10037,13 +11057,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-VeI88JjyE0IRCcuh/VnOoKbj81IRfv7PHuUy+s9O190="
+          "Value": "sha256-CYwXObRghfqG9w9JJn7M6cz9GFP3y05/u+VDrh5547s="
         }
       ]
     },
     {
-      "Route": "js/components.x1pifhglax.js.gz",
-      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-x1pifhglax.gz",
+      "Route": "js/components.ztgzkwiku4.js.gz",
+      "AssetFile": "C:\\Users\\Jin\\Documents\\Work\\2024-2\\01076119 - WEB APPLICATION DEVELOPMENT  + PROJECT\\Mini Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-ztgzkwiku4.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10052,7 +11072,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3148"
+          "Value": "5037"
         },
         {
           "Name": "Content-Type",
@@ -10060,11 +11080,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"MbrEmdF6gdVpCyQ5puX77dq2CJddV2/+v7I6kDscAmo=\""
+          "Value": "\"i57CMVidK7PucSeuSMEPRkVXmGNwJkVLRpdWlqkE6v4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 10 Feb 2025 10:57:21 GMT"
+          "Value": "Mon, 10 Feb 2025 20:23:36 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10082,7 +11102,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "x1pifhglax"
+          "Value": "ztgzkwiku4"
         },
         {
           "Name": "label",
@@ -10090,7 +11110,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-MbrEmdF6gdVpCyQ5puX77dq2CJddV2/+v7I6kDscAmo="
+          "Value": "sha256-i57CMVidK7PucSeuSMEPRkVXmGNwJkVLRpdWlqkE6v4="
         }
       ]
     }

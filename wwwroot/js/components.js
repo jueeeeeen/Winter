@@ -262,6 +262,26 @@ class TagFilter extends HTMLElement{
     }
 }
 
+class ActivityCardContainer extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `<div id="all-activities-container"></div>`;
+    }
+
+    connectedCallback() {
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch("/AllActivity/GetActivityCards")
+                .then(response => response.json())
+                .then(activities => {
+                    this.container = this.querySelector("#all-activities-container")
+                    activities.forEach(activity => {
+                        this.container.appendChild(new ActivityCard(activity));
+                    });
+                })
+        })
+    }
+}
+
 // replace button with better element later****
 class TagDisplay extends HTMLElement {
     constructor() {
@@ -294,19 +314,76 @@ class RequirementTag extends HTMLElement {
     }
 }
 
-class ActivityPreview extends HTMLElement {
+// still missing
+class ActivityCard extends HTMLElement {
+    constructor(activity) {
+        super();
+        [this.act_date, this.act_time] = activity.activity_time.split(" ");
+        this.innerHTML = `
+        <div class="activity-card shadow">
+            <div class="profile-info">
+                <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
+                <div>
+                    <span>${activity.host.name}</span>
+                    <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+                </div>
+                <div>
+                    <span>${activity.create_time}</span>
+                    <span aria-label="review" class="act-pre-review">
+                        <svg-star-sharp></svg-star-sharp>
+                        ${activity.host.review}
+                    </span>
+                </div>
+                <div>${activity.membership}</div>
+            </div>
+            <ul class="act-tags-container">
+                ${activity.tags.map(tag => `
+                    <li>
+                        <tag-display data-tag_name="${tag}"></tag-display>
+                    </li>
+                `).join("")}
+            </ul>
+            <div class="title">
+                <h2>${activity.title}</h2>
+            </div>
+            <ul class="act-tags-container">
+                ${Object.entries(activity.requirements).map(([type, value]) => `
+                    <li>
+                        <req-tag data-type="${type}" data-value="${value}"></req-tag>
+                    </li>
+                `).join("")}
+            </ul>
+            <ul class="act-info">
+                <li>
+                    <svg-clock></svg-clock><span>${this.act_time + "(" + activity.duration + ")"}</span>
+                </li>
+                <li>
+                    <svg-calendar></svg-calendar><span>${this.act_date}</span>
+                </li>
+                <li>
+                    <button class="btn small round mb-w">
+                        join
+                    </button>
+                </li>
+            </ul>
+        </div>`
+    }
+}
+
+// just for preview test
+class ActivityCard_test extends HTMLElement {
     constructor() {
         super();
         this.innerHTML = `
-        <div class="activity-preview shadow">
+        <div class="activity-card shadow">
             <div class="profile-info">
-                <div><img src="../../assets/profile-g.png"></div>
+                <div><img src="${path+"profile-g.png"}"></div>
                 <div>
                     <span>Peerawat Ingkhasantatikul</span>
-                    <svg-male aria-label="Male"></svg-male>
+                    <svg-male aria-label="male"></svg-male>
                 </div>
                 <div>
-                    <span>15 Jan 2025 12:59</span>
+                    <span>15 Jan 2025 12:59 </span>
                     <span aria-label="review" class="act-pre-review">
                         <svg-star-sharp></svg-star-sharp>
                         1.55
@@ -318,26 +395,11 @@ class ActivityPreview extends HTMLElement {
                 <li>
                     <tag-display data-tag_name="Entertain"></tag-display>
                 </li>
-                <li>
-                    <tag-display data-tag_name="Travel"></tag-display>
-                </li>
-                <li>
-                    <tag-display data-tag_name="Study"></tag-display>
-                </li>
             </ul>
             <div class="title">
-                <h2>หาเพื่อนดูหนังครับ</h2>
+                <h2>หาเพื่อนดูหนังครับ !!!</h2>
             </div>
             <ul class="act-tags-container">
-                <li>
-                    <req-tag data-type="age" data-value="17-25"></req-tag>
-                </li>
-                <li>
-                    <req-tag data-type="gender" data-value="female"></req-tag>
-                </li>
-                <li>
-                    <req-tag data-type="gender" data-value="male"></req-tag>
-                </li>
                 <li>
                     <req-tag data-type="gender" data-value="lgbtq"></req-tag>
                 </li>
@@ -466,7 +528,8 @@ customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
 customElements.define("tag-display", TagDisplay);
 customElements.define("req-tag", RequirementTag);
-customElements.define("act-preview", ActivityPreview);
+customElements.define("act-card", ActivityCard);
+customElements.define("act-card-test", ActivityCard_test);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);

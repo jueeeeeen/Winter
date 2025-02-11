@@ -21,4 +21,10 @@ public class AllActivityController: Controller
         return Json(new { Tags = tags });
     }
 
+    [HttpGet]
+    public JsonResult GetActivityCards()
+    {
+        var activities = _activityService.GetActivities(); // chat บอก อันนี้เป็นการดึงข้อมูลจาก database เลยแปะไว้ก่อน
+        return Json(activities, JsonRequestBehavior.AllowGet);
+    }
 }

@@ -445,3 +445,424 @@ hr {
 .show {
   display: block;
 }
+
+.profile-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-card {
+  background-color: var(--white);
+  width: 400px;
+  height: 575px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+.profile-header {
+  background-color: var(--blue50);
+  color: var(--white);
+  height: 40px;
+  border-radius: 20px 20px 0 0;
+  padding: 1rem;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.account-info {
+  color: var(--gray90);
+  margin: 20px;
+  text-align: center;
+  line-height: 1.75;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border: solid 1px var(--blue60);
+  border-radius: 50%;
+}
+
+.personal-info {
+  color: var(--gray90);
+  margin: 0 0 2px 0;
+  font-size: 16px;
+}
+
+.personal-info input{
+  width: 80%;
+  padding: 5px;
+  border: solid 1px var(--gray60);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.personal-info img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.personal-info div {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.personal-info p {
+  margin-top: 5px;
+}
+
+.profile-rating {
+  color: var(--blue80);
+  width: 65px;
+  margin: auto;
+  padding: 5px;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  box-shadow:  0 5px 10px var(--shadow);
+}
+
+.profile-rating img {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.joined-review {
+  color: var(--gray70);
+  margin: 20px;
+  font-size: 20px;
+}
+
+.joined-review div {
+  width: 50%;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.joined-review a {
+  color: var(--blue80);
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.profile-joined {
+  border-right: solid 1px var(--gray70);
+}
+
+.bio-card {
+  background-color: var(--white);
+  width: 700px;
+  height: 350px;
+  border-radius: 20px;
+  margin-bottom: 1.3rem;
+}
+
+.bio-details {
+  margin: 20px;
+}
+
+.bio-header {
+  color: var(--gray70);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bio-info {
+  color: var(--gray90);
+  font-weight: bold;
+  height: 70px;
+}
+
+.personal-card {
+  background-color: var(--white);
+  width: 700px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.personal-details {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 40%;
+}
+
+
+.personal-info {
+  color: var(--gray90);
+  font-weight: bold;
+  margin: 0 0 25px 0;
+}
+
+.edit-profile-button {
+  position: absolute;
+  right: 90px;
+  bottom: -20px; 
+}
+
+.edit-profile-button button {
+  background-color: var(--blue70);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.edit-profile-button img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.upload-profile-picture {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.upload-profile-button {
+  background-color: var(--red);
+  color: var(--white);
+  width: 150px;
+  height: 30px;
+  padding: 3px;
+  margin: auto;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.upload-profile-button p {
+  margin: 5px 0 0 5px;
+}
+
+fieldset {
+  border: none;
+}
+
+.bio-input {
+  margin: 10px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-input label {
+  color: var(--gray70);
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bio-input textarea {
+  color: var(--gray90);
+  padding-left: 5px;
+  border: 1px solid var(--gray60);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 95%;
+  height: 65px;
+}
+
+.user-fullname {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+.profile-input {
+  color: var(--gray70);
+  margin: 20px 20px 0 20px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-input input {
+  color: var(--gray90);
+  border: 1px solid var(--gray60);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 200px;
+  height: 30px;
+  padding-left: 5px;
+}
+
+.gender-button {
+  display: flex;
+  gap: 0;
+}
+
+.gender-button button{
+  background-color: var(--white);
+  width: 70px;
+  height: 30px;
+}
+
+.gender-button button img {
+  max-height: 100%; 
+  max-width: 100%;
+}
+
+.male-button {
+  border: 2px solid var(--blue80);
+  border-radius: 20px 0 0 20px;
+}
+
+.lgbtq-button {
+  border: solid 2px;
+  border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1;
+}
+
+.female-button {
+  border: 2px solid var(--pink);
+  border-radius: 0 20px 20px 0;
+}
+
+.save-cancel-button {
+  position: fixed;
+  bottom: 10px;
+  right: 185px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.save-cancel-button button {
+  width: 100px;
+  color: var(--white);
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.save-button {
+  background-color: var(--blue70);
+}
+
+.cancel-button {
+  background-color: var(--red);
+}
+
+.login-card h2{
+  margin: 20px 20px 0 50px;
+}
+.login-box, .login-button button{
+  width: 300px;
+  height: 40px;
+  margin: 1px;
+  border-radius: 40px;
+} 
+
+.login-box {
+  background-color: var(--blue40);
+}
+
+.login-card {
+  color: var(--blue90);
+  background-color: var(--white);
+  margin: 80px auto;
+  width: 400px;
+  height: 500px;
+  border-radius: 20px;
+}
+
+.login-card img {
+  width: 400px;
+  height: 200px;
+  border-radius: 20px 20px 0 0; 
+}
+
+.login-card form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-box {
+  background-color: var(--blue40);
+  width: 300px;
+  height: 40px;
+  margin: 1px ;
+  border-radius: 40px;
+  padding: 10px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-box img {
+  margin: 0 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.login-box input {
+  background-color: transparent;
+  border: none;
+}
+
+.login-box input, .login-box input::placeholder {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: bold;
+  margin: auto;
+}
+
+.login-box button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.login-box button img{
+  width: 20px;
+  height: 14px;
+}
+
+.login-button button {
+  background-color: var(--white);
+  color: var(--blue90);
+  border: solid 2px var(--blue70);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.login-button button:hover {
+  color: var(--gray90);
+  background-image: url("/assets/login_btn_bg.svg");
+  background-size: 400px;
+  background-repeat: no-repeat;
+  background-position: center; 
+}
+
+.login-description {
+  color: var(--gray90);
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.login-description a {
+  color: var(--blue40);
+}

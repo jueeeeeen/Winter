@@ -6,11 +6,11 @@ class LoginNavbar extends HTMLElement{
         this.innerHTML = `<nav class="gradient_blue">
                 <ul class="shadow no_select nav_bar">
                 <li>
-                    <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
+                    <a href="#" class="flex flex_center"><img src="/assets/home.svg" width="30px" alt="home"></a>
                 </li>
                 <li><a href="#">Activity</a></li>
                 <li class="logo">
-                    <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
+                    <a href="#" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
             </ul>
             </nav>`
@@ -23,11 +23,11 @@ class GuestNavbar extends HTMLElement{
         this.innerHTML = `<nav class="gradient_blue">
                 <ul class="shadow no_select nav_bar">
                 <li>
-                    <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
+                    <a href="#" class="flex flex_center"><img src="/assets/home.svg" width="30px" alt="home"></a>
                 </li>
                 <li><a href="#">Activity</a></li>
                 <li class="logo">
-                    <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
+                    <a href="#" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
                 <li class="m_left_auto">
                     <a href="login_page.html" class="medium button login_bg shadow flex flex_center rounded" id="nav_login_button">
@@ -51,10 +51,15 @@ class MainNavbar extends HTMLElement{
             `<nav class="gradient_blue shadow">
                 <ul class="no_select nav_bar">
                 <li>
+<<<<<<< HEAD
                     <a href="/Home" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
+=======
+                    <a href="#" class="flex flex_center"><img src="/assets/home.svg" width="30px" alt="home"></a>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
                 </li>
                 <li><a href="/AllActivity">Activity</a></li>
                 <li class="logo">
+<<<<<<< HEAD
                     <a href="/Home" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
                 <li class="m_left_auto">
@@ -70,12 +75,29 @@ class MainNavbar extends HTMLElement{
                 <li>
                     <button class="btn circle round w-mb hover-b-w" id="profile_button" onclick="window.location.href='/CreateActivity'">
                         <img src="assets/Profile-w-b.png" width="55px" alt="profile">
+=======
+                    <a href="#" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter"></a>
+                </li>
+                <li class="m_left_auto">
+                    <button class="btn medium w-b round hover-db-w" id="create_button">
+                        <img src="/assets/plus-b.svg" alt="plus icon">create
+                    </button>
+                </li>
+                <li>
+                    <button class="btn circle round w-b hover-y-w" id="bell_button">
+                        <img src="/assets/bell_icon-g.svg" alt="bell">
+                    </button>
+                </li>
+                <li>
+                    <button class="btn circle round w-b hover-b-w" id="profile_button">
+                        <img src="/assets/Profile-w-b.png" width="55px" alt="profile">
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
                     </button>
                 </li>
             </ul>
             <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
                 <div class="info_dropdown flex gap">
-                    <img class="blue_border rounded" id="profile_pic_dropdown" src="assets/Profile-w-b.png" width="40px">
+                    <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-w-b.png" width="40px">
                     <div>
                         <span class="name_dropdown">Peerawat<br>Ingkhasantatikul</span>
                         <span class="username_dropdown">@Marklnwza007</span>
@@ -84,26 +106,41 @@ class MainNavbar extends HTMLElement{
                 <hr class="blue_line">
                 <ul>
                     <li class="btn_dropdown">
+<<<<<<< HEAD
                         <a href="/MyProfile">
                             <img src="assets/person.svg">My Profile
+=======
+                        <a>
+                            <img src="/assets/person.svg">My Profile
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
                         </a>
                     </li>
                     <hr class="blue_line_dash">
                     <li class="btn_dropdown">
+<<<<<<< HEAD
                         <a href="/MyActivity">
                             <img src="assets/activity.svg">My Activity
+=======
+                        <a>
+                            <img src="/assets/activity.svg">My Activity
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
                         </a>
                     </li>
                     <hr class="blue_line_dash">
                     <li class="btn_dropdown">
+<<<<<<< HEAD
                         <a href="/MyRating">
                             <img src="assets/star_outline.svg">My Ratings
+=======
+                        <a>
+                            <img src="/assets/star_outline.svg">My Ratings
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
                         </a>
                     </li>
                     <hr class="blue_line_dash">
                     <li>
                         <div class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
-                            <img src="assets/logout.svg">log out
+                            <img src="/assets/logout.svg">log out
                         </div>
                     </li>
                 </ul>

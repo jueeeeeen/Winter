@@ -108,18 +108,27 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\bell_icon-w.svg'))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\bookmark.svg'))">
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\edit.svg'))">
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Winter-Project</BasePath>
+<<<<<<< HEAD
       <RelativePath>assets/bookmark.svg</RelativePath>
+=======
+      <RelativePath>assets/edit.svg</RelativePath>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< HEAD
       <Fingerprint>pie8nzgs7j</Fingerprint>
       <Integrity>fyFVipfukyqndWB5eRknwKS5YK01poz3ozMOBRw4/eM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -215,6 +224,13 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\crown.svg'))</OriginalItemSpec>
+=======
+      <Fingerprint>zznrorz0jt</Fingerprint>
+      <Integrity>P0ZwJJFYU2lNtCSq9zeyF1WLMWCgUvHrkNJKjly7B0E=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\edit.svg'))</OriginalItemSpec>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\female_icon-p.svg'))">
       <SourceType>Package</SourceType>
@@ -306,6 +322,60 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home.svg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home-how-to-pic.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/home-how-to-pic.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>vt8x8ydm4s</Fingerprint>
+      <Integrity>88qvRHtV98l8KMura8IkgP0jh3CoragxRTGGdKkaus4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home-how-to-pic.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home-pic.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/home-pic.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>c74s4q3q0q</Fingerprint>
+      <Integrity>SOCmNZ5Y8N85IIfv/l3zjonUa6k3TfQhNoZy5Oe+Qpc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home-pic.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home-what-pic.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/home-what-pic.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>h6p8i1askv</Fingerprint>
+      <Integrity>hzgM48cvv/LznBD6napy9MHm4B36EJoQxEYDHLuiaN4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home-what-pic.png'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home_icon.png'))">
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
@@ -324,23 +394,75 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\home_icon.png'))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\location.svg'))">
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\icon _star.svg'))">
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Winter-Project</BasePath>
+<<<<<<< HEAD
       <RelativePath>assets/location.svg</RelativePath>
+=======
+      <RelativePath>assets/icon _star.svg</RelativePath>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< HEAD
       <Fingerprint>852zw7ja10</Fingerprint>
       <Integrity>ZL4aHzZVStv21MHhnsyD6he7YyFyZ1iT/amFrffQs9s=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\location.svg'))</OriginalItemSpec>
+=======
+      <Fingerprint>i677b1cdar</Fingerprint>
+      <Integrity>5lBSeBWm6B7S3azNU7nTpf+IGw0lmSxU9fkMBPTW4ZI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\icon _star.svg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\location_on.svg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/location_on.svg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>73nl413ubq</Fingerprint>
+      <Integrity>3b9DTaBV/nj6e8dcQdpu7DgP/wikZ0ACX7MxxVETxgo=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\location_on.svg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\lock.svg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/lock.svg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>kjkm2x26ab</Fingerprint>
+      <Integrity>gOijJXAgVnK+cwbYgUJbKP9lRrmtxGa4knG4mKkY4pY=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\lock.svg'))</OriginalItemSpec>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\login_bg.svg'))">
       <SourceType>Package</SourceType>
@@ -414,6 +536,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\logout-w.svg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\mail.svg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/mail.svg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>59jua84y5q</Fingerprint>
+      <Integrity>+eZY5zL8CVkKr5+q/BJTu2zq//jeWpIu/cEtD31bFpc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\mail.svg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\male_icon-b.svg'))">
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
@@ -450,18 +590,27 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\male_icon-w.svg'))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\more_people.svg'))">
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\monkey.jpg'))">
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Winter-Project</BasePath>
+<<<<<<< HEAD
       <RelativePath>assets/more_people.svg</RelativePath>
+=======
+      <RelativePath>assets/monkey.jpg</RelativePath>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< HEAD
       <Fingerprint>5xake3r3l6</Fingerprint>
       <Integrity>SZ4DdqPWEOkUs5hfUYUOJ3INm+6alfKpoE+w3e9pdlM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
@@ -485,6 +634,13 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\next.svg'))</OriginalItemSpec>
+=======
+      <Fingerprint>rjtsokxog8</Fingerprint>
+      <Integrity>aYMIoiZbz4T5wb4yZVhNBSgWJtpicC8CJCxtjrSTI2w=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\monkey.jpg'))</OriginalItemSpec>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\page_bg.png'))">
       <SourceType>Package</SourceType>
@@ -504,6 +660,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\page_bg.png'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\password.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/password.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>uvupr98ofh</Fingerprint>
+      <Integrity>mqc3CsVu1sMmAKiYuSii6AnMgSKcaS7dDHezhVIqLfw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\password.png'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\person.svg'))">
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
@@ -521,6 +695,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\person.svg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\phone.svg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/phone.svg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>nt26wetdws</Fingerprint>
+      <Integrity>NYTk3ZkT7UbLmQRN4XrGJZuOArb9AuFeXf06EoCwt4s=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\phone.svg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\plus-b.svg'))">
       <SourceType>Package</SourceType>
@@ -666,6 +858,27 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\Profile-w-b.png'))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\scroll-down.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>assets/scroll-down.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>u8rxay5mrj</Fingerprint>
+      <Integrity>LupdyTd5M3YpI95b4AEfaYEiMgC5qmMjinck8moM6CQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\scroll-down.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\search.svg'))">
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
@@ -702,23 +915,39 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\star_outline.svg'))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\star_sharp.svg'))">
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\upload-03.svg'))">
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Winter-Project</BasePath>
+<<<<<<< HEAD
       <RelativePath>assets/star_sharp.svg</RelativePath>
+=======
+      <RelativePath>assets/upload-03.svg</RelativePath>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< HEAD
       <Fingerprint>nytyty4do5</Fingerprint>
       <Integrity>0a5EBJEh8wXb5Cd74nYUj12QWfWG8oNic9W+ZwRaqm4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\star_sharp.svg'))</OriginalItemSpec>
+=======
+      <Fingerprint>mx5vcnutbl</Fingerprint>
+      <Integrity>ypdO0+b2g9pkKaupXvTXCFcfKjeeoVXlDvZVxfcTR/8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\upload-03.svg'))</OriginalItemSpec>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\white-snowflakes-element-png.webp'))">
       <SourceType>Package</SourceType>
@@ -828,6 +1057,27 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\X.svg'))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
+=======
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\home.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>css/home.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>6qnpawmys8</Fingerprint>
+      <Integrity>Xu5C/3gLQucyY44dPhLFTgRxsHHoC7svGuZlnqxT5dc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\home.css'))</OriginalItemSpec>
+    </StaticWebAsset>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
@@ -840,8 +1090,13 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< HEAD
       <Fingerprint>54yxuzb1on</Fingerprint>
       <Integrity>C5uqbKU9NbPYAk5FXEq+e+YdlBipfanw0HxkToDAZLA=</Integrity>
+=======
+      <Fingerprint>uqbzcclstx</Fingerprint>
+      <Integrity>NrKoJW1kFJ4lo6RqClwN8/dRlch+4JxSrbEYHqy22cs=</Integrity>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -876,8 +1131,13 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
+<<<<<<< HEAD
       <Fingerprint>gbqqh5g70o</Fingerprint>
       <Integrity>vKywXGa9/7FRO2/Ik0BGCWd9Fk0+laZQ2dF6mIocMpw=</Integrity>
+=======
+      <Fingerprint>8fa1fnl67x</Fingerprint>
+      <Integrity>BOZStINiHFw/GyQy/LFEoIV4GGWNBLORSpTDx3DVM2w=</Integrity>
+>>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\components.js'))</OriginalItemSpec>

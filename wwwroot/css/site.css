@@ -696,7 +696,6 @@ hr {
   display: block;
 }
 
-<<<<<<< HEAD
 .act-detail-container {
   height: 85vh;
   width: 95%;
@@ -995,7 +994,8 @@ hr {
 
 #banner_pic.fade-out {
   opacity: 0;
-=======
+}
+
 .profile-container {
   position: relative;
   display: flex;
@@ -1415,5 +1415,4 @@ fieldset {
 
 .login-description a {
   color: var(--blue40);
->>>>>>> 8d6133f1997b4b1e11e9f1fee462d85a2b236813
 }

@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace Winter_Project.Controllers;
-public class UserController : Controller
+public class ProfileController : Controller
 {
     // GET: /<controller>/
-    public IActionResult Profile()
+    public IActionResult Index()
     {
         return View();
     }

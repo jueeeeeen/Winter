@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KNFGUDC5ytu23zz0h/QajjcK6+TIQSFVPdzK+mQLo88=",
+  "Hash": "paHbL3co4zKQwwidqit7Ggs5U9jysC0wEDQ/enUPBOU=",
   "Source": "Winter-Project",
   "BasePath": "_content/Winter-Project",
   "Mode": "Default",
@@ -59,27 +59,6 @@
       "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\plus-w.svg"
     },
     {
-      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\33anbp4ipf-lwkfu4z80r.gz",
-      "SourceId": "Winter-Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\",
-      "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/้home#[.{fingerprint=lwkfu4z80r}]?.css.gz",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\้home.css",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "Fingerprint": "cvi0q1585y",
-      "Integrity": "eFKgJmEDWxCodpdjoRjzRRB1v6CuSgWRH8z/iX2W+dw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\้home.css"
-    },
-    {
       "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-g2roaw3glx.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -120,6 +99,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\winter_logo-w.svg"
+    },
+    {
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\8yqi8wgcsj-7sgsye1xc9.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "css/home#[.{fingerprint=7sgsye1xc9}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\home.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "o6v3zpvvjg",
+      "Integrity": "oHc9kgj6j0NX73bCMeB3goBBakyEMev5mf52t8JEwSQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\home.css"
     },
     {
       "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\9gzbnumoh9-m5rm15eva8.gz",
@@ -815,6 +815,27 @@
       "OriginalItemSpec": "wwwroot\\assets\\home_icon.png"
     },
     {
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-how-to-pic.png",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/home-how-to-pic#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vt8x8ydm4s",
+      "Integrity": "88qvRHtV98l8KMura8IkgP0jh3CoragxRTGGdKkaus4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\home-how-to-pic.png"
+    },
+    {
       "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-pic.png",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -834,6 +855,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\home-pic.png"
+    },
+    {
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-what-pic.png",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/home-what-pic#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "h6p8i1askv",
+      "Integrity": "hzgM48cvv/LznBD6napy9MHm4B36EJoQxEYDHLuiaN4=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\home-what-pic.png"
     },
     {
       "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home.svg",
@@ -981,6 +1023,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\male_icon-w.svg"
+    },
+    {
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\monkey.jpg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/monkey#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rjtsokxog8",
+      "Integrity": "aYMIoiZbz4T5wb4yZVhNBSgWJtpicC8CJCxtjrSTI2w=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\monkey.jpg"
     },
     {
       "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\page_bg.png",
@@ -1172,6 +1235,27 @@
       "OriginalItemSpec": "wwwroot\\assets\\Profile-w-b.png"
     },
     {
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\scroll-down.png",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/scroll-down#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "u8rxay5mrj",
+      "Integrity": "LupdyTd5M3YpI95b4AEfaYEiMgC5qmMjinck8moM6CQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\scroll-down.png"
+    },
+    {
       "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\search.svg",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -1340,12 +1424,12 @@
       "OriginalItemSpec": "wwwroot\\assets\\X.svg"
     },
     {
-      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\้home.css",
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\home.css",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/้home#[.{fingerprint}]?.css",
+      "RelativePath": "css/home#[.{fingerprint}]?.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1354,11 +1438,11 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "lwkfu4z80r",
-      "Integrity": "lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc=",
+      "Fingerprint": "7sgsye1xc9",
+      "Integrity": "9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\้home.css"
+      "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
       "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\site.css",
@@ -4272,6 +4356,88 @@
       ]
     },
     {
+      "Route": "assets/home-how-to-pic.png",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-how-to-pic.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "107775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"88qvRHtV98l8KMura8IkgP0jh3CoragxRTGGdKkaus4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 15:13:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-88qvRHtV98l8KMura8IkgP0jh3CoragxRTGGdKkaus4="
+        }
+      ]
+    },
+    {
+      "Route": "assets/home-how-to-pic.vt8x8ydm4s.png",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-how-to-pic.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "107775"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"88qvRHtV98l8KMura8IkgP0jh3CoragxRTGGdKkaus4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 15:13:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vt8x8ydm4s"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/home-how-to-pic.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-88qvRHtV98l8KMura8IkgP0jh3CoragxRTGGdKkaus4="
+        }
+      ]
+    },
+    {
       "Route": "assets/home-pic.nm7b5va7f0.png",
       "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-pic.png",
       "Selectors": [],
@@ -4350,6 +4516,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-oaM0dHAvI2vT+vE3YikcP/OH+zHZPgP2cDcyIB+60Jk="
+        }
+      ]
+    },
+    {
+      "Route": "assets/home-what-pic.h6p8i1askv.png",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-what-pic.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73616"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hzgM48cvv/LznBD6napy9MHm4B36EJoQxEYDHLuiaN4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 14:56:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "h6p8i1askv"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/home-what-pic.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hzgM48cvv/LznBD6napy9MHm4B36EJoQxEYDHLuiaN4="
+        }
+      ]
+    },
+    {
+      "Route": "assets/home-what-pic.png",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\home-what-pic.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "73616"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hzgM48cvv/LznBD6napy9MHm4B36EJoQxEYDHLuiaN4=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 14:56:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hzgM48cvv/LznBD6napy9MHm4B36EJoQxEYDHLuiaN4="
         }
       ]
     },
@@ -6440,6 +6688,88 @@
       ]
     },
     {
+      "Route": "assets/monkey.jpg",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9839"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aYMIoiZbz4T5wb4yZVhNBSgWJtpicC8CJCxtjrSTI2w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 16:22:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-aYMIoiZbz4T5wb4yZVhNBSgWJtpicC8CJCxtjrSTI2w="
+        }
+      ]
+    },
+    {
+      "Route": "assets/monkey.rjtsokxog8.jpg",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\monkey.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "9839"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aYMIoiZbz4T5wb4yZVhNBSgWJtpicC8CJCxtjrSTI2w=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 16:22:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rjtsokxog8"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/monkey.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aYMIoiZbz4T5wb4yZVhNBSgWJtpicC8CJCxtjrSTI2w="
+        }
+      ]
+    },
+    {
       "Route": "assets/page_bg.17bhx177ds.png",
       "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\page_bg.png",
       "Selectors": [],
@@ -7822,6 +8152,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-XFRMgc1TCsqDf5CLyrAcpoAaz90DwplaIPPMjfBwM8c="
+        }
+      ]
+    },
+    {
+      "Route": "assets/scroll-down.png",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\scroll-down.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3186"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LupdyTd5M3YpI95b4AEfaYEiMgC5qmMjinck8moM6CQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 16:48:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LupdyTd5M3YpI95b4AEfaYEiMgC5qmMjinck8moM6CQ="
+        }
+      ]
+    },
+    {
+      "Route": "assets/scroll-down.u8rxay5mrj.png",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\scroll-down.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3186"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LupdyTd5M3YpI95b4AEfaYEiMgC5qmMjinck8moM6CQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 12 Feb 2025 16:48:52 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "u8rxay5mrj"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/scroll-down.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LupdyTd5M3YpI95b4AEfaYEiMgC5qmMjinck8moM6CQ="
         }
       ]
     },
@@ -9346,13 +9758,13 @@
       ]
     },
     {
-      "Route": "css/้home.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\33anbp4ipf-lwkfu4z80r.gz",
+      "Route": "css/home.7sgsye1xc9.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\8yqi8wgcsj-7sgsye1xc9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.002475247525"
+          "Quality": "0.001364256480"
         }
       ],
       "ResponseHeaders": [
@@ -9362,19 +9774,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "403"
+          "Value": "732"
         },
         {
           "Name": "ETag",
-          "Value": "\"eFKgJmEDWxCodpdjoRjzRRB1v6CuSgWRH8z/iX2W+dw=\""
+          "Value": "\"oHc9kgj6j0NX73bCMeB3goBBakyEMev5mf52t8JEwSQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Feb 2025 18:32:25 GMT"
+          "Value": "Wed, 12 Feb 2025 16:52:12 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -9390,19 +9802,27 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc=\""
+          "Value": "W/\"9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "7sgsye1xc9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/home.css"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc="
+          "Value": "sha256-9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU="
         }
       ]
     },
     {
-      "Route": "css/้home.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\้home.css",
+      "Route": "css/home.7sgsye1xc9.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\home.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9411,7 +9831,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1210"
+          "Value": "3145"
         },
         {
           "Name": "Content-Type",
@@ -9419,27 +9839,35 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc=\""
+          "Value": "\"9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Feb 2025 18:32:25 GMT"
+          "Value": "Wed, 12 Feb 2025 16:52:12 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "7sgsye1xc9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/home.css"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc="
+          "Value": "sha256-9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU="
         }
       ]
     },
     {
-      "Route": "css/้home.css.gz",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\33anbp4ipf-lwkfu4z80r.gz",
+      "Route": "css/home.7sgsye1xc9.css.gz",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\8yqi8wgcsj-7sgsye1xc9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9448,7 +9876,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "403"
+          "Value": "732"
         },
         {
           "Name": "Content-Type",
@@ -9456,15 +9884,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"eFKgJmEDWxCodpdjoRjzRRB1v6CuSgWRH8z/iX2W+dw=\""
+          "Value": "\"oHc9kgj6j0NX73bCMeB3goBBakyEMev5mf52t8JEwSQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Feb 2025 18:32:25 GMT"
+          "Value": "Wed, 12 Feb 2025 16:52:12 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -9477,19 +9905,27 @@
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "7sgsye1xc9"
+        },
+        {
+          "Name": "label",
+          "Value": "css/home.css.gz"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-eFKgJmEDWxCodpdjoRjzRRB1v6CuSgWRH8z/iX2W+dw="
+          "Value": "sha256-oHc9kgj6j0NX73bCMeB3goBBakyEMev5mf52t8JEwSQ="
         }
       ]
     },
     {
-      "Route": "css/้home.lwkfu4z80r.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\33anbp4ipf-lwkfu4z80r.gz",
+      "Route": "css/home.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\8yqi8wgcsj-7sgsye1xc9.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.002475247525"
+          "Quality": "0.001364256480"
         }
       ],
       "ResponseHeaders": [
@@ -9499,19 +9935,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "403"
+          "Value": "732"
         },
         {
           "Name": "ETag",
-          "Value": "\"eFKgJmEDWxCodpdjoRjzRRB1v6CuSgWRH8z/iX2W+dw=\""
+          "Value": "\"oHc9kgj6j0NX73bCMeB3goBBakyEMev5mf52t8JEwSQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Feb 2025 18:32:25 GMT"
+          "Value": "Wed, 12 Feb 2025 16:52:12 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -9527,27 +9963,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc=\""
+          "Value": "W/\"9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "lwkfu4z80r"
-        },
-        {
-          "Name": "label",
-          "Value": "css/้home.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc="
+          "Value": "sha256-9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU="
         }
       ]
     },
     {
-      "Route": "css/้home.lwkfu4z80r.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\้home.css",
+      "Route": "css/home.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\home.css",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9556,7 +9984,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1210"
+          "Value": "3145"
         },
         {
           "Name": "Content-Type",
@@ -9564,35 +9992,27 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc=\""
+          "Value": "\"9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Feb 2025 18:32:25 GMT"
+          "Value": "Wed, 12 Feb 2025 16:52:12 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "lwkfu4z80r"
-        },
-        {
-          "Name": "label",
-          "Value": "css/้home.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-lbUDWRaf0hF/9ZH08gydhTeQ7UrwQKCIrX7/TQmJSKc="
+          "Value": "sha256-9+2FHQD5K+VMeMkv/AS0IXa5GcBuJ4aji2+chNCDhhU="
         }
       ]
     },
     {
-      "Route": "css/้home.lwkfu4z80r.css.gz",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\33anbp4ipf-lwkfu4z80r.gz",
+      "Route": "css/home.css.gz",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\8yqi8wgcsj-7sgsye1xc9.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9601,7 +10021,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "403"
+          "Value": "732"
         },
         {
           "Name": "Content-Type",
@@ -9609,15 +10029,15 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"eFKgJmEDWxCodpdjoRjzRRB1v6CuSgWRH8z/iX2W+dw=\""
+          "Value": "\"oHc9kgj6j0NX73bCMeB3goBBakyEMev5mf52t8JEwSQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 11 Feb 2025 18:32:25 GMT"
+          "Value": "Wed, 12 Feb 2025 16:52:12 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -9630,16 +10050,8 @@
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "lwkfu4z80r"
-        },
-        {
-          "Name": "label",
-          "Value": "css/้home.css.gz"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-eFKgJmEDWxCodpdjoRjzRRB1v6CuSgWRH8z/iX2W+dw="
+          "Value": "sha256-oHc9kgj6j0NX73bCMeB3goBBakyEMev5mf52t8JEwSQ="
         }
       ]
     },

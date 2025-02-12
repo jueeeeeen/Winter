@@ -1,6 +1,96 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div>
+<div class="home">
+    <section id="first-section">
+        <div class="home-background gradient_blue">
+            <div class="home-picture">
+                <div class="home-text">
+                    <div class="home-big-text">
+                        <h1>Join activity.</h1>
+                        <h1>Meet new friends.</h1>
+                    </div>
+                    <h1 class="home-small-text">We provide “Winter”. Let’s go !</h1>
+                </div>
+                <div>
+                    <div class="home-button">
+                        <button class="btn round large mb-w hover-db-w home-button-size">
+                            View Activity
+                        </button>
+                        <button class="btn round large w-b hover-db-w home-button-size">
+                            <img src="assets/plus-b.svg" alt="plus icon">Create Acvtivity
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <button class="home-scroll">
+                <h2>Scroll down</h2>
+                <img src="assets/scroll-down.png" alt="Scroll Down">
+            </button>
+        </div>
+    </section>
+    <section id="second-section">
+        <div class="home-detail">
+            <div class="home-detail-header">
+                <h1 class="home-big-text ">WHAT IS WINTER?</h1>
+                <hr class="home-line home-line1">
+            </div>
+            <div class="home-text1-pic">
+                <h2 class="home-text1"><strong>Winter</strong> is a fun website where you can <strong>join activities, meet new friends, and have a great time.</strong> There are many things to do, so you can <strong>learn, play, and enjoy with others.</strong> Come and have fun with us!</h2>
+                <img src="assets/home-what-pic.png" alt="friend activity">
+            </div>
+        </div>
+        <div class="home-detail">
+            <div class="home-detail-header">
+                <h1 class="home-big-text ">HOW IT WORK ?</h1>
+                <hr class="home-line home-line2">
+            </div>
+            <div class="home-text2-pic">
+                <img src="assets/home-how-to-pic.png" alt="friend activity">
+                <div class="home-text2">
+                    <h3><strong>Create an Activity –</strong> Start by creating a fun activity that others can join.</h3>
+                    <h3><strong>Wait for People to Join –</strong> Others can see your activity and join in.</h3>
+                    <h3><strong>Have Fun! –</strong> Enjoy your time together and make great memories!</h3>
+                </div>
+            </div>
+        </div>
+        <div class="home-detail">
+            <div class="home-detail-header">
+                <h1 class="home-big-text ">ABOUT US</h1>
+                <hr class="home-line home-line3">
+            </div>
+            <div class="home-text3-pic">
+                <h2>This is our website project, our website project is developed as part of the <strong>Web Application Development</strong> subject at <strong>King Mongkut's Institute of Technology Ladkrabang.</strong> Our team is building this project using the .NET MVC framework.</h2>
+                <h2 class="home-center"><strong>Meet Our Team</strong></h2>
+                <div class="home-text3">
+                    <img src="assets/monkey.jpg" alt="friend activity">
+                    <img src="assets/monkey.jpg" alt="friend activity">
+                    <img src="assets/monkey.jpg" alt="friend activity">
+                    <img src="assets/monkey.jpg" alt="friend activity">
+                    <img src="assets/monkey.jpg" alt="friend activity">
+                </div>
+                <div class="home-text3">
+                    <h4>66010393<br>Thuwanun</h4>
+                    <h4>66010786<br>Sataporn</h4>
+                    <h4>66010948<br>Emily Chow</h4>
+                    <h4>66011442<br>Peerawat Ingkhasantatikul</h4>
+                    <h4>66011490<br>Supakarn</h4>
+                </div>
+                <h2 class="home-center"><strong>We hope Winter brings you fun, new friends, and great memories!</strong></h2>
+            </div>
+            <button class="btn round large mb-w hover-db-w home-button-size home-last-button">
+                Let's Start
+            </button>
+        </div>
+    </section>
 </div>
+
+<script>
+    document.querySelector(".home-scroll").addEventListener("click", function() {
+        document.getElementById("second-section").scrollIntoView({ behavior: "smooth" });
+    });
+    document.querySelector(".home-last-button").addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+</script>

@@ -3,9 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <title>@ViewData["Title"] - Winter</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @if ((ViewData["Title"] as string) == "Home") {
+        <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    }
     <script src="/js/components.js" defer></script>
     @RenderSection("styles", required: false)
 </head>

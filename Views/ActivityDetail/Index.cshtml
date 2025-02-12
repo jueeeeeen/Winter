@@ -1,0 +1,210 @@
+﻿@{
+    ViewData["Title"] = "Activity Detail";
+}
+
+@model Activity
+
+@{
+    bool show_preview = true;
+}
+@if (show_preview == true) {
+    <div class="act-detail-container">
+    <section class="act-detail-main edge shadow">
+        <header class="act-profile-info">
+            <div><img src="../../assets/profile-g.png"></div>
+            <div>
+                <span>Peerawat Ingkhasantatikul</span>
+                <svg-male aria-label="male"></svg-male>
+            </div>
+            <div>
+                <span>15 Jan 2025 12:59 </span>
+                <span aria-label="review" class="act-card-review">
+                    <svg-star-sharp></svg-star-sharp>
+                    1.55
+                </span>
+            </div>
+        </header>
+        <ul>
+            <li class="flex">
+                <tag-display data-tag_name="tag"></tag-display>
+                <tag-display data-tag_name="tag"></tag-display>
+                <tag-display data-tag_name="tag"></tag-display>
+            </li>
+        </ul>
+        <div class="act-detail-title">
+            <svg-bookmark></svg-bookmark>
+            <h1><b>หาเพื่อนดูหนังครับ !!!</b></h1>
+            <p>ผมต้องหาการหาเพื่อนดูหนัง ธี่หยด 2 และ หลานม่า ใน Netflix ครับบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ</p>
+        </div>
+    </section>
+    <section class="act-detail-member edge shadow">
+        <header>
+            <h2 class="letter-spacing">Members</h2>
+            <span class="member-count">(2/5)</span>
+        </header>
+        <ul>
+            <li class="radial-blue-bg member-list-item shadow">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-role">(Host)</span>
+            </li>
+            <li class="w-bb-bb member-list-item">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-role">(Member)</span>
+            </li>
+            <li class="w-bb-bb pending-member-item">
+                <svg-more-people></svg-more-people>
+                <span>...more people applied...</span>
+            </li>
+        </ul>
+        <act-detail-join-btn></act-detail-join-btn>
+    </section>
+    <section class="act-detail-requirement edge shadow w-bb-bb">
+        <div class="flex">
+            <span class="act-detail-req-header letter-spacing">
+                <svg-check></svg-check><b>requirements :</b>
+            </span>
+            <ul class="flex">
+                <li>
+                    <req-tag></req-tag>
+                </li>
+                <li>
+                    <req-tag></req-tag>
+                </li>
+                <li>
+                    <req-tag></req-tag>
+                </li>
+            </ul>
+        </div>
+        <p>
+            หน้าตาดีพิจารณาเป็นพิเศษ
+        </p>
+    </section>
+    <section class="act-detail-info edge shadow lb-w">
+        <ul>
+            <li>
+                <svg-calendar></svg-calendar>
+                Sat, 18 Jan, 2025
+            </li>
+            <li>
+                <svg-clock></svg-clock>
+                13:00 (5 hours)
+            </li>
+            <li class="act-detail-location">
+                <svg-location></svg-location>
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+            </li>
+        </ul>
+    </section>
+    </div>
+}
+else {
+    <div class="act-detail-container">
+    <section class="act-detail-main edge shadow">
+        <header class="act-profile-info">
+            <div><img src="../../assets/"@Model.host.profile_pic></div>
+            <div>
+                <span>@Model.host.first_name @Model.host.last_name</span>
+                <svg-male aria-label="@Model.host.gender"></svg-male>
+            </div>
+            <div>
+                <span>@Model.create_time</span>
+                <span aria-label="review" class="act-card-review">
+                    <svg-star-sharp></svg-star-sharp>
+                    @Model.host.review.rating
+                </span>
+            </div>
+        </header>
+        <ul>
+            @foreach (var tag in Model.tags)
+            {
+                <li class="flex">
+                    <tag-display data-tag_name="@tag"></tag-display>
+                </li>
+            }
+        </ul>
+        <div class="act-detail-title">
+            <svg-bookmark></svg-bookmark>
+            <h1><b>@Model.title</b></h1>
+            <p>@Model.detail</p>
+        </div>
+    </section>
+    <section class="act-detail-member edge shadow">
+        <header>
+            <h2 class="letter-spacing">Members</h2>
+            <span class="member-count">@Model.member_count</span>
+        </header>
+        <ul>
+            <li class="radial-blue-bg member-list-item shadow">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">@Model.host.first_name @Model.host.last_name</span>
+                <span class="member-list-item-role">(Host)</span>
+            </li>
+            <li class="w-bb-bb member-list-item">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-role">(Member)</span>
+            </li>
+            <li class="w-bb-bb pending-member-item">
+                <svg-more-people></svg-more-people>
+                <span>...more people applied...</span>
+            </li>
+        </ul>
+        <act-detail-join-btn></act-detail-join-btn>
+    </section>
+    <section class="act-detail-requirement edge shadow w-bb-bb">
+        <div class="flex">
+            <span class="act-detail-req-header letter-spacing">
+                <svg-check></svg-check><b>requirements :</b>
+            </span>
+            <ul class="flex">
+                <li>
+                    <req-tag></req-tag>
+                </li>
+                <li>
+                    <req-tag></req-tag>
+                </li>
+                <li>
+                    <req-tag></req-tag>
+                </li>
+            </ul>
+        </div>
+        <p>
+            หน้าตาดีพิจารณาเป็นพิเศษ
+        </p>
+    </section>
+    <section class="act-detail-info edge shadow lb-w">
+        <ul>
+            <li>
+                <svg-calendar></svg-calendar>
+                Sat, 18 Jan, 2025
+            </li>
+            <li>
+                <svg-clock></svg-clock>
+                13:00 (5 hours)
+            </li>
+            <li class="act-detail-location">
+                <svg-location></svg-location>
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+                ECC-601 (Network-Lab) 
+            </li>
+        </ul>
+    </section>
+    </div>
+}

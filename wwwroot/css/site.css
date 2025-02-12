@@ -27,6 +27,12 @@
   --shadow: rgba(0, 0, 0, 0.12);
 }
 
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -46,12 +52,20 @@ button {
   background-color: var(--white);
 }
 
+a {
+  text-decoration: none;
+}
+
 html{
   background-image: url("../assets/page_bg.png");
 }
 
 main {
   margin: 0 10vw;
+  display: flex;
+  flex-direction: column;
+  place-items: center center;
+  flex-grow: 1;
 }
 
 .cursor {
@@ -106,6 +120,10 @@ main {
 
 .gradient_blue {
   background-image: linear-gradient(to right, var(--blue50), var(--blue20));
+}
+
+.radial-blue-bg {
+  background-image: radial-gradient(#DFF9FF, #C6F3FF);
 }
 
 .rainbow{
@@ -343,6 +361,7 @@ hr {
   }
 
 .large {
+  min-width: 10em;
   height: 1.875em;
   padding: 0.4em 0.67em;
   font-size: 1.25rem;
@@ -350,11 +369,11 @@ hr {
   }
 
   .round {
-    border-radius: 2rem;
+    border-radius: 2em;
   }
 
   .edge {
-    border-radius: 0.4rem;
+    border-radius: 0.4em;
   }
 
   .w-mb-mb, .hover-w-mb-mb:hover {
@@ -431,7 +450,7 @@ hr {
 
   .lb-w-w, .hover-lb-w-w {
     background-color: var(--blue40);
-    color: var(--white);
+    color: var(--gray90);
     border: 2px solid var(--white);
   }
 
@@ -530,7 +549,7 @@ hr {
 
 /* Activity card in AllActivity page */
 .activity-card {
-  width: 24em;
+  width: 24rem;
   height: 15.75rem;
   background-color: white;
   border-radius: 1.25rem;
@@ -568,26 +587,26 @@ hr {
   align-items: center;
 }
 
-.activity-card .profile-info {
+.act-profile-info {
   display: grid;
   grid-template-columns: 2.5em auto 3.75em;
   grid-template-rows: 1fr 1fr;
-  border-bottom: 1px solid var(--blue30);
+  border-bottom: 1px solid var(--gray60);
   gap:0 0.25em
 }
 
-.activity-card .profile-info div:nth-child(1){
+.act-profile-info div:nth-child(1){
   grid-area: 1 / 1 / 3 / 2;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.activity-card .profile-info div:nth-child(1) img {
+.act-profile-info div:nth-child(1) img {
   width: 100%;
 }
 
-.activity-card .profile-info div:nth-child(2){
+.act-profile-info div:nth-child(2){
   grid-area: 1 / 2 / 2 / 3;
   display: flex;
   align-items: end;
@@ -596,29 +615,34 @@ hr {
   line-height: 1;
 }
 
-.activity-card .profile-info div:nth-child(2) svg {
+.act-profile-info div:nth-child(2) svg {
   width: 1.5em;
   height: 1.5em;
 }
 
-.activity-card .profile-info div:nth-child(3){
+.act-profile-info div:nth-child(3){
   grid-area: 2 / 2 / 3 / 3;
-  font-size: 0.75em;
+  font-size: 0.67em;
   line-height: 1.5;
   display: flex;
 }
 
-.activity-card .profile-info div:nth-child(3) .act-pre-review{
+.act-card-review{
   margin: 0 0 0 0.75em;
-  height: 1.2em;
+  height: 1.3em;
   padding-left: 0.25em;
   border-left: 1px solid var(--gray60);
   display: flex;
-  align-items: end;
-  line-height: 1;
+  align-items: start;
 }
 
-.activity-card .profile-info div:nth-child(4){
+.act-card-review svg{
+  width: 1em;
+  height: 1em;
+  margin: 0.15em ;
+}
+
+.act-profile-info div:nth-child(4){
   grid-area: 1 / 3 / 3 / 4;
   font-size: 2em;
   font-weight: bold;
@@ -645,7 +669,7 @@ hr {
 }
 
 .pagination-item{
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 600;
   display: flex;
   justify-content: center;
@@ -670,4 +694,219 @@ hr {
 /* this class has to be the last one to override other classes*/
 .show {
   display: block;
+}
+
+.act-detail-container {
+  height: 85vh;
+  width: 95%;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  grid-template-rows: 3fr 1fr;
+  grid-template-areas:
+    "main main member"
+    "requirement info member";
+  margin: auto;
+  gap: 0.5em;
+}
+
+.act-detail-container>* {
+  background-color: var(--white);
+  padding: 0.5em 1em;
+}
+
+.act-detail-main {
+  grid-area: main;
+}
+
+.act-detail-main>*{
+  margin: 0.5em 0;
+}
+
+.act-detail-main .act-profile-info{
+  font-size: 1.75rem;
+  margin: 0;
+}
+
+.act-detail-member {
+  grid-area: member;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1em 2em 1em;
+}
+
+.act-detail-requirement {
+  grid-area: requirement;
+  overflow: hidden;
+}
+
+.act-detail-requirement ul{
+  gap: 0.25em;
+}
+
+.act-detail-requirement p {
+  font-size: 1.125em;
+  padding: 0.5em;
+}
+
+.act-detail-req-header {
+  display: flex;
+  align-items: center;
+  font-size: 1.25em;
+  gap: 0.25em;
+  padding: 0.25em 0.5em 0 0;
+}
+
+.act-detail-info {
+  grid-area: info;
+  padding: 0.5em 0.5em;
+  background-color: var(--blue40);
+  max-height: 100%;
+}
+
+.act-detail-info ul{
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  gap: 0.25em;
+}
+
+.act-detail-info li{
+  display: flex;
+  padding: 0.25em 0.25em;
+  gap: 0.5em;
+  min-height: 2em;
+  max-height: 3.7em;
+  border-radius: 0.25em;
+  overflow: hidden;
+  background-color: var(--white);
+}
+
+.act-detail-location {
+  flex: 1;
+}
+
+.act-detail-info svg {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.act-detail-title {
+  padding: 1em;
+  display: grid;
+  grid-template-columns: 1.5em auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "icon header"
+    ". description";
+    gap:0 0.5em
+}
+
+.act-detail-title svg{
+  grid-area: icon;
+  margin: auto;
+}
+
+.act-detail-title h1 {
+  grid-area: header;
+  font-size: 2.5em;
+}
+
+.act-detail-title p {
+  grid-area: description;
+  font-size: 1.25em;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.act-detail-member header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray60);
+  font-size: 1.5em;
+  /* padding: 0.25em 0.2em 0.25em 0.2em; */
+  font-weight: bold;
+}
+
+.act-detail-member header span{
+  color: var(--gray70);
+  font-size: 1.5em;
+
+}
+
+.act-detail-member ul {
+  margin: 1.5em 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  flex-grow: 1;
+  /* overflow: scroll; */
+}
+
+.pending-member-item {
+  display: flex;
+  font-size: 1.25em;
+  height: 3.125em;
+  border-radius: 0.75em;
+  align-items: center;
+  line-height: 1;
+  padding: 0.4em 0.75em;
+  gap: 0 0.5em;
+  font-weight: 600;
+}
+
+.member-list-item {
+  display: grid;
+  height: 3.125em;
+  font-size: 1.25em;
+  grid-template-columns: 2.25em auto;
+  grid-template-rows: 1.125em 1.125em;
+  grid-template-areas: 
+    "profile name"
+    "profile role";
+  gap: 0.1em 0.375em;
+  line-height: 1;
+  padding: 0.4em 0.75em;
+  border-radius: 0.75em;
+}
+
+.member-list-item-profile{
+  grid-area: profile;
+  display: flex;
+}
+
+.member-list-item-profile img{
+  width: 100%;
+  height: 100%;
+}
+
+.member-list-item-name {
+  grid-area: name;
+  align-self: end;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+
+.member-list-item-role {
+  grid-area: role;
+  font-size: 0.825em;
+  font-weight: 500;
+  color: var(--gray70);
+}
+
+.letter-spacing {
+  letter-spacing: 0.125em;
+}
+
+.crown {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+
+.act-detail-join-btn {
+  align-self: flex-end;
+  margin: auto;
 }

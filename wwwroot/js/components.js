@@ -51,11 +51,11 @@ class MainNavbar extends HTMLElement{
             `<nav class="gradient_blue shadow">
                 <ul class="no_select nav_bar">
                 <li>
-                    <a href="#" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
+                    <a href="/Home" class="flex flex_center"><img src="assets/home.svg" width="30px" alt="home"></a>
                 </li>
                 <li><a href="/AllActivity">Activity</a></li>
                 <li class="logo">
-                    <a href="#" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
+                    <a href="/Home" class="flex"><img src="assets/winter_logo-w.svg" alt="Winter"></a>
                 </li>
                 <li class="m_left_auto">
                     <button class="btn medium w-mb round hover-db-w" id="create_button">
@@ -68,7 +68,7 @@ class MainNavbar extends HTMLElement{
                     </button>
                 </li>
                 <li>
-                    <button class="btn circle round w-mb hover-b-w" id="profile_button">
+                    <button class="btn circle round w-mb hover-b-w" id="profile_button" onclick="window.location.href='/CreateActivity'">
                         <img src="assets/Profile-w-b.png" width="55px" alt="profile">
                     </button>
                 </li>
@@ -84,19 +84,19 @@ class MainNavbar extends HTMLElement{
                 <hr class="blue_line">
                 <ul>
                     <li class="btn_dropdown">
-                        <a>
+                        <a href="/MyProfile">
                             <img src="assets/person.svg">My Profile
                         </a>
                     </li>
                     <hr class="blue_line_dash">
                     <li class="btn_dropdown">
-                        <a>
+                        <a href="/MyActivity">
                             <img src="assets/activity.svg">My Activity
                         </a>
                     </li>
                     <hr class="blue_line_dash">
                     <li class="btn_dropdown">
-                        <a>
+                        <a href="/MyRating">
                             <img src="assets/star_outline.svg">My Ratings
                         </a>
                     </li>
@@ -302,13 +302,13 @@ class RequirementTag extends HTMLElement {
         else {
             if (this.value == "female")
             {
-                this.innerHTML = `<button class="tag w-p-p small round">${this.value}</button>`;
+                this.innerHTML = `<button class="tag w-p-p small round">female</button>`;
             }
             else if (this.value == "male") {
-                this.innerHTML = `<button class="tag w-mb-mb small round">${this.value}</button>`;
+                this.innerHTML = `<button class="tag w-mb-mb small round">male</button>`;
             }
-            else if (this.value == "lgbtq") {
-                this.innerHTML = `<button class="tag w-rb-rb small"><span>${this.value}</span></button>`;
+            else {
+                this.innerHTML = `<button class="tag w-rb-rb small"><span>lgbtq</span></button>`;
             }
         }
     }
@@ -318,106 +318,101 @@ class RequirementTag extends HTMLElement {
 class ActivityCard extends HTMLElement {
     constructor(activity) {
         super();
-        [this.act_date, this.act_time] = activity.activity_time.split(" ");
-        this.innerHTML = `
-        <div class="activity-card shadow">
-            <div class="profile-info">
-                <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
-                <div>
-                    <span>${activity.host.name}</span>
-                    <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+        if (activity) {
+            [this.act_date, this.act_time] = activity.activity_time.split(" ");
+            this.innerHTML = `
+            <div class="activity-card shadow">
+                <div class="act-profile-info">
+                    <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
+                    <div>
+                        <span>${activity.host.name}</span>
+                        <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+                    </div>
+                    <div>
+                        <span>${activity.create_time}</span>
+                        <span aria-label="review" class="act-card-review">
+                            <svg-star-sharp></svg-star-sharp>
+                            ${activity.host.review}
+                        </span>
+                    </div>
+                    <div>${activity.membership}</div>
                 </div>
-                <div>
-                    <span>${activity.create_time}</span>
-                    <span aria-label="review" class="act-pre-review">
-                        <svg-star-sharp></svg-star-sharp>
-                        ${activity.host.review}
-                    </span>
+                <ul class="act-tags-container">
+                    ${activity.tags.map(tag => `
+                        <li>
+                            <tag-display data-tag_name="${tag}"></tag-display>
+                        </li>
+                    `).join("")}
+                </ul>
+                <div class="title">
+                    <h2>${activity.title}</h2>
                 </div>
-                <div>${activity.membership}</div>
-            </div>
-            <ul class="act-tags-container">
-                ${activity.tags.map(tag => `
+                <ul class="act-tags-container">
+                    ${Object.entries(activity.requirements).map(([type, value]) => `
+                        <li>
+                            <req-tag data-type="${type}" data-value="${value}"></req-tag>
+                        </li>
+                    `).join("")}
+                </ul>
+                <ul class="act-info">
                     <li>
-                        <tag-display data-tag_name="${tag}"></tag-display>
+                        <svg-clock></svg-clock><span>${this.act_time + "(" + activity.duration + ")"}</span>
                     </li>
-                `).join("")}
-            </ul>
-            <div class="title">
-                <h2>${activity.title}</h2>
-            </div>
-            <ul class="act-tags-container">
-                ${Object.entries(activity.requirements).map(([type, value]) => `
                     <li>
-                        <req-tag data-type="${type}" data-value="${value}"></req-tag>
+                        <svg-calendar></svg-calendar><span>${this.act_date}</span>
                     </li>
-                `).join("")}
-            </ul>
-            <ul class="act-info">
-                <li>
-                    <svg-clock></svg-clock><span>${this.act_time + "(" + activity.duration + ")"}</span>
-                </li>
-                <li>
-                    <svg-calendar></svg-calendar><span>${this.act_date}</span>
-                </li>
-                <li>
-                    <button class="btn small round mb-w">
-                        join
-                    </button>
-                </li>
-            </ul>
-        </div>`
-    }
-}
-
-// just for preview test
-class ActivityCard_test extends HTMLElement {
-    constructor() {
-        super();
-        this.innerHTML = `
-        <div class="activity-card shadow">
-            <div class="profile-info">
-                <div><img src="${path+"profile-g.png"}"></div>
-                <div>
-                    <span>Peerawat Ingkhasantatikul</span>
-                    <svg-male aria-label="male"></svg-male>
+                    <li>
+                        <button class="btn small round mb-w">
+                            join
+                        </button>
+                    </li>
+                </ul>
+            </div>`
+            }
+        else {
+            this.innerHTML = `
+            <div class="activity-card shadow">
+                <div class="act-profile-info">
+                    <div><img src="${path+"profile-g.png"}"></div>
+                    <div>
+                        <span>Peerawat Ingkhasantatikul</span>
+                        <svg-male aria-label="male"></svg-male>
+                    </div>
+                    <div>
+                        <span>15 Jan 2025 12:59 </span>
+                        <span aria-label="review" class="act-card-review">
+                            <svg-star-sharp></svg-star-sharp>
+                            1.55
+                        </span>
+                    </div>
+                    <div>2/5</div>
                 </div>
-                <div>
-                    <span>15 Jan 2025 12:59 </span>
-                    <span aria-label="review" class="act-pre-review">
-                        <svg-star-sharp></svg-star-sharp>
-                        1.55
-                    </span>
+                <ul class="act-tags-container">
+                    <li>
+                        <tag-display data-tag_name="Entertain"></tag-display>
+                    </li>
+                </ul>
+                <div class="title">
+                    <h2>หาเพื่อนดูหนังครับ !!!</h2>
                 </div>
-                <div>2/5</div>
-            </div>
-            <ul class="act-tags-container">
-                <li>
-                    <tag-display data-tag_name="Entertain"></tag-display>
-                </li>
-            </ul>
-            <div class="title">
-                <h2>หาเพื่อนดูหนังครับ !!!</h2>
-            </div>
-            <ul class="act-tags-container">
-                <li>
-                    <req-tag data-type="gender" data-value="lgbtq"></req-tag>
-                </li>
-            </ul>
-            <ul class="act-info">
-                <li>
-                    <svg-clock></svg-clock><span>13:00 (5 hours)</span>
-                </li>
-                <li>
-                    <svg-calendar></svg-calendar><span>Sat, 18 Jan, 2025</span>
-                </li>
-                <li>
-                    <button class="btn small round mb-w">
-                        join
-                    </button>
-                </li>
-            </ul>
-        </div>`
+                <ul class="act-tags-container">
+                    <li>
+                        <req-tag data-type="gender" data-value="lgbtq"></req-tag>
+                    </li>
+                </ul>
+                <ul class="act-info">
+                    <li>
+                        <svg-clock></svg-clock><span>13:00 (5 hours)</span>
+                    </li>
+                    <li>
+                        <svg-calendar></svg-calendar><span>Sat, 18 Jan, 2025</span>
+                    </li>
+                    <li>
+                        <button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w">join</button>
+                    </li>
+                </ul>
+            </div>`
+            }
     }
 }
 
@@ -444,6 +439,46 @@ class PaginationItem extends HTMLElement {
         else {
             this.innerHTML = `<button class="pagination-item round">${this.value}</button>`;
         }
+    }
+}
+
+class MemberListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.role = this.getAttribute("data-role");
+        if (this.role == "host") {
+            this.innerHTML = 
+            `<li class="radial-blue-bg member-list-item shadow">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-role">(Host)</span>
+            </li>`;
+        }
+        else if (this.role == "member"){
+            this.innerHTML = 
+            `<li class="w-bb-bb member-list-item">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-role">(Member)</span>
+            </li>`; 
+        }
+        else if (this.role == "pending"){
+            this.innerHTML = `<button class="pagination-item round">${this.role}</button>`;
+        }
+    }
+}
+
+class ActDetailJoinBtn extends HTMLElement {
+    constructor(actID) {
+        super();
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn">join</button>`;
+    }
+    connectedCallback() {
+
     }
 }
 // SVG Components Class
@@ -566,6 +601,54 @@ class SVGNext extends BaseSVGElement {
     }
 }
 
+class SVGBookMark extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="36" height="52" viewBox="0 0 36 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0V52L18 39L36 52V0H0Z" fill="url(#paint0_linear_196_723)"/>
+            <defs>
+            <linearGradient id="paint0_linear_196_723" x1="0" y1="26" x2="25.35" y2="26" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#56DFF4"/>
+            <stop offset="1" stop-color="#ADF1FD"/>
+            </linearGradient>
+            </defs>
+        </svg>`;
+    }
+}
+
+class SVGMorePeople extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M43.5417 27.9584V32.5417H16.0417V27.9584C16.0417 27.9584 16.0417 18.7917 29.7917 18.7917C43.5417 18.7917 43.5417 27.9584 43.5417 27.9584ZM36.6667 7.33338C36.6667 5.97363 36.2635 4.64442 35.508 3.51383C34.7526 2.38324 33.6789 1.50206 32.4226 0.981705C31.1664 0.461353 29.784 0.325205 28.4504 0.590478C27.1168 0.855752 25.8918 1.51053 24.9303 2.47202C23.9688 3.4335 23.314 4.65851 23.0488 5.99213C22.7835 7.32575 22.9196 8.70808 23.44 9.96433C23.9603 11.2206 24.8415 12.2943 25.9721 13.0497C27.1027 13.8052 28.4319 14.2084 29.7917 14.2084C31.615 14.2084 33.3637 13.484 34.653 12.1947C35.9423 10.9054 36.6667 9.15674 36.6667 7.33338ZM44 18.9292C45.2527 20.0849 46.2626 21.4786 46.9709 23.0288C47.6791 24.5791 48.0715 26.2548 48.125 27.9584V32.5417H55V27.9584C55 27.9584 55 20.0521 44 18.9292ZM41.25 0.458377C40.5576 0.458417 39.8694 0.566667 39.2104 0.77921C40.5512 2.70185 41.27 4.98942 41.27 7.33338C41.27 9.67733 40.5512 11.9649 39.2104 13.8875C39.8694 14.1001 40.5576 14.2083 41.25 14.2084C43.0734 14.2084 44.822 13.484 46.1114 12.1947C47.4007 10.9054 48.125 9.15674 48.125 7.33338C48.125 5.51001 47.4007 3.76133 46.1114 2.47202C44.822 1.18271 43.0734 0.458377 41.25 0.458377ZM18.3333 11.9167H11.4583V5.04171H6.875V11.9167H0V16.5H6.875V23.375H11.4583V16.5H18.3333V11.9167Z" fill="#90E1FF"/>
+        </svg>
+        `;
+    }
+}
+
+class SVGCheck extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="34" height="31" viewBox="0 0 34 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.728271 0.524658V30.2909H29.1417V15.0251L25.0826 19.2774V26.0385H4.78733V4.77697H19.3594L23.4184 0.524658H0.728271ZM29.1417 0.524658L16.9645 13.2816L12.9054 9.02929L8.84639 13.2816L16.9645 21.7862L33.2007 4.77697L29.1417 0.524658Z" fill="#56BEFF"/>
+        </svg>`;
+    }
+}
+
+class SVGLocation extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="27" height="32" viewBox="0 0 27 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 18.2155C15.8693 18.2155 17.79 16.2355 17.79 13.7931C17.79 11.3506 15.8693 9.37067 13.5 9.37067C11.1307 9.37067 9.20997 11.3506 9.20997 13.7931C9.20997 16.2355 11.1307 18.2155 13.5 18.2155Z" stroke="#FF4E4E" stroke-width="3"/>
+            <path d="M1.97747 11.2133C4.68622 -1.06168 22.3275 -1.0475 25.0225 11.2275C26.6037 18.4281 22.2587 24.5231 18.45 28.2935C15.6862 31.0433 11.3137 31.0433 8.53622 28.2935C4.74122 24.5231 0.396216 18.4139 1.97747 11.2133Z" stroke="#FF4E4E" stroke-width="3"/>
+        </svg>`;
+    }
+}
+
 customElements.define("main-navbar", MainNavbar);
 customElements.define("guest-navbar", GuestNavbar);
 customElements.define("login-navbar", LoginNavbar);
@@ -575,8 +658,9 @@ customElements.define("tag-filter", TagFilter);
 customElements.define("tag-display", TagDisplay);
 customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);
-customElements.define("act-card-test", ActivityCard_test);
 customElements.define("pagination-item", PaginationItem);
+customElements.define("member-list-item", MemberListItem);
+customElements.define("act-detail-join-btn", ActDetailJoinBtn);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);
@@ -589,6 +673,10 @@ customElements.define("svg-lgbt", SVGGenderLGBT);
 customElements.define("svg-female", SVGGenderFemale);
 customElements.define("svg-prev", SVGPrev);
 customElements.define("svg-next", SVGNext);
+customElements.define("svg-bookmark", SVGBookMark);
+customElements.define("svg-more-people", SVGMorePeople);
+customElements.define("svg-check", SVGCheck);
+customElements.define("svg-location", SVGLocation);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

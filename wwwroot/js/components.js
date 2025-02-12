@@ -262,26 +262,6 @@ class TagFilter extends HTMLElement{
     }
 }
 
-// class ActivityCardContainer extends HTMLElement {
-//     constructor() {
-//         super();
-//         this.innerHTML = `<div id="all-activities-container"></div>`;
-//     }
-
-//     connectedCallback() {
-//         document.addEventListener("DOMContentLoaded", () => {
-//             fetch("/AllActivity/GetActivityCards")
-//                 .then(response => response.json())
-//                 .then(activities => {
-//                     this.container = this.querySelector("#all-activities-container")
-//                     activities.forEach(activity => {
-//                         this.container.appendChild(new ActivityCard(activity));
-//                     });
-//                 })
-//         })
-//     }
-// }
-
 // replace button with better element later****
 class TagDisplay extends HTMLElement {
     constructor() {
@@ -408,11 +388,18 @@ class ActivityCard extends HTMLElement {
                         <svg-calendar></svg-calendar><span>Sat, 18 Jan, 2025</span>
                     </li>
                     <li>
-                        <button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w">join</button>
+                        <act-card-join-btn></act-card-join-btn>
                     </li>
                 </ul>
             </div>`
             }
+    }
+}
+
+class ActCardJoinBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w">join</button>`
     }
 }
 
@@ -479,6 +466,73 @@ class ActDetailJoinBtn extends HTMLElement {
     }
     connectedCallback() {
 
+    }
+}
+
+class AllActBanner extends HTMLElement {
+    constructor() {
+        super();
+        this.current_page = 0;
+        this.pictures = ["winter_login_pic2.jpg", "winter_login_pic.jpg", "1657770518.jpeg"]
+
+        this.innerHTML = 
+        `<div class="banner-container">
+            <div class="banner-arrow">
+                <button class="btn round" id="prev-banner-btn"><svg-prev></svg-prev></button>
+            </div>
+            <div class="banner-display edge shadow">
+                <img src="${path + this.pictures[this.current_page]}" id="banner_pic">
+            </div>
+            <div class="banner-arrow">
+                <button class="btn round" id="next-banner-btn"><svg-next></svg-next></button>
+            </div>
+            <ul class="banner-page">
+                <li>
+                    <span class="w-bb-bb round" id="banner1"></span>
+                </li>
+                <li>
+                    <span class="w-bb-bb round" id="banner2"></span>
+                </li>
+                <li>
+                    <span class="w-bb-bb round" id="banner3"></span>
+                </li>
+            </ul>
+        </div>`;
+
+
+        this.handle_banner_change = this.handle_banner_change.bind(this);
+
+        this.page_list = this.querySelectorAll("span");
+        console.log(this.page_list)
+    }
+    connectedCallback() {
+        this.handle_banner_change(0);
+        this.querySelector("#prev-banner-btn").addEventListener("click", () => this.handle_banner_change(-1));
+        this.querySelector("#next-banner-btn").addEventListener("click", () =>{this.handle_banner_change(1);});
+    }
+
+    handle_banner_change(value) {
+        this.banner_pic = this.querySelector("#banner_pic");
+        this.banner_pic.classList.add("fade-out")
+        this.current_page += value;
+        setTimeout(() => {
+            if(this.current_page >= 3)
+            {
+                this.current_page = 0;
+            }
+            else if (this.current_page < 0)
+            {
+                this.current_page = 2
+            }
+
+            this.page_list.forEach((page, index) => {
+                page.classList.toggle("bb-w", this.current_page === index);
+            });
+            console.log(this.current_page)
+            this.banner_pic.src = path + this.pictures[this.current_page];
+            this.banner_pic.classList.remove("fade-out")
+        },500)
+        
     }
 }
 // SVG Components Class
@@ -658,9 +712,11 @@ customElements.define("tag-filter", TagFilter);
 customElements.define("tag-display", TagDisplay);
 customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);
+customElements.define("act-card-join-btn", ActCardJoinBtn);
 customElements.define("pagination-item", PaginationItem);
 customElements.define("member-list-item", MemberListItem);
 customElements.define("act-detail-join-btn", ActDetailJoinBtn);
+customElements.define("all-act-banner", AllActBanner);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);

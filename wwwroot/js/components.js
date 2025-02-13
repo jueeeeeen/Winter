@@ -48,7 +48,7 @@ class MainNavbar extends HTMLElement{
     constructor(){
         super();
         this.innerHTML = 
-            `<nav class="gradient_blue shadow">
+            `<nav class="gradient_blue shadow nav_bar_container">
                 <ul class="no_select nav_bar">
                 <li>
                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
@@ -302,7 +302,7 @@ class ActivityCard extends HTMLElement {
             [this.act_date, this.act_time] = activity.activity_time.split(" ");
             this.innerHTML = `
             <div class="activity-card shadow">
-                <div class="act-profile-info">
+                <div class="act-card-profile-info">
                     <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
                     <div>
                         <span>${activity.host.name}</span>
@@ -317,7 +317,7 @@ class ActivityCard extends HTMLElement {
                     </div>
                     <div>${activity.membership}</div>
                 </div>
-                <ul class="act-tags-container">
+                <ul class="act-card-tags-container">
                     ${activity.tags.map(tag => `
                         <li>
                             <tag-display data-tag_name="${tag}"></tag-display>
@@ -327,14 +327,14 @@ class ActivityCard extends HTMLElement {
                 <div class="title">
                     <h2>${activity.title}</h2>
                 </div>
-                <ul class="act-tags-container">
+                <ul class="act-card-tags-container">
                     ${Object.entries(activity.requirements).map(([type, value]) => `
                         <li>
                             <req-tag data-type="${type}" data-value="${value}"></req-tag>
                         </li>
                     `).join("")}
                 </ul>
-                <ul class="act-info">
+                <ul class="act-card-info">
                     <li>
                         <svg-clock></svg-clock><span>${this.act_time + "(" + activity.duration + ")"}</span>
                     </li>
@@ -352,7 +352,7 @@ class ActivityCard extends HTMLElement {
         else {
             this.innerHTML = `
             <div class="activity-card shadow">
-                <div class="act-profile-info">
+                <div class="act-card-profile-info">
                     <div><img src="${path+"profile-g.png"}"></div>
                     <div>
                         <span>Peerawat Ingkhasantatikul</span>
@@ -367,7 +367,7 @@ class ActivityCard extends HTMLElement {
                     </div>
                     <div>2/5</div>
                 </div>
-                <ul class="act-tags-container">
+                <ul class="act-card-tags-container">
                     <li>
                         <tag-display data-tag_name="Entertain"></tag-display>
                     </li>
@@ -375,12 +375,12 @@ class ActivityCard extends HTMLElement {
                 <div class="title">
                     <h2>หาเพื่อนดูหนังครับ !!!</h2>
                 </div>
-                <ul class="act-tags-container">
+                <ul class="act-card-tags-container">
                     <li>
                         <req-tag data-type="gender" data-value="lgbtq"></req-tag>
                     </li>
                 </ul>
-                <ul class="act-info">
+                <ul class="act-card-info">
                     <li>
                         <svg-clock></svg-clock><span>13:00 (5 hours)</span>
                     </li>

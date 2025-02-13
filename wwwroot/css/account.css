@@ -1,179 +1,178 @@
 :root {
-    --blue90: #36b2ff;
-  
-    --gray90: #4d4d4d;
-    --gray80: #737373;
-    --gray70: #9f9f9f;
-    --gray60: #c6c6c6;
-    --gray50: #e8e8e8;
-    --white: #ffffff;
-  
-    --blue90: #5fa2ff;
-    --blue80: #56beff;
-    --blue70: #7fceff;
-    --blue60: #77daff;
-    --blue50: #56dff4;
-    --blue40: #90e1ff;
-    --blue30: #a1d4ff;
-    --blue20: #adf1fd;
-    --blue10: #dff9ff;
-  
-    --red: #ff4e4e;
-    --yellow: #fdc330;
-    --green: #65da8c;
-    --pink: #ff90da;
-  
-    --shadow: rgba(0, 0, 0, 0.12);
-  }
+  --blue90: #36b2ff;
 
-  .login-card h2{
-    margin: 20px 20px 0 50px;
-  }
-  
-  .login-box, .login-button button, .register-box, .register-button button {
-    width: 300px;
-    height: 30px;
-    margin: 1px;
-    border-radius: 40px;
-  } 
-  
-  .login-box {
-    background-color: var(--blue40);
-  }
-  
-  .login-card, .register-card {
-    color: var(--blue90);
-    background-color: var(--white);
-    margin: 80px auto;
-    width: 400px;
-    height: 500px;
-    border-radius: 20px;
-  }
-  
-  .login-card img, .register-card img {
-    width: 400px;
-    height: 200px;
-    border-radius: 20px 20px 0 0; 
-  }
-  
-  .login-card form {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .login-box {
-    background-color: var(--blue40);
-    width: 300px;
-    height: 30px;
-    margin: 1px ;
-    border-radius: 40px;
-    padding: 10px; 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .login-box img {
-    margin: 0 5px;
-    width: 30px;
-    height: 30px;
-  }
-  
-  .login-box input {
-    background-color: transparent;
-    border: none;
-  }
-  
-  .login-box input, .login-box input::placeholder {
-    color: var(--white);
-    font-size: 1rem;
-    font-weight: bold;
-    margin: auto;
-  }
-  
-  .login-box button {
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  .login-box button img{
-    width: 20px;
-    height: 14px;
-  }
-  
-  .login-button button {
-    background-color: var(--white);
-    color: var(--blue90);
-    border: solid 2px var(--blue70);
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  
-  .login-button button:hover {
-    color: var(--gray90);
-    background-image: url("/assets/login_btn_bg.svg");
-    background-size: 400px;
-    background-repeat: no-repeat;
-    background-position: center; 
-  }
-  
-  .login-description {
-    color: var(--gray90);
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-  }
-  
-  .login-description a {
-    color: var(--blue40);
-  }
-  
-  .register-card h2{
-    margin: 20px 20px 0 50px;
-  }
-  
-  .register-card form {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .register-box {
-    background-color: var(--blue40);
-    width: 300px;
-    height: 30px;
-    margin: 5px;
-    border-radius: 40px;
-    padding: 10px; 
-    display: flex;
-    align-items: center;
-  }
-  
-  .register-box img {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .register-box input {
-    background-color: transparent;
-    border: none;
-  }
-  
-  .register-box input, .register-box input::placeholder {
-    color: var(--white);
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin: auto;
-  }
-  
-  .register-button button {
-    color: var(--blue90);
-    background-color: var(--white);
-    border: solid 2px var(--blue70);
-    font-size: 0.8rem;
-    font-weight: bold;
-    cursor: pointer;
-  }
+  --gray90: #4d4d4d;
+  --gray80: #737373;
+  --gray70: #9f9f9f;
+  --gray60: #c6c6c6;
+  --gray50: #e8e8e8;
+  --white: #ffffff;
+
+  --blue90: #5fa2ff;
+  --blue80: #56beff;
+  --blue70: #7fceff;
+  --blue60: #77daff;
+  --blue50: #56dff4;
+  --blue40: #90e1ff;
+  --blue30: #a1d4ff;
+  --blue20: #adf1fd;
+  --blue10: #dff9ff;
+
+  --red: #ff4e4e;
+  --yellow: #fdc330;
+  --green: #65da8c;
+  --pink: #ff90da;
+
+  --shadow: rgba(0, 0, 0, 0.12);
+}
+
+.login-card,
+.register-card {
+  color: var(--blue90);
+  background-color: var(--white);
+  margin: 55px auto;
+  width: 400px;
+  height: 550px;
+  border-radius: 20px;
+}
+
+.login-card h2 {
+  margin: 20px 20px 0 50px;
+}
+
+.login-box,
+.login-button button,
+.register-box1,
+.register-button button {
+  width: 300px;
+  height: 35px;
+  border-radius: 40px;
+}
+
+.login-card img,
+.register-card img {
+  width: 400px;
+  height: 200px;
+  border-radius: 20px 20px 0 0;
+}
+
+.login-card form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-box {
+  background-color: var(--blue40);
+  margin: 1px;
+  border-radius: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.login-box img {
+  margin: 0 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.login-box input {
+  background-color: transparent;
+  border: none;
+}
+
+.login-box input,
+.login-box input::placeholder {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.login-box button {
+  margin-top: 5px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.login-box button img {
+  width: 20px;
+  height: 14px;
+}
+
+.login-button button {
+  background-color: var(--white);
+  color: var(--blue90);
+  border: solid 2px var(--blue70);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.login-button button:hover {
+  color: var(--gray90);
+  background-image: url("/assets/login_btn_bg.svg");
+  background-size: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.login-description {
+  color: var(--gray90);
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.login-description a {
+  color: var(--blue40);
+}
+
+.register-card h2 {
+  margin: 20px 20px 0 50px;
+}
+
+.register-card form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register-box1 {
+  background-color: var(--blue40);
+  margin: 5px;
+  border-radius: 40px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.register-box1 img {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.register-box1 input {
+  background-color: transparent;
+  border: none;
+}
+
+.register-box1 input,
+.register-box1 input::placeholder {
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin: 0.1rem;
+}
+
+.register-button button {
+  color: var(--blue90);
+  background-color: var(--white);
+  border: solid 2px var(--blue70);
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -5045,19 +5045,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/macitham/.nuget/packages/": {}
+    "C:\\Users\\earn\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/macitham/Work/web_app/Winter/Winter-Project.csproj",
+      "projectUniqueName": "C:\\Users\\earn\\Winter\\Winter-Project.csproj",
       "projectName": "Winter-Project",
-      "projectPath": "/Users/macitham/Work/web_app/Winter/Winter-Project.csproj",
-      "packagesPath": "/Users/macitham/.nuget/packages/",
-      "outputPath": "/Users/macitham/Work/web_app/Winter/obj/",
+      "projectPath": "C:\\Users\\earn\\Winter\\Winter-Project.csproj",
+      "packagesPath": "C:\\Users\\earn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\earn\\Winter\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/macitham/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\earn\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -5127,7 +5127,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

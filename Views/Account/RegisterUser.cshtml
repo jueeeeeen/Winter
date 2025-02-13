@@ -1,3 +1,5 @@
+@model Winter_Project.Models.UserModel
+
 @{
     ViewData["Title"] = "Register";
 }
@@ -11,19 +13,19 @@
     <img src="\assets\winter_login_pic.jpg" alt="register background">
     <h2>CREATE ACCOUNT</h2>
     <form action="">
-        <div class="register-box">
+        <div class="register-box1">
             <img src="\assets\Profile-b.png" alt="username">
             <input type="text" placeholder="username" required>
         </div>
-        <div class="register-box">
+        <div class="register-box1">
             <img src="\assets\mail.svg" alt="email">
-            <input type="email" placeholder="email" required>
+            <input type="email" placeholder="email" required> 
         </div>
-        <div class="register-box">
+        <div class="register-box1">
             <img src="\assets\lock.svg" alt="password">
             <input type="password" placeholder="password" required>
         </div>
-        <div class="register-box">
+        <div class="register-box1">
             <img src="\assets\lock.svg" alt="password">
             <input type="password" placeholder="confirm password" required>
         </div>
@@ -31,7 +33,8 @@
             <button>next</button>
         </div>
         <div class="login-description">
-            <p>Already have an account?<a href="~/Account/Login">login</a></p>
+            <p>Already have an account?</p>
+            <a href="~/Account/Login">login</a>
         </div>
     </form>
 </div>

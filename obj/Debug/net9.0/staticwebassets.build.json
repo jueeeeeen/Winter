@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JenXl6qcJq/3d67YYbkoVR2dsduWJajHE1SFTzN7lrQ=",
+  "Hash": "zuRW+EnLxp+AZOiq1MYeeYfTpA4u2YepEOk4JAfTwuI=",
   "Source": "Winter-Project",
   "BasePath": "_content/Winter-Project",
   "Mode": "Default",
@@ -500,12 +500,12 @@
       "OriginalItemSpec": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\assets\\person.svg"
     },
     {
-      "Identity": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-0728bxfcl3.gz",
+      "Identity": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-xoggyd99by.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/site#[.{fingerprint=0728bxfcl3}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=xoggyd99by}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -514,8 +514,8 @@
       "RelatedAsset": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "ij86cdanws",
-      "Integrity": "vrDQZoMlqQkTzLqCgwq75wS4iR5/ROP967QxwzUfyFk=",
+      "Fingerprint": "h38yzroy1b",
+      "Integrity": "g1NMCxzZMrXgFLv5t9j9CsmKznDEln4r6oIHIQDnqJU=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\css\\site.css"
@@ -1445,6 +1445,27 @@
       "OriginalItemSpec": "wwwroot\\assets\\X.svg"
     },
     {
+      "Identity": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\assets\\yellow_star_outline.png",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/yellow_star_outline#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ftq5p5p8pn",
+      "Integrity": "/Wv2yK+t1cHfHqLwvBmpbav2ZsSlga0fAQcNOuQ9/HM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\yellow_star_outline.png"
+    },
+    {
       "Identity": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\css\\site.css",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -1459,8 +1480,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "0728bxfcl3",
-      "Integrity": "5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk=",
+      "Fingerprint": "xoggyd99by",
+      "Integrity": "f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -10190,13 +10211,95 @@
       ]
     },
     {
-      "Route": "css/site.0728bxfcl3.css",
-      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-0728bxfcl3.gz",
+      "Route": "assets/yellow_star_outline.ftq5p5p8pn.png",
+      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\assets\\yellow_star_outline.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "437156"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/Wv2yK+t1cHfHqLwvBmpbav2ZsSlga0fAQcNOuQ9/HM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 02:19:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ftq5p5p8pn"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/yellow_star_outline.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-/Wv2yK+t1cHfHqLwvBmpbav2ZsSlga0fAQcNOuQ9/HM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/yellow_star_outline.png",
+      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\assets\\yellow_star_outline.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "437156"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/Wv2yK+t1cHfHqLwvBmpbav2ZsSlga0fAQcNOuQ9/HM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 02:19:37 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/Wv2yK+t1cHfHqLwvBmpbav2ZsSlga0fAQcNOuQ9/HM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css",
+      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-xoggyd99by.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000418585182"
+          "Quality": "0.000406338887"
         }
       ],
       "ResponseHeaders": [
@@ -10206,19 +10309,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2388"
+          "Value": "2460"
         },
         {
           "Name": "ETag",
-          "Value": "\"vrDQZoMlqQkTzLqCgwq75wS4iR5/ROP967QxwzUfyFk=\""
+          "Value": "\"g1NMCxzZMrXgFLv5t9j9CsmKznDEln4r6oIHIQDnqJU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 02:28:58 GMT"
+          "Value": "Thu, 13 Feb 2025 05:25:53 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -10234,26 +10337,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk=\""
+          "Value": "W/\"f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "0728bxfcl3"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk="
+          "Value": "sha256-f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY="
         }
       ]
     },
     {
-      "Route": "css/site.0728bxfcl3.css",
+      "Route": "css/site.css",
       "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -10263,7 +10358,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "9793"
+          "Value": "10444"
         },
         {
           "Name": "Content-Type",
@@ -10271,11 +10366,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk=\""
+          "Value": "\"f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 02:28:58 GMT"
+          "Value": "Thu, 13 Feb 2025 05:25:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-xoggyd99by.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2460"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g1NMCxzZMrXgFLv5t9j9CsmKznDEln4r6oIHIQDnqJU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 05:25:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-g1NMCxzZMrXgFLv5t9j9CsmKznDEln4r6oIHIQDnqJU="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.xoggyd99by.css",
+      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-xoggyd99by.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000406338887"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2460"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"g1NMCxzZMrXgFLv5t9j9CsmKznDEln4r6oIHIQDnqJU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 05:25:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xoggyd99by"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.xoggyd99by.css",
+      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\css\\site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10444"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 05:25:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10285,7 +10525,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0728bxfcl3"
+          "Value": "xoggyd99by"
         },
         {
           "Name": "label",
@@ -10293,13 +10533,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk="
+          "Value": "sha256-f8Hnu0Dbxj3Oi92gGhfBt6HSbxBGgKVLRj/ytxAyOFY="
         }
       ]
     },
     {
-      "Route": "css/site.0728bxfcl3.css.gz",
-      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-0728bxfcl3.gz",
+      "Route": "css/site.xoggyd99by.css.gz",
+      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-xoggyd99by.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10308,7 +10548,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2388"
+          "Value": "2460"
         },
         {
           "Name": "Content-Type",
@@ -10316,11 +10556,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vrDQZoMlqQkTzLqCgwq75wS4iR5/ROP967QxwzUfyFk=\""
+          "Value": "\"g1NMCxzZMrXgFLv5t9j9CsmKznDEln4r6oIHIQDnqJU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 02:28:58 GMT"
+          "Value": "Thu, 13 Feb 2025 05:25:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10338,7 +10578,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0728bxfcl3"
+          "Value": "xoggyd99by"
         },
         {
           "Name": "label",
@@ -10346,144 +10586,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-vrDQZoMlqQkTzLqCgwq75wS4iR5/ROP967QxwzUfyFk="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-0728bxfcl3.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000418585182"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2388"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"vrDQZoMlqQkTzLqCgwq75wS4iR5/ROP967QxwzUfyFk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 02:28:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\wwwroot\\css\\site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "9793"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 02:28:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-5EPTwx5gs2/8cJAb9oW1BNeaYkaX8e7JIiJUrUQD2hk="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css.gz",
-      "AssetFile": "C:\\Users\\T\\sourcecode\\Webapp\\Project\\Winter\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-0728bxfcl3.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2388"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"vrDQZoMlqQkTzLqCgwq75wS4iR5/ROP967QxwzUfyFk=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 12 Feb 2025 02:28:58 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-vrDQZoMlqQkTzLqCgwq75wS4iR5/ROP967QxwzUfyFk="
+          "Value": "sha256-g1NMCxzZMrXgFLv5t9j9CsmKznDEln4r6oIHIQDnqJU="
         }
       ]
     },

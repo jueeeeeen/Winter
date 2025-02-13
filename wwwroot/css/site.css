@@ -519,9 +519,9 @@ hr {
 }
 .activity-name{
   text-align: left;
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   color: black;
-  width: 47%;
+  width: 40%;
 }
 .activity-dropdown{
   position: relative;
@@ -534,17 +534,18 @@ hr {
   border: 1px solid var(--blue90);
   cursor: pointer;
   display: flex;
-  gap: 1.7rem;
+  gap: 4.7rem;
   border: 1px solid var(--blue70);
   border-radius: 0.4rem;
   padding: 0.7rem;
   width: 100%;
+  align-items: center;
   
 }
 .activity-dropdown-content {
   display: flex;
-  position: absolute;
-  background-color: #f9f9f9;
+  position: relative;
+  background-color: white;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
   margin-top: 0.5rem;
@@ -552,11 +553,10 @@ hr {
   border-radius: 0.4rem;
   width: 100%;
 }
-.activity-dropdown-content img{
+.activity-dropdown-content > img {
   margin: 1.5rem 1rem;
   width: 2.5%;
   height: 2.5%;
-  display: block;
 }
 
 .activity-dropdown:hover .activity-dropdown-content {
@@ -572,14 +572,19 @@ hr {
 .member {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 100%;
-
 }
 
-.member img {
+.member-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.member-content img {
   margin: 0.5rem;
-  width: 5%;
-  height: 5%;
+  width: 14%;
   border-radius: 50%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -591,4 +596,28 @@ hr {
 .member-role {
   font-size: 0.875rem;
   color: gray;
+}
+
+.rate-btn {
+  border-radius: 10rem;
+  border: 1px #FDC330 solid;
+  color: #FDC330;
+  background-color: white;
+  padding: 0.3em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: auto;
+  max-width: 10%;
+  min-width: 8%;
+}
+
+.rate-btn img {
+  width: 25%;
+}
+
+.review-text {
+  font-size: 1rem;
 }

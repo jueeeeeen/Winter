@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dT2aiHJHrruJ6DS0kD3MIRjq4A7SZlgJfmPZiZMB13Y=",
+  "Hash": "PNFGClt3bJrbGbkNzXqO51xhtmn1t7XLGF91nNeQQpQ=",
   "Source": "Winter-Project",
   "BasePath": "_content/Winter-Project",
   "Mode": "Default",
@@ -59,12 +59,12 @@
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/plus-w.svg"
     },
     {
-      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-l2u6qtnwt8.gz",
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-okikcth5c5.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "js/components#[.{fingerprint=l2u6qtnwt8}]?.js.gz",
+      "RelativePath": "js/components#[.{fingerprint=okikcth5c5}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -73,8 +73,8 @@
       "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/js/components.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "b4yzv18bif",
-      "Integrity": "hQWuhdvbXEXg6kTbC6NG6uTdnla3jWa1pFADmwWBqFQ=",
+      "Fingerprint": "d66eu7rysp",
+      "Integrity": "O1/flYtW3CLD3NIG8B6G9SNJeYYTNVbn8j271fpnsI4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/js/components.js"
@@ -141,6 +141,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/logout.svg"
+    },
+    {
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/bsvpf1iuns-s9s943pfdu.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/location_on#[.{fingerprint=s9s943pfdu}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/location_on.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "gfqnx14frt",
+      "Integrity": "dLXlCijsM1LSFGVb1V9BkVX9mCZXhvylqcKJl5ka+uY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/location_on.svg"
     },
     {
       "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/buvoiyznod-5sh2uvgjma.gz",
@@ -332,6 +353,27 @@
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/home.svg"
     },
     {
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/eunn3sn22i-grhdk6j7kf.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/upload-03#[.{fingerprint=grhdk6j7kf}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/upload-03.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "9dppsmlcar",
+      "Integrity": "U69oCRB2OCi3bFpNjgkVhXPYtWZeNlUMLE2TfM6D9rU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/upload-03.svg"
+    },
+    {
       "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/g73m25wz73-1xlal4e2lx.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -351,6 +393,48 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/search.svg"
+    },
+    {
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/gqp1io5jgi-sdyc9fkpol.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/icon _star#[.{fingerprint=sdyc9fkpol}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/icon _star.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "xdkj2qf9o6",
+      "Integrity": "9Qd4LKFVhP1UtT/0CJRie9ImdKdPgF46ic7Uec84ogs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/icon _star.svg"
+    },
+    {
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/hf3bizs5vn-qqatnu3efe.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/phone#[.{fingerprint=qqatnu3efe}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/phone.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "2h2h0acips",
+      "Integrity": "OjGbH3njUMLO3o1rUwyHdORBpHi3xYrqhqZ+onaX2zM=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/phone.svg"
     },
     {
       "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/kp4zftgs62-p9hovhfaxq.gz",
@@ -374,6 +458,27 @@
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/male_icon-b.svg"
     },
     {
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/o7m0oektyp-8iwfxar0g4.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/mail#[.{fingerprint=8iwfxar0g4}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/mail.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "2zrbpn5tcd",
+      "Integrity": "opgZu/d6tyLYWHgHe3r69xFuvjKbgz1I4Kh012Wla6A=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/mail.svg"
+    },
+    {
       "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/on64aqtaik-61n19gt1b8.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -388,8 +493,8 @@
       "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/favicon.ico",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "nezsohjtde",
-      "Integrity": "wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=",
+      "Fingerprint": "jefwejb9ld",
+      "Integrity": "+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/favicon.ico"
@@ -414,6 +519,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/bell_icon-w.svg"
+    },
+    {
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/pia79i6gb8-7dcmomlsov.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/edit#[.{fingerprint=7dcmomlsov}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/edit.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "8bb1cribin",
+      "Integrity": "hKddHdCTa09O0BItW+oTmhramlK1x4YAZFRgbv4i5/0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/edit.svg"
     },
     {
       "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/pkdufmnu92-i4jt20giqz.gz",
@@ -479,12 +605,12 @@
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/person.svg"
     },
     {
-      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-43bs7xmz5q.gz",
+      "Identity": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-qgrpjpjyss.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/site#[.{fingerprint=43bs7xmz5q}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=qgrpjpjyss}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -493,8 +619,8 @@
       "RelatedAsset": "/Users/macitham/Work/web_app/Winter/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "b4cq8ae216",
-      "Integrity": "248iAibluBR4if+5VE1PRSzY7bVL6bZuZsswYBKnj5s=",
+      "Fingerprint": "o2rjhqmdog",
+      "Integrity": "MPfM9AtmvXn+LgykSHqhD76AmVXn6+GotJTsoczjbcM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/macitham/Work/web_app/Winter/wwwroot/css/site.css"
@@ -689,6 +815,27 @@
       "OriginalItemSpec": "wwwroot/assets/bell_icon-w.svg"
     },
     {
+      "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/edit.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/wwwroot/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/edit#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7dcmomlsov",
+      "Integrity": "5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/edit.svg"
+    },
+    {
       "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/female_icon-p.svg",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -815,6 +962,48 @@
       "OriginalItemSpec": "wwwroot/assets/home.svg"
     },
     {
+      "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/icon _star.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/wwwroot/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/icon _star#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sdyc9fkpol",
+      "Integrity": "EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/icon _star.svg"
+    },
+    {
+      "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/location_on.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/wwwroot/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/location_on#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "s9s943pfdu",
+      "Integrity": "YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/location_on.svg"
+    },
+    {
       "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/login_bg.svg",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -899,6 +1088,27 @@
       "OriginalItemSpec": "wwwroot/assets/logout.svg"
     },
     {
+      "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/mail.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/wwwroot/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/mail#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "8iwfxar0g4",
+      "Integrity": "sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/mail.svg"
+    },
+    {
       "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/male_icon-b.svg",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -981,6 +1191,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/assets/person.svg"
+    },
+    {
+      "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/phone.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/wwwroot/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/phone#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qqatnu3efe",
+      "Integrity": "ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/phone.svg"
     },
     {
       "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/plus-b.svg",
@@ -1172,6 +1403,27 @@
       "OriginalItemSpec": "wwwroot/assets/star_outline.svg"
     },
     {
+      "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/upload-03.svg",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/macitham/Work/web_app/Winter/wwwroot/",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "assets/upload-03#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "grhdk6j7kf",
+      "Integrity": "LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/assets/upload-03.svg"
+    },
+    {
       "Identity": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/white-snowflakes-element-png.webp",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -1312,8 +1564,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "43bs7xmz5q",
-      "Integrity": "4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ=",
+      "Fingerprint": "qgrpjpjyss",
+      "Integrity": "tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -1354,8 +1606,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "l2u6qtnwt8",
-      "Integrity": "vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8=",
+      "Fingerprint": "okikcth5c5",
+      "Integrity": "+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/components.js"
@@ -2935,6 +3187,304 @@
       ]
     },
     {
+      "Route": "assets/edit.7dcmomlsov.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/pia79i6gb8-7dcmomlsov.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000961538462"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1039"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hKddHdCTa09O0BItW+oTmhramlK1x4YAZFRgbv4i5/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7dcmomlsov"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/edit.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s="
+        }
+      ]
+    },
+    {
+      "Route": "assets/edit.7dcmomlsov.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/edit.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2165"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7dcmomlsov"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/edit.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s="
+        }
+      ]
+    },
+    {
+      "Route": "assets/edit.7dcmomlsov.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/pia79i6gb8-7dcmomlsov.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hKddHdCTa09O0BItW+oTmhramlK1x4YAZFRgbv4i5/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7dcmomlsov"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/edit.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hKddHdCTa09O0BItW+oTmhramlK1x4YAZFRgbv4i5/0="
+        }
+      ]
+    },
+    {
+      "Route": "assets/edit.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/pia79i6gb8-7dcmomlsov.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000961538462"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1039"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hKddHdCTa09O0BItW+oTmhramlK1x4YAZFRgbv4i5/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s="
+        }
+      ]
+    },
+    {
+      "Route": "assets/edit.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/edit.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2165"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-5Zc/ny7go+P625HTDk//xqdk+BHCU0FxwfcDrOvZM6s="
+        }
+      ]
+    },
+    {
+      "Route": "assets/edit.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/pia79i6gb8-7dcmomlsov.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1039"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hKddHdCTa09O0BItW+oTmhramlK1x4YAZFRgbv4i5/0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hKddHdCTa09O0BItW+oTmhramlK1x4YAZFRgbv4i5/0="
+        }
+      ]
+    },
+    {
       "Route": "assets/female_icon-p.nw9dutaxd9.svg",
       "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vv1zjn29v7-nw9dutaxd9.gz",
       "Selectors": [
@@ -4507,6 +5057,602 @@
       ]
     },
     {
+      "Route": "assets/icon _star.sdyc9fkpol.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/gqp1io5jgi-sdyc9fkpol.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.004484304933"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "222"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Qd4LKFVhP1UtT/0CJRie9ImdKdPgF46ic7Uec84ogs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sdyc9fkpol"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/icon _star.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U="
+        }
+      ]
+    },
+    {
+      "Route": "assets/icon _star.sdyc9fkpol.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/icon _star.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "294"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sdyc9fkpol"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/icon _star.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U="
+        }
+      ]
+    },
+    {
+      "Route": "assets/icon _star.sdyc9fkpol.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/gqp1io5jgi-sdyc9fkpol.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "222"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Qd4LKFVhP1UtT/0CJRie9ImdKdPgF46ic7Uec84ogs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sdyc9fkpol"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/icon _star.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9Qd4LKFVhP1UtT/0CJRie9ImdKdPgF46ic7Uec84ogs="
+        }
+      ]
+    },
+    {
+      "Route": "assets/icon _star.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/gqp1io5jgi-sdyc9fkpol.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.004484304933"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "222"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Qd4LKFVhP1UtT/0CJRie9ImdKdPgF46ic7Uec84ogs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U="
+        }
+      ]
+    },
+    {
+      "Route": "assets/icon _star.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/icon _star.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "294"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-EP68ETFwh+VpH47u+9fghmO0DYnhS4Jqgju8KPSrn5U="
+        }
+      ]
+    },
+    {
+      "Route": "assets/icon _star.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/gqp1io5jgi-sdyc9fkpol.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "222"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9Qd4LKFVhP1UtT/0CJRie9ImdKdPgF46ic7Uec84ogs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9Qd4LKFVhP1UtT/0CJRie9ImdKdPgF46ic7Uec84ogs="
+        }
+      ]
+    },
+    {
+      "Route": "assets/location_on.s9s943pfdu.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/bsvpf1iuns-s9s943pfdu.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001736111111"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "575"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLXlCijsM1LSFGVb1V9BkVX9mCZXhvylqcKJl5ka+uY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s9s943pfdu"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/location_on.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo="
+        }
+      ]
+    },
+    {
+      "Route": "assets/location_on.s9s943pfdu.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/location_on.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s9s943pfdu"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/location_on.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo="
+        }
+      ]
+    },
+    {
+      "Route": "assets/location_on.s9s943pfdu.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/bsvpf1iuns-s9s943pfdu.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "575"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLXlCijsM1LSFGVb1V9BkVX9mCZXhvylqcKJl5ka+uY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "s9s943pfdu"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/location_on.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLXlCijsM1LSFGVb1V9BkVX9mCZXhvylqcKJl5ka+uY="
+        }
+      ]
+    },
+    {
+      "Route": "assets/location_on.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/bsvpf1iuns-s9s943pfdu.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001736111111"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "575"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLXlCijsM1LSFGVb1V9BkVX9mCZXhvylqcKJl5ka+uY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo="
+        }
+      ]
+    },
+    {
+      "Route": "assets/location_on.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/location_on.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1254"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-YLdAJzykB+8cyg4gS6DFA0Llgt8nMIOjcLLT1whoVqo="
+        }
+      ]
+    },
+    {
+      "Route": "assets/location_on.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/bsvpf1iuns-s9s943pfdu.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "575"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dLXlCijsM1LSFGVb1V9BkVX9mCZXhvylqcKJl5ka+uY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dLXlCijsM1LSFGVb1V9BkVX9mCZXhvylqcKJl5ka+uY="
+        }
+      ]
+    },
+    {
       "Route": "assets/login_bg.4fah5hg49n.svg",
       "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/c24e9eb106-4fah5hg49n.gz",
       "Selectors": [
@@ -5699,6 +6845,304 @@
       ]
     },
     {
+      "Route": "assets/mail.8iwfxar0g4.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/o7m0oektyp-8iwfxar0g4.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003030303030"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "329"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"opgZu/d6tyLYWHgHe3r69xFuvjKbgz1I4Kh012Wla6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8iwfxar0g4"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/mail.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/mail.8iwfxar0g4.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/mail.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8iwfxar0g4"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/mail.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/mail.8iwfxar0g4.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/o7m0oektyp-8iwfxar0g4.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "329"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"opgZu/d6tyLYWHgHe3r69xFuvjKbgz1I4Kh012Wla6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "8iwfxar0g4"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/mail.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-opgZu/d6tyLYWHgHe3r69xFuvjKbgz1I4Kh012Wla6A="
+        }
+      ]
+    },
+    {
+      "Route": "assets/mail.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/o7m0oektyp-8iwfxar0g4.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.003030303030"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "329"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"opgZu/d6tyLYWHgHe3r69xFuvjKbgz1I4Kh012Wla6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/mail.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/mail.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "640"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-sNRluS7OZQn6DmMMzQaS0+O5CkpPQEIcsPEab6SVd1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/mail.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/o7m0oektyp-8iwfxar0g4.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "329"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"opgZu/d6tyLYWHgHe3r69xFuvjKbgz1I4Kh012Wla6A=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-opgZu/d6tyLYWHgHe3r69xFuvjKbgz1I4Kh012Wla6A="
+        }
+      ]
+    },
+    {
       "Route": "assets/male_icon-b.p9hovhfaxq.svg",
       "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/kp4zftgs62-p9hovhfaxq.gz",
       "Selectors": [
@@ -6671,6 +8115,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-36gX756icOS2tBtYfxc2CzvPWFnabjeW2oSuivM1f0g="
+        }
+      ]
+    },
+    {
+      "Route": "assets/phone.qqatnu3efe.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/hf3bizs5vn-qqatnu3efe.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001432664756"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "697"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OjGbH3njUMLO3o1rUwyHdORBpHi3xYrqhqZ+onaX2zM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qqatnu3efe"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/phone.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw="
+        }
+      ]
+    },
+    {
+      "Route": "assets/phone.qqatnu3efe.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/phone.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1283"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qqatnu3efe"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/phone.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw="
+        }
+      ]
+    },
+    {
+      "Route": "assets/phone.qqatnu3efe.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/hf3bizs5vn-qqatnu3efe.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "697"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OjGbH3njUMLO3o1rUwyHdORBpHi3xYrqhqZ+onaX2zM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qqatnu3efe"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/phone.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-OjGbH3njUMLO3o1rUwyHdORBpHi3xYrqhqZ+onaX2zM="
+        }
+      ]
+    },
+    {
+      "Route": "assets/phone.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/hf3bizs5vn-qqatnu3efe.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001432664756"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "697"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OjGbH3njUMLO3o1rUwyHdORBpHi3xYrqhqZ+onaX2zM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw="
+        }
+      ]
+    },
+    {
+      "Route": "assets/phone.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/phone.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1283"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ojrdwq2H+rVu0c1z6yhlSEvpQ9HCjWlwi5juDL7OEiw="
+        }
+      ]
+    },
+    {
+      "Route": "assets/phone.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/hf3bizs5vn-qqatnu3efe.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "697"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"OjGbH3njUMLO3o1rUwyHdORBpHi3xYrqhqZ+onaX2zM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-OjGbH3njUMLO3o1rUwyHdORBpHi3xYrqhqZ+onaX2zM="
         }
       ]
     },
@@ -8277,6 +10019,304 @@
       ]
     },
     {
+      "Route": "assets/upload-03.grhdk6j7kf.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/eunn3sn22i-grhdk6j7kf.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001557632399"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "641"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U69oCRB2OCi3bFpNjgkVhXPYtWZeNlUMLE2TfM6D9rU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "grhdk6j7kf"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/upload-03.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/upload-03.grhdk6j7kf.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/upload-03.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1236"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "grhdk6j7kf"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/upload-03.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/upload-03.grhdk6j7kf.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/eunn3sn22i-grhdk6j7kf.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "641"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U69oCRB2OCi3bFpNjgkVhXPYtWZeNlUMLE2TfM6D9rU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "grhdk6j7kf"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/upload-03.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-U69oCRB2OCi3bFpNjgkVhXPYtWZeNlUMLE2TfM6D9rU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/upload-03.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/eunn3sn22i-grhdk6j7kf.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001557632399"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "641"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U69oCRB2OCi3bFpNjgkVhXPYtWZeNlUMLE2TfM6D9rU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/upload-03.svg",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/upload-03.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1236"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-LPfr9edXCDAC74mfmgXODmpHiHqF8cjCExCHDCTMP1o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/upload-03.svg.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/eunn3sn22i-grhdk6j7kf.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "641"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"U69oCRB2OCi3bFpNjgkVhXPYtWZeNlUMLE2TfM6D9rU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-U69oCRB2OCi3bFpNjgkVhXPYtWZeNlUMLE2TfM6D9rU="
+        }
+      ]
+    },
+    {
       "Route": "assets/white-snowflakes-element-png.0p34gsnt9r.webp",
       "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/assets/white-snowflakes-element-png.webp",
       "Selectors": [],
@@ -9201,13 +11241,13 @@
       ]
     },
     {
-      "Route": "css/site.43bs7xmz5q.css",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-43bs7xmz5q.gz",
+      "Route": "css/site.css",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-qgrpjpjyss.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000524658972"
+          "Quality": "0.000360490267"
         }
       ],
       "ResponseHeaders": [
@@ -9217,19 +11257,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1905"
+          "Value": "2773"
         },
         {
           "Name": "ETag",
-          "Value": "\"248iAibluBR4if+5VE1PRSzY7bVL6bZuZsswYBKnj5s=\""
+          "Value": "\"MPfM9AtmvXn+LgykSHqhD76AmVXn6+GotJTsoczjbcM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -9245,26 +11285,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ=\""
+          "Value": "W/\"tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "43bs7xmz5q"
-        },
-        {
-          "Name": "label",
-          "Value": "css/site.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ="
+          "Value": "sha256-tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM="
         }
       ]
     },
     {
-      "Route": "css/site.43bs7xmz5q.css",
+      "Route": "css/site.css",
       "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/css/site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -9274,7 +11306,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "7034"
+          "Value": "11955"
         },
         {
           "Name": "Content-Type",
@@ -9282,11 +11314,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ=\""
+          "Value": "\"tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.css.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-qgrpjpjyss.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2773"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MPfM9AtmvXn+LgykSHqhD76AmVXn6+GotJTsoczjbcM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-MPfM9AtmvXn+LgykSHqhD76AmVXn6+GotJTsoczjbcM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.qgrpjpjyss.css",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-qgrpjpjyss.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000360490267"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2773"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"MPfM9AtmvXn+LgykSHqhD76AmVXn6+GotJTsoczjbcM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qgrpjpjyss"
+        },
+        {
+          "Name": "label",
+          "Value": "css/site.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM="
+        }
+      ]
+    },
+    {
+      "Route": "css/site.qgrpjpjyss.css",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/css/site.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11955"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9296,7 +11473,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "43bs7xmz5q"
+          "Value": "qgrpjpjyss"
         },
         {
           "Name": "label",
@@ -9304,13 +11481,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ="
+          "Value": "sha256-tgGugmBzs43lRncq8v4kMN5JlugPtTkjfLVBaZX9cXM="
         }
       ]
     },
     {
-      "Route": "css/site.43bs7xmz5q.css.gz",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-43bs7xmz5q.gz",
+      "Route": "css/site.qgrpjpjyss.css.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-qgrpjpjyss.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9319,7 +11496,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1905"
+          "Value": "2773"
         },
         {
           "Name": "Content-Type",
@@ -9327,11 +11504,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"248iAibluBR4if+5VE1PRSzY7bVL6bZuZsswYBKnj5s=\""
+          "Value": "\"MPfM9AtmvXn+LgykSHqhD76AmVXn6+GotJTsoczjbcM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9349,7 +11526,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "43bs7xmz5q"
+          "Value": "qgrpjpjyss"
         },
         {
           "Name": "label",
@@ -9357,144 +11534,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-248iAibluBR4if+5VE1PRSzY7bVL6bZuZsswYBKnj5s="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-43bs7xmz5q.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000524658972"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1905"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"248iAibluBR4if+5VE1PRSzY7bVL6bZuZsswYBKnj5s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/css/site.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "7034"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-4C0+k6PxtV7600gwE59UA9DU2vBVHkdt4jHRfyfAArQ="
-        }
-      ]
-    },
-    {
-      "Route": "css/site.css.gz",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/vd4bjcljky-43bs7xmz5q.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1905"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"248iAibluBR4if+5VE1PRSzY7bVL6bZuZsswYBKnj5s=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-248iAibluBR4if+5VE1PRSzY7bVL6bZuZsswYBKnj5s="
+          "Value": "sha256-MPfM9AtmvXn+LgykSHqhD76AmVXn6+GotJTsoczjbcM="
         }
       ]
     },
@@ -9519,7 +11559,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4=\""
         },
         {
           "Name": "Last-Modified",
@@ -9625,7 +11665,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4=\""
         },
         {
           "Name": "Last-Modified",
@@ -9655,7 +11695,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0="
+          "Value": "sha256-+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4="
         }
       ]
     },
@@ -9680,7 +11720,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4=\""
         },
         {
           "Name": "Last-Modified",
@@ -9770,7 +11810,7 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0=\""
+          "Value": "\"+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4=\""
         },
         {
           "Name": "Last-Modified",
@@ -9792,18 +11832,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0="
+          "Value": "sha256-+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4="
         }
       ]
     },
     {
       "Route": "js/components.js",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-l2u6qtnwt8.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-okikcth5c5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000444247001"
+          "Quality": "0.000443852641"
         }
       ],
       "ResponseHeaders": [
@@ -9813,15 +11853,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2250"
+          "Value": "2252"
         },
         {
           "Name": "ETag",
-          "Value": "\"hQWuhdvbXEXg6kTbC6NG6uTdnla3jWa1pFADmwWBqFQ=\""
+          "Value": "\"O1/flYtW3CLD3NIG8B6G9SNJeYYTNVbn8j271fpnsI4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9841,13 +11881,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8=\""
+          "Value": "W/\"+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8="
+          "Value": "sha256-+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A="
         }
       ]
     },
@@ -9862,7 +11902,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10298"
+          "Value": "10312"
         },
         {
           "Name": "Content-Type",
@@ -9870,11 +11910,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8=\""
+          "Value": "\"+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9884,13 +11924,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8="
+          "Value": "sha256-+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A="
         }
       ]
     },
     {
       "Route": "js/components.js.gz",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-l2u6qtnwt8.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-okikcth5c5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9899,7 +11939,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2250"
+          "Value": "2252"
         },
         {
           "Name": "Content-Type",
@@ -9907,11 +11947,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hQWuhdvbXEXg6kTbC6NG6uTdnla3jWa1pFADmwWBqFQ=\""
+          "Value": "\"O1/flYtW3CLD3NIG8B6G9SNJeYYTNVbn8j271fpnsI4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9929,18 +11969,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hQWuhdvbXEXg6kTbC6NG6uTdnla3jWa1pFADmwWBqFQ="
+          "Value": "sha256-O1/flYtW3CLD3NIG8B6G9SNJeYYTNVbn8j271fpnsI4="
         }
       ]
     },
     {
-      "Route": "js/components.l2u6qtnwt8.js",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-l2u6qtnwt8.gz",
+      "Route": "js/components.okikcth5c5.js",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-okikcth5c5.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000444247001"
+          "Quality": "0.000443852641"
         }
       ],
       "ResponseHeaders": [
@@ -9950,15 +11990,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2250"
+          "Value": "2252"
         },
         {
           "Name": "ETag",
-          "Value": "\"hQWuhdvbXEXg6kTbC6NG6uTdnla3jWa1pFADmwWBqFQ=\""
+          "Value": "\"O1/flYtW3CLD3NIG8B6G9SNJeYYTNVbn8j271fpnsI4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9978,13 +12018,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8=\""
+          "Value": "W/\"+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "l2u6qtnwt8"
+          "Value": "okikcth5c5"
         },
         {
           "Name": "label",
@@ -9992,12 +12032,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8="
+          "Value": "sha256-+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A="
         }
       ]
     },
     {
-      "Route": "js/components.l2u6qtnwt8.js",
+      "Route": "js/components.okikcth5c5.js",
       "AssetFile": "/Users/macitham/Work/web_app/Winter/wwwroot/js/components.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -10007,7 +12047,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "10298"
+          "Value": "10312"
         },
         {
           "Name": "Content-Type",
@@ -10015,11 +12055,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8=\""
+          "Value": "\"+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10029,7 +12069,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "l2u6qtnwt8"
+          "Value": "okikcth5c5"
         },
         {
           "Name": "label",
@@ -10037,13 +12077,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-vTtjqQp38aFjbxYFZ+9wkr0dawQ5AjtR5bLRyBXZYt8="
+          "Value": "sha256-+PQhNANNUXqk45jlz+kGeJPK643BhcTgJ6WVcJCXt+A="
         }
       ]
     },
     {
-      "Route": "js/components.l2u6qtnwt8.js.gz",
-      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-l2u6qtnwt8.gz",
+      "Route": "js/components.okikcth5c5.js.gz",
+      "AssetFile": "/Users/macitham/Work/web_app/Winter/obj/Debug/net9.0/compressed/449zzrvmwa-okikcth5c5.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10052,7 +12092,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2250"
+          "Value": "2252"
         },
         {
           "Name": "Content-Type",
@@ -10060,11 +12100,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hQWuhdvbXEXg6kTbC6NG6uTdnla3jWa1pFADmwWBqFQ=\""
+          "Value": "\"O1/flYtW3CLD3NIG8B6G9SNJeYYTNVbn8j271fpnsI4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 02:29:55 GMT"
+          "Value": "Thu, 13 Feb 2025 06:04:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10082,7 +12122,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "l2u6qtnwt8"
+          "Value": "okikcth5c5"
         },
         {
           "Name": "label",
@@ -10090,7 +12130,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-hQWuhdvbXEXg6kTbC6NG6uTdnla3jWa1pFADmwWBqFQ="
+          "Value": "sha256-O1/flYtW3CLD3NIG8B6G9SNJeYYTNVbn8j271fpnsI4="
         }
       ]
     }

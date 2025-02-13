@@ -765,9 +765,10 @@ fieldset {
 .login-card h2{
   margin: 20px 20px 0 50px;
 }
-.login-box, .login-button button{
+
+.login-box, .login-button button, .register-box, .register-button button {
   width: 300px;
-  height: 40px;
+  height: 30px;
   margin: 1px;
   border-radius: 40px;
 } 
@@ -776,7 +777,7 @@ fieldset {
   background-color: var(--blue40);
 }
 
-.login-card {
+.login-card, .register-card {
   color: var(--blue90);
   background-color: var(--white);
   margin: 80px auto;
@@ -785,7 +786,7 @@ fieldset {
   border-radius: 20px;
 }
 
-.login-card img {
+.login-card img, .register-card img {
   width: 400px;
   height: 200px;
   border-radius: 20px 20px 0 0; 
@@ -802,7 +803,7 @@ fieldset {
 .login-box {
   background-color: var(--blue40);
   width: 300px;
-  height: 40px;
+  height: 30px;
   margin: 1px ;
   border-radius: 40px;
   padding: 10px; 
@@ -857,7 +858,6 @@ fieldset {
 
 .login-description {
   color: var(--gray90);
-  font-weight: bold;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -865,4 +865,51 @@ fieldset {
 
 .login-description a {
   color: var(--blue40);
+}
+
+.register-card h2{
+  margin: 20px 20px 0 50px;
+}
+
+.register-card form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.register-box {
+  background-color: var(--blue40);
+  width: 300px;
+  height: 30px;
+  margin: 5px;
+  border-radius: 40px;
+  padding: 10px; 
+  display: flex;
+  align-items: center;
+}
+
+.register-box img {
+  width: 30px;
+  height: 30px;
+}
+
+.register-box input {
+  background-color: transparent;
+  border: none;
+}
+
+.register-box input, .register-box input::placeholder {
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: auto;
+}
+
+.register-button button {
+  color: var(--blue90);
+  background-color: var(--white);
+  border: solid 2px var(--blue70);
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
 }

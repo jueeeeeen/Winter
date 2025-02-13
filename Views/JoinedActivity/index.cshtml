@@ -1,15 +1,51 @@
 @{
     ViewData["Title"] = "Joined Activity";
 }
-<ul class="select_type">
-    <li>
-        <button class="type" id="Upcoming_button">
-            Up coming
+<select-activities></select-activities>
+
+<div class="activities-bg">
+    <h2 class="activities-header">Upcoming</h2>
+    <div class="activity-dropdown">
+        <button class="activity-dropdown-btn">
+            <span class="activity-name">หาเพื่อนดูหนังครับ!!!</span>
+            <div class="tags">
+                <span class="tag">tag</span>
+                <span class="tag">tag</span>
+                <span class="tag">tag</span>
+            </div>
+            <span class="date">
+                <img src="assets/calendar_icon.png" alt="calendar"> Jan 5, 2025, 8:15 am
+            </span>
+            <span class="chevron">
+                <img src="assets/chevron-down_icon.svg" alt="">
+            </span>
         </button>
-    </li>
-    <li>
-        <button class="type" id="History_button">
-            History
-        </button>
-    </li>
-</ul>
+
+        <div class="activity-dropdown-content">
+            <img src="assets/people_icon.png" alt="">
+            <ul class="members">
+                <li class="member">
+                    <img src="assets/Profile-w-b.png" alt="Profile">
+                    <span class="member-name">Peerawat Ingk.</span>
+                    <span class="member-role">(Host)</span>
+                    
+                </li>
+                <li class="member">
+                    <img src="assets/Profile-w-b.png" alt="Profile">
+                    <span class="member-name">Peerawat Ingk.</span>
+                    <span class="member-role">(Host)</span>
+                </li>
+                <li class="member">
+                    <img src="assets/Profile-w-b.png" alt="Profile">
+                    <span class="member-name">Peerawat Ingk.</span>
+                    <span class="member-role">(Host)</span>
+                </li>
+                <li class="member">
+                    <img src="assets/Profile-w-b.png" alt="Profile">
+                    <span class="member-name">Peerawat Ingk.</span>
+                    <span class="member-role">(Host)</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -207,15 +207,64 @@ function toggleInvertColor(element, toggle, img1, img2, color1, color2) {
         }
     }
 }
+class SelectActivities extends HTMLElement{
+    constructor() {
+        super();
+        this.innerHTML = `
+        <ul class="select_type">
+            <li>
+                <button class="type" id="Upcoming_button">
+                    Upcoming
+                </button>
+            </li>
+            <li>
+                <button class="type" id="History_button">
+                    History
+                </button>
+            </li>
+        </ul>
+        `};
+    
+}
 class Activities extends HTMLElement{
     constructor() {
         super();
         this.innerHTML = `
+        <div class="activities-bg">
+            <h2 class="activities-header">Upcoming</h2>
 
+            <button class="activity-dropdown">
+                <span>หาเพื่อนดูหนังครับ!!!</span>
+                <div class="tags">
+                    <span class="tag">tag</span>
+                    <span class="tag">tag</span>
+                    <span class="tag">tag</span>
+                </div>
+                <span class="date">
+                    <img src="calendar-icon.png" alt="calendar"> Jan 5, 2025, 8:15 am
+                </span>
+            </button>
 
-        `};
-    
+            <div class="dropdown-content">
+                <img src="" alt="">
+                <ul class="members">
+                    <li class="member">
+                        <img src="assets/Profile-w-b.png" alt="Profile">
+                        <span class="member-name">Peerawat Ingk.</span>
+                        <span class="member-role">(Host)</span>
+                    </li>
+                    <li class="member">
+                        <img src="assets/Profile-w-b.png" alt="Profile">
+                        <span class="member-name">Peerawat Ingk.</span>
+                        <span class="member-role">(Host)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        `
+    }
 }
+customElements.define("select-activities", SelectActivities);
 
 // var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
 // var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");

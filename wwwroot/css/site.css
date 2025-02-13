@@ -453,16 +453,142 @@ hr {
   padding: 0em 1em;
   border-radius: 0.4rem;
   margin: 5rem 0rem;
+  box-shadow: 0px 3px 4px 1px var(--shadow);
 }
 .type{
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: var(--white);
-  width: 8rem;
+  width: 6.5rem;
   padding: 1em 0.5em;
   font-size: 1.125rem;
 }
 .type:hover {
   background-color: var(--shadow);
+}
+.activities-bg {
+  background-color: var(--white);
+  border-radius: 0.4rem;
+  margin: 2rem auto;
+  width: 80%;
+  max-width: 1400px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.activities-header {
+  font-size: 1.125rem;
+  color: var(--white);
+  background-color: var(--blue50);
+  padding: 1rem;
+  border-radius: 0.4rem;
+  font-weight: bold;
+}
+.chevron {
+  width: 5%;
+}
+.chevron img{
+  width: 40%;
+}
+
+.tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tag {
+  border: 1.5px solid var(--white);
+  background-color: var(--blue70);
+  padding: 0.3rem 2rem;
+  border-radius: 1rem;
+  color: black;
+  font-size: 0.875rem;
+  box-shadow: 0px 3px 4px 1px var(--shadow);
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  font-size: 1.125rem;
+  color: gray;
+}
+
+.date img {
+  width: 1.2rem;
+  margin-right: 0.5rem;
+}
+.activity-name{
+  text-align: left;
+  font-size: 1.125rem;
+  color: black;
+  width: 47%;
+}
+.activity-dropdown{
+  position: relative;
+  display: inline-block;
+  margin: 3rem;
+}
+.activity-dropdown-btn {
+  background-color: var(--white);
+  color: white;
+  border: 1px solid var(--blue90);
+  cursor: pointer;
+  display: flex;
+  gap: 1.7rem;
+  border: 1px solid var(--blue70);
+  border-radius: 0.4rem;
+  padding: 0.7rem;
+  width: 100%;
+  
+}
+.activity-dropdown-content {
+  display: flex;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  width: 100%;
+}
+.activity-dropdown-content img{
+  margin: 1.5rem 1rem;
+  width: 2.5%;
+  height: 2.5%;
+  display: block;
+}
+
+.activity-dropdown:hover .activity-dropdown-content {
+  display: flex;
+}
+
+.members {
+  list-style: none;
+  display: block;
+  width: 100%;
+}
+
+.member {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+}
+
+.member img {
+  margin: 0.5rem;
+  width: 5%;
+  height: 5%;
+  border-radius: 50%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.member-name {
+  font-size: 1.2rem;
+}
+
+.member-role {
+  font-size: 0.875rem;
+  color: gray;
 }

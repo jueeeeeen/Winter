@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "Profile";
+}
+
+@* @section styles {
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
+} *@
+
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <p>Profile</p>
+        </div>
+
+        <div class="account-info">
+            <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
+            <h6>marklnwza007</h6>
+            <h4>Peerawat Ingkhasantatikul</h4>
+            <h6>20 years old</h6>
+        </div>
+
+        <div class="personal-info">
+            <div>
+                <img src="\assets\location_on.svg" alt="location">
+                <p>Bangkok, Thailand</p>
+            </div>
+            <div>
+                <img src="\assets\phone.svg" alt="phone">
+                <p>081-2895077</p>
+            </div>
+            <div>
+                <img src="\assets\mail.svg" alt="mail">
+                <p>mark.peerawat@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="profile-rating">
+            <img src="\assets\icon _star.svg" alt="star icon">
+            <p>1.55</p>
+        </div>
+
+        <div class="joined-review">
+            <div class="profile-joined">
+                <p>4</p>
+                <p>Joined</p>
+                <a href="#">View all activity</a>
+            </div>
+
+            <div class="profile-reviews">
+                <p>5</p>
+                <p>Reviews</p>
+                <a href="#">View all review</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-right-container">
+        <div class="bio-card">
+            <div class="profile-header">
+                <p>Bio</p>
+            </div>
+
+            <div class="bio-details">
+                <p class="bio-header">About me</p>
+                <p class="bio-info">Hello,I'm a 2nd-year Computer Engineering student.</p>
+                <p class="bio-header">My Interests</p>
+                <p class="bio-info">I am interesting in web development.</p>
+                <p class="bio-header">My Hobby</p>
+                <p class="bio-info">I like watching movie and listening to music.</p>
+            </div>
+        </div>
+
+        <div class="personal-card">
+            <div class="profile-header">
+                <p>Personal Information</p>
+            </div>
+
+            <div class="personal-details">
+                <div class="left-info">
+                    <p class="bio-header">First Name</p>
+                    <p class="personal-info">Peerawat</p>
+                    <p class="bio-header">Birth</p>
+                    <p class="personal-info">12/08/2004</p>
+                </div>
+                <div class="right-info">
+                    <p class="bio-header">Last Name</p>
+                    <p class="personal-info">Ingkhasantatikul</p>
+                    <p class="bio-header">Gender</p>
+                    <p class="personal-info">Male</p>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="edit-profile-button">
+        <a href="/Profile/Edit">
+            <button> 
+                <img src="\assets\edit.svg" alt="edit icon">
+                <p>Edit</p>
+            </button>
+        </a>
+    </div>
+</div>

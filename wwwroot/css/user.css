@@ -181,7 +181,7 @@
 
 .personal-info {
   color: var(--gray90);
-  font-weight: bold
+  font-weight: bold;
 }
 
 .edit-profile-button {
@@ -230,7 +230,7 @@
 
 .upload-profile-button input {
   display: none;
-} 
+}
 
 .upload-profile-button p {
   margin: 0 0 0 5px;
@@ -270,6 +270,7 @@ fieldset {
   flex-direction: row;
   gap: 100px;
 }
+
 .profile-input {
   color: var(--gray70);
   margin: 20px 20px 0 20px;
@@ -301,10 +302,13 @@ fieldset {
 }
 
 .gender-button button img {
-  max-height: 100%;
-  max-width: 100%;
+  width: 30px;
+  height: 30px;
 }
-.male-button:hover::after, .lgbtq-button:hover::after,.female-button:hover::after {
+
+.male-button:hover::after,
+.lgbtq-button:hover::after,
+.female-button:hover::after {
   font-size: 1rem;
   white-space: nowrap;
   left: 5px;

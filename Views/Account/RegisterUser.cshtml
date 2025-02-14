@@ -5,8 +5,8 @@
 }
 
 @section styles {
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 }
 
 <div class="register-card">
@@ -30,9 +30,7 @@
             <input type="password" placeholder="confirm password" required>
         </div>
         <div class="next-button">
-            <button>
-                <a href="~/Account/RegisterDetail">next</a>
-            </button>
+            <button onClick="location.href='@Url.Action("RegisterDetail", "Account")'">next</button>
         </div>
         <div class="login-description">
             <p>Already have an account?</p>

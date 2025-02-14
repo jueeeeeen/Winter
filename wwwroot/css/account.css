@@ -181,21 +181,25 @@
 }
 
 .register-box2 {
-  background-color: var(--blue40);
+  background-color: var(--white);
+  border: solid 2px var(--blue80);
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
-  gap: 10px;
+}
+
+.register-box2 input, .register-box2 input::placeholder {
+  background-color: transparent;
+  color: var(--blue80);
+  border: none;
+  margin-left: 20px;
 }
 
 .register-button button {
   color: var(--white);
   background-color: var(--blue40);
+  margin: 10px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-}
-
-.register-box2 input {
-  background-color: transparent;
-  border: none;
 }

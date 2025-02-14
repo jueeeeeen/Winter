@@ -228,6 +228,10 @@
   justify-content: center;
 }
 
+.upload-profile-button input {
+  display: none;
+} 
+
 .upload-profile-button p {
   margin: 0 0 0 5px;
 }
@@ -258,6 +262,7 @@ fieldset {
   font-weight: bold;
   width: 95%;
   height: 55px;
+  resize: none;
 }
 
 .user-fullname {
@@ -299,12 +304,17 @@ fieldset {
   max-height: 100%;
   max-width: 100%;
 }
+.male-button:hover::after, .lgbtq-button:hover::after,.female-button:hover::after {
+  font-size: 1rem;
+  white-space: nowrap;
+  left: 5px;
+  bottom: 7px;
+  position: relative;
+}
 
 .male-button:hover::after {
   content: "male";
   color: var(--blue80);
-  font-size: 1rem;
-  white-space: nowrap;
 }
 
 .male-button {
@@ -342,8 +352,6 @@ fieldset {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 1rem;
-  white-space: nowrap;
 }
 
 .female-button {
@@ -354,8 +362,6 @@ fieldset {
 .female-button:hover::after {
   content: "female";
   color: var(--pink);
-  font-size: 1rem;
-  white-space: nowrap;
 }
 
 .save-cancel-button {

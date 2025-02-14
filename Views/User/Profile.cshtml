@@ -95,11 +95,11 @@
         
     </div>
     <div class="edit-profile-button">
-        <a href="/User/Edit">
-            <button> 
+        @* <a href="/User/Edit"> *@
+            <button onClick="location.href='@Url.Action("Edit", "User")'"> 
                 <img src="\assets\edit.svg" alt="edit icon">
                 <p>Edit</p>
             </button>
-        </a>
+        @* </a> *@
     </div>
 </div>

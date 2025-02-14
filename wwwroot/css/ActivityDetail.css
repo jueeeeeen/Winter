@@ -148,8 +148,7 @@
 
 .pending-member-item {
     display: flex;
-    font-size: 1.25em;
-    height: 3.125em;
+    height: 4em;
     border-radius: 0.75em;
     align-items: center;
     line-height: 1;
@@ -158,16 +157,19 @@
     font-weight: 600;
 }
 
+.pending-member-item span {
+    font-size: 1.25em;
+}
+
 .member-list-item {
     display: grid;
-    height: 3.125em;
-    font-size: 1.25em;
-    grid-template-columns: 2.25em auto;
-    grid-template-rows: 1.125em 1.125em;
+    height: 4em;
+    grid-template-columns: 1fr 5fr 1.5fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-    "profile name"
-    "profile role";
-    gap: 0.1em 0.375em;
+    "profile name approval"
+    "profile role approval";
+    gap: 0.1em 0.5em;
     line-height: 1;
     padding: 0.4em 0.75em;
     border-radius: 0.75em;
@@ -179,12 +181,13 @@
 }
 
 .member-list-item-profile img{
-    width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .member-list-item-name {
     grid-area: name;
+    font-size: 1.25em;
     align-self: end;
     font-weight: 600;
     overflow: hidden;
@@ -195,7 +198,6 @@
 
 .member-list-item-role {
     grid-area: role;
-    font-size: 0.825em;
     font-weight: 500;
     color: var(--gray70);
 }
@@ -203,4 +205,15 @@
 .act-detail-join-btn {
     align-self: flex-end;
     margin: auto;
+}
+
+.member-list-item-approval {
+    grid-area: approval;
+    justify-content: flex-end;
+    column-gap: 0.25em;
+}
+
+.approval {
+    height: 2.375em;
+    width: 2.375em;
 }

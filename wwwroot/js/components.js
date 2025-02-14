@@ -53,13 +53,13 @@ class MainNavbar extends HTMLElement{
                 <li>
                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="/AllActivity">Activity</a></li>
+                <li><a href="/Activity">Activity</a></li>
                 <li class="logo">
                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
                 </li>
                 <li class="m_left_auto">
                     <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/CreateActivity'">
-                        <img src="${path}plus-b.svg" alt="plus icon">create
+                        <svg-plus></svg-plus>create
                     </button>
                 </li>
                 <li>
@@ -399,14 +399,15 @@ class ActivityCard extends HTMLElement {
 class ActCardJoinBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w">join</button>`
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w hover-w-bb-bb">join</button>`
     }
 }
 
 class Pagination extends HTMLElement {
-    constructor() {
+    constructor(page_count) {
         super();
-        this.innerHTML = ``;
+        // this.innerHTML = ``;
+
     }
 }
 
@@ -429,6 +430,7 @@ class PaginationItem extends HTMLElement {
     }
 }
 
+//separate later
 class MemberListItem extends HTMLElement {
     constructor() {
         super();
@@ -440,7 +442,7 @@ class MemberListItem extends HTMLElement {
                     <img src="../../assets/profile-g.png">
                 </div>
                 <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Host)</span>
+                <span class="member-list-item-role flex">(Host)</span>
             </li>`;
         }
         else if (this.role == "member"){
@@ -450,19 +452,66 @@ class MemberListItem extends HTMLElement {
                     <img src="../../assets/profile-g.png">
                 </div>
                 <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Member)</span>
+                <span class="member-list-item-role flex">(Member)</span>
             </li>`; 
         }
         else if (this.role == "pending"){
-            this.innerHTML = `<button class="pagination-item round">${this.role}</button>`;
+            this.innerHTML = 
+            `<li class="w-bb-bb pending-member-item">
+                <svg-more-people></svg-more-people>
+                <span>...more people applied...</span>
+            </li>`;
         }
+        else if (this.role == "pending_host_view"){
+            this.innerHTML = 
+            `<li class="w-bb-bb member-list-item">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-role flex">waiting for approval...</span>
+                <div class="member-list-item-approval flex">
+                    <button class="btn approval gr-w hover-w-gr-gr round">
+                        <svg-check></svg-check>
+                    </button>
+                    <button class="btn approval r-w hover-w-r-r round">
+                        <svg-deny></svg-deny>
+                    </button>
+                </div>
+            </li>`;
+        }
+        else if (this.role == "member_host_view"){
+            this.innerHTML = 
+            `<li class="w-bb-bb member-list-item">
+                <div class="member-list-item-profile">
+                    <img src="../../assets/profile-g.png">
+                </div>
+                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-role flex">(Member)</span>
+                <div class="member-list-item-approval flex">
+                    <button class="btn approval r-w hover-w-r-r round">
+                        <svg-minus></svg-minus>
+                    </button>
+                </div>
+            </li>`;
+        }
+    }
+
+    connectedCallback() {
+    }
+}
+
+class ApproveBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
     }
 }
 
 class ActDetailJoinBtn extends HTMLElement {
     constructor(actID) {
         super();
-        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn">join</button>`;
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
     }
     connectedCallback() {
 
@@ -682,7 +731,7 @@ class SVGMorePeople extends BaseSVGElement {
     }
 }
 
-class SVGCheck extends BaseSVGElement {
+class SVGCheckBox extends BaseSVGElement {
     constructor() {
         super();
         this.innerHTML = 
@@ -699,6 +748,100 @@ class SVGLocation extends BaseSVGElement {
         `<svg width="27" height="32" viewBox="0 0 27 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M13.5 18.2155C15.8693 18.2155 17.79 16.2355 17.79 13.7931C17.79 11.3506 15.8693 9.37067 13.5 9.37067C11.1307 9.37067 9.20997 11.3506 9.20997 13.7931C9.20997 16.2355 11.1307 18.2155 13.5 18.2155Z" stroke="#FF4E4E" stroke-width="3"/>
             <path d="M1.97747 11.2133C4.68622 -1.06168 22.3275 -1.0475 25.0225 11.2275C26.6037 18.4281 22.2587 24.5231 18.45 28.2935C15.6862 31.0433 11.3137 31.0433 8.53622 28.2935C4.74122 24.5231 0.396216 18.4139 1.97747 11.2133Z" stroke="#FF4E4E" stroke-width="3"/>
+        </svg>`;
+    }
+}
+
+class SVGPlus extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.82812 0.125V6.5H0.453125V10.75H6.82812V17.125H11.0781V10.75H17.4531V6.5H11.0781V0.125H6.82812Z" fill="#77DAFF"/>
+        </svg>`;
+    }
+}
+
+class SVGCheck extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.8334 2.25L7.37502 13.7083L2.16669 8.5" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGDeny extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 2.5L2.5 15.5M2.5 2.5L15.5 15.5" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGMinus extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="19" height="4" viewBox="0 0 19 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2H17" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGDelete extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="29" height="33" viewBox="0 0 29 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.125 8.25H4.875M4.875 8.25H26.875M4.875 8.25V27.5C4.875 28.2293 5.16473 28.9288 5.68046 29.4445C6.19618 29.9603 6.89565 30.25 7.625 30.25H21.375C22.1043 30.25 22.8038 29.9603 23.3195 29.4445C23.8353 28.9288 24.125 28.2293 24.125 27.5V8.25M9 8.25V5.5C9 4.77065 9.28973 4.07118 9.80546 3.55546C10.3212 3.03973 11.0207 2.75 11.75 2.75H17.25C17.9793 2.75 18.6788 3.03973 19.1945 3.55546C19.7103 4.07118 20 4.77065 20 5.5V8.25M11.75 15.125V23.375M17.25 15.125V23.375" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGMail extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.66666 33.3334C5.74999 33.3334 4.95833 33.014 4.29166 32.3751C3.65277 31.7084 3.33333 30.9167 3.33333 30.0001V10.0001C3.33333 9.08342 3.65277 8.30564 4.29166 7.66675C4.95833 7.00008 5.74999 6.66675 6.66666 6.66675H33.3333C34.25 6.66675 35.0278 7.00008 35.6667 7.66675C36.3333 8.30564 36.6667 9.08342 36.6667 10.0001V30.0001C36.6667 30.9167 36.3333 31.7084 35.6667 32.3751C35.0278 33.014 34.25 33.3334 33.3333 33.3334H6.66666ZM20 21.6667L33.3333 13.3334V10.0001L20 18.3334L6.66666 10.0001V13.3334L20 21.6667Z" fill="#4D4D4D"/>
+        </svg>`;
+    }
+}
+
+class SVGPhone extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36.6667 28.2001V33.2001C36.6686 33.6642 36.5735 34.1237 36.3875 34.549C36.2016 34.9743 35.9288 35.3561 35.5868 35.6699C35.2448 35.9836 34.841 36.2226 34.4012 36.3713C33.9615 36.52 33.4956 36.5752 33.0333 36.5334C27.9047 35.9761 22.9783 34.2237 18.65 31.4167C14.623 28.8579 11.2089 25.4437 8.65 21.4167C5.8333 17.0688 4.08041 12.1184 3.53333 6.96675C3.49168 6.50586 3.54646 6.04135 3.69417 5.60279C3.84188 5.16423 4.07929 4.76123 4.39128 4.41945C4.70327 4.07767 5.08301 3.8046 5.50632 3.61762C5.92963 3.43064 6.38723 3.33385 6.85 3.33341H11.85C12.6588 3.32545 13.443 3.61188 14.0563 4.1393C14.6696 4.66672 15.0701 5.39916 15.1833 6.20008C15.3944 7.80019 15.7858 9.37129 16.35 10.8834C16.5742 11.48 16.6228 12.1283 16.4898 12.7515C16.3569 13.3748 16.0481 13.9469 15.6 14.4001L13.4833 16.5167C15.8559 20.6893 19.3108 24.1442 23.4833 26.5167L25.6 24.4001C26.0531 23.952 26.6253 23.6432 27.2485 23.5102C27.8718 23.3773 28.5201 23.4258 29.1167 23.6501C30.6288 24.2143 32.1999 24.6057 33.8 24.8167C34.6096 24.931 35.349 25.3388 35.8776 25.9626C36.4061 26.5864 36.6869 27.3827 36.6667 28.2001Z" stroke="#4D4D4D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGEdit extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="38" height="39" viewBox="0 0 38 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_648_2715)">
+        <path d="M26.1697 5.43672C26.4745 5.13207 26.8877 4.96094 27.3186 4.96094C27.7495 4.96094 28.1627 5.13207 28.4675 5.43672L33.3425 10.3117C33.6471 10.6164 33.8183 11.0297 33.8183 11.4606C33.8183 11.8915 33.6471 12.3047 33.3425 12.6095L18.7175 27.2345C18.4128 27.5392 17.9995 27.7105 17.5686 27.7106H12.6936C12.2626 27.7106 11.8493 27.5394 11.5446 27.2346C11.2398 26.9299 11.0686 26.5166 11.0686 26.0856V21.2106C11.0687 20.7796 11.24 20.3664 11.5447 20.0617L26.1697 5.43672ZM14.3186 21.8833V24.4606H16.8959L29.8959 11.4606L27.3186 8.88334L14.3186 21.8833ZM4.5686 11.4606C4.5686 10.5986 4.91101 9.77199 5.52051 9.16249C6.13 8.553 6.95665 8.21059 7.8186 8.21059H15.9436C16.3746 8.21059 16.7879 8.3818 17.0927 8.68654C17.3974 8.99129 17.5686 9.40461 17.5686 9.83559C17.5686 10.2666 17.3974 10.6799 17.0927 10.9846C16.7879 11.2894 16.3746 11.4606 15.9436 11.4606H7.8186V30.9606H27.3186V22.8356C27.3186 22.4046 27.4898 21.9913 27.7946 21.6865C28.0993 21.3818 28.5126 21.2106 28.9436 21.2106C29.3746 21.2106 29.7879 21.3818 30.0927 21.6865C30.3974 21.9913 30.5686 22.4046 30.5686 22.8356V30.9606C30.5686 31.8225 30.2262 32.6492 29.6167 33.2587C29.0072 33.8682 28.1806 34.2106 27.3186 34.2106H7.8186C6.95665 34.2106 6.13 33.8682 5.52051 33.2587C4.91101 32.6492 4.5686 31.8225 4.5686 30.9606V11.4606Z" fill="white"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_648_2715" x="0.568604" y="0.960938" width="37.2496" height="37.2498" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_648_2715"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_648_2715" result="shape"/>
+        </filter>
+        </defs>
         </svg>`;
     }
 }
@@ -731,8 +874,15 @@ customElements.define("svg-prev", SVGPrev);
 customElements.define("svg-next", SVGNext);
 customElements.define("svg-bookmark", SVGBookMark);
 customElements.define("svg-more-people", SVGMorePeople);
-customElements.define("svg-check", SVGCheck);
+customElements.define("svg-checkbox", SVGCheckBox);
 customElements.define("svg-location", SVGLocation);
+customElements.define("svg-plus", SVGPlus);
+customElements.define("svg-check", SVGCheck);
+customElements.define("svg-deny", SVGDeny);
+customElements.define("svg-minus", SVGMinus);
+customElements.define("svg-delete", SVGDelete);
+customElements.define("svg-mail", SVGMail);
+customElements.define("svg-phone", SVGPhone);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

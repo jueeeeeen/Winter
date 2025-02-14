@@ -62,9 +62,9 @@ html{
 
 main {
   margin: 0 10vw;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1; */
   padding: 5vw 0 0;
 }
 
@@ -371,107 +371,176 @@ hr {
 
 .large {
   min-width: 10em;
-  height: 1.875em;
+  height: 2.25em;
   padding: 0.4em 0.67em;
   font-size: 1.25rem;
   font-weight: 600;
   }
 
-  .round {
-    border-radius: 2em;
-  }
+.round {
+  border-radius: 2em;
+}
 
-  .edge {
-    border-radius: 0.4em;
-  }
+.edge {
+  border-radius: 0.4em;
+}
 
   .w-mb-mb, .hover-w-mb-mb:hover {
     background-color: var(--white);
     color: var(--blue80);
     border: 2px solid var(--blue80);
+    svg path {
+      fill: var(--blue80);
+    }
   }
 
   .w-bb-bb, .hover-w-bb-bb:hover {
     background-color: var(--white);
     color: var(--blue60);
     border: 2px solid var(--blue60);
+    svg>path {
+      stroke: var(--blue60);
+    }
   }
 
   .w-mb, .hover-w-mb:hover {
     background-color: var(--white);
     color: var(--blue80);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--blue80);
+    }
   }
 
   .lb-w, .hover-lb-w:hover {
     background-color: var(--blue40);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
-  }
+    svg path {
+      fill: var(--white);
+    }
+}
 
   .mb-w, .hover-mb-w:hover {
     background-color: var(--blue70);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
   .lb-w-glow, .hover-lb-w-glow:hover {
     background-color: var(--blue40);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--blue40);
+    svg path {
+      fill: var(--white);
+      stroke: var(--white);
+    }
   }
 
   .db-w, .hover-db-w:hover {
     background-color: var(--blue80);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+      stroke: var(--white);
+    }
   }
 
   .bb-w, .hover-bb-w:hover {
     background-color: var(--blue60);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
-  .w-r-r {
-    background-color: var(--white);
-    color: var(--red);
-    border: 2px solid var(--red);
-  }
-
-  .r-w {
+  .r-w, .hover-r-w:hover {
     background-color: var(--red);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      /* fill: var(--white); */
+      stroke: var(--white);
+    }
+  }
+
+  .w-r-r, .hover-w-r-r:hover {
+    background-color: var(--white);
+    color: var(--red);
+    border: 2px solid var(--red);
+    svg path {
+      /* fill: var(--red); */
+      stroke: var(--red);
+    }
   }
 
   .y-w, .hover-y-w:hover {
     background-color: var(--yellow);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
+  }
+
+  .gr-w, .hover-gr-w:hover {
+    background-color: var(--green);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      stroke: var(--white);
+      /* fill: var(--white); */
+    }
+  }
+
+  .w-gr-gr, .hover-w-gr-gr:hover {
+    background-color: var(--white);
+    color: var(--green);
+    border: 2px solid var(--green);
+    svg path {
+      stroke: var(--green);
+      /* fill: var(--green); */
+    }
   }
 
   .w-y-y, .y-w:hover, .hover-w-y-y:hover {
     background-color: var(--white);
     color: var(--yellow);
     border: 2px solid var(--yellow);
+    svg path {
+      fill: var(--yellow);
+    }
   }
 
   .lb-w-w, .hover-lb-w-w {
     background-color: var(--blue40);
     color: var(--gray90);
     border: 2px solid var(--white);
+    svg path {
+      fill: var(--gray90);
+    }
   }
 
   .rb-w, .hover-rb-w{
     background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
     -webkit-text-fill-color: var(--white);
     text-shadow: var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
   .w-rb-rb, .hover-w-rb-rb {
     position: relative;
     background-color: white;
+    svg path {
+      fill: linear-gradient(to right, var(--pink), var(--yellow), var(--blue90));
+    }
   }
 
   .w-rb-rb::before, .hover-w-rb-rb::before {
@@ -496,11 +565,17 @@ hr {
     background-color: var(--white);
     color: var(--pink);
     border: 2px solid var(--pink);
+    svg path {
+      fill: var(--pink);
+    }
   }
 
   .w-g, .hover-w-g{
     background-color: var(--white);
     color: var(--gray90);
+    svg path {
+      fill: var(--gray90);
+    }
   }
 
 .pseudo-btn input:checked + label{

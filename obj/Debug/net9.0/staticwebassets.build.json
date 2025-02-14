@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RMOjslaRQImm//SETUY9T84jEh7k4xGAxn4ZzNY7348=",
+  "Hash": "h356HlMfUFX4iIkXnxvgYMZZCngQbN/Yx3BhOB9/9HU=",
   "Source": "Winter-Project",
   "BasePath": "_content/Winter-Project",
   "Mode": "Default",
@@ -59,6 +59,27 @@
       "OriginalItemSpec": "C:\\Users\\earn\\Winter\\wwwroot\\assets\\plus-w.svg"
     },
     {
+      "Identity": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\16v7g6kzxr-3g8zn8c9a4.gz",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "js/auth/register/register_form#[.{fingerprint=3g8zn8c9a4}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\earn\\Winter\\wwwroot\\js\\auth\\register\\register_form.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "h3ah85wves",
+      "Integrity": "XUnIxlFDU2BlF7q2l4BWUI7H0zE4yNlwPRCgnhHpZGg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\earn\\Winter\\wwwroot\\js\\auth\\register\\register_form.js"
+    },
+    {
       "Identity": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\449zzrvmwa-8fa1fnl67x.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
@@ -101,12 +122,12 @@
       "OriginalItemSpec": "C:\\Users\\earn\\Winter\\wwwroot\\assets\\lock.svg"
     },
     {
-      "Identity": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-iv9v0gnnqk.gz",
+      "Identity": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-c0osmcj2m0.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/user#[.{fingerprint=iv9v0gnnqk}]?.css.gz",
+      "RelativePath": "css/user#[.{fingerprint=c0osmcj2m0}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -115,8 +136,8 @@
       "RelatedAsset": "C:\\Users\\earn\\Winter\\wwwroot\\css\\user.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "o5j5611477",
-      "Integrity": "PGpzrqAqvpghRLe/WIyPRbbh9VFr6WcpiAnAS13fSKQ=",
+      "Fingerprint": "i3wu4spv9j",
+      "Integrity": "/sGthTX3/ihRqq9SSPUrIYF9KXfvMuG8nvjUYZvUctQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\earn\\Winter\\wwwroot\\css\\user.css"
@@ -647,12 +668,12 @@
       "OriginalItemSpec": "C:\\Users\\earn\\Winter\\wwwroot\\assets\\star_outline.svg"
     },
     {
-      "Identity": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-8t5bzae7zi.gz",
+      "Identity": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-1dy84xhuzs.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/account#[.{fingerprint=8t5bzae7zi}]?.css.gz",
+      "RelativePath": "css/account#[.{fingerprint=1dy84xhuzs}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -661,8 +682,8 @@
       "RelatedAsset": "C:\\Users\\earn\\Winter\\wwwroot\\css\\account.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "c9er12cteo",
-      "Integrity": "8GniEQGmjV4DlKTS81Js4g/ktw5cFaHnQpofn7ftVX8=",
+      "Fingerprint": "ov0xxfdmo3",
+      "Integrity": "tC/GwuQ3YE9CAonJUFd2F28E0Scuiig3naTI9RdLTwc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\earn\\Winter\\wwwroot\\css\\account.css"
@@ -1816,8 +1837,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "8t5bzae7zi",
-      "Integrity": "LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w=",
+      "Fingerprint": "1dy84xhuzs",
+      "Integrity": "C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\account.css"
@@ -1900,8 +1921,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "iv9v0gnnqk",
-      "Integrity": "QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI=",
+      "Fingerprint": "c0osmcj2m0",
+      "Integrity": "jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\user.css"
@@ -1926,6 +1947,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\earn\\Winter\\wwwroot\\js\\auth\\register\\register_form.js",
+      "SourceId": "Winter-Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\earn\\Winter\\wwwroot\\",
+      "BasePath": "_content/Winter-Project",
+      "RelativePath": "js/auth/register/register_form#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3g8zn8c9a4",
+      "Integrity": "fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\auth\\register\\register_form.js"
     },
     {
       "Identity": "C:\\Users\\earn\\Winter\\wwwroot\\js\\components.js",
@@ -12367,13 +12409,13 @@
       ]
     },
     {
-      "Route": "css/account.8t5bzae7zi.css",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-8t5bzae7zi.gz",
+      "Route": "css/account.1dy84xhuzs.css",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-1dy84xhuzs.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001228501229"
+          "Quality": "0.000909090909"
         }
       ],
       "ResponseHeaders": [
@@ -12383,15 +12425,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "813"
+          "Value": "1099"
         },
         {
           "Name": "ETag",
-          "Value": "\"8GniEQGmjV4DlKTS81Js4g/ktw5cFaHnQpofn7ftVX8=\""
+          "Value": "\"tC/GwuQ3YE9CAonJUFd2F28E0Scuiig3naTI9RdLTwc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 09:42:26 GMT"
+          "Value": "Fri, 14 Feb 2025 09:56:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12411,13 +12453,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w=\""
+          "Value": "W/\"C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8t5bzae7zi"
+          "Value": "1dy84xhuzs"
         },
         {
           "Name": "label",
@@ -12425,12 +12467,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w="
+          "Value": "sha256-C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54="
         }
       ]
     },
     {
-      "Route": "css/account.8t5bzae7zi.css",
+      "Route": "css/account.1dy84xhuzs.css",
       "AssetFile": "C:\\Users\\earn\\Winter\\wwwroot\\css\\account.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -12440,7 +12482,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3466"
+          "Value": "4731"
         },
         {
           "Name": "Content-Type",
@@ -12448,11 +12490,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w=\""
+          "Value": "\"C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 09:42:26 GMT"
+          "Value": "Fri, 14 Feb 2025 09:56:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12462,7 +12504,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8t5bzae7zi"
+          "Value": "1dy84xhuzs"
         },
         {
           "Name": "label",
@@ -12470,13 +12512,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w="
+          "Value": "sha256-C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54="
         }
       ]
     },
     {
-      "Route": "css/account.8t5bzae7zi.css.gz",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-8t5bzae7zi.gz",
+      "Route": "css/account.1dy84xhuzs.css.gz",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-1dy84xhuzs.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -12485,7 +12527,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "813"
+          "Value": "1099"
         },
         {
           "Name": "Content-Type",
@@ -12493,11 +12535,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8GniEQGmjV4DlKTS81Js4g/ktw5cFaHnQpofn7ftVX8=\""
+          "Value": "\"tC/GwuQ3YE9CAonJUFd2F28E0Scuiig3naTI9RdLTwc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 09:42:26 GMT"
+          "Value": "Fri, 14 Feb 2025 09:56:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12515,7 +12557,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "8t5bzae7zi"
+          "Value": "1dy84xhuzs"
         },
         {
           "Name": "label",
@@ -12523,18 +12565,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-8GniEQGmjV4DlKTS81Js4g/ktw5cFaHnQpofn7ftVX8="
+          "Value": "sha256-tC/GwuQ3YE9CAonJUFd2F28E0Scuiig3naTI9RdLTwc="
         }
       ]
     },
     {
       "Route": "css/account.css",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-8t5bzae7zi.gz",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-1dy84xhuzs.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001228501229"
+          "Quality": "0.000909090909"
         }
       ],
       "ResponseHeaders": [
@@ -12544,15 +12586,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "813"
+          "Value": "1099"
         },
         {
           "Name": "ETag",
-          "Value": "\"8GniEQGmjV4DlKTS81Js4g/ktw5cFaHnQpofn7ftVX8=\""
+          "Value": "\"tC/GwuQ3YE9CAonJUFd2F28E0Scuiig3naTI9RdLTwc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 09:42:26 GMT"
+          "Value": "Fri, 14 Feb 2025 09:56:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12572,13 +12614,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w=\""
+          "Value": "W/\"C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w="
+          "Value": "sha256-C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54="
         }
       ]
     },
@@ -12593,7 +12635,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "3466"
+          "Value": "4731"
         },
         {
           "Name": "Content-Type",
@@ -12601,11 +12643,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w=\""
+          "Value": "\"C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 09:42:26 GMT"
+          "Value": "Fri, 14 Feb 2025 09:56:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12615,13 +12657,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w="
+          "Value": "sha256-C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54="
         }
       ]
     },
     {
       "Route": "css/account.css.gz",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-8t5bzae7zi.gz",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\qz3f0jwmwg-1dy84xhuzs.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -12630,7 +12672,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "813"
+          "Value": "1099"
         },
         {
           "Name": "Content-Type",
@@ -12638,11 +12680,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8GniEQGmjV4DlKTS81Js4g/ktw5cFaHnQpofn7ftVX8=\""
+          "Value": "\"tC/GwuQ3YE9CAonJUFd2F28E0Scuiig3naTI9RdLTwc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Thu, 13 Feb 2025 09:42:26 GMT"
+          "Value": "Fri, 14 Feb 2025 09:56:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -12660,7 +12702,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-8GniEQGmjV4DlKTS81Js4g/ktw5cFaHnQpofn7ftVX8="
+          "Value": "sha256-tC/GwuQ3YE9CAonJUFd2F28E0Scuiig3naTI9RdLTwc="
         }
       ]
     },
@@ -13559,13 +13601,13 @@
       ]
     },
     {
-      "Route": "css/user.css",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-iv9v0gnnqk.gz",
+      "Route": "css/user.c0osmcj2m0.css",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-c0osmcj2m0.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000678886626"
+          "Quality": "0.000680735194"
         }
       ],
       "ResponseHeaders": [
@@ -13575,19 +13617,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1472"
+          "Value": "1468"
         },
         {
           "Name": "ETag",
-          "Value": "\"PGpzrqAqvpghRLe/WIyPRbbh9VFr6WcpiAnAS13fSKQ=\""
+          "Value": "\"/sGthTX3/ihRqq9SSPUrIYF9KXfvMuG8nvjUYZvUctQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Feb 2025 05:18:39 GMT"
+          "Value": "Fri, 14 Feb 2025 06:46:58 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -13603,18 +13645,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI=\""
+          "Value": "W/\"jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "c0osmcj2m0"
+        },
+        {
+          "Name": "label",
+          "Value": "css/user.css"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI="
+          "Value": "sha256-jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk="
         }
       ]
     },
     {
-      "Route": "css/user.css",
+      "Route": "css/user.c0osmcj2m0.css",
       "AssetFile": "C:\\Users\\earn\\Winter\\wwwroot\\css\\user.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -13624,7 +13674,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6569"
+          "Value": "6584"
         },
         {
           "Name": "Content-Type",
@@ -13632,121 +13682,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI=\""
+          "Value": "\"jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Feb 2025 05:18:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI="
-        }
-      ]
-    },
-    {
-      "Route": "css/user.css.gz",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-iv9v0gnnqk.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1472"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"PGpzrqAqvpghRLe/WIyPRbbh9VFr6WcpiAnAS13fSKQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 14 Feb 2025 05:18:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-PGpzrqAqvpghRLe/WIyPRbbh9VFr6WcpiAnAS13fSKQ="
-        }
-      ]
-    },
-    {
-      "Route": "css/user.iv9v0gnnqk.css",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-iv9v0gnnqk.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000678886626"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1472"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"PGpzrqAqvpghRLe/WIyPRbbh9VFr6WcpiAnAS13fSKQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 14 Feb 2025 05:18:39 GMT"
+          "Value": "Fri, 14 Feb 2025 06:46:58 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "iv9v0gnnqk"
+          "Value": "c0osmcj2m0"
         },
         {
           "Name": "label",
@@ -13754,13 +13704,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI="
+          "Value": "sha256-jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk="
         }
       ]
     },
     {
-      "Route": "css/user.iv9v0gnnqk.css",
-      "AssetFile": "C:\\Users\\earn\\Winter\\wwwroot\\css\\user.css",
+      "Route": "css/user.c0osmcj2m0.css.gz",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-c0osmcj2m0.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -13769,7 +13719,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "6569"
+          "Value": "1468"
         },
         {
           "Name": "Content-Type",
@@ -13777,56 +13727,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI=\""
+          "Value": "\"/sGthTX3/ihRqq9SSPUrIYF9KXfvMuG8nvjUYZvUctQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 14 Feb 2025 05:18:39 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "iv9v0gnnqk"
-        },
-        {
-          "Name": "label",
-          "Value": "css/user.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI="
-        }
-      ]
-    },
-    {
-      "Route": "css/user.iv9v0gnnqk.css.gz",
-      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-iv9v0gnnqk.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1472"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"PGpzrqAqvpghRLe/WIyPRbbh9VFr6WcpiAnAS13fSKQ=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 14 Feb 2025 05:18:39 GMT"
+          "Value": "Fri, 14 Feb 2025 06:46:58 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -13844,7 +13749,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "iv9v0gnnqk"
+          "Value": "c0osmcj2m0"
         },
         {
           "Name": "label",
@@ -13852,7 +13757,144 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-PGpzrqAqvpghRLe/WIyPRbbh9VFr6WcpiAnAS13fSKQ="
+          "Value": "sha256-/sGthTX3/ihRqq9SSPUrIYF9KXfvMuG8nvjUYZvUctQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/user.css",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-c0osmcj2m0.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000680735194"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1468"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/sGthTX3/ihRqq9SSPUrIYF9KXfvMuG8nvjUYZvUctQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 06:46:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk="
+        }
+      ]
+    },
+    {
+      "Route": "css/user.css",
+      "AssetFile": "C:\\Users\\earn\\Winter\\wwwroot\\css\\user.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "6584"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 06:46:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk="
+        }
+      ]
+    },
+    {
+      "Route": "css/user.css.gz",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\83uox10qly-c0osmcj2m0.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1468"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"/sGthTX3/ihRqq9SSPUrIYF9KXfvMuG8nvjUYZvUctQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 06:46:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-/sGthTX3/ihRqq9SSPUrIYF9KXfvMuG8nvjUYZvUctQ="
         }
       ]
     },
@@ -14151,6 +14193,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4="
+        }
+      ]
+    },
+    {
+      "Route": "js/auth/register/register_form.3g8zn8c9a4.js",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\16v7g6kzxr-3g8zn8c9a4.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002028397566"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "492"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XUnIxlFDU2BlF7q2l4BWUI7H0zE4yNlwPRCgnhHpZGg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 09:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3g8zn8c9a4"
+        },
+        {
+          "Name": "label",
+          "Value": "js/auth/register/register_form.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI="
+        }
+      ]
+    },
+    {
+      "Route": "js/auth/register/register_form.3g8zn8c9a4.js",
+      "AssetFile": "C:\\Users\\earn\\Winter\\wwwroot\\js\\auth\\register\\register_form.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1432"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 09:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3g8zn8c9a4"
+        },
+        {
+          "Name": "label",
+          "Value": "js/auth/register/register_form.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI="
+        }
+      ]
+    },
+    {
+      "Route": "js/auth/register/register_form.3g8zn8c9a4.js.gz",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\16v7g6kzxr-3g8zn8c9a4.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XUnIxlFDU2BlF7q2l4BWUI7H0zE4yNlwPRCgnhHpZGg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 09:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3g8zn8c9a4"
+        },
+        {
+          "Name": "label",
+          "Value": "js/auth/register/register_form.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-XUnIxlFDU2BlF7q2l4BWUI7H0zE4yNlwPRCgnhHpZGg="
+        }
+      ]
+    },
+    {
+      "Route": "js/auth/register/register_form.js",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\16v7g6kzxr-3g8zn8c9a4.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002028397566"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "492"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XUnIxlFDU2BlF7q2l4BWUI7H0zE4yNlwPRCgnhHpZGg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 09:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI="
+        }
+      ]
+    },
+    {
+      "Route": "js/auth/register/register_form.js",
+      "AssetFile": "C:\\Users\\earn\\Winter\\wwwroot\\js\\auth\\register\\register_form.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1432"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 09:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI="
+        }
+      ]
+    },
+    {
+      "Route": "js/auth/register/register_form.js.gz",
+      "AssetFile": "C:\\Users\\earn\\Winter\\obj\\Debug\\net9.0\\compressed\\16v7g6kzxr-3g8zn8c9a4.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "492"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"XUnIxlFDU2BlF7q2l4BWUI7H0zE4yNlwPRCgnhHpZGg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 14 Feb 2025 09:58:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-XUnIxlFDU2BlF7q2l4BWUI7H0zE4yNlwPRCgnhHpZGg="
         }
       ]
     },

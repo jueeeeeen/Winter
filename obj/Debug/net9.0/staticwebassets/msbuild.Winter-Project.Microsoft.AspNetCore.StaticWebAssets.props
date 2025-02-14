@@ -876,8 +876,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>8t5bzae7zi</Fingerprint>
-      <Integrity>LP20/vZBIbh1FlhZt7wADtFoyFuY2bXmkGKssnS4b1w=</Integrity>
+      <Fingerprint>1dy84xhuzs</Fingerprint>
+      <Integrity>C2iFsBuajOjuWWC1ljop+AEaAMaeYDia00/Mib8vE54=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\account.css'))</OriginalItemSpec>
@@ -948,8 +948,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>iv9v0gnnqk</Fingerprint>
-      <Integrity>QkzzeMvIZS6zjM/ujtsYzBez0BfnRfSYZc+ljmbz3zI=</Integrity>
+      <Fingerprint>c0osmcj2m0</Fingerprint>
+      <Integrity>jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\user.css'))</OriginalItemSpec>
@@ -971,6 +971,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\auth\register\register_form.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>js/auth/register/register_form.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>3g8zn8c9a4</Fingerprint>
+      <Integrity>fVOlRvWiKyO6Mky3s+AVsaHAGJ5vYxHZDPVboXSlGPI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\auth\register\register_form.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\components.js'))">
       <SourceType>Package</SourceType>

@@ -12,12 +12,4 @@ public class AccountController : Controller
     {
         return View();
     }
-    public IActionResult RegisterUser()
-    {
-        return View();
-    }
-    public IActionResult RegisterDetail()
-    {
-        return View();
-    }
 }

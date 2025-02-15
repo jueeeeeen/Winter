@@ -17,7 +17,9 @@
                 <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
                 <button class="upload-profile-button">
                     <img src="\assets\upload-03.svg" alt="upload profile picture">
-                    <p>Upload Photo</p>
+                    @* <p>Upload Photo</p> *@
+                    <label for="input file">Upload Photo</label>
+                    <input type="file" accept="image/jpg, image/png, image/jpeg" id="input file">
                 </button>
             </div>
 
@@ -26,7 +28,7 @@
             <h6>20 years old</h6>
         </div>
 
-        <fieldset class="personal-info">
+        <fieldset class="profile-details">
             <div>
                 <img src="\assets\location_on.svg" alt="location">
                 <input type="text" value="Bangkok, Thailand">
@@ -122,10 +124,10 @@
         </div>
     </div>
     <div class="save-cancel-button">
-        <button class="save-button">
+        <button class="save-button" onClick="location.href='@Url.Action("Profile", "User")'">
             <p>Save</p>
         </button>
-        <button class="cancel-button">
+        <button class="cancel-button" onClick="location.href='@Url.Action("Profile", "User")'">
             <p>Cancel</p>
         </button>
     </div>

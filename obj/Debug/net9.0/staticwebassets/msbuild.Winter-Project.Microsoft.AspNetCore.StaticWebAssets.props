@@ -1074,8 +1074,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>wtbzqy4rwe</Fingerprint>
-      <Integrity>XLeNID3KPWq6tFTWzUW9Qce5326V60Z7os0pTcQd0Hg=</Integrity>
+      <Fingerprint>djoiwo6di0</Fingerprint>
+      <Integrity>uWzWbPK0eb0HmrCFO09nQTbw2Km+NCLHTXNfoRQFV00=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\account.css'))</OriginalItemSpec>
@@ -1128,8 +1128,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>nlgvlr9zo2</Fingerprint>
-      <Integrity>yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns=</Integrity>
+      <Fingerprint>v151t6tklh</Fingerprint>
+      <Integrity>07Rin/uWEGlzi6l7uUmTkiufcZYjZuduKNlrUlBSLAw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\create.css'))</OriginalItemSpec>
@@ -1152,6 +1152,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\home.css'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\login.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>css/login.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>hnf2gn38qs</Fingerprint>
+      <Integrity>vbfJvw9b8hEx6wOkf+/U0ao8wWXSQrxq3q54paLR+5g=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\login.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
@@ -1164,8 +1182,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>vf2xh0sict</Fingerprint>
-      <Integrity>m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s=</Integrity>
+      <Fingerprint>hhng7t7hmu</Fingerprint>
+      <Integrity>5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -1182,8 +1200,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>macyqplvf9</Fingerprint>
-      <Integrity>vuCVc+Q9Wmlpjx2056mMnFKc3xoVEdw+ikz3kWiMSxs=</Integrity>
+      <Fingerprint>c0osmcj2m0</Fingerprint>
+      <Integrity>jJ5oSN2LlpBOisD3VCAMUIhJNtiv6ytN5tZtGRAjwQk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\user.css'))</OriginalItemSpec>
@@ -1205,6 +1223,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\auth\register\register_form.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>js/auth/register/register_form.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>8446wcg0o2</Fingerprint>
+      <Integrity>WCrZV8LEgktuhtptgKfihfrnxzh2LjtEOH8+Nw03qD0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\auth\register\register_form.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\components.js'))">
       <SourceType>Package</SourceType>

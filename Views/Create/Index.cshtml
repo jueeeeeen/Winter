@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="create-container">
+    <div class="create-card">
+        <div class="create-header">
+            <p>Details</p>
+        </div>
+        <form class="create-details">
+            <div class="form-group">
+                <label>Activity Header :</label>
+                <input/>
+            </div>
+            <div class="form-group">
+                <label>Activity Details :</label>
+                <textarea rows="6"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Date - Time :</label>
+                <input/>
+            </div>
+            <div class="form-group">
+                <label>Location :</label>
+                <input/>
+            </div>
+            <div class="form-group">
+                <label>Number of member : (Include yourself)</label>
+                <number-input></number-input>
+            </div>
+            <div class="form-group">
+                <label>Tags :</label>
+                <tag-select></tag-select>
+            </div>
+            <div class="form-group">
+                <label>Membership approval :</label>
+                <div class="radio-input">
+                    <div class="radio-input-choice">
+                        <input type="radio"/>
+                        <p>Approval not needed</p>
+                    </div>
+                    <div class="radio-input-choice">
+                        <input type="radio"/>
+                        <p>All members must be approved</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="create-card">
+        <div class="create-header">
+            <p>Requirements (Optional)</p>
+        </div>
+        <form class="create-details">
+            <div class="form-group">
+                <label>Gender :</label>
+                <div class="radio-input">
+                    <div class="radio-input-choice">
+                        <input type="radio"/>
+                        <p>Male</p>
+                    </div>
+                    <div class="radio-input-choice">
+                        <input type="radio"/>
+                        <p>Female</p>
+                    </div>
+                    <div class="radio-input-choice">
+                        <input type="radio"/>
+                        <p>LGBTQ+</p>
+                    </div>
+                    <div class="radio-input-choice">
+                        <input type="radio"/>
+                        <p>None</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Age</label>
+                <number-input></number-input>
+            </div>
+            <div class="form-group">
+                <label>Other :</label>
+                <input/>
+            </div>
+        </form>
+    </div>
+    <div class="last-card">
+        <div class="check-before">
+            <input type="checkbox"/>
+            <p>By creating an activity, you agree to our Terms of Use and Privacy Policy.</p>
+        </div>
+        <button class="medium round bb-w">
+            <img src="assets/plus-w.svg" alt="plus icon">Create
+        </button>
+    </div>
+</div>   

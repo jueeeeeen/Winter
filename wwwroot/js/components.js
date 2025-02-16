@@ -262,6 +262,63 @@ class TagFilter extends HTMLElement{
     }
 }
 
+class TagSelect extends HTMLElement{
+    constructor(){
+        super()
+        this.innerHTML = 
+        `<div class="tag-col">
+            <tag-selector data-tag_name="Entertain"></tag-selector>
+            <tag-selector data-tag_name="Sport"></tag-selector>
+            <tag-selector data-tag_name="Study"></tag-selector>
+            <tag-selector data-tag_name="Hobby"></tag-selector>
+            <tag-selector data-tag_name="Travel"></tag-selector>
+            <tag-selector data-tag_name="Art"></tag-selector>
+            <tag-selector data-tag_name="Music"></tag-selector>
+            <tag-selector data-tag_name="Beauty"></tag-selector>
+            <tag-selector data-tag_name="Pet"></tag-selector>
+        </div>
+        `
+    }
+}
+
+class NumberInput extends HTMLElement {
+    constructor() {
+        super();
+
+        this.innerHTML = `
+            <div class="number-input-container">
+                <button type="button" id="decrease">-</button>
+                <input type="text" id="number" value="1">
+                <button type="button" id="increase">+</button>
+            </div>
+        `;
+
+        this.input = this.querySelector("#number");
+        this.decreaseBtn = this.querySelector("#decrease");
+        this.increaseBtn = this.querySelector("#increase");
+
+        this.decreaseBtn.addEventListener("click", () => this.updateValue(-1));
+        this.increaseBtn.addEventListener("click", () => this.updateValue(1));
+
+        this.input.addEventListener("input", () => this.validateInput());
+    }
+
+    updateValue(change) {
+        let currentValue = parseInt(this.input.value) || 0;
+        let newValue = currentValue + change;
+        if (newValue < 1) newValue = 1;
+        this.input.value = newValue;
+    }
+
+    validateInput() {
+        let value = this.input.value;
+        this.input.value = value.replace(/[^0-9]/g, '');
+    }
+}
+
+
+// Register custom element
+
 // replace button with better element later****
 class TagDisplay extends HTMLElement {
     constructor() {
@@ -709,6 +766,8 @@ customElements.define("login-navbar", LoginNavbar);
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
+customElements.define("tag-select", TagSelect);
+customElements.define("number-input", NumberInput);
 customElements.define("tag-display", TagDisplay);
 customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CeBwVA8TIQ5Mpt+dNVgdvYrTZ5W8Sr9hba1w3LF7Lqw=",
+  "Hash": "Yiqw+tKQ+E3RUgqchhmaP+JmENvGgX1PRGipVxjsNF4=",
   "Source": "Winter-Project",
   "BasePath": "_content/Winter-Project",
   "Mode": "Default",
@@ -206,12 +206,12 @@
       "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\winter_logo-w.svg"
     },
     {
-      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-6jmgpud475.gz",
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-nlgvlr9zo2.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/create#[.{fingerprint=6jmgpud475}]?.css.gz",
+      "RelativePath": "css/create#[.{fingerprint=nlgvlr9zo2}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -220,8 +220,8 @@
       "RelatedAsset": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\create.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "y5qbntqxss",
-      "Integrity": "yrvbSlT4ijStkvA5aD6OyP18NifSuBk3UmzBqjX06QU=",
+      "Fingerprint": "ez4ls0kzq7",
+      "Integrity": "eqhCUcESU+9t5g+QGKbgLviZCeEx25KUgbNep+mNzlQ=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\create.css"
@@ -899,12 +899,12 @@
       "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\assets\\person.svg"
     },
     {
-      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-hhng7t7hmu.gz",
+      "Identity": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-vf2xh0sict.gz",
       "SourceId": "Winter-Project",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/Winter-Project",
-      "RelativePath": "css/site#[.{fingerprint=hhng7t7hmu}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=vf2xh0sict}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -913,8 +913,8 @@
       "RelatedAsset": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "0hat8d8n4d",
-      "Integrity": "RHaUxq0p0spIEkpsF9lSzKKnifhjzKLrTnxlGj0KstU=",
+      "Fingerprint": "zrar75kbfy",
+      "Integrity": "TwrNHg0VTMN7MhrtXIlbBcrGcR6f8kNCksuLp+DPLgY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\site.css"
@@ -2362,8 +2362,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "6jmgpud475",
-      "Integrity": "7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY=",
+      "Fingerprint": "nlgvlr9zo2",
+      "Integrity": "yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\create.css"
@@ -2404,8 +2404,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "hhng7t7hmu",
-      "Integrity": "5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w=",
+      "Fingerprint": "vf2xh0sict",
+      "Integrity": "m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -16848,13 +16848,13 @@
       ]
     },
     {
-      "Route": "css/create.6jmgpud475.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-6jmgpud475.gz",
+      "Route": "css/create.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-nlgvlr9zo2.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001285347044"
+          "Quality": "0.001233045623"
         }
       ],
       "ResponseHeaders": [
@@ -16864,19 +16864,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "777"
+          "Value": "810"
         },
         {
           "Name": "ETag",
-          "Value": "\"yrvbSlT4ijStkvA5aD6OyP18NifSuBk3UmzBqjX06QU=\""
+          "Value": "\"eqhCUcESU+9t5g+QGKbgLviZCeEx25KUgbNep+mNzlQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:37:22 GMT"
+          "Value": "Sun, 16 Feb 2025 17:42:26 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -16892,26 +16892,18 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY=\""
+          "Value": "W/\"yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "6jmgpud475"
-        },
-        {
-          "Name": "label",
-          "Value": "css/create.css"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY="
+          "Value": "sha256-yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns="
         }
       ]
     },
     {
-      "Route": "css/create.6jmgpud475.css",
+      "Route": "css/create.css",
       "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\create.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -16921,7 +16913,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2409"
+          "Value": "2610"
         },
         {
           "Name": "Content-Type",
@@ -16929,11 +16921,156 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY=\""
+          "Value": "\"yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:37:22 GMT"
+          "Value": "Sun, 16 Feb 2025 17:42:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns="
+        }
+      ]
+    },
+    {
+      "Route": "css/create.css.gz",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-nlgvlr9zo2.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "810"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"eqhCUcESU+9t5g+QGKbgLviZCeEx25KUgbNep+mNzlQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Feb 2025 17:42:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-eqhCUcESU+9t5g+QGKbgLviZCeEx25KUgbNep+mNzlQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/create.nlgvlr9zo2.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-nlgvlr9zo2.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001233045623"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "810"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"eqhCUcESU+9t5g+QGKbgLviZCeEx25KUgbNep+mNzlQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Feb 2025 17:42:26 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nlgvlr9zo2"
+        },
+        {
+          "Name": "label",
+          "Value": "css/create.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns="
+        }
+      ]
+    },
+    {
+      "Route": "css/create.nlgvlr9zo2.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\create.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2610"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Feb 2025 17:42:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16943,7 +17080,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6jmgpud475"
+          "Value": "nlgvlr9zo2"
         },
         {
           "Name": "label",
@@ -16951,13 +17088,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY="
+          "Value": "sha256-yzZqcxceQCEriPGfhBFx/lN6sckAW8oR0/b4/Jdv3Ns="
         }
       ]
     },
     {
-      "Route": "css/create.6jmgpud475.css.gz",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-6jmgpud475.gz",
+      "Route": "css/create.nlgvlr9zo2.css.gz",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-nlgvlr9zo2.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -16966,7 +17103,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "777"
+          "Value": "810"
         },
         {
           "Name": "Content-Type",
@@ -16974,11 +17111,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"yrvbSlT4ijStkvA5aD6OyP18NifSuBk3UmzBqjX06QU=\""
+          "Value": "\"eqhCUcESU+9t5g+QGKbgLviZCeEx25KUgbNep+mNzlQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:37:22 GMT"
+          "Value": "Sun, 16 Feb 2025 17:42:26 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -16996,7 +17133,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "6jmgpud475"
+          "Value": "nlgvlr9zo2"
         },
         {
           "Name": "label",
@@ -17004,144 +17141,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-yrvbSlT4ijStkvA5aD6OyP18NifSuBk3UmzBqjX06QU="
-        }
-      ]
-    },
-    {
-      "Route": "css/create.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-6jmgpud475.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.001285347044"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "777"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"yrvbSlT4ijStkvA5aD6OyP18NifSuBk3UmzBqjX06QU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:37:22 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY="
-        }
-      ]
-    },
-    {
-      "Route": "css/create.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\create.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2409"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:37:22 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-7mh8U4Ym4bDrWezZwG2iC+9BwQb1baq0oBrj5gvKvuY="
-        }
-      ]
-    },
-    {
-      "Route": "css/create.css.gz",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\86wiswcdoz-6jmgpud475.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "777"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"yrvbSlT4ijStkvA5aD6OyP18NifSuBk3UmzBqjX06QU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:37:22 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-yrvbSlT4ijStkvA5aD6OyP18NifSuBk3UmzBqjX06QU="
+          "Value": "sha256-eqhCUcESU+9t5g+QGKbgLviZCeEx25KUgbNep+mNzlQ="
         }
       ]
     },
@@ -17445,12 +17445,12 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-hhng7t7hmu.gz",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-vf2xh0sict.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000357270454"
+          "Quality": "0.000355998576"
         }
       ],
       "ResponseHeaders": [
@@ -17460,15 +17460,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2798"
+          "Value": "2808"
         },
         {
           "Name": "ETag",
-          "Value": "\"RHaUxq0p0spIEkpsF9lSzKKnifhjzKLrTnxlGj0KstU=\""
+          "Value": "\"TwrNHg0VTMN7MhrtXIlbBcrGcR6f8kNCksuLp+DPLgY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:24:50 GMT"
+          "Value": "Sun, 16 Feb 2025 17:50:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17488,13 +17488,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w=\""
+          "Value": "W/\"m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w="
+          "Value": "sha256-m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s="
         }
       ]
     },
@@ -17509,7 +17509,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11730"
+          "Value": "11757"
         },
         {
           "Name": "Content-Type",
@@ -17517,11 +17517,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w=\""
+          "Value": "\"m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:24:50 GMT"
+          "Value": "Sun, 16 Feb 2025 17:50:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17531,13 +17531,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w="
+          "Value": "sha256-m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-hhng7t7hmu.gz",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-vf2xh0sict.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17546,7 +17546,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2798"
+          "Value": "2808"
         },
         {
           "Name": "Content-Type",
@@ -17554,11 +17554,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"RHaUxq0p0spIEkpsF9lSzKKnifhjzKLrTnxlGj0KstU=\""
+          "Value": "\"TwrNHg0VTMN7MhrtXIlbBcrGcR6f8kNCksuLp+DPLgY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:24:50 GMT"
+          "Value": "Sun, 16 Feb 2025 17:50:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17576,18 +17576,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-RHaUxq0p0spIEkpsF9lSzKKnifhjzKLrTnxlGj0KstU="
+          "Value": "sha256-TwrNHg0VTMN7MhrtXIlbBcrGcR6f8kNCksuLp+DPLgY="
         }
       ]
     },
     {
-      "Route": "css/site.hhng7t7hmu.css",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-hhng7t7hmu.gz",
+      "Route": "css/site.vf2xh0sict.css",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-vf2xh0sict.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000357270454"
+          "Quality": "0.000355998576"
         }
       ],
       "ResponseHeaders": [
@@ -17597,15 +17597,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2798"
+          "Value": "2808"
         },
         {
           "Name": "ETag",
-          "Value": "\"RHaUxq0p0spIEkpsF9lSzKKnifhjzKLrTnxlGj0KstU=\""
+          "Value": "\"TwrNHg0VTMN7MhrtXIlbBcrGcR6f8kNCksuLp+DPLgY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:24:50 GMT"
+          "Value": "Sun, 16 Feb 2025 17:50:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17625,13 +17625,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w=\""
+          "Value": "W/\"m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "hhng7t7hmu"
+          "Value": "vf2xh0sict"
         },
         {
           "Name": "label",
@@ -17639,12 +17639,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w="
+          "Value": "sha256-m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s="
         }
       ]
     },
     {
-      "Route": "css/site.hhng7t7hmu.css",
+      "Route": "css/site.vf2xh0sict.css",
       "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -17654,7 +17654,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11730"
+          "Value": "11757"
         },
         {
           "Name": "Content-Type",
@@ -17662,11 +17662,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w=\""
+          "Value": "\"m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:24:50 GMT"
+          "Value": "Sun, 16 Feb 2025 17:50:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17676,7 +17676,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "hhng7t7hmu"
+          "Value": "vf2xh0sict"
         },
         {
           "Name": "label",
@@ -17684,13 +17684,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-5YWtdebENSR0MijCiWshisThKZqhk7nu0ceu2i4qJ6w="
+          "Value": "sha256-m3uRAK+fbjkcAiMI3zJI886EtfM692qKKCM4zatXO2s="
         }
       ]
     },
     {
-      "Route": "css/site.hhng7t7hmu.css.gz",
-      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-hhng7t7hmu.gz",
+      "Route": "css/site.vf2xh0sict.css.gz",
+      "AssetFile": "C:\\Users\\asus\\OneDrive\\Desktop\\Code\\Web-app-dev\\Winter-Project\\obj\\Debug\\net9.0\\compressed\\vd4bjcljky-vf2xh0sict.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -17699,7 +17699,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2798"
+          "Value": "2808"
         },
         {
           "Name": "Content-Type",
@@ -17707,11 +17707,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"RHaUxq0p0spIEkpsF9lSzKKnifhjzKLrTnxlGj0KstU=\""
+          "Value": "\"TwrNHg0VTMN7MhrtXIlbBcrGcR6f8kNCksuLp+DPLgY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Feb 2025 13:24:50 GMT"
+          "Value": "Sun, 16 Feb 2025 17:50:45 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -17729,7 +17729,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "hhng7t7hmu"
+          "Value": "vf2xh0sict"
         },
         {
           "Name": "label",
@@ -17737,7 +17737,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-RHaUxq0p0spIEkpsF9lSzKKnifhjzKLrTnxlGj0KstU="
+          "Value": "sha256-TwrNHg0VTMN7MhrtXIlbBcrGcR6f8kNCksuLp+DPLgY="
         }
       ]
     },

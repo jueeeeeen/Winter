@@ -61,7 +61,7 @@
 }
 
 .create-details {
-    padding: 40px 40px 40px 40px;
+    padding: 40px 40px 10px 40px;
 }
 
 .form-group {
@@ -131,9 +131,11 @@ input[type="radio"]:checked {
 }
 
 .last-card {
+    width: 60vw;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    margin-bottom: 40px;
 }
 
 .check-before {
@@ -143,4 +145,43 @@ input[type="radio"]:checked {
 
 .check-before p {
     font-weight: bold;
+}
+
+.red{
+    color: red;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border: 2px solid var(--blue50);
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--blue50);
+}
+
+input[type="checkbox"]:checked::after {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.create-btn {
+    background-color: var(--blue50);
+    color: var(--white);
+}
+
+.create-btn:hover {
+    background-color: var(--blue80);
+    color: var(--white);
 }

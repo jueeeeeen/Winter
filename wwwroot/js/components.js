@@ -226,45 +226,118 @@ class SelectActivities extends HTMLElement{
         `};
     
 }
-class Activities extends HTMLElement{
+customElements.define("select-activities", SelectActivities);
+
+class Member extends HTMLElement {
     constructor() {
         super();
         this.innerHTML = `
-        <div class="activities-bg">
-            <h2 class="activities-header">Upcoming</h2>
-
-            <button class="activity-dropdown">
-                <span>หาเพื่อนดูหนังครับ!!!</span>
-                <div class="tags">
-                    <span class="tag">tag</span>
-                    <span class="tag">tag</span>
-                    <span class="tag">tag</span>
-                </div>
-                <span class="date">
-                    <img src="calendar-icon.png" alt="calendar"> Jan 5, 2025, 8:15 am
-                </span>
-            </button>
-
-            <div class="dropdown-content">
-                <img src="" alt="">
-                <ul class="members">
-                    <li class="member">
-                        <img src="assets/Profile-w-b.png" alt="Profile">
-                        <span class="member-name">Peerawat Ingk.</span>
-                        <span class="member-role">(Host)</span>
-                    </li>
-                    <li class="member">
-                        <img src="assets/Profile-w-b.png" alt="Profile">
-                        <span class="member-name">Peerawat Ingk.</span>
-                        <span class="member-role">(Host)</span>
-                    </li>
-                </ul>
+        <li class="member">
+            <div class="member-content">
+                <img src="assets/Profile-w-b.png" alt="Profile">
+                <span class="member-name"></span>
+                <span class="member-role"></span>
             </div>
-        </div>
-        `
+            <button class="rate-btn">
+                <img src="assets/yellow_star_outline.png" alt="Rate">
+                <span class="review-text">review</span>
+            </button>
+        </li>
+        `;
+    }
+
+    connectedCallback() {
+        this.querySelector(".member-name").textContent = this.getAttribute("name") || "Unknown";
+        this.querySelector(".member-role").textContent = `(${this.getAttribute("role") || "Member"})`;
     }
 }
-customElements.define("select-activities", SelectActivities);
+
+class ActivityDropdown extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `        
+        <div class="activity-dropdown">
+            <button class="activity-dropdown-btn">
+                <div class="activity-details">
+                    <span class="activity-name"></span>
+                    <div class="tags"></div>
+                    <span class="date">
+                        <img src="assets/calendar_icon.png" alt="calendar"> 
+                        <span class="date-text"></span>
+                    </span>
+                </div>
+                <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
+            </button>
+
+            <div class="activity-dropdown-content">
+                <div class="dropdown-container">
+                    <img src="assets/people_icon.png" alt="People">
+                    <ul class="members"></ul>
+                </div>
+            </div>
+        </div>
+        `;
+
+        this.querySelector(".activity-dropdown-btn").addEventListener("click", () => {
+            this.querySelector(".activity-dropdown").classList.toggle("open");
+        });
+    }
+
+    connectedCallback() {
+        this.querySelector(".activity-name").textContent = this.getAttribute("activity-name") || "No Activity";
+        this.querySelector(".date-text").textContent = this.getAttribute("date") || "Unknown Date";
+
+        const tagsContainer = this.querySelector(".tags");
+        const tags = JSON.parse(this.getAttribute("tags") || "[]");
+        tags.forEach(tag => {
+            const span = document.createElement("span");
+            span.classList.add("tag");
+            span.textContent = tag;
+            tagsContainer.appendChild(span);
+        });
+
+        const membersContainer = this.querySelector(".members");
+        const members = JSON.parse(this.getAttribute("members") || "[]");
+        members.forEach(member => {
+            const memberElement = document.createElement("custom-member");
+            memberElement.setAttribute("name", member.name);
+            memberElement.setAttribute("role", member.role);
+            membersContainer.appendChild(memberElement);
+        });
+    }
+}
+
+class ActivitiesList extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `        
+        <div class="activities-bg">
+            <h2 class="activities-header">Upcoming</h2>
+            <div class="activities"></div>
+        </div>
+        `;
+    }
+
+    connectedCallback() {
+        const activitiesContainer = this.querySelector(".activities");
+        const activities = JSON.parse(this.getAttribute("activities") || "[]");
+
+        activities.forEach(activity => {
+            const activityElement = document.createElement("activity-dropdown");
+            activityElement.setAttribute("activity-name", activity.name);
+            activityElement.setAttribute("date", activity.date);
+            activityElement.setAttribute("tags", JSON.stringify(activity.tags));
+            activityElement.setAttribute("members", JSON.stringify(activity.members));
+            activitiesContainer.appendChild(activityElement);
+        });
+    }
+}
+
+customElements.define("activities-list", ActivitiesList);
+customElements.define("activity-dropdown", ActivityDropdown);
+customElements.define("custom-member", Member);
+
+
 
 // var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
 // var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");

@@ -3,72 +3,24 @@
 }
 <select-activities></select-activities>
 
-<div class="activities-bg">
-    <h2 class="activities-header">Upcoming</h2>
-    <div class="activity-dropdown">
-        <button class="activity-dropdown-btn">
-            <span class="activity-name">หาเพื่อนดูหนังครับ!!!</span>
-            <div class="tags">
-                <span class="tag">tag</span>
-                <span class="tag">tag</span>
-                <span class="tag">tag</span>
-            </div>
-            <span class="date">
-                <img src="assets/calendar_icon.png" alt="calendar"> Jan 5, 2025, 8:15 am
-            </span>
-            <span class="chevron">
-                <img src="assets/chevron-down_icon.svg" alt="">
-            </span>
-        </button>
+<activities-list
+    activities='[{
+        "name": "Team Meeting",
+        "date": "Feb 20, 2025",
+        "tags": ["Work", "Remote", "hi"],
+        "members": [
+            { "name": "Alice", "role": "Manager" },
+            { "name": "Bob", "role": "Developer" }
+        ]
+    },
+    {
+        "name": "Code Review",
+        "date": "Feb 22, 2025",
+        "tags": ["Programming", "Collaboration"],
+        "members": [
+            { "name": "Charlie", "role": "Engineer" },
+            { "name": "Dana", "role": "Lead" }
+        ]
+    }]'>
+</activities-list>
 
-        <div class="activity-dropdown-content">
-            <img src="assets/people_icon.png" alt="">
-            <ul class="members">
-                <li class="member">
-                    <div class="member-content">
-                        <img src="assets/Profile-w-b.png" alt="Profile">
-                        <span class="member-name">Peerawat Ingk.</span>
-                        <span class="member-role">(Host)</span>
-                    </div>
-                    <button class="rate-btn">
-                        <img src="assets/yellow_star_outline.png">
-                        <span class="review-text">review</span>
-                    </button>
-                </li>
-                <li class="member">
-                    <div class="member-content">
-                        <img src="assets/Profile-w-b.png" alt="Profile">
-                        <span class="member-name">Peerawat Ingk.</span>
-                        <span class="member-role">(Host)</span>
-                    </div>
-                    <button class="rate-btn">
-                        <img src="assets/yellow_star_outline.png">
-                        <span class="review-text">review</span>
-                    </button>
-                </li>
-                <li class="member">
-                    <div class="member-content">
-                        <img src="assets/Profile-w-b.png" alt="Profile">
-                        <span class="member-name">Peerawat Ingk.</span>
-                        <span class="member-role">(Host)</span>
-                    </div>
-                    <button class="rate-btn">
-                        <img src="assets/yellow_star_outline.png">
-                        <span class="review-text">review</span>
-                    </button>
-                </li>
-                <li class="member">
-                    <div class="member-content">
-                        <img src="assets/Profile-w-b.png" alt="Profile">
-                        <span class="member-name">Peerawat Ingk.</span>
-                        <span class="member-role">(Host)</span>
-                    </div>
-                    <button class="rate-btn">
-                        <img src="assets/yellow_star_outline.png">
-                        <span class="review-text">review</span>
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </div>
-</div>

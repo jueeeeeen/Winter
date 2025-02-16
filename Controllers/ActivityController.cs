@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 namespace Winter_Project.Controllers;
-public class AllActivityController: Controller
+public class ActivityController: Controller
 {
     public IActionResult Index()
     {

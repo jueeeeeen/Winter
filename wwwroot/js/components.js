@@ -207,7 +207,7 @@ function toggleInvertColor(element, toggle, img1, img2, color1, color2) {
         }
     }
 }
-class SelectActivities extends HTMLElement{
+class SelectActivities extends HTMLElement {
     constructor() {
         super();
         this.innerHTML = `
@@ -223,9 +223,17 @@ class SelectActivities extends HTMLElement{
                 </button>
             </li>
         </ul>
-        `};
-    
+        `;
+        this.querySelector('#Upcoming_button').addEventListener('click', () => this.changeHeader('Upcoming'));
+        this.querySelector('#History_button').addEventListener('click', () => this.changeHeader('History'));
+    }
+
+    changeHeader(headerText) {
+        const event = new CustomEvent('headerChange', { detail: { text: headerText } });
+        this.dispatchEvent(event);
+    }
 }
+
 customElements.define("select-activities", SelectActivities);
 
 class Member extends HTMLElement {
@@ -319,6 +327,8 @@ class ActivitiesList extends HTMLElement {
     }
 
     connectedCallback() {
+        this.addEventListener("activity-selected", this.handleActivitySelected);
+
         const activitiesContainer = this.querySelector(".activities");
         const activities = JSON.parse(this.getAttribute("activities") || "[]");
 
@@ -330,6 +340,16 @@ class ActivitiesList extends HTMLElement {
             activityElement.setAttribute("members", JSON.stringify(activity.members));
             activitiesContainer.appendChild(activityElement);
         });
+    }
+
+    handleActivitySelected(event) {
+        const activityType = event.detail.type;
+        const header = this.querySelector(".activities-header");
+        if (activityType === "Upcoming") {
+            header.textContent = "Upcoming";
+        } else if (activityType === "History") {
+            header.textContent = "History";
+        }
     }
 }
 

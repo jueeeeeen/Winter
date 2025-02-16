@@ -6,6 +6,9 @@
     <title>@ViewData["Title"] - Winter</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @if ((ViewData["Title"] as string) == "Joined Activity") {
+        <link rel="stylesheet" href="~/css/joinedactivity.css" asp-append-version="true" />
+    }
     <script src="/js/components.js" defer></script>
 </head>
     <body>

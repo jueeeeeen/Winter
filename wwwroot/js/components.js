@@ -53,12 +53,12 @@ class MainNavbar extends HTMLElement{
                 <li>
                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
                 </li>
-                <li><a href="/AllActivity">Activity</a></li>
+                <li><a href="/Activity">Activity</a></li>
                 <li class="logo">
                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
                 </li>
                 <li class="m_left_auto">
-                    <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/CreateActivity'">
+                    <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/Create'">
                         <img src="${path}plus-b.svg" alt="plus icon">create
                     </button>
                 </li>

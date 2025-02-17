@@ -7,10 +7,12 @@ namespace Winter_Project.Controllers;
 public class CreateController : Controller
 {
     private readonly ILogger<CreateController> _logger;
+    private readonly WinterContext _context;
 
-    public CreateController(ILogger<CreateController> logger)
+    public CreateController(ILogger<CreateController> logger, WinterContext context)
     {
         _logger = logger;
+        _context = context;
     }
 
     public IActionResult Index()
@@ -31,15 +33,12 @@ public class CreateController : Controller
     [HttpPost]
     public IActionResult AddUser(UserModel user)
     {
-        using (var db = new WinterContext())
-        {
-            db.Add(user);
-            db.SaveChanges();
-        }
+        // ✅ ใช้ _context ที่ Inject มา
+        _context.Add(user);
+        _context.SaveChanges();
         
         return View();
     }
-
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

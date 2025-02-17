@@ -228,10 +228,11 @@ class SelectActivities extends HTMLElement {
         this.querySelector('#History_button').addEventListener('click', () => this.changeHeader('History'));
     }
 
-    changeHeader(headerText) {
-        const event = new CustomEvent('headerChange', { detail: { text: headerText } });
-        this.dispatchEvent(event);
-    }
+    // changeHeader(headerText) {
+    //     const event = new CustomEvent('headerChange', { detail: { text: headerText } });
+    //     console.log(event)
+    //     this.dispatchEvent(event);
+    // }
 }
 
 customElements.define("select-activities", SelectActivities);
@@ -282,6 +283,7 @@ class ActivityDropdown extends HTMLElement {
                     <img src="assets/people_icon.png" alt="People">
                     <ul class="members"></ul>
                 </div>
+                <button class="view-details">View Details</button>
             </div>
         </div>
         `;
@@ -342,15 +344,15 @@ class ActivitiesList extends HTMLElement {
         });
     }
 
-    handleActivitySelected(event) {
-        const activityType = event.detail.type;
-        const header = this.querySelector(".activities-header");
-        if (activityType === "Upcoming") {
-            header.textContent = "Upcoming";
-        } else if (activityType === "History") {
-            header.textContent = "History";
-        }
-    }
+    // handleActivitySelected(event) {
+    //     const activityType = event.detail.type;
+    //     const header = this.querySelector(".activities-header");
+    //     if (activityType === "Upcoming") {
+    //         header.textContent = "Upcoming";
+    //     } else if (activityType === "History") {
+    //         header.textContent = "History";
+    //     }
+    // }
 }
 
 customElements.define("activities-list", ActivitiesList);

@@ -738,6 +738,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\assets\yellow_star_outline.png'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\joinedactivity.css'))">
+      <SourceType>Package</SourceType>
+      <SourceId>Winter-Project</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Winter-Project</BasePath>
+      <RelativePath>css/joinedactivity.css</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>d9bxtppkaa</Fingerprint>
+      <Integrity>QYig47c/gf1aLM3mPCc1Ag7Rv9Nbzz6WVONmeKAUL2w=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\joinedactivity.css'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))">
       <SourceType>Package</SourceType>
       <SourceId>Winter-Project</SourceId>
@@ -750,8 +768,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>jka0zs6nox</Fingerprint>
-      <Integrity>fbcWZG8bi0KgzeuG4Id7MJm0Pf6rh/O50Ga9J23sh4c=</Integrity>
+      <Fingerprint>z4tbxlzktk</Fingerprint>
+      <Integrity>Q82OMKbEzi9llmQY1hwlRMLBGbcYearzKfw6nR8tpag=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -786,8 +804,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>yci4vk9zmn</Fingerprint>
-      <Integrity>DivhiePJxkWkKO+CB3rQCdpCHSQjxdEcFm1CgB8Uwfg=</Integrity>
+      <Fingerprint>mydklc9152</Fingerprint>
+      <Integrity>rji7AniDARJiTLyNDkvxWeRSuKERg4fqSZN5yh2ixvU=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\components.js'))</OriginalItemSpec>

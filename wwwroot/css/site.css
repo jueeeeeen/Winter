@@ -684,3 +684,40 @@ hr {
   height: 1em;
   margin: 0.15em ;
 }
+
+.number-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.number-input-container button {
+  background: var(--blue50);
+  border-radius: 5px;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number-input-container button:hover {
+  background: var(--blue80);
+}
+
+.number-input-container input {
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  border: 2px solid var(--blue80);
+  border-radius: 5px;
+}
+
+.tag-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ต่อแถว */
+  gap: 10px; /* ระยะห่างระหว่างรายการ */
+}

@@ -4,9 +4,11 @@ namespace Winter_Project.Models
 {
     public class WinterContext : DbContext
     {
-        public DbSet<UserModel> Users {get; set;}
+        public WinterContext(DbContextOptions<WinterContext> options)
+            : base(options) // ส่ง options ไปยัง base class (DbContext)
+        {
+        }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-            =>options.UseSqlite(@"Data Source=database.db");
+        public DbSet<UserModel> Users { get; set; }
     }
 }

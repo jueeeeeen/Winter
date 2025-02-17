@@ -4,6 +4,7 @@
 # Build results
 bin/
 obj/
+database*
 
 # User-specific files
 *.user

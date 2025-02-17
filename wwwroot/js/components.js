@@ -501,13 +501,6 @@ class MemberListItem extends HTMLElement {
     }
 }
 
-class ApproveBtn extends HTMLElement {
-    constructor() {
-        super();
-        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
-    }
-}
-
 class ActDetailJoinBtn extends HTMLElement {
     constructor(actID) {
         super();
@@ -515,6 +508,13 @@ class ActDetailJoinBtn extends HTMLElement {
     }
     connectedCallback() {
 
+    }
+}
+
+class ViewReviewBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y">view review</button>`;
     }
 }
 
@@ -860,6 +860,7 @@ customElements.define("pagination-item", PaginationItem);
 customElements.define("member-list-item", MemberListItem);
 customElements.define("act-detail-join-btn", ActDetailJoinBtn);
 customElements.define("all-act-banner", AllActBanner);
+customElements.define('view-review-btn', ViewReviewBtn);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);

@@ -8,6 +8,9 @@
     bool show_preview = true;
 }
 @if (show_preview == true) {
+    <button class="btn medium r-w round left">
+        <svg-delete></svg-delete>delete
+    </button>
     <div class="act-detail-container">
     <section class="act-detail-main edge shadow">
         <header class="act-card-profile-info">
@@ -50,6 +53,7 @@
             <member-list-item data-role="pending"></member-list-item>
         </ul>
         <act-detail-join-btn></act-detail-join-btn>
+        <view-review-btn></view-review-btn>
     </section>
     <section class="act-detail-requirement edge shadow w-bb-bb">
         <div class="flex">
@@ -93,9 +97,6 @@
         </ul>
     </section>
     </div>
-    <button class="btn large r-w round">
-        <svg-delete></svg-delete>delete
-    </button>
 }
 else {
     <div class="act-detail-container">

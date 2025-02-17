@@ -147,8 +147,7 @@ main {
 }
 
 .left {
-  position: relative;
-  left: -15px;
+  margin-left: auto;
 }
 
 .left_rounded {

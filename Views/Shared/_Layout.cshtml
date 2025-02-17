@@ -19,6 +19,14 @@
     @if (((ViewData["Title"] as string) == "Activity Detail")) {
         <link rel="stylesheet" href="~/css/ActivityDetail.css" asp-append-version="true" />
     }
+    @if (((ViewData["Title"] as string) == "Login")) {
+        <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+    }
+    @if (((ViewData["Title"] as string) == "Register")) {
+        <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
+        <script src="~/js/auth/register/register_form.js"></script>
+    }
     <script src="/js/components.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/auth/register/register_form.js" defer></script>

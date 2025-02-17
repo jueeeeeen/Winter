@@ -869,6 +869,13 @@ class Member extends HTMLElement {
     connectedCallback() {
         this.querySelector(".member-name").textContent = this.getAttribute("name") || "Unknown";
         this.querySelector(".member-role").textContent = `(${this.getAttribute("role") || "Member"})`;
+
+        const ratingPopup = document.querySelector("rating-popup");
+        this.querySelector(".rate-btn").addEventListener("click", () => {
+        const activityName = this.closest("activity-dropdown")?.getAttribute("activity-name") || "Unknown Activity";
+        const name = this.querySelector(".member-name").textContent || "Unknown Name";
+            ratingPopup.openPopup(this.querySelector(".member-name").textContent, activityName);
+        });
     }
 }
 
@@ -966,6 +973,48 @@ class ActivitiesList extends HTMLElement {
     // }
 }
 
+class RatingPopup extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+        <div class="rating-overlay"></div>
+        <div class="rating-pop-up">
+            <div class="rating-header">Rate activity member</div>
+            <div class="rating-info">
+                <div class="rating-activity-name"></div>
+                <img src="" alt="">
+                <div class="rating-user-name"></div>
+                <img src="" alt="">
+                <fieldset>
+                    <legend>Comment</legend>
+                    <textarea placeholder="Write your comment..."></textarea>
+                </fieldset>
+            </div>
+            <div class="post-btn">
+                <button class="rating-cancel">Cancel</button>
+                <button class="rating-post">Post</button>
+            </div>
+        </div>
+        `;
+        this.style.display = "none";
+        this.classList.add("rating-popup-wrapper");
+
+        this.querySelector(".rating-cancel").addEventListener("click", () => this.closePopup());
+        this.querySelector(".rating-overlay").addEventListener("click", () => this.closePopup());
+    }
+
+    openPopup(memberName, activityName) {
+        this.querySelector(".rating-user-name").textContent = memberName;
+        this.querySelector(".rating-activity-name").textContent = activityName;
+        this.style.display = "block";
+    }
+
+    closePopup() {
+        this.style.display = "none";
+    }
+}
+
+customElements.define("rating-popup", RatingPopup);
 customElements.define("activities-list", ActivitiesList);
 customElements.define("activity-dropdown", ActivityDropdown);
 customElements.define("custom-member", Member);

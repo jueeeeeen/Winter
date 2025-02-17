@@ -2,11 +2,6 @@
     ViewData["Title"] = "Profile";
 }
 
-@* @section styles {
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
-} *@
-
 <div class="profile-container">
     <div class="profile-card">
         <div class="profile-header">
@@ -20,7 +15,7 @@
             <h6>20 years old</h6>
         </div>
 
-        <div class="personal-info">
+        <div class="profile-details">
             <div>
                 <img src="\assets\location_on.svg" alt="location">
                 <p>Bangkok, Thailand</p>
@@ -95,11 +90,11 @@
         
     </div>
     <div class="edit-profile-button">
-        <a href="/Profile/Edit">
-            <button> 
+        @* <a href="/User/Edit"> *@
+            <button onClick="location.href='@Url.Action("Edit", "Profile")'"> 
                 <img src="\assets\edit.svg" alt="edit icon">
                 <p>Edit</p>
             </button>
-        </a>
+        @* </a> *@
     </div>
 </div>

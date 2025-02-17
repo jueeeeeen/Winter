@@ -1,0 +1,180 @@
+.banner-container {
+    margin: 0 auto;
+    display: grid;
+    width: 65vw;
+    height: 25vw;
+    grid-template-columns: 1fr 12fr 1fr;
+    grid-template-rows: 15fr 1fr;
+    grid-template-areas: 
+    "prev display next"
+    "page page page";
+    overflow: hidden;
+}
+
+.banner-prev {
+    grid-area: prev;
+}
+
+.banner-container *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 0;
+}
+
+.banner-container svg{
+    height: 2em;
+    width: 1.2em;
+}
+
+.banner-arrow button{
+    background-color: transparent;
+    width: 3em;
+    height: 3em;
+    padding: 0.75em;
+    transition: all 0.3s;
+}
+
+.banner-arrow button:hover {
+    background-color: var(--blue20);
+}
+
+.banner-container path{
+    fill: var(--blue80);
+}
+
+.banner-next {
+    grid-area: next;
+}
+
+.banner-display {
+    grid-area: display;
+    overflow: hidden;
+}
+
+.banner-display img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.banner-page {
+    grid-area: page;
+    gap: 0.5em;
+}
+
+.banner-page span{
+    width: 1em;
+    height: 1em;
+}
+
+#banner_pic {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+#banner_pic.fade-out {
+    opacity: 0;
+}
+
+#all-activities-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Activity card in AllActivity page */
+.activity-card {
+    width: 24rem;
+    height: 15.75rem;
+    background-color: white;
+    border-radius: 1.25rem;
+    border: 1px solid var(--gray60);
+    display: grid;
+    grid-template-rows: 4fr 2.25fr 5.50fr 2.25fr 2.75fr;
+    overflow: hidden;
+    padding: 0 0.5em;
+}
+
+.activity-card > *:not(.act-card-profile-info){
+    display: flex;
+}
+
+.activity-card .title{
+    padding: 0 1em;
+    line-height: 1.5;
+    overflow: hidden;
+    margin: auto 0;
+}
+
+.activity-card .act-card-info {
+    font-size: 13px;
+    justify-content: space-evenly;
+}
+
+.activity-card .act-card-tags-container {
+    padding: 0.25em 0 0 0;
+    gap: 0.25rem;
+}
+
+.activity-card li{
+    gap: 0.5em;
+    display: flex;
+    align-items: center;
+}
+
+
+/* search bar style */
+.search-bar {
+    width: 38%;
+    height: 2.5em;
+    display: flex;
+    margin: 1.75rem auto 0.75rem auto;
+    border-radius: 5rem;
+    overflow: hidden;
+    background-color: var(--white);
+}
+
+.search-bar>input{
+    border: none;
+    padding: 0.67em 1em;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.search-bar-x {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+}
+
+.search-bar-x>button:hover svg path{
+    stroke: var(--gray90);
+    transition: all 0.4s ease;
+}
+
+.search-bar-search {
+    width: 2.5rem;
+    background-color: var(--blue70);
+}
+
+.search-bar-search:hover {
+    background-color: var(--blue90);
+}
+
+.search-bar-search:hover svg{
+    transform: scale(1.05);
+}
+
+
+.act-card-profile-info div:nth-child(4){
+    grid-area: 1 / 3 / 3 / 4;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--blue80);
+    display: flex;
+    align-items: center;
+}

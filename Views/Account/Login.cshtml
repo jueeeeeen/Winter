@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Login";
+}
+@* 
+@section styles {
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+} *@
+
+<div class="login-card">
+    <img src="\assets\winter_login_pic2.jpg" alt="login background">
+    <h2>LOGIN</h2>
+    <form action="">
+        <div class="login-box">
+            <img src="\assets\Profile-b.png" alt="username">
+            <input type="text" placeholder="username">
+        </div>
+        <div class="login-box">
+            <img src="\assets\lock.svg" alt="password">
+            <input type="password" placeholder="password">
+            <button>
+                <img src="/assets/password.png" alt="password button">
+            </button>
+        </div>
+        <div class="login-button">
+            <button>login</button>
+        </div>
+        <div class="login-description">
+            <p>Don't have an account?</p>
+            <a href="~/Account/RegisterUser">create account</a>
+        </div>
+    </form>
+</div>

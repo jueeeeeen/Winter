@@ -23,6 +23,23 @@ public class HomeController : Controller
         return View();
     }
 
+    public IActionResult AddUser()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public IActionResult AddUser(UserModel user)
+    {
+        using (var db = new WinterContext())
+        {
+            db.Add(user);
+            db.SaveChanges();
+        }
+        
+        return View();
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

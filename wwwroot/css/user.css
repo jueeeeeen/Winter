@@ -1,0 +1,399 @@
+:root {
+  --blue90: #36b2ff;
+
+  --gray90: #4d4d4d;
+  --gray80: #737373;
+  --gray70: #9f9f9f;
+  --gray60: #c6c6c6;
+  --gray50: #e8e8e8;
+  --white: #ffffff;
+
+  --blue90: #5fa2ff;
+  --blue80: #56beff;
+  --blue70: #7fceff;
+  --blue60: #77daff;
+  --blue50: #56dff4;
+  --blue40: #90e1ff;
+  --blue30: #a1d4ff;
+  --blue20: #adf1fd;
+  --blue10: #dff9ff;
+
+  --red: #ff4e4e;
+  --yellow: #fdc330;
+  --green: #65da8c;
+  --pink: #ff90da;
+
+  --shadow: rgba(0, 0, 0, 0.12);
+}
+
+.profile-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-card {
+  background-color: var(--white);
+  width: 400px;
+  height: 575px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 2rem;
+}
+
+.profile-header {
+  background-color: var(--blue50);
+  color: var(--white);
+  height: 40px;
+  border-radius: 20px 20px 0 0;
+  padding: 10px 0 0 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.account-info {
+  color: var(--gray90);
+  margin: 20px;
+  text-align: center;
+  line-height: 1.75;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  border: solid 1px var(--blue60);
+  border-radius: 50%;
+}
+
+.profile-details {
+  color: var(--gray90);
+  margin: 0 0 2px 0;
+  font-size: 1rem;
+}
+
+.profile-details input {
+  width: 80%;
+  padding: 1px;
+  border: solid 1px var(--gray60);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.profile-details img {
+  width: 20px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.profile-details div {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.profile-details p {
+  margin-top: 5px;
+}
+
+.profile-rating {
+  color: var(--blue80);
+  width: 65px;
+  margin: auto;
+  padding: 5px;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  box-shadow: 0 5px 10px var(--shadow);
+}
+
+.profile-rating img {
+  width: 15px;
+  margin-right: 5px;
+}
+
+.joined-review {
+  color: var(--gray70);
+  margin: 20px;
+  font-size: 1rem;
+}
+
+.joined-review div {
+  width: 50%;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.joined-review a {
+  color: var(--blue80);
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.profile-joined {
+  border-right: solid 1px var(--gray70);
+}
+
+.bio-card {
+  background-color: var(--white);
+  width: 700px;
+  height: 350px;
+  border-radius: 20px;
+  margin-bottom: 1.3rem;
+}
+
+.bio-details {
+  margin: 20px;
+}
+
+.bio-header {
+  color: var(--gray70);
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bio-info {
+  color: var(--gray90);
+  font-weight: bold;
+  height: 70px;
+}
+
+.personal-card {
+  background-color: var(--white);
+  width: 700px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.personal-details {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 40%;
+}
+
+.personal-info {
+  color: var(--gray90);
+  font-weight: bold;
+}
+
+.edit-profile-button {
+  position: absolute;
+  right: 90px;
+  bottom: -20px;
+}
+
+.edit-profile-button button {
+  background-color: var(--blue70);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.edit-profile-button img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.upload-profile-picture {
+  display: flex;
+  flex-direction: row;
+}
+
+.upload-profile-button {
+  background-color: var(--red);
+  color: var(--white);
+  width: 150px;
+  height: 30px;
+  padding: 3px;
+  margin: auto;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.upload-profile-button input {
+  display: none;
+}
+
+.upload-profile-button p {
+  margin: 0 0 0 5px;
+}
+
+fieldset {
+  border: none;
+}
+
+.bio-input {
+  margin: 10px 0 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-input label {
+  color: var(--gray70);
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.bio-input textarea {
+  color: var(--gray90);
+  padding-left: 5px;
+  border: 1px solid var(--gray60);
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  width: 95%;
+  height: 55px;
+  resize: none;
+}
+
+.user-fullname {
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.profile-input {
+  color: var(--gray70);
+  margin: 20px 20px 0 20px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-input input {
+  color: var(--gray90);
+  border: 1px solid var(--gray60);
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  width: 200px;
+  height: 30px;
+  padding-left: 5px;
+}
+
+.gender-button {
+  display: flex;
+  gap: 0;
+}
+
+.gender-button button {
+  background-color: var(--white);
+  width: 100px;
+  height: 30px;
+}
+
+.gender-button button img {
+  width: 30px;
+  height: 30px;
+}
+
+.male-button:hover::after,
+.lgbtq-button:hover::after,
+.female-button:hover::after {
+  font-size: 1rem;
+  white-space: nowrap;
+  left: 5px;
+  bottom: 7px;
+  position: relative;
+}
+
+.male-button:hover::after {
+  content: "male";
+  color: var(--blue80);
+}
+
+.male-button {
+  border: 2px solid var(--blue80);
+  border-radius: 20px 0 0 20px;
+}
+
+.lgbtq-button {
+  border: solid 2px;
+  border-image: linear-gradient(
+      45deg,
+      red,
+      orange,
+      yellow,
+      green,
+      blue,
+      indigo,
+      violet
+    )
+    1;
+}
+
+.lgbtq-button:hover::after {
+  content: "lgbtq+";
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.female-button {
+  border: 2px solid var(--pink);
+  border-radius: 0 20px 20px 0;
+}
+
+.female-button:hover::after {
+  content: "female";
+  color: var(--pink);
+}
+
+.save-cancel-button {
+  position: fixed;
+  bottom: 10px;
+  right: 185px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.save-cancel-button button {
+  width: 100px;
+  color: var(--white);
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 20px;
+}
+
+.save-button {
+  background-color: var(--blue70);
+}
+
+.save-button:hover {
+  color: var(--blue70);
+  background-color: var(--white);
+}
+
+.cancel-button {
+  background-color: var(--red);
+}

@@ -1,0 +1,40 @@
+# Ignore Visual Studio temporary files, build results, and
+# user-specific files.
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+
+# ASP.NET specific
+appsettings.*.json
+
+# Rider
+.idea/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Dependency directories
+node_modules/
+wwwroot/lib/
+
+# Publish output
+.publish/
+
+# Database
+*.mdf
+*.ldf
+
+# Debugging
+.vscode/
+launchSettings.json

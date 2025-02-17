@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "All Activity";
+}
+
+<all-act-banner></all-act-banner>
+
+<search-bar></search-bar>
+@* @ViewBag.keyword *@
+@* for showing search keyword that is sent to back *@
+
+<tag-filter></tag-filter>
+
+@* <ul id="show-tags"></ul> *@
+@* for showing selected tags that are sent to back *@
+
+<div id="all-activities-container">
+    <act-card></act-card>
+    <act-card></act-card>
+    <act-card></act-card>
+    <act-card></act-card>
+    <act-card></act-card>
+    <act-card></act-card>
+    <act-card></act-card>
+    <act-card></act-card>
+    <act-card></act-card>
+</div>
+
+
+<div class="pagination-container flex round shadow">
+    <pagination-item data-value="prev"></pagination-item>
+    <pagination-item data-value="1"></pagination-item>
+    <pagination-item data-value="2"></pagination-item>
+    <pagination-item data-value="3"></pagination-item>
+    <pagination-item data-value="..."></pagination-item>
+    <pagination-item data-value="8"></pagination-item>
+    <pagination-item data-value="9"></pagination-item>
+    <pagination-item data-value="10"></pagination-item>
+    <pagination-item data-value="next"></pagination-item>
+</div>

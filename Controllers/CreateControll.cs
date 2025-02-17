@@ -4,11 +4,11 @@ using Winter_Project.Models;
 
 namespace Winter_Project.Controllers;
 
-public class HomeController : Controller
+public class CreateController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<CreateController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public CreateController(ILogger<CreateController> logger)
     {
         _logger = logger;
     }

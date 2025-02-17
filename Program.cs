@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddControllersWithViews();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
-var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]); 
+var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!); 
 // Configure JWT Bearer Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

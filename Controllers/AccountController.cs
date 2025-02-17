@@ -106,8 +106,8 @@ namespace Winter_Project.Controllers
 
         private string GenerateJwtToken(UserModel user)
         {
-            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
-            var expiresIn = int.Parse(_configuration["Jwt:ExpiresInHours"]);
+            var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!);
+            var expiresIn = int.Parse(_configuration["Jwt:ExpiresInHours"]!);
 
             var claims = new[]
             {

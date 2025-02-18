@@ -18,11 +18,11 @@
         <div class="profile-details">
             <div>
                 <img src="\assets\location_on.svg" alt="location">
-                <p>Bangkok, Thailand</p>
+                <p>@(string.IsNullOrEmpty(Model.Location) ? "No information" : Model.Location)</p>
             </div>
             <div>
                 <img src="\assets\phone.svg" alt="phone">
-                <p>081-2895077</p>
+                <p>@(string.IsNullOrEmpty(Model.Phone) ? "No information" : Model.Phone)</p>
             </div>
             <div>
                 <img src="\assets\mail.svg" alt="mail">
@@ -58,11 +58,11 @@
 
             <div class="bio-details">
                 <p class="bio-header">About me</p>
-                <p class="bio-info">Hello,I'm a 2nd-year Computer Engineering student.</p>
+                <p class="bio-info">@(string.IsNullOrEmpty(Model.AboutMe) ? "No information" : Model.AboutMe)</p>
                 <p class="bio-header">My Interests</p>
-                <p class="bio-info">I am interesting in web development.</p>
+                <p class="bio-info">@(string.IsNullOrEmpty(Model.MyInterests) ? "No information" : Model.MyInterests)</p>
                 <p class="bio-header">My Hobby</p>
-                <p class="bio-info">I like watching movie and listening to music.</p>
+                <p class="bio-info">@(string.IsNullOrEmpty(Model.MyHobby) ? "No information" : Model.MyHobby)</p>
             </div>
         </div>
 

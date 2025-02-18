@@ -53,6 +53,20 @@ namespace Winter_Project.Controllers
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
 
+                var userBio = new UserBio
+                {
+                    UserId = user.Id,
+                    Location = string.Empty,  // ตั้งค่าเริ่มต้นเป็นค่าว่าง
+                    Phone = string.Empty,
+                    AboutMe = string.Empty,
+                    MyInterests = string.Empty,
+                    MyHobby = string.Empty
+                };
+
+                // เพิ่ม UserBio ลงในฐานข้อมูล
+                _context.UserBios.Add(userBio);
+                await _context.SaveChangesAsync();
+
                 return Ok(new { message = "User registered successfully!" });
             }
             catch (Exception ex)

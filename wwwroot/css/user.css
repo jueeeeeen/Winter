@@ -301,6 +301,10 @@ fieldset {
   height: 30px;
 }
 
+.gender-button button.selected {
+  background-color: var(--blue10);
+}
+
 .gender-button button img {
   width: 30px;
   height: 30px;

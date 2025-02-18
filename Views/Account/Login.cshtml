@@ -5,24 +5,28 @@
     <script src="/js/auth/login/login_form.js" defer></script>
 }
 
-<h2>Login</h2>
 <div class="login-card">
     <img src="\assets\winter_login_pic2.jpg" alt="login background">
+    <h2>LOGIN</h2>
     <form id="loginForm">
         <div class="login-box">
             <img src="\assets\Profile-b.png" alt="username">
             <label for="username"></label>
-            <input type="text" id="username" name="username" required />
+            <input type="text" id="username" name="username" placeholder="username" required />
         </div>
         <div class="login-box">
             <img src="\assets\lock.svg" alt="password">
             <label for="password"></label>
-            <input type="password" id="password" name="password" required />
+            <input type="password" id="password" name="password" placeholder="password" required />
         </div>
         <div class="login-button">
             <button type="submit" id="loginButton">Login</button>
         </div>
     </form>
+    <div class="login-description">
+        <p>Don't have account?</p>
+        <a href="~/Account/Register">create account</a>
+    </div>
 
     <div id="errorMessage" style="color: red;"></div>
 </div>

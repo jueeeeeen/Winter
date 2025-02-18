@@ -175,6 +175,76 @@ function getCookie(name) {
 //     }
 // }
 
+
+class ApprovedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon gr-w flex">
+                <svg-check></svg-check>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                your request to join has been approved.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("approved-noti", ApprovedNoti);
+
+
+
+class DeniedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-deny></svg-deny>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                your request to join has been denied.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("denied-noti", DeniedNoti);
+
+
+class JoinedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon y-w flex">
+                <svg-plus></svg-plus>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                there is a new request to join this activity.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("joined-noti", JoinedNoti);
+
 class SearchBar extends HTMLElement{
     constructor() {
         super();

@@ -47,8 +47,8 @@
   color: var(--white);
   height: 40px;
   border-radius: 20px 20px 0 0;
-  padding: 1rem;
-  font-size: 16px;
+  padding: 10px 0 0 20px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -66,34 +66,35 @@
   border-radius: 50%;
 }
 
-.personal-info {
+.profile-details {
   color: var(--gray90);
   margin: 0 0 2px 0;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
-.personal-info input {
+.profile-details input {
   width: 80%;
-  padding: 5px;
+  padding: 1px;
   border: solid 1px var(--gray60);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
-.personal-info img {
-  width: 30px;
+.profile-details img {
+  width: 20px;
   height: 30px;
   margin-right: 10px;
+  margin-left: 20px;
 }
 
-.personal-info div {
+.profile-details div {
   display: flex;
   flex-direction: row;
   margin: 10px;
 }
 
-.personal-info p {
+.profile-details p {
   margin-top: 5px;
 }
 
@@ -119,7 +120,7 @@
 .joined-review {
   color: var(--gray70);
   margin: 20px;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
 .joined-review div {
@@ -181,7 +182,6 @@
 .personal-info {
   color: var(--gray90);
   font-weight: bold;
-  margin: 0 0 25px 0;
 }
 
 .edit-profile-button {
@@ -212,7 +212,6 @@
 .upload-profile-picture {
   display: flex;
   flex-direction: row;
-  margin: 0;
 }
 
 .upload-profile-button {
@@ -229,8 +228,12 @@
   justify-content: center;
 }
 
+.upload-profile-button input {
+  display: none;
+}
+
 .upload-profile-button p {
-  margin: 5px 0 0 5px;
+  margin: 0 0 0 5px;
 }
 
 fieldset {
@@ -255,10 +258,11 @@ fieldset {
   padding-left: 5px;
   border: 1px solid var(--gray60);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
   width: 95%;
-  height: 65px;
+  height: 55px;
+  resize: none;
 }
 
 .user-fullname {
@@ -266,6 +270,7 @@ fieldset {
   flex-direction: row;
   gap: 100px;
 }
+
 .profile-input {
   color: var(--gray70);
   margin: 20px 20px 0 20px;
@@ -292,13 +297,32 @@ fieldset {
 
 .gender-button button {
   background-color: var(--white);
-  width: 70px;
+  width: 100px;
   height: 30px;
 }
 
+.gender-button button.selected {
+  background-color: var(--blue10);
+}
+
 .gender-button button img {
-  max-height: 100%;
-  max-width: 100%;
+  width: 30px;
+  height: 30px;
+}
+
+.male-button:hover::after,
+.lgbtq-button:hover::after,
+.female-button:hover::after {
+  font-size: 1rem;
+  white-space: nowrap;
+  left: 5px;
+  bottom: 7px;
+  position: relative;
+}
+
+.male-button:hover::after {
+  content: "male";
+  color: var(--blue80);
 }
 
 .male-button {
@@ -321,9 +345,31 @@ fieldset {
     1;
 }
 
+.lgbtq-button:hover::after {
+  content: "lgbtq+";
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .female-button {
   border: 2px solid var(--pink);
   border-radius: 0 20px 20px 0;
+}
+
+.female-button:hover::after {
+  content: "female";
+  color: var(--pink);
 }
 
 .save-cancel-button {
@@ -345,6 +391,11 @@ fieldset {
 
 .save-button {
   background-color: var(--blue70);
+}
+
+.save-button:hover {
+  color: var(--blue70);
+  background-color: var(--white);
 }
 
 .cancel-button {

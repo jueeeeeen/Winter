@@ -7,7 +7,6 @@ namespace Winter_Project.Models
     {
         private static int _next_id = 1;
         
-        [Key]
         public int Activity_id {get; set;}
 
         public string Owner {get; set;} = string.Empty;
@@ -22,7 +21,7 @@ namespace Winter_Project.Models
         public string Tags {get; set;} = string.Empty;
 
         // requirement
-        public RequirementModel? Requirements { get; set; }
+        // public RequirementModel? Requirements { get; set; }
 
         public List<string> Participants {get; set;} = [];
 

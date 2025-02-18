@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "Register";
+}
+
+@section styles {
+    <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
+}
+
+<div class="progress-bar">
+    <div class="step">
+        <div class="bullet">
+            <span>1</span>
+        </div>
+        <p>Account</p>
+    </div>
+    <div class="step">
+        <div class="bullet">
+            <span>2</span>
+        </div>
+        <p>Account</p>
+    </div>
+</div>
+
+<div class="register-card">
+    <img src="\assets\winter_login_pic.jpg" alt="register background">
+    <h2>CREATE ACCOUNT</h2>
+    <div class="form-outer">
+        <form d="registerForm">
+            <div class="page">
+                <div class="register-box1">
+                    <img src="\assets\Profile-b.png" alt="username">
+                    <label for="username"></label>
+                    <input type="text" id="username" name="username" placeholder="username" required>
+                </div>
+                <div class="register-box1">
+                    <img src="\assets\mail.svg" alt="email">
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" placeholder="email" required>
+                </div>
+                <div class="register-box1">
+                    <img src="\assets\lock.svg" alt="password">
+                    <label for="password"></label>
+                    <input type="password" id="password" name="password" placeholder="password" required>
+                </div>
+                <div class="register-box1">
+                    <img src="\assets\lock.svg" alt="password">
+                    <label for="confirm-password"></label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="confirm password" required>
+                </div>
+                <div class="next-button">
+                    <button id="nextButton">next</button>
+                </div>
+                <div class="login-description">
+                    <p>Already have an account?</p>
+                    <a href="~/Account/Login">login</a>
+                </div>
+            </div>
+
+            <div class="page">
+                <div class="register-box2">
+                    <label for="first-name"></label>
+                    <input type="text" id="firstname" name="first name" placeholder="first name" required>
+                </div>
+                <div class="register-box2">
+                    <label for="last-name"></label>
+                    <input type="text" id="lastname" name="last name" placeholder="last name" required>
+                </div>
+                <div class="register-box2">
+                    <label for="date-of-birth"></label>
+                    <input type="date" id="dateofbirth" name="date of birth" required>
+                </div>
+                <div>
+                    <div class="gender-button">
+                        <button class="male-button" onclick="setGender('male')">
+                            <img src="\assets\male_icon-b.svg" alt="male icon">
+                        </button>
+                        <button class="lgbtq-button" onclick="setGender('lgbtq')">
+                            <img src="\assets\heart.svg" alt="lgbtq+ icon">
+                        </button>
+                        <button class="female-button" onclick="setGender('female')">
+                            <img src="\assets\female_icon-p.svg" alt="female icon">
+                        </button>
+                    </div>
+                    <input type="hidden" id="gender" name="gender" value="">
+                </div>
+                <div class="register-button">
+                    <button type="submit" id="registerButton">create account</button>
+                </div>
+                <div class="login-description">
+                    <p>Already have an account?</p>
+                    <a href="~/Account/Login">login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

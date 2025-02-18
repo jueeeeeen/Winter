@@ -11,6 +11,7 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
+<<<<<<< HEAD:Migrations/20250218115846_InitialCreate.Designer.cs
 <<<<<<<< HEAD:Migrations/20250217103619_UpdateUserModel.Designer.cs
     [Migration("20250217103619_UpdateUserModel")]
     partial class UpdateUserModel
@@ -18,6 +19,10 @@ namespace Winter_Project.Migrations
     [Migration("20250218115846_InitialCreate")]
     partial class InitialCreate
 >>>>>>>> 6ef0c2e64fb61f16f97868fd0afa280fdefac495:Migrations/20250218115846_InitialCreate.Designer.cs
+=======
+    [Migration("20250218144143_UpdateUserModel")]
+    partial class UpdateUserModel
+>>>>>>> 8f048c825d554849e56ec1ee590ccfc30ceb0bd2:Migrations/20250218144143_UpdateUserModel.Designer.cs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

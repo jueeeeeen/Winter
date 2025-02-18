@@ -979,14 +979,22 @@ class RatingPopup extends HTMLElement {
         this.innerHTML = `
         <div class="rating-overlay"></div>
         <div class="rating-pop-up">
-            <div class="rating-header">Rate activity member</div>
+            <div class="rating-header">
+                Rate activity member
+            </div>
             <div class="rating-info">
-                <div class="rating-activity-name"></div>
-                <img src="" alt="">
-                <div class="rating-user-name"></div>
-                <img src="" alt="">
+                <div class="rating-activity-name">หาเพื่อนดูหนังครับ !!!</div>
+                <img src="assets/Profile-g.png" alt="">
+                <div class="rating-user-name">Peerawat Ingkhasantatikul</div>
+                <div class="rating-stars">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                </div>
                 <fieldset>
-                    <legend>Comment</legend>
+                    <legend>comment</legend>
                     <textarea placeholder="Write your comment..."></textarea>
                 </fieldset>
             </div>

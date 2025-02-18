@@ -280,6 +280,12 @@
     text-align: center;
     color: gray;
   }
+  .rating-info > img{
+    display: block !important;
+    margin: 1rem auto;
+    width: 20%;
+
+  }
   .comment-box {
     position: relative;
     display: block;

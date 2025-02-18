@@ -773,7 +773,6 @@ class BaseSVGElement extends HTMLElement {
     }
 }
 
-
 class SVGCalendar extends BaseSVGElement {
     constructor() {
         super();
@@ -1087,6 +1086,8 @@ customElements.define("svg-bookmark", SVGBookMark);
 customElements.define("svg-more-people", SVGMorePeople);
 customElements.define("svg-checkbox", SVGCheckBox);
 customElements.define("svg-location", SVGLocation);
+customElements.define("svg-plus", SVGPlus);
+customElements.define("svg-check", SVGCheck);
 customElements.define("svg-deny", SVGDeny);
 customElements.define("svg-minus", SVGMinus);
 customElements.define("svg-delete", SVGDelete);
@@ -1094,7 +1095,6 @@ customElements.define("svg-mail", SVGMail);
 customElements.define("svg-phone", SVGPhone);
 customElements.define("svg-edit", SVGEdit);
 customElements.define("svg-login", SVGLogin);
-
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

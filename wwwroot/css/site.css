@@ -590,7 +590,7 @@ hr {
     }
   }
 
-  .w-y-y, .y-w:hover, .hover-w-y-y:hover {
+  .w-y-y, .hover-w-y-y:hover {
     background-color: var(--white);
     color: var(--yellow);
     border: 2px solid var(--yellow);

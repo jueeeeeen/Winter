@@ -44,7 +44,7 @@
 </head>
     <body>
         <header>
-            @if (!isLoggedIn) {
+            @if (isLoggedIn) {
                 @Html.Partial("_MainNavBar")
             } else {
                 if (((ViewData["Title"] as string) == "Login") || ((ViewData["Title"] as string) == "Register")) {

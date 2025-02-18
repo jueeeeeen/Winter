@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Winter_Project.Models;
 
@@ -10,9 +11,11 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    partial class WinterContextModelSnapshot : ModelSnapshot
+    [Migration("20250218174326_Resetdatabase")]
+    partial class Resetdatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");

@@ -11,6 +11,7 @@ namespace Winter_Project.Models
         }
 
         public DbSet<UserModel> Users { get; set; }
+        public DbSet<UserBio> UserBios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

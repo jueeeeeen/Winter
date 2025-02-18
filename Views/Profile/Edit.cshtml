@@ -1,134 +1,100 @@
+@model Winter_Project.ViewModels.ProfileViewModel
+
 @{
     ViewData["Title"] = "Edit Profile";
 }
 
-@* @section styles {
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-} *@
-
-<div class="profile-container">
-    <div class="profile-card">
-        <div class="profile-header">
-            <p>Profile</p>
-        </div>
-
-        <div class="account-info">
-            <div class="upload-profile-picture">
-                <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
-                <button class="upload-profile-button">
-                    <img src="\assets\upload-03.svg" alt="upload profile picture">
-                    @* <p>Upload Photo</p> *@
-                    <label for="input file">Upload Photo</label>
-                    <input type="file" accept="image/jpg, image/png, image/jpeg" id="input file">
-                </button>
-            </div>
-
-            <h6>@@marklnwza007</h6>
-            <h4>Peerawat Ingkhasantatikul</h4>
-            <h6>20 years old</h6>
-        </div>
-
-        <fieldset class="profile-details">
-            <div>
-                <img src="\assets\location_on.svg" alt="location">
-                <input type="text" value="Bangkok, Thailand">
-            </div>
-            <div>
-                <img src="\assets\phone.svg" alt="phone">
-                <input type="text" value="081-2895077">
-            </div>
-            <div>
-                <img src="\assets\mail.svg" alt="mail">
-                <input type="text" value="mark.peerawat@gmail.com">
-            </div>
-        </fieldset>
-
-        <div class="profile-rating">
-            <img src="\assets\icon _star.svg" alt="star icon">
-            <p>1.55</p>
-        </div>
-
-        <div class="joined-review">
-            <div class="profile-joined">
-                <p>4</p>
-                <p>Joined</p>
-                <a href="#">View all activity</a>
-            </div>
-
-            <div class="profile-reviews">
-                <p>5</p>
-                <p>Reviews</p>
-                <a href="#">View all review</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="profile-right-container">
-        <div class="bio-card">
+<form asp-action="Edit" asp-controller="Profile" method="post" enctype="multipart/form-data">
+    <div class="profile-container">
+        <div class="profile-card">
             <div class="profile-header">
-                <p>Bio</p>
+                <p>Profile</p>
             </div>
 
-            <fieldset class="edit-bio">
-                <div class="bio-input">
-                    <label for="about-me">About me</label>
-                    <textarea>Hello,I'm a 2nd-year Computer Engineering student.</textarea>
+            <div class="account-info">
+                <div class="upload-profile-picture">
+                    <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
+                    <button type="button" class="upload-profile-button">
+                        <label for="input-file">Upload Photo</label>
+                        <input type="file" accept="image/jpg, image/png, image/jpeg" id="input-file">
+                    </button>
                 </div>
-                <div class="bio-input">
-                    <label for="interesting">My Interests</label>
-                    <textarea>I am interesting in web development.</textarea>
+
+                <h6>@Model.Username</h6>
+                <h4>@Model.FirstName @Model.LastName</h4>
+                <h6>@(DateTime.Now.Year - Model.DateOfBirth.Year) years old</h6>
+            </div>
+
+            <fieldset class="profile-details">
+                <div>
+                    <img src="\assets\location_on.svg" alt="location">
+                    <input type="text" name="Location" value="@(string.IsNullOrEmpty(Model.Location) ? "No information" : Model.Location)">
                 </div>
-                <div class="bio-input">
-                    <label for="hobby">My Hobby</label>
-                    <textarea>I like watching movie and listening to music.</textarea>
+                <div>
+                    <img src="\assets\phone.svg" alt="phone">
+                    <input type="text" name="Phone" value="@(string.IsNullOrEmpty(Model.Phone) ? "No information" : Model.Phone)">
+                </div>
+                <div>
+                    <img src="\assets\mail.svg" alt="mail">
+                    <input type="text" name="Email" value="@Model.Email">
                 </div>
             </fieldset>
         </div>
 
-        <div class="personal-card">
-            <div class="profile-header">
-                <p>Personal Information</p>
-            </div>
+        <div class="profile-right-container">
+            <div class="bio-card">
+                <div class="profile-header">
+                    <p>Bio</p>
+                </div>
 
-            <fieldset class="user-fullname">
-                <div class="profile-input">
-                    <label for="fisrtname">First Name</label>
-                    <input type="text" value="Peerawat">
-                </div>
-                <div class="profile-input">
-                    <label for="lastname">Last Name</label>
-                    <input type="text" value="Ingkhasantatikul">
-                </div>
-            </fieldset>
-
-            <fieldset class="user-fullname">
-                <div class="profile-input">
-                    <label for="birthdate">Birth</label>
-                    <input type="date">
-                </div>
-                <div class="profile-input">
-                    <label for="gender">Gender</label>
-                    <div class="gender-button">
-                        <button class="male-button">
-                            <img src="\assets\male_icon-b.svg" alt="male icon">
-                        </button>
-                        <button class="lgbtq-button">
-                            <img src="\assets\heart.svg" alt="lgbtq+ icon">
-                        </button>
-                        <button class="female-button">
-                            <img src="\assets\female_icon-p.svg" alt="female icon">
-                        </button>
+                <fieldset class="edit-bio">
+                    <div class="bio-input">
+                        <label for="about-me">About me</label>
+                        <textarea name="AboutMe">@(string.IsNullOrEmpty(Model.AboutMe) ? "No information" : Model.AboutMe)</textarea>
                     </div>
+                    <div class="bio-input">
+                        <label for="MyInterests">My Interests</label>
+                        <textarea name="MyInterests">@(string.IsNullOrEmpty(Model.MyInterests) ? "No information" : Model.MyInterests)</textarea>
+                    </div>
+                    <div class="bio-input">
+                        <label for="MyHobby">My Hobby</label>
+                        <textarea name="MyHobby">@(string.IsNullOrEmpty(Model.MyHobby) ? "No information" : Model.MyHobby)</textarea>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="personal-card">
+                <div class="profile-header">
+                    <p>Personal Information</p>
                 </div>
-            </fieldset>
+
+                <fieldset class="user-fullname">
+                    <div class="profile-input">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" name="FirstName" value="@Model.FirstName">
+                    </div>
+                    <div class="profile-input">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" name="LastName" value="@Model.LastName">
+                    </div>
+                </fieldset>
+
+                <fieldset class="user-fullname">
+                    <div class="profile-input">
+                        <label for="DateOfBirth">Birth</label>
+                        <input type="date" name="DateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="save-cancel-button">
+            <button type="submit" class="save-button">
+                <p>Save</p>
+            </button>
+            <button type="button" class="cancel-button" onClick="location.href='@Url.Action("Index", "Profile")'">
+                <p>Cancel</p>
+            </button>
         </div>
     </div>
-    <div class="save-cancel-button">
-        <button class="save-button" onClick="location.href='@Url.Action("", "Profile")'">
-            <p>Save</p>
-        </button>
-        <button class="cancel-button" onClick="location.href='@Url.Action("", "Profile")'">
-            <p>Cancel</p>
-        </button>
-    </div>
-</div>
+</form>

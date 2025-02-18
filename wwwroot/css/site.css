@@ -130,16 +130,6 @@ main {
   background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
 }
 
-.login_bg{
-  background: url("assets/login_btn_bg.svg") center center;
-  color: white;
-  &:hover {
-      border: 2px solid var(--blue80);
-      background: white;
-      color: var(--blue80);
-  }
-}
-
 .rainbow_border{
   border: 2px solid ;
   border-image: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80)) 1;
@@ -327,6 +317,25 @@ hr {
   -webkit-text-fill-color: transparent;
 }
 
+.login_btn_bg {
+  background: url(../assets/login_btn_bg.svg) center center;
+  background-repeat: no-repeat;
+  color: var(--white);
+  &:hover {
+    background-position-y: -100%;
+  }
+}
+
+.login_bg{
+  background: url("../assets/login_btn_bg.svg") center center;
+  color: white;
+  &:hover {
+      border: 2px solid var(--blue80);
+      background: white;
+      color: var(--blue80);
+  }
+}
+
 /* redo css from here */
 /* button size */
 .btn {
@@ -395,11 +404,16 @@ hr {
     background-color: var(--white);
     color: var(--blue60);
     border: 2px solid var(--blue60);
+    text-shadow: none;
+    svg path {
+      stroke: var(--blue60);
+    }
   }
 
   .w-mb, .hover-w-mb:hover {
     background-color: var(--white);
     color: var(--blue80);
+    text-shadow: none;
     box-shadow: 0px 0px 4px 1px var(--shadow);
   }
 
@@ -421,17 +435,26 @@ hr {
     box-shadow: 0px 0px 4px 1px var(--blue40);
   }
 
+  .bb-w, .hover-bb-w:hover {
+      background-color: var(--blue60);
+      color: var(--white);
+      box-shadow: 0px 0px 4px 1px var(--shadow);
+      text-shadow: 0px 0px 4px var(--gray80);
+      svg path {
+        fill: var(--white);
+      }
+    }
+    
   .db-w, .hover-db-w:hover {
     background-color: var(--blue80);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
-  .bb-w, .hover-bb-w:hover {
-    background-color: var(--blue60);
-    color: var(--white);
-    box-shadow: 0px 0px 4px 1px var(--shadow);
-  }
+  
 
   .w-r-r {
     background-color: var(--white);

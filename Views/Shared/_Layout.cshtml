@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var token = Context.Request.Cookies["token"];
+    bool isLoggedIn = !string.IsNullOrEmpty(token);
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,12 +24,33 @@
     @if (((ViewData["Title"] as string) == "Activity Detail")) {
         <link rel="stylesheet" href="~/css/ActivityDetail.css" asp-append-version="true" />
     }
+    @if (((ViewData["Title"] as string) == "Create")) {
+    <link rel="stylesheet" href="~/css/create.css" asp-append-version="true" />
+    }
+    @if (((ViewData["Title"] as string) == "Login")) {
+        <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+    }
+    @if (((ViewData["Title"] as string) == "Register")) {
+        <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
+        <script src="~/js/auth/register/register_form.js"></script>
+    }
+
     <script src="/js/components.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
     <body>
         <header>
-            <main-navbar></main-navbar>
+            @if (isLoggedIn) {
+                @Html.Partial("_MainNavBar")
+            } else {
+                if (((ViewData["Title"] as string) == "Login") || ((ViewData["Title"] as string) == "Register")) {
+                    @Html.Partial("_LoginNavBar")
+                }
+                else {
+                    @Html.Partial("_GuestNavBar")
+                }
+            }
         </header>
         <main role="main">
             @RenderBody()

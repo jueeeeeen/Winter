@@ -8,9 +8,6 @@
     bool show_preview = true;
 }
 @if (show_preview == true) {
-    <button class="btn medium r-w round left">
-        <svg-delete></svg-delete>delete
-    </button>
     <div class="act-detail-container">
     <section class="act-detail-main edge shadow">
         <header class="act-card-profile-info">
@@ -46,11 +43,11 @@
             <span class="member-count">(2/5)</span>
         </header>
         <ul>
-            <member-list-item data-role="host"></member-list-item>
-            <member-list-item data-role="member"></member-list-item>
-            <member-list-item data-role="member_host_view"></member-list-item>
-            <member-list-item data-role="pending_host_view"></member-list-item>
-            <member-list-item data-role="pending"></member-list-item>
+            <host-list-item></host-list-item>
+            <member-list-item></member-list-item>
+            <pending-list-item></pending-list-item>
+            <pending-member-host-view></pending-member-host-view>
+            <member-host-view></member-host-view>
         </ul>
         <act-detail-join-btn></act-detail-join-btn>
         <view-review-btn></view-review-btn>
@@ -97,6 +94,10 @@
         </ul>
     </section>
     </div>
+    <div class="delete-container">
+        <delete-btn></delete-btn>
+    </div>
+    
 }
 else {
     <div class="act-detail-container">

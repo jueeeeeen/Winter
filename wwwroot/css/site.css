@@ -146,7 +146,7 @@ main {
   background-color: white;
 }
 
-.left {
+.right {
   margin-left: auto;
 }
 
@@ -267,6 +267,79 @@ main {
       background-color: var(--red);
       color: white;
   }
+}
+
+.noti-dropdown-container{
+  width: 35vh;
+  height: 43.5vh;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 10vw;
+  display: none;
+  overflow: scroll;
+}
+
+.noti-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12%;
+  color: var(--gray80);
+}
+
+.noti-list {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 35% 45% 20%;
+  grid-template-areas: 
+    "icon title"
+    "icon message"
+    "icon datetime";
+  padding: 3.5%;
+  row-gap: 1%;
+  border-bottom: 1px solid var(--gray50);
+}
+
+.noti-icon {
+  grid-area: icon;
+  border-radius: 5rem;
+  width: 2.5em;
+  height: 2.5em;
+  object-fit: cover;
+  margin: auto 0;
+  justify-content: center;
+}
+
+.noti-icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.noti-act-title {
+  grid-area: title;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.2;
+  font-size: 0.95em;
+}
+
+.noti-message {
+  grid-area: message;
+  line-height: 1;
+  display: flex;
+  font-size: 0.85em;
+  color: var(--gray80)
+}
+
+.noti-datetime {
+  grid-area: datetime;
+  font-size: 0.7em;
+  color: var(--gray70);
+  display: flex;
+  justify-content: flex-end;
+  line-height: 1;
 }
 
 hr {
@@ -572,6 +645,15 @@ hr {
   .w-g, .hover-w-g{
     background-color: var(--white);
     color: var(--gray90);
+    svg path {
+      fill: var(--gray90);
+    }
+  }
+
+  .w-g-g, .hover-w-g-g{
+    background-color: var(--white);
+    color: var(--gray90);
+    border: 2px solid var(--gray60);
     svg path {
       fill: var(--gray90);
     }

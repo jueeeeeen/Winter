@@ -108,18 +108,30 @@ class MainNavbar extends HTMLElement{
                     </li>
                 </ul>
             </div>
+            <div class="noti-dropdown-container shadow" id="noti_dropdown">
+                <span class="noti-header">Notifications</span>
+                <hr>
+                <ul>
+                    <approved-noti></approved-noti>
+                    <denied-noti></denied-noti>
+                    <joined-noti></joined-noti>
+                </ul>
+            </div>
             </nav>`
 
-        this.toggle_dropdown = this.toggle_dropdown.bind(this);
+        this.toggle_profile_dropdown = this.toggle_profile_dropdown.bind(this);
+        this.toggle_noti_dropdown = this.toggle_noti_dropdown.bind(this);
     }
 
     connectedCallback(){
         this.profile_button = this.querySelector("#profile_button");
-        this.profile_button.addEventListener("click", this.toggle_dropdown);
+        this.profile_button.addEventListener("click", this.toggle_profile_dropdown);
         change_icon(this.profile_button, "Profile-b.png", "Profile-w-b.png");
 
-        var bell_button = this.querySelector("#bell_button");
-        change_icon(bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
+        this.bell_button = this.querySelector("#bell_button");
+        this.bell_button.addEventListener("click", this.toggle_noti_dropdown);
+        
+        change_icon(this.bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
 
         var create_button = this.querySelector("#create_button");
         change_icon(create_button, "plus-w.svg", "plus-b.svg");
@@ -132,12 +144,95 @@ class MainNavbar extends HTMLElement{
         this.profile_button.removeEventListener("click", this.toggle_dropdown);
     }
 
-    toggle_dropdown() {
-        this.profile_dropdown = this.querySelector("#profile_dropdown");
-        this.profile_dropdown.classList.toggle("show");
-        console.log(this.profile_dropdown);
+    toggleDropdown(currentId, otherId) {
+        const currentDropdown = this.querySelector(`#${currentId}`);
+        const otherDropdown = this.querySelector(`#${otherId}`);
+    
+        if (otherDropdown.classList.contains("show")) {
+            otherDropdown.classList.remove("show");
+        }
+    
+        currentDropdown.classList.toggle("show");
+    }
+    
+    toggle_profile_dropdown() {
+        this.toggleDropdown("profile_dropdown", "noti_dropdown");
+    }
+    
+    toggle_noti_dropdown() {
+        this.toggleDropdown("noti_dropdown", "profile_dropdown");
     }
 }
+
+class ApprovedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon gr-w flex">
+                <svg-check></svg-check>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                your request to join has been approved.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("approved-noti", ApprovedNoti);
+
+
+
+class DeniedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-deny></svg-deny>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                your request to join has been denied.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("denied-noti", DeniedNoti);
+
+
+class JoinedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon y-w flex">
+                <svg-plus></svg-plus>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                there is a new request to join this activity.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("joined-noti", JoinedNoti);
+
 
 class SearchBar extends HTMLElement{
     constructor() {
@@ -491,19 +586,7 @@ class PaginationItem extends HTMLElement {
 class MemberListItem extends HTMLElement {
     constructor() {
         super();
-        this.role = this.getAttribute("data-role");
-        if (this.role == "host") {
-            this.innerHTML = 
-            `<li class="radial-blue-bg member-list-item shadow">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role flex">(Host)</span>
-            </li>`;
-        }
-        else if (this.role == "member"){
-            this.innerHTML = 
+        this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
                     <img src="../../assets/profile-g.png">
@@ -511,50 +594,71 @@ class MemberListItem extends HTMLElement {
                 <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
                 <span class="member-list-item-role flex">(Member)</span>
             </li>`; 
-        }
-        else if (this.role == "pending"){
-            this.innerHTML = 
-            `<li class="w-bb-bb pending-member-item">
-                <svg-more-people></svg-more-people>
-                <span>...more people applied...</span>
-            </li>`;
-        }
-        else if (this.role == "pending_host_view"){
-            this.innerHTML = 
-            `<li class="w-bb-bb member-list-item">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role flex">waiting for approval...</span>
-                <div class="member-list-item-approval flex">
-                    <button class="btn approval gr-w hover-w-gr-gr round">
-                        <svg-check></svg-check>
-                    </button>
-                    <button class="btn approval r-w hover-w-r-r round">
-                        <svg-deny></svg-deny>
-                    </button>
-                </div>
-            </li>`;
-        }
-        else if (this.role == "member_host_view"){
-            this.innerHTML = 
-            `<li class="w-bb-bb member-list-item">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role flex">(Member)</span>
-                <div class="member-list-item-approval flex">
-                    <button class="btn approval r-w hover-w-r-r round">
-                        <svg-minus></svg-minus>
-                    </button>
-                </div>
-            </li>`;
-        }
     }
+}
+class HostListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="radial-blue-bg member-list-item shadow">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">(Host)</span>
+        </li>`;
+    }
+    
+}
+class PendingListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb pending-member-item">
+            <svg-more-people></svg-more-people>
+            <span>...more people applied...</span>
+        </li>`;
+    }  
+}
 
-    connectedCallback() {
+class PendingHostViewListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">waiting for approval...</span>
+            <div class="member-list-item-approval flex">
+                <button class="btn approval gr-w hover-w-gr-gr round">
+                    <svg-check></svg-check>
+                </button>
+                <button class="btn approval r-w hover-w-r-r round">
+                    <svg-deny></svg-deny>
+                </button>
+            </div>
+        </li>`;
+    }
+}
+
+class MemberHostViewListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">(Member)</span>
+            <div class="member-list-item-approval flex">
+                <button class="btn approval r-w hover-w-r-r round">
+                    <svg-minus></svg-minus>
+                </button>
+            </div>
+        </li>`;
     }
 }
 
@@ -572,6 +676,16 @@ class ViewReviewBtn extends HTMLElement {
     constructor() {
         super();
         this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y">view review</button>`;
+    }
+}
+
+class DeleteBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<button class="btn medium r-w round right hover-w-r-r">
+            <svg-delete></svg-delete>delete
+        </button>`;
     }
 }
 
@@ -609,7 +723,6 @@ class AllActBanner extends HTMLElement {
         this.handle_banner_change = this.handle_banner_change.bind(this);
 
         this.page_list = this.querySelectorAll("span");
-        console.log(this.page_list)
     }
     connectedCallback() {
         this.handle_banner_change(0);
@@ -620,6 +733,7 @@ class AllActBanner extends HTMLElement {
     handle_banner_change(value) {
         this.banner_pic = this.querySelector("#banner_pic");
         this.banner_pic.classList.add("fade-out")
+        console.log(this.banner_pic);
         this.current_page += value;
         setTimeout(() => {
             if(this.current_page >= 3)
@@ -634,7 +748,6 @@ class AllActBanner extends HTMLElement {
             this.page_list.forEach((page, index) => {
                 page.classList.toggle("bb-w", this.current_page === index);
             });
-            console.log(this.current_page)
             this.banner_pic.src = path + this.pictures[this.current_page];
             this.banner_pic.classList.remove("fade-out")
         },500)
@@ -823,7 +936,7 @@ class SVGCheck extends BaseSVGElement {
     constructor() {
         super();
         this.innerHTML = 
-        `<svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        `<svg width="18" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18.8334 2.25L7.37502 13.7083L2.16669 8.5" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`;
     }
@@ -833,7 +946,7 @@ class SVGDeny extends BaseSVGElement {
     constructor() {
         super();
         this.innerHTML = 
-        `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        `<svg width="16" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15.5 2.5L2.5 15.5M2.5 2.5L15.5 15.5" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`;
     }
@@ -853,8 +966,8 @@ class SVGDelete extends BaseSVGElement {
     constructor() {
         super();
         this.innerHTML = 
-        `<svg width="29" height="33" viewBox="0 0 29 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.125 8.25H4.875M4.875 8.25H26.875M4.875 8.25V27.5C4.875 28.2293 5.16473 28.9288 5.68046 29.4445C6.19618 29.9603 6.89565 30.25 7.625 30.25H21.375C22.1043 30.25 22.8038 29.9603 23.3195 29.4445C23.8353 28.9288 24.125 28.2293 24.125 27.5V8.25M9 8.25V5.5C9 4.77065 9.28973 4.07118 9.80546 3.55546C10.3212 3.03973 11.0207 2.75 11.75 2.75H17.25C17.9793 2.75 18.6788 3.03973 19.1945 3.55546C19.7103 4.07118 20 4.77065 20 5.5V8.25M11.75 15.125V23.375M17.25 15.125V23.375" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        `<svg width="25" height="28" viewBox="0 0 29 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.125 8.25H4.875M4.875 8.25H26.875M4.875 8.25V27.5C4.875 28.2293 5.16473 28.9288 5.68046 29.4445C6.19618 29.9603 6.89565 30.25 7.625 30.25H21.375C22.1043 30.25 22.8038 29.9603 23.3195 29.4445C23.8353 28.9288 24.125 28.2293 24.125 27.5V8.25M9 8.25V5.5C9 4.77065 9.28973 4.07118 9.80546 3.55546C10.3212 3.03973 11.0207 2.75 11.75 2.75H17.25C17.9793 2.75 18.6788 3.03973 19.1945 3.55546C19.7103 4.07118 20 4.77065 20 5.5V8.25M11.75 15.125V23.375M17.25 15.125V23.375" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`;
     }
 }
@@ -916,10 +1029,15 @@ customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);
 customElements.define("act-card-join-btn", ActCardJoinBtn);
 customElements.define("pagination-item", PaginationItem);
-customElements.define("member-list-item", MemberListItem);
 customElements.define("act-detail-join-btn", ActDetailJoinBtn);
 customElements.define("all-act-banner", AllActBanner);
 customElements.define('view-review-btn', ViewReviewBtn);
+customElements.define('delete-btn', DeleteBtn);
+customElements.define("member-list-item", MemberListItem);
+customElements.define("host-list-item", HostListItem);
+customElements.define('pending-list-item', PendingListItem);
+customElements.define('member-host-view', MemberHostViewListItem);
+customElements.define('pending-member-host-view', PendingHostViewListItem);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);

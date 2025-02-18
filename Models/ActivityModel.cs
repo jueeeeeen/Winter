@@ -16,8 +16,5 @@ namespace Winter_Project.Models
         public int Max_member {get; set;}
         public bool approval {get; set;}
         public string tags {get; set;} = string.Empty;
-
-
     }
-
 }

@@ -17,9 +17,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuer = false, // Set to true if you want to validate the issuer
-            ValidateAudience = false, // Set to true if you want to validate the audience
+            ValidateIssuer = true, // Set to true if you want to validate the issuer
+            ValidateAudience = true, // Set to true if you want to validate the audience
             ValidateLifetime = true,
+            ValidIssuer = jwtSettings["Issuer"], // กำหนดค่า Issuer จากการตั้งค่า
+            ValidAudience = jwtSettings["Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(key),
             ClockSkew = TimeSpan.Zero // Optional: prevents delay between token generation and validation
         };

@@ -7,6 +7,8 @@
     <title>@ViewData["Title"] - Winter</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @RenderSection("styles", required: false)
+
     @if ((ViewData["Title"] as string) == "Home") {
         <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     }
@@ -30,6 +32,9 @@
         <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
         <script src="~/js/auth/register/register_form.js"></script>
     }
+    @if ((ViewData["Title"] as string) == "Login") {
+        <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+    }
     <script src="/js/components.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/auth/register/register_form.js" defer></script>
@@ -41,5 +46,6 @@
         <main role="main">
             @RenderBody()
         </main>
+        @RenderSection("scripts", required: false)
     </body>
 </html>

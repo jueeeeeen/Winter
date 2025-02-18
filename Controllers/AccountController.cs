@@ -75,7 +75,7 @@ namespace Winter_Project.Controllers
             }
         }
         [HttpGet("login")]
-        public IActionResult login()
+        public IActionResult Login()
         {
             return View();
         }

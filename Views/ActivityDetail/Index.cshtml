@@ -43,31 +43,19 @@
             <span class="member-count">(2/5)</span>
         </header>
         <ul>
-            <li class="radial-blue-bg member-list-item shadow">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Host)</span>
-            </li>
-            <li class="w-bb-bb member-list-item">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Member)</span>
-            </li>
-            <li class="w-bb-bb pending-member-item">
-                <svg-more-people></svg-more-people>
-                <span>...more people applied...</span>
-            </li>
+            <host-list-item></host-list-item>
+            <member-list-item></member-list-item>
+            <pending-list-item></pending-list-item>
+            <pending-member-host-view></pending-member-host-view>
+            <member-host-view></member-host-view>
         </ul>
         <act-detail-join-btn></act-detail-join-btn>
+        <view-review-btn></view-review-btn>
     </section>
     <section class="act-detail-requirement edge shadow w-bb-bb">
         <div class="flex">
             <span class="act-detail-req-header letter-spacing">
-                <svg-check></svg-check><b>requirements :</b>
+                <svg-checkbox></svg-checkbox><b>requirements :</b>
             </span>
             <ul class="flex">
                 <li>
@@ -85,7 +73,7 @@
             หน้าตาดีพิจารณาเป็นพิเศษ
         </p>
     </section>
-    <section class="act-detail-info edge shadow lb-w">
+    <section class="act-detail-info edge shadow">
         <ul>
             <li>
                 <svg-calendar></svg-calendar>
@@ -106,6 +94,10 @@
         </ul>
     </section>
     </div>
+    <div class="delete-container">
+        <delete-btn></delete-btn>
+    </div>
+    
 }
 else {
     <div class="act-detail-container">
@@ -168,7 +160,7 @@ else {
     <section class="act-detail-requirement edge shadow w-bb-bb">
         <div class="flex">
             <span class="act-detail-req-header letter-spacing">
-                <svg-check></svg-check><b>requirements :</b>
+                <svg-checkbox></svg-checkbox><b>requirements :</b>
             </span>
             <ul class="flex">
                 <li>

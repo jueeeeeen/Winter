@@ -492,14 +492,15 @@ class ActivityCard extends HTMLElement {
 class ActCardJoinBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w">join</button>`
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w hover-w-bb-bb">join</button>`
     }
 }
 
 class Pagination extends HTMLElement {
-    constructor() {
+    constructor(page_count) {
         super();
-        this.innerHTML = ``;
+        // this.innerHTML = ``;
+
     }
 }
 
@@ -522,43 +523,110 @@ class PaginationItem extends HTMLElement {
     }
 }
 
+//separate later
 class MemberListItem extends HTMLElement {
     constructor() {
         super();
-        this.role = this.getAttribute("data-role");
-        if (this.role == "host") {
-            this.innerHTML = 
-            `<li class="radial-blue-bg member-list-item shadow">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Host)</span>
-            </li>`;
-        }
-        else if (this.role == "member"){
-            this.innerHTML = 
+        this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
                     <img src="../../assets/profile-g.png">
                 </div>
                 <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Member)</span>
+                <span class="member-list-item-role flex">(Member)</span>
             </li>`; 
-        }
-        else if (this.role == "pending"){
-            this.innerHTML = `<button class="pagination-item round">${this.role}</button>`;
-        }
+    }
+}
+class HostListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="radial-blue-bg member-list-item shadow">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">(Host)</span>
+        </li>`;
+    }
+    
+}
+class PendingListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb pending-member-item">
+            <svg-more-people></svg-more-people>
+            <span>...more people applied...</span>
+        </li>`;
+    }  
+}
+
+class PendingHostViewListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">waiting for approval...</span>
+            <div class="member-list-item-approval flex">
+                <button class="btn approval gr-w hover-w-gr-gr round">
+                    <svg-check></svg-check>
+                </button>
+                <button class="btn approval r-w hover-w-r-r round">
+                    <svg-deny></svg-deny>
+                </button>
+            </div>
+        </li>`;
+    }
+}
+
+class MemberHostViewListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">(Member)</span>
+            <div class="member-list-item-approval flex">
+                <button class="btn approval r-w hover-w-r-r round">
+                    <svg-minus></svg-minus>
+                </button>
+            </div>
+        </li>`;
     }
 }
 
 class ActDetailJoinBtn extends HTMLElement {
     constructor(actID) {
         super();
-        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn">join</button>`;
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
     }
     connectedCallback() {
 
+    }
+}
+
+class ViewReviewBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y">view review</button>`;
+    }
+}
+
+class DeleteBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<button class="btn medium r-w round right hover-w-r-r">
+            <svg-delete></svg-delete>delete
+        </button>`;
     }
 }
 
@@ -596,7 +664,6 @@ class AllActBanner extends HTMLElement {
         this.handle_banner_change = this.handle_banner_change.bind(this);
 
         this.page_list = this.querySelectorAll("span");
-        console.log(this.page_list)
     }
     connectedCallback() {
         this.handle_banner_change(0);
@@ -607,6 +674,7 @@ class AllActBanner extends HTMLElement {
     handle_banner_change(value) {
         this.banner_pic = this.querySelector("#banner_pic");
         this.banner_pic.classList.add("fade-out")
+        console.log(this.banner_pic);
         this.current_page += value;
         setTimeout(() => {
             if(this.current_page >= 3)
@@ -621,7 +689,6 @@ class AllActBanner extends HTMLElement {
             this.page_list.forEach((page, index) => {
                 page.classList.toggle("bb-w", this.current_page === index);
             });
-            console.log(this.current_page)
             this.banner_pic.src = path + this.pictures[this.current_page];
             this.banner_pic.classList.remove("fade-out")
         },500)
@@ -775,7 +842,7 @@ class SVGMorePeople extends BaseSVGElement {
     }
 }
 
-class SVGCheck extends BaseSVGElement {
+class SVGCheckBox extends BaseSVGElement {
     constructor() {
         super();
         this.innerHTML = 
@@ -925,9 +992,15 @@ customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);
 customElements.define("act-card-join-btn", ActCardJoinBtn);
 customElements.define("pagination-item", PaginationItem);
-customElements.define("member-list-item", MemberListItem);
 customElements.define("act-detail-join-btn", ActDetailJoinBtn);
 customElements.define("all-act-banner", AllActBanner);
+customElements.define('view-review-btn', ViewReviewBtn);
+customElements.define('delete-btn', DeleteBtn);
+customElements.define("member-list-item", MemberListItem);
+customElements.define("host-list-item", HostListItem);
+customElements.define('pending-list-item', PendingListItem);
+customElements.define('member-host-view', MemberHostViewListItem);
+customElements.define('pending-member-host-view', PendingHostViewListItem);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);
@@ -942,7 +1015,7 @@ customElements.define("svg-prev", SVGPrev);
 customElements.define("svg-next", SVGNext);
 customElements.define("svg-bookmark", SVGBookMark);
 customElements.define("svg-more-people", SVGMorePeople);
-customElements.define("svg-check", SVGCheck);
+customElements.define("svg-checkbox", SVGCheckBox);
 customElements.define("svg-location", SVGLocation);
 customElements.define("svg-deny", SVGDeny);
 customElements.define("svg-minus", SVGMinus);

@@ -1,0 +1,98 @@
+<nav class="gradient_blue shadow nav_bar_container">
+    <ul class="no_select nav_bar">
+        <li><a href="/" class="flex flex_center"><img src="/assets/home.svg" width="30px" alt="home"></a></li>
+        <li><a href="/Activity">Activity</a></li>
+        <li class="logo">
+            <a href="/" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter Logo" /></a>
+        </li>
+        <li class="m_left_auto">
+            <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/Create'">
+                <img src="/assets/plus-b.svg" alt="plus icon">create
+            </button>
+        </li>
+        <li><button class="btn circle round w-mb hover-y-w" id="bell_button">
+            <img src="/assets/bell_icon-g.svg" alt="bell"></button>
+        </li>
+        <li><button class="btn circle round w-mb hover-b-w" id="profile_button">
+            <img src="/assets/Profile-w-b.png" width="55px" alt="profile"></button>
+        </li>
+    </ul>
+
+    <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
+        <div class="info_dropdown flex gap">
+            <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-w-b.png" width="40px">
+            <div>
+                <span class="name_dropdown">Peerawat<br>Ingkhasantatikul</span>
+                <span class="username_dropdown">Marklnwza007</span>
+            </div>
+        </div>
+        <hr class="blue_line">
+        <ul>
+            <li class="btn_dropdown"><a href="/Profile"><img src="/assets/person.svg">My Profile</a></li>
+            <hr class="blue_line_dash">
+            <li class="btn_dropdown"><a href="/MyActivity"><img src="/assets/activity.svg">My Activity</a></li>
+            <hr class="blue_line_dash">
+            <li class="btn_dropdown"><a href="/MyRating"><img src="/assets/star_outline.svg">My Ratings</a></li>
+            <hr class="blue_line_dash">
+            <li>
+                <div class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
+                    <img src="/assets/logout.svg">log out
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="noti-dropdown-container shadow" id="noti_dropdown">
+        <span class="noti-header">Notifications</span>
+        <hr>
+        <ul>
+            <approved-noti></approved-noti>
+            <denied-noti></denied-noti>
+            <joined-noti></joined-noti>
+        </ul>
+    </div>
+</nav>
+
+<script>
+    function change_icon(element, icon_hover, icon_default) {
+        element.onmouseover = () => {
+            element.firstElementChild.src = "/assets/" + icon_hover;
+        }
+
+        element.onmouseleave = () => {
+            element.firstElementChild.src = "/assets/" + icon_default;
+        }
+    }
+
+    const profile_button = document.querySelector("#profile_button");
+    const bell_button = document.querySelector("#bell_button");
+    const create_button = document.querySelector("#create_button");
+    const logout_button = document.querySelector("#logout_button");
+
+    profile_button.addEventListener("click", toggle_profile_dropdown);
+    bell_button.addEventListener("click", toggle_noti_dropdown);
+
+    change_icon(profile_button, "Profile-b.png", "Profile-w-b.png");
+    change_icon(bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
+    change_icon(create_button, "plus-w.svg", "plus-b.svg");
+    change_icon(logout_button, "logout-w.svg", "logout.svg");
+
+    function toggleDropdown(currentId, otherId) {
+        const currentDropdown = document.querySelector(`#${currentId}`);
+        const otherDropdown = document.querySelector(`#${otherId}`);
+
+        if (otherDropdown && otherDropdown.classList.contains("show")) {
+            otherDropdown.classList.remove("show");
+        }
+
+        currentDropdown.classList.toggle("show");
+    }
+
+    function toggle_profile_dropdown() {
+        toggleDropdown("profile_dropdown", "noti_dropdown");
+    }
+
+    function toggle_noti_dropdown() {
+        toggleDropdown("noti_dropdown", "profile_dropdown");
+    }
+</script>

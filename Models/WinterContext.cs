@@ -26,10 +26,16 @@ namespace Winter_Project.Models
             );
 
         // กำหนดความสัมพันธ์ One-to-One ระหว่าง ActivityModel และ RequirementModel
+            // modelBuilder.Entity<ActivityModel>()
+                // .HasOne(a => a.Requirement); // ActivityModel มี RequirementModel
+                // .HasForeignKey<RequirementModel>(r => r.Activity_id); // กำหนด Activity_id เป็น Foreign Key
+
             modelBuilder.Entity<ActivityModel>()
-                .HasOne(a => a.Requirement) // ActivityModel มี RequirementModel
-                .WithOne(r => r.Activity)   // RequirementModel มี ActivityModel
-                .HasForeignKey<RequirementModel>(r => r.Activity_id); // กำหนด Activity_id เป็น Foreign Key
+            .HasOne(a => a.Requirement) // ActivityModel has one RequirementModel
+            .WithOne() // RequirementModel has one ActivityModel
+            .HasForeignKey<RequirementModel>(r => r.Activity_id);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

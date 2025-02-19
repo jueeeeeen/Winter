@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250219085121_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250219152008_UpdateUserModel")]
+    partial class UpdateUserModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,7 +64,7 @@ namespace Winter_Project.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Tags")
+                    b.PrimitiveCollection<string>("Tags")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -186,13 +186,11 @@ namespace Winter_Project.Migrations
 
             modelBuilder.Entity("Winter_Project.Models.RequirementModel", b =>
                 {
-                    b.HasOne("Winter_Project.Models.ActivityModel", "Activity")
+                    b.HasOne("Winter_Project.Models.ActivityModel", null)
                         .WithOne("Requirement")
                         .HasForeignKey("Winter_Project.Models.RequirementModel", "Activity_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Activity");
                 });
 
             modelBuilder.Entity("Winter_Project.Models.UserBio", b =>

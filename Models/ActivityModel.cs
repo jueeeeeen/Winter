@@ -1,13 +1,14 @@
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Authorization.Infrastructure;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Winter_Project.Models
 {
     public class ActivityModel
     {
-        private static int _next_id = 1;
+        // private static int _next_id = 1;
         
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Activity_id {get; set;}
 
         public string Owner {get; set;} = string.Empty;
@@ -19,17 +20,13 @@ namespace Winter_Project.Models
         public string Location {get; set;} = string.Empty;
         public int Max_member {get; set;}
         public bool Approval {get; set;}
-        public string Tags {get; set;} = string.Empty;
+        public List<string> Tags {get; set;} = new List<string>();
 
         public RequirementModel Requirement { get; set; } = new RequirementModel();
-
-        public List<string> Participants {get; set;} = [];
+        
+        public List<string> Participants { get; set; } = new List<string>();
 
         public string Status {get; set;} = string.Empty;
 
-        public void Activity()
-        {
-            Activity_id = _next_id++;
-        }
     }
 }

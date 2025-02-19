@@ -1,10 +1,24 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Winter_Project.Models; 
+using Winter_Project.ViewModels;
 
 namespace Winter_Project.Controllers;
 public class ActivityController: Controller
 {
+    private readonly WinterContext _context;
+
+    public ActivityController(WinterContext context)
+    {
+        _context = context;
+    }
+    
     public IActionResult Index()
     {
+        
         return View();
     }
 
@@ -21,10 +35,39 @@ public class ActivityController: Controller
         return Json(new { Tags = tags });
     }
 
-    // [HttpGet]
-    // public JsonResult GetActivityCards()
-    // {
-    //     var activities = _activityService.GetActivities(); // chat บอก อันนี้เป็นการดึงข้อมูลจาก database เลยแปะไว้ก่อน
-    //     return Json(activities, JsonRequestBehavior.AllowGet);
-    // }
+    [HttpPost]
+    public JsonResult GetActivityCards()
+    {
+        var activities = _context.Activities
+                            .Select(a => new 
+                            {
+                                a.Activity_id,
+                                a.Title,
+                                a.Tags,
+                                a.Create_time,
+                                Requirement = new {
+                                    a.Requirement.Gender,
+                                    a.Requirement.Age,
+                                },
+                                a.Location,
+                                a.Activity_time,
+                                a.Max_member,
+                                Participants_count = a.Participants.Count(),
+                                a.Duration,
+                                host = _context.Users
+                                                .Where(u => u.Username == a.Owner)
+                                                .Select(u => new 
+                                                {
+                                                    Profile_pic = "profile-g.png",
+                                                    u.Username,
+                                                    u.FirstName,
+                                                    u.LastName,
+                                                    u.Gender,
+                                                    Review = "4.5"
+                                                })
+                                                .FirstOrDefault()
+                            })
+                            .ToList();
+        return Json(activities);
+    }
 }

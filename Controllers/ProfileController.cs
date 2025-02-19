@@ -15,7 +15,7 @@ public class ProfileController : Controller
     }
 
     public IActionResult Index()
-{
+    {
     var token = Request.Cookies["token"];
     Console.WriteLine($"Token: {token}");
 
@@ -52,7 +52,7 @@ public class ProfileController : Controller
 
         var userBio = _context.UserBios.FirstOrDefault(b => b.UserId == user.Id);
 
-         var profileViewModel = new ProfileViewModel
+        var profileViewModel = new ProfileViewModel
             {
                 Username = user.Username,
                 Email = user.Email,

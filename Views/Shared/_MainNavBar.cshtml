@@ -1,3 +1,5 @@
+@model Winter_Project.ViewModels.NavbarProfileViewModel
+
 <nav class="gradient_blue shadow nav_bar_container">
     <ul class="no_select nav_bar">
         <li><a href="/" class="flex flex_center"><img src="/assets/home.svg" width="30px" alt="home"></a></li>
@@ -19,20 +21,22 @@
     </ul>
 
     <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
-        <div class="info_dropdown flex gap">
-            <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-w-b.png" width="40px">
-            <div>
-                <span class="name_dropdown">Peerawat<br>Ingkhasantatikul</span>
-                <span class="username_dropdown">Marklnwza007</span>
+        <div class="info_dropdown">
+            <div class="profile-container-dropdown">
+                <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-w-b.png" width="40px">
             </div>
+            
+            <span class="first-name-dropdown">@Model.FirstName</span>
+            <span class="last-name-dropdown">@Model.LastName</span>
+            <span class="username_dropdown">@Model.Username</span>
         </div>
         <hr class="blue_line">
         <ul>
-            <li class="btn_dropdown"><a href="/Profile"><img src="/assets/person.svg">My Profile</a></li>
+            <li class="btn_dropdown"><img src="/assets/person.svg"><a href="/Profile">My Profile</a></li>
             <hr class="blue_line_dash">
-            <li class="btn_dropdown"><a href="/MyActivity"><img src="/assets/activity.svg">My Activity</a></li>
+            <li class="btn_dropdown"><img src="/assets/activity.svg"><a href="/MyActivity">My Activity</a></li>
             <hr class="blue_line_dash">
-            <li class="btn_dropdown"><a href="/MyRating"><img src="/assets/star_outline.svg">My Ratings</a></li>
+            <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/MyRating">My Ratings</a></li>
             <hr class="blue_line_dash">
             <li>
                 <form method="post" asp-controller="Account" asp-action="Logout">

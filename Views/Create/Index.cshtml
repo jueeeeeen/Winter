@@ -120,7 +120,7 @@
 
         console.log(JSON.stringify(data, null, 2));
 
-        @* await fetch('http://localhost:5115/Create', {
+        await fetch('http://localhost:5115/Create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -132,7 +132,7 @@
         })
         .catch(error => {
             console.error(error);
-        }); *@
+        });
         
     }
 </script>

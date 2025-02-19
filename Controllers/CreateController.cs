@@ -40,11 +40,11 @@ public class CreateController : Controller
             Console.WriteLine($"Received: {model.Title}, {model.Detail}, {model.Activity_time}");
             var activity = new ActivityModel
             {
-                Owner = "me",
+                Owner = "jueeeeeen",
                 Title = model.Title,
                 Detail = model.Detail,
                 // Create_time = DateTime.UtcNow,
-                Create_time = "now",
+                Create_time = "15 Jan 2025 12:59",
                 Activity_time = model.Activity_time, 
                 Duration = "5",
                 Location = model.Location,

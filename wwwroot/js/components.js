@@ -476,13 +476,13 @@ class ActivityCard extends HTMLElement {
     constructor(activity) {
         super();
         if (activity) {
-            [this.act_date, this.act_time] = activity.activity_time.split(" ");
+            [this.act_date, this.act_time] = activity.activity_time.split("T");
             this.innerHTML = `
             <div class="activity-card shadow">
                 <div class="act-card-profile-info">
                     <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
                     <div>
-                        <span>${activity.host.name}</span>
+                        <span>${activity.host.firstName + " " + activity.host.lastName}</span>
                         <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
                     </div>
                     <div>
@@ -492,7 +492,7 @@ class ActivityCard extends HTMLElement {
                             ${activity.host.review}
                         </span>
                     </div>
-                    <div>${activity.membership}</div>
+                    <div>${activity.participants_count + "/" + activity.max_member}</div>
                 </div>
                 <ul class="act-card-tags-container">
                     ${activity.tags.map(tag => `
@@ -505,15 +505,15 @@ class ActivityCard extends HTMLElement {
                     <h2>${activity.title}</h2>
                 </div>
                 <ul class="act-card-tags-container">
-                    ${Object.entries(activity.requirements).map(([type, value]) => `
-                        <li>
+                    ${Object.entries(activity.requirement).map(([type, value]) => 
+                        `<li>
                             <req-tag data-type="${type}" data-value="${value}"></req-tag>
                         </li>
                     `).join("")}
                 </ul>
                 <ul class="act-card-info">
                     <li>
-                        <svg-clock></svg-clock><span>${this.act_time + "(" + activity.duration + ")"}</span>
+                        <svg-clock></svg-clock><span>${this.act_time + "(" + activity.duration + " hours)"}</span>
                     </li>
                     <li>
                         <svg-calendar></svg-calendar><span>${this.act_date}</span>
@@ -569,7 +569,7 @@ class ActivityCard extends HTMLElement {
                     </li>
                 </ul>
             </div>`
-            }
+        }
     }
 }
 

@@ -84,7 +84,6 @@
 #all-activities-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 1rem;
 }
 
@@ -114,7 +113,7 @@
 
 .activity-card .act-card-info {
     font-size: 13px;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .activity-card .act-card-tags-container {

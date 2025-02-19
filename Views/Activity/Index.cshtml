@@ -37,3 +37,32 @@
     <pagination-item data-value="10"></pagination-item>
     <pagination-item data-value="next"></pagination-item>
 </div>
+
+<script>
+    window.onload = async function() {
+        const activity_container = document.getElementById("all-activities-container");
+
+        try {
+            const response = await fetch('/Activity/GetActivityCards', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify("")  // Make sure 'data' is defined or pass it as needed
+            });
+
+            const activities = await response.json();
+            console.log(activities);  // This will log the activities returned by the server
+
+            activity_container.innerHTML = '';
+
+            activities.forEach(activity => {
+                const activityCard = new ActivityCard(activity);  // Create an instance of ActivityCard
+                activity_container.appendChild(activityCard);  // Append it to the container
+            })
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
+</script>

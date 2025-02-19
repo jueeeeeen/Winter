@@ -35,9 +35,11 @@
             <li class="btn_dropdown"><a href="/MyRating"><img src="/assets/star_outline.svg">My Ratings</a></li>
             <hr class="blue_line_dash">
             <li>
-                <button class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
-                    <img src="/assets/logout.svg">log out
-                </button>
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <button class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
+                        <img src="/assets/logout.svg">log out
+                    </button>
+                </form>
             </li>
         </ul>
     </div>

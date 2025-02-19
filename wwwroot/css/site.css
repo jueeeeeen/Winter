@@ -191,8 +191,8 @@ main {
 }
 
 .profile_dropdown {
-  max-width: 216px;
-  height: 260px;
+  width: 15vw;
+  height: 18vw;
   padding: 0 14px;
   position: absolute;
   right: 6vw;
@@ -202,25 +202,53 @@ main {
 
 
 .info_dropdown {
-  width: 188px;
-  height: 70px;
-  line-height: 15px;
+  /* height: ; */
+  line-height: 1;
+  display: grid;
+  padding: 5% 0;
+  column-gap: 3%;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 40% 40% 20%;
+  grid-template-areas: 
+    "profile first-name"
+    "profile last-name"
+    "profile username";
+  color: var(--gray90);
 }
 
-.name_dropdown {
-  font-size: 14px;
-  color: var(--gray90);
+.profile-container-dropdown {
+  grid-area: profile;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.first-name-dropdown {
+  grid-area: first-name;
+  display: flex;
+  align-items: flex-end;
+}
+
+.last-name-dropdown {
+  grid-area: last-name;
+  display: flex;
+  align-items: center;
 }
 
 .username_dropdown {
+  grid-area: username;
   font-size: 12px;
   color: gray;
-  line-height: 20px;
+  line-height: 1;
+}
+
+.username_dropdown::before {
+  content: "@";
 }
 
 .btn_dropdown {
-  width: 188px;
+  display: flex;
+  align-items: center;
   height: 30px;
   margin: 3px 0;
   color: var(--gray90);
@@ -234,12 +262,12 @@ main {
   img {
       margin: 0 7px 0 7px;
       position: relative;
-      top: 4px;
   }
 }
 
 .btn_dropdown a {
   display: flex;
+  align-items: center;
 }
 
 .log_out_dropdown {

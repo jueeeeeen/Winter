@@ -108,7 +108,7 @@
             Location: formData.get("Location"),
             Max_member: parseInt(formData.get("Max_member")) || 0,
             Approval: formData.get("Approval") === "true",
-            Tags: formData.getAll("tags"),
+            Tags: formData.getAll("Tags"),
             Requirement: {
                 Gender: formData.get("Gender"),
                 Age: parseInt(formData.get("Age")) || 0,
@@ -120,7 +120,7 @@
 
         console.log(JSON.stringify(data, null, 2));
 
-        await fetch('http://localhost:5115/Create', {
+        @* await fetch('http://localhost:5115/Create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -132,7 +132,7 @@
         })
         .catch(error => {
             console.error(error);
-        });
+        }); *@
         
     }
 </script>

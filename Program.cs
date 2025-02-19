@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using Winter_Project.Models;
+using Winter_Project.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(); 
+builder.Services.AddScoped<UserService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

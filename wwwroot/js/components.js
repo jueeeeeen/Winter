@@ -1121,6 +1121,216 @@ function toggleInvertColor(element, toggle, img1, img2, color1, color2) {
         }
     }
 }
+class SelectActivities extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+        <ul class="select_type">
+            <li>
+                <button class="type" id="Upcoming_button">
+                    Upcoming
+                </button>
+            </li>
+            <li>
+                <button class="type" id="History_button">
+                    History
+                </button>
+            </li>
+        </ul>
+        `;
+        this.querySelector('#Upcoming_button').addEventListener('click', () => this.changeHeader('Upcoming'));
+        this.querySelector('#History_button').addEventListener('click', () => this.changeHeader('History'));
+    }
+
+    // changeHeader(headerText) {
+    //     const event = new CustomEvent('headerChange', { detail: { text: headerText } });
+    //     console.log(event)
+    //     this.dispatchEvent(event);
+    // }
+}
+
+customElements.define("select-activities", SelectActivities);
+
+class Member extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+        <li class="member">
+            <div class="member-content">
+                <img src="assets/Profile-w-b.png" alt="Profile">
+                <span class="member-name"></span>
+                <span class="member-role"></span>
+            </div>
+            <button class="rate-btn">
+                <img src="assets/yellow_star_outline.png" alt="Rate">
+                <span class="review-text">review</span>
+            </button>
+        </li>
+        `;
+    }
+
+    connectedCallback() {
+        this.querySelector(".member-name").textContent = this.getAttribute("name") || "Unknown";
+        this.querySelector(".member-role").textContent = `(${this.getAttribute("role") || "Member"})`;
+
+        const ratingPopup = document.querySelector("rating-popup");
+        this.querySelector(".rate-btn").addEventListener("click", () => {
+        const activityName = this.closest("activity-dropdown")?.getAttribute("activity-name") || "Unknown Activity";
+        const name = this.querySelector(".member-name").textContent || "Unknown Name";
+            ratingPopup.openPopup(this.querySelector(".member-name").textContent, activityName);
+        });
+    }
+}
+
+class ActivityDropdown extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `        
+        <div class="activity-dropdown">
+            <button class="activity-dropdown-btn">
+                <div class="activity-details">
+                    <span class="activity-name"></span>
+                    <div class="tags"></div>
+                    <span class="date">
+                        <img src="assets/calendar_icon.png" alt="calendar"> 
+                        <span class="date-text"></span>
+                    </span>
+                </div>
+                <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
+            </button>
+
+            <div class="activity-dropdown-content">
+                <div class="dropdown-container">
+                    <img src="assets/people_icon.png" alt="People">
+                    <ul class="members"></ul>
+                </div>
+                <button class="view-details">View Details</button>
+            </div>
+        </div>
+        `;
+
+        this.querySelector(".activity-dropdown-btn").addEventListener("click", () => {
+            this.querySelector(".activity-dropdown").classList.toggle("open");
+        });
+    }
+
+    connectedCallback() {
+        this.querySelector(".activity-name").textContent = this.getAttribute("activity-name") || "No Activity";
+        this.querySelector(".date-text").textContent = this.getAttribute("date") || "Unknown Date";
+
+        const tagsContainer = this.querySelector(".tags");
+        const tags = JSON.parse(this.getAttribute("tags") || "[]");
+        tags.forEach(tag => {
+            const span = document.createElement("span");
+            span.classList.add("tag");
+            span.textContent = tag;
+            tagsContainer.appendChild(span);
+        });
+
+        const membersContainer = this.querySelector(".members");
+        const members = JSON.parse(this.getAttribute("members") || "[]");
+        members.forEach(member => {
+            const memberElement = document.createElement("custom-member");
+            memberElement.setAttribute("name", member.name);
+            memberElement.setAttribute("role", member.role);
+            membersContainer.appendChild(memberElement);
+        });
+    }
+}
+
+class ActivitiesList extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `        
+        <div class="activities-bg">
+            <h2 class="activities-header">Upcoming</h2>
+            <div class="activities"></div>
+        </div>
+        `;
+    }
+
+    connectedCallback() {
+        this.addEventListener("activity-selected", this.handleActivitySelected);
+
+        const activitiesContainer = this.querySelector(".activities");
+        const activities = JSON.parse(this.getAttribute("activities") || "[]");
+
+        activities.forEach(activity => {
+            const activityElement = document.createElement("activity-dropdown");
+            activityElement.setAttribute("activity-name", activity.name);
+            activityElement.setAttribute("date", activity.date);
+            activityElement.setAttribute("tags", JSON.stringify(activity.tags));
+            activityElement.setAttribute("members", JSON.stringify(activity.members));
+            activitiesContainer.appendChild(activityElement);
+        });
+    }
+
+    // handleActivitySelected(event) {
+    //     const activityType = event.detail.type;
+    //     const header = this.querySelector(".activities-header");
+    //     if (activityType === "Upcoming") {
+    //         header.textContent = "Upcoming";
+    //     } else if (activityType === "History") {
+    //         header.textContent = "History";
+    //     }
+    // }
+}
+
+class RatingPopup extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `
+        <div class="rating-overlay"></div>
+        <div class="rating-pop-up">
+            <div class="rating-header">
+                Rate activity member
+            </div>
+            <div class="rating-info">
+                <div class="rating-activity-name">หาเพื่อนดูหนังครับ !!!</div>
+                <img src="assets/Profile-g.png" alt="">
+                <div class="rating-user-name">Peerawat Ingkhasantatikul</div>
+                <div class="rating-stars">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                    <img src="assets/star_sharp.svg" alt="">
+                </div>
+                <fieldset>
+                    <legend>comment</legend>
+                    <textarea placeholder="Write your comment..."></textarea>
+                </fieldset>
+            </div>
+            <div class="post-btn">
+                <button class="rating-cancel">Cancel</button>
+                <button class="rating-post">Post</button>
+            </div>
+        </div>
+        `;
+        this.style.display = "none";
+        this.classList.add("rating-popup-wrapper");
+
+        this.querySelector(".rating-cancel").addEventListener("click", () => this.closePopup());
+        this.querySelector(".rating-overlay").addEventListener("click", () => this.closePopup());
+    }
+
+    openPopup(memberName, activityName) {
+        this.querySelector(".rating-user-name").textContent = memberName;
+        this.querySelector(".rating-activity-name").textContent = activityName;
+        this.style.display = "block";
+    }
+
+    closePopup() {
+        this.style.display = "none";
+    }
+}
+
+customElements.define("rating-popup", RatingPopup);
+customElements.define("activities-list", ActivitiesList);
+customElements.define("activity-dropdown", ActivityDropdown);
+customElements.define("custom-member", Member);
+
+
 
 // var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
 // var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");

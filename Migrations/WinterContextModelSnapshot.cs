@@ -17,6 +17,91 @@ namespace Winter_Project.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
 
+            modelBuilder.Entity("Winter_Project.Models.ActivityModel", b =>
+                {
+                    b.Property<int>("Activity_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Activity_time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Approval")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Create_time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Detail")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Duration")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Max_member")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Owner")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.PrimitiveCollection<string>("Participants")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Tags")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Activity_id");
+
+                    b.ToTable("Activities");
+                });
+
+            modelBuilder.Entity("Winter_Project.Models.RequirementModel", b =>
+                {
+                    b.Property<int>("Requirement_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Activity_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Age")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Other")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Requirement_id");
+
+                    b.HasIndex("Activity_id")
+                        .IsUnique();
+
+                    b.ToTable("Requirements");
+                });
+
             modelBuilder.Entity("Winter_Project.Models.UserBio", b =>
                 {
                     b.Property<int>("Id")
@@ -63,7 +148,7 @@ namespace Winter_Project.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateOnly>("DateOfBirth")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -96,6 +181,17 @@ namespace Winter_Project.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Winter_Project.Models.RequirementModel", b =>
+                {
+                    b.HasOne("Winter_Project.Models.ActivityModel", "Activity")
+                        .WithOne("Requirement")
+                        .HasForeignKey("Winter_Project.Models.RequirementModel", "Activity_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Activity");
+                });
+
             modelBuilder.Entity("Winter_Project.Models.UserBio", b =>
                 {
                     b.HasOne("Winter_Project.Models.UserModel", "User")
@@ -105,6 +201,12 @@ namespace Winter_Project.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Winter_Project.Models.ActivityModel", b =>
+                {
+                    b.Navigation("Requirement")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Winter_Project.Models.UserModel", b =>

@@ -4,8 +4,15 @@ namespace Winter_Project.Models
 {
     public class RequirementModel
     {
-        public string gender {get; set;} = string.Empty;
-        public int age {get; set;} = int.Empty;
-        public string other {get; set;} = string.Empty;
+        [Key]
+        public int Requirement_id { get; set; } // Primary Key สำหรับ RequirementModel
+        public int Activity_id { get; set; } // Foreign Key ที่เชื่อมโยงกับ ActivityModel
+
+        public string Gender { get; set; } = string.Empty;
+        public int Age { get; set; } = 0;
+        public string Other { get; set; } = string.Empty;
+
+        // Navigation Property
+        public ActivityModel Activity { get; set; } = new ActivityModel();
     }
 }

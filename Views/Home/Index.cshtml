@@ -1,5 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    var token = Context.Request.Cookies["token"];
+    bool isLoggedIn = !string.IsNullOrEmpty(token);
 }
 
 <div class="home">
@@ -18,9 +20,17 @@
                         <button class="btn round large mb-w hover-db-w home-button-size" onclick="window.location.href='/Activity'">
                             View Activity
                         </button>
-                        <button class="btn round large w-b hover-lb-w home-button-size">
-                            <svg-plus></svg-plus>Create Activity
-                        </button>
+                        @if (isLoggedIn) {
+                            <button class="btn round large w-b hover-lb-w home-button-size" onclick="window.location.href='/Create'">
+                                <svg-plus></svg-plus>Create Activity
+                            </button>
+                        }
+                        else {
+                            <button class="btn round large w-b hover-lb-w home-button-size" onclick="window.location.href='/Account/Login'">
+                                <svg-plus></svg-plus>Create Activity
+                            </button>
+                        }
+                        
                     </div>
                 </div>
             </div>

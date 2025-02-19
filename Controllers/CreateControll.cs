@@ -20,45 +20,52 @@ public class CreateController : Controller
         return View();
     }
 
-    [HttpPost("create")]
-        public async Task<IActionResult> Create([FromBody] ActivityModel model)
+        [HttpPost("create")]
+    public async Task<IActionResult> Create([FromBody] ActivityModel model)
+    {
+        try
         {
-            // Console.WriteLine($"Received Username: {model.Username}, Password: {model.Password} , Email: {model.Email} , FirstName: {model.FirstName}, LastName: {model.LastName} ,DateOfBirth: {model.DateOfBirth} ,Gender: {model.Gender}");
-            try
+            // สร้าง ActivityModel ใหม่
+            var activity = new ActivityModel
             {
+                Owner = model.Owner,
+                Title = model.Title,
+                Detail = model.Detail,
+                Create_time = model.Create_time,
+                Activity_time = model.Activity_time, 
+                Duration = model.Duration,
+                Location = model.Location,
+                Max_member = model.Max_member,
+                Approval = model.Approval,
+                Tags = model.Tags,
+                Status = "Pending"
+            };
 
-                var activity = new ActivityModel
-                {
-                    Owner = model.Owner,
-                    Title = model.Title,
-                    Detail = model.Detail,
-                    Create_time = model.Create_time,
-                    Activity_time = model.Activity_time, 
-                    Duration = model.Duration,
-                    Location = model.Location,
-                    Max_member = model.Max_member,
-                    Approval = model.Approval,
-                    Tags = model.Tags,
-                    Requirement = new RequirementModel
-                    {
-                        Gender = model.Requirement.Gender,
-                        Age = model.Requirement.Age,
-                        Other = model.Requirement.Other
-                    },
-                    Participants = new List<string>(), // แก้ไขให้เป็น List<T>
-                    Status = "Test"
-                };
-
-                _context.Activities.Add(activity);
-                await _context.SaveChangesAsync();
-
-                return Ok(new { message = "User registered successfully!" });
-            }
-            catch (Exception ex)
+            // สร้าง RequirementModel ใหม่และเชื่อมกับ Activity
+            var requirement = new RequirementModel
             {
-                return StatusCode(500, new { message = "Internal server error", details = ex.Message });
-            }
+                Activity_id = activity.Activity_id, // กำหนด Foreign Key
+                Gender = model.Requirement.Gender,
+                Age = model.Requirement.Age,
+                Other = model.Requirement.Other
+            };
+
+            // เพิ่ม Activity ลงในฐานข้อมูล
+            _context.Activities.Add(activity);
+            await _context.SaveChangesAsync();
+
+            // เชื่อม Activity_id หลังจาก SaveChanges
+            requirement.Activity_id = activity.Activity_id;
+            _context.Requirements.Add(requirement);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Activity created successfully!" });
         }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Internal server error", details = ex.Message });
+        }
+    }
 
     public IActionResult AddUser()
     {

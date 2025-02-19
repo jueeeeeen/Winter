@@ -80,7 +80,8 @@ public class CreateController : Controller
             _context.Activities.Add(activity);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "activity created" });
+            return RedirectToAction("Index", "ActivityDetail", new { id = activity.Activity_id });
+
         }
         catch (Exception ex)
         {

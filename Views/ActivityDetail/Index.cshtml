@@ -1,23 +1,20 @@
 ﻿@{
     ViewData["Title"] = "Activity Detail";
+    var activity = ViewData["Activity"] as Winter_Project.Models.ActivityModel;
 }
 
-@* @model Activity *@
-
-@{
-    bool show_preview = true;
-}
-@if (show_preview == true) {
+@if (activity != null)
+{
     <div class="act-detail-container">
     <section class="act-detail-main edge shadow">
         <header class="act-card-profile-info">
             <div><img src="../../assets/profile-g.png"></div>
             <div>
-                <span>Peerawat Ingkhasantatikul</span>
+                <span>@activity.Owner</span>
                 <svg-male aria-label="male"></svg-male>
             </div>
             <div>
-                <span>15 Jan 2025 12:59 </span>
+                <span>@DateTime.Parse(activity.Create_time).ToString("dd MMM yyyy HH:mm")</span>
                 <span aria-label="review" class="act-card-review">
                     <svg-star-sharp></svg-star-sharp>
                     1.55
@@ -26,31 +23,27 @@
         </header>
         <ul>
             <li class="flex">
-                <tag-display data-tag_name="tag"></tag-display>
-                <tag-display data-tag_name="tag"></tag-display>
-                <tag-display data-tag_name="tag"></tag-display>
+                @foreach (var tag in activity.Tags)
+                {
+                    <tag-display data-tag_name="@tag"></tag-display>
+                }
             </li>
         </ul>
         <div class="act-detail-title">
             <svg-bookmark></svg-bookmark>
-            <h1><b>หาเพื่อนดูหนังครับ !!!</b></h1>
-            <p>ผมต้องหาการหาเพื่อนดูหนัง ธี่หยด 2 และ หลานม่า ใน Netflix ครับบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบบ</p>
+            <h1><b>@activity.Title</b></h1>
+            <p>@activity.Detail</p>
         </div>
     </section>
     <section class="act-detail-member edge shadow">
         <header>
             <h2 class="letter-spacing">Members</h2>
-            <span class="member-count">(2/5)</span>
+            <span class="member-count">(@activity.Participants.Count()/@activity.Max_member)</span>
         </header>
         <ul>
             <host-list-item></host-list-item>
-            <member-list-item></member-list-item>
-            <pending-list-item></pending-list-item>
-            <pending-member-host-view></pending-member-host-view>
-            <member-host-view></member-host-view>
         </ul>
         <act-detail-join-btn></act-detail-join-btn>
-        <view-review-btn></view-review-btn>
     </section>
     <section class="act-detail-requirement edge shadow w-bb-bb">
         <div class="flex">
@@ -70,133 +63,27 @@
             </ul>
         </div>
         <p>
-            หน้าตาดีพิจารณาเป็นพิเศษ
+            @activity.Requirement.Other
         </p>
     </section>
     <section class="act-detail-info edge shadow">
         <ul>
             <li>
                 <svg-calendar></svg-calendar>
-                Sat, 18 Jan, 2025
+                @DateTime.Parse(activity.Create_time).ToString("ddd, dd MMM yyyy")
             </li>
             <li>
                 <svg-clock></svg-clock>
-                13:00 (5 hours)
+                @DateTime.Parse(activity.Create_time).ToString("HH:mm") (@activity.Duration Hour)
             </li>
             <li class="act-detail-location">
                 <svg-location></svg-location>
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
+                @activity.Location
             </li>
         </ul>
     </section>
     </div>
     <div class="delete-container">
         <delete-btn></delete-btn>
-    </div>
-    
-}
-else {
-    <div class="act-detail-container">
-    <section class="act-detail-main edge shadow">
-        <header class="act-profile-info">
-            <div><img src="../../assets/"@Model.host.profile_pic></div>
-            <div>
-                <span>@Model.host.first_name @Model.host.last_name</span>
-                <svg-male aria-label="@Model.host.gender"></svg-male>
-            </div>
-            <div>
-                <span>@Model.create_time</span>
-                <span aria-label="review" class="act-card-review">
-                    <svg-star-sharp></svg-star-sharp>
-                    @Model.host.review.rating
-                </span>
-            </div>
-        </header>
-        <ul>
-            @foreach (var tag in Model.tags)
-            {
-                <li class="flex">
-                    <tag-display data-tag_name="@tag"></tag-display>
-                </li>
-            }
-        </ul>
-        <div class="act-detail-title">
-            <svg-bookmark></svg-bookmark>
-            <h1><b>@Model.title</b></h1>
-            <p>@Model.detail</p>
-        </div>
-    </section>
-    <section class="act-detail-member edge shadow">
-        <header>
-            <h2 class="letter-spacing">Members</h2>
-            <span class="member-count">@Model.member_count</span>
-        </header>
-        <ul>
-            <li class="radial-blue-bg member-list-item shadow">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">@Model.host.first_name @Model.host.last_name</span>
-                <span class="member-list-item-role">(Host)</span>
-            </li>
-            <li class="w-bb-bb member-list-item">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Member)</span>
-            </li>
-            <li class="w-bb-bb pending-member-item">
-                <svg-more-people></svg-more-people>
-                <span>...more people applied...</span>
-            </li>
-        </ul>
-        <act-detail-join-btn></act-detail-join-btn>
-    </section>
-    <section class="act-detail-requirement edge shadow w-bb-bb">
-        <div class="flex">
-            <span class="act-detail-req-header letter-spacing">
-                <svg-checkbox></svg-checkbox><b>requirements :</b>
-            </span>
-            <ul class="flex">
-                <li>
-                    <req-tag></req-tag>
-                </li>
-                <li>
-                    <req-tag></req-tag>
-                </li>
-                <li>
-                    <req-tag></req-tag>
-                </li>
-            </ul>
-        </div>
-        <p>
-            หน้าตาดีพิจารณาเป็นพิเศษ
-        </p>
-    </section>
-    <section class="act-detail-info edge shadow lb-w">
-        <ul>
-            <li>
-                <svg-calendar></svg-calendar>
-                Sat, 18 Jan, 2025
-            </li>
-            <li>
-                <svg-clock></svg-clock>
-                13:00 (5 hours)
-            </li>
-            <li class="act-detail-location">
-                <svg-location></svg-location>
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
-                ECC-601 (Network-Lab) 
-            </li>
-        </ul>
-    </section>
     </div>
 }

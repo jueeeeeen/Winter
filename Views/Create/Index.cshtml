@@ -103,7 +103,7 @@
         const form = document.getElementById("create_activity_form");
         const formData = new FormData(form);
         const data = {
-            Owner: "@ViewData["Username"]",
+            Owner: '@ViewData["Username"]',
             Title: formData.get("Title"),
             Detail: formData.get("Detail"),
             Create_time: new Date().toISOString(),

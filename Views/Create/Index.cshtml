@@ -21,6 +21,10 @@
                 <input type="datetime-local" name="Activity_time" id="create_date_time" required/>
             </div>
             <div class="form-group">
+                <label for="duration">Duration :</label>
+                <input type="time" name="Duration" id="duration" required/>
+            </div>
+            <div class="form-group">
                 <label for="create_location">Location :</label>
                 <input type="text" name="Location" id="create_location" required/>
             </div>
@@ -99,12 +103,12 @@
         const form = document.getElementById("create_activity_form");
         const formData = new FormData(form);
         const data = {
-            @* Owner: "jueeeeeen", *@
+            Owner: '@ViewData["Username"]',
             Title: formData.get("Title"),
             Detail: formData.get("Detail"),
-            @* Create_Time: "now", *@
+            Create_time: new Date().toISOString(),
             Activity_time: formData.get("Activity_time"),
-            @* Duration: "5", *@
+            Duration: formData.get("Duration"),
             Location: formData.get("Location"),
             Max_member: parseInt(formData.get("Max_member")) || 0,
             Approval: formData.get("Approval") === "true",
@@ -114,8 +118,7 @@
                 Age: parseInt(formData.get("Age")) || 0,
                 Other: formData.get("Other"),
             },
-            Participants: ["a", "b"],
-            @* Status: "open" *@
+            Participants: ["test", "test"],
         };
 
         console.log(JSON.stringify(data, null, 2));

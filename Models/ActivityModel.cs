@@ -20,8 +20,8 @@ namespace Winter_Project.Models
         public bool Approval {get; set;}
         public string Tags {get; set;} = string.Empty;
 
-        // requirement
-        // public RequirementModel? Requirements { get; set; }
+        requirement
+        public RequirementModel? Requirements { get; set; }
 
         public List<string> Participants {get; set;} = [];
 

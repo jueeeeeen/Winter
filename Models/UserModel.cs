@@ -6,9 +6,6 @@ namespace Winter_Project.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Name is required")]
-        public string Name { get; set; } = string.Empty;
-
         [Required(ErrorMessage = "Username is required")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Username must be between 3 and 50 characters")]
         public string Username { get; set; } = string.Empty;
@@ -19,5 +16,18 @@ namespace Winter_Project.Models
 
         [Required(ErrorMessage = "Password hash is required")]
         public string PasswordHash { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "First Name is required")]
+        public string FirstName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Last Name is required")]
+        public string LastName { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Date of Birth is required")]
+        public DateOnly DateOfBirth { get; set; }
+
+        [Required(ErrorMessage = "Gender is required")]
+        public string Gender { get; set; } = string.Empty;
+        public ICollection<UserBio>? UserBios { get; set; }
     }
 }

@@ -5,19 +5,31 @@ namespace Winter_Project.Models
 {
     public class ActivityModel
     {
-        public int Id {get; set;}
+        private static int _next_id = 1;
+        
+        public int Activity_id {get; set;}
+
         public string Owner {get; set;} = string.Empty;
         public string Title {get; set;} = string.Empty;
-        public string Detai {get; set;} = string.Empty;
-        public string Creat_time {get; set;} = string.Empty;
+        public string Detail {get; set;} = string.Empty;
+        public string Create_time {get; set;} = string.Empty;
         public string Activity_time {get; set;} = string.Empty;
-        public string Durartion {get; set;} = string.Empty;
+        public string Duration {get; set;} = string.Empty;
         public string Location {get; set;} = string.Empty;
         public int Max_member {get; set;}
-        public bool approval {get; set;}
-        public string tags {get; set;} = string.Empty;
+        public bool Approval {get; set;}
+        public string Tags {get; set;} = string.Empty;
 
+        // requirement
+        // public RequirementModel? Requirements { get; set; }
 
+        public List<string> Participants {get; set;} = [];
+
+        public string Status {get; set;} = string.Empty;
+
+        public void Activity()
+        {
+            Activity_id = _next_id++;
+        }
     }
-
 }

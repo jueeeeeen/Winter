@@ -1,53 +1,33 @@
 @{
     ViewData["Title"] = "Login";
 }
+@section scripts {
+    <script src="/js/auth/login/login_form.js" defer></script>
+}
 
-<h2>Login</h2>
-
-<form id="loginForm">
-    <div>
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required />
+<div class="login-card">
+    <img src="\assets\winter_login_pic2.jpg" alt="login background">
+    <h2>LOGIN</h2>
+    <form id="loginForm">
+        <div class="login-box">
+            <img src="\assets\Profile-b.png" alt="username">
+            <label for="username"></label>
+            <input type="text" id="username" name="username" placeholder="username" required />
+        </div>
+        <div class="login-box">
+            <img src="\assets\lock.svg" alt="password">
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="password" required />
+        </div>
+        <div class="login-button">
+            <button type="submit" id="loginButton">Login</button>
+        </div>
+    </form>
+    <div class="login-description">
+        <p>Don't have account?</p>
+        <a href="~/Account/Register">create account</a>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required />
-    </div>
-    <button type="submit" id="loginButton">Login</button>
-</form>
 
-<div id="errorMessage" style="color: red;"></div>
+    <div id="errorMessage" style="color: red;"></div>
+</div>
 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    const loginButton = document.getElementById('loginButton');
-    loginButton.disabled = true;
-    loginButton.innerText = 'Logging in...';
-
-    try {
-        const response = await fetch('/api/Account/Login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, password }),
-            credentials: 'include'  // ⭐⭐ สำคัญมาก! เพื่อให้เบราว์เซอร์รับคุกกี้
-        });
-
-        if (response.ok) {
-            window.location.href = '/';
-        } else {
-            document.getElementById('errorMessage').innerText = 'Invalid username or password.';
-        }
-    } catch (error) {
-        document.getElementById('errorMessage').innerText = 'An error occurred. Please try again later.';
-    } finally {
-        loginButton.disabled = false;
-        loginButton.innerText = 'Login';
-    }
-});
-
-</script>

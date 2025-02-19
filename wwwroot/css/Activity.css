@@ -1,5 +1,5 @@
 .banner-container {
-    margin: 0 auto;
+    margin: 2em auto 0;
     display: grid;
     width: 65vw;
     height: 25vw;
@@ -10,6 +10,7 @@
     "page page page";
     overflow: hidden;
 }
+
 
 .banner-prev {
     grid-area: prev;
@@ -49,6 +50,7 @@
 }
 
 .banner-display {
+    background-color: var(--white);
     grid-area: display;
     overflow: hidden;
 }
@@ -76,7 +78,7 @@
 }
 
 #banner_pic.fade-out {
-    opacity: 0;
+    opacity: 0.5;
 }
 
 #all-activities-container {

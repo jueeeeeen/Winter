@@ -9,7 +9,7 @@ using Winter_Project.Models;
 
 namespace Winter_Project.Controllers
 {
-    [Route("api/account")]
+    [Route("account")]
     [ApiController]
     public class AccountController : Controller
     {
@@ -31,6 +31,7 @@ namespace Winter_Project.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
+            Console.WriteLine($"Received Username: {model.Username}, Password: {model.Password} , Email: {model.Email} , FirstName: {model.FirstName}, LastName: {model.LastName} ,DateOfBirth: {model.DateOfBirth} ,Gender: {model.Gender}");
             try
             {
                 if (await _context.Users.AnyAsync(u => u.Username == model.Username))
@@ -40,13 +41,30 @@ namespace Winter_Project.Controllers
 
                 var user = new UserModel
                 {
-                    Name = model.Name,
                     Username = model.Username,
                     Email = model.Email,
-                    PasswordHash = HashPassword(model.Password)
+                    PasswordHash = HashPassword(model.Password),
+                    FirstName = model.FirstName,
+                    LastName = model.LastName, 
+                    DateOfBirth = model.DateOfBirth,
+                    Gender = model.Gender
                 };
 
                 _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+
+                var userBio = new UserBio
+                {
+                    UserId = user.Id,
+                    Location = string.Empty,  // ตั้งค่าเริ่มต้นเป็นค่าว่าง
+                    Phone = string.Empty,
+                    AboutMe = string.Empty,
+                    MyInterests = string.Empty,
+                    MyHobby = string.Empty
+                };
+
+                // เพิ่ม UserBio ลงในฐานข้อมูล
+                _context.UserBios.Add(userBio);
                 await _context.SaveChangesAsync();
 
                 return Ok(new { message = "User registered successfully!" });
@@ -57,7 +75,7 @@ namespace Winter_Project.Controllers
             }
         }
         [HttpGet("login")]
-        public IActionResult login()
+        public IActionResult Login()
         {
             return View();
         }

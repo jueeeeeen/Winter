@@ -62,9 +62,9 @@ html{
 
 main {
   margin: 0 10vw;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1; */
   padding: 5vw 0 0;
 }
 
@@ -130,25 +130,14 @@ main {
   background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
 }
 
-.login_bg{
-  background: url("assets/login_btn_bg.svg") center center;
-  color: white;
-  &:hover {
-      border: 2px solid var(--blue80);
-      background: white;
-      color: var(--blue80);
-  }
-}
-
 .rainbow_border{
   border: 2px solid ;
   border-image: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80)) 1;
   background-color: white;
 }
 
-.left {
-  position: relative;
-  left: -15px;
+.right {
+  margin-left: auto;
 }
 
 .left_rounded {
@@ -270,6 +259,79 @@ main {
   }
 }
 
+.noti-dropdown-container{
+  width: 35vh;
+  height: 43.5vh;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 10vw;
+  display: none;
+  overflow: scroll;
+}
+
+.noti-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 12%;
+  color: var(--gray80);
+}
+
+.noti-list {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 35% 45% 20%;
+  grid-template-areas: 
+    "icon title"
+    "icon message"
+    "icon datetime";
+  padding: 3.5%;
+  row-gap: 1%;
+  border-bottom: 1px solid var(--gray50);
+}
+
+.noti-icon {
+  grid-area: icon;
+  border-radius: 5rem;
+  width: 2.5em;
+  height: 2.5em;
+  object-fit: cover;
+  margin: auto 0;
+  justify-content: center;
+}
+
+.noti-icon svg {
+  width: 25px;
+  height: 25px;
+}
+
+.noti-act-title {
+  grid-area: title;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.2;
+  font-size: 0.95em;
+}
+
+.noti-message {
+  grid-area: message;
+  line-height: 1;
+  display: flex;
+  font-size: 0.85em;
+  color: var(--gray80)
+}
+
+.noti-datetime {
+  grid-area: datetime;
+  font-size: 0.7em;
+  color: var(--gray70);
+  display: flex;
+  justify-content: flex-end;
+  line-height: 1;
+}
+
 hr {
   margin: 0;
 }
@@ -327,6 +389,25 @@ hr {
   -webkit-text-fill-color: transparent;
 }
 
+.login_btn_bg {
+  background: url(../assets/login_btn_bg.svg) center center;
+  background-repeat: no-repeat;
+  color: var(--white);
+  &:hover {
+    background-position-y: -100%;
+  }
+}
+
+.login_bg{
+  background: url("../assets/login_btn_bg.svg") center center;
+  color: white;
+  &:hover {
+      border: 2px solid var(--blue80);
+      background: white;
+      color: var(--blue80);
+  }
+}
+
 /* redo css from here */
 /* button size */
 .btn {
@@ -371,107 +452,177 @@ hr {
 
 .large {
   min-width: 10em;
-  height: 1.875em;
+  height: 2.25em;
   padding: 0.4em 0.67em;
   font-size: 1.25rem;
   font-weight: 600;
   }
 
-  .round {
-    border-radius: 2em;
-  }
+.round {
+  border-radius: 2em;
+}
 
-  .edge {
-    border-radius: 0.4em;
-  }
+.edge {
+  border-radius: 0.4em;
+}
 
   .w-mb-mb, .hover-w-mb-mb:hover {
     background-color: var(--white);
     color: var(--blue80);
     border: 2px solid var(--blue80);
+    svg path {
+      fill: var(--blue80);
+    }
   }
 
   .w-bb-bb, .hover-w-bb-bb:hover {
     background-color: var(--white);
     color: var(--blue60);
     border: 2px solid var(--blue60);
+    svg>path {
+      stroke: var(--blue60);
+    }
   }
 
   .w-mb, .hover-w-mb:hover {
     background-color: var(--white);
     color: var(--blue80);
+    text-shadow: none;
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--blue80);
+    }
   }
 
   .lb-w, .hover-lb-w:hover {
     background-color: var(--blue40);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
-  }
+    svg path {
+      fill: var(--white);
+    }
+}
 
   .mb-w, .hover-mb-w:hover {
     background-color: var(--blue70);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
   .lb-w-glow, .hover-lb-w-glow:hover {
     background-color: var(--blue40);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--blue40);
+    svg path {
+      fill: var(--white);
+      stroke: var(--white);
+    }
   }
 
   .db-w, .hover-db-w:hover {
     background-color: var(--blue80);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+      stroke: var(--white);
+    }
   }
 
   .bb-w, .hover-bb-w:hover {
     background-color: var(--blue60);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
-  .w-r-r {
-    background-color: var(--white);
-    color: var(--red);
-    border: 2px solid var(--red);
-  }
-
-  .r-w {
+  .r-w, .hover-r-w:hover {
     background-color: var(--red);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      /* fill: var(--white); */
+      stroke: var(--white);
+    }
+  }
+
+  .w-r-r, .hover-w-r-r:hover {
+    background-color: var(--white);
+    color: var(--red);
+    border: 2px solid var(--red);
+    svg path {
+      /* fill: var(--red); */
+      stroke: var(--red);
+    }
   }
 
   .y-w, .hover-y-w:hover {
     background-color: var(--yellow);
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
-  .w-y-y, .y-w:hover, .hover-w-y-y:hover {
+  .gr-w, .hover-gr-w:hover {
+    background-color: var(--green);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      stroke: var(--white);
+      /* fill: var(--white); */
+    }
+  }
+
+  .w-gr-gr, .hover-w-gr-gr:hover {
+    background-color: var(--white);
+    color: var(--green);
+    border: 2px solid var(--green);
+    svg path {
+      stroke: var(--green);
+      /* fill: var(--green); */
+    }
+  }
+
+  .w-y-y, .hover-w-y-y:hover {
     background-color: var(--white);
     color: var(--yellow);
     border: 2px solid var(--yellow);
+    svg path {
+      fill: var(--yellow);
+    }
   }
 
   .lb-w-w, .hover-lb-w-w {
     background-color: var(--blue40);
     color: var(--gray90);
     border: 2px solid var(--white);
+    svg path {
+      fill: var(--gray90);
+    }
   }
 
   .rb-w, .hover-rb-w{
     background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
     -webkit-text-fill-color: var(--white);
     text-shadow: var(--shadow);
+    svg path {
+      fill: var(--white);
+    }
   }
 
   .w-rb-rb, .hover-w-rb-rb {
     position: relative;
     background-color: white;
+    svg path {
+      fill: linear-gradient(to right, var(--pink), var(--yellow), var(--blue90));
+    }
   }
 
   .w-rb-rb::before, .hover-w-rb-rb::before {
@@ -496,11 +647,26 @@ hr {
     background-color: var(--white);
     color: var(--pink);
     border: 2px solid var(--pink);
+    svg path {
+      fill: var(--pink);
+    }
   }
 
   .w-g, .hover-w-g{
     background-color: var(--white);
     color: var(--gray90);
+    svg path {
+      fill: var(--gray90);
+    }
+  }
+
+  .w-g-g, .hover-w-g-g{
+    background-color: var(--white);
+    color: var(--gray90);
+    border: 2px solid var(--gray60);
+    svg path {
+      fill: var(--gray90);
+    }
   }
 
 .pseudo-btn input:checked + label{

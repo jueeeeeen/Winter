@@ -1,143 +1,249 @@
 ﻿var path = "/assets/"
 
-class LoginNavbar extends HTMLElement{
-    constructor(){
-        super();
-        this.innerHTML = `<nav class="gradient_blue">
-                <ul class="shadow no_select nav_bar">
-                <li>
-                    <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
-                </li>
-                <li><a href="/AllActivity">Activity</a></li>
-                <li class="logo">
-                    <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter"></a>
-                </li>
-            </ul>
-            </nav>`
+function getCookie(name) {
+    const cookieArr = document.cookie.split("; ");
+    for (let cookie of cookieArr) {
+        let [key, value] = cookie.split("=");
+        if (key === name) return decodeURIComponent(value);
     }
+    return null;
 }
 
-class GuestNavbar extends HTMLElement{
-    constructor(){
-        super();
-        this.innerHTML = `<nav class="gradient_blue">
-                <ul class="shadow no_select nav_bar">
-                <li>
-                    <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
-                </li>
-                <li><a href="/AllActivity">Activity</a></li>
-                <li class="logo">
-                    <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter"></a>
-                </li>
-                <li class="m_left_auto">
-                    <a href="/Account/Login" class="medium button login_bg shadow flex flex_center rounded" id="nav_login_button">
-                    login
-                    </a>
-                </li>
-            </ul>
-            </nav>`
-    }
 
-    connectedCallback(){
-        this.nav_login_button = this.querySelector("#nav_login_button");
-        change_icon(this.logout_button, "logout-w.svg", "logout.svg");
-    }
-}
+// class LoginNavbar extends HTMLElement{
+//     constructor(){
+//         super();
+//         this.innerHTML = `<nav class="gradient_blue shadow nav_bar_container">
+//                 <ul class="no_select nav_bar">
+//                 <li>
+//                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
+//                 </li>
+//                 <li><a href="/Activity">Activity</a></li>
+//                 <li class="logo">
+//                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
+//                 </li>
+//             </ul>
+//             </nav>`
+//     }
+// }
 
-class MainNavbar extends HTMLElement{
-    constructor(){
+// class GuestNavbar extends HTMLElement{
+//     constructor(){
+//         super();
+//         this.innerHTML = 
+//             `<nav class="gradient_blue shadow nav_bar_container">
+//                 <ul class="no_select nav_bar">
+//                 <li>
+//                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
+//                 </li>
+//                 <li><a href="/Activity">Activity</a></li>
+//                 <li class="logo">
+//                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
+//                 </li>
+//                 <li class="m_left_auto">
+//                     <button href="/Account/Login" class="btn medium round login_btn_bg shadow hover-w-mb" onclick="window.location.href='/account/login'" id="nav_login_button">
+//                     <svg-login></svg-login>login
+//                     </button>
+//                 </li>
+//             </ul>
+//             </nav>`
+//     }
+
+//     connectedCallback(){
+//         this.nav_login_button = this.querySelector("#nav_login_button");
+//         change_icon(this.logout_button, "logout-w.svg", "logout.svg");
+//     }
+// }
+
+// class MainNavbar extends HTMLElement{
+//     constructor(){
+//         super();
+//         this.innerHTML = 
+//             `<nav class="gradient_blue shadow nav_bar_container">
+//                 <ul class="no_select nav_bar">
+//                 <li>
+//                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
+//                 </li>
+//                 <li><a href="/Activity">Activity</a></li>
+//                 <li class="logo">
+//                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
+//                 </li>
+//                 <li class="m_left_auto">
+//                     <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/Create'">
+//                         <img src="${path}plus-b.svg" alt="plus icon">create
+//                     </button>
+//                 </li>
+//                 <li>
+//                     <button class="btn circle round w-mb hover-y-w" id="bell_button">
+//                         <img src="${path}bell_icon-g.svg" alt="bell">
+//                     </button>
+//                 </li>
+//                 <li>
+//                     <button class="btn circle round w-mb hover-b-w" id="profile_button">
+//                         <img src="${path}Profile-w-b.png" width="55px" alt="profile">
+//                     </button>
+//                 </li>
+//             </ul>
+//             <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
+//                 <div class="info_dropdown flex gap">
+//                     <img class="blue_border rounded" id="profile_pic_dropdown" src="${path}Profile-w-b.png" width="40px">
+//                     <div>
+//                         <span class="name_dropdown">Peerawat<br>Ingkhasantatikul</span>
+//                         <span class="username_dropdown">@Marklnwza007</span>
+//                     </div>
+//                 </div>
+//                 <hr class="blue_line">
+//                 <ul>
+//                     <li class="btn_dropdown">
+//                         <a href="/Profile">
+//                             <img src="${path}person.svg">My Profile
+//                         </a>
+//                     </li>
+//                     <hr class="blue_line_dash">
+//                     <li class="btn_dropdown">
+//                         <a href="/MyActivity">
+//                             <img src="${path}activity.svg">My Activity
+//                         </a>
+//                     </li>
+//                     <hr class="blue_line_dash">
+//                     <li class="btn_dropdown">
+//                         <a href="/MyRating">
+//                             <img src="${path}star_outline.svg">My Ratings
+//                         </a>
+//                     </li>
+//                     <hr class="blue_line_dash">
+//                     <li>
+//                         <div class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
+//                             <img src="${path}logout.svg">log out
+//                         </div>
+//                     </li>
+//                 </ul>
+//             </div>
+//             <div class="noti-dropdown-container shadow" id="noti_dropdown">
+//                 <span class="noti-header">Notifications</span>
+//                 <hr>
+//                 <ul>
+//                     <approved-noti></approved-noti>
+//                     <denied-noti></denied-noti>
+//                     <joined-noti></joined-noti>
+//                 </ul>
+//             </div>
+//             </nav>`
+
+//         this.toggle_profile_dropdown = this.toggle_profile_dropdown.bind(this);
+//         this.toggle_noti_dropdown = this.toggle_noti_dropdown.bind(this);
+//     }
+
+//     connectedCallback(){
+//         this.profile_button = this.querySelector("#profile_button");
+//         this.profile_button.addEventListener("click", this.toggle_profile_dropdown);
+//         change_icon(this.profile_button, "Profile-b.png", "Profile-w-b.png");
+
+//         this.bell_button = this.querySelector("#bell_button");
+//         this.bell_button.addEventListener("click", this.toggle_noti_dropdown);
+        
+//         change_icon(this.bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
+
+//         var create_button = this.querySelector("#create_button");
+//         change_icon(create_button, "plus-w.svg", "plus-b.svg");
+
+//         var logout_button = this.querySelector("#logout_button");
+//         change_icon(logout_button, "logout-w.svg", "logout.svg");
+//     }
+
+//     disconnectedCallback() {
+//         this.profile_button.removeEventListener("click", this.toggle_dropdown);
+//     }
+
+//     toggleDropdown(currentId, otherId) {
+//         const currentDropdown = this.querySelector(`#${currentId}`);
+//         const otherDropdown = this.querySelector(`#${otherId}`);
+    
+//         if (otherDropdown.classList.contains("show")) {
+//             otherDropdown.classList.remove("show");
+//         }
+    
+//         currentDropdown.classList.toggle("show");
+//     }
+    
+//     toggle_profile_dropdown() {
+//         this.toggleDropdown("profile_dropdown", "noti_dropdown");
+//     }
+    
+//     toggle_noti_dropdown() {
+//         this.toggleDropdown("noti_dropdown", "profile_dropdown");
+//     }
+// }
+
+
+class ApprovedNoti extends HTMLElement {
+    constructor() {
         super();
-        this.innerHTML = 
-            `<nav class="gradient_blue shadow nav_bar_container">
-                <ul class="no_select nav_bar">
-                <li>
-                    <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
-                </li>
-                <li><a href="/Activity">Activity</a></li>
-                <li class="logo">
-                    <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
-                </li>
-                <li class="m_left_auto">
-                    <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/Create'">
-                        <img src="${path}plus-b.svg" alt="plus icon">create
-                    </button>
-                </li>
-                <li>
-                    <button class="btn circle round w-mb hover-y-w" id="bell_button">
-                        <img src="${path}bell_icon-g.svg" alt="bell">
-                    </button>
-                </li>
-                <li>
-                    <button class="btn circle round w-mb hover-b-w" id="profile_button">
-                        <img src="${path}Profile-w-b.png" width="55px" alt="profile">
-                    </button>
-                </li>
-            </ul>
-            <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
-                <div class="info_dropdown flex gap">
-                    <img class="blue_border rounded" id="profile_pic_dropdown" src="${path}Profile-w-b.png" width="40px">
-                    <div>
-                        <span class="name_dropdown">Peerawat<br>Ingkhasantatikul</span>
-                        <span class="username_dropdown">@Marklnwza007</span>
-                    </div>
-                </div>
-                <hr class="blue_line">
-                <ul>
-                    <li class="btn_dropdown">
-                        <a href="/Profile">
-                            <img src="${path}person.svg">My Profile
-                        </a>
-                    </li>
-                    <hr class="blue_line_dash">
-                    <li class="btn_dropdown">
-                        <a href="/MyActivity">
-                            <img src="${path}activity.svg">My Activity
-                        </a>
-                    </li>
-                    <hr class="blue_line_dash">
-                    <li class="btn_dropdown">
-                        <a href="/MyRating">
-                            <img src="${path}star_outline.svg">My Ratings
-                        </a>
-                    </li>
-                    <hr class="blue_line_dash">
-                    <li>
-                        <div class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
-                            <img src="${path}logout.svg">log out
-                        </div>
-                    </li>
-                </ul>
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon gr-w flex">
+                <svg-check></svg-check>
             </div>
-            </nav>`
-
-        this.toggle_dropdown = this.toggle_dropdown.bind(this);
-    }
-
-    connectedCallback(){
-        this.profile_button = this.querySelector("#profile_button");
-        this.profile_button.addEventListener("click", this.toggle_dropdown);
-        change_icon(this.profile_button, "Profile-b.png", "Profile-w-b.png");
-
-        var bell_button = this.querySelector("#bell_button");
-        change_icon(bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
-
-        var create_button = this.querySelector("#create_button");
-        change_icon(create_button, "plus-w.svg", "plus-b.svg");
-
-        var logout_button = this.querySelector("#logout_button");
-        change_icon(logout_button, "logout-w.svg", "logout.svg");
-    }
-
-    disconnectedCallback() {
-        this.profile_button.removeEventListener("click", this.toggle_dropdown);
-    }
-
-    toggle_dropdown() {
-        this.profile_dropdown = this.querySelector("#profile_dropdown");
-        this.profile_dropdown.classList.toggle("show");
-        console.log(this.profile_dropdown);
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                your request to join has been approved.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
     }
 }
+customElements.define("approved-noti", ApprovedNoti);
+
+
+
+class DeniedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-deny></svg-deny>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                your request to join has been denied.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("denied-noti", DeniedNoti);
+
+
+class JoinedNoti extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li class="noti-list">
+            <div class="noti-icon y-w flex">
+                <svg-plus></svg-plus>
+            </div>
+            <span class="noti-act-title">
+                Activity title
+            </span>
+            <span class="noti-message">
+                there is a new request to join this activity.
+            </span>
+            <span class="noti-datetime">
+                15 Jan 2025 12:59 
+            </span>
+        </li>`
+    }
+}
+customElements.define("joined-noti", JoinedNoti);
 
 class SearchBar extends HTMLElement{
     constructor() {
@@ -456,14 +562,15 @@ class ActivityCard extends HTMLElement {
 class ActCardJoinBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w">join</button>`
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w hover-w-bb-bb">join</button>`
     }
 }
 
 class Pagination extends HTMLElement {
-    constructor() {
+    constructor(page_count) {
         super();
-        this.innerHTML = ``;
+        // this.innerHTML = ``;
+
     }
 }
 
@@ -486,43 +593,110 @@ class PaginationItem extends HTMLElement {
     }
 }
 
+//separate later
 class MemberListItem extends HTMLElement {
     constructor() {
         super();
-        this.role = this.getAttribute("data-role");
-        if (this.role == "host") {
-            this.innerHTML = 
-            `<li class="radial-blue-bg member-list-item shadow">
-                <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
-                </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Host)</span>
-            </li>`;
-        }
-        else if (this.role == "member"){
-            this.innerHTML = 
+        this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
                     <img src="../../assets/profile-g.png">
                 </div>
                 <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
-                <span class="member-list-item-role">(Member)</span>
+                <span class="member-list-item-role flex">(Member)</span>
             </li>`; 
-        }
-        else if (this.role == "pending"){
-            this.innerHTML = `<button class="pagination-item round">${this.role}</button>`;
-        }
+    }
+}
+class HostListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="radial-blue-bg member-list-item shadow">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">(Host)</span>
+        </li>`;
+    }
+    
+}
+class PendingListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb pending-member-item">
+            <svg-more-people></svg-more-people>
+            <span>...more people applied...</span>
+        </li>`;
+    }  
+}
+
+class PendingHostViewListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">waiting for approval...</span>
+            <div class="member-list-item-approval flex">
+                <button class="btn approval gr-w hover-w-gr-gr round">
+                    <svg-check></svg-check>
+                </button>
+                <button class="btn approval r-w hover-w-r-r round">
+                    <svg-deny></svg-deny>
+                </button>
+            </div>
+        </li>`;
+    }
+}
+
+class MemberHostViewListItem extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+            <div class="member-list-item-profile">
+                <img src="../../assets/profile-g.png">
+            </div>
+            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-role flex">(Member)</span>
+            <div class="member-list-item-approval flex">
+                <button class="btn approval r-w hover-w-r-r round">
+                    <svg-minus></svg-minus>
+                </button>
+            </div>
+        </li>`;
     }
 }
 
 class ActDetailJoinBtn extends HTMLElement {
     constructor(actID) {
         super();
-        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn">join</button>`;
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
     }
     connectedCallback() {
 
+    }
+}
+
+class ViewReviewBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y">view review</button>`;
+    }
+}
+
+class DeleteBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<button class="btn medium r-w round right hover-w-r-r">
+            <svg-delete></svg-delete>delete
+        </button>`;
     }
 }
 
@@ -560,7 +734,6 @@ class AllActBanner extends HTMLElement {
         this.handle_banner_change = this.handle_banner_change.bind(this);
 
         this.page_list = this.querySelectorAll("span");
-        console.log(this.page_list)
     }
     connectedCallback() {
         this.handle_banner_change(0);
@@ -571,6 +744,7 @@ class AllActBanner extends HTMLElement {
     handle_banner_change(value) {
         this.banner_pic = this.querySelector("#banner_pic");
         this.banner_pic.classList.add("fade-out")
+        console.log(this.banner_pic);
         this.current_page += value;
         setTimeout(() => {
             if(this.current_page >= 3)
@@ -585,7 +759,6 @@ class AllActBanner extends HTMLElement {
             this.page_list.forEach((page, index) => {
                 page.classList.toggle("bb-w", this.current_page === index);
             });
-            console.log(this.current_page)
             this.banner_pic.src = path + this.pictures[this.current_page];
             this.banner_pic.classList.remove("fade-out")
         },500)
@@ -599,7 +772,6 @@ class BaseSVGElement extends HTMLElement {
         this.style.display = "inline-flex";
     }
 }
-
 
 class SVGCalendar extends BaseSVGElement {
     constructor() {
@@ -739,7 +911,7 @@ class SVGMorePeople extends BaseSVGElement {
     }
 }
 
-class SVGCheck extends BaseSVGElement {
+class SVGCheckBox extends BaseSVGElement {
     constructor() {
         super();
         this.innerHTML = 
@@ -760,9 +932,125 @@ class SVGLocation extends BaseSVGElement {
     }
 }
 
-customElements.define("main-navbar", MainNavbar);
-customElements.define("guest-navbar", GuestNavbar);
-customElements.define("login-navbar", LoginNavbar);
+class SVGPlus extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.82812 0.125V6.5H0.453125V10.75H6.82812V17.125H11.0781V10.75H17.4531V6.5H11.0781V0.125H6.82812Z" fill="#77DAFF"/>
+        </svg>`;
+    }
+}
+
+class SVGCheck extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="18" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.8334 2.25L7.37502 13.7083L2.16669 8.5" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGDeny extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="16" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.5 2.5L2.5 15.5M2.5 2.5L15.5 15.5" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGMinus extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="19" height="4" viewBox="0 0 19 4" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 2H17" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGDelete extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="25" height="28" viewBox="0 0 29 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.125 8.25H4.875M4.875 8.25H26.875M4.875 8.25V27.5C4.875 28.2293 5.16473 28.9288 5.68046 29.4445C6.19618 29.9603 6.89565 30.25 7.625 30.25H21.375C22.1043 30.25 22.8038 29.9603 23.3195 29.4445C23.8353 28.9288 24.125 28.2293 24.125 27.5V8.25M9 8.25V5.5C9 4.77065 9.28973 4.07118 9.80546 3.55546C10.3212 3.03973 11.0207 2.75 11.75 2.75H17.25C17.9793 2.75 18.6788 3.03973 19.1945 3.55546C19.7103 4.07118 20 4.77065 20 5.5V8.25M11.75 15.125V23.375M17.25 15.125V23.375" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGMail extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.66666 33.3334C5.74999 33.3334 4.95833 33.014 4.29166 32.3751C3.65277 31.7084 3.33333 30.9167 3.33333 30.0001V10.0001C3.33333 9.08342 3.65277 8.30564 4.29166 7.66675C4.95833 7.00008 5.74999 6.66675 6.66666 6.66675H33.3333C34.25 6.66675 35.0278 7.00008 35.6667 7.66675C36.3333 8.30564 36.6667 9.08342 36.6667 10.0001V30.0001C36.6667 30.9167 36.3333 31.7084 35.6667 32.3751C35.0278 33.014 34.25 33.3334 33.3333 33.3334H6.66666ZM20 21.6667L33.3333 13.3334V10.0001L20 18.3334L6.66666 10.0001V13.3334L20 21.6667Z" fill="#4D4D4D"/>
+        </svg>`;
+    }
+}
+
+class SVGPhone extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M36.6667 28.2001V33.2001C36.6686 33.6642 36.5735 34.1237 36.3875 34.549C36.2016 34.9743 35.9288 35.3561 35.5868 35.6699C35.2448 35.9836 34.841 36.2226 34.4012 36.3713C33.9615 36.52 33.4956 36.5752 33.0333 36.5334C27.9047 35.9761 22.9783 34.2237 18.65 31.4167C14.623 28.8579 11.2089 25.4437 8.65 21.4167C5.8333 17.0688 4.08041 12.1184 3.53333 6.96675C3.49168 6.50586 3.54646 6.04135 3.69417 5.60279C3.84188 5.16423 4.07929 4.76123 4.39128 4.41945C4.70327 4.07767 5.08301 3.8046 5.50632 3.61762C5.92963 3.43064 6.38723 3.33385 6.85 3.33341H11.85C12.6588 3.32545 13.443 3.61188 14.0563 4.1393C14.6696 4.66672 15.0701 5.39916 15.1833 6.20008C15.3944 7.80019 15.7858 9.37129 16.35 10.8834C16.5742 11.48 16.6228 12.1283 16.4898 12.7515C16.3569 13.3748 16.0481 13.9469 15.6 14.4001L13.4833 16.5167C15.8559 20.6893 19.3108 24.1442 23.4833 26.5167L25.6 24.4001C26.0531 23.952 26.6253 23.6432 27.2485 23.5102C27.8718 23.3773 28.5201 23.4258 29.1167 23.6501C30.6288 24.2143 32.1999 24.6057 33.8 24.8167C34.6096 24.931 35.349 25.3388 35.8776 25.9626C36.4061 26.5864 36.6869 27.3827 36.6667 28.2001Z" stroke="#4D4D4D" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+
+class SVGEdit extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="38" height="39" viewBox="0 0 38 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_d_648_2715)">
+        <path d="M26.1697 5.43672C26.4745 5.13207 26.8877 4.96094 27.3186 4.96094C27.7495 4.96094 28.1627 5.13207 28.4675 5.43672L33.3425 10.3117C33.6471 10.6164 33.8183 11.0297 33.8183 11.4606C33.8183 11.8915 33.6471 12.3047 33.3425 12.6095L18.7175 27.2345C18.4128 27.5392 17.9995 27.7105 17.5686 27.7106H12.6936C12.2626 27.7106 11.8493 27.5394 11.5446 27.2346C11.2398 26.9299 11.0686 26.5166 11.0686 26.0856V21.2106C11.0687 20.7796 11.24 20.3664 11.5447 20.0617L26.1697 5.43672ZM14.3186 21.8833V24.4606H16.8959L29.8959 11.4606L27.3186 8.88334L14.3186 21.8833ZM4.5686 11.4606C4.5686 10.5986 4.91101 9.77199 5.52051 9.16249C6.13 8.553 6.95665 8.21059 7.8186 8.21059H15.9436C16.3746 8.21059 16.7879 8.3818 17.0927 8.68654C17.3974 8.99129 17.5686 9.40461 17.5686 9.83559C17.5686 10.2666 17.3974 10.6799 17.0927 10.9846C16.7879 11.2894 16.3746 11.4606 15.9436 11.4606H7.8186V30.9606H27.3186V22.8356C27.3186 22.4046 27.4898 21.9913 27.7946 21.6865C28.0993 21.3818 28.5126 21.2106 28.9436 21.2106C29.3746 21.2106 29.7879 21.3818 30.0927 21.6865C30.3974 21.9913 30.5686 22.4046 30.5686 22.8356V30.9606C30.5686 31.8225 30.2262 32.6492 29.6167 33.2587C29.0072 33.8682 28.1806 34.2106 27.3186 34.2106H7.8186C6.95665 34.2106 6.13 33.8682 5.52051 33.2587C4.91101 32.6492 4.5686 31.8225 4.5686 30.9606V11.4606Z" fill="white"/>
+        </g>
+        <defs>
+        <filter id="filter0_d_648_2715" x="0.568604" y="0.960938" width="37.2496" height="37.2498" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+        <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+        <feOffset/>
+        <feGaussianBlur stdDeviation="2"/>
+        <feComposite in2="hardAlpha" operator="out"/>
+        <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+        <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_648_2715"/>
+        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_648_2715" result="shape"/>
+        </filter>
+        </defs>
+        </svg>`;
+    }
+}
+
+class SVGLogin extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.4444 30C18.0352 30 17.6924 29.8613 17.416 29.584C17.1396 29.3067 17.001 28.9639 17 28.5556C16.999 28.1473 17.1377 27.8044 17.416 27.5271C17.6943 27.2498 18.0371 27.1111 18.4444 27.1111H27.1111V6.88889H18.4444C18.0352 6.88889 17.6924 6.75022 17.416 6.47289C17.1396 6.19556 17.001 5.85274 17 5.44444C16.999 5.03615 17.1377 4.69333 17.416 4.416C17.6943 4.13867 18.0371 4 18.4444 4H27.1111C27.9056 4 28.5859 4.28311 29.1521 4.84933C29.7183 5.41556 30.001 6.09541 30 6.88889V27.1111C30 27.9056 29.7174 28.5859 29.1521 29.1521C28.5868 29.7183 27.9065 30.001 27.1111 30H18.4444ZM15.8083 18.4444H5.44445C5.03519 18.4444 4.69238 18.3058 4.41601 18.0284C4.13963 17.7511 4.00097 17.4083 4 17C3.99904 16.5917 4.13771 16.2489 4.41601 15.9716C4.6943 15.6942 5.03712 15.5556 5.44445 15.5556H15.8083L13.1 12.8472C12.8352 12.5824 12.7028 12.2574 12.7028 11.8722C12.7028 11.487 12.8352 11.15 13.1 10.8611C13.3648 10.5722 13.7019 10.4215 14.1111 10.409C14.5204 10.3965 14.8694 10.5351 15.1583 10.825L20.3222 15.9889C20.6111 16.2778 20.7556 16.6148 20.7556 17C20.7556 17.3852 20.6111 17.7222 20.3222 18.0111L15.1583 23.175C14.8694 23.4639 14.5266 23.6026 14.1299 23.591C13.7331 23.5794 13.3899 23.4287 13.1 23.1389C12.8352 22.85 12.709 22.5072 12.7216 22.1104C12.7341 21.7137 12.8723 21.3824 13.1361 21.1167L15.8083 18.4444Z" fill="white"/>
+            <defs>
+            <filter id="filter0_d_1072_2161" x="0" y="0" width="34" height="34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_2161"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_2161" result="shape"/>
+            </filter>
+            </defs>
+        </svg>`;
+    }
+}
+
+// customElements.define("main-navbar", MainNavbar);
+// customElements.define("guest-navbar", GuestNavbar);
+// customElements.define("login-navbar", LoginNavbar);
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
@@ -773,9 +1061,15 @@ customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);
 customElements.define("act-card-join-btn", ActCardJoinBtn);
 customElements.define("pagination-item", PaginationItem);
-customElements.define("member-list-item", MemberListItem);
 customElements.define("act-detail-join-btn", ActDetailJoinBtn);
 customElements.define("all-act-banner", AllActBanner);
+customElements.define('view-review-btn', ViewReviewBtn);
+customElements.define('delete-btn', DeleteBtn);
+customElements.define("member-list-item", MemberListItem);
+customElements.define("host-list-item", HostListItem);
+customElements.define('pending-list-item', PendingListItem);
+customElements.define('member-host-view', MemberHostViewListItem);
+customElements.define('pending-member-host-view', PendingHostViewListItem);
 
 // SVG Components define
 customElements.define("svg-calendar", SVGCalendar);
@@ -790,8 +1084,17 @@ customElements.define("svg-prev", SVGPrev);
 customElements.define("svg-next", SVGNext);
 customElements.define("svg-bookmark", SVGBookMark);
 customElements.define("svg-more-people", SVGMorePeople);
-customElements.define("svg-check", SVGCheck);
+customElements.define("svg-checkbox", SVGCheckBox);
 customElements.define("svg-location", SVGLocation);
+customElements.define("svg-plus", SVGPlus);
+customElements.define("svg-check", SVGCheck);
+customElements.define("svg-deny", SVGDeny);
+customElements.define("svg-minus", SVGMinus);
+customElements.define("svg-delete", SVGDelete);
+customElements.define("svg-mail", SVGMail);
+customElements.define("svg-phone", SVGPhone);
+customElements.define("svg-edit", SVGEdit);
+customElements.define("svg-login", SVGLogin);
 
 function change_icon(element, icon_hover, icon_default) {
     element.onmouseover = () => {

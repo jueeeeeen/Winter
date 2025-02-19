@@ -1,8 +1,9 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using Winter_Project.Models;
-
 namespace Winter_Project.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using Winter_Project.Models; 
+using Winter_Project.ViewModels;
 
 public class CreateController : Controller
 {
@@ -17,7 +18,22 @@ public class CreateController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var token = Request.Cookies["token"];
+        if (string.IsNullOrEmpty(token)) return RedirectToAction("Login", "Account");
+
+        try
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(token);
+            var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+            ViewData["Username"] = username;
+            return View();
+        }
+        catch
+        {
+            return StatusCode(500, "Internal Server Error");
+        }
     }
 
     [HttpPost("Create")]
@@ -40,13 +56,12 @@ public class CreateController : Controller
             Console.WriteLine($"Received: {model.Title}, {model.Detail}, {model.Activity_time}");
             var activity = new ActivityModel
             {
-                Owner = "me",
+                Owner = model.Owner,
                 Title = model.Title,
                 Detail = model.Detail,
-                // Create_time = DateTime.UtcNow,
-                Create_time = "now",
+                Create_time = model.Create_time,
                 Activity_time = model.Activity_time, 
-                Duration = "5",
+                Duration = model.Duration,
                 Location = model.Location,
                 Max_member = model.Max_member,
                 Approval = model.Approval,
@@ -65,7 +80,8 @@ public class CreateController : Controller
             _context.Activities.Add(activity);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "activity created" });
+            return RedirectToAction("Index", "ActivityDetail", new { id = activity.Activity_id });
+
         }
         catch (Exception ex)
         {

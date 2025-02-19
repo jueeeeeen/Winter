@@ -23,27 +23,19 @@ public class CreateController : Controller
     [HttpPost("Create")]
     public async Task<IActionResult> Create([FromBody] ActivityModel model)
     {
-        // Console.WriteLine($"Received Username: {model.Username}, Password: {model.Password} , Email: {model.Email} , FirstName: {model.FirstName}, LastName: {model.LastName} ,DateOfBirth: {model.DateOfBirth} ,Gender: {model.Gender}");
         
         try
         {
-            if (model == null)
+            using (var reader = new StreamReader(Request.Body))
             {
-                return BadRequest("hi");
+                var rawBody = await reader.ReadToEndAsync();
+                Console.WriteLine($"Raw Request Body: {rawBody}");
             }
 
-            // if (string.IsNullOrEmpty(model.Title) || string.IsNullOrEmpty(model.Detail))
-            // {
-            //     return BadRequest("null");
-            // }
-
-            // if (model.Requirement == null)
-            // {
-            //     return BadRequest("Requirement cannot be null.");
-            // }else {
-            //     Console.WriteLine("not null");
-            //     Console.WriteLine($"Requirement: {model.Requirement?.Gender}, {model.Requirement?.Age}, {model.Requirement?.Other}");
-            // }
+            if (model == null)
+            {
+                return BadRequest("i");
+            }
 
             Console.WriteLine($"Received: {model.Title}, {model.Detail}, {model.Activity_time}");
             var activity = new ActivityModel
@@ -66,7 +58,7 @@ public class CreateController : Controller
                     Other = model.Requirement.Other
                 },
                 Participants = new List<string>(),
-                Status = "Test"
+                Status = "open"
             };
 
             

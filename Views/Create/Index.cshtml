@@ -97,27 +97,28 @@
 <script>
     async function submit_create_activity() {
         const form = document.getElementById("create_activity_form");
-        @* console.log(form) *@
         const formData = new FormData(form);
-        const data = {};
-        data["Requirement"] = {
-            "Gender": formData.get("Gender"),
-            "Age": formData.get("Age"),
-            "Other": formData.get("Other")
+        const data = {
+            @* Owner: "jueeeeeen", *@
+            Title: formData.get("Title"),
+            Detail: formData.get("Detail"),
+            @* Create_Time: "now", *@
+            Activity_time: formData.get("Activity_time"),
+            @* Duration: "5", *@
+            Location: formData.get("Location"),
+            Max_member: parseInt(formData.get("Max_member")) || 0,
+            Approval: formData.get("Approval") === "true",
+            Tags: formData.getAll("tags"),
+            Requirement: {
+                Gender: formData.get("Gender"),
+                Age: parseInt(formData.get("Age")) || 0,
+                Other: formData.get("Other"),
+            },
+            Participants: ["a", "b"],
+            @* Status: "open" *@
         };
 
-        formData.forEach((value, key) => {
-        if (key == "Tags") {
-            if (!data[key]) {
-                data[key] = [];
-            }
-            data[key].push(value);
-        } else if (key !== "Gender" && key !== "Age" && key !== "Other") {
-            data[key] = value;
-        }
-        });
-
-        console.log(data);
+        console.log(JSON.stringify(data, null, 2));
 
         await fetch('http://localhost:5115/Create', {
             method: 'POST',

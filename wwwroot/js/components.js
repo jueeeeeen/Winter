@@ -272,7 +272,6 @@ class SearchBar extends HTMLElement{
         this.search_input = this.querySelector("#search_input");
         console.log(this.search_input);
         this.search_input.value = "";
-        console.log("clear");
     }
 }
 
@@ -282,7 +281,7 @@ class TagsSelector extends HTMLElement{
         this.tag_name = this.getAttribute("data-tag_name");
         this.innerHTML =
         `<div class="pseudo-btn">
-            <input type="checkbox" name="${this.tag_name}" value="${this.tag_name}" id="tag_${this.tag_name}">
+            <input type="checkbox" name="Tags" value="${this.tag_name}" id="tag_${this.tag_name}">
             <label for="tag_${this.tag_name}" class="btn medium round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;
         this.input = this.querySelector("input");
@@ -314,7 +313,7 @@ class TagFilter extends HTMLElement{
     constructor(){
         super()
         this.innerHTML = 
-        `<form class="flex gap" id="tag_filter_form" action="/AllActivity" method="post">
+        `<form class="flex gap" id="tag_filter_form" action="/Activity" method="post">
             <tag-selector data-tag_name="All"></tag-selector>
             <tag-selector data-tag_name="Entertain"></tag-selector>
             <tag-selector data-tag_name="Sport"></tag-selector>
@@ -342,7 +341,7 @@ class TagFilter extends HTMLElement{
             selectedTags.push(input.value);
         });
         
-        // console.log("Selected Tags:", selectedTags);
+        console.log("Selected Tags:", selectedTags);
 
         fetch(form.action, {
             method: "POST",
@@ -370,7 +369,7 @@ class TagSelect extends HTMLElement{
             <tag-selector data-tag_name="Hobby"></tag-selector>
             <tag-selector data-tag_name="Travel"></tag-selector>
             <tag-selector data-tag_name="Art"></tag-selector>
-            <tag-selector data-tag_name="Musi"></tag-selector>
+            <tag-selector data-tag_name="Music"></tag-selector>
             <tag-selector data-tag_name="Beauty"></tag-selector>
             <tag-selector data-tag_name="Pet"></tag-selector>
         </div>
@@ -380,8 +379,16 @@ class TagSelect extends HTMLElement{
     connectedCallback() {
         this.addEventListener("change", (event) => {
             event.preventDefault();
-            console.log("hi")
             this.showselected()});
+        this.querySelectorAll('input').forEach(checkbox => {
+            checkbox.addEventListener("change", ()=> {
+                const checkedCount = this.querySelectorAll("input:checked").length;
+                if (checkedCount > 3) {
+                    checkbox.checked = false;
+                    alert("you can only select up to 3 tags")
+                }
+            })
+        });
     }
 
     showselected() {
@@ -398,11 +405,11 @@ class TagSelect extends HTMLElement{
 class NumberInput extends HTMLElement {
     constructor() {
         super();
-
+        this.name = this.getAttribute("data-name")
         this.innerHTML = `
             <div class="number-input-container">
                 <button type="button" id="decrease">-</button>
-                <input type="text" id="number" value="1">
+                <input type="text" name="${this.name}" id="number" value="1">
                 <button type="button" id="increase">+</button>
             </div>
         `;
@@ -433,7 +440,6 @@ class NumberInput extends HTMLElement {
 
 // Register custom element
 
-// replace button with better element later****
 class TagDisplay extends HTMLElement {
     constructor() {
         super();

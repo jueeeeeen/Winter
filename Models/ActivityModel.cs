@@ -22,12 +22,12 @@ namespace Winter_Project.Models
         public string Tags {get; set;} = string.Empty;
 
         public RequirementModel Requirement { get; set; } = new RequirementModel();
-
-        public List<string> Participants {get; set;} = [];
+        
+        public List<string> Participants { get; set; } = new List<string>();
 
         public string Status {get; set;} = string.Empty;
 
-        public void Activity()
+        public ActivityModel()
         {
             Activity_id = _next_id++;
         }

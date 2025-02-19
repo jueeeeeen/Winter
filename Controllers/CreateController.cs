@@ -20,8 +20,8 @@ public class CreateController : Controller
         return View();
     }
 
-    [HttpPost("create")]
-        public async Task<IActionResult> Create([FromBody] ActivityModel model)
+    [HttpPost("CreateActivity")]
+        public async Task<IActionResult> CreateActivity([FromBody] ActivityModel model)
         {
             // Console.WriteLine($"Received Username: {model.Username}, Password: {model.Password} , Email: {model.Email} , FirstName: {model.FirstName}, LastName: {model.LastName} ,DateOfBirth: {model.DateOfBirth} ,Gender: {model.Gender}");
             try

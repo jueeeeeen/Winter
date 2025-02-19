@@ -7,7 +7,7 @@
         <div class="create-header">
             <p>Details</p>
         </div>
-        <form class="create-details">
+        <form class="create-details" method="post" asp-controller="Create" asp-action="CreateActivity">
             <div class="form-group">
                 <label>Activity Header :</label>
                 <input/>
@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label>Date - Time :</label>
-                <input/>
+                <input type="datetime-local"/>
             </div>
             <div class="form-group">
                 <label>Location :</label>

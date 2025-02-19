@@ -298,7 +298,6 @@ class TagsSelector extends HTMLElement{
     }
 
     toggle_check() {
-        console.log("toggle");
         if ((this.tag_name == "All") && (this.input.checked)){
                 document.querySelectorAll('#tag_filter_form input:not([name="All"])').forEach(input => {
                 input.checked = false;
@@ -333,14 +332,6 @@ class TagFilter extends HTMLElement{
             event.preventDefault();
             this.submitForm()});
 
-    }
-
-    clear_tags(tag) {
-        this.inputs.forEach(input => {
-            if ((tag != null && input.name == tag) || input.name != "All"){
-                input.checked = false;
-            }
-        });
     }
 
     submitForm() {
@@ -379,11 +370,28 @@ class TagSelect extends HTMLElement{
             <tag-selector data-tag_name="Hobby"></tag-selector>
             <tag-selector data-tag_name="Travel"></tag-selector>
             <tag-selector data-tag_name="Art"></tag-selector>
-            <tag-selector data-tag_name="Music"></tag-selector>
+            <tag-selector data-tag_name="Musi"></tag-selector>
             <tag-selector data-tag_name="Beauty"></tag-selector>
             <tag-selector data-tag_name="Pet"></tag-selector>
         </div>
         `
+    }
+
+    connectedCallback() {
+        this.addEventListener("change", (event) => {
+            event.preventDefault();
+            console.log("hi")
+            this.showselected()});
+    }
+
+    showselected() {
+        const selectedTags = [];
+
+        this.querySelectorAll('input:checked').forEach(input => {
+            selectedTags.push(input.value);
+        });
+        
+        console.log("Selected Tags:", selectedTags);
     }
 }
 

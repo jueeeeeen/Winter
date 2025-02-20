@@ -17,6 +17,7 @@ public class ActivityDetailController: Controller
     public IActionResult Index(int id)
     {
         var activity = _context.Activities.FirstOrDefault(a => a.Activity_id == id);
+
         if (activity == null)
             return NotFound("Activity not found");
 

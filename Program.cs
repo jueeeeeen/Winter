@@ -13,6 +13,14 @@ builder.Services.AddControllersWithViews();
 
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!); 
+
+// ไว้ set ให้ วันที่เป็นภาษาอังกฤษ
+var cultureInfo = new System.Globalization.CultureInfo("en-US");
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
+
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
 // Configure JWT Bearer Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -40,9 +48,9 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins("https://yourfrontend.com") // เปลี่ยนเป็นโดเมนของคุณ
-                  .AllowCredentials()
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
+                .AllowCredentials()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
         });
 });
 

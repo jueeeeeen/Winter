@@ -50,6 +50,7 @@ input:focus, textarea:focus {
 button {
   border: none;
   background-color: var(--white);
+  font-size: 1rem;
 }
 
 a {
@@ -451,6 +452,7 @@ hr {
 
 .pseudo-btn input[type="checkbox"], .pseudo-btn input[type="radio"]{
   visibility: hidden;
+  position: absolute;
 }
 
 .pseudo-btn {
@@ -499,7 +501,7 @@ hr {
     color: var(--blue80);
     border: 2px solid var(--blue80);
     svg path {
-      fill: var(--blue80);
+      stroke: var(--blue80);
     }
   }
 
@@ -507,7 +509,7 @@ hr {
     background-color: var(--white);
     color: var(--blue60);
     border: 2px solid var(--blue60);
-    svg>path {
+    svg path {
       stroke: var(--blue60);
     }
   }
@@ -518,7 +520,17 @@ hr {
     text-shadow: none;
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
-      fill: var(--blue80);
+      stroke: var(--blue80);
+    }
+  }
+
+  .w-db, .hover-w-db:hover {
+    background-color: var(--white);
+    color: var(--blue90);
+    text-shadow: none;
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      stroke: var(--blue90);
     }
   }
 
@@ -536,7 +548,7 @@ hr {
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
-      fill: var(--white);
+      stroke: var(--white);
     }
   }
 
@@ -545,7 +557,6 @@ hr {
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--blue40);
     svg path {
-      fill: var(--white);
       stroke: var(--white);
     }
   }
@@ -565,7 +576,8 @@ hr {
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
-      fill: var(--white);
+      /* fill: var(--white); */
+      stroke: var(--white);
     }
   }
 
@@ -697,15 +709,6 @@ hr {
     }
   }
 
-.pseudo-btn input:checked + label{
-  background-color: var(--blue60);
-  color: var(--white);
-  box-shadow: 0px 0px 4px 1px var(--shadow);
-}
-
-#tag_filter_form {
-  margin: 0 0 2rem;
-}
 
 .tag {
   display: flex;
@@ -739,11 +742,6 @@ hr {
   color: var(--blue50);
   transform: translateY(-0.1em);
   fill: var(--gray90);
-}
-
-
-.show {
-  display: block;
 }
 
 .letter-spacing {
@@ -785,9 +783,12 @@ hr {
 
 .act-card-profile-info div:nth-child(3){
   grid-area: 2 / 2 / 3 / 3;
-  font-size: 0.67em;
+  font-size: 0.75em;
   line-height: 1.5;
   display: flex;
+  span {
+    color: var(--gray80);
+  }
 }
 
 .act-card-review{
@@ -840,4 +841,9 @@ hr {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ต่อแถว */
   gap: 10px; /* ระยะห่างระหว่างรายการ */
+}
+
+
+.show {
+  display: block;
 }

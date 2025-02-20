@@ -72,6 +72,7 @@
 }
 
 .act-detail-info ul{
+    height: 100%;
     display: flex;
     flex-direction: column;
     font-weight: 500;
@@ -91,7 +92,7 @@
 }
 
 .act-detail-location {
-    flex: 1;
+    flex-grow: 1;
 }
 
 .act-detail-info svg {

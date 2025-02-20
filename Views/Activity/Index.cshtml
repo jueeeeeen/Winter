@@ -7,22 +7,24 @@
 <search-bar></search-bar>
 @* @ViewBag.keyword *@
 @* for showing search keyword that is sent to back *@
+<div class="filter-container">
+    <tag-filter></tag-filter>
+    <div class="filter-options">
+        <div class="pseudo-btn">
+            <input type="checkbox" name="descending" id="display-order">
+            <label for="display-order" class="filter-btn btn w-bb-bb display-order hover-bb-w">
+                <svg-order></svg-order>
+            </label>
+        </div>
+        <display-sort></display-sort>
+        <display-filter></display-filter>
+    </div>
+</div>
 
-<tag-filter></tag-filter>
-
-<ul id="show-tags"></ul>
+@* <ul id="show-tags"></ul> *@
 @* for showing selected tags that are sent to back *@
 
 <div id="all-activities-container">
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
 </div>
 
 
@@ -38,8 +40,32 @@
     <pagination-item data-value="next"></pagination-item>
 </div>
 
-<script>
-    window.onload = async function() {
+<script>    
+    function get_filters() {
+        tag_filter_result = document.querySelector('tag-filter').result;
+        filter_result = document.querySelector('display-filter').result;
+        sort_result = document.querySelector('display-sort').result;
+        order_result = document.getElementById("display-order").checked;
+        search_result = document.querySelector('search-bar').result;
+        filter_datas = {
+            tag_filter: tag_filter_result,
+            filter: filter_result,
+            sort: sort_result,
+            descending: order_result,
+            seach_key: search_result
+        }
+        console.log(filter_datas)
+        return filter_datas
+    }
+
+    const display_sort = document.querySelector('display-sort');
+    display_sort.addEventListener("change", () => {
+        get_filters()
+    })
+
+    window.onload = fetch_activities()
+
+    async function fetch_activities() {
         const activity_container = document.getElementById("all-activities-container");
 
         try {
@@ -48,21 +74,21 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify("")  // Make sure 'data' is defined or pass it as needed
+                body: JSON.stringify(get_filters())
             });
 
             const activities = await response.json();
-            console.log(activities);  // This will log the activities returned by the server
+            console.log(activities);
 
             activity_container.innerHTML = '';
 
             activities.forEach(activity => {
-                const activityCard = new ActivityCard(activity);  // Create an instance of ActivityCard
-                activity_container.appendChild(activityCard);  // Append it to the container
+                const activityCard = new ActivityCard(activity);
+                activity_container.appendChild(activityCard);
             })
 
         } catch (error) {
             console.error(error);
         }
-    };
+    }
 </script>

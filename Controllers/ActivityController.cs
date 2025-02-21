@@ -36,38 +36,90 @@ public class ActivityController: Controller
     }
 
     [HttpPost]
-    public JsonResult GetActivityCards()
+    public JsonResult GetActivityCards([FromBody] ActDisplayOptionModel filters)
     {
-        var activities = _context.Activities
-                            .Select(a => new 
-                            {
-                                a.Activity_id,
-                                a.Title,
-                                a.Tags,
-                                Create_time = DateTime.Parse(a.Create_time).ToString("dd MMM yyyy HH:mm"),
-                                Requirement = new {
-                                    a.Requirement.Gender,
-                                    a.Requirement.Age,
-                                },
-                                a.Location,
-                                Activity_time = @DateTime.Parse(a.Activity_time).ToString("ddd, dd MMM yyyy-HH:mm"),
-                                a.Max_member,
-                                Participants_count = a.Participants.Count(),
-                                a.Duration,
-                                host = _context.Users
-                                                .Where(u => u.Username == a.Owner)
-                                                .Select(u => new 
-                                                {
-                                                    Profile_pic = "profile-g.png",
-                                                    u.Username,
-                                                    u.FirstName,
-                                                    u.LastName,
-                                                    u.Gender,
-                                                    Review = "4.5"
-                                                })
-                                                .FirstOrDefault()
-                            })
-                            .ToList();
-        return Json(activities);
+        Console.WriteLine(filters);
+        var page_size = 12;
+
+        var filtered_activities = _context.Activities.AsQueryable();
+
+        switch (filters.Sort)
+        {
+            case "Create_date":
+                filtered_activities = filters.Descending
+                    ? filtered_activities.OrderByDescending(a => a.Activity_id)
+                    : filtered_activities.OrderBy(a => a.Activity_id);
+                break;
+            
+            case "Activity_time":
+                filtered_activities = filters.Descending
+                    ? filtered_activities.OrderByDescending(a => a.Activity_time)
+                    : filtered_activities.OrderBy(a => a.Activity_time);
+                break;
+
+            case "Participants":
+                filtered_activities = filters.Descending
+                    ? filtered_activities.OrderByDescending(a => a.Max_member)
+                    : filtered_activities.OrderBy(a => a.Max_member);
+                break;
+
+            default:
+                filtered_activities = filtered_activities.OrderBy(a => a.Activity_id);
+                break;
+        }
+
+        if (filters.Filter.Gender != null && filters.Filter.Gender.Any()) {
+            filtered_activities = filtered_activities.Where(a => filters.Filter.Gender.Contains(a.Requirement.Gender));
+        }
+
+        if (filters.Filter.Age != null) {
+            filtered_activities = filtered_activities.Where(a => a.Requirement.Age >= filters.Filter.Age.Min && a.Requirement.Age <= filters.Filter.Age.Max);
+        }
+
+        if (filters.Tag_filter.Any()) {
+            filtered_activities = filtered_activities.Where(a => filters.Tag_filter.Any(tag => a.Tags.Contains(tag)));
+        }
+
+        if (filters.Seach_key != null) {
+            filtered_activities = filtered_activities.Where(a => a.Title.Contains(filters.Seach_key));
+        }
+
+        var response = new 
+        {
+            Activities = filtered_activities
+                .Skip((filters.Page - 1) * page_size)
+                .Take(page_size)
+                .Select(a => new 
+                {
+                    a.Activity_id,
+                    a.Title,
+                    a.Tags,
+                    Create_time = DateTime.Parse(a.Create_time).ToString("dd MMM yyyy HH:mm"),
+                    Requirement = new {
+                        a.Requirement.Gender,
+                        a.Requirement.Age,
+                    },
+                    a.Location,
+                    Activity_time = DateTime.Parse(a.Activity_time).ToString("ddd, dd MMM yyyy-HH:mm"),
+                    a.Max_member,
+                    Participants_count = a.Participants.Count(),
+                    a.Duration,
+                    host = _context.Users
+                                    .Where(u => u.Username == a.Owner)
+                                    .Select(u => new 
+                                    {
+                                        Profile_pic = "profile-g.png",
+                                        u.Username,
+                                        u.FirstName,
+                                        u.LastName,
+                                        u.Gender,
+                                        Review = "4.5"
+                                    })
+                                    .FirstOrDefault()
+                })
+                .ToList(),
+            Max_page = (filtered_activities.Count() + 11) / 12
+        };
+        return Json(response);
     }
 }

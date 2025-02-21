@@ -89,7 +89,7 @@ class SearchBar extends HTMLElement{
                     <svg-x></svg-x>
                 </button>
             </div>
-            <button type="button" class="btn search-bar-search" id="seach_button">
+            <button type="button" class="btn search-bar-search" id="seach-button">
                 <svg-search></svg-search>
             </button>
         </form>`;
@@ -101,7 +101,7 @@ class SearchBar extends HTMLElement{
         this.clear_search_button = this.querySelector("#clear_search_button");
         this.clear_search_button.addEventListener("click", this.clear_search);
 
-        this.search_btn = this.querySelector("#seach_button")
+        this.search_btn = this.querySelector("#seach-button")
         this.search_input = this.querySelector("input")
         this.search_btn.addEventListener("click", () => {
             console.log(this.search_input.value);
@@ -130,26 +130,6 @@ class TagsSelector extends HTMLElement{
             <label for="tag_${this.tag_name}" class="btn medium round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;
         this.input = this.querySelector("input");
-        this.toggle_check = this.toggle_check.bind(this);
-    }
-
-    connectedCallback() {
-        this.input.addEventListener("change", this.toggle_check);
-    }
-
-    disconnectedCallback() {
-        this.input.removeEventListener("change", this.toggle_check);
-    }
-
-    toggle_check() {
-        if ((this.tag_name == "All") && (this.input.checked)){
-                document.querySelectorAll('#tag_filter_form input:not([name="All"])').forEach(input => {
-                input.checked = false;
-            });
-        }
-        else{
-            document.querySelector('#tag_filter_form input[name="All"]').checked = false
-        }
     }
 }
 
@@ -158,7 +138,7 @@ class TagFilter extends HTMLElement{
     constructor(){
         super()
         this.innerHTML = 
-        `<form class="flex gap" id="tag_filter_form" action="/Activity" method="post">
+        `<form class="flex gap" id="tag_filter_form">
             <tag-selector data-tag_name="All"></tag-selector>
             <tag-selector data-tag_name="Entertain"></tag-selector>
             <tag-selector data-tag_name="Sport"></tag-selector>
@@ -167,41 +147,49 @@ class TagFilter extends HTMLElement{
             <tag-selector data-tag_name="Travel"></tag-selector>
         </form>
         `
-        this.inputs = this.querySelector('input');
     }
 
+    
     connectedCallback() {
-        this.addEventListener("change", (event) => {
-            event.preventDefault();
-            // this.submitForm()
-        });
+        this.tags = this.querySelectorAll("input");
+        this.tag_all = this.querySelector("input[value='All']");
+        this.tags.forEach(tag => {
+            tag.addEventListener("change", () => this.toggle_check(tag));
+            tag.checked = tag.value === "All"
+        })
     }
+
+    disconnectedCallback() {
+        this.tags.forEach(tag => {
+            tag.removeEventListener("change", () => this.toggle_check(tag));
+        })
+    }
+    
+    toggle_check(tag) {
+        if ((tag.value == "All") && (tag.checked)){
+            this.tags.forEach(input => {
+                if (input.value != "All") input.checked = false;
+            });
+        }
+        else if (this.querySelectorAll('input:checked').length == 0){
+            this.tag_all.checked = true;
+        }
+        else{
+            this.tag_all.checked = false;
+        }
+    }
+
 
     get result() {
-        const form = this.querySelector("#tag_filter_form");
         const selectedTags = [];
 
-        form.querySelectorAll('input:checked').forEach(input => {
+        if (this.tag_all.checked) return [];
+
+        this.querySelectorAll('input:checked').forEach(input => {
             selectedTags.push(input.value);
         });
         
-        // console.log("Selected Tags:", selectedTags);
         return selectedTags
-    }
-
-    submitForm() {
-        fetch(form.action, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(selectedTags)
-        })
-        .then(response => response.json())
-        .then(data => {
-            const tag_list = document.querySelector('#show-tags')
-            tag_list.innerHTML = data["tags"].join(" | ");
-        })
     }
 }
 
@@ -627,25 +615,29 @@ class RequirementTag extends HTMLElement {
 class ActivityCard extends HTMLElement {
     constructor(activity) {
         super();
+        // this.style.display = "block";
         if (activity) {
             [this.act_date, this.act_time] = activity.activity_time.split("-");
             this.innerHTML = `
             <div class="activity-card shadow">
-                <div class="act-card-profile-info">
-                    <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
-                    <div>
-                        <span>${activity.host.firstName + " " + activity.host.lastName}</span>
-                        <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+                <div class="act-card-header">
+                    <div class="act-card-profile-info">
+                        <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
+                        <div>
+                            <span>${activity.host.firstName + " " + activity.host.lastName}</span>
+                            <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+                        </div>
+                        <div>
+                            <span>${activity.create_time}</span>
+                            <span aria-label="review" class="act-card-review">
+                                <svg-star-sharp></svg-star-sharp>
+                                ${activity.host.review}
+                            </span>
+                        </div>
                     </div>
-                    <div>
-                        <span>${activity.create_time}</span>
-                        <span aria-label="review" class="act-card-review">
-                            <svg-star-sharp></svg-star-sharp>
-                            ${activity.host.review}
-                        </span>
-                    </div>
-                    <div>${activity.participants_count + "/" + activity.max_member}</div>
+                    <div class="act-card-member">${activity.participants_count + "/" + activity.max_member}</div>
                 </div>
+                
                 <ul class="act-card-tags-container">
                     ${activity.tags.map(tag => `
                         <li>
@@ -732,29 +724,107 @@ class ActCardJoinBtn extends HTMLElement {
 }
 
 class Pagination extends HTMLElement {
-    constructor(page_count) {
+    constructor() {
         super();
-        // this.innerHTML = ``;
+        this._max_page = 0;
+        this._current_page = 1;
+        this.innerHTML =
+        `<div class="pagination-container round shadow">
+            <button class="pagination-btn btn round" id="prev_button"><svg-prev></svg-prev></button>
+            <div id="page-number-container"></div>
+            <button class="pagination-btn btn round" id="next_button"><svg-next></svg-next></button>
+        </div>`; 
+    }
 
+    connectedCallback() {
+        this.handle_page_change();
+    }
+
+    render(max_page) {
+        this.container = this.querySelector("#page-number-container")
+        this._max_page = max_page;
+        this.container.innerHTML = Array.from({ length: max_page }, (_, i) => `<pagination-item data-value="${i + 1}"></pagination-item>`).join('');
+        this.apply_style();
+        this.disable_dir_btn();
+    }
+
+    handle_page_change() {
+        this.prev_btn = this.querySelector("#prev_button")
+        this.prev_btn.addEventListener("click", () => this.change_page(-1));
+
+        this.next_btn = this.querySelector("#next_button")
+        this.next_btn.addEventListener("click", () => this.change_page(1));
+
+        this.addEventListener("change", () => {
+            this.selected_page = parseInt(this.querySelector("input:checked").value, 10);
+            this.to_page(this.selected_page)
+        })
+    }
+
+    change_page(dir) {
+        if ( this._current_page + dir >= 1 && this._current_page + dir <= this.max_page){
+            this._current_page += dir;
+        }
+        this.apply_style()
+        this.disable_dir_btn()
+        this.dispatchEvent(new CustomEvent('page-changed', {
+            detail: { page: this._current_page },
+            bubbles: true,
+            composed: true
+        }));
+    }
+
+    to_page(page){
+        this._current_page = page;
+        this.disable_dir_btn()
+        this.dispatchEvent(new CustomEvent('page-changed', {
+            detail: { page: this._current_page },
+            bubbles: true,
+            composed: true
+        }));
+    }
+    
+    apply_style() {
+        this.querySelector(`input[value='${this._current_page}']`).checked = true;
+    }
+
+    disable_dir_btn() {
+        this.prev_btn.disabled = this._current_page === 1;
+        this.next_btn.disabled = this._current_page === this._max_page;
+    }
+
+    get max_page() {
+        return this._max_page;
+    }
+
+    get current_page() {
+        return this._current_page;
     }
 }
+
+customElements.define("custom-pagination", Pagination);
 
 class PaginationItem extends HTMLElement {
     constructor() {
         super();
-        this.value = this.getAttribute("data-value");
-        if (this.value == "prev") {
-            this.innerHTML = `<button class="pagination-item round"><svg-prev></svg-prev></button>`;
-        }
-        else if (this.value == "..."){
-            this.innerHTML = `<button class="pagination-item round">...</button>`; 
-        }
-        else if (this.value == "next"){
-            this.innerHTML = `<button class="pagination-item round"><svg-next></svg-next></button>`; 
-        }
-        else {
-            this.innerHTML = `<button class="pagination-item round">${this.value}</button>`;
-        }
+        this.page_value = this.getAttribute("data-value");
+        this.innerHTML = 
+        `<div class="pseudo-btn pagination-item">
+            <input type="radio" value="${this.page_value}" name="page" id="page_${this.page_value}">
+            <label class="pagination-btn btn round" for="page_${this.page_value}">${this.page_value}</label>
+        </div>`;
+    }
+
+    connectedCallback() {
+        
+    }
+
+    disconnectedCallback() {
+        
+    }
+
+    get page() {
+        return this.page_value;
     }
 }
 

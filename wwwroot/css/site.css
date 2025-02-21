@@ -521,6 +521,7 @@ hr {
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
       stroke: var(--blue80);
+      fill: var(--blue80);
     }
   }
 
@@ -719,41 +720,72 @@ hr {
 }
 
 .pagination-container {
-  width: 20.25em;
+  height: 2.25em;
   background-color: var(--white);
   overflow: hidden;
   padding: 0.1em 0;
   margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  width: fit-content;
 }
 
-.pagination-item{
+.pagination-btn{
   font-size: 1rem;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.25em;
-  height: 2.25em;
+  width: 2em;
+  height: 2em;
   color: var(--gray70);
   transition: all 0.3s;
 }
 
-.pagination-container>*:not([data-value="..."]):hover .pagination-item, .pagination-container .pagination-item:hover path{
+.pagination-btn:not(:disabled):hover {
   color: var(--blue50);
   transform: translateY(-0.1em);
+}
+
+.pagination-btn:not(:disabled):hover path {
   fill: var(--gray90);
+}
+
+.pagination-btn:disabled {
+  cursor:auto;
+}
+
+.pagination-btn:disabled path {
+  fill: var(--gray60);
+}
+
+.pagination-item input:checked ~ .pagination-btn{
+  background-color: var(--blue40);
+  color: var(--white);
 }
 
 .letter-spacing {
   letter-spacing: 0.125em;
 }
 
+.act-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 95%;
+  border-bottom: 1px solid var(--gray60);
+}
+
 .act-card-profile-info {
   display: grid;
-  grid-template-columns: 2.5em auto 3.75em;
+  grid-template-columns: 2.5em auto;
   grid-template-rows: 1fr 1fr;
+  gap:0 0.25em;
+  height: fit-content;
+}
+
+header.act-card-profile-info{
   border-bottom: 1px solid var(--gray60);
-  gap:0 0.25em
 }
 
 .act-card-profile-info div:nth-child(1){
@@ -774,6 +806,12 @@ hr {
   font-weight: bold;
   align-self: end;
   line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.act-card-profile-info div:nth-child(2) span {
+  text-overflow: ellipsis;
 }
 
 .act-card-profile-info div:nth-child(2) svg {
@@ -788,6 +826,7 @@ hr {
   display: flex;
   span {
     color: var(--gray80);
+    height: fit-content;
   }
 }
 
@@ -841,6 +880,12 @@ hr {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ต่อแถว */
   gap: 10px; /* ระยะห่างระหว่างรายการ */
+}
+
+.pseudo-btn input:checked[name="Tags"] + label{
+  background-color: var(--blue60);
+  color: var(--white);
+  box-shadow: 0px 0px 4px 1px var(--shadow);
 }
 
 

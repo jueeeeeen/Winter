@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateActivityModelAddedPaticipant : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

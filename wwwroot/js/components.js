@@ -720,6 +720,8 @@ class ActCardJoinBtn extends HTMLElement {
         super();
         this.act_id = this.getAttribute("data-act-id");
         this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb hover-ani-bounce">join</button>`;
+        this.act_id = this.getAttribute("data-act-id");
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb">join</button>`;
     }
 }
 
@@ -832,12 +834,13 @@ class PaginationItem extends HTMLElement {
 class MemberListItem extends HTMLElement {
     constructor() {
         super();
+        this.name = this.getAttribute("name");
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
                     <img src="../../assets/profile-g.png">
                 </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-name">${this.name}</span>
                 <span class="member-list-item-role flex">(Member)</span>
             </li>`; 
     }
@@ -845,12 +848,13 @@ class MemberListItem extends HTMLElement {
 class HostListItem extends HTMLElement {
     constructor() {
         super();
+        this.name = this.getAttribute("name");
         this.innerHTML = 
         `<li class="radial-blue-bg member-list-item shadow">
             <div class="member-list-item-profile">
                 <img src="../../assets/profile-g.png">
             </div>
-            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">(Host)</span>
         </li>`;
     }
@@ -859,10 +863,11 @@ class HostListItem extends HTMLElement {
 class PendingListItem extends HTMLElement {
     constructor() {
         super();
+        this.number = this.getAttribute("number");
         this.innerHTML = 
         `<li class="w-bb-bb pending-member-item">
             <svg-more-people></svg-more-people>
-            <span>...more people applied...</span>
+            <span>${this.number} people applied...</span>
         </li>`;
     }  
 }

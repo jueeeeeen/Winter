@@ -13,8 +13,8 @@ namespace Winter_Project.Models
         public DbSet<UserModel> Users { get; set; }
         public DbSet<UserBio> UserBios { get; set; }
         public DbSet<ActivityModel> Activities { get; set; }
-
         public DbSet<RequirementModel> Requirements { get; set; }
+        public DbSet<ParticipantModel> Participants { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -25,15 +25,18 @@ namespace Winter_Project.Models
                 dateTime => DateOnly.FromDateTime(dateTime)          // แปลง DateTime → DateOnly
             );
 
-        // กำหนดความสัมพันธ์ One-to-One ระหว่าง ActivityModel และ RequirementModel
-            // modelBuilder.Entity<ActivityModel>()
-                // .HasOne(a => a.Requirement); // ActivityModel มี RequirementModel
-                // .HasForeignKey<RequirementModel>(r => r.Activity_id); // กำหนด Activity_id เป็น Foreign Key
-
             modelBuilder.Entity<ActivityModel>()
             .HasOne(a => a.Requirement) // ActivityModel has one RequirementModel
             .WithOne() // RequirementModel has one ActivityModel
             .HasForeignKey<RequirementModel>(r => r.Activity_id);
+
+            modelBuilder.Entity<ParticipantModel>()
+            .HasKey(p => new { p.Username, p.Activity_id });
+
+            modelBuilder.Entity<ParticipantModel>()
+            .HasOne<ActivityModel>()
+            .WithMany(a => a.Participants)
+            .HasForeignKey(p => p.Activity_id);
 
             base.OnModelCreating(modelBuilder);
         }

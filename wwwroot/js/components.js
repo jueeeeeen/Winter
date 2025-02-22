@@ -635,7 +635,7 @@ class ActivityCard extends HTMLElement {
                             </span>
                         </div>
                     </div>
-                    <div class="act-card-member">${activity.participants_count + "/" + activity.max_member}</div>
+                    <div class="act-card-member">${activity.member_count + "/" + activity.max_member}</div>
                 </div>
                 
                 <ul class="act-card-tags-container">
@@ -719,7 +719,7 @@ class ActCardJoinBtn extends HTMLElement {
     constructor() {
         super();
         this.act_id = this.getAttribute("data-act-id");
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb">join</button>`;
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb hover-ani-bounce">join</button>`;
     }
 }
 
@@ -912,7 +912,7 @@ class ActDetailJoinBtn extends HTMLElement {
     constructor() {
         super();
         this.activity_id = this.getAttribute("data-activity-id");
-        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb ani-bounce">join</button>`;
     }
     
     connectedCallback() {
@@ -939,7 +939,7 @@ class ActDetailJoinBtn extends HTMLElement {
 class ViewReviewBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y">view review</button>`;
+        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y ani-bounce">view review</button>`;
     }
 }
 

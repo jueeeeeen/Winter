@@ -46,6 +46,7 @@
         <div class="hands right">
         </div>
     </div>
+    
 </div>
 
 <custom-pagination id="activity-pagination"></custom-pagination>
@@ -61,7 +62,6 @@
         const tag_filter = document.querySelector('tag-filter');
         const search_button = document.querySelector('#seach-button');
 
-        activity_pagination.render(5)
         fetch_activities()
         activity_pagination.addEventListener("page-changed", (event)=>fetch_activities(event.detail.page))
         display_sort.addEventListener("change", () => fetch_activities())
@@ -117,8 +117,7 @@
                     })
                 }
                 else {
-                    activity_container.innerHTML = 'No activity found';
-                    @* แก้ขัดไปก่อน *@
+                    activity_container.innerHTML = '<span class="not-found">No Activity Found</span>';
                 }
                 
 

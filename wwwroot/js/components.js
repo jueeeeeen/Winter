@@ -519,9 +519,7 @@ class ActivityCard extends HTMLElement {
                         <svg-calendar></svg-calendar><span>${this.act_date}</span>
                     </li>
                     <li>
-                        <button class="btn small round mb-w">
-                            join
-                        </button>
+                        <act-card-join-btn data-act-id="${activity.activity_id}"></act-card-join-btn>
                     </li>
                 </ul>
             </div>`
@@ -576,7 +574,8 @@ class ActivityCard extends HTMLElement {
 class ActCardJoinBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w hover-w-bb-bb">join</button>`
+        this.act_id = this.getAttribute("data-act-id");
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb">join</button>`;
     }
 }
 

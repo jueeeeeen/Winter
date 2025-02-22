@@ -720,6 +720,8 @@ class ActCardJoinBtn extends HTMLElement {
         super();
         this.act_id = this.getAttribute("data-act-id");
         this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb hover-ani-bounce">join</button>`;
+        this.act_id = this.getAttribute("data-act-id");
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb">join</button>`;
     }
 }
 

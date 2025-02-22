@@ -6,7 +6,7 @@ namespace Winter_Project.Models
     {
         [Key]
         public int Requirement_id { get; set; }
-        public int Activity_id { get; set; } // Foreign Key ที่เชื่อมโยงกับ ActivityModel
+        public int Activity_id { get; set; }
 
         public string Gender { get; set; } = string.Empty;
         public int Age { get; set; } = 0;

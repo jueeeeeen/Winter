@@ -117,4 +117,5 @@ public class ActivityDetailController: Controller
 
         return Ok(new { message = "Successfully Joined Activity"});
     }
+
 }

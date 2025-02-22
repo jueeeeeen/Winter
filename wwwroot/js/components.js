@@ -909,12 +909,30 @@ class MemberHostViewListItem extends HTMLElement {
 }
 
 class ActDetailJoinBtn extends HTMLElement {
-    constructor(actID) {
+    constructor() {
         super();
+        this.activity_id = this.getAttribute("data-activity-id");
         this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
     }
+    
     connectedCallback() {
+        this.querySelector("button").addEventListener("click", () => this.join_activity());
+    }
 
+    join_activity() {
+        fetch(`JoinActivity/${this.activity_id}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+            } else {
+                console.error("Failed to join activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
     }
 }
 
@@ -1350,6 +1368,17 @@ class SVGOrder extends BaseSVGElement {
     }
 }
 customElements.define("svg-order", SVGOrder);
+
+class SVGSnowflake extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="25" height="27.5" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 12.5L5.5 13.5L4 18M1.35962 15.9887L18.6407 6.01141M16 4L14.5 8.5L19 9.5M4 4L5.5 8.5L1 9.5M1.3623 6L18.6828 16M19 12.5L14.5 13.5L16 18M7 2.5L10 5.5L13 2.5M10 1V21M7 19.5L10 16.5L13 19.5" stroke="var(--blue80)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-snowflake", SVGSnowflake);
 
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);

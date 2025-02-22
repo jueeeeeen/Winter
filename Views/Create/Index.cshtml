@@ -106,7 +106,7 @@
             Owner: '@ViewData["Username"]',
             Title: formData.get("Title"),
             Detail: formData.get("Detail"),
-            Create_time: new Date().toISOString(),
+            @* Create_time: new Date().toISOString(), *@
             Activity_time: formData.get("Activity_time"),
             Duration: formData.get("Duration"),
             Location: formData.get("Location"),
@@ -118,7 +118,6 @@
                 Age: parseInt(formData.get("Age")) || 0,
                 Other: formData.get("Other"),
             },
-            Participants: ["test", "test"],
         };
 
         console.log(JSON.stringify(data));

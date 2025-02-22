@@ -909,12 +909,30 @@ class MemberHostViewListItem extends HTMLElement {
 }
 
 class ActDetailJoinBtn extends HTMLElement {
-    constructor(actID) {
+    constructor() {
         super();
+        this.activity_id = this.getAttribute("data-activity-id");
         this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
     }
+    
     connectedCallback() {
+        this.querySelector("button").addEventListener("click", () => this.join_activity());
+    }
 
+    join_activity() {
+        fetch(`JoinActivity/${this.activity_id}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+            } else {
+                console.error("Failed to join activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
     }
 }
 

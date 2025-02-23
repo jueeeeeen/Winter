@@ -875,12 +875,13 @@ class PendingListItem extends HTMLElement {
 class PendingHostViewListItem extends HTMLElement {
     constructor() {
         super();
+        this.name = this.getAttribute("name");
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
                 <img src="../../assets/profile-g.png">
             </div>
-            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">waiting for approval...</span>
             <div class="member-list-item-approval flex">
                 <button class="btn approval gr-w hover-w-gr-gr round">
@@ -897,12 +898,13 @@ class PendingHostViewListItem extends HTMLElement {
 class MemberHostViewListItem extends HTMLElement {
     constructor() {
         super();
+        this.name = this.getAttribute("name")
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
                 <img src="../../assets/profile-g.png">
             </div>
-            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">(Member)</span>
             <div class="member-list-item-approval flex">
                 <button class="btn approval r-w hover-w-r-r round">

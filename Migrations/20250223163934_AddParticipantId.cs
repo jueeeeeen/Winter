@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class AddParticipantId : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -59,7 +59,8 @@ namespace Winter_Project.Migrations
                 {
                     Username = table.Column<string>(type: "TEXT", nullable: false),
                     Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    Role = table.Column<string>(type: "TEXT", nullable: false)
+                    Role = table.Column<string>(type: "TEXT", nullable: false),
+                    Join_time = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

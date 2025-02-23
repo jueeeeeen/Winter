@@ -40,7 +40,7 @@ public class ActivityDetailController: Controller
                 Pending_count = a.Participants.Count(p => p.Role == "pending"),
                 Participants = _context.Participants
                     .Where(p => p.Activity_id == a.Activity_id)
-                    .OrderBy(p => p.Activity_id)
+                    .OrderBy(p => p.Join_time)
                     .Select(p => new 
                     {
                         p.Username,
@@ -71,7 +71,12 @@ public class ActivityDetailController: Controller
             })
             .FirstOrDefault();
 
-    return activity == null ? NotFound("Activity not found") : View(activity);
+            var token = Request.Cookies["token"];
+            var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+
+            ViewBag.Username = username;
+
+        return activity == null ? NotFound("Activity not found") : View(activity);
     }
 
     [HttpPost("ActivityDetail/JoinActivity/{Activity_id}")]

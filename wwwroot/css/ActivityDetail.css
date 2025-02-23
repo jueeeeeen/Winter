@@ -45,6 +45,11 @@
 .act-detail-requirement {
     grid-area: requirement;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 2px solid var(--blue60);
+    justify-content: space-between;
 }
 
 .act-detail-requirement ul{
@@ -184,11 +189,18 @@
 .member-list-item-profile{
     grid-area: profile;
     display: flex;
+    position: relative;
 }
 
-.member-list-item-profile img{
+.member-list-item-profile .profile{
     height: 100%;
     object-fit: cover;
+}
+
+.member-list-item-profile .crown{
+    position: absolute;
+    transform: translate(-50%, -60%);
+    left: 50%;
 }
 
 .member-list-item-name {
@@ -222,4 +234,10 @@
 .approval {
     height: 2.375em;
     width: 2.375em;
+}
+
+.approval-req {
+    display: flex;
+    gap: 1%;
+    align-items: center;
 }

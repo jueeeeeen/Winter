@@ -45,7 +45,7 @@
         </ul>
         <act-detail-join-btn data-activity-id="@activity.Activity_id"></act-detail-join-btn>
     </section>
-    <section class="act-detail-requirement edge shadow w-bb-bb">
+    <section class="act-detail-requirement edge shadow">
         <div class="flex">
             <span class="act-detail-req-header letter-spacing">
                 <svg-checkbox></svg-checkbox><b>requirements :</b>
@@ -65,6 +65,9 @@
         <p>
             @activity.Requirement.Other
         </p>
+        <span class="approval-req">
+            <svg-pending></svg-pending>joining requires host approval.
+        </span>
     </section>
     <section class="act-detail-info edge shadow">
         <ul>

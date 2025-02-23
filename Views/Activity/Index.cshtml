@@ -7,33 +7,127 @@
 <search-bar></search-bar>
 @* @ViewBag.keyword *@
 @* for showing search keyword that is sent to back *@
-
-<tag-filter></tag-filter>
+<div class="filter-container">
+    <tag-filter></tag-filter>
+    <div class="filter-options">
+        <div class="pseudo-btn">
+            <input type="checkbox" name="descending" id="display-order">
+            <label for="display-order" class="filter-btn btn w-bb-bb display-order hover-bb-w">
+                <svg-order></svg-order>
+            </label>
+        </div>
+        <display-sort></display-sort>
+        <display-filter></display-filter>
+    </div>
+</div>
 
 @* <ul id="show-tags"></ul> *@
 @* for showing selected tags that are sent to back *@
 
+
 <div id="all-activities-container">
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
-    <act-card></act-card>
+    <div class="loading-cat">
+        <div class="body"></div>
+        <div class="head">
+            <div class="face"></div>
+        </div>
+        <div class="foot">
+            <div class="tummy-end">
+            </div>
+            <div class="bottom">
+            </div>
+            <div class="legs left">
+            </div>
+            <div class="legs right">
+            </div>
+        </div>
+        <div class="hands left">
+        </div>
+        <div class="hands right">
+        </div>
+    </div>
+    
 </div>
 
+<custom-pagination id="activity-pagination"></custom-pagination>
 
-<div class="pagination-container flex round shadow">
-    <pagination-item data-value="prev"></pagination-item>
-    <pagination-item data-value="1"></pagination-item>
-    <pagination-item data-value="2"></pagination-item>
-    <pagination-item data-value="3"></pagination-item>
-    <pagination-item data-value="..."></pagination-item>
-    <pagination-item data-value="8"></pagination-item>
-    <pagination-item data-value="9"></pagination-item>
-    <pagination-item data-value="10"></pagination-item>
-    <pagination-item data-value="next"></pagination-item>
-</div>
+<script>
+    window.onload = () => {
+        
+        const activity_pagination = document.querySelector('custom-pagination');
+        const display_sort = document.querySelector('display-sort');
+        const display_order = document.querySelector('#display-order');
+        const clear_filter_btn = document.querySelector('#clear-filter-btn');
+        const save_filter_btn = document.querySelector('#save-filter-btn');
+        const tag_filter = document.querySelector('tag-filter');
+        const search_button = document.querySelector('#seach-button');
+
+        fetch_activities()
+        activity_pagination.addEventListener("page-changed", (event)=>fetch_activities(event.detail.page))
+        display_sort.addEventListener("change", () => fetch_activities())
+        display_order.addEventListener("change", () => fetch_activities())
+        clear_filter_btn.addEventListener("click", () => fetch_activities())
+        save_filter_btn.addEventListener("click", () => fetch_activities())
+        tag_filter.addEventListener("change", () => fetch_activities())
+        search_button.addEventListener("click", () => fetch_activities())
+
+        function get_filters() {
+            tag_filter_result = tag_filter.result;
+            filter_result = document.querySelector('display-filter').result;
+            sort_result = display_sort.result;
+            order_result = display_order.checked;
+            search_result = document.querySelector('search-bar').result;
+            filter_datas = {
+                tag_filter: tag_filter_result,
+                filter: filter_result,
+                sort: sort_result,
+                descending: order_result,
+                seach_key: search_result
+            }
+            return filter_datas
+        }
+
+        async function fetch_activities(page) {
+            const activity_container = document.getElementById("all-activities-container");
+            var filter_datas = get_filters();
+
+            filter_datas["page"] = page ? page:1;
+            console.log(filter_datas)
+
+            try {
+                const response = await fetch('/Activity/GetActivityCards', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(filter_datas)
+                });
+                
+                @* const activities = await response.json(); *@
+                const datas = await response.json();
+                const activities = datas.activities
+                console.log(datas);
+                
+                activity_container.innerHTML = '';
+
+                if (datas.max_page > 0) {
+                    activities.forEach(activity => {
+                    const activityCard = new ActivityCard(activity);
+                    activity_container.appendChild(activityCard);
+                    })
+                }
+                else {
+                    activity_container.innerHTML = '<span class="not-found">No Activity Found</span>';
+                }
+                
+
+                if (page == null){
+                    activity_pagination.render(parseInt(datas.max_page))
+                }
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    }
+</script>

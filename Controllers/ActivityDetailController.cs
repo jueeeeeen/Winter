@@ -1,16 +1,121 @@
-using Microsoft.AspNetCore.Mvc;
-
+using System.Diagnostics;
 namespace Winter_Project.Controllers;
+using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
+using Winter_Project.Models; 
+using Microsoft.EntityFrameworkCore;
+
+
 public class ActivityDetailController: Controller
 {
-    // public IActionResult Index(int activity_id)
-    // {
-    //     // add context to fetch data from database
-    //     WinterActivity activity = activity00;
-    //     return View(activity);
-    // }
-    public IActionResult Index()
+    private readonly WinterContext _context;
+
+    public ActivityDetailController(ILogger<CreateController> logger, WinterContext context)
     {
-        return View();
+        _context = context;
     }
+    
+    [HttpGet("ActivityDetail/{id}")]
+    public IActionResult Index(int id)
+    {
+        var activity = _context.Activities
+            .Where(a => a.Activity_id == id)
+            .Select(a => new 
+            {
+                a.Activity_id,
+                a.Title,
+                a.Detail,
+                a.Tags,
+                a.Create_time,
+                Requirement = a.Requirement != null ? new 
+                {
+                    a.Requirement.Gender,
+                    a.Requirement.Age,
+                    a.Requirement.Other
+                } : null,
+                a.Location,
+                a.Activity_time,
+                a.Max_member,
+                Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
+                Pending_count = a.Participants.Count(p => p.Role == "pending"),
+                Participants = _context.Participants
+                    .Where(p => p.Activity_id == a.Activity_id)
+                    .OrderBy(p => p.Activity_id)
+                    .Select(p => new 
+                    {
+                        p.Username,
+                        p.Role,
+                        User = _context.Users
+                            .Where(u => u.Username == p.Username)
+                            .Select(u => new 
+                            {
+                                u.FirstName,
+                                u.LastName
+                            })
+                            .FirstOrDefault()
+                    })
+                    .ToList(),
+                a.Duration,
+                host = _context.Users
+                    .Where(u => u.Username == a.Owner)
+                    .Select(u => new 
+                    {
+                        Profile_pic = "profile-g.png",
+                        u.Username,
+                        u.FirstName,
+                        u.LastName,
+                        u.Gender,
+                        Rating = "4.5"
+                    })
+                    .FirstOrDefault()
+            })
+            .FirstOrDefault();
+
+    return activity == null ? NotFound("Activity not found") : View(activity);
+    }
+
+    [HttpPost("ActivityDetail/JoinActivity/{Activity_id}")]
+    public IActionResult JoinActivity(int Activity_id)
+    {
+        var token = Request.Cookies["token"];
+        var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+
+        var activity = _context.Activities.Include(a => a.Participants).FirstOrDefault(a => a.Activity_id == Activity_id);
+        if (activity == null) {
+            return NotFound(new { message = "Activity Not Found"});
+        }
+
+        var member_count = activity.Participants.Count(p => p.Role == "member" || p.Role == "host");
+        
+        // เงื่อนไขพวกนี้ เช็คตั้งแต่ front เดี๋ยวลบทีหลัง
+        if (activity.Owner.Contains(username)) return BadRequest(new { message = "User is an Owner." });
+        if (activity.Participants.Any(p => p.Username == username)) {
+            Console.WriteLine("User is already a participant.");
+            return BadRequest(new { message = "User is already a participant." });}
+        if (member_count >= activity.Max_member) return BadRequest(new { message = "Activity Full"});
+
+        if (activity.Approval) {
+            activity.Participants.Add(
+                new ParticipantModel{
+                    Username = username,
+                    Role = "pending"
+                }
+            );
+        }
+        else {
+            activity.Participants.Add(
+                new ParticipantModel{
+                    Username = username,
+                    Role = "member"
+                }
+            );
+        }
+
+        if (member_count + 1 >= activity.Max_member) activity.Status = "full";
+
+        _context.SaveChanges();
+
+        return Ok(new { message = "Successfully Joined Activity"});
+    }
+
 }

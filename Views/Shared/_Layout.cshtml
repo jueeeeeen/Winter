@@ -1,5 +1,13 @@
-﻿@{
+﻿@using Winter_Project.Services;
+@inject UserService _userService;
+
+@{
     var token = Context.Request.Cookies["token"];
+    var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+
+    var navbarProfileViewModel = !string.IsNullOrEmpty(username) 
+        ? _userService.GetNavbarProfile(username) 
+        : null;
     bool isLoggedIn = !string.IsNullOrEmpty(token);
 }
 
@@ -46,12 +54,12 @@
 
     <script src="/js/components.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="/js/auth/register/register_form.js" defer></script>
+    @* <script src="/js/auth/register/register_form.js" defer></script> *@
 </head>
     <body>
         <header>
             @if (isLoggedIn) {
-                @Html.Partial("_MainNavBar")
+                @Html.Partial("_MainNavBar", navbarProfileViewModel)
             } else {
                 if (((ViewData["Title"] as string) == "Login") || ((ViewData["Title"] as string) == "Register")) {
                     @Html.Partial("_LoginNavBar")

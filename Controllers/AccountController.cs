@@ -109,6 +109,12 @@ namespace Winter_Project.Controllers
             return Ok(new { message = "Login successful" });
         }
 
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("token");
+            return RedirectToAction("Index", "Home");
+        }
+
 
         private static string HashPassword(string password)
         {

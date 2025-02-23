@@ -50,6 +50,7 @@ input:focus, textarea:focus {
 button {
   border: none;
   background-color: var(--white);
+  font-size: 1rem;
 }
 
 a {
@@ -191,8 +192,8 @@ main {
 }
 
 .profile_dropdown {
-  max-width: 216px;
-  height: 260px;
+  width: 15vw;
+  height: 18vw;
   padding: 0 14px;
   position: absolute;
   right: 6vw;
@@ -202,25 +203,53 @@ main {
 
 
 .info_dropdown {
-  width: 188px;
-  height: 70px;
-  line-height: 15px;
+  /* height: ; */
+  line-height: 1;
+  display: grid;
+  padding: 5% 0;
+  column-gap: 3%;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 40% 40% 20%;
+  grid-template-areas: 
+    "profile first-name"
+    "profile last-name"
+    "profile username";
+  color: var(--gray90);
 }
 
-.name_dropdown {
-  font-size: 14px;
-  color: var(--gray90);
+.profile-container-dropdown {
+  grid-area: profile;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.first-name-dropdown {
+  grid-area: first-name;
+  display: flex;
+  align-items: flex-end;
+}
+
+.last-name-dropdown {
+  grid-area: last-name;
+  display: flex;
+  align-items: center;
 }
 
 .username_dropdown {
+  grid-area: username;
   font-size: 12px;
   color: gray;
-  line-height: 20px;
+  line-height: 1;
+}
+
+.username_dropdown::before {
+  content: "@";
 }
 
 .btn_dropdown {
-  width: 188px;
+  display: flex;
+  align-items: center;
   height: 30px;
   margin: 3px 0;
   color: var(--gray90);
@@ -234,12 +263,12 @@ main {
   img {
       margin: 0 7px 0 7px;
       position: relative;
-      top: 4px;
   }
 }
 
 .btn_dropdown a {
   display: flex;
+  align-items: center;
 }
 
 .log_out_dropdown {
@@ -423,6 +452,7 @@ hr {
 
 .pseudo-btn input[type="checkbox"], .pseudo-btn input[type="radio"]{
   visibility: hidden;
+  position: absolute;
 }
 
 .pseudo-btn {
@@ -471,7 +501,7 @@ hr {
     color: var(--blue80);
     border: 2px solid var(--blue80);
     svg path {
-      fill: var(--blue80);
+      stroke: var(--blue80);
     }
   }
 
@@ -479,7 +509,7 @@ hr {
     background-color: var(--white);
     color: var(--blue60);
     border: 2px solid var(--blue60);
-    svg>path {
+    svg path {
       stroke: var(--blue60);
     }
   }
@@ -490,7 +520,18 @@ hr {
     text-shadow: none;
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
+      stroke: var(--blue80);
       fill: var(--blue80);
+    }
+  }
+
+  .w-db, .hover-w-db:hover {
+    background-color: var(--white);
+    color: var(--blue90);
+    text-shadow: none;
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      stroke: var(--blue90);
     }
   }
 
@@ -508,7 +549,7 @@ hr {
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
-      fill: var(--white);
+      stroke: var(--white);
     }
   }
 
@@ -517,7 +558,6 @@ hr {
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--blue40);
     svg path {
-      fill: var(--white);
       stroke: var(--white);
     }
   }
@@ -537,7 +577,8 @@ hr {
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
-      fill: var(--white);
+      /* fill: var(--white); */
+      stroke: var(--white);
     }
   }
 
@@ -669,15 +710,6 @@ hr {
     }
   }
 
-.pseudo-btn input:checked + label{
-  background-color: var(--blue60);
-  color: var(--white);
-  box-shadow: 0px 0px 4px 1px var(--shadow);
-}
-
-#tag_filter_form {
-  margin: 0 0 2rem;
-}
 
 .tag {
   display: flex;
@@ -688,46 +720,72 @@ hr {
 }
 
 .pagination-container {
-  width: 20.25em;
+  height: 2.25em;
   background-color: var(--white);
   overflow: hidden;
   padding: 0.1em 0;
   margin: 3rem auto;
+  display: flex;
+  align-items: center;
+  width: fit-content;
 }
 
-.pagination-item{
+.pagination-btn{
   font-size: 1rem;
   font-weight: 600;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.25em;
-  height: 2.25em;
+  width: 2em;
+  height: 2em;
   color: var(--gray70);
   transition: all 0.3s;
 }
 
-.pagination-container>*:not([data-value="..."]):hover .pagination-item, .pagination-container .pagination-item:hover path{
+.pagination-btn:not(:disabled):hover {
   color: var(--blue50);
   transform: translateY(-0.1em);
+}
+
+.pagination-btn:not(:disabled):hover path {
   fill: var(--gray90);
 }
 
+.pagination-btn:disabled {
+  cursor:auto;
+}
 
-.show {
-  display: block;
+.pagination-btn:disabled path {
+  fill: var(--gray60);
+}
+
+.pagination-item input:checked ~ .pagination-btn{
+  background-color: var(--blue40);
+  color: var(--white);
 }
 
 .letter-spacing {
   letter-spacing: 0.125em;
 }
 
+.act-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 95%;
+  border-bottom: 1px solid var(--gray60);
+}
+
 .act-card-profile-info {
   display: grid;
-  grid-template-columns: 2.5em auto 3.75em;
+  grid-template-columns: 2.5em auto;
   grid-template-rows: 1fr 1fr;
+  gap:0 0.25em;
+  height: fit-content;
+}
+
+header.act-card-profile-info{
   border-bottom: 1px solid var(--gray60);
-  gap:0 0.25em
 }
 
 .act-card-profile-info div:nth-child(1){
@@ -748,6 +806,12 @@ hr {
   font-weight: bold;
   align-self: end;
   line-height: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.act-card-profile-info div:nth-child(2) span {
+  text-overflow: ellipsis;
 }
 
 .act-card-profile-info div:nth-child(2) svg {
@@ -757,9 +821,13 @@ hr {
 
 .act-card-profile-info div:nth-child(3){
   grid-area: 2 / 2 / 3 / 3;
-  font-size: 0.67em;
+  font-size: 0.75em;
   line-height: 1.5;
   display: flex;
+  span {
+    color: var(--gray80);
+    height: fit-content;
+  }
 }
 
 .act-card-review{
@@ -812,4 +880,45 @@ hr {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 คอลัมน์ต่อแถว */
   gap: 10px; /* ระยะห่างระหว่างรายการ */
+}
+
+.pseudo-btn input:checked[name="Tags"] + label{
+  background-color: var(--blue60);
+  color: var(--white);
+  box-shadow: 0px 0px 4px 1px var(--shadow);
+}
+
+.hover-ani-bounce:hover, .ani-bounce {
+  animation: bounce 0.7s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.hover-ani-glow:hover, .ani-glow{
+  animation: glow 1s infinite ease-in-out;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px 0px var(--blue30); }
+  50% { box-shadow: 0 0 5px 5px var(--blue30); }
+  100% { box-shadow: 0 0 5px 0px var(--blue30); }
+}
+
+@keyframes bg-slide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.animated-bg {
+  background: linear-gradient(90deg, var(--blue10), var(--blue30));
+  background-size: 120% 100%;
+  animation: bg-slide 10s infinite alternate linear;
+}
+
+.show {
+  display: block;
 }

@@ -9,173 +9,6 @@ function getCookie(name) {
     return null;
 }
 
-
-// class LoginNavbar extends HTMLElement{
-//     constructor(){
-//         super();
-//         this.innerHTML = `<nav class="gradient_blue shadow nav_bar_container">
-//                 <ul class="no_select nav_bar">
-//                 <li>
-//                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
-//                 </li>
-//                 <li><a href="/Activity">Activity</a></li>
-//                 <li class="logo">
-//                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
-//                 </li>
-//             </ul>
-//             </nav>`
-//     }
-// }
-
-// class GuestNavbar extends HTMLElement{
-//     constructor(){
-//         super();
-//         this.innerHTML = 
-//             `<nav class="gradient_blue shadow nav_bar_container">
-//                 <ul class="no_select nav_bar">
-//                 <li>
-//                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
-//                 </li>
-//                 <li><a href="/Activity">Activity</a></li>
-//                 <li class="logo">
-//                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
-//                 </li>
-//                 <li class="m_left_auto">
-//                     <button href="/Account/Login" class="btn medium round login_btn_bg shadow hover-w-mb" onclick="window.location.href='/account/login'" id="nav_login_button">
-//                     <svg-login></svg-login>login
-//                     </button>
-//                 </li>
-//             </ul>
-//             </nav>`
-//     }
-
-//     connectedCallback(){
-//         this.nav_login_button = this.querySelector("#nav_login_button");
-//         change_icon(this.logout_button, "logout-w.svg", "logout.svg");
-//     }
-// }
-
-// class MainNavbar extends HTMLElement{
-//     constructor(){
-//         super();
-//         this.innerHTML = 
-//             `<nav class="gradient_blue shadow nav_bar_container">
-//                 <ul class="no_select nav_bar">
-//                 <li>
-//                     <a href="/" class="flex flex_center"><img src="${path}home.svg" width="30px" alt="home"></a>
-//                 </li>
-//                 <li><a href="/Activity">Activity</a></li>
-//                 <li class="logo">
-//                     <a href="/" class="flex"><img src="${path}winter_logo-w.svg" alt="Winter Logo" /></a>
-//                 </li>
-//                 <li class="m_left_auto">
-//                     <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/Create'">
-//                         <img src="${path}plus-b.svg" alt="plus icon">create
-//                     </button>
-//                 </li>
-//                 <li>
-//                     <button class="btn circle round w-mb hover-y-w" id="bell_button">
-//                         <img src="${path}bell_icon-g.svg" alt="bell">
-//                     </button>
-//                 </li>
-//                 <li>
-//                     <button class="btn circle round w-mb hover-b-w" id="profile_button">
-//                         <img src="${path}Profile-w-b.png" width="55px" alt="profile">
-//                     </button>
-//                 </li>
-//             </ul>
-//             <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
-//                 <div class="info_dropdown flex gap">
-//                     <img class="blue_border rounded" id="profile_pic_dropdown" src="${path}Profile-w-b.png" width="40px">
-//                     <div>
-//                         <span class="name_dropdown">Peerawat<br>Ingkhasantatikul</span>
-//                         <span class="username_dropdown">@Marklnwza007</span>
-//                     </div>
-//                 </div>
-//                 <hr class="blue_line">
-//                 <ul>
-//                     <li class="btn_dropdown">
-//                         <a href="/Profile">
-//                             <img src="${path}person.svg">My Profile
-//                         </a>
-//                     </li>
-//                     <hr class="blue_line_dash">
-//                     <li class="btn_dropdown">
-//                         <a href="/MyActivity">
-//                             <img src="${path}activity.svg">My Activity
-//                         </a>
-//                     </li>
-//                     <hr class="blue_line_dash">
-//                     <li class="btn_dropdown">
-//                         <a href="/MyRating">
-//                             <img src="${path}star_outline.svg">My Ratings
-//                         </a>
-//                     </li>
-//                     <hr class="blue_line_dash">
-//                     <li>
-//                         <div class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
-//                             <img src="${path}logout.svg">log out
-//                         </div>
-//                     </li>
-//                 </ul>
-//             </div>
-//             <div class="noti-dropdown-container shadow" id="noti_dropdown">
-//                 <span class="noti-header">Notifications</span>
-//                 <hr>
-//                 <ul>
-//                     <approved-noti></approved-noti>
-//                     <denied-noti></denied-noti>
-//                     <joined-noti></joined-noti>
-//                 </ul>
-//             </div>
-//             </nav>`
-
-//         this.toggle_profile_dropdown = this.toggle_profile_dropdown.bind(this);
-//         this.toggle_noti_dropdown = this.toggle_noti_dropdown.bind(this);
-//     }
-
-//     connectedCallback(){
-//         this.profile_button = this.querySelector("#profile_button");
-//         this.profile_button.addEventListener("click", this.toggle_profile_dropdown);
-//         change_icon(this.profile_button, "Profile-b.png", "Profile-w-b.png");
-
-//         this.bell_button = this.querySelector("#bell_button");
-//         this.bell_button.addEventListener("click", this.toggle_noti_dropdown);
-        
-//         change_icon(this.bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
-
-//         var create_button = this.querySelector("#create_button");
-//         change_icon(create_button, "plus-w.svg", "plus-b.svg");
-
-//         var logout_button = this.querySelector("#logout_button");
-//         change_icon(logout_button, "logout-w.svg", "logout.svg");
-//     }
-
-//     disconnectedCallback() {
-//         this.profile_button.removeEventListener("click", this.toggle_dropdown);
-//     }
-
-//     toggleDropdown(currentId, otherId) {
-//         const currentDropdown = this.querySelector(`#${currentId}`);
-//         const otherDropdown = this.querySelector(`#${otherId}`);
-    
-//         if (otherDropdown.classList.contains("show")) {
-//             otherDropdown.classList.remove("show");
-//         }
-    
-//         currentDropdown.classList.toggle("show");
-//     }
-    
-//     toggle_profile_dropdown() {
-//         this.toggleDropdown("profile_dropdown", "noti_dropdown");
-//     }
-    
-//     toggle_noti_dropdown() {
-//         this.toggleDropdown("noti_dropdown", "profile_dropdown");
-//     }
-// }
-
-
 class ApprovedNoti extends HTMLElement {
     constructor() {
         super();
@@ -249,30 +82,41 @@ class SearchBar extends HTMLElement{
     constructor() {
         super();
         this.innerHTML = 
-        `<form class="search-bar shadow" action="/AllActivity" method="get">
+        `<form class="search-bar shadow">
             <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
             <div class="search-bar-x">
                 <button class="btn" id="clear_search_button">
                     <svg-x></svg-x>
                 </button>
             </div>
-            <button type="submit" class="btn search-bar-search">
+            <button type="button" class="btn search-bar-search" id="seach-button">
                 <svg-search></svg-search>
             </button>
         </form>`;
+        this.search_key = null;
         this.clear_search = this.clear_search.bind(this);
     }
 
     connectedCallback() {
         this.clear_search_button = this.querySelector("#clear_search_button");
         this.clear_search_button.addEventListener("click", this.clear_search);
+
+        this.search_btn = this.querySelector("#seach-button")
+        this.search_input = this.querySelector("input")
+        this.search_btn.addEventListener("click", () => {
+            console.log(this.search_input.value);
+            this.search_key = this.search_input.value
+        })
+    }
+
+    get result() {
+        return this.search_key
     }
 
     clear_search() {
         this.search_input = this.querySelector("#search_input");
-        console.log(this.search_input);
+        console.log("seach key: ", this.search_input);
         this.search_input.value = "";
-        console.log("clear");
     }
 }
 
@@ -282,31 +126,10 @@ class TagsSelector extends HTMLElement{
         this.tag_name = this.getAttribute("data-tag_name");
         this.innerHTML =
         `<div class="pseudo-btn">
-            <input type="checkbox" name="${this.tag_name}" value="${this.tag_name}" id="tag_${this.tag_name}">
+            <input type="checkbox" name="Tags" value="${this.tag_name}" id="tag_${this.tag_name}">
             <label for="tag_${this.tag_name}" class="btn medium round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;
         this.input = this.querySelector("input");
-        this.toggle_check = this.toggle_check.bind(this);
-    }
-
-    connectedCallback() {
-        this.input.addEventListener("change", this.toggle_check);
-    }
-
-    disconnectedCallback() {
-        this.input.removeEventListener("change", this.toggle_check);
-    }
-
-    toggle_check() {
-        console.log("toggle");
-        if ((this.tag_name == "All") && (this.input.checked)){
-                document.querySelectorAll('#tag_filter_form input:not([name="All"])').forEach(input => {
-                input.checked = false;
-            });
-        }
-        else{
-            document.querySelector('#tag_filter_form input[name="All"]').checked = false
-        }
     }
 }
 
@@ -315,7 +138,7 @@ class TagFilter extends HTMLElement{
     constructor(){
         super()
         this.innerHTML = 
-        `<form class="flex gap" id="tag_filter_form" action="/AllActivity" method="post">
+        `<form class="flex gap" id="tag_filter_form">
             <tag-selector data-tag_name="All"></tag-selector>
             <tag-selector data-tag_name="Entertain"></tag-selector>
             <tag-selector data-tag_name="Sport"></tag-selector>
@@ -324,49 +147,356 @@ class TagFilter extends HTMLElement{
             <tag-selector data-tag_name="Travel"></tag-selector>
         </form>
         `
-
-        this.inputs = this.querySelector('input');
     }
 
+    
     connectedCallback() {
-        this.addEventListener("change", (event) => {
-            event.preventDefault();
-            this.submitForm()});
-
+        this.tags = this.querySelectorAll("input");
+        this.tag_all = this.querySelector("input[value='All']");
+        this.tags.forEach(tag => {
+            tag.addEventListener("change", () => this.toggle_check(tag));
+            tag.checked = tag.value === "All"
+        })
     }
 
-    clear_tags(tag) {
-        this.inputs.forEach(input => {
-            if ((tag != null && input.name == tag) || input.name != "All"){
-                input.checked = false;
-            }
-        });
+    disconnectedCallback() {
+        this.tags.forEach(tag => {
+            tag.removeEventListener("change", () => this.toggle_check(tag));
+        })
+    }
+    
+    toggle_check(tag) {
+        if ((tag.value == "All") && (tag.checked)){
+            this.tags.forEach(input => {
+                if (input.value != "All") input.checked = false;
+            });
+        }
+        else if (this.querySelectorAll('input:checked').length == 0){
+            this.tag_all.checked = true;
+        }
+        else{
+            this.tag_all.checked = false;
+        }
     }
 
-    submitForm() {
-        const form = this.querySelector("#tag_filter_form");
+
+    get result() {
         const selectedTags = [];
 
-        form.querySelectorAll('input:checked').forEach(input => {
+        if (this.tag_all.checked) return [];
+
+        this.querySelectorAll('input:checked').forEach(input => {
             selectedTags.push(input.value);
         });
         
-        // console.log("Selected Tags:", selectedTags);
+        return selectedTags
+    }
+}
 
-        fetch(form.action, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(selectedTags)
+class RangeFilterLi extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li>
+            <div class="btn filter-header w-db hover-bb-w">
+                <svg-star-outline></svg-star-outline>
+                Age range
+                <svg-down-arrow class="right"></svg-down-arrow>
+            </div>
+            <div class="range-filter-container">
+                <div class="number-input">
+                    <input type="number" min="0" max="100" id="min-age-input" value="0">
+                    <input type="number" min="0" max="100" id="max-age-input" value="100">
+                </div>
+                <div class="pseudo-slider">
+                    <div class="pseudo-slider-progress"></div>
+                </div>
+                <div class="range-slider">
+                    <input type="range" min="0" max="100" value="0" step="1" id="min-age-input-range">
+                    <input type="range" min="0" max="100" value="100" step="1" id="max-age-input-range">
+                </div>
+                <div class="min-max-text">
+                    <span>min</span>
+                    <span>max</span>
+                </div>
+            </div>
+        </li>
+        `
+    }
+
+    connectedCallback() {
+        this.range_filter_header = this.querySelector(".filter-header")
+        this.range_filter_container = this.querySelector(".range-filter-container")
+        this.range_filter_header.addEventListener("click", () => {
+            this.range_filter_container.classList.toggle("show");
+            this.range_filter_header.classList.toggle("bb-w")
         })
-        .then(response => response.json())
-        .then(data => {
-            const tag_list = document.querySelector('#show-tags')
-            tag_list.innerHTML = data["tags"].join(" | ");
+        this.range_input = this.querySelectorAll(".range-slider input")
+        this.num_input = this.querySelectorAll(".number-input input")
+        this.progress = this.querySelector(".pseudo-slider div")
+        this.num_gap = 1;
+        this.handle_num_input()
+        this.handle_range_input()
+    }
+
+    disconnectedCallback() {
+        this.range_filter_header.removeEventListener("click")
+    }
+
+    get result() {
+        return {
+            min: parseInt(this.range_input[0].value),
+            max: parseInt(this.range_input[1].value)
+        }
+    }
+
+    reset() {
+        this.range_input[0].value = 0;
+        this.range_input[1].value = 100;
+        this.num_input[0].value = 0;
+        this.num_input[1].value = 100;
+        this.progress.style.left = 0;
+        this.progress.style.right = 0;
+    }
+
+    // หาวิธีเขียนที่ดีกว่านี้ ตอนนี้ input ยังไม่ดัก invalid
+    handle_num_input() {
+        this.num_input.forEach(input =>{
+            input.addEventListener("input", e =>{
+                this.min_num = parseInt(this.num_input[0].value), this.max_num = parseInt(this.num_input[1].value);
+                
+                if((this.max_num - this.min_num >= this.num_gap) && this.max_num <= this.range_input[1].max){
+                    if(e.target.id === "min-age-input"){
+                        this.range_input[0].value = this.min_num;
+                        this.progress.style.left = ((this.min_num / this.range_input[0].max) * 100) + "%";
+                    }else{
+                        this.range_input[1].value = this.max_num;
+                        this.progress.style.right = 100 - (this.max_num / this.range_input[1].max) * 100 + "%";
+                    }
+                }
+            });
+        });
+    }
+
+    handle_range_input() {
+        this.range_input.forEach(input =>{
+            input.addEventListener("input", e =>{
+                this.min_val = parseInt(this.range_input[0].value), this.max_val = parseInt(this.range_input[1].value);
+                
+                if((this.max_val - this.min_val) < 0){
+                    if(e.target.className === "range-min"){
+                        this.range_input[0].value = this.max_val - this.num_gap;
+                    }else{
+                        this.range_input[1].value = this.min_val + this.num_gap;
+                    }
+                }else{
+                    this.num_input[0].value = this.min_val;
+                    this.num_input[1].value = this.max_val;
+                    this.progress.style.left = ((this.min_val / this.range_input[0].max) * 100) + "%";
+                    this.progress.style.right = 100 - (this.max_val / this.range_input[1].max) * 100 + "%";
+                }
+            });
+        });
+    }
+}
+customElements.define("range-filter-li", RangeFilterLi)
+
+class CheckFilterLi extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<li>
+            <div class="btn filter-header w-db hover-bb-w">
+                <svg-star-outline></svg-star-outline>
+                Gender
+                <svg-down-arrow class="right"></svg-down-arrow>
+            </div>
+            <div class="check-filter-container" id="gender-filter-container">
+                <span class="check-filter-item">
+                    <input type="checkbox" id="filter-male-check" name="check" value="male">
+                    <label for="filter-male-check">male</label>
+                </span>
+                <span class="check-filter-item">
+                    <input type="checkbox" id="filter-female-check" name="check" value="female">
+                    <label for="filter-female-check">female</label>
+                </span>
+                <span class="check-filter-item">
+                    <input type="checkbox" id="filter-lgbtq-check" name="check" value="lgbtq">
+                    <label for="filter-lgbtq-check">lgbtq+</label>
+                </span>
+            </div>
+        </li>`
+        
+    }
+
+    connectedCallback() {
+        this.filter_header = this.querySelector(".filter-header")
+        this.check_filter_container = this.querySelector(".check-filter-container")
+        this.filter_header.addEventListener("click", () => {
+            this.check_filter_container.classList.toggle("show");
+            this.filter_header.classList.toggle("bb-w")            
+        })
+    }
+
+    disconnectedCallback() {
+        this.filter_header.removeEventListener("click")
+    }
+
+    get result() {
+        return Array.from(this.querySelectorAll("input:checked")).map(input => input.value);
+    }
+
+    reset() {
+        this.querySelectorAll("input").forEach(input => {
+            input.checked = false;
         })
     }
 }
+customElements.define("check-filter-li", CheckFilterLi)
+
+class DisplayFilter extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<button class="filter-btn btn w-bb-bb display-filter hover-bb-w" id="display-filter">
+            <svg-filter></svg-filter>
+        </button>
+        <div class="filter-dropdown shadow">
+            <ul>
+                <range-filter-li id="age-filter"></range-filter-li>
+                <check-filter-li id="gender-filter"></check-filter-li>
+            </ul>
+            <div class="filter-button-container">
+                <button class="btn w-bb-bb edge hover-w-mb-mb" id="clear-filter-btn">
+                    <svg-delete></svg-delete>
+                    clear
+                </button>
+                <button class="btn mb-w edge hover-lb-w-glow" id="save-filter-btn">
+                    <svg-save></svg-save>
+                    save
+                </button>
+            </div>
+        </div>`
+        this.age_range = null;
+        this.gender = null;
+    }
+
+    connectedCallback() {
+        this.display_filter = this.querySelector('#display-filter')
+        this.filter_dropdown = this.querySelector('.filter-dropdown')
+        this.display_filter.addEventListener("click", () => {
+            this.open();
+        })
+        
+        this.age_filter = this.querySelector("#age-filter");
+        this.gender_filter = this.querySelector("#gender-filter");
+
+        this.querySelector("#clear-filter-btn").addEventListener("click", () => {
+            this.clear_filter()
+        });
+
+        this.querySelector("#save-filter-btn").addEventListener("click", () => {
+            this.age_range = this.age_filter.result;
+            this.gender = this.gender_filter.result;
+        });
+    }
+
+    disconnectedCallback() {
+        this.display_filter.removeEventListener("click");
+        this.querySelector("#clear-filter-btn").removeEventListener("click");
+        this.querySelector("#save-filter-btn").removeEventListener("click");
+    }
+
+    get result() {
+        this.data = {
+            age : this.age_range,
+            gender: this.gender
+        }
+        return this.data
+    }
+
+    open() {
+        this.filter_dropdown.classList.toggle("show")
+        this.display_filter.classList.toggle("bb-w")
+        this.sort = document.querySelector("display-sort");
+        this.sort.close()
+    }
+
+    close() {
+        if (this.filter_dropdown.classList.contains("show")){
+            this.filter_dropdown.classList.toggle("show")
+            this.display_filter.classList.toggle("bb-w")
+        }
+    }
+
+    clear_filter() {
+        console.log("clear");
+        this.gender_filter.reset()
+        this.age_filter.reset()
+        this.age_range = null;
+        this.gender = null;
+    }
+}
+customElements.define("display-filter", DisplayFilter)
+
+class DisplaySort extends HTMLElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<button class="filter-btn btn w-bb-bb display-sort hover-bb-w" id="display-sort">
+            <svg-sort></svg-sort>
+        </button>
+        <div class="sort-dropdown shadow">
+            <ul>
+                <li class="pseudo-btn">
+                    <input type="radio" value="Create_date" name="sort_option" id="create-date-sort" checked>
+                    <label for="create-date-sort" class="btn sort-option-btn">Creation Date</label>    
+                </li>
+                <li class="pseudo-btn">
+                    <input type="radio" value="Activity_time" name="sort_option" id="act-time-sort">
+                    <label for="act-time-sort" class="btn sort-option-btn">Activity Date</label>
+                </li>
+                <li class="pseudo-btn">
+                    <input type="radio" value="Participants" name="sort_option" id="participant-sort">
+                    <label for="participant-sort" class="btn sort-option-btn">Number of Members</label>
+                </li>
+            </ul>
+        </div>`
+    }
+
+    connectedCallback() {
+        this.display_sort = this.querySelector('#display-sort')
+        this.dropdown = this.querySelector('.sort-dropdown')
+        this.display_sort.addEventListener("click", () => {
+            this.open();
+        })
+    }
+
+    disconnectedCallback() {
+        this.sort_filter.removeEventListener("click");
+    }
+
+    get result() {
+        this.selected = this.querySelector("input:checked").value;
+        // console.log("sort:", this.selected);
+        return this.selected;
+    }
+
+    open() {
+        this.dropdown.classList.toggle("show")
+        this.display_sort.classList.toggle("bb-w")
+        this.filter = document.querySelector("display-filter");
+        this.filter.close()
+    }
+
+    close() {
+        if (this.dropdown.classList.contains("show")){
+            this.dropdown.classList.toggle("show")
+            this.display_sort.classList.toggle("bb-w")
+        }
+    }
+}
+customElements.define("display-sort", DisplaySort)
 
 class TagSelect extends HTMLElement{
     constructor(){
@@ -385,16 +515,41 @@ class TagSelect extends HTMLElement{
         </div>
         `
     }
+
+    connectedCallback() {
+        this.addEventListener("change", (event) => {
+            event.preventDefault();
+            this.showselected()});
+        this.querySelectorAll('input').forEach(checkbox => {
+            checkbox.addEventListener("change", ()=> {
+                const checkedCount = this.querySelectorAll("input:checked").length;
+                if (checkedCount > 3) {
+                    checkbox.checked = false;
+                    alert("you can only select up to 3 tags")
+                }
+            })
+        });
+    }
+
+    showselected() {
+        const selectedTags = [];
+
+        this.querySelectorAll('input:checked').forEach(input => {
+            selectedTags.push(input.value);
+        });
+        
+        console.log("create activity Tags:", selectedTags);
+    }
 }
 
 class NumberInput extends HTMLElement {
     constructor() {
         super();
-
+        this.name = this.getAttribute("data-name")
         this.innerHTML = `
             <div class="number-input-container">
                 <button type="button" id="decrease">-</button>
-                <input type="text" id="number" value="1">
+                <input type="text" name="${this.name}" id="number" value="1">
                 <button type="button" id="increase">+</button>
             </div>
         `;
@@ -425,7 +580,6 @@ class NumberInput extends HTMLElement {
 
 // Register custom element
 
-// replace button with better element later****
 class TagDisplay extends HTMLElement {
     constructor() {
         super();
@@ -440,18 +594,18 @@ class RequirementTag extends HTMLElement {
         this.type = this.getAttribute("data-type");
         this.value = this.getAttribute("data-value");
         if (this.type == "age"){
-            this.innerHTML = `<button class="tag w-r-r small round">${this.value}</button>`;
+            this.innerHTML = `<li><label class="tag w-r-r small round">${this.value} or older</label></li>`;
         }
         else {
             if (this.value == "female")
             {
-                this.innerHTML = `<button class="tag w-p-p small round">female</button>`;
+                this.innerHTML = `<li><label class="tag w-p-p small round">female</label></li>`;
             }
             else if (this.value == "male") {
-                this.innerHTML = `<button class="tag w-mb-mb small round">male</button>`;
+                this.innerHTML = `<li><label class="tag w-mb-mb small round">male</label></li>`;
             }
-            else {
-                this.innerHTML = `<button class="tag w-rb-rb small"><span>lgbtq</span></button>`;
+            else if (this.value == "lgbtq") {
+                this.innerHTML = `<li><label class="tag w-rb-rb small"><span>lgbtq</span></label></li>`;
             }
         }
     }
@@ -461,25 +615,29 @@ class RequirementTag extends HTMLElement {
 class ActivityCard extends HTMLElement {
     constructor(activity) {
         super();
+        // this.style.display = "block";
         if (activity) {
-            [this.act_date, this.act_time] = activity.activity_time.split(" ");
+            [this.act_date, this.act_time] = activity.activity_time.split("-");
             this.innerHTML = `
             <div class="activity-card shadow">
-                <div class="act-card-profile-info">
-                    <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
-                    <div>
-                        <span>${activity.host.name}</span>
-                        <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+                <div class="act-card-header">
+                    <div class="act-card-profile-info">
+                        <div><img src="${path+activity.host.profile_pic ? path+activity.host.profile_pic:path + "profile-g.png"}"></div>
+                        <div>
+                            <span>${activity.host.firstName + " " + activity.host.lastName}</span>
+                            <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+                        </div>
+                        <div>
+                            <span>${activity.create_time}</span>
+                            <span aria-label="review" class="act-card-review">
+                                <svg-star-sharp></svg-star-sharp>
+                                ${activity.host.review}
+                            </span>
+                        </div>
                     </div>
-                    <div>
-                        <span>${activity.create_time}</span>
-                        <span aria-label="review" class="act-card-review">
-                            <svg-star-sharp></svg-star-sharp>
-                            ${activity.host.review}
-                        </span>
-                    </div>
-                    <div>${activity.membership}</div>
+                    <div class="act-card-member">${activity.member_count + "/" + activity.max_member}</div>
                 </div>
+                
                 <ul class="act-card-tags-container">
                     ${activity.tags.map(tag => `
                         <li>
@@ -491,23 +649,18 @@ class ActivityCard extends HTMLElement {
                     <h2>${activity.title}</h2>
                 </div>
                 <ul class="act-card-tags-container">
-                    ${Object.entries(activity.requirements).map(([type, value]) => `
-                        <li>
-                            <req-tag data-type="${type}" data-value="${value}"></req-tag>
-                        </li>
-                    `).join("")}
+                    ${activity.requirement.age ? `<req-tag data-type="age" data-value="${activity.requirement.age}"></req-tag>`:""}
+                    ${activity.requirement.gender=="none" ? "":`<req-tag data-type="gender" data-value="${activity.requirement.gender}"></req-tag>`}
                 </ul>
                 <ul class="act-card-info">
                     <li>
-                        <svg-clock></svg-clock><span>${this.act_time + "(" + activity.duration + ")"}</span>
+                        <svg-clock></svg-clock><span>${this.act_time + " (" + activity.duration + " hr)"}</span>
                     </li>
                     <li>
                         <svg-calendar></svg-calendar><span>${this.act_date}</span>
                     </li>
                     <li>
-                        <button class="btn small round mb-w">
-                            join
-                        </button>
+                        <act-card-join-btn data-act-id="${activity.activity_id}"></act-card-join-btn>
                     </li>
                 </ul>
             </div>`
@@ -555,41 +708,122 @@ class ActivityCard extends HTMLElement {
                     </li>
                 </ul>
             </div>`
-            }
+        }
     }
 }
 
 class ActCardJoinBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail'" class="btn small round mb-w hover-w-bb-bb">join</button>`
+        this.act_id = this.getAttribute("data-act-id");
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb hover-ani-bounce">join</button>`;
+        this.act_id = this.getAttribute("data-act-id");
+        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb">join</button>`;
     }
 }
 
 class Pagination extends HTMLElement {
-    constructor(page_count) {
+    constructor() {
         super();
-        // this.innerHTML = ``;
+        this._max_page = 0;
+        this._current_page = 1;
+        this.innerHTML =
+        `<div class="pagination-container round shadow">
+            <button class="pagination-btn btn round" id="prev_button"><svg-prev></svg-prev></button>
+            <div id="page-number-container"></div>
+            <button class="pagination-btn btn round" id="next_button"><svg-next></svg-next></button>
+        </div>`; 
+    }
 
+    connectedCallback() {
+        this.handle_page_change();
+    }
+
+    render(max_page) {
+        this.container = this.querySelector("#page-number-container")
+        this._max_page = max_page;
+        this.container.innerHTML = Array.from({ length: max_page }, (_, i) => `<pagination-item data-value="${i + 1}"></pagination-item>`).join('');
+        this.apply_style();
+        this.disable_dir_btn();
+    }
+
+    handle_page_change() {
+        this.prev_btn = this.querySelector("#prev_button")
+        this.prev_btn.addEventListener("click", () => this.change_page(-1));
+
+        this.next_btn = this.querySelector("#next_button")
+        this.next_btn.addEventListener("click", () => this.change_page(1));
+
+        this.addEventListener("change", () => {
+            this.selected_page = parseInt(this.querySelector("input:checked").value, 10);
+            this.to_page(this.selected_page)
+        })
+    }
+
+    change_page(dir) {
+        if ( this._current_page + dir >= 1 && this._current_page + dir <= this.max_page){
+            this._current_page += dir;
+        }
+        this.apply_style()
+        this.disable_dir_btn()
+        this.dispatchEvent(new CustomEvent('page-changed', {
+            detail: { page: this._current_page },
+            bubbles: true,
+            composed: true
+        }));
+    }
+
+    to_page(page){
+        this._current_page = page;
+        this.disable_dir_btn()
+        this.dispatchEvent(new CustomEvent('page-changed', {
+            detail: { page: this._current_page },
+            bubbles: true,
+            composed: true
+        }));
+    }
+    
+    apply_style() {
+        this.querySelector(`input[value='${this._current_page}']`).checked = true;
+    }
+
+    disable_dir_btn() {
+        this.prev_btn.disabled = this._current_page === 1;
+        this.next_btn.disabled = this._current_page === this._max_page;
+    }
+
+    get max_page() {
+        return this._max_page;
+    }
+
+    get current_page() {
+        return this._current_page;
     }
 }
+
+customElements.define("custom-pagination", Pagination);
 
 class PaginationItem extends HTMLElement {
     constructor() {
         super();
-        this.value = this.getAttribute("data-value");
-        if (this.value == "prev") {
-            this.innerHTML = `<button class="pagination-item round"><svg-prev></svg-prev></button>`;
-        }
-        else if (this.value == "..."){
-            this.innerHTML = `<button class="pagination-item round">...</button>`; 
-        }
-        else if (this.value == "next"){
-            this.innerHTML = `<button class="pagination-item round"><svg-next></svg-next></button>`; 
-        }
-        else {
-            this.innerHTML = `<button class="pagination-item round">${this.value}</button>`;
-        }
+        this.page_value = this.getAttribute("data-value");
+        this.innerHTML = 
+        `<div class="pseudo-btn pagination-item">
+            <input type="radio" value="${this.page_value}" name="page" id="page_${this.page_value}">
+            <label class="pagination-btn btn round" for="page_${this.page_value}">${this.page_value}</label>
+        </div>`;
+    }
+
+    connectedCallback() {
+        
+    }
+
+    disconnectedCallback() {
+        
+    }
+
+    get page() {
+        return this.page_value;
     }
 }
 
@@ -597,12 +831,13 @@ class PaginationItem extends HTMLElement {
 class MemberListItem extends HTMLElement {
     constructor() {
         super();
+        this.name = this.getAttribute("name");
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
+                    <img class="profile" src="../../assets/profile-g.png">
                 </div>
-                <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+                <span class="member-list-item-name">${this.name}</span>
                 <span class="member-list-item-role flex">(Member)</span>
             </li>`; 
     }
@@ -610,12 +845,14 @@ class MemberListItem extends HTMLElement {
 class HostListItem extends HTMLElement {
     constructor() {
         super();
+        this.name = this.getAttribute("name");
         this.innerHTML = 
         `<li class="radial-blue-bg member-list-item shadow">
             <div class="member-list-item-profile">
-                <img src="../../assets/profile-g.png">
+                <img class="profile" src="../../assets/profile-g.png">
+                <img class="crown" src="../../assets/crown.svg">
             </div>
-            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">(Host)</span>
         </li>`;
     }
@@ -624,10 +861,11 @@ class HostListItem extends HTMLElement {
 class PendingListItem extends HTMLElement {
     constructor() {
         super();
+        this.number = this.getAttribute("number");
         this.innerHTML = 
-        `<li class="w-bb-bb pending-member-item">
-            <svg-more-people></svg-more-people>
-            <span>...more people applied...</span>
+        `<li class="pending-member-item">
+            <svg-pending></svg-pending>
+            <span>${this.number} more ${this.number > 1 ? "people":"person"} applied...</span>
         </li>`;
     }  
 }
@@ -638,7 +876,7 @@ class PendingHostViewListItem extends HTMLElement {
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img src="../../assets/profile-g.png">
+                <img class="profile" src="../../assets/profile-g.png">
             </div>
             <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
             <span class="member-list-item-role flex">waiting for approval...</span>
@@ -660,7 +898,7 @@ class MemberHostViewListItem extends HTMLElement {
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img src="../../assets/profile-g.png">
+                <img class="profile" src="../../assets/profile-g.png">
             </div>
             <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
             <span class="member-list-item-role flex">(Member)</span>
@@ -674,19 +912,37 @@ class MemberHostViewListItem extends HTMLElement {
 }
 
 class ActDetailJoinBtn extends HTMLElement {
-    constructor(actID) {
+    constructor() {
         super();
-        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb">join</button>`;
+        this.activity_id = this.getAttribute("data-activity-id");
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb ani-bounce">join</button>`;
     }
+    
     connectedCallback() {
+        this.querySelector("button").addEventListener("click", () => this.join_activity());
+    }
 
+    join_activity() {
+        fetch(`JoinActivity/${this.activity_id}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+            } else {
+                console.error("Failed to join activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
     }
 }
 
 class ViewReviewBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y">view review</button>`;
+        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y ani-bounce">view review</button>`;
     }
 }
 
@@ -744,7 +1000,6 @@ class AllActBanner extends HTMLElement {
     handle_banner_change(value) {
         this.banner_pic = this.querySelector("#banner_pic");
         this.banner_pic.classList.add("fade-out")
-        console.log(this.banner_pic);
         this.current_page += value;
         setTimeout(() => {
             if(this.current_page >= 3)
@@ -864,6 +1119,17 @@ class SVGStarSharp extends BaseSVGElement {
     }
 }
 
+class SVGStarOutline extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.2974 2.63248L11.6174 5.27248C11.7974 5.63998 12.2774 5.99248 12.6824 6.05998L15.0749 6.45748C16.6049 6.71248 16.9649 7.82248 15.8624 8.91748L14.0024 10.7775C13.6874 11.0925 13.5149 11.7 13.6124 12.135L14.1449 14.4375C14.5649 16.26 13.5974 16.965 11.9849 16.0125L9.74243 14.685C9.33743 14.445 8.66993 14.445 8.25743 14.685L6.01493 16.0125C4.40993 16.965 3.43493 16.2525 3.85493 14.4375L4.38743 12.135C4.48493 11.7 4.31243 11.0925 3.99743 10.7775L2.13743 8.91748C1.04243 7.82248 1.39493 6.71248 2.92493 6.45748L5.31743 6.05998C5.71493 5.99248 6.19493 5.63998 6.37493 5.27248L7.69493 2.63248C8.41493 1.19998 9.58493 1.19998 10.2974 2.63248Z" stroke="#5FA2FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-star-outline", SVGStarOutline);
+
 class SVGPrev extends BaseSVGElement {
     constructor() {
         super();
@@ -883,6 +1149,28 @@ class SVGNext extends BaseSVGElement {
         </svg>`;
     }
 }
+
+class SVGDownArrow extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="11" height="7" viewBox="0 0 11 7" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.75 1.625L5.5 5.375L9.25 1.625" stroke="#5FA2FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-down-arrow", SVGDownArrow);
+
+class SVGSave extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.1667 16V9.33333H4.83333V16M4.83333 1V5.16667H11.5M14.8333 16H3.16667C2.72464 16 2.30072 15.8244 1.98816 15.5118C1.67559 15.1993 1.5 14.7754 1.5 14.3333V2.66667C1.5 2.22464 1.67559 1.80072 1.98816 1.48816C2.30072 1.17559 2.72464 1 3.16667 1H12.3333L16.5 5.16667V14.3333C16.5 14.7754 16.3244 15.1993 16.0118 15.5118C15.6993 15.8244 15.2754 16 14.8333 16Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-save", SVGSave);
 
 class SVGBookMark extends BaseSVGElement {
     constructor() {
@@ -1048,9 +1336,64 @@ class SVGLogin extends BaseSVGElement {
     }
 }
 
-// customElements.define("main-navbar", MainNavbar);
-// customElements.define("guest-navbar", GuestNavbar);
-// customElements.define("login-navbar", LoginNavbar);
+class SVGFilter extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.75 2.375H2.25L11.25 13.0175V20.375L15.75 22.625V13.0175L24.75 2.375Z" stroke="#90E1FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-filter", SVGFilter);
+
+
+class SVGSort extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="23" height="15" viewBox="0 0 23 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.375 1.875H21.625M4.75 7.5H18.25M9.25 13.125H13.75" stroke="#56BEFF" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-sort", SVGSort);
+
+
+class SVGOrder extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.67636 10.3087C8.39511 10.0278 8.01386 9.87002 7.61636 9.87002C7.21885 9.87002 6.83761 10.0278 6.55635 10.3087L0.898356 15.9647C0.617093 16.2461 0.459135 16.6277 0.459229 17.0256C0.459322 17.4234 0.617461 17.8049 0.898855 18.0862C1.18025 18.3675 1.56185 18.5254 1.95971 18.5253C2.35757 18.5252 2.73909 18.3671 3.02036 18.0857L7.61636 13.4897L12.2124 18.0857C12.4951 18.3591 12.874 18.5104 13.2673 18.5072C13.6606 18.504 14.0369 18.3464 14.3151 18.0684C14.5933 17.7904 14.7513 17.4143 14.7549 17.021C14.7585 16.6277 14.6075 16.2487 14.3344 15.9657L8.67736 10.3077L8.67636 10.3087Z" stroke-width="2" fill="#56BEFF"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.67636 1.3087C8.39511 1.0278 8.01386 0.870022 7.61636 0.870022C7.21885 0.870022 6.83761 1.0278 6.55635 1.3087L0.898356 6.9647C0.617093 7.2461 0.459135 7.6277 0.459229 8.02556C0.459322 8.42342 0.617461 8.80494 0.898855 9.0862C1.18025 9.36746 1.56185 9.52542 1.95971 9.52533C2.35757 9.52524 2.73909 9.3671 3.02036 9.0857L7.61636 4.4897L12.2124 9.0857C12.4951 9.35908 12.874 9.51045 13.2673 9.50722C13.6606 9.50399 14.0369 9.34641 14.3151 9.06843C14.5933 8.79045 14.7513 8.4143 14.7549 8.02101C14.7585 7.62771 14.6075 7.24873 14.3344 6.9657L8.67736 1.3077L8.67636 1.3087Z" stroke-width="2" fill="#56BEFF"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-order", SVGOrder);
+
+class SVGSnowflake extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<svg width="25" height="27.5" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 12.5L5.5 13.5L4 18M1.35962 15.9887L18.6407 6.01141M16 4L14.5 8.5L19 9.5M4 4L5.5 8.5L1 9.5M1.3623 6L18.6828 16M19 12.5L14.5 13.5L16 18M7 2.5L10 5.5L13 2.5M10 1V21M7 19.5L10 16.5L13 19.5" stroke="var(--blue80)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-snowflake", SVGSnowflake);
+
+class SVGPending extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.6666 11.0834H17.2291V14.0209L19.7708 15.4897L18.9895 16.8438L15.6666 14.9272V11.0834ZM16.7083 9.00008C15.327 9.00008 14.0022 9.54882 13.0254 10.5256C12.0487 11.5023 11.5 12.8271 11.5 14.2084C11.5 15.5898 12.0487 16.9145 13.0254 17.8913C14.0022 18.868 15.327 19.4167 16.7083 19.4167C18.0896 19.4167 19.4144 18.868 20.3911 17.8913C21.3679 16.9145 21.9166 15.5898 21.9166 14.2084C21.9166 12.8271 21.3679 11.5023 20.3911 10.5256C19.4144 9.54882 18.0896 9.00008 16.7083 9.00008ZM16.7083 6.91675C18.6422 6.91675 20.4968 7.68498 21.8643 9.05243C23.2317 10.4199 24 12.2745 24 14.2084C24 16.1423 23.2317 17.9969 21.8643 19.3644C20.4968 20.7319 18.6422 21.5001 16.7083 21.5001C13.802 21.5001 11.2916 19.7917 10.1145 17.3334H0.041626V14.2084C0.041626 11.4376 5.59371 10.0417 8.37496 10.0417C8.99996 10.0417 9.77079 10.1147 10.5833 10.2501C11.2439 9.22641 12.1507 8.38486 13.2208 7.8025C14.2909 7.22013 15.49 6.91559 16.7083 6.91675ZM9.41663 14.2084C9.41663 13.4792 9.52079 12.7709 9.71871 12.1251C9.28121 12.0522 8.82288 12.0209 8.37496 12.0209C5.28121 12.0209 2.02079 13.5417 2.02079 14.2084V15.3542H9.51038C9.44902 14.9754 9.41767 14.5922 9.41663 14.2084ZM8.37496 0.666748C9.48003 0.666748 10.5398 1.10573 11.3212 1.88714C12.1026 2.66854 12.5416 3.72835 12.5416 4.83342C12.5416 5.93848 12.1026 6.99829 11.3212 7.77969C10.5398 8.5611 9.48003 9.00008 8.37496 9.00008C7.26989 9.00008 6.21008 8.5611 5.42868 7.77969C4.64728 6.99829 4.20829 5.93848 4.20829 4.83342C4.20829 3.72835 4.64728 2.66854 5.42868 1.88714C6.21008 1.10573 7.26989 0.666748 8.37496 0.666748ZM8.37496 2.64591C7.7948 2.64591 7.2384 2.87638 6.82816 3.28662C6.41793 3.69685 6.18746 4.25325 6.18746 4.83342C6.18746 5.41358 6.41793 5.96998 6.82816 6.38021C7.2384 6.79045 7.7948 7.02092 8.37496 7.02092C8.95512 7.02092 9.51152 6.79045 9.92176 6.38021C10.332 5.96998 10.5625 5.41358 10.5625 4.83342C10.5625 4.25325 10.332 3.69685 9.92176 3.28662C9.51152 2.87638 8.95512 2.64591 8.37496 2.64591Z" fill="#FDC330"/>
+        </svg>`;
+    }
+}
+customElements.define("svg-pending", SVGPending);
+
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);

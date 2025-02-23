@@ -7,7 +7,7 @@
 <div class="home">
     <section id="first-section">
         <div class="home-background gradient_blue">
-            <div class="home-picture">
+            <div class="home-picture animated-bg">
                 <div class="home-text">
                     <div class="home-big-text">
                         <h1>Join activity.</h1>
@@ -17,16 +17,16 @@
                 </div>
                 <div>
                     <div class="home-button">
-                        <button class="btn round large mb-w hover-db-w home-button-size" onclick="window.location.href='/Activity'">
+                        <button class="btn round large mb-w hover-db-w home-button-size hover-ani-bounce" onclick="window.location.href='/Activity'">
                             View Activity
                         </button>
                         @if (isLoggedIn) {
-                            <button class="btn round large w-b hover-lb-w home-button-size" onclick="window.location.href='/Create'">
+                            <button class="btn round large w-b hover-w-bb-bb home-button-size hover-ani-glow" onclick="window.location.href='/Create'">
                                 <svg-plus></svg-plus>Create Activity
                             </button>
                         }
                         else {
-                            <button class="btn round large w-b hover-lb-w home-button-size" onclick="window.location.href='/Account/Login'">
+                            <button class="btn round large w-b hover-w-bb-bb home-button-size hover-ani-glow" onclick="window.location.href='/Account/Login'">
                                 <svg-plus></svg-plus>Create Activity
                             </button>
                         }
@@ -36,7 +36,7 @@
             </div>
             <button class="home-scroll">
                 <h2>Scroll down</h2>
-                <img src="assets/scroll-down.png" alt="Scroll Down">
+                <img class="hover-ani-bounce" src="assets/scroll-down.png" alt="Scroll Down">
             </button>
         </div>
     </section>
@@ -89,7 +89,7 @@
                 </div>
                 <h2 class="home-center"><strong>We hope Winter brings you fun, new friends, and great memories!</strong></h2>
             </div>
-            <button class="btn round large mb-w hover-db-w home-button-size home-last-button">
+            <button class="btn round large mb-w hover-db-w home-button-size home-last-button hover-ani-bounce">
                 Let's Start
             </button>
         </div>

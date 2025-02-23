@@ -835,7 +835,7 @@ class MemberListItem extends HTMLElement {
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
-                    <img src="../../assets/profile-g.png">
+                    <img class="profile" src="../../assets/profile-g.png">
                 </div>
                 <span class="member-list-item-name">${this.name}</span>
                 <span class="member-list-item-role flex">(Member)</span>
@@ -863,9 +863,9 @@ class PendingListItem extends HTMLElement {
         super();
         this.number = this.getAttribute("number");
         this.innerHTML = 
-        `<li class="w-bb-bb pending-member-item">
-            <svg-more-people></svg-more-people>
-            <span>${this.number} people applied...</span>
+        `<li class="pending-member-item">
+            <svg-pending></svg-pending>
+            <span>${this.number} more ${this.number > 1 ? "people":"person"} applied...</span>
         </li>`;
     }  
 }
@@ -876,7 +876,7 @@ class PendingHostViewListItem extends HTMLElement {
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img src="../../assets/profile-g.png">
+                <img class="profile" src="../../assets/profile-g.png">
             </div>
             <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
             <span class="member-list-item-role flex">waiting for approval...</span>
@@ -898,7 +898,7 @@ class MemberHostViewListItem extends HTMLElement {
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img src="../../assets/profile-g.png">
+                <img class="profile" src="../../assets/profile-g.png">
             </div>
             <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
             <span class="member-list-item-role flex">(Member)</span>

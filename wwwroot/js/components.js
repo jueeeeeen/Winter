@@ -875,7 +875,9 @@ class PendingListItem extends HTMLElement {
 class PendingHostViewListItem extends HTMLElement {
     constructor() {
         super();
-        this.name = this.getAttribute("name");
+        this.activity_id = this.getAttribute("data-activity-id");
+        this.name = this.getAttribute("name")
+        this.username = this.getAttribute("username")
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
@@ -884,21 +886,62 @@ class PendingHostViewListItem extends HTMLElement {
             <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">waiting for approval...</span>
             <div class="member-list-item-approval flex">
-                <button class="btn approval gr-w hover-w-gr-gr round">
+                <button id="approveBtn" class="btn approval gr-w hover-w-gr-gr round">
                     <svg-check></svg-check>
                 </button>
-                <button class="btn approval r-w hover-w-r-r round">
+                <button id="denyBtn" class="btn approval r-w hover-w-r-r round">
                     <svg-deny></svg-deny>
                 </button>
             </div>
         </li>`;
+    }
+
+    connectedCallback() {
+        this.querySelector(".btn.approval.gr-w").addEventListener("click", () => this.approve_activity());
+        this.querySelector(".btn.approval.r-w").addEventListener("click", () => this.deny_activity());
+    }
+
+    approve_activity() {
+        fetch(`ApproveActivity/${this.activity_id}?username=${this.username}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                window.location.reload();
+            } else {
+                console.error("Failed to approve activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
+
+    deny_activity() {
+        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                window.location.reload();
+            } else {
+                console.error("Failed to deny activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
     }
 }
 
 class MemberHostViewListItem extends HTMLElement {
     constructor() {
         super();
+        this.activity_id = this.getAttribute("data-activity-id");
         this.name = this.getAttribute("name")
+        this.username = this.getAttribute("username")
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
@@ -912,6 +955,27 @@ class MemberHostViewListItem extends HTMLElement {
                 </button>
             </div>
         </li>`;
+    }
+
+    connectedCallback() {
+        this.querySelector("button").addEventListener("click", () => this.deny_activity());
+    }
+
+    deny_activity() {
+        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                window.location.reload();
+            } else {
+                console.error("Failed to deny activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
     }
 }
 
@@ -935,6 +999,7 @@ class ActDetailJoinBtn extends HTMLElement {
         .then(data => {
             if (data.message) {
                 console.log(data.message);
+                window.location.reload();
             } else {
                 console.error("Failed to join activity");
             }
@@ -955,7 +1020,7 @@ class ActDetailLeaveBtn extends HTMLElement {
     }
 
     join_activity() {
-        fetch(`JoinActivity/${this.activity_id}`, {
+        fetch(`LeaveActivity/${this.activity_id}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"}
         })
@@ -963,8 +1028,9 @@ class ActDetailLeaveBtn extends HTMLElement {
         .then(data => {
             if (data.message) {
                 console.log(data.message);
+                window.location.reload();
             } else {
-                console.error("Failed to join activity");
+                console.error("Failed to leave activity");
             }
         })
         .catch(error => console.error("Error:", error));

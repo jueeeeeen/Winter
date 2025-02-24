@@ -79,11 +79,11 @@
         }
         @if (participant.Role == "member")
         {
-            <member-host-view name="@participant.User.FirstName @participant.User.LastName"></member-host-view>
+            <member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
         }
         @if (participant.Role == "pending")
         {
-            <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName"></pending-member-host-view>
+            <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
         }
     }
 </section>

@@ -11,7 +11,7 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250223141940_UpdateUserModel")]
+    [Migration("20250224112307_UpdateUserModel")]
     partial class UpdateUserModel
     {
         /// <inheritdoc />

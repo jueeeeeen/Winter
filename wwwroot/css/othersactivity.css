@@ -368,9 +368,25 @@ textarea {
   color: white;
 }
 
-/* .rating-cancel:hover{
-
+.rating-cancel:hover {
+  color: white;
+  background-color: var(--blue90);
 }
-.rating-post:hover{
+.rating-post:hover {
+  background-color: var(--blue90);
+  border: var(--blue90) solid 1px;
+}
 
-} */
+.star {
+  font-size: 30px;
+  color: gray;
+  cursor: pointer;
+}
+.star.active {
+  color: gold;
+}
+
+.rating-change-component {
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}

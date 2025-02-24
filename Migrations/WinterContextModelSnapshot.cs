@@ -80,6 +80,9 @@ namespace Winter_Project.Migrations
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(1);
 
+                    b.Property<DateTime>("Join_time")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("TEXT");

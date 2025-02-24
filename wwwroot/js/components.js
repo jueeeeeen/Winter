@@ -1,4 +1,4 @@
-﻿const { Divide } = require("lucide-svelte");
+﻿// const { Divide } = require("lucide-svelte");
 
 var path = "/assets/";
 
@@ -889,34 +889,81 @@ class PendingListItem extends HTMLElement {
 }
 
 class PendingHostViewListItem extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `<li class="w-bb-bb member-list-item">
+    constructor() {
+        super();
+        this.activity_id = this.getAttribute("data-activity-id");
+        this.name = this.getAttribute("name")
+        this.username = this.getAttribute("username")
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
                 <img class="profile" src="../../assets/profile-g.png">
             </div>
-            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">waiting for approval...</span>
             <div class="member-list-item-approval flex">
-                <button class="btn approval gr-w hover-w-gr-gr round">
+                <button id="approveBtn" class="btn approval gr-w hover-w-gr-gr round">
                     <svg-check></svg-check>
                 </button>
-                <button class="btn approval r-w hover-w-r-r round">
+                <button id="denyBtn" class="btn approval r-w hover-w-r-r round">
                     <svg-deny></svg-deny>
                 </button>
             </div>
         </li>`;
-  }
+    }
+
+    connectedCallback() {
+        this.querySelector(".btn.approval.gr-w").addEventListener("click", () => this.approve_activity());
+        this.querySelector(".btn.approval.r-w").addEventListener("click", () => this.deny_activity());
+    }
+
+    approve_activity() {
+        fetch(`ApproveActivity/${this.activity_id}?username=${this.username}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                window.location.reload();
+            } else {
+                console.error("Failed to approve activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
+
+    deny_activity() {
+        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                window.location.reload();
+            } else {
+                console.error("Failed to deny activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
 }
 
 class MemberHostViewListItem extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `<li class="w-bb-bb member-list-item">
+    constructor() {
+        super();
+        this.activity_id = this.getAttribute("data-activity-id");
+        this.name = this.getAttribute("name")
+        this.username = this.getAttribute("username")
+        this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
                 <img class="profile" src="../../assets/profile-g.png">
             </div>
-            <span class="member-list-item-name">Peerawat Ingkhasantatikul</span>
+            <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">(Member)</span>
             <div class="member-list-item-approval flex">
                 <button class="btn approval r-w hover-w-r-r round">
@@ -924,7 +971,28 @@ class MemberHostViewListItem extends HTMLElement {
                 </button>
             </div>
         </li>`;
-  }
+    }
+
+    connectedCallback() {
+        this.querySelector("button").addEventListener("click", () => this.deny_activity());
+    }
+
+    deny_activity() {
+        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                window.location.reload();
+            } else {
+                console.error("Failed to deny activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
 }
 
 class ActDetailJoinBtn extends HTMLElement {
@@ -947,8 +1015,38 @@ class ActDetailJoinBtn extends HTMLElement {
         .then(data => {
             if (data.message) {
                 console.log(data.message);
+                window.location.reload();
             } else {
                 console.error("Failed to join activity");
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    }
+}
+
+class ActDetailLeaveBtn extends HTMLElement {
+    constructor() {
+        super();
+        this.activity_id = this.getAttribute("data-activity-id");
+        this.innerHTML = `<button class="btn large r-w round act-detail-join-btn hover-w-r-r">leave</button>`;
+    }
+    
+    connectedCallback() {
+        this.querySelector("button").addEventListener("click", () => this.join_activity());
+    }
+
+    join_activity() {
+        fetch(`LeaveActivity/${this.activity_id}`, {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"}
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                console.log(data.message);
+                window.location.reload();
+            } else {
+                console.error("Failed to leave activity");
             }
         })
         .catch(error => console.error("Error:", error));
@@ -1399,6 +1497,7 @@ customElements.define("act-card", ActivityCard);
 customElements.define("act-card-join-btn", ActCardJoinBtn);
 customElements.define("pagination-item", PaginationItem);
 customElements.define("act-detail-join-btn", ActDetailJoinBtn);
+customElements.define("act-detail-leave-btn", ActDetailLeaveBtn);
 customElements.define("all-act-banner", AllActBanner);
 customElements.define("view-review-btn", ViewReviewBtn);
 customElements.define("delete-btn", DeleteBtn);

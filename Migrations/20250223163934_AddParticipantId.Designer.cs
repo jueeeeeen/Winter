@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250222204143_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250223163934_AddParticipantId")]
+    partial class AddParticipantId
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,6 +82,9 @@ namespace Winter_Project.Migrations
                     b.Property<int>("Activity_id")
                         .HasColumnType("INTEGER")
                         .HasColumnOrder(1);
+
+                    b.Property<DateTime>("Join_time")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Role")
                         .IsRequired()

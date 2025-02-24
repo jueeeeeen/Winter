@@ -90,10 +90,15 @@ public class CreateController : Controller
 
         }
         catch (Exception ex)
-        {
-            Console.Error.WriteLine(ex.Message);
-            return StatusCode(500, new { message = "Internal server error", details = ex.Message });
-        }
+    {
+
+        return StatusCode(500, new 
+        { 
+            error = "Internal Server Error", 
+            message = ex.Message,
+            stackTrace = ex.StackTrace
+        });
+    }
     }
 
     public IActionResult AddUser()

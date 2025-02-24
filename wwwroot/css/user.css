@@ -1,31 +1,3 @@
-:root {
-  --blue90: #36b2ff;
-
-  --gray90: #4d4d4d;
-  --gray80: #737373;
-  --gray70: #9f9f9f;
-  --gray60: #c6c6c6;
-  --gray50: #e8e8e8;
-  --white: #ffffff;
-
-  --blue90: #5fa2ff;
-  --blue80: #56beff;
-  --blue70: #7fceff;
-  --blue60: #77daff;
-  --blue50: #56dff4;
-  --blue40: #90e1ff;
-  --blue30: #a1d4ff;
-  --blue20: #adf1fd;
-  --blue10: #dff9ff;
-
-  --red: #ff4e4e;
-  --yellow: #fdc330;
-  --green: #65da8c;
-  --pink: #ff90da;
-
-  --shadow: rgba(0, 0, 0, 0.12);
-}
-
 .profile-container {
   position: relative;
   display: flex;
@@ -328,6 +300,12 @@ fieldset {
 .male-button {
   border: 2px solid var(--blue80);
   border-radius: 20px 0 0 20px;
+}
+
+.male-button.active,
+.lgbtq-button.active,
+.female-button.active {
+  background-color: var(--gray50);
 }
 
 .lgbtq-button {

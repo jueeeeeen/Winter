@@ -6,26 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let submitBtn = document.getElementById("registerButton");
   let step = document.querySelectorAll(".step");
   let current = 0;
-  const pages = document.querySelectorAll(".page");
-  let currentPage = 0;
-
-  function nextPage() {
-    if (currentPage < pages.length - 1) {
-      pages[currentPage].classList.remove("active");
-      currentPage++;
-      pages[currentPage].classList.add("active");
-    }
-  }
-
-  document.addEventListener("click", (event) => {
-    if (event.target.closest(".gender-button")) {
-      const gender = event.target.closest(".gender-button").dataset.gender;
-      document.getElementById("gender").value = gender;
-      console.log("Gender set to:", gender);
-    }
-  });
-
+  const pages = document.querySelectorAll('.page'); 
+  const genderButtons = document.querySelectorAll('.gender-button button');
+  const genderInput = document.getElementById('gender');
   slidePage.style.transform = `translateX(0%)`;
+
 
   nextButton.addEventListener("click", function (event) {
     event.preventDefault();
@@ -34,22 +19,28 @@ document.addEventListener("DOMContentLoaded", function () {
     bullet[current - 1].classList.add("active");
     progressText[current - 1].classList.add("active");
     step[current - 1].classList.add("active");
+    pages[current].classList.remove('active');
+    current = Math.min(current + 1, pages.length - 1);
+    pages[current].classList.add('active');
   });
 
-  let genderButtons = document.querySelectorAll(".gender-button button");
-  genderButtons.forEach((button) => {
-    button.addEventListener("click", function () {
-      document.getElementById("gender").value = this.dataset.gender; // เก็บค่า gender ลง input ซ่อน
-      genderButtons.forEach((btn) => btn.classList.remove("selected")); // เอา class ออกจากปุ่มอื่นๆ
-      this.classList.add("selected"); // ใส่ class ให้ปุ่มที่ถูกเลือก
+  console.log(pages);
+
+  genderButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault(); 
+        genderButtons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        genderInput.value = this.getAttribute('data-gender');
+        console.log('Gender selected:', genderInput.value);
     });
-  });
+});
 
   submitBtn.addEventListener("click", async function (event) {
     event.preventDefault();
 
     const registerButton = document.getElementById("registerButton");
-    if (registerButton.disabled) return; // ✅ ป้องกันการกดซ้ำ
+    if (registerButton.disabled) return; 
 
     registerButton.disabled = true;
     registerButton.innerText = "Registering...";
@@ -60,7 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const FirstName = document.getElementById("firstname").value;
     const LastName = document.getElementById("lastname").value;
     const DateOfBirth = document.getElementById("dateofbirth").value;
-    const Gender = "Male"; // ใช้ค่า default ไว้ก่อน
+    const Gender = document.getElementById("gender").value;
+    console.log(Gender)
 
     try {
       const response = await fetch("/account/register", {

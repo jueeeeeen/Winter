@@ -21,8 +21,8 @@
     <img src="\assets\winter_login_pic.jpg" alt="register background">
     <h2>CREATE ACCOUNT</h2>
     <div class="form-outer">
-        <form d="registerForm">
-            <div class="page">
+        <form id="registerForm">
+            <div class="page active">
                 <div class="register-box1">
                     <img src="\assets\Profile-b.png" alt="username">
                     <label for="username"></label>
@@ -43,14 +43,9 @@
                     <label for="confirm-password"></label>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="confirm password" required>
                 </div>
-                <div class="next-button">
-                    <button id="nextButton">next</button>
-                </div>
-                <div class="login-description">
-                    <p>Already have an account?</p>
-                    <a href="~/Account/Login">login</a>
-                </div>
+                <button id="nextButton" class="next-button">next</button>
             </div>
+            
 
             <div class="page">
                 <div class="register-box2">
@@ -67,26 +62,24 @@
                 </div>
                 <div>
                     <div class="gender-button">
-                        <button class="male-button" onclick="setGender('male')">
+                        <button class="male-button" data-gender="male">
                             <img src="\assets\male_icon-b.svg" alt="male icon">
                         </button>
-                        <button class="lgbtq-button" onclick="setGender('lgbtq')">
+                        <button class="lgbtq-button" data-gender="lgbtq">
                             <img src="\assets\heart.svg" alt="lgbtq+ icon">
                         </button>
-                        <button class="female-button" onclick="setGender('female')">
+                        <button class="female-button" data-gender="female">
                             <img src="\assets\female_icon-p.svg" alt="female icon">
                         </button>
                     </div>
                     <input type="hidden" id="gender" name="gender" value="">
                 </div>
-                <div class="register-button">
-                    <button type="submit" id="registerButton">create account</button>
-                </div>
-                <div class="login-description">
-                    <p>Already have an account?</p>
-                    <a href="~/Account/Login">login</a>
-                </div>
+                <button type="submit" id="registerButton" class="register-button">create account</button>
             </div>
         </form>
+        <div class="login-description">
+            <p>Already have an account?</p>
+            <a href="~/Account/Login">login</a>
+        </div>
     </div>
 </div>

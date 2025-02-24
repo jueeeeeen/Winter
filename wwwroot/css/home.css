@@ -24,6 +24,7 @@
     width: 1333px;
     height: 667px;
     row-gap: 50px;
+    border-radius: 1rem;
 }
 
 .home-text {
@@ -211,3 +212,4 @@
     width: 60px;
     height: auto;
 }
+

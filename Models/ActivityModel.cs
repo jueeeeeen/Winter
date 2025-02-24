@@ -24,7 +24,7 @@ namespace Winter_Project.Models
 
         public RequirementModel Requirement { get; set; } = new RequirementModel();
         
-        public List<string> Participants { get; set; } = new List<string>();
+        public ICollection<ParticipantModel> Participants { get; set; } = new List<ParticipantModel>();
 
         public string Status { get; set; } = string.Empty;
 

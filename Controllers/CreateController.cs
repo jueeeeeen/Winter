@@ -50,6 +50,7 @@ public class CreateController : Controller
 
             if (model == null)
             {
+                Console.WriteLine("no model");
                 return BadRequest("i");
             }
 
@@ -59,7 +60,7 @@ public class CreateController : Controller
                 Owner = model.Owner,
                 Title = model.Title,
                 Detail = model.Detail,
-                Create_time = model.Create_time,
+                Create_time = DateTime.UtcNow.ToString("o"),
                 Activity_time = model.Activity_time, 
                 Duration = model.Duration,
                 Location = model.Location,
@@ -72,14 +73,19 @@ public class CreateController : Controller
                     Age = model.Requirement.Age,
                     Other = model.Requirement.Other
                 },
-                Participants = new List<string>(),
+                Participants = {
+                    new ParticipantModel {
+                        Username = model.Owner,
+                        Role = "host"
+                    }
+                },
                 Status = "open"
             };
 
             
             _context.Activities.Add(activity);
             await _context.SaveChangesAsync();
-            return null;
+            return Ok();
             // return RedirectToAction("Index", "ActivityDetail", new { id = activity.Activity_id });
 
         }

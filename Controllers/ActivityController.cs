@@ -102,7 +102,7 @@ public class ActivityController: Controller
                     a.Location,
                     Activity_time = DateTime.Parse(a.Activity_time).ToString("ddd, dd MMM yyyy-HH:mm"),
                     a.Max_member,
-                    Participants_count = a.Participants.Count(),
+                    Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
                     a.Duration,
                     host = _context.Users
                                     .Where(u => u.Username == a.Owner)

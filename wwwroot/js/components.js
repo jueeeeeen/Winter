@@ -1620,52 +1620,96 @@ class ActivitiesList extends HTMLElement {
 }
 
 class RatingPopup extends HTMLElement {
-    constructor() {
-        super();
-        this.innerHTML = `
+  constructor() {
+    super();
+    this.innerHTML = `
         <div class="rating-overlay"></div>
         <div class="rating-pop-up">
-            <div class="rating-header">
-                Rate activity member
+          <div class="rating-header">Rate activity member</div>
+          <div class="rating-info">
+            <div class="rating-activity-name"></div>
+            <img src="assets/Profile-g.png" alt="">
+            <div class="rating-user-name"></div>
+            <div class="rating-change-component">
+            <div class="rating-stars">
+              <span class="star" data-value="1">★</span>
+              <span class="star" data-value="2">★</span>
+              <span class="star" data-value="3">★</span>
+              <span class="star" data-value="4">★</span>
+              <span class="star" data-value="5">★</span>
             </div>
-            <div class="rating-info">
-                <div class="rating-activity-name">หาเพื่อนดูหนังครับ !!!</div>
-                <img src="assets/Profile-g.png" alt="">
-                <div class="rating-user-name">Peerawat Ingkhasantatikul</div>
-                <div class="rating-stars">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                </div>
                 <fieldset>
-                    <legend>comment</legend>
+                    <legend>Comment</legend>
                     <textarea placeholder="Write your comment..."></textarea>
                 </fieldset>
+                <div class="post-btn">
+                    <button class="rating-cancel">Cancel</button>
+                    <button class="rating-post">Post</button>
+                </div>
             </div>
-            <div class="post-btn">
-                <button class="rating-cancel">Cancel</button>
-                <button class="rating-post">Post</button>
-            </div>
-        </div>
-        `;
-        this.style.display = "none";
-        this.classList.add("rating-popup-wrapper");
+        </div>`;
 
-        this.querySelector(".rating-cancel").addEventListener("click", () => this.closePopup());
-        this.querySelector(".rating-overlay").addEventListener("click", () => this.closePopup());
-    }
+    this.style.display = "none";
+    this.classList.add("rating-popup-wrapper");
 
-    openPopup(memberName, activityName) {
-        this.querySelector(".rating-user-name").textContent = memberName;
-        this.querySelector(".rating-activity-name").textContent = activityName;
-        this.style.display = "block";
-    }
+    this.querySelector(".rating-cancel").addEventListener("click", () =>
+      this.closePopup()
+    );
+    this.querySelector(".rating-overlay").addEventListener("click", () =>
+      this.closePopup()
+    );
 
-    closePopup() {
-        this.style.display = "none";
-    }
+    this.setupStarRating();
+    this.changeComponent();
+  }
+
+  setupStarRating() {
+    const stars = this.querySelectorAll(".star");
+    let selectedRating = 0;
+
+    stars.forEach((star, index) => {
+      star.addEventListener("click", () => {
+        selectedRating = index + 1 === selectedRating ? 0 : index + 1;
+        this.highlightStars(selectedRating);
+      });
+      star.addEventListener("mouseover", () => {
+        this.highlightStars(index + 1);
+      });
+      this.querySelector(".rating-stars").addEventListener("mouseleave", () => {
+        this.highlightStars(selectedRating);
+      });
+    });
+  }
+
+  highlightStars(count) {
+    const stars = this.querySelectorAll(".star");
+    stars.forEach((s, i) => {
+      s.classList.toggle("active", i < count);
+    });
+  }
+
+  changeComponent() {
+    const postButton = this.querySelector(".rating-post");
+    postButton.addEventListener("click", () => {
+      const ratingChangeComponent = this.querySelector(
+        ".rating-change-component"
+      );
+      ratingChangeComponent.innerHTML = `
+      <img src="assets/check_mark.png" alt="">
+      <h3>Rating completed</h3>
+      `;
+    });
+  }
+
+  openPopup(memberName, activityName) {
+    this.querySelector(".rating-user-name").textContent = memberName;
+    this.querySelector(".rating-activity-name").textContent = activityName;
+    this.style.display = "block";
+  }
+
+  closePopup() {
+    this.style.display = "none";
+  }
 }
 
 customElements.define("rating-popup", RatingPopup);

@@ -33,6 +33,7 @@ public class ActivityDetailController: Controller
                     a.Requirement.Age,
                     a.Requirement.Other
                 } : null,
+                a.Approval,
                 a.Location,
                 a.Activity_time,
                 a.Max_member,

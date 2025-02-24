@@ -19,11 +19,6 @@
             </span>
         </div>
     </header>
-    <ul>
-        <li class="flex">
-
-        </li>
-    </ul>
     <div class="act-detail-title">
         <svg-bookmark></svg-bookmark>
         <h1><b>@Model.Title</b></h1>
@@ -117,7 +112,25 @@ else
         <pending-list-item number="@Model.Pending_count"></pending-list-item>
     }
     </ul>
-    <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+    @{
+        bool userIsMember = false;
+        foreach (var participant in Model.Participants)
+        {
+            if (participant.Username == username)
+            {
+                userIsMember = true;
+                break;
+            }
+        }
+    }
+    @if (userIsMember)
+    {
+        <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
+    }
+    else if (Model.Member_count < @Model.Max_member)
+    {
+        <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+    }
 </section>
 }
 </div>

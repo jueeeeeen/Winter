@@ -1,0 +1,73 @@
+header div{
+    display: flex;
+    flex-direction: row;
+    /* top right bottom left */
+    margin: 40px 0 40px 130px;
+}
+
+.header-container img {
+    width: 72px;
+    height: 104px;
+}
+
+.header-container p {
+    color: var(--gray90);
+    font-size: 64px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: space-between;
+    margin: 0;
+}
+
+.select-member {
+    display: flex;
+    flex-direction: column;
+}
+
+.select-member label {
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.select-member select {
+    width: 494px;
+    height: 46px;
+    border: solid 3px var(--blue40);
+    border-radius: 20px;
+}
+
+.select-member option {
+    font-size: 20px;
+}
+
+.review-count {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.comment {
+    background-color: var(--white);
+    width: 1100px;
+    height: 300px;
+    border-radius: 20px;
+}
+
+.comment-header {
+    background-color: var(--blue50);
+    width: 100vw;
+    height: 53px;
+    margin: 0;
+    border-radius: 20px 20px 0 0;
+}
+
+.comment-header p {
+    color: var(--white);
+    font-size: 20px;
+    font-weight: bold;
+    /* top right bottom left */
+    margin: 10px 0 10px 20px;
+}

@@ -1,0 +1,49 @@
+<h2>Live Chat</h2>
+<div id="messages"></div>
+<input type="text" id="messageInput" placeholder="Enter your message" />
+<button id="sendButton">Send</button>
+
+<script>
+    let socket;
+    const messagesDiv = document.getElementById('messages');
+    const messageInput = document.getElementById('messageInput');
+    const sendButton = document.getElementById('sendButton');
+
+    // Establish the WebSocket connection
+    function initWebSocket() {
+        const userId = "User" + Math.floor(Math.random() * 1000); // Generate a random user ID for this example
+        socket = new WebSocket('ws://' + window.location.host + '/chat/OnConnected?userId=' + userId);
+        
+        socket.onmessage = function (event) {
+            // Append the received message to the chat box
+            const message = event.data;
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messagesDiv.appendChild(messageElement);
+        };
+
+        socket.onopen = function () {
+            console.log('WebSocket connection established');
+        };
+
+        socket.onclose = function () {
+            console.log('WebSocket connection closed');
+        };
+
+        socket.onerror = function (error) {
+            console.error('WebSocket Error:', error);
+        };
+    }
+
+    // Send message when the Send button is clicked
+    sendButton.addEventListener('click', function () {
+        const message = messageInput.value;
+        if (message && socket.readyState === WebSocket.OPEN) {
+            socket.send(message); // Send the message to the server
+            messageInput.value = ''; // Clear the input field
+        }
+    });
+
+    // Initialize WebSocket connection on page load
+    window.onload = initWebSocket;
+</script>

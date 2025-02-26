@@ -87,6 +87,19 @@ main {
   margin: 4rem 10vw 0;
 }
 
+.loading-bg {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  /* background-color: rgba(255, 255, 255, 0.5); */
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (max-width: 480px) {
   :root {
     font-size: 12px;
@@ -206,7 +219,7 @@ main {
   text-decoration: none;
 }
 
-.activity-a{
+.nav-activity{
   color: white;
   min-width: 6.5rem;
   text-align: center;

@@ -529,7 +529,7 @@ tag-filter::-webkit-scrollbar {
 
 
 .loading-cat {
-    margin: 0 auto;
+    margin: auto auto;
     position: relative;
     display: block;
     width: 480px;

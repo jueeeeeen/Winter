@@ -809,12 +809,14 @@ class Pagination extends HTMLElement {
   }
 
   apply_style() {
-    this.querySelector(`input[value='${this._current_page}']`).checked = true;
+    if (this.max_page > 0) {
+      this.querySelector(`input[value='${this._current_page}']`).checked = true;
+    }
   }
 
   disable_dir_btn() {
-    this.prev_btn.disabled = this._current_page === 1;
-    this.next_btn.disabled = this._current_page === this._max_page;
+    this.prev_btn.disabled = (this._current_page === 1 || this._max_page === 0);
+    this.next_btn.disabled = (this._current_page === this._max_page || this._max_page === 0);
   }
 
   get max_page() {

@@ -2,13 +2,14 @@
     margin: 2em auto 0;
     display: grid;
     width: 65vw;
-    height: 25vw;
-    grid-template-columns: 1fr 12fr 1fr;
+    height: max(25vw, 150px);
+    grid-template-columns: 1fr 15fr 1fr;
     grid-template-rows: 15fr 1fr;
     grid-template-areas:
         "prev display next"
         "page page page";
     overflow: hidden;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -20,19 +21,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 0;
-    min-height: 0;
+    /* min-width: 0;
+    min-height: 0; */
 }
 
 .banner-container svg {
-    height: 2em;
+    height: 1.8em;
     width: 1.2em;
 }
 
 .banner-arrow button {
     background-color: transparent;
-    width: 3em;
-    height: 3em;
+    width: 2.5em;
+    height: 2.5em;
     padding: 0.75em;
     transition: all 0.3s;
 }
@@ -86,7 +87,7 @@
     flex-wrap: wrap;
     width: 100%;
     gap: 1rem 1%;
-    
+
 }
 
 #all-activities-container>* {
@@ -107,7 +108,7 @@
 /* Activity card in AllActivity page */
 .activity-card {
     width: 100%;
-    height: 15.75rem;
+    aspect-ratio: 3/2;
     background-color: white;
     border-radius: 1.25rem;
     border: 1px solid var(--blue70);
@@ -145,13 +146,24 @@
     font-weight: 500;
 }
 
+.act-card-member {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--blue80);
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    line-height: 1;
+}
+
 
 /* search bar style */
 .search-bar {
-    width: 38%;
+    width: max(38%, 20rem);
     height: 2.5em;
     display: flex;
-    margin: 1.75rem auto 0.75rem auto;
+    margin: 0 auto;
     border-radius: 5rem;
     overflow: hidden;
     background-color: var(--white);
@@ -169,6 +181,11 @@
     align-items: center;
     justify-content: center;
     width: 2.5rem;
+}
+
+.search-bar svg {
+    width: 1.2em;
+    height: 1.2em;
 }
 
 .search-bar-x>button:hover svg path {
@@ -189,52 +206,68 @@
     transform: scale(1.05);
 }
 
-.act-card-member {
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--blue80);
-    display: flex;
+.display-option-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 50% 50%;
+    grid-template-areas:
+        "search search"
+        "tag filters";
     align-items: center;
-    width: fit-content;
-    height: fit-content;
-    line-height: 1;
+    row-gap: 1em;
+    margin-bottom: 2em;
 }
 
+search-bar {
+    grid-area: search;
+}
 
-.filter-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 2em 0;
-    position: relative;
+tag-filter {
+    grid-area: tag;
+    padding: 1% 0;
+    contain: layout;
+    overflow: scroll;
 }
 
 .filter-options {
+    grid-area: filters;
     display: flex;
     gap: 0.25em;
     align-items: flex-end;
+    justify-content: end;
+    position: relative;
 }
 
 .filter-btn {
-    min-width: 3vw;
-    height: 3vw;
+    display: flex;
+    justify-content: center;
+    width: 2.5em;
+    height: 2.5em;
     border-radius: 0.3em;
     font-size: 1.1em;
-    padding: 0 0.5em;
+    padding: 0 0.4em;
+    transition: all 0.3s;
+}
+
+.filter-btn svg{
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .display-sort:hover,
 .display-filter:hover {
-    min-width: 5vw;
+    width: 6.4em;
 }
 
 .display-sort:hover::after {
+    transition: all 0.15s;
     content: "sort by";
-    transition: all 0.1s;
+    
 }
 
 .display-filter:hover::after {
+    transition: all 0.15s;
     content: "filter by";
-    transition: all 0.1s;
 }
 
 #display-order:checked+.filter-btn svg-order {
@@ -247,7 +280,7 @@
     flex-direction: column;
     right: 0;
     top: 110%;
-    width: 15vw;
+    width: max(15vw, 200px);
     background-color: var(--white);
     border-radius: 0.5em;
     overflow: hidden;
@@ -414,7 +447,7 @@
     flex-direction: column;
     right: 0;
     top: 110%;
-    width: 12vw;
+    width: max(12vw, 160px);
     background-color: var(--white);
     border-radius: 0.3em;
     overflow: hidden;
@@ -789,4 +822,31 @@
 
 .loading-cat .foot {
     animation: 2.74s linear infinite foot;
+}
+
+
+@media screen and (max-width: 480px) {
+    #all-activities-container>* {
+        flex: 1 1;
+    }
+
+    .display-option-container {
+        grid-template-areas:
+            "search filters"
+            "tag tag";
+        row-gap: 0.2em;
+        margin-bottom: 1em;
+    }
+
+    .display-sort:hover::after, .display-filter:hover::after {
+        content: "";
+    }
+
+    .display-sort:hover, .display-filter:hover {
+        width: 2.5em;
+    }
+
+    .banner-container {
+        width: 100%;
+    }
 }

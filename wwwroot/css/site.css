@@ -28,9 +28,11 @@
 }
 
 body {
-  height: 100vh;
+  height: 100vh !important;
+  width: 100vw !important;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden !important;
 }
 
 * {
@@ -62,11 +64,18 @@ html{
 }
 
 main {
-  margin: 0 10vw;
-  /* display: flex;
-  flex-direction: column;
-  flex: 1; */
-  padding: 5vw 0 0;
+  margin: 4rem 10vw 0;
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    font-size: 12px;
+  }
+
+  main {
+    margin: 4rem 5vw 0;
+  }
+
 }
 
 .cursor {
@@ -152,32 +161,34 @@ main {
 .nav_bar_container {
   z-index: 1000;
   position: fixed;
-  width: 100%;
+  width: 100vw;
 }
 
 .nav_bar {
   font-weight:600;
-  font-size: 18px;
+  font-size: 1.125rem;
   list-style: none;
   display: flex;
-  margin: 0 6vw;
+  align-items: center;
+  margin: 0 5vw;
   gap: 0.7rem;
+  padding: 0.2em 0;
+  height: 4rem;
 }
 
 .nav_bar li{
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .nav_bar a{
   text-decoration: none;
 }
 
-.nav_bar a:not(.button, .btn_dropdown, .medium-btn){
+.activity-a{
   color: white;
   min-width: 6.5rem;
-  height: 64px;
-  line-height: 64px;
   text-align: center;
 }
 
@@ -187,28 +198,117 @@ main {
   left: 50%;
 }
 
+.logo a{
+  height: 70%;
+  width: fit-content;
+}
+
+.logo img{
+  height: 100%;
+  object-fit: cover;
+}
+
 .m_left_auto {
   margin-left: auto;
 }
 
+.circle {
+  height: 90%;
+  aspect-ratio: 1;
+}
+
+.circle img{
+  height: 100%;
+}
+
+#bell_button img{
+  height: 65%;
+}
+
+.hamburger {
+  display: none !important;
+  display: flex;
+  align-items: center;
+  width: 2em;
+  justify-content: center;
+}
+
+.hamburger svg-x {
+  display: none !important;
+}
+
+.hamburger svg-x{
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.hamburger svg-x svg{
+  height: 1.5em;
+  width: 1.5em;
+}
+
+.hamburger path{
+  stroke: var(--white);
+}
+
+.hamburger-dropdown {
+  display: none !important;
+  position: absolute;
+  width: 100%;
+  top: 4rem;
+  left: 0;
+  background-color: var(--white);
+  border: 1px solid var(--blue30);
+  display: flex;
+  flex-direction: column;
+}
+
+.hamburger-dropdown li a{
+  width: 100%;
+  padding: 0.2em 1em;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.hamburger-dropdown li a:hover {
+  background-color: var(--blue10);
+}
+
+.hamburger-dropdown li svg{
+  width: 1em;
+  height: 0.85em;
+}
+
+.hamburger-dropdown li path{
+  fill: var(--blue90);
+}
+
+#hamburger-check:checked + label  svg-hamburger {
+  display: none !important;
+}
+
+#hamburger-check:checked ~ .hamburger-dropdown, #hamburger-check:checked + label svg-x{
+  display: block !important;
+}
+
 .profile_dropdown {
   width: 15vw;
-  height: 18vw;
-  padding: 0 14px;
+  height: fit-content;
+  padding: 0 1em;
   position: absolute;
   right: 6vw;
   font-weight: 400;
   display: none;
+  flex-direction: column;
+  gap: 2em;
 }
 
-
 .info_dropdown {
-  /* height: ; */
   line-height: 1;
   display: grid;
-  padding: 5% 0;
+  padding: 0.5em 0 0.7em;
   column-gap: 3%;
-  grid-template-columns: 25% 75%;
+  grid-template-columns: 2.75em 75%;
   grid-template-rows: 40% 40% 20%;
   grid-template-areas: 
     "profile first-name"
@@ -238,9 +338,8 @@ main {
 
 .username_dropdown {
   grid-area: username;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: gray;
-  line-height: 1;
 }
 
 .username_dropdown::before {
@@ -250,13 +349,13 @@ main {
 .btn_dropdown {
   display: flex;
   align-items: center;
-  height: 30px;
-  margin: 3px 0;
+  height: 2rem;
+  margin: 0.2rem 0;
   color: var(--gray90);
   cursor: pointer;
   user-select: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 0.3rem;
+  font-size: 1rem;
   &:hover {
       background-color:var(--gray50);
   }
@@ -271,26 +370,15 @@ main {
   align-items: center;
 }
 
-.log_out_dropdown {
-  width: 150px;
-  height: 30px;
-  color: var(--red);
-  border: 1px solid var(--red);
-  text-align: center;
-  font-weight: 500;
-  cursor: pointer;
-  user-select: none;
-  border-radius: 10px;
-  margin-top: 18px;
-  &:hover {
-      background-color: var(--red);
-      color: white;
-  }
+#logout_button {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1em;
 }
 
 .noti-dropdown-container{
-  width: 35vh;
-  height: 43.5vh;
+  width: 18vw;
+  height: 20vw;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -304,13 +392,13 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 12%;
+  padding: 0.4em 0;
   color: var(--gray80);
 }
 
 .noti-list {
   display: grid;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 40px auto;
   grid-template-rows: 35% 45% 20%;
   grid-template-areas: 
     "icon title"
@@ -318,14 +406,15 @@ main {
     "icon datetime";
   padding: 3.5%;
   row-gap: 1%;
+  column-gap: 0.5em;
   border-bottom: 1px solid var(--gray50);
 }
 
 .noti-icon {
   grid-area: icon;
   border-radius: 5rem;
-  width: 2.5em;
-  height: 2.5em;
+  width: 40px;
+  height: 40px;
   object-fit: cover;
   margin: auto 0;
   justify-content: center;
@@ -457,13 +546,8 @@ hr {
 
 .pseudo-btn {
   display: inline-block;
-  text-align: center;
+  /* text-align: center; */
   user-select: none;
-}
-
-.circle {
-  width: 55px;
-  height: 55px;
 }
 
 .small {
@@ -471,14 +555,14 @@ hr {
   height: 1.875em;
   padding: 0.25em 0.67em;
   font-size: 1rem;
-  }
+}
 
 .medium {
   min-width: 6.67em;
   height: 2.25em;
   padding: 0.45em 0.67em;
   font-size: 1.125rem;
-  }
+}
 
 .large {
   min-width: 10em;
@@ -486,7 +570,12 @@ hr {
   padding: 0.4em 0.67em;
   font-size: 1.25rem;
   font-weight: 600;
-  }
+}
+
+.small svg, .medium svg, .large svg {
+  width: 1.25em;
+  height: 1.25em;
+}
 
 .round {
   border-radius: 2em;
@@ -581,7 +670,7 @@ hr {
       stroke: var(--white);
     }
   }
-
+  
   .r-w, .hover-r-w:hover {
     background-color: var(--red);
     color: var(--white);
@@ -600,6 +689,16 @@ hr {
       /* fill: var(--red); */
       stroke: var(--red);
     }
+  }
+
+  .w-r-r.hover-r-w:hover {
+    background-color: var(--red);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+  }
+    
+  .w-r-r.hover-r-w:hover svg path {
+    stroke: var(--white);
   }
 
   .y-w, .hover-y-w:hover {
@@ -710,6 +809,12 @@ hr {
     }
   }
 
+.tag-selector {
+  min-width: 5.5em;
+  padding: 0.25em 1em;
+  font-size: 1.125rem;
+  color: var(--gray70);
+}
 
 .tag {
   display: flex;
@@ -782,6 +887,7 @@ hr {
   grid-template-rows: 1fr 1fr;
   gap:0 0.25em;
   height: fit-content;
+  position: relative;
 }
 
 header.act-card-profile-info{
@@ -920,7 +1026,7 @@ header.act-card-profile-info{
 }
 
 .show {
-  display: block;
+  display: flex;
 }
 
 .comment-card {
@@ -985,4 +1091,62 @@ header.act-card-profile-info{
 
 .comment-from a{
   color: var(--blue40);
+}
+
+
+@media screen and (max-width: 480px) {
+  .nav-home, .nav-activity, #create_button {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex !important;
+  }
+
+  .logo {
+    left: 5vw;
+    translate: 0%;
+  }
+
+  .profile_dropdown {
+    width: 100%;
+    left: 0;
+    gap: 0;
+  }
+
+  .info_dropdown {
+    grid-template-columns: 2.75em 75%;
+    grid-template-rows: 40% 40% 20%;
+    grid-template-areas: 
+      "profile first-name"
+      "profile last-name"
+      "profile username";
+    color: var(--gray90);
+  }
+
+  #logout_button {
+    width: fit-content;
+    position: absolute;
+    top: 1.25em;
+    right: 1em;
+  }
+
+  #logout_button svg{
+    width: 1.2em;
+  }
+
+  .blue_line_dash {
+    display: none;
+  }
+
+  .noti-dropdown-container {
+    width: 100%;
+    height: 18rem;
+    left: 0;
+    font-size: 1.125rem;
+  }
+
+  .act-card-profile-info {
+    font-size: 1.125rem;
+  }
 }

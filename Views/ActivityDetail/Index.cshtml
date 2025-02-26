@@ -18,6 +18,10 @@
                 @Model.host.Rating
             </span>
         </div>
+        <span class="member-count">
+            <svg-member></svg-member>
+            @Model.Member_count/@Model.Max_member
+        </span>
     </header>
     <div class="act-detail-title">
         <svg-bookmark></svg-bookmark>
@@ -25,7 +29,7 @@
         <p>@Model.Detail</p>
     </div>
 </section>
-<section class="act-detail-requirement edge shadow w-bb-bb">
+<section class="act-detail-requirement edge shadow">
     <div class="flex">
         <span class="act-detail-req-header letter-spacing">
             <svg-checkbox></svg-checkbox><b>requirements :</b>
@@ -72,8 +76,11 @@
 {
 <section class="act-detail-member edge shadow">
     <header>
-        <h2 class="letter-spacing">Members</h2>
-        <span class="member-count">(@Model.Member_count/@Model.Max_member)</span>
+        <h2 class="letter-spacing">
+            <svg-member></svg-member>
+            Members
+        </h2>
+        <span>@Model.Member_count/@Model.Max_member</span>
     </header>
     <ul>
     @foreach (var participant in Model.Participants)
@@ -97,8 +104,11 @@ else
 {
 <section class="act-detail-member edge shadow">
     <header>
-        <h2 class="letter-spacing">Members</h2>
-        <span class="member-count">(@Model.Member_count/@Model.Max_member)</span>
+        <h2 class="letter-spacing">
+            <svg-member></svg-member>
+            Members
+        </h2>
+        <span>@Model.Member_count/@Model.Max_member</span>
     </header>
     <ul>
     @foreach (var participant in Model.Participants)

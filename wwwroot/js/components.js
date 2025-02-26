@@ -77,17 +77,18 @@ customElements.define("joined-noti", JoinedNoti);
 class SearchBar extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = `<form class="search-bar shadow">
-            <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
-            <div class="search-bar-x">
-                <button class="btn" id="clear_search_button">
-                    <svg-x></svg-x>
-                </button>
-            </div>
-            <button type="button" class="btn search-bar-search" id="seach-button">
-                <svg-search></svg-search>
+    this.innerHTML = 
+    `<form class="search-bar shadow">
+        <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
+        <div class="search-bar-x">
+            <button class="btn" id="clear_search_button">
+                <svg-x></svg-x>
             </button>
-        </form>`;
+        </div>
+        <button type="button" class="btn search-bar-search" id="seach-button">
+            <svg-search></svg-search>
+        </button>
+    </form>`;
     this.search_key = null;
     this.clear_search = this.clear_search.bind(this);
   }
@@ -121,7 +122,7 @@ class TagsSelector extends HTMLElement {
     this.tag_name = this.getAttribute("data-tag_name");
     this.innerHTML = `<div class="pseudo-btn">
             <input type="checkbox" name="Tags" value="${this.tag_name}" id="tag_${this.tag_name}">
-            <label for="tag_${this.tag_name}" class="btn medium round shadow hover-w-bb-bb">${this.tag_name}</label>
+            <label for="tag_${this.tag_name}" class="btn tag-selector round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;
     this.input = this.querySelector("input");
   }
@@ -130,15 +131,15 @@ class TagsSelector extends HTMLElement {
 class TagFilter extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = `<form class="flex gap" id="tag_filter_form">
-            <tag-selector data-tag_name="All"></tag-selector>
-            <tag-selector data-tag_name="Entertain"></tag-selector>
-            <tag-selector data-tag_name="Sport"></tag-selector>
-            <tag-selector data-tag_name="Study"></tag-selector>
-            <tag-selector data-tag_name="Hobby"></tag-selector>
-            <tag-selector data-tag_name="Travel"></tag-selector>
-        </form>
-        `;
+    this.innerHTML =
+    `<form class="flex gap" id="tag_filter_form">
+      <tag-selector data-tag_name="All"></tag-selector>
+      <tag-selector data-tag_name="Entertain"></tag-selector>
+      <tag-selector data-tag_name="Sport"></tag-selector>
+      <tag-selector data-tag_name="Study"></tag-selector>
+      <tag-selector data-tag_name="Hobby"></tag-selector>
+      <tag-selector data-tag_name="Travel"></tag-selector>
+    </form>`;
   }
 
   connectedCallback() {
@@ -1142,6 +1143,7 @@ class BaseSVGElement extends HTMLElement {
   constructor() {
     super();
     this.style.display = "inline-flex";
+    this.style.width = "fit-content"
   }
 }
 
@@ -1433,6 +1435,17 @@ class SVGLogin extends BaseSVGElement {
   }
 }
 
+class SVGLogout extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML = 
+    `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.75 15.75H3.75C3.35218 15.75 2.97064 15.592 2.68934 15.3107C2.40804 15.0294 2.25 14.6478 2.25 14.25V3.75C2.25 3.35218 2.40804 2.97064 2.68934 2.68934C2.97064 2.40804 3.35218 2.25 3.75 2.25H6.75M12 12.75L15.75 9M15.75 9L12 5.25M15.75 9H6.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+  }
+}
+customElements.define("svg-logout", SVGLogout);
+
 class SVGFilter extends BaseSVGElement {
   constructor() {
     super();
@@ -1485,6 +1498,65 @@ class SVGPending extends BaseSVGElement {
     }
 }
 customElements.define("svg-pending", SVGPending);
+
+class SVGHamburger extends BaseSVGElement {
+    constructor() {
+        super();
+        this.innerHTML =
+        `<svg width="30" height="26" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g filter="url(#filter0_d_1210_390)">
+          <path d="M5 5H25V7H5V5ZM5 12H25V14H5V12ZM6 19H5V21H25V19H6Z" fill="white"/>
+          <path d="M5 4.5H4.5V5V7V7.5H5H25H25.5V7V5V4.5H25H5ZM5 11.5H4.5V12V14V14.5H5H25H25.5V14V12V11.5H25H5ZM5 18.5H4.5V19V21V21.5H5H25H25.5V21V19V18.5H25H6H5Z" stroke="white"/>
+          </g>
+          <defs>
+          <filter id="filter0_d_1210_390" x="0" y="0" width="30" height="26" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+          <feOffset/>
+          <feGaussianBlur stdDeviation="2"/>
+          <feComposite in2="hardAlpha" operator="out"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1210_390"/>
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1210_390" result="shape"/>
+          </filter>
+          </defs>
+        </svg>`;
+    }
+}
+customElements.define("svg-hamburger", SVGHamburger);
+
+class SVGHome extends BaseSVGElement {
+  constructor() {
+      super();
+      this.innerHTML =
+      `<svg width="34" height="30" viewBox="0 0 34 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 0L0 12.75H4.25V29.75H12.75V21.25H21.25V29.75H29.75V12.6225L34 12.75L17 0Z" fill="white"/>
+      </svg>`;
+  }
+}
+customElements.define("svg-home", SVGHome);
+
+class SVGTile extends BaseSVGElement {
+  constructor() {
+      super();
+      this.innerHTML =
+      `<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 6.11111V11H6.998V6.11111H4ZM7.998 11H11V6.11111H7.998V11ZM11 4.88889V0H7.998V4.88889H11ZM6.998 0H4V4.88889H6.998V0ZM3 0H0V4.88889H3V0ZM0 6.11111H3V11H0V6.11111Z" fill="#5FA2FF"/>
+      </svg>`;
+  }
+}
+customElements.define("svg-tile", SVGTile);
+
+class SVGMember extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML =
+    `<svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 10.6C24 11.2 22.8 11.6 21.4 11.8C20.5 10.1 18.7 8.8 16.6 7.9C16.8 7.6 17 7.4 17.2 7.1H18C21.1 7 24 8.9 24 10.6ZM6.8 7H6C2.9 7 0 8.9 0 10.6C0 11.2 1.2 11.6 2.6 11.8C3.5 10.1 5.3 8.8 7.4 7.9L6.8 7ZM12 8C14.2 8 16 6.2 16 4C16 1.8 14.2 0 12 0C9.8 0 8 1.8 8 4C8 6.2 9.8 8 12 8ZM12 9C7.9 9 4 11.6 4 14C4 16 12 16 12 16C12 16 20 16 20 14C20 11.6 16.1 9 12 9ZM17.7 6H18C19.7 6 21 4.7 21 3C21 1.3 19.7 0 18 0C17.5 0 17.1 0.1 16.7 0.3C17.5 1.3 18 2.6 18 4C18 4.7 17.9 5.4 17.7 6ZM6 6H6.3C6.1 5.4 6 4.7 6 4C6 2.6 6.5 1.3 7.3 0.3C6.9 0.1 6.5 0 6 0C4.3 0 3 1.3 3 3C3 4.7 4.3 6 6 6Z" fill="#56BEFF"/>
+    </svg>`;
+  }
+}
+customElements.define("svg-member", SVGMember);
 
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);

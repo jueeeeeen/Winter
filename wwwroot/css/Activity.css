@@ -670,14 +670,14 @@ tag-filter::-webkit-scrollbar {
 }
 
 .loading-cat .hands.left {
-    top: 144px;
-    right: 161px;
+    top: 135px;
+    right: 127px;
     transform: rotate(-20deg);
 }
 
 .loading-cat .hands.right {
-    top: 123px;
-    right: 128px;
+    top: 110px;
+    right: 105px;
     transform: rotate(-25deg);
 }
 

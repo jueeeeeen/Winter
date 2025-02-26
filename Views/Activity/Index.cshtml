@@ -59,7 +59,7 @@
         const tag_filter = document.querySelector('tag-filter');
         const search_button = document.querySelector('#seach-button');
 
-        fetch_activities()
+        @* fetch_activities() *@
         activity_pagination.addEventListener("page-changed", (event)=>fetch_activities(event.detail.page))
         display_sort.addEventListener("change", () => fetch_activities())
         display_order.addEventListener("change", () => fetch_activities())

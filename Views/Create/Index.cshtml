@@ -9,43 +9,60 @@
         </div>
         <div class="create-details">
             <div class="form-group">
-                <label for="create_title">Activity Header :</label>
-                <input type="text" name="Title" id="create_title" required/>
+                <label for="create_title">Activity Title :</label>
+                <input type="text" name="Title" id="create_title" placeholder="Activity title must not exceed 30 characters." required/>
+                <span class="create-error-message"></span>
             </div>
             <div class="form-group">
                 <label for="create_detail">Activity Details :</label>
-                <textarea rows="6" type="text" name="Detail" id="create_detail" required></textarea>
+                <textarea rows="6" type="text" name="Detail" id="create_detail" placeholder="Activity details must not exceed 500 characters." required></textarea>
+                <span class="create-error-message"></span>
             </div>
             <div class="form-group">
                 <label for="create_date_time">Date - Time :</label>
                 <input type="datetime-local" name="Activity_time" id="create_date_time" required/>
+                <span class="create-error-message"></span>
             </div>
             <div class="form-group">
                 <label for="duration">Duration :</label>
-                <input type="time" name="Duration" id="duration" required/>
+                <select name="Duration" id="duration" required>
+                    <option value="00:30">00:30</option>
+                    <option value="01:00">01:00</option>
+                    <option value="01:30">01:30</option>
+                    <option value="02:00">02:00</option>
+                    <option value="02:30">02:30</option>
+                    <option value="03:00">03:00</option>
+                    <option value="03:30">03:30</option>
+                    <option value="04:00">04:00</option>
+                    <option value="04:30">04:30</option>
+                    <option value="05:00">05:00</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="create_location">Location :</label>
-                <input type="text" name="Location" id="create_location" required/>
+                <input type="text" name="Location" id="create_location" placeholder="Location must not exceed 30 characters." required/>
+                <span class="create-error-message"></span>
             </div>
             <div class="form-group">
                 <label>Number of member : (Include yourself)</label>
-                <number-input data-name="Max_member"></number-input>
+                <number-input data-name="Max_member" default-value="2" id="max_member"></number-input>
+                <span class="create-error-message"></span>
             </div>
             <div class="form-group">
                 <label>Tags :</label>
                 <tag-select></tag-select>
+                <span class="create-error-message"></span>
             </div>
             <div class="form-group">
                 <label>Membership approval :</label>
                 <div class="radio-input">
                     <div class="radio-input-choice">
-                        <input type="radio" name="Approval" value="false" required/>
-                        <p>Approval not needed</p>
-                    </div>
-                    <div class="radio-input-choice">
                         <input type="radio" name="Approval" value="true" required/>
                         <p>All members must be approved</p>
+                    </div>
+                    <div class="radio-input-choice">
+                        <input type="radio" name="Approval" value="false" required checked/>
+                        <p>Approval not needed</p>
                     </div>
                 </div>
             </div>
@@ -72,18 +89,20 @@
                         <p>LGBTQ+</p>
                     </div>
                     <div class="radio-input-choice">
-                        <input type="radio" name="Gender" value="none"/>
+                        <input type="radio" name="Gender" value="none" checked/>
                         <p>None</p>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label>Age</label>
-                <number-input data-name="Age"></number-input>
+                <number-input data-name="Age" default-value="0" id="age"></number-input>
+                <span class="create-error-message"></span>
             </div>
             <div class="form-group">
                 <label for="create_other">Other :</label>
-                <input type="text" name="Other" id="create_other"/>
+                <input type="text" name="Other" id="create_other" placeholder="Other Requirement must not exceed 30 characters."/>
+                <span class="create-error-message"></span>
             </div>
         </div>
     </div>
@@ -99,14 +118,106 @@
 </form>
 
 <script>
+
+    function showError(inputId, message) {
+        const inputField = document.getElementById(inputId);
+        const errorSpan = inputField.nextElementSibling;
+
+        if (errorSpan) {
+            errorSpan.textContent = message;
+        }
+
+        inputField.classList.add('shake');
+
+        setTimeout(() => {
+            inputField.classList.remove('shake');
+        }, 2000);
+    }
+
+    function clearErrors() {
+        document.querySelectorAll(".create-error-message").forEach(span => span.textContent = "");
+    }
+
     async function submit_create_activity() {
+        clearErrors();
+
         const form = document.getElementById("create_activity_form");
         const formData = new FormData(form);
+
+        const title = formData.get("Title")?.trim();
+        const detail = formData.get("Detail")?.trim();
+        const activityTime = formData.get("Activity_time");
+        const duration = formData.get("Duration");
+        const location = formData.get("Location")?.trim();
+        const maxMember = parseInt(formData.get("Max_member")) || 0;
+        const age = parseInt(formData.get("Age")) || 0;
+        const other = formData.get("Other")?.trim();
+
+        let isValid = true;
+        let firstError = null;
+
+        if (!title) {
+            showError("create_title", "Please enter an activity title.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_title");
+        } else if (title.length > 30) {
+            showError("create_title", "Activity title must not exceed 30 characters.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_title");
+        }
+        if (!detail) {
+            showError("create_detail", "Please enter an activity details.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_detail");
+        } else if (detail.length > 500) {
+            showError("create_detail", "Activity details must not exceed 500 characters.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_detail");
+        }
+        if (!activityTime) {
+            showError("create_date_time", "Please specify the date and time.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_date_time");
+        }
+        if (!duration) {
+            showError("duration", "Please specify the duration.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("duration");
+        }
+        if (!location) {
+            showError("create_location", "Please specify the location.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_location");
+        } else if (location.length > 30) {
+            showError("create_location", "Location must not exceed 30 characters.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_location");
+        }
+        if (maxMember <= 1) {
+            showError("max_member", "The number of members must be greater than 1.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("max_member");
+        }
+        if (age > 100) {
+            showError("age", "Age Requirement must be less than 100.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("age");
+        }
+        if (other.length > 30) {
+            showError("create_other", "Other Requirement must not exceed 30 characters.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("create_other");
+        }
+
+        if (!isValid) {
+            firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+
         const data = {
             Owner: '@ViewData["Username"]',
             Title: formData.get("Title"),
             Detail: formData.get("Detail"),
-            @* Create_time: new Date().toISOString(), *@
             Activity_time: formData.get("Activity_time"),
             Duration: formData.get("Duration"),
             Location: formData.get("Location"),

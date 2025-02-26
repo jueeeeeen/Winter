@@ -540,10 +540,11 @@ class NumberInput extends HTMLElement {
   constructor() {
     super();
     this.name = this.getAttribute("data-name");
+    this.default = this.getAttribute("default-value");
     this.innerHTML = `
             <div class="number-input-container">
                 <button type="button" id="decrease">-</button>
-                <input type="text" name="${this.name}" id="number" value="1">
+                <input type="text" name="${this.name}" id="number" value=${this.default}>
                 <button type="button" id="increase">+</button>
             </div>
         `;
@@ -561,7 +562,7 @@ class NumberInput extends HTMLElement {
   updateValue(change) {
     let currentValue = parseInt(this.input.value) || 0;
     let newValue = currentValue + change;
-    if (newValue < 1) newValue = 1;
+    if (newValue < 0) newValue = 0;
     this.input.value = newValue;
   }
 

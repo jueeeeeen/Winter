@@ -496,15 +496,15 @@ class TagSelect extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = `<div class="tag-col">
+            <tag-selector data-tag_name="Art"></tag-selector>
+            <tag-selector data-tag_name="Beauty"></tag-selector>
             <tag-selector data-tag_name="Entertain"></tag-selector>
+            <tag-selector data-tag_name="Food"></tag-selector>
+            <tag-selector data-tag_name="Hobby"></tag-selector>
+            <tag-selector data-tag_name="Pet"></tag-selector>
             <tag-selector data-tag_name="Sport"></tag-selector>
             <tag-selector data-tag_name="Study"></tag-selector>
-            <tag-selector data-tag_name="Hobby"></tag-selector>
             <tag-selector data-tag_name="Travel"></tag-selector>
-            <tag-selector data-tag_name="Art"></tag-selector>
-            <tag-selector data-tag_name="Music"></tag-selector>
-            <tag-selector data-tag_name="Beauty"></tag-selector>
-            <tag-selector data-tag_name="Pet"></tag-selector>
         </div>
         `;
   }
@@ -519,7 +519,6 @@ class TagSelect extends HTMLElement {
         const checkedCount = this.querySelectorAll("input:checked").length;
         if (checkedCount > 3) {
           checkbox.checked = false;
-          alert("you can only select up to 3 tags");
         }
       });
     });

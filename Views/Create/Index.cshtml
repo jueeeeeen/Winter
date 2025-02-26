@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label>Tags :</label>
-                <tag-select></tag-select>
+                <tag-select id="tag"></tag-select>
                 <span class="create-error-message"></span>
             </div>
             <div class="form-group">
@@ -107,8 +107,8 @@
         </div>
     </div>
     <div class="last-card">
-        <div class="check-before">
-            <input type="checkbox" required/>
+        <div class="check-before" id=check-before>
+            <input name="Accept" id="accept" type="checkbox" required/>
             <p>By creating an activity, you agree to our <span class="red">Terms of Use</span> and <span class="red">Privacy Policy</span>.</p>
         </div>
         <button type="button" class="btn round medium create-btn" onclick="submit_create_activity()" id="create-activity-btn">
@@ -118,13 +118,14 @@
 </form>
 
 <script>
-
-    function showError(inputId, message) {
+    function showError(inputId, message='') {
         const inputField = document.getElementById(inputId);
-        const errorSpan = inputField.nextElementSibling;
+        if (message){
+            const errorSpan = inputField.nextElementSibling;
 
-        if (errorSpan) {
-            errorSpan.textContent = message;
+            if (errorSpan) {
+                errorSpan.textContent = message;
+            }
         }
 
         inputField.classList.add('shake');
@@ -150,8 +151,10 @@
         const duration = formData.get("Duration");
         const location = formData.get("Location")?.trim();
         const maxMember = parseInt(formData.get("Max_member")) || 0;
+        const tag = formData.getAll("Tags").length;
         const age = parseInt(formData.get("Age")) || 0;
         const other = formData.get("Other")?.trim();
+        const accept = formData.get("Accept");
 
         let isValid = true;
         let firstError = null;
@@ -198,6 +201,9 @@
             isValid = false;
             if (!firstError) firstError = document.getElementById("max_member");
         }
+        if (tag == 0){
+            showError("tag", "You must select 1 - 3 tags.");
+        }
         if (age > 100) {
             showError("age", "Age Requirement must be less than 100.");
             isValid = false;
@@ -207,6 +213,14 @@
             showError("create_other", "Other Requirement must not exceed 30 characters.");
             isValid = false;
             if (!firstError) firstError = document.getElementById("create_other");
+        }
+        if (!accept) {
+            isValid = false;
+            const checkBeforeContainer = document.getElementById('check-before');
+            checkBeforeContainer.classList.add('shake');
+            setTimeout(() => {
+                checkBeforeContainer.classList.remove('shake');
+            }, 2000);
         }
 
         if (!isValid) {

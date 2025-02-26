@@ -81,13 +81,10 @@ public class CreateController : Controller
                 },
                 Status = "open"
             };
-
             
             _context.Activities.Add(activity);
             await _context.SaveChangesAsync();
-            return Ok();
-            // return RedirectToAction("Index", "ActivityDetail", new { id = activity.Activity_id });
-
+            return Ok(new { activityId = activity.Activity_id });
         }
         catch (Exception ex)
     {

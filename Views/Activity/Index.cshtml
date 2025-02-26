@@ -6,19 +6,17 @@
 
 <div class="display-option-container">
     <search-bar></search-bar>
-    @* <div class="filter-container"> *@
-        <tag-filter></tag-filter>
-        <div class="filter-options">
-            <div class="pseudo-btn">
-                <input type="checkbox" name="descending" id="display-order">
-                <label for="display-order" class="filter-btn btn w-bb-bb display-order hover-bb-w">
-                    <svg-order></svg-order>
-                </label>
-            </div>
-            <display-sort></display-sort>
-            <display-filter></display-filter>
+    <tag-filter></tag-filter>
+    <div class="filter-options">
+        <div class="pseudo-btn">
+            <input type="checkbox" name="descending" id="display-order">
+            <label for="display-order" class="filter-btn btn w-bb-bb display-order hover-bb-w">
+                <svg-order></svg-order>
+            </label>
         </div>
-    @* </div> *@
+        <display-sort></display-sort>
+        <display-filter></display-filter>
+    </div>
 </div>
 
 <div id="all-activities-container">

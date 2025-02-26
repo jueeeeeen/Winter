@@ -23,6 +23,14 @@
             @Model.Member_count/@Model.Max_member
         </span>
     </header>
+    <ul>
+        <li class="flex">
+            @foreach (var tag in @Model.Tags)
+            {
+                <tag-display data-tag_name="@tag"></tag-display>
+            }
+        </li>
+    </ul>
     <div class="act-detail-title">
         <svg-bookmark></svg-bookmark>
         <h1><b>@Model.Title</b></h1>
@@ -72,8 +80,6 @@
         </li>
     </ul>
 </section>
-@if (username == @Model.host.Username)
-{
 <section class="act-detail-member edge shadow">
     <header>
         <h2 class="letter-spacing">
@@ -82,72 +88,66 @@
         </h2>
         <span>@Model.Member_count/@Model.Max_member</span>
     </header>
-    <ul>
-    @foreach (var participant in Model.Participants)
+    @if (username == @Model.host.Username)
     {
-        @if (participant.Role == "host")
+        <ul>
+        @foreach (var participant in Model.Participants)
         {
-            <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
-        }
-        @if (participant.Role == "member")
-        {
-            <member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
-        }
-        @if (participant.Role == "pending")
-        {
-            <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
-        }
-    }
-</section>
-}
-else 
-{
-<section class="act-detail-member edge shadow">
-    <header>
-        <h2 class="letter-spacing">
-            <svg-member></svg-member>
-            Members
-        </h2>
-        <span>@Model.Member_count/@Model.Max_member</span>
-    </header>
-    <ul>
-    @foreach (var participant in Model.Participants)
-    {
-        @if (participant.Role == "host")
-        {
-            <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
-        }
-        @if (participant.Role == "member")
-        {
-            <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
-        }
-    }
-    @if (@Model.Pending_count != 0)
-    {
-        <pending-list-item number="@Model.Pending_count"></pending-list-item>
-    }
-    </ul>
-    @{
-        bool userIsMember = false;
-        foreach (var participant in Model.Participants)
-        {
-            if (participant.Username == username)
+            @if (participant.Role == "host")
             {
-                userIsMember = true;
-                break;
+                <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+            }
+            @if (participant.Role == "member")
+            {
+                <member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
+            }
+            @if (participant.Role == "pending")
+            {
+                <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
             }
         }
+        </ul>
     }
-    @if (userIsMember)
+    else 
     {
-        <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
-    }
-    else if (Model.Member_count < @Model.Max_member)
-    {
-        <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+        <ul>
+        @foreach (var participant in Model.Participants)
+        {
+            @if (participant.Role == "host")
+            {
+                <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+            }
+            @if (participant.Role == "member")
+            {
+                <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
+            }
+        }
+        @if (@Model.Pending_count != 0)
+        {
+            <pending-list-item number="@Model.Pending_count"></pending-list-item>
+        }
+        @{
+            bool userIsMember = false;
+            foreach (var participant in Model.Participants)
+            {
+                if (participant.Username == username)
+                {
+                    userIsMember = true;
+                    break;
+                }
+            }
+        }
+        </ul>
+        @if (userIsMember)
+        {
+            <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
+        }
+        else if (Model.Member_count < @Model.Max_member)
+        {
+            <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+        }
     }
 </section>
-}
 </div>
 @if (username == @Model.host.Username)
 {

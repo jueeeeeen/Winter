@@ -497,15 +497,15 @@ class TagSelect extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = `<div class="tag-col">
+            <tag-selector data-tag_name="Art"></tag-selector>
+            <tag-selector data-tag_name="Beauty"></tag-selector>
             <tag-selector data-tag_name="Entertain"></tag-selector>
+            <tag-selector data-tag_name="Food"></tag-selector>
+            <tag-selector data-tag_name="Hobby"></tag-selector>
+            <tag-selector data-tag_name="Pet"></tag-selector>
             <tag-selector data-tag_name="Sport"></tag-selector>
             <tag-selector data-tag_name="Study"></tag-selector>
-            <tag-selector data-tag_name="Hobby"></tag-selector>
             <tag-selector data-tag_name="Travel"></tag-selector>
-            <tag-selector data-tag_name="Art"></tag-selector>
-            <tag-selector data-tag_name="Music"></tag-selector>
-            <tag-selector data-tag_name="Beauty"></tag-selector>
-            <tag-selector data-tag_name="Pet"></tag-selector>
         </div>
         `;
   }
@@ -520,7 +520,6 @@ class TagSelect extends HTMLElement {
         const checkedCount = this.querySelectorAll("input:checked").length;
         if (checkedCount > 3) {
           checkbox.checked = false;
-          alert("you can only select up to 3 tags");
         }
       });
     });
@@ -541,10 +540,11 @@ class NumberInput extends HTMLElement {
   constructor() {
     super();
     this.name = this.getAttribute("data-name");
+    this.default = this.getAttribute("default-value");
     this.innerHTML = `
             <div class="number-input-container">
                 <button type="button" id="decrease">-</button>
-                <input type="text" name="${this.name}" id="number" value="1">
+                <input type="text" name="${this.name}" id="number" value=${this.default}>
                 <button type="button" id="increase">+</button>
             </div>
         `;
@@ -562,7 +562,7 @@ class NumberInput extends HTMLElement {
   updateValue(change) {
     let currentValue = parseInt(this.input.value) || 0;
     let newValue = currentValue + change;
-    if (newValue < 1) newValue = 1;
+    if (newValue < 0) newValue = 0;
     this.input.value = newValue;
   }
 

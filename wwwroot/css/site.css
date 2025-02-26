@@ -45,6 +45,26 @@ body {
   box-sizing: border-box;
 }
 
+body::-webkit-scrollbar {
+  width: 0.75em;
+  box-shadow: 0 0 5px 2px var(--shadow);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--blue80);
+  border-radius: 1em;
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--pink), var(--yellow), var(--blue80));
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--white);
+  border-radius: 1em;
+}
+
 input:focus, textarea:focus {
   outline: none;
 }

@@ -226,7 +226,12 @@ tag-filter {
     grid-area: tag;
     padding: 1% 0;
     contain: layout;
-    overflow: scroll;
+    overflow-x: scroll;
+    padding: 0.3em;
+}
+
+tag-filter::-webkit-scrollbar {
+    display: none;
 }
 
 .filter-options {

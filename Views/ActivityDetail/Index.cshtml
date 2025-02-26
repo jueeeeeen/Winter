@@ -19,6 +19,14 @@
             </span>
         </div>
     </header>
+    <ul>
+        <li class="flex">
+            @foreach (var tag in @Model.Tags)
+            {
+                <tag-display data-tag_name="@tag"></tag-display>
+            }
+        </li>
+    </ul>
     <div class="act-detail-title">
         <svg-bookmark></svg-bookmark>
         <h1><b>@Model.Title</b></h1>

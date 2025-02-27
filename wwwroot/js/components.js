@@ -1586,6 +1586,17 @@ class SVGChat extends BaseSVGElement {
 }
 customElements.define("svg-chat", SVGChat);
 
+class SVGSend extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML =
+    `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 10L1 19L19 10L1 1L4 10ZM4 10H10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+  }
+}
+customElements.define("svg-send", SVGSend);
+
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
@@ -1596,7 +1607,7 @@ customElements.define("req-tag", RequirementTag);
 customElements.define("act-card", ActivityCard);
 customElements.define("act-card-join-btn", ActCardJoinBtn);
 customElements.define("pagination-item", PaginationItem);
-customElements.define("act-detail-btn", ActDetailJoinBtn);
+customElements.define("act-detail-join-btn", ActDetailJoinBtn);
 customElements.define("act-detail-leave-btn", ActDetailLeaveBtn);
 customElements.define("all-act-banner", AllActBanner);
 customElements.define("view-review-btn", ViewReviewBtn);

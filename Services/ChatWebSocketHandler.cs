@@ -10,22 +10,56 @@ namespace Winter_Project.Services
 {
     public class WebSocketHandler
     {
-        private readonly Dictionary<string, WebSocket> _connections = new Dictionary<string, WebSocket>();
+        private static readonly Dictionary<int, Dictionary<string, WebSocket>> _group_connections = new();
+        private readonly IServiceScopeFactory _scopeFactory;
 
-        private readonly WinterContext _context;
-
-        public WebSocketHandler(WinterContext context)
+        public WebSocketHandler(IServiceScopeFactory scopeFactory)
         {
-            _context = context;
+            _scopeFactory = scopeFactory;
         }
 
-        public async Task HandleConnectionAsync(WebSocket webSocket, string username)
+        public async Task HandleConnectionAsync(WebSocket webSocket, int activity_id, string username)
         {
-            _connections.Add(username, webSocket);
-            await ReceiveMessagesAsync(webSocket, username);
+            // using (var scope = _scopeFactory.CreateScope())
+            //     {
+            //         var dbContext = scope.ServiceProvider.GetRequiredService<WinterContext>();
+
+            //         var chatMessage = new ChatMessageModel
+            //         {
+            //             Activity_id = activity_id,
+            //             Username = username,
+            //             Message = message,
+            //             Timestamp = DateTime.UtcNow
+            //         };
+
+            //         dbContext.ChatMessages.Add(chatMessage);
+            //         await dbContext.SaveChangesAsync(CancellationToken.None);
+            // }
+
+            if (!_group_connections.ContainsKey(activity_id))
+            {
+                _group_connections[activity_id] = new Dictionary<string, WebSocket>(); // Initialize group if missing
+            }
+
+            _group_connections[activity_id][username] = webSocket; // Add/Update user connection
+
+            //debug
+            Console.WriteLine($"User {username} joined activity {activity_id}");
+            Console.WriteLine("Current Connections:");
+            foreach (var (groupId, users) in _group_connections)
+            {
+                Console.WriteLine($"Activity ID: {groupId}");
+                foreach (var (user, socket) in users)
+                {
+                    Console.WriteLine($"  - Username: {user}, WebSocket State: {socket.State}");
+                }
+            }
+
+            await ReceiveMessagesAsync(webSocket, activity_id, username);
         }
 
-        private async Task ReceiveMessagesAsync(WebSocket webSocket, string username)
+
+        private async Task ReceiveMessagesAsync(WebSocket webSocket, int activity_id, string username)
         {
             var buffer = new byte[1024 * 4];
             WebSocketReceiveResult result;
@@ -37,41 +71,71 @@ namespace Winter_Project.Services
                     if (result.MessageType == WebSocketMessageType.Text)
                     {
                         var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                        await BroadcastMessageAsync(message, username);
+                        await BroadcastMessageAsync(activity_id, username, message);
                     }
                 }
             }
-            catch (Exception)
-            {
-                // Handle disconnection or error
-            }
             finally
             {
-                _connections.Remove(username); // Clean up when user disconnects
-            }
-        }
-
-        private async Task BroadcastMessageAsync(string message, string username)
-        {
-            // var chat_message = new ChatMessageModel
-            // {
-            //     Activity_id = 1,
-            //     Username = username,
-            //     Message = message,
-            //     Timestamp = DateTime.UtcNow
-            // };
-            // _context.Messages.Add(chat_message);
-            // await _context.SaveChangesAsync();
-
-            var buffer = Encoding.UTF8.GetBytes(username + ": " + message);
-            foreach (var connection in _connections.Values)
-            {
-                if (connection.State == WebSocketState.Open)
+                if (_group_connections.ContainsKey(activity_id))
                 {
-                    await connection.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                    _group_connections[activity_id].Remove(username); // Remove only the disconnected user
+                    // If the group is empty, remove it completely
+                    if (_group_connections[activity_id].Count == 0)
+                    {
+                        _group_connections.Remove(activity_id);
+                    }
                 }
             }
         }
-    }
 
+        private async Task BroadcastMessageAsync(int activity_id, string username, string message)
+        {
+
+            try
+            {
+                using (var scope = _scopeFactory.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<WinterContext>();
+
+                    var chatMessage = new ChatMessageModel
+                    {
+                        Activity_id = activity_id,
+                        Username = username,
+                        Message = message,
+                        Timestamp = DateTime.UtcNow
+                    };
+
+                    dbContext.ChatMessages.Add(chatMessage);
+                    await dbContext.SaveChangesAsync(CancellationToken.None);
+                }
+
+                var buffer = Encoding.UTF8.GetBytes($"{username}: {message}");
+                Console.WriteLine("Broadcasting message...");
+
+                // 🔹 Check if the group exists before accessing it
+                if (!_group_connections.ContainsKey(activity_id)) 
+                {
+                    Console.WriteLine($"No active connections for activity {activity_id}");
+                    return;
+                }
+
+                var connections = _group_connections[activity_id].Values.ToList();
+
+                foreach (var connection in connections)
+                {
+                    Console.WriteLine($"Checking connection {connection.State}");
+                    if (connection.State == WebSocketState.Open)
+                    {
+                        await connection.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                        Console.WriteLine("Message sent!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Database save error: {ex.Message}");
+            }
+        }
+    }
 }

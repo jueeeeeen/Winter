@@ -9,13 +9,13 @@
     const messageInput = document.getElementById('messageInput');
     const sendButton = document.getElementById('sendButton');
 
-    // Establish the WebSocket connection
     function initWebSocket() {
-        const userId = "User" + Math.floor(Math.random() * 1000); // Generate a random user ID for this example
-        socket = new WebSocket('ws://' + window.location.host + '/chat/OnConnected?userId=' + userId);
+        const urlParams = new URLSearchParams(window.location.search);
+        const activity_id = urlParams.get('activity_id');
+        socket = new WebSocket(`ws://localhost:5115/chat/OnConnected?activity_id=${activity_id}`);
         
         socket.onmessage = function (event) {
-            // Append the received message to the chat box
+            console.log("Message received: ", event.data);
             const message = event.data;
             const messageElement = document.createElement('div');
             messageElement.textContent = message;
@@ -36,13 +36,16 @@
     }
 
     // Send message when the Send button is clicked
-    sendButton.addEventListener('click', function () {
-        const message = messageInput.value;
-        if (message && socket.readyState === WebSocket.OPEN) {
-            socket.send(message); // Send the message to the server
-            messageInput.value = ''; // Clear the input field
-        }
-    });
+    sendButton.addEventListener('click', function (event) {
+    event.preventDefault();  // Prevent form submission or unwanted refresh
+    const message = messageInput.value;
+    if (message && socket.readyState === WebSocket.OPEN) {
+        socket.send(message);
+        messageInput.value = '';  // Clear input field
+    }
+    return false; // Ensure no default action happens
+});
+
 
     // Initialize WebSocket connection on page load
     window.onload = initWebSocket;

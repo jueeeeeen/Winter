@@ -127,25 +127,34 @@ else
         <pending-list-item number="@Model.Pending_count"></pending-list-item>
     }
     </ul>
-    @{
-        bool userIsMember = false;
-        foreach (var participant in Model.Participants)
-        {
-            if (participant.Username == username)
+    <div class="act-detail-btn-container">
+        @{
+            bool userIsMember = false;
+            foreach (var participant in Model.Participants)
             {
-                userIsMember = true;
-                break;
+                if (participant.Username == username)
+                {
+                    userIsMember = true;
+                    break;
+                }
             }
         }
-    }
-    @if (userIsMember)
-    {
-        <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
-    }
-    else if (Model.Member_count < @Model.Max_member)
-    {
-        <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
-    }
+        @if (userIsMember)
+        {
+            <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
+        }
+        else if (Model.Member_count < @Model.Max_member)
+        {
+            <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+        }
+        @if (userIsMember || username == @Model.host.Username) {
+            Console.WriteLine("show chat");
+            <a class="btn mb-w edge hover-lb-w act-detail-chat" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat>
+            </a>
+        }
+    </div>
+    
 </section>
 }
 </div>

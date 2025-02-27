@@ -1,0 +1,97 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    height: 640px;
+    width: 60%;
+    border-radius: 1.5em;
+    /* margin-top: 5em; */
+    margin: 3rem auto;
+}
+
+.message-container {
+    flex: 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0.75em;
+    overflow-y: auto;
+    justify-content: column-reverse;
+}
+
+.send-button svg {
+    transition: all 0.3s;    
+}
+
+.send-button:hover svg{
+    transform: translateX(10%);
+}
+
+.message-form {
+    display: flex;
+    border-top: 1px solid var(--gray60);
+    padding: 1.5em 0;
+    margin: 0 1.5em;
+    gap: 1em;
+}
+
+.message-form>input {
+    background-color: var(--gray50);
+    border: none;
+    flex: 1 1;
+    padding: 0 1.5em;
+}
+
+.chat-bubble {
+    display: grid;
+    column-gap: 0.75em;
+    width: 60%;
+    grid-template-columns: 3em auto;
+    grid-template-rows: 1.5em auto 1.5em;
+    grid-template-areas: 
+        "profile name"
+        "profile message"
+        ". date";
+}
+
+.chat-bb-profile {
+    grid-area: profile;
+    display: flex;
+    align-items: end;
+}
+
+.chat-bb-profile img {
+    width: 100%;
+}
+
+.chat-bb-name {
+    grid-area: name;
+}
+
+.chat-bb-message {
+    grid-area: message;
+    border-radius: 1em;
+    padding: 0.6em;
+    background-color: var(--gray50);
+}
+
+.chat-bb-date-time {
+    grid-area: date;
+    font-size: 0.85rem;
+}
+
+.chat-bubble.self {
+    grid-template-columns: 3em auto;
+    grid-template-rows: auto 1.5em;
+    grid-template-areas: 
+        ". message"
+        ". date";
+    align-self: end;
+}
+
+.chat-bb-message.self {
+    background-color: var(--blue40);
+}
+
+.chat-bb-date-time.self {
+    justify-self: end;
+}

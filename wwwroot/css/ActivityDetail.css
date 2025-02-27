@@ -283,9 +283,20 @@
     color: var(--gray70);
 }
 
-.act-detail-join-btn {
-    align-self: flex-end;
-    margin: auto;
+.act-detail-btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.act-detail-btn {
+    
+}
+
+.act-detail-chat {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 1;
 }
 
 .member-list-item-approval {

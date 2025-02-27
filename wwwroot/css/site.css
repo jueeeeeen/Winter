@@ -595,6 +595,7 @@ hr {
   height: 2.25em;
   padding: 0.45em 0.67em;
   font-size: 1.125rem;
+  gap: 0.5em;
 }
 
 .large {
@@ -624,15 +625,6 @@ hr {
     border: 2px solid var(--blue80);
     svg path {
       stroke: var(--blue80);
-    }
-  }
-
-  .w-bb-bb, .hover-w-bb-bb:hover {
-    background-color: var(--white);
-    color: var(--blue60);
-    border: 2px solid var(--blue60);
-    svg path {
-      stroke: var(--blue60);
     }
   }
 
@@ -701,6 +693,15 @@ hr {
     svg path {
       /* fill: var(--white); */
       stroke: var(--white);
+    }
+  }
+
+  .w-bb-bb, .hover-w-bb-bb:hover {
+    background-color: var(--white);
+    color: var(--blue60);
+    border: 2px solid var(--blue60);
+    svg path {
+      stroke: var(--blue60);
     }
   }
   
@@ -781,7 +782,7 @@ hr {
     }
   }
 
-  .rb-w, .hover-rb-w{
+  .rb-w, .hover-rb-w:hover{
     background: linear-gradient(to right, var(--pink), var(--yellow), var(--blue80));
     -webkit-text-fill-color: var(--white);
     text-shadow: var(--shadow);
@@ -790,7 +791,7 @@ hr {
     }
   }
 
-  .w-rb-rb, .hover-w-rb-rb {
+  .w-rb-rb, .hover-w-rb-rb:hover {
     position: relative;
     background-color: white;
     svg path {

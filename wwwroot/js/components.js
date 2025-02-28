@@ -1002,7 +1002,7 @@ class ActDetailJoinBtn extends HTMLElement {
     constructor() {
         super();
         this.activity_id = this.getAttribute("data-activity-id");
-        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb ani-bounce">join</button>`;
+        this.innerHTML = `<button class="btn large lb-w round act-detail-btn hover-w-bb-bb ani-bounce">join</button>`;
     }
     
     connectedCallback() {
@@ -1031,7 +1031,7 @@ class ActDetailLeaveBtn extends HTMLElement {
     constructor() {
         super();
         this.activity_id = this.getAttribute("data-activity-id");
-        this.innerHTML = `<button class="btn large r-w round act-detail-join-btn hover-w-r-r">leave</button>`;
+        this.innerHTML = `<button class="btn large r-w round act-detail-btn hover-w-r-r">leave</button>`;
     }
     
     connectedCallback() {
@@ -1059,7 +1059,7 @@ class ActDetailLeaveBtn extends HTMLElement {
 class ViewReviewBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y ani-bounce">view review</button>`;
+        this.innerHTML = `<button class="btn large y-w round act-detail-btn hover-w-y ani-bounce">view review</button>`;
     }
 }
 
@@ -1559,6 +1559,43 @@ class SVGMember extends BaseSVGElement {
   }
 }
 customElements.define("svg-member", SVGMember);
+
+class SVGChat extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML =
+    `<svg width="36" height="34" viewBox="0 0 44 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#filter0_d_1280_4167)">
+    <path d="M22.504 34.108C23.7698 34.0209 25.025 33.8172 26.254 33.4996C27.7719 33.9592 29.3741 34.0633 30.938 33.8038C31.0004 33.7961 31.0631 33.7914 31.126 33.7897C31.684 33.7897 32.416 34.1121 33.484 34.791V33.6749C33.4845 33.4804 33.5367 33.2896 33.6351 33.1224C33.7336 32.9551 33.8748 32.8175 34.044 32.7239C34.5093 32.4593 34.9393 32.1618 35.334 31.8314C36.89 30.5218 37.768 28.773 37.768 26.9235C37.768 26.3131 37.672 25.7046 37.482 25.1244C37.954 24.25 38.33 23.3373 38.61 22.3864C39.51 23.7262 39.994 25.3077 40 26.9235C40 29.4379 38.824 31.783 36.786 33.4976C36.4447 33.7837 36.088 34.0469 35.716 34.2873V36.9025C35.716 37.801 34.672 38.3188 33.936 37.7829C33.2386 37.266 32.5179 36.7819 31.776 36.3323C31.5617 36.2078 31.3399 36.0968 31.112 35.9999C30.4929 36.0922 29.8679 36.1387 29.242 36.1389C26.702 36.1389 24.354 35.3793 22.504 34.108ZM9.062 28.8798C5.854 26.1741 4 22.4851 4 18.5322C4 10.4572 11.664 4 21.022 4C30.382 4 38.048 10.4552 38.048 18.5322C38.048 26.6072 30.382 33.0624 21.022 33.0624C19.97 33.0624 18.9333 32.9818 17.912 32.8206C17.472 32.9234 15.708 33.965 13.168 35.8085C12.248 36.4773 10.944 35.8326 10.944 34.7064V30.2478C10.2852 29.8376 9.65693 29.3797 9.064 28.8778M17.974 30.0705C18.0513 30.0705 18.1293 30.0766 18.208 30.0887C19.128 30.2418 20.066 30.319 21.022 30.3204C28.928 30.3204 35.254 24.9914 35.254 18.5302C35.254 12.071 28.928 6.74204 21.024 6.74204C13.12 6.74204 6.79 12.075 6.79 18.5322C6.79 21.655 8.27 24.5965 10.882 26.7986C11.5407 27.352 12.258 27.849 13.034 28.2895C13.2445 28.4072 13.4202 28.5791 13.5432 28.7875C13.6662 28.996 13.732 29.2337 13.734 29.4762V32.047C15.744 30.7072 17.066 30.0705 17.974 30.0705Z" fill="#DFF9FF"/>
+    <path d="M14.124 21.0002C14.7207 21.0002 15.293 20.7614 15.715 20.3364C16.1369 19.9113 16.374 19.3348 16.374 18.7337C16.374 18.1325 16.1369 17.556 15.715 17.131C15.293 16.7059 14.7207 16.4671 14.124 16.4671C13.5273 16.4671 12.955 16.7059 12.533 17.131C12.1111 17.556 11.874 18.1325 11.874 18.7337C11.874 19.3348 12.1111 19.9113 12.533 20.3364C12.955 20.7614 13.5273 21.0002 14.124 21.0002ZM21.438 21.0002C22.0347 21.0002 22.607 20.7614 23.029 20.3364C23.4509 19.9113 23.688 19.3348 23.688 18.7337C23.688 18.1325 23.4509 17.556 23.029 17.131C22.607 16.7059 22.0347 16.4671 21.438 16.4671C20.8413 16.4671 20.269 16.7059 19.847 17.131C19.4251 17.556 19.188 18.1325 19.188 18.7337C19.188 19.3348 19.4251 19.9113 19.847 20.3364C20.269 20.7614 20.8413 21.0002 21.438 21.0002ZM28.75 21.0002C29.3467 21.0002 29.919 20.7614 30.341 20.3364C30.7629 19.9113 31 19.3348 31 18.7337C31 18.1325 30.7629 17.556 30.341 17.131C29.919 16.7059 29.3467 16.4671 28.75 16.4671C28.1533 16.4671 27.581 16.7059 27.159 17.131C26.7371 17.556 26.5 18.1325 26.5 18.7337C26.5 19.3348 26.7371 19.9113 27.159 20.3364C27.581 20.7614 28.1533 21.0002 28.75 21.0002Z" fill="#DFF9FF"/>
+    </g>
+    <defs>
+    <filter id="filter0_d_1280_4167" x="0" y="0" width="44" height="42" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+    <feOffset/>
+    <feGaussianBlur stdDeviation="2"/>
+    <feComposite in2="hardAlpha" operator="out"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0"/>
+    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1280_4167"/>
+    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1280_4167" result="shape"/>
+    </filter>
+    </defs>
+    </svg>`;
+  }
+}
+customElements.define("svg-chat", SVGChat);
+
+class SVGSend extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML =
+    `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 10L1 19L19 10L1 1L4 10ZM4 10H10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+  }
+}
+customElements.define("svg-send", SVGSend);
 
 customElements.define("search-bar", SearchBar);
 customElements.define("tag-selector", TagsSelector);

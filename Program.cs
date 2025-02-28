@@ -11,6 +11,8 @@ builder.Services.AddScoped<UserService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddSingleton<WebSocketHandler>();
+
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!); 
 
@@ -71,6 +73,27 @@ app.UseRouting();
 // Enable authentication and authorization
 app.UseAuthentication();
 app.UseAuthorization();
+
+//Enable WebSockets
+app.UseWebSockets();
+// app.Map("/chat/OnConnected", async context =>
+// {
+//     var token = context.Request.Cookies["token"];
+
+//     // 🔹 Get activity_id from query parameters
+//     if (!context.Request.Query.ContainsKey("activity_id") || !int.TryParse(context.Request.Query["activity_id"], out int activity_id) || string.IsNullOrEmpty(token))
+//     {
+//         context.Response.StatusCode = 400; // Bad Request
+//         await context.Response.WriteAsync("Missing or invalid activity_id");
+//         return;
+//     }
+
+//     var username = JwtHelper.DecodeJwt(token);
+//     var webSocketHandler = context.RequestServices.GetRequiredService<WebSocketHandler>();
+//     var webSocket = await context.WebSockets.AcceptWebSocketAsync();
+
+//     await webSocketHandler.HandleConnectionAsync(webSocket, activity_id, username);
+// });
 
 // Map controller routes for MVC
 app.MapControllerRoute(

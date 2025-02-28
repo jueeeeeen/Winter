@@ -15,6 +15,8 @@ namespace Winter_Project.Models
         public DbSet<ActivityModel> Activities { get; set; }
         public DbSet<RequirementModel> Requirements { get; set; }
         public DbSet<ParticipantModel> Participants { get; set; }
+        public DbSet<ChatMessageModel> ChatMessages { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // ✅ แปลง DateOnly เป็น DateTime

@@ -1,4 +1,4 @@
-﻿@{
+﻿﻿@{
     ViewData["Title"] = "Activity Detail";
     var username = ViewBag.Username;
 }
@@ -107,6 +107,12 @@
             }
         }
         </ul>
+        <div class="act-detail-btn-container">
+            <a class="btn mb-w edge hover-lb-w act-detail-chat" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat>
+            </a>
+        </div>
+        
     }
     else 
     {
@@ -138,14 +144,19 @@
             }
         }
         </ul>
+        <div class="act-detail-btn-container">
         @if (userIsMember)
         {
             <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
+            <a class="btn mb-w edge hover-lb-w act-detail-chat" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat>
+            </a>
         }
         else if (Model.Member_count < @Model.Max_member)
         {
             <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
         }
+        </div>
     }
 </section>
 </div>

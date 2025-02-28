@@ -1,6 +1,5 @@
 .home {
     position: absolute;
-    top: 64px;
     left: 0;
 }
 
@@ -202,3 +201,52 @@
     height: auto;
 }
 
+@media screen and (max-width: 480px) {
+
+    .home {
+        position: absolute;
+        left: 0;
+    }
+    
+    .home-background {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        left: 0;
+    }
+
+    .home-picture {
+        margin: 20px 0px 20px 0px;
+        background-size: cover;
+        width: 90vw;
+        height: 90vh;
+    }
+
+    .home-button {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .home-big-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .home-text {
+        row-gap: 20px;
+    }
+
+    .home-button {
+        gap: 20px;
+    }
+
+    .home-scroll {
+        transform: translateY(550px);
+    }
+}

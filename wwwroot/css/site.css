@@ -1187,4 +1187,8 @@ header.act-card-profile-info{
   .act-card-profile-info {
     font-size: 1.125rem;
   }
+
+  .animated-bg {
+    animation: bg-slide 30s infinite alternate linear;
+  }
 }

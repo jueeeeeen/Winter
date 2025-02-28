@@ -54,6 +54,7 @@
     display: flex;
     flex-direction: column;
     padding: 1em 1em 2em 1em;
+    background-color: var(--white);
 }
 
 .act-detail-requirement {
@@ -285,18 +286,26 @@
 
 .act-detail-btn-container {
     display: flex;
+    gap: 0.2em;
     align-items: center;
     justify-content: center;
 }
 
-.act-detail-btn {
-    
+.act-detail-btn-container>* {
+    flex: 0 1 50%;
 }
 
-.act-detail-chat {
-    height: 100%;
-    width: auto;
-    aspect-ratio: 1;
+.act-detial-leave-btn {
+    min-width: 100%;
+}
+
+.act-detail-chat{
+    min-width: 0em;
+}
+
+.act-detail-chat svg{
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .member-list-item-approval {

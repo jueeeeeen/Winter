@@ -1031,7 +1031,7 @@ class ActDetailLeaveBtn extends HTMLElement {
     constructor() {
         super();
         this.activity_id = this.getAttribute("data-activity-id");
-        this.innerHTML = `<button class="btn large r-w round act-detail-btn hover-w-r-r">leave</button>`;
+        this.innerHTML = `<button class="act-detial-leave-btn large btn r-w round hover-w-r-r">leave<svg-logout></svg-logout></button>`;
     }
     
     connectedCallback() {

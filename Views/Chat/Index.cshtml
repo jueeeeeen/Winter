@@ -1,43 +1,93 @@
+@model Winter_Project.ViewModels.ChatViewModel
+
 @{
     ViewData["Title"] = "Chat";
-    @model List<Winter_Project.Models.ChatMessageModel>
 
     var token = Context.Request.Cookies["token"];
     var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+    var host = (string)ViewData["host"];
+    var activity_title = (string)ViewData["activity_title"];
 }
 
-<div class="chat-container">
-    <div class="message-container" id="message-container">
-        @foreach (var message in Model)
+<div class="chat-page-container">
+    <h1 class="chat-activity-title">
+        <svg-bookmark></svg-bookmark>
+        @activity_title
+    </h1>
+    <section class="act-detail-member edge shadow">
+        <header>
+            <h2 class="letter-spacing">
+                <svg-member></svg-member>
+                Members
+            </h2>
+            <span>(@Model.Group_member.Count())</span>
+        </header>
+        @if (Model.Group_member.Any())
         {
-            @if (message.Username == username){
-                <div class="chat-bubble self">
-                    <span class="chat-bb-message self">
-                        @message.Message
-                    </span>
-                    <span class="chat-bb-date-time self">@message.Timestamp</span>
-                </div>
+            <ul>
+            @foreach (var member in Model.Group_member)
+            {
+                @if (member.Role == "host")
+                {
+                    <host-list-item name="@member.First_name @member.Last_name"></host-list-item>
+                }
+                @if (member.Role == "member")
+                {
+                    <member-list-item name="@member.First_name @member.Last_name"></member-list-item>
+                }
             }
-            else {
-                <div class="chat-bubble">
-                    <div class="chat-bb-profile">
-                        <img src="../../assets/profile-g.png">
-                    </div>
-                    <strong class="chat-bb-name">@message.Username</strong>
-                    <span class="chat-bb-message">
-                        @message.Message
-                    </span>
-                    <span class="chat-bb-date-time">@message.Timestamp</span>
-                </div>
-            }
+            </ul>
         }
-    </div>
-    <form class="message-form">
-        <input class="round" type="text" placeholder="" id="message-input">
-        <button class="btn medium round bb-w hover-lb-w-glow send-button" type="button" id="send-button">
-            send<svg-send></svg-send>
-        </button>
-    </form>
+    </section>
+    <section class="chat-container">
+        <header class="chat-header">
+            <strong>
+                <svg-bookmark></svg-bookmark>
+                @activity_title (@Model.Group_member.Count())
+            </strong>
+            <div class="pseudo-btn">
+                <input type="checkbox" id="view-member-check">
+                <label class="btn view-member-btn" for="view-member-check">
+                    <svg-member></svg-member>
+                    <svg-x></svg-x>
+                </label>
+            </div>
+        </header>
+        <div class="message-container" id="message-container">
+            @foreach (var message in Model.Messages)
+            {
+                @if (message.Username == username){
+                    <div class="chat-bubble self">
+                        <span class="chat-bb-message self">
+                            @message.Message
+                        </span>
+                        <span class="chat-bb-date-time self">@message.Timestamp</span>
+                    </div>
+                }
+                else {
+                    <div class="chat-bubble">
+                        <div class="chat-bb-profile">
+                            <img src="../../assets/profile-g.png">
+                            @if (message.Username == host) {
+                                <img class="crown" src="../../assets/crown.svg" />
+                            }
+                        </div>
+                        <strong class="chat-bb-name">@message.First_name @message.Last_name</strong>
+                        <span class="chat-bb-message">
+                            @message.Message
+                        </span>
+                        <span class="chat-bb-date-time">@message.Timestamp</span>
+                    </div>
+                }
+            }
+        </div>
+        <form class="message-form">
+            <input class="round" type="text" placeholder="" id="message-input">
+            <button class="btn medium round bb-w hover-lb-w-glow send-button" type="button" id="send-button">
+                send<svg-send></svg-send>
+            </button>
+        </form>
+    </section>
 </div>
 
 <script>
@@ -91,7 +141,7 @@
                     <div class="chat-bb-profile">
                         <img src="../../assets/profile-g.png">
                     </div>
-                    <strong class="chat-bb-name">${message.Username}</strong>
+                    <strong class="chat-bb-name">${message.Name}</strong>
                     <span class="chat-bb-message">${message.Message}</span>
                     ${timestamp}
                 </div>
@@ -114,6 +164,14 @@
     });
 
     window.onload = initWebSocket;
+
+    const member_section = document.querySelector(".act-detail-member");
+    const view_member_btn = document.querySelector("#view-member-check");
+
+    view_member_btn.addEventListener("change", () => {
+        member_section.classList.toggle("show");
+    });
+
 </script>
 
 @* chat?activity_id=1:509 WebSocket connection established

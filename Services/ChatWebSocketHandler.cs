@@ -102,9 +102,23 @@ namespace Winter_Project.Services
             {
                 var now = DateTime.UtcNow;
                 Console.WriteLine(now);
+
+                string first_name = "", last_name = "";
+
                 using (var scope = _scopeFactory.CreateScope())
                 {
                     var dbContext = scope.ServiceProvider.GetRequiredService<WinterContext>();
+
+                    // Fetch User Info First
+                    var userInfo = dbContext.Users
+                        .Where(u => u.Username == username)
+                        .Select(u => new { u.FirstName, u.LastName })
+                        .FirstOrDefault();
+
+                    first_name = userInfo?.FirstName ?? "";
+                    last_name = userInfo?.LastName ?? "";
+
+                    // Insert Chat Message AFTER Retrieving User Info
                     var chat_message = new ChatMessageModel
                     {
                         Activity_id = activity_id,
@@ -112,40 +126,46 @@ namespace Winter_Project.Services
                         Message = message,
                         Timestamp = now
                     };
+
                     dbContext.ChatMessages.Add(chat_message);
                     await dbContext.SaveChangesAsync(CancellationToken.None);
                 }
 
+                // Construct JSON Message
                 var chatMessageJson = new
                 {
                     Username = username,
+                    Name = $"{first_name} {last_name}".Trim(),
                     Message = message,
-                    Timestamp = now
+                    Timestamp = now.ToString("dd MMM yyyy HH:mm"),
                 };
+
                 var jsonMessage = JsonSerializer.Serialize(chatMessageJson);
-
                 var buffer = Encoding.UTF8.GetBytes(jsonMessage);
+                var bufferSegment = new ArraySegment<byte>(buffer);
 
-                if (!_group_connections.ContainsKey(activity_id)) 
+                // Check if group exists before accessing
+                if (!_group_connections.TryGetValue(activity_id, out var connectionsDict))
                 {
                     return;
                 }
 
-                var connections = _group_connections[activity_id].Values.ToList();
+                var connections = connectionsDict.Values.ToList();
 
                 foreach (var connection in connections)
                 {
                     if (connection.State == WebSocketState.Open)
                     {
-                        await connection.SendAsync(new ArraySegment<byte>(buffer), WebSocketMessageType.Text, true, CancellationToken.None);
+                        await connection.SendAsync(bufferSegment, WebSocketMessageType.Text, true, CancellationToken.None);
                         Console.WriteLine("Message sent!");
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Database save error: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
+
         }
     }
 }

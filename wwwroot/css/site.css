@@ -47,21 +47,40 @@ body {
 
 body::-webkit-scrollbar {
   width: 0.75em;
+  background-color: var(--white);
   box-shadow: 0 0 5px 2px var(--shadow);
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: var(--blue80);
+  background-color: var(--blue60);
   border-radius: 1em;
   width: 0.5em;
 }
 
 body::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, var(--pink), var(--yellow), var(--blue80));
+  background-color: var(--blue80);
 }
 
 body::-webkit-scrollbar-track {
-  background: var(--white);
+  border-radius: 1em;
+}
+
+::-webkit-scrollbar {
+  width: 0.5em;
+  background-color: var(--gray50);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--blue40);
+  border-radius: 1em;
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blue70);
+}
+
+::-webkit-scrollbar-track {
   border-radius: 1em;
 }
 
@@ -85,19 +104,7 @@ html{
 
 main {
   margin: 4rem 10vw 0;
-}
-
-.loading-bg {
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  /* background-color: rgba(255, 255, 255, 0.5); */
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  max-height: calc(100vh - 4rem);
 }
 
 @media screen and (max-width: 480px) {
@@ -325,7 +332,7 @@ main {
 }
 
 .profile_dropdown {
-  width: 15vw;
+  width: 230px;
   height: fit-content;
   padding: 0 1em;
   position: absolute;
@@ -410,15 +417,15 @@ main {
 }
 
 .noti-dropdown-container{
-  width: 18vw;
-  height: 20vw;
+  width: 270px;
+  height: 310px;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   position: absolute;
   right: 10vw;
   display: none;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .noti-header {

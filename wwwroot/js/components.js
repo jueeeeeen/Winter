@@ -120,7 +120,7 @@ class TagsSelector extends HTMLElement {
   constructor() {
     super();
     this.tag_name = this.getAttribute("data-tag_name");
-    this.innerHTML = `<div class="pseudo-btn">
+    this.innerHTML = `<div class="pseudo-btn tag-show">
             <input type="checkbox" name="Tags" value="${this.tag_name}" id="tag_${this.tag_name}">
             <label for="tag_${this.tag_name}" class="btn tag-selector round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;

@@ -1,20 +1,18 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+// using System.Text.Json.Serialization;
 
 namespace Winter_Project.Models
 {
     public class ReviewModel
     {
         [Key]
-        public int ReviewId { get; set; }
-        
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public UserModel Users {get; set;} = new UserModel();
-        
-        public int ActivityId { get; set; }
-        [ForeignKey("ActivityId")]
-        public ActivityModel Activities {get; set;} = new ActivityModel();
+        public int Review_id { get; set; }
+        [ForeignKey("User_id")]
+        public int User_id { get; set; }
+        public int Reviewed_user { get; set; }
+        [ForeignKey("Activity_id")]
+        public int Activity_id { get; set; }
         [Required(ErrorMessage = "Rating is required")]
         [Range(0, 5)]
         public float Rating {get; set;} 

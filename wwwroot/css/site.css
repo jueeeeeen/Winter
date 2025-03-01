@@ -923,7 +923,7 @@ header.act-card-profile-info{
   display: block;
 }
 
-.comment-card {
+/* .comment-card {
   width: 1067px;
   height: 169px;
   margin: 10px;
@@ -985,4 +985,4 @@ header.act-card-profile-info{
 
 .comment-from a{
   color: var(--blue40);
-}
+} */

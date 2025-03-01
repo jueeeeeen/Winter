@@ -1,6 +1,10 @@
 @{
     ViewData["Title"] = "Activity Review";
+    var activity = ViewData["Activity"] as dynamic;
+    var reviews = ViewData["Reviews"] as dynamic;
 }
+
+@model dynamic
 
 <header>
     <div class="header-container">
@@ -11,23 +15,69 @@
     <div class="banner">
         <div class="select-member">
             <label for="">Select Member</label>
-        <select name="" id="">
-            <option value=""></option>
-            <option value="">Supakarn</option>
-        </select>
+            <select name="" id="reviewedUser" onchange="getUserReviews()">
+                <option value="all"></option>
+                @foreach (var participant in Model.Participants)
+                {
+                    <option value="@participant.User.Id">
+                        @participant.User.FirstName @participant.User.LastName
+                    </option>
+                }
+            </select>
         </div>
         <div class="review-count">
-            <p>2/5 reviewed</p>
+            <span>@Model.Participants.Count/@Model.Max_member reviewed</span>
         </div>
     </div>
+</header>
 
+<div class="comment-container">
     <div class="comment">
         <div class="comment-header">
             <p>All comment</p>
         </div>
-    </div>
+        <div id="reviewList">
+            @if (reviews == null)
+            {
+                <p>No Reviews</p>
+            }
+            else
+            {
+                @foreach (var review in reviews)
+                {
+                    <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
+                        <div class="user-info">
+                            <div class="comment-profile"><img src="../../assets/profile-g.png" alt="" /></div>
+                            <div class="comment-details">
+                                <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
+                                <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
+                                <span class="user-comment">@review.Comment</span>
+                            </div>
+                        </div>
 
-    <script>
-        try
-    </script>
-</header>
+                        <div class="comment-rating">
+                            <p>Rating : @review.Rating</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script>
+    let allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
+
+    function getUserReviews() {
+        let selectedUser = document.getElementById("reviewedUser").value;
+        let reviewList = document.getElementById("reviewList");
+
+        reviewList.innerHTML = "";
+
+        let filtered = selectedUser === "all"
+            ? allReviews
+            : allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
+
+        filtered.forEach(review => reviewList.appendChild(review));
+    }
+</script>

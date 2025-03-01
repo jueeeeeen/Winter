@@ -37,7 +37,7 @@ namespace Winter_Project.Models
             .HasOne<ActivityModel>()
             .WithMany(a => a.Participants)
             .HasForeignKey(p => p.Activity_id);
-
+            
             base.OnModelCreating(modelBuilder);
         }
     }

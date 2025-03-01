@@ -9,7 +9,6 @@
     grid-template-areas:
         "title title"
         "member chat";
-    margin-top: 1em;
 }
 
 .act-detail-member {
@@ -95,7 +94,8 @@
     display: flex;
     flex-direction: column;
     padding: 0.75em;
-    overflow-y: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
     justify-content: column-reverse;
     gap: 0.75em;
 }
@@ -126,8 +126,8 @@
 .chat-bubble {
     display: grid;
     column-gap: 0.75em;
-    max-width: 60%;
-    grid-template-columns: 3em auto;
+    max-width: 100%;
+    grid-template-columns: 3em calc(100% - 3em);
     grid-template-rows: 1.5em auto 1.5em;
     grid-template-areas: 
         "profile name"
@@ -168,6 +168,10 @@
     padding: 0.4em 0.75em;
     background-color: var(--gray50);
     width: fit-content;
+    max-width: 60%;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .chat-bb-date-time {
@@ -177,21 +181,21 @@
 }
 
 .chat-bubble.self {
-    grid-template-columns: 3em auto;
+    grid-template-columns: 3em calc(100% - 3em);
     grid-template-rows: auto 1.5em;
     grid-template-areas: 
         ". message"
         ". date";
-    align-self: end;
+    justify-content: flex-end;
 }
 
 .chat-bb-message.self {
     background-color: var(--blue40);
-    justify-self: end;
+    justify-self: flex-end;
 }
 
 .chat-bb-date-time.self {
-    justify-self: end;
+    justify-self: flex-end;
 }
 
 @media screen and (max-width: 480px) {

@@ -21,6 +21,7 @@
                 Members
             </h2>
             <span>(@Model.Group_member.Count())</span>
+            <svg-x></svg-x>
         </header>
         @if (Model.Group_member.Any())
         {
@@ -49,7 +50,6 @@
                 <input type="checkbox" id="view-member-check">
                 <label class="btn view-member-btn" for="view-member-check">
                     <svg-member></svg-member>
-                    <svg-x></svg-x>
                 </label>
             </div>
         </header>
@@ -167,9 +167,14 @@
 
     const member_section = document.querySelector(".act-detail-member");
     const view_member_btn = document.querySelector("#view-member-check");
+    const close_view_member_btn = document.querySelector(".act-detail-member svg-x");
 
     view_member_btn.addEventListener("change", () => {
-        member_section.classList.toggle("show");
+        member_section.classList.toggle("slide-in");
+    });
+
+    close_view_member_btn.addEventListener("click", () => {
+        member_section.classList.toggle("slide-in");
     });
 
 </script>

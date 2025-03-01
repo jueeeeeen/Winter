@@ -1,7 +1,7 @@
 .chat-page-container {
     display: grid;
     margin: 0 auto;
-    max-height: 96.5%;
+    max-height: 90vh;
     width: 90%;
     column-gap: 0.5em;
     grid-template-rows: 15% 85%;
@@ -12,8 +12,15 @@
     margin-top: 1em;
 }
 
-.chat-member {
+.act-detail-member {
     grid-area: member;
+}
+
+
+.act-detail-member svg-x{
+    display: none !important;
+    position: absolute;
+    right: 1em;
 }
 
 .chat-activity-title {
@@ -69,22 +76,10 @@
     fill: var(--blue60);
 }
 
-#view-member-check:checked ~ label > svg-x {
-    display: inline-block !important;
-}
-
-#view-member-check:checked ~ label > svg-member {
-    display: none !important;
-}
-
 .view-member-btn {
     width: 2em;
     height: 2em;
     display: none;
-}
-
-.view-member-btn svg-x{
-    display: none !important;
 }
 
 .view-member-btn svg{
@@ -200,7 +195,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .act-detail-member, .chat-activity-title {
+    .chat-activity-title {
         display: none;
     }
 
@@ -221,17 +216,27 @@
     }
 
     .act-detail-member {
+        margin: 0;
         position: absolute;
         transform: translateX(-50%);
-        top: 2em;
-        left: 51%;
+        left: -200%;
         width: 101%;
-        height: calc(100% - 3em);
+        top: 0;
+        height: 100%;
         z-index: 10;
-        display: none;
+        transition: all 0.3s;
+    }
+
+    .act-detail-member header{
+        font-size: 1rem;
+        justify-content: start;
+    }
+
+    .act-detail-member svg-x{
+        display: block !important;
     }
 }
 
-.show {
-    display: flex;
+.slide-in {
+    left: 51%;
 }

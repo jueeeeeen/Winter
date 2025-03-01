@@ -85,12 +85,14 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 1rem 1%;
+    gap: 1rem;
 
 }
 
 #all-activities-container>* {
-    flex: 0 1 32.5%;
+    flex: 1 1 calc(33.33% - 1rem);
+    max-width: calc(33.33% - 1rem);
+    /* min-width: 300px; */
 }
 
 .not-found {
@@ -171,7 +173,7 @@
 .search-bar>input {
     border: none;
     padding: 0.67em 1em;
-    flex-grow: 1;
+    flex: 1 0;
     height: 100%;
 }
 
@@ -207,18 +209,21 @@
 
 .display-option-container {
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 50% 50%;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
     grid-template-areas:
         "search search"
         "tag filters";
     align-items: center;
     row-gap: 1em;
+    column-gap: 0.5em;
     margin-bottom: 2em;
+    max-width: 100%;
 }
 
 search-bar {
     grid-area: search;
+    width: 100%;
 }
 
 tag-filter {
@@ -227,6 +232,7 @@ tag-filter {
     contain: layout;
     overflow-x: scroll;
     padding: 0.3em;
+    max-width: 100%;
 }
 
 tag-filter::-webkit-scrollbar {
@@ -240,13 +246,15 @@ tag-filter::-webkit-scrollbar {
     align-items: flex-end;
     justify-content: end;
     position: relative;
+    z-index: 2;
+    /* width: fit-content; */
 }
 
 .filter-btn {
     display: flex;
     justify-content: center;
-    width: 2.5em;
-    height: 2.5em;
+    width: 2.25em;
+    height: 2.25em;
     border-radius: 0.3em;
     font-size: 1.1em;
     padding: 0 0.4em;
@@ -264,13 +272,13 @@ tag-filter::-webkit-scrollbar {
 }
 
 .display-sort:hover::after {
-    transition: all 0.15s;
+    transition: all 0.3s 0.05s;
     content: "sort by";
     
 }
 
 .display-filter:hover::after {
-    transition: all 0.15s;
+    transition: all 0.3s 0.05s;
     content: "filter by";
 }
 
@@ -284,7 +292,7 @@ tag-filter::-webkit-scrollbar {
     flex-direction: column;
     right: 0;
     top: 110%;
-    width: max(15vw, 200px);
+    width: max(15vw, 220px);
     background-color: var(--white);
     border-radius: 0.5em;
     overflow: hidden;
@@ -827,10 +835,18 @@ tag-filter::-webkit-scrollbar {
     animation: 2.74s linear infinite foot;
 }
 
+@media screen and (max-width: 768px) {
+    #all-activities-container>* {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+}
+
 
 @media screen and (max-width: 480px) {
     #all-activities-container>* {
-        flex: 1 1;
+        flex: 1 1 100%;
+        max-width: none;
     }
 
     .display-option-container {

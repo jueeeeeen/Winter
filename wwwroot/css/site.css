@@ -104,7 +104,6 @@ html{
 
 main {
   margin: 4rem 10vw 0;
-  max-height: calc(100vh - 4rem);
 }
 
 @media screen and (max-width: 480px) {
@@ -693,16 +692,6 @@ hr {
     }
   }
 
-  .bb-w, .hover-bb-w:hover {
-    background-color: var(--blue60);
-    color: var(--white);
-    box-shadow: 0px 0px 4px 1px var(--shadow);
-    svg path {
-      /* fill: var(--white); */
-      stroke: var(--white);
-    }
-  }
-
   .w-bb-bb, .hover-w-bb-bb:hover {
     background-color: var(--white);
     color: var(--blue60);
@@ -712,6 +701,15 @@ hr {
     }
   }
   
+  .bb-w, .hover-bb-w:hover {
+    background-color: var(--blue60);
+    color: var(--white);
+    box-shadow: 0px 0px 4px 1px var(--shadow);
+    svg path {
+      /* fill: var(--white); */
+      stroke: var(--white);
+    }
+  }
   .r-w, .hover-r-w:hover {
     background-color: var(--red);
     color: var(--white);

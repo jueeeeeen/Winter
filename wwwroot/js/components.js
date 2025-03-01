@@ -134,10 +134,14 @@ class TagFilter extends HTMLElement {
     this.innerHTML =
     `<form class="flex gap" id="tag_filter_form">
       <tag-selector data-tag_name="All"></tag-selector>
+      <tag-selector data-tag_name="Art"></tag-selector>
+      <tag-selector data-tag_name="Beauty"></tag-selector>
       <tag-selector data-tag_name="Entertain"></tag-selector>
+      <tag-selector data-tag_name="Food"></tag-selector>
+      <tag-selector data-tag_name="Hobby"></tag-selector>
+      <tag-selector data-tag_name="Pet"></tag-selector>
       <tag-selector data-tag_name="Sport"></tag-selector>
       <tag-selector data-tag_name="Study"></tag-selector>
-      <tag-selector data-tag_name="Hobby"></tag-selector>
       <tag-selector data-tag_name="Travel"></tag-selector>
     </form>`;
   }

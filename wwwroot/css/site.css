@@ -589,6 +589,10 @@ hr {
   user-select: none;
 }
 
+.tag-show {
+  width: 100%;
+}
+
 .small {
   min-width: 5.625em;
   height: 1.875em;
@@ -1187,5 +1191,9 @@ header.act-card-profile-info{
 
   .act-card-profile-info {
     font-size: 1.125rem;
+  }
+
+  .animated-bg {
+    animation: bg-slide 30s infinite alternate linear;
   }
 }

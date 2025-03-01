@@ -134,10 +134,14 @@ class TagFilter extends HTMLElement {
     this.innerHTML =
     `<form class="flex gap" id="tag_filter_form">
       <tag-selector data-tag_name="All"></tag-selector>
+      <tag-selector data-tag_name="Art"></tag-selector>
+      <tag-selector data-tag_name="Beauty"></tag-selector>
       <tag-selector data-tag_name="Entertain"></tag-selector>
+      <tag-selector data-tag_name="Food"></tag-selector>
+      <tag-selector data-tag_name="Hobby"></tag-selector>
+      <tag-selector data-tag_name="Pet"></tag-selector>
       <tag-selector data-tag_name="Sport"></tag-selector>
       <tag-selector data-tag_name="Study"></tag-selector>
-      <tag-selector data-tag_name="Hobby"></tag-selector>
       <tag-selector data-tag_name="Travel"></tag-selector>
     </form>`;
   }
@@ -1031,7 +1035,7 @@ class ActDetailLeaveBtn extends HTMLElement {
     constructor() {
         super();
         this.activity_id = this.getAttribute("data-activity-id");
-        this.innerHTML = `<button class="btn large r-w round act-detail-btn hover-w-r-r">leave</button>`;
+        this.innerHTML = `<button class="act-detial-leave-btn large btn r-w round hover-w-r-r">leave<svg-logout></svg-logout></button>`;
     }
     
     connectedCallback() {

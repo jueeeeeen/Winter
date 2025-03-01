@@ -1,12 +1,93 @@
+.chat-page-container {
+    display: grid;
+    margin: 0 auto;
+    max-height: 90vh;
+    width: 90%;
+    column-gap: 0.5em;
+    grid-template-rows: 15% 85%;
+    grid-template-columns: 30% 70%;
+    grid-template-areas:
+        "title title"
+        "member chat";
+    margin-top: 1em;
+}
+
+.act-detail-member {
+    grid-area: member;
+}
+
+
+.act-detail-member svg-x{
+    display: none !important;
+    position: absolute;
+    right: 1em;
+}
+
+.chat-activity-title {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    padding-left: 1em;
+    font-size: 2.5em;
+    gap: 0.2em;
+}
+
 .chat-container {
+    grid-area: chat;
     display: flex;
     flex-direction: column;
     background-color: var(--white);
-    height: 640px;
-    width: 60%;
+    height: 100%;
+    width: 100%;
     border-radius: 1.5em;
-    /* margin-top: 5em; */
-    margin: 3rem auto;
+    overflow: hidden;
+}
+
+.chat-header {
+    border-bottom: 1px solid var(--gray60);
+    height: 3em;
+    padding: 0.5em 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header strong{
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.chat-header strong svg{
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.chat-header .view-member-btn {
+    aspect-ratio: 1;
+    background: none;
+}
+
+.chat-header .view-member-btn:hover {
+    transform: translateY(-5%);
+}
+
+.chat-header .view-member-btn:hover svg path{
+    fill: var(--blue60);
+}
+
+.view-member-btn {
+    width: 2em;
+    height: 2em;
+    display: none;
+}
+
+.view-member-btn svg{
+    height: 2em;
+}
+
+.view-member-btn svg path{
+    fill: var(--blue80);
 }
 
 .message-container {
@@ -16,6 +97,7 @@
     padding: 0.75em;
     overflow-y: auto;
     justify-content: column-reverse;
+    gap: 0.75em;
 }
 
 .send-button svg {
@@ -29,7 +111,7 @@
 .message-form {
     display: flex;
     border-top: 1px solid var(--gray60);
-    padding: 1.5em 0;
+    padding: 1.2em 0;
     margin: 0 1.5em;
     gap: 1em;
 }
@@ -44,7 +126,7 @@
 .chat-bubble {
     display: grid;
     column-gap: 0.75em;
-    width: 60%;
+    max-width: 60%;
     grid-template-columns: 3em auto;
     grid-template-rows: 1.5em auto 1.5em;
     grid-template-areas: 
@@ -57,26 +139,41 @@
     grid-area: profile;
     display: flex;
     align-items: end;
+    position: relative;
 }
 
 .chat-bb-profile img {
     width: 100%;
 }
 
+.chat-bb-profile .crown{
+    bottom: 3em;
+    width: 50%;
+    position: absolute;
+    transform: translate(-50%, 30%);
+    left: 50%;
+}
+
 .chat-bb-name {
     grid-area: name;
+    font-size: 0.85rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .chat-bb-message {
     grid-area: message;
     border-radius: 1em;
-    padding: 0.6em;
+    padding: 0.4em 0.75em;
     background-color: var(--gray50);
+    width: fit-content;
 }
 
 .chat-bb-date-time {
     grid-area: date;
-    font-size: 0.85rem;
+    color: var(--gray70);
+    font-size: 0.75rem;
 }
 
 .chat-bubble.self {
@@ -90,8 +187,56 @@
 
 .chat-bb-message.self {
     background-color: var(--blue40);
+    justify-self: end;
 }
 
 .chat-bb-date-time.self {
     justify-self: end;
+}
+
+@media screen and (max-width: 480px) {
+    .chat-activity-title {
+        display: none;
+    }
+
+    .chat-header strong path{
+        fill: var(--blue40)
+    }
+
+    .view-member-btn {
+        display: flex;
+    }
+
+    .chat-page-container {
+        grid-template-areas: 
+            "chat chat"
+            "chat chat";
+        width: 100%;
+        position: relative;
+    }
+
+    .act-detail-member {
+        margin: 0;
+        position: absolute;
+        transform: translateX(-50%);
+        left: -200%;
+        width: 101%;
+        top: 0;
+        height: 100%;
+        z-index: 10;
+        transition: all 0.3s;
+    }
+
+    .act-detail-member header{
+        font-size: 1rem;
+        justify-content: start;
+    }
+
+    .act-detail-member svg-x{
+        display: block !important;
+    }
+}
+
+.slide-in {
+    left: 51%;
 }

@@ -108,8 +108,8 @@
         }
         </ul>
         <div class="act-detail-btn-container">
-            <a class="btn mb-w edge hover-lb-w act-detail-chat" href="/chat?activity_id=@Model.Activity_id">
-                <svg-chat></svg-chat>
+            <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat> chat
             </a>
         </div>
         
@@ -148,8 +148,8 @@
         @if (userIsMember)
         {
             <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
-            <a class="btn mb-w edge hover-lb-w act-detail-chat" href="/chat?activity_id=@Model.Activity_id">
-                <svg-chat></svg-chat>
+            <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat> chat
             </a>
         }
         else if (Model.Member_count < @Model.Max_member)

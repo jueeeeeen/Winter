@@ -14,18 +14,21 @@ function getCookie(name) {
 class ApprovedNoti extends HTMLElement {
   constructor() {
     super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.time = this.getAttribute("time");
     this.innerHTML = `<li class="noti-list">
             <div class="noti-icon gr-w flex">
                 <svg-check></svg-check>
             </div>
             <span class="noti-act-title">
-                Activity title
+                ${this.activity_title}
             </span>
             <span class="noti-message">
                 your request to join has been approved.
             </span>
             <span class="noti-datetime">
-                15 Jan 2025 12:59 
+              ${this.time}
             </span>
         </li>`;
   }
@@ -35,18 +38,21 @@ customElements.define("approved-noti", ApprovedNoti);
 class DeniedNoti extends HTMLElement {
   constructor() {
     super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.time = this.getAttribute("time");
     this.innerHTML = `<li class="noti-list">
             <div class="noti-icon r-w flex">
                 <svg-deny></svg-deny>
             </div>
             <span class="noti-act-title">
-                Activity title
+                ${this.activity_title}
             </span>
             <span class="noti-message">
                 your request to join has been denied.
             </span>
             <span class="noti-datetime">
-                15 Jan 2025 12:59 
+                ${this.time}
             </span>
         </li>`;
   }
@@ -56,18 +62,22 @@ customElements.define("denied-noti", DeniedNoti);
 class JoinedNoti extends HTMLElement {
   constructor() {
     super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.name = this.getAttribute("name");
+    this.time = this.getAttribute("time");
     this.innerHTML = `<li class="noti-list">
             <div class="noti-icon y-w flex">
                 <svg-plus></svg-plus>
             </div>
             <span class="noti-act-title">
-                Activity title
+                ${this.activity_title}
             </span>
             <span class="noti-message">
-                there is a new request to join this activity.
+                ${this.name} want to join your activity.
             </span>
             <span class="noti-datetime">
-                15 Jan 2025 12:59 
+                ${this.time}
             </span>
         </li>`;
   }

@@ -125,6 +125,22 @@ public class ActivityDetailController: Controller
             return NotFound(new { message = "Activity Not Found"});
         }
 
+        var host_user = _context.Users
+            .FirstOrDefault(u => u.Username == activity.Owner);
+        
+        if (host_user == null)
+        {
+            return NotFound(new { message = "Host user not found" });
+        }
+
+        var join_user = _context.Users
+            .FirstOrDefault(u => u.Username == username);
+
+        if (join_user == null)
+        {
+            return NotFound(new { message = "Join user not found" });
+        }
+
         var member_count = activity.Participants.Count(p => p.Role == "member" || p.Role == "host");
         
         // เงื่อนไขพวกนี้ เช็คตั้งแต่ front เดี๋ยวลบทีหลัง
@@ -141,6 +157,16 @@ public class ActivityDetailController: Controller
                     Role = "pending"
                 }
             );
+            var notification = new NotificationModel
+            {
+                User_id = host_user.Id,
+                Notification_type = "pending",
+                Activity_id = Activity_id,
+                Activity_user_id = join_user.Id,
+                Notification_time = DateTime.UtcNow
+            };
+
+            _context.Notifications.Add(notification);
         }
         else {
             activity.Participants.Add(
@@ -149,6 +175,14 @@ public class ActivityDetailController: Controller
                     Role = "member"
                 }
             );
+            var notification = new NotificationModel
+            {
+                User_id = host_user.Id,
+                Notification_type = "Join",
+                Activity_id = Activity_id,
+                Activity_user_id = join_user.Id,
+                Notification_time = DateTime.UtcNow
+            };
         }
 
         if (member_count + 1 >= activity.Max_member) activity.Status = "full";

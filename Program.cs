@@ -8,6 +8,7 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers(); 
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<NotificationService>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

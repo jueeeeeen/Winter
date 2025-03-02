@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class initialCreate : Migration
+    public partial class AddNotificationsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,6 +48,22 @@ namespace Winter_Project.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ChatMessages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    User_id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Notification_type = table.Column<string>(type: "TEXT", nullable: false),
+                    Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Activity_user_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Notification_time = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.User_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,6 +174,9 @@ namespace Winter_Project.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ChatMessages");
+
+            migrationBuilder.DropTable(
+                name: "Notifications");
 
             migrationBuilder.DropTable(
                 name: "Participants");

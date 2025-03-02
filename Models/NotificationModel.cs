@@ -7,9 +7,12 @@ namespace Winter_Project.Models
         [Key]
         public int User_id { get; set; }
 
-        public string title { get; set; } = string.Empty;
-        public string detail { get; set; } = string.Empty;
+        public string Notification_type { get; set; } = string.Empty;
 
-        public DateTime time { get; set; } = DateTime.UtcNow;
+        public int Activity_id { get; set; }
+
+        public int Activity_user_id { get; set; }
+
+        public DateTime Notification_time { get; set; } = DateTime.UtcNow;
     }
 }

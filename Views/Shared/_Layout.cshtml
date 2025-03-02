@@ -1,5 +1,6 @@
 ﻿@using Winter_Project.Services;
 @inject UserService _userService;
+@inject NotificationService _notificationService;
 
 @{
     var token = Context.Request.Cookies["token"];
@@ -9,6 +10,13 @@
     ? _userService.GetNavbarProfile(username)
     : null;
     bool isLoggedIn = !string.IsNullOrEmpty(token);
+
+    var notifications = navbarProfileViewModel != null 
+        ? await _notificationService.GetUserNotificationsAsync(username) 
+        : new List<NotificationModel>();
+
+    // Pass notifications to the _MainNavBar
+    ViewData["Notifications"] = notifications;
 }
 
 <!DOCTYPE html>

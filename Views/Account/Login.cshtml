@@ -7,10 +7,12 @@
 
 <div class="login-card">
     <img src="\assets\winter_login_pic2.jpg" alt="login background">
-    <h2>LOGIN</h2>
+    <p class="header">LOGIN</p>
     <form id="loginForm">
         <div class="login-box">
-            <img src="\assets\Profile-b.png" alt="username">
+            <div class="username">
+                <img src="\assets\Profile-b.png" alt="username">
+            </div>
             <label for="username"></label>
             <input type="text" id="username" name="username" placeholder="username" required />
         </div>
@@ -18,16 +20,32 @@
             <img src="\assets\lock.svg" alt="password">
             <label for="password"></label>
             <input type="password" id="password" name="password" placeholder="password" required />
+            <button type="button" id="togglePassword">
+                <img src="\assets\password.png" alt="">
+            </button>
         </div>
         <div class="login-button">
-            <button type="submit" id="loginButton">Login</button>
+            <button type="submit" id="loginButton">login</button>
+        </div>
+        <div class="login-description">
+            <p>Don't have account?</p>
+            <a href="~/Account/Register">create account</a>
         </div>
     </form>
-    <div class="login-description">
-        <p>Don't have account?</p>
-        <a href="~/Account/Register">create account</a>
-    </div>
 
     <div id="errorMessage" style="color: red;"></div>
 </div>
 
+<script>
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
+
+    togglePassword.addEventListener("click", () => {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        
+        togglePassword.querySelector("img").src = type === "password" 
+            ? "\\assets\\password.png" 
+            : "\\assets\\eye.png";
+    });
+</script>

@@ -33,6 +33,7 @@ public class ActivityDetailController: Controller
                     a.Requirement.Age,
                     a.Requirement.Other
                 } : null,
+                a.Approval,
                 a.Location,
                 a.Activity_time,
                 a.Max_member,
@@ -40,7 +41,8 @@ public class ActivityDetailController: Controller
                 Pending_count = a.Participants.Count(p => p.Role == "pending"),
                 Participants = _context.Participants
                     .Where(p => p.Activity_id == a.Activity_id)
-                    .OrderBy(p => p.Activity_id)
+                    .OrderBy(p => p.Role == "host" ? 0 : p.Role == "member" ? 1 : 2) // เรียง Role ตาม host -> member -> pending
+                    .ThenBy(p => p.Join_time)
                     .Select(p => new 
                     {
                         p.Username,
@@ -71,7 +73,12 @@ public class ActivityDetailController: Controller
             })
             .FirstOrDefault();
 
-    return activity == null ? NotFound("Activity not found") : View(activity);
+            var token = Request.Cookies["token"];
+            var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+
+            ViewBag.Username = username;
+
+        return activity == null ? NotFound("Activity not found") : View(activity);
     }
 
     [HttpPost("ActivityDetail/JoinActivity/{Activity_id}")]
@@ -116,6 +123,70 @@ public class ActivityDetailController: Controller
         _context.SaveChanges();
 
         return Ok(new { message = "Successfully Joined Activity"});
+    }
+
+    [HttpPost("ActivityDetail/LeaveActivity/{Activity_id}")]
+    public IActionResult LeaveActivity(int Activity_id)
+    {
+        var token = Request.Cookies["token"];
+        var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+
+        var activity = _context.Activities.Include(a => a.Participants).FirstOrDefault(a => a.Activity_id == Activity_id);
+        if (activity == null) {
+            return NotFound(new { message = "Activity Not Found"});
+        }
+        
+        var participant = _context.Participants
+            .FirstOrDefault(p => p.Username == username && p.Activity_id == Activity_id);
+
+        if (participant != null)
+        {
+            _context.Participants.Remove(participant);
+            _context.SaveChanges();
+        }
+
+        return Ok(new { message = "Successfully Left Activity"});
+    }
+
+    [HttpPost("ActivityDetail/DenyActivity/{Activity_id}")]
+    public IActionResult DenyActivity(int Activity_id, [FromQuery] string username)
+    {
+        var activity = _context.Activities.Include(a => a.Participants).FirstOrDefault(a => a.Activity_id == Activity_id);
+        if (activity == null) {
+            return NotFound(new { message = "Activity Not Found"});
+        }
+        
+        var participant = _context.Participants
+            .FirstOrDefault(p => p.Username == username && p.Activity_id == Activity_id);
+
+        if (participant != null)
+        {
+            _context.Participants.Remove(participant);
+            _context.SaveChanges();
+        }
+
+        return Ok(new { message = $"Denied Username: {username} Successfully"});
+    }
+
+    [HttpPost("ActivityDetail/ApproveActivity/{Activity_id}")]
+    public IActionResult ApproveActivity(int Activity_id, [FromQuery] string username)
+    {
+        var activity = _context.Activities.Include(a => a.Participants).FirstOrDefault(a => a.Activity_id == Activity_id);
+        if (activity == null) {
+            return NotFound(new { message = "Activity Not Found"});
+        }
+        
+        var participant = _context.Participants
+            .FirstOrDefault(p => p.Username == username && p.Activity_id == Activity_id);
+
+        if (participant != null)
+        {
+            participant.Role = "member";
+            participant.Join_time = DateTime.UtcNow;
+            _context.SaveChanges();
+        }
+
+        return Ok(new { message = $"Approved Username: {username} Successfully"});
     }
 
 }

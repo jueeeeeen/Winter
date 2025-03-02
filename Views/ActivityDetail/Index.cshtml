@@ -1,5 +1,6 @@
-﻿@{
+﻿﻿@{
     ViewData["Title"] = "Activity Detail";
+    var username = ViewBag.Username;
 }
 
 <div class="act-detail-container">
@@ -17,10 +18,17 @@
                 @Model.host.Rating
             </span>
         </div>
+        <span class="member-count">
+            <svg-member></svg-member>
+            @Model.Member_count/@Model.Max_member
+        </span>
     </header>
     <ul>
         <li class="flex">
-
+            @foreach (var tag in @Model.Tags)
+            {
+                <tag-display data-tag_name="@tag"></tag-display>
+            }
         </li>
     </ul>
     <div class="act-detail-title">
@@ -28,31 +36,6 @@
         <h1><b>@Model.Title</b></h1>
         <p>@Model.Detail</p>
     </div>
-</section>
-<section class="act-detail-member edge shadow">
-    <header>
-        <h2 class="letter-spacing">Members</h2>
-        <span class="member-count">(@Model.Member_count/@Model.Max_member)</span>
-    </header>
-    <ul>
-        @foreach (var participant in Model.Participants)
-        {
-            @* <p>@participant.Role</p> *@
-            @if (participant.Role == "host")
-            {
-                <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
-            }
-            @if (participant.Role == "member")
-            {
-                <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
-            }
-        }
-        @if (@Model.Pending_count != 0)
-        {
-            <pending-list-item number="@Model.Pending_count"></pending-list-item>
-        }
-    </ul>
-    <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
 </section>
 <section class="act-detail-requirement edge shadow">
     <div class="flex">
@@ -75,9 +58,11 @@
     <p>
         @Model.Requirement.Other
     </p>
-    <span class="approval-req">
-        <svg-pending></svg-pending>joining requires host approval.
-    </span>
+    @if (@Model.Approval){
+        <span class="approval-req">
+            <svg-pending></svg-pending>joining requires host approval.
+        </span>
+    }
 </section>
 <section class="act-detail-info edge shadow">
     <ul>
@@ -95,7 +80,89 @@
         </li>
     </ul>
 </section>
+<section class="act-detail-member edge shadow">
+    <header>
+        <h2 class="letter-spacing">
+            <svg-member></svg-member>
+            Members
+        </h2>
+        <span>@Model.Member_count/@Model.Max_member</span>
+    </header>
+    @if (username == @Model.host.Username)
+    {
+        <ul>
+        @foreach (var participant in Model.Participants)
+        {
+            @if (participant.Role == "host")
+            {
+                <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+            }
+            @if (participant.Role == "member")
+            {
+                <member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
+            }
+            @if (participant.Role == "pending")
+            {
+                <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
+            }
+        }
+        </ul>
+        <div class="act-detail-btn-container">
+            <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat> chat
+            </a>
+        </div>
+        
+    }
+    else 
+    {
+        <ul>
+        @foreach (var participant in Model.Participants)
+        {
+            @if (participant.Role == "host")
+            {
+                <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+            }
+            @if (participant.Role == "member")
+            {
+                <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
+            }
+        }
+        @if (@Model.Pending_count != 0)
+        {
+            <pending-list-item number="@Model.Pending_count"></pending-list-item>
+        }
+        @{
+            bool userIsMember = false;
+            foreach (var participant in Model.Participants)
+            {
+                if (participant.Username == username)
+                {
+                    userIsMember = true;
+                    break;
+                }
+            }
+        }
+        </ul>
+        <div class="act-detail-btn-container">
+        @if (userIsMember)
+        {
+            <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
+            <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat> chat
+            </a>
+        }
+        else if (Model.Member_count < @Model.Max_member)
+        {
+            <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+        }
+        </div>
+    }
+</section>
 </div>
-<div class="delete-container">
-    <delete-btn></delete-btn>
-</div>
+@if (username == @Model.host.Username)
+{
+    <div class="delete-container">
+        <delete-btn></delete-btn>
+    </div>
+}

@@ -1,0 +1,145 @@
+[33md8e36c3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mChat[m[33m, [m[1;31morigin/jueeeeeen[m[33m, [m[1;32mjueeeeeen[m[33m)[m pull responsive from test branch
+[33mbc594f5[m .
+[33m25bb65f[m fix pagination not disable btns
+[33md38ae26[m fix cat
+[33m3443c1e[m fix scrollbar
+[33m6b6bb10[m activity-detail, activity, navbar responsive
+[33m738016b[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into Chat
+[33m2864012[m .
+[33mfcd8e69[m Merge pull request #33 from jueeeeeen/mark
+[33mb585965[m[33m ([m[1;31morigin/mark[m[33m)[m show Approval require
+[33m2c81a81[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into mark
+[33m6208ffe[m add approve and deny button (api)
+[33me761ee5[m Merge pull request #32 from earn/fix-bug-gender-button
+[33m89b2508[m Merge branch 'main' into earn
+[33md41bfd3[m fix gender button
+[33m862a7b3[m add comment component
+[33mc01cd09[m add leave button
+[33mf46cfc9[m update show member
+[33m03dac1a[m[33m ([m[1;31morigin/Chat[m[33m)[m Merge pull request #31 from jueeeeeen/jueeeeeen
+[33mbe13be2[m .
+[33m53bb8dd[m fix merge
+[33mb22f5bc[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into jueeeeeen
+[33m4c954ab[m added crown to the host profile pic
+[33m82a32ef[m Merge pull request #30 from jueeeeeen/mark
+[33mc164a76[m Merge branch 'mark' of https://github.com/jueeeeeen/Winter into mark
+[33m09a79c5[m update activity details
+[33mf7bb82b[m fix requirement showing wrong tag
+[33me4da692[m Merge pull request #29 from jueeeeeen/jueeeeeen
+[33m8bcc2c9[m fix
+[33m93b3608[m modify join activity (approval)
+[33m322c4d1[m Merge pull request #28 from jueeeeeen/jueeeeeen
+[33m763801b[m add join activity
+[33m672b6cb[m Add loading cat
+[33m7ed038c[m Merge pull request #27 from jueeeeeen/jueeeeeen
+[33m807a4d6[m completed all display filter options
+[33mb88ab9c[m Merge pull request #26 from jueeeeeen/jueeeeeen
+[33m1e44b3e[m - complete all filter options and ready to be sent with body - only pagination left
+[33md0fab11[m Merge pull request #25 from jueeeeeen/jueeeeeen
+[33m2183752[m Merge branch 'main' into jueeeeeen
+[33ma31a64e[m display activity cards from db (no display filter)
+[33m40de6f0[m Merge pull request #24 from jueeeeeen/mark
+[33med3f0a6[m Show activity detail
+[33m71b3296[m add display username and names on navbar
+[33m7841ae0[m fix create activity to database
+[33mae981ef[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into mark
+[33m874f9ee[m fix
+[33me3723b3[m Merge pull request #23 from jueeeeeen/jueeeeeen
+[33mf4046f1[m add api of create activity (some info incomplete)
+[33ma434167[m bug
+[33m53d237c[m .
+[33m75eb73d[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into jueeeeeen
+[33m7015fe8[m .
+[33mbb93254[m Merge pull request #22 from jueeeeeen/mark
+[33m0f2ef41[m create activity in database
+[33m2a92b3b[m update
+[33m19f61c3[m add logout system
+[33m640784e[m[33m ([m[1;32mmain[m[33m)[m Merge branch 'jueeeeeen'
+[33m9ee7883[m update blbala
+[33mf7aa540[m Merge pull request #20 from jueeeeeen/mark
+[33mcd275a6[m fix css
+[33m27e4ae2[m Delete obj/Debug/net9.0 directory
+[33m0d37503[m Merge pull request #19 from jueeeeeen/third
+[33mb0ab327[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into third
+[33m4f105c3[m othersactivity
+[33mda34507[m complete
+[33mff1d16a[m add noti list items
+[33mb6e0d08[m Merge branch 'jueeeeeen' of https://github.com/jueeeeeen/Winter
+[33m51b1538[m notification style
+[33m99ef415[m add partial view
+[33m9ff0210[m Merge branch 'main' of https://github.com/jueeeeeen/Winter
+[33m5bbd8b3[m Merge branch 'main' of https://github.com/jueeeeeen/Winter
+[33mbcad038[m Merge pull request #18 from jueeeeeen/tham
+[33mbaa3291[m[33m ([m[1;31morigin/tham[m[33m)[m update/profile
+[33m3980492[m add noti and turn navbars into partial view
+[33macf5693[m fix merge conflict
+[33mf8c784d[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into jueeeeeen
+[33m8f048c8[m login and register page ui
+[33m619cb3a[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into jueeeeeen
+[33m99a041f[m .
+[33m6ef0c2e[m Merge pull request #16 from jueeeeeen/tham
+[33m86b0850[m register/login/someprofile
+[33mf4613d7[m ใส่รูป
+[33mc5ef92a[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into third
+[33m360ae55[m feat(component.js) : rating pop up component
+[33m0037b76[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into jueeeeeen
+[33m91e35f8[m .
+[33m8402112[m Merge pull request #14 from jueeeeeen/tham
+[33mf72b5ac[m fix jwt
+[33m060b1f6[m Merge pull request #13 from jueeeeeen/tham
+[33mccc2dd9[m wish it work3
+[33m1186aff[m wish it work2
+[33mcbaf7f2[m wish it work
+[33m17ca54e[m .
+[33m473a8e7[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into third
+[33m991954b[m .
+[33m9cfe1ca[m delete bin and obj
+[33m8c3feab[m add jwt
+[33me29f3f5[m update git ignore
+[33m12916e4[m Merge branch 'main' of https://github.com/jueeeeeen/Winter
+[33m2e7bf6f[m clean up
+[33m860f357[m delete bin and object
+[33ma962b38[m clean up
+[33m4a67afe[m Merge pull request #11 from jueeeeeen/mark
+[33mb593a5b[m fix
+[33m7351d88[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into mark
+[33m424ad8c[m add create page
+[33ma1d15d8[m add create page
+[33m6747d75[m create page
+[33m187dea5[m feat(joinedactivity.css&component.js) : clean up css & finish the component
+[33mbe8fbfe[m feat(component.js&joinedAc) : finish css & create component
+[33m1de6040[m feat(component.js&joinedAc) : finish css & create component
+[33m1c10ca8[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into jueeeeeen
+[33m355dc88[m Merge branch 'earn'
+[33m181ad31[m add host-view components
+[33meed314b[m account controller update
+[33mc1d43a9[m register page with progress bar
+[33m9d22546[m register page (ui)
+[33m2170fcb[m edit page (ui)
+[33m176645c[m feat(view&css) : complete dropdown design(only design)
+[33m6c960c6[m feat(view&css) : complete dropdown design(only design)
+[33m698a154[m edit profile page ui
+[33m30ca4c8[m edit profile page css
+[33mdde5bf1[m .
+[33me20407c[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into mark
+[33mb1cf298[m .
+[33mecc99b6[m fix merge bug
+[33m8fa79b4[m Merge branch 'jueeeeeen'
+[33ma74afd9[m .
+[33md88e439[m Merge branch 'main' of https://github.com/jueeeeeen/Winter
+[33m25044a9[m .
+[33m0925189[m merged main
+[33mcbddd00[m Merge pull request #9 from jueeeeeen/tham
+[33mca3e2d3[m test merge
+[33m457256a[m Merge branch 'main' of https://github.com/jueeeeeen/Winter into jueeeeeen
+[33m93e11f4[m add gitignore
+[33m5d3d2db[m .
+[33m1d46027[m merge with main 13/02/68/13.08
+[33m205ac32[m Merge pull request #7 from jueeeeeen/earn
+[33m750a712[m add .gitignore
+[33m6f1aa56[m seperate css
+[33mf6abff8[m register first page (make branch up to date with main)
+[33mb67fa62[m First connect to db
+[33me046865[m feat(view(joinedacc)&css) : activity dropdown
+[33mf3566f5[m feat(Views(joinedAc)&css) : activity dropdown
+[33m6682266[m fix page bug

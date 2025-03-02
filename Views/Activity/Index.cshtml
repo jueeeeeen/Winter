@@ -4,10 +4,8 @@
 
 <all-act-banner></all-act-banner>
 
-<search-bar></search-bar>
-@* @ViewBag.keyword *@
-@* for showing search keyword that is sent to back *@
-<div class="filter-container">
+<div class="display-option-container">
+    <search-bar></search-bar>
     <tag-filter></tag-filter>
     <div class="filter-options">
         <div class="pseudo-btn">
@@ -20,10 +18,6 @@
         <display-filter></display-filter>
     </div>
 </div>
-
-@* <ul id="show-tags"></ul> *@
-@* for showing selected tags that are sent to back *@
-
 
 <div id="all-activities-container">
     <div class="loading-cat">

@@ -5,72 +5,101 @@
     var token = Context.Request.Cookies["token"];
     var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
 
-    var navbarProfileViewModel = !string.IsNullOrEmpty(username) 
-        ? _userService.GetNavbarProfile(username) 
-        : null;
+    var navbarProfileViewModel = !string.IsNullOrEmpty(username)
+    ? _userService.GetNavbarProfile(username)
+    : null;
     bool isLoggedIn = !string.IsNullOrEmpty(token);
 }
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <title>@ViewData["Title"] - Winter</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @RenderSection("styles", required: false)
 
-    @if ((ViewData["Title"] as string) == "Home") {
+    @if ((ViewData["Title"] as string) == "Home")
+    {
         <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     }
-    @if (((ViewData["Title"] as string) == "Profile") || ((ViewData["Title"] as string) == "Edit Profile")) {
+    @if (((ViewData["Title"] as string) == "Profile") || ((ViewData["Title"] as string) == "Edit Profile"))
+    {
         <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
     }
-    @if ((ViewData["Title"] as string) == "My Activity") {
+    @if ((ViewData["Title"] as string) == "My Activity")
+    {
         <link rel="stylesheet" href="~/css/myactivity.css" asp-append-version="true" />
     }
-    @if ((ViewData["Title"] as string) == "Others Activity") {
+    @if ((ViewData["Title"] as string) == "Others Activity")
+    {
         <link rel="stylesheet" href="~/css/othersactivity.css" asp-append-version="true" />
     }
-    @if (((ViewData["Title"] as string) == "Activity")) {
-        <link rel="stylesheet" href="~/css/Activity.css" asp-append-version="true" />
+    @if (((ViewData["Title"] as string) == "Activity"))
+    {
+        <link rel="stylesheet" href="~/css/activity.css" asp-append-version="true" />
     }
-    @if (((ViewData["Title"] as string) == "Activity Detail")) {
-        <link rel="stylesheet" href="~/css/ActivityDetail.css" asp-append-version="true" />
+    @if (((ViewData["Title"] as string) == "Activity Detail"))
+    {
+        <link rel="stylesheet" href="~/css/activitydetail.css" asp-append-version="true" />
     }
-    @if (((ViewData["Title"] as string) == "Create")) {
-    <link rel="stylesheet" href="~/css/create.css" asp-append-version="true" />
+    @if (((ViewData["Title"] as string) == "Create"))
+    {
+        <link rel="stylesheet" href="~/css/create.css" asp-append-version="true" />
     }
-    @if (((ViewData["Title"] as string) == "Login")) {
+    @if (((ViewData["Title"] as string) == "Login"))
+    {
         <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
     }
-    @if (((ViewData["Title"] as string) == "Register")) {
+    @if (((ViewData["Title"] as string) == "Register"))
+    {
         <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
         <script src="~/js/auth/register/register_form.js"></script>
     }
-    <script src="/js/components.js?v=@DateTime.Now.Ticks" defer></script>
+    @if (((ViewData["Title"] as string) == "Activity Review"))
+    {
+        <link rel="stylesheet" href="~/css/activityreview.css" asp-append-version="true" />
+    }
+    @if (((ViewData["Title"] as string) == "Chat"))
+    {
+        <link rel="stylesheet" href="~/css/activitydetail.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/chat.css" asp-append-version="true" />
+    }
+
+    <script src="/js/components.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @* <script src="/js/auth/register/register_form.js" defer></script> *@
 </head>
-    <body>
-        <header>
-            @if (isLoggedIn) {
-                @Html.Partial("_MainNavBar", navbarProfileViewModel)
-            } else {
-                if (((ViewData["Title"] as string) == "Login") || ((ViewData["Title"] as string) == "Register")) {
-                    @Html.Partial("_LoginNavBar")
-                }
-                else {
-                    @Html.Partial("_GuestNavBar")
-                }
+
+<body>
+    <header>
+        @if (isLoggedIn)
+        {
+            @Html.Partial("_MainNavBar", navbarProfileViewModel)
+        }
+        else
+        {
+            if (((ViewData["Title"] as string) == "Login") || ((ViewData["Title"] as string) == "Register"))
+            {
+                @Html.Partial("_LoginNavBar")
             }
-        </header>
-        <main role="main">
-            @RenderBody()
-        </main>
-        @RenderSection("scripts", required: false)
-    </body>
+            else
+            {
+                @Html.Partial("_GuestNavBar")
+            }
+        }
+    </header>
+    <main role="main">
+        @RenderBody()
+    </main>
+    @RenderSection("scripts", required: false)
+</body>
+
 </html>

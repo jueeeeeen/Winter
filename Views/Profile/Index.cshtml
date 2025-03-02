@@ -9,7 +9,7 @@
         </div>
 
         <div class="account-info">
-            <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
+            <img src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" alt="profile picture" class="profile-picture">
             <h6>@Model.Username</h6>
             <h4>@Model.FirstName @Model.LastName</h4>
             <h6>@(DateTime.Now.Year - Model.DateOfBirth.Year) years old</h6>

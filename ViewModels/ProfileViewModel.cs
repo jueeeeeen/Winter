@@ -15,5 +15,7 @@ namespace Winter_Project.ViewModels
         public string AboutMe { get; set; } = "No information";
         public string MyInterests { get; set; } = "No information";
         public string MyHobby { get; set; } = "No information";
+        public IFormFile? ProfilePictureFile { get; set; } // ✅ รับไฟล์จากฟอร์ม
+        public string? ProfilePictureBase64 { get; set; } // ✅ ส่งไปเก็บในฐานข้อมูล
     }
 }

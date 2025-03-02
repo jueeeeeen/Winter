@@ -13,10 +13,10 @@
 
             <div class="account-info">
                 <div class="upload-profile-picture">
-                    <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
+                    <img id="profile-preview" src="@(Model.ProfilePictureBase64 ?? Url.Content("~/assets/Profile-w-b.png"))" alt="profile picture" class="profile-picture">
                     <button type="button" class="upload-profile-button">
                         <label for="input-file">Upload Photo</label>
-                        <input type="file" accept="image/jpg, image/png, image/jpeg" id="input-file">
+                        <input type="file" accept="image/jpg, image/png, image/jpeg" id="input-file" name="ProfilePictureFile" onchange="previewImage(event)">
                     </button>
                 </div>
 
@@ -98,3 +98,14 @@
         </div>
     </div>
 </form>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var preview = document.getElementById("profile-preview");
+            preview.src = reader.result; // อัปเดตรูปทันที
+        };
+        reader.readAsDataURL(event.target.files[0]); // อ่านไฟล์ที่เลือก
+    }
+</script>

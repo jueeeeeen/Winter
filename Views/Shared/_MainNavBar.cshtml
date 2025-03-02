@@ -96,3 +96,36 @@
         toggleDropdown("noti_dropdown", "profile_dropdown");
     }
 </script>
+
+
+<script>
+    document.querySelector("#profile_button").addEventListener("click", function() {
+    // ส่งคำขอ AJAX ไปที่ API
+    fetch('/api/ProfileApi/getUserProfile')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Failed to fetch profile data.");
+            }
+            return response.json();
+        })
+        .then(data => {
+        console.log("Data received from API:", data); // เพิ่มการ log ที่นี่
+        const profilePic = document.getElementById("profile_pic_dropdown");
+        const nameSpan = document.querySelector(".name_dropdown");
+        const usernameSpan = document.querySelector(".username_dropdown");
+
+        if (data && data.Username && data.FirstName && data.LastName) {
+            profilePic.src = "/assets/Profile-" + data.Username + ".jpg"; // เปลี่ยนได้ตามต้องการ
+            nameSpan.innerHTML = `${data.FirstName} ${data.LastName}`;
+            usernameSpan.innerHTML = data.Username;
+        } else {
+            console.error("Data is missing fields:", data);
+            alert("ข้อมูลโปรไฟล์ไม่ครบถ้วน");
+        }
+    })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("ไม่สามารถโหลดข้อมูลโปรไฟล์ได้");
+        });
+});
+</script>

@@ -20,7 +20,7 @@
                     </button>
                 </div>
 
-                <h6>@Model.Username</h6>
+                <h6>@("@"+Model.Username)</h6>
                 <h4>@Model.FirstName @Model.LastName</h4>
                 <h6>@(DateTime.Now.Year - Model.DateOfBirth.Year) years old</h6>
             </div>

@@ -16,7 +16,6 @@
         <div class="select-member">
             <label for="">Select Member</label>
             <select name="" id="reviewedUser" onchange="getUserReviews()">
-                <option value="all"></option>
                 @foreach (var participant in Model.Participants)
                 {
                     <option value="@participant.User.Id">
@@ -56,7 +55,17 @@
                         </div>
 
                         <div class="comment-rating">
-                            <p>Rating : @review.Rating</p>
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= @review.Rating)
+                                {
+                                    <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
+                                }
+                                else
+                                {
+                                    <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
+                                }
+                            }
                         </div>
                     </div>
                 }
@@ -68,15 +77,17 @@
 <script>
     let allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
 
+    window.onload = function () {
+        getUserReviews(); // Call function on page load
+    };
+
     function getUserReviews() {
         let selectedUser = document.getElementById("reviewedUser").value;
         let reviewList = document.getElementById("reviewList");
 
         reviewList.innerHTML = "";
 
-        let filtered = selectedUser === "all"
-            ? allReviews
-            : allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
+        let filtered = allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
 
         filtered.forEach(review => reviewList.appendChild(review));
     }

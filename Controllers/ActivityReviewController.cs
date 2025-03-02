@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Winter_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration.UserSecrets;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 
 namespace Winter_Project.Controllers;
@@ -117,5 +119,73 @@ public class ActivityReviewController : Controller
         ViewData["Reviews"] = reviews;
 
         return View(activityWithReviews);
+    }
+
+    [HttpGet("Profile/Review")]
+    public async Task<IActionResult> ShowProfileComment()
+    {
+        var token = Request.Cookies["token"];
+        if (string.IsNullOrEmpty(token))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+        if (string.IsNullOrEmpty(username))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        var userId = await _context.Users
+        .Where(u => u.Username == username)
+        .Select(u => u.Id)
+        .FirstOrDefaultAsync();
+
+        var reviews = await _context.Reviews
+        .Where(r => r.Reviewed_user == userId)
+        .Select(r => new
+        {
+            r.User_id,
+            r.Reviewed_user,
+            r.Rating,
+            r.Comment,
+            r.Time,
+            r.Activity_id,
+            ActivityTitle = _context.Activities
+                .Where(a => a.Activity_id == r.Activity_id)
+                .Select(a => a.Title)
+                .FirstOrDefault(),
+            User = _context.Users
+                .Where(u => u.Id == r.User_id)
+                .Select(u => new
+                {
+                    u.FirstName,
+                    u.LastName
+                })
+                .FirstOrDefault(),
+            ReviewedUser = _context.Users
+                .Where(u => u.Id == r.Reviewed_user)
+                .Select(u => new
+                {
+                    u.FirstName,
+                    u.LastName,
+                    u.Username
+                })
+                .FirstOrDefault()
+        })
+        .ToListAsync();
+
+        var averageRating = await _context.Reviews
+            .Where(r => r.Reviewed_user == userId)
+            .AverageAsync(r => (double?)r.Rating) ?? 0; // ถ้าไม่มีรีวิวให้ค่าเริ่มต้นเป็น 0
+
+        ViewData["AverageRating"] = averageRating;
+
+        var reviewedUser = reviews.FirstOrDefault()?.ReviewedUser;
+
+        return View("~/Views/MyReview/Index.cshtml", new { Reviews = reviews, ReviewedUser = reviewedUser });
     }
 }

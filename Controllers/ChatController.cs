@@ -14,7 +14,6 @@ public class ChatController: Controller
 {
     private readonly WebSocketHandler _webSocketHandler;
     private readonly WinterContext _context;
-
     public ChatController(WebSocketHandler webSocketHandler, WinterContext context)
     {
         _webSocketHandler = webSocketHandler;
@@ -130,5 +129,4 @@ public class ChatController: Controller
             return new EmptyResult();
         }
     }
-
 }

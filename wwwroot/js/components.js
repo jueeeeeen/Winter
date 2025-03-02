@@ -1,6 +1,4 @@
-﻿// const { Divide } = require("lucide-svelte");
-
-var path = "/assets/";
+﻿var path = "/assets/"
 
 function getCookie(name) {
   const cookieArr = document.cookie.split("; ");
@@ -74,24 +72,24 @@ class JoinedNoti extends HTMLElement {
 }
 customElements.define("joined-noti", JoinedNoti);
 
-class SearchBar extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = 
-    `<form class="search-bar shadow">
-        <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
-        <div class="search-bar-x">
-            <button class="btn" id="clear_search_button">
-                <svg-x></svg-x>
+class SearchBar extends HTMLElement{
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<form class="search-bar shadow">
+            <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
+            <div class="search-bar-x">
+                <button class="btn" id="clear_search_button">
+                    <svg-x></svg-x>
+                </button>
+            </div>
+            <button type="button" class="btn search-bar-search" id="seach-button">
+                <svg-search></svg-search>
             </button>
-        </div>
-        <button type="button" class="btn search-bar-search" id="seach-button">
-            <svg-search></svg-search>
-        </button>
-    </form>`;
-    this.search_key = null;
-    this.clear_search = this.clear_search.bind(this);
-  }
+        </form>`;
+        this.search_key = null;
+        this.clear_search = this.clear_search.bind(this);
+    }
 
   connectedCallback() {
     this.clear_search_button = this.querySelector("#clear_search_button");
@@ -116,11 +114,12 @@ class SearchBar extends HTMLElement {
   }
 }
 
-class TagsSelector extends HTMLElement {
-  constructor() {
-    super();
-    this.tag_name = this.getAttribute("data-tag_name");
-    this.innerHTML = `<div class="pseudo-btn tag-show">
+class TagsSelector extends HTMLElement{
+    constructor() {
+        super();
+        this.tag_name = this.getAttribute("data-tag_name");
+        this.innerHTML =
+        `<div class="pseudo-btn">
             <input type="checkbox" name="Tags" value="${this.tag_name}" id="tag_${this.tag_name}">
             <label for="tag_${this.tag_name}" class="btn tag-selector round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;
@@ -128,32 +127,31 @@ class TagsSelector extends HTMLElement {
   }
 }
 
-class TagFilter extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML =
-    `<form class="flex gap" id="tag_filter_form">
-      <tag-selector data-tag_name="All"></tag-selector>
-      <tag-selector data-tag_name="Art"></tag-selector>
-      <tag-selector data-tag_name="Beauty"></tag-selector>
-      <tag-selector data-tag_name="Entertain"></tag-selector>
-      <tag-selector data-tag_name="Food"></tag-selector>
-      <tag-selector data-tag_name="Hobby"></tag-selector>
-      <tag-selector data-tag_name="Pet"></tag-selector>
-      <tag-selector data-tag_name="Sport"></tag-selector>
-      <tag-selector data-tag_name="Study"></tag-selector>
-      <tag-selector data-tag_name="Travel"></tag-selector>
-    </form>`;
-  }
 
-  connectedCallback() {
-    this.tags = this.querySelectorAll("input");
-    this.tag_all = this.querySelector("input[value='All']");
-    this.tags.forEach((tag) => {
-      tag.addEventListener("change", () => this.toggle_check(tag));
-      tag.checked = tag.value === "All";
-    });
-  }
+class TagFilter extends HTMLElement{
+    constructor(){
+        super()
+        this.innerHTML = 
+        `<form class="flex gap" id="tag_filter_form">
+            <tag-selector data-tag_name="All"></tag-selector>
+            <tag-selector data-tag_name="Entertain"></tag-selector>
+            <tag-selector data-tag_name="Sport"></tag-selector>
+            <tag-selector data-tag_name="Study"></tag-selector>
+            <tag-selector data-tag_name="Hobby"></tag-selector>
+            <tag-selector data-tag_name="Travel"></tag-selector>
+        </form>
+        `
+    }
+
+    
+    connectedCallback() {
+        this.tags = this.querySelectorAll("input");
+        this.tag_all = this.querySelector("input[value='All']");
+        this.tags.forEach(tag => {
+            tag.addEventListener("change", () => this.toggle_check(tag));
+            tag.checked = tag.value === "All"
+        })
+    }
 
   disconnectedCallback() {
     this.tags.forEach((tag) => {
@@ -497,12 +495,11 @@ class DisplaySort extends HTMLElement {
 }
 customElements.define("display-sort", DisplaySort);
 
-class TagSelect extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `<div class="tag-col">
-            <tag-selector data-tag_name="Art"></tag-selector>
-            <tag-selector data-tag_name="Beauty"></tag-selector>
+class TagSelect extends HTMLElement{
+    constructor(){
+        super()
+        this.innerHTML = 
+        `<div class="tag-col">
             <tag-selector data-tag_name="Entertain"></tag-selector>
             <tag-selector data-tag_name="Food"></tag-selector>
             <tag-selector data-tag_name="Hobby"></tag-selector>
@@ -514,20 +511,20 @@ class TagSelect extends HTMLElement {
         `;
   }
 
-  connectedCallback() {
-    this.addEventListener("change", (event) => {
-      event.preventDefault();
-      this.showselected();
-    });
-    this.querySelectorAll("input").forEach((checkbox) => {
-      checkbox.addEventListener("change", () => {
-        const checkedCount = this.querySelectorAll("input:checked").length;
-        if (checkedCount > 3) {
-          checkbox.checked = false;
-        }
-      });
-    });
-  }
+    connectedCallback() {
+        this.addEventListener("change", (event) => {
+            event.preventDefault();
+            this.showselected()});
+        this.querySelectorAll('input').forEach(checkbox => {
+            checkbox.addEventListener("change", ()=> {
+                const checkedCount = this.querySelectorAll("input:checked").length;
+                if (checkedCount > 3) {
+                    checkbox.checked = false;
+                    alert("you can only select up to 3 tags")
+                }
+            })
+        });
+    }
 
   showselected() {
     const selectedTags = [];
@@ -541,11 +538,10 @@ class TagSelect extends HTMLElement {
 }
 
 class NumberInput extends HTMLElement {
-  constructor() {
-    super();
-    this.name = this.getAttribute("data-name");
-    this.default = this.getAttribute("default-value");
-    this.innerHTML = `
+    constructor() {
+        super();
+        this.name = this.getAttribute("data-name")
+        this.innerHTML = `
             <div class="number-input-container">
                 <button type="button" id="decrease">-</button>
                 <input type="text" name="${this.name}" id="number" value=${this.default}>
@@ -563,12 +559,12 @@ class NumberInput extends HTMLElement {
     this.input.addEventListener("input", () => this.validateInput());
   }
 
-  updateValue(change) {
-    let currentValue = parseInt(this.input.value) || 0;
-    let newValue = currentValue + change;
-    if (newValue < 0) newValue = 0;
-    this.input.value = newValue;
-  }
+    updateValue(change) {
+        let currentValue = parseInt(this.input.value) || 0;
+        let newValue = currentValue + change;
+        if (newValue < 1) newValue = 1;
+        this.input.value = newValue;
+    }
 
   validateInput() {
     let value = this.input.value;
@@ -587,26 +583,22 @@ class TagDisplay extends HTMLElement {
 }
 
 class RequirementTag extends HTMLElement {
-    constructor() {
-        super();
-        this.type = this.getAttribute("data-type");
-        this.value = this.getAttribute("data-value");
-        if (this.type == "age"){
-            this.innerHTML = `<li><label class="tag w-r-r small round">${this.value} or older</label></li>`;
-        }
-        else {
-            if (this.value == "female")
-            {
-                this.innerHTML = `<li><label class="tag w-p-p small round">female</label></li>`;
-            }
-            else if (this.value == "male") {
-                this.innerHTML = `<li><label class="tag w-mb-mb small round">male</label></li>`;
-            }
-            else if (this.value == "lgbtq") {
-                this.innerHTML = `<li><label class="tag w-rb-rb small"><span>lgbtq</span></label></li>`;
-            }
-        }
+  constructor() {
+    super();
+    this.type = this.getAttribute("data-type");
+    this.value = this.getAttribute("data-value");
+    if (this.type == "age") {
+      this.innerHTML = `<li><label class="tag w-r-r small round">${this.value} or older</label></li>`;
+    } else {
+      if (this.value == "female") {
+        this.innerHTML = `<li><label class="tag w-p-p small round">female</label></li>`;
+      } else if (this.value == "male") {
+        this.innerHTML = `<li><label class="tag w-mb-mb small round">male</label></li>`;
+      } else if (this.value == "lgbtq") {
+        this.innerHTML = `<li><label class="tag w-rb-rb small"><span>lgbtq</span></label></li>`;
+      }
     }
+  }
 }
 
 // still missing
@@ -641,7 +633,9 @@ class ActivityCard extends HTMLElement {
                             </span>
                         </div>
                     </div>
-                    <div class="act-card-member">${activity.member_count + "/" + activity.max_member}</div>
+                    <div class="act-card-member">${
+                      activity.member_count + "/" + activity.max_member
+                    }</div>
                 </div>
                 
                 <ul class="act-card-tags-container">
@@ -659,8 +653,16 @@ class ActivityCard extends HTMLElement {
                     <h2>${activity.title}</h2>
                 </div>
                 <ul class="act-card-tags-container">
-                    ${activity.requirement.age ? `<req-tag data-type="age" data-value="${activity.requirement.age}"></req-tag>`:""}
-                    ${activity.requirement.gender=="none" ? "":`<req-tag data-type="gender" data-value="${activity.requirement.gender}"></req-tag>`}
+                    ${
+                      activity.requirement.age
+                        ? `<req-tag data-type="age" data-value="${activity.requirement.age}"></req-tag>`
+                        : ""
+                    }
+                    ${
+                      activity.requirement.gender == "none"
+                        ? ""
+                        : `<req-tag data-type="gender" data-value="${activity.requirement.gender}"></req-tag>`
+                    }
                 </ul>
                 <ul class="act-card-info">
                     <li>
@@ -728,13 +730,13 @@ class ActivityCard extends HTMLElement {
 }
 
 class ActCardJoinBtn extends HTMLElement {
-    constructor() {
-        super();
-        this.act_id = this.getAttribute("data-act-id");
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb hover-ani-bounce">join</button>`;
-        this.act_id = this.getAttribute("data-act-id");
-        this.innerHTML=`<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb">join</button>`;
-    }
+  constructor() {
+    super();
+    this.act_id = this.getAttribute("data-act-id");
+    this.innerHTML = `<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb hover-ani-bounce">join</button>`;
+    this.act_id = this.getAttribute("data-act-id");
+    this.innerHTML = `<button onclick="window.location.href='ActivityDetail/${this.act_id}'" class="btn small round mb-w hover-w-bb-bb">join</button>`;
+  }
 }
 
 class Pagination extends HTMLElement {
@@ -780,46 +782,37 @@ class Pagination extends HTMLElement {
     });
   }
 
-  change_page(dir) {
-    if (
-      this._current_page + dir >= 1 &&
-      this._current_page + dir <= this.max_page
-    ) {
-      this._current_page += dir;
+    change_page(dir) {
+        if ( this._current_page + dir >= 1 && this._current_page + dir <= this.max_page){
+            this._current_page += dir;
+        }
+        this.apply_style()
+        this.disable_dir_btn()
+        this.dispatchEvent(new CustomEvent('page-changed', {
+            detail: { page: this._current_page },
+            bubbles: true,
+            composed: true
+        }));
     }
-    this.apply_style();
-    this.disable_dir_btn();
-    this.dispatchEvent(
-      new CustomEvent("page-changed", {
-        detail: { page: this._current_page },
-        bubbles: true,
-        composed: true,
-      })
-    );
-  }
 
-  to_page(page) {
-    this._current_page = page;
-    this.disable_dir_btn();
-    this.dispatchEvent(
-      new CustomEvent("page-changed", {
-        detail: { page: this._current_page },
-        bubbles: true,
-        composed: true,
-      })
-    );
-  }
-
-  apply_style() {
-    if (this.max_page > 0) {
-      this.querySelector(`input[value='${this._current_page}']`).checked = true;
+    to_page(page){
+        this._current_page = page;
+        this.disable_dir_btn()
+        this.dispatchEvent(new CustomEvent('page-changed', {
+            detail: { page: this._current_page },
+            bubbles: true,
+            composed: true
+        }));
     }
-  }
+    
+    apply_style() {
+        this.querySelector(`input[value='${this._current_page}']`).checked = true;
+    }
 
-  disable_dir_btn() {
-    this.prev_btn.disabled = (this._current_page === 1 || this._max_page === 0);
-    this.next_btn.disabled = (this._current_page === this._max_page || this._max_page === 0);
-  }
+    disable_dir_btn() {
+        this.prev_btn.disabled = this._current_page === 1;
+        this.next_btn.disabled = this._current_page === this._max_page;
+    }
 
   get max_page() {
     return this._max_page;
@@ -884,13 +877,14 @@ class HostListItem extends HTMLElement {
   }
 }
 class PendingListItem extends HTMLElement {
-    constructor() {
-        super();
-        this.number = this.getAttribute("number");
-        this.innerHTML = 
-        `<li class="pending-member-item">
+  constructor() {
+    super();
+    this.number = this.getAttribute("number");
+    this.innerHTML = `<li class="pending-member-item">
             <svg-pending></svg-pending>
-            <span>${this.number} more ${this.number > 1 ? "people":"person"} applied...</span>
+            <span>${this.number} more ${
+      this.number > 1 ? "people" : "person"
+    } applied...</span>
         </li>`;
   }
 }
@@ -919,45 +913,6 @@ class PendingHostViewListItem extends HTMLElement {
             </div>
         </li>`;
     }
-
-    connectedCallback() {
-        this.querySelector(".btn.approval.gr-w").addEventListener("click", () => this.approve_activity());
-        this.querySelector(".btn.approval.r-w").addEventListener("click", () => this.deny_activity());
-    }
-
-    approve_activity() {
-        fetch(`ApproveActivity/${this.activity_id}?username=${this.username}`, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"}
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
-                console.log(data.message);
-                window.location.reload();
-            } else {
-                console.error("Failed to approve activity");
-            }
-        })
-        .catch(error => console.error("Error:", error));
-    }
-
-    deny_activity() {
-        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"}
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
-                console.log(data.message);
-                window.location.reload();
-            } else {
-                console.error("Failed to deny activity");
-            }
-        })
-        .catch(error => console.error("Error:", error));
-    }
 }
 
 class MemberHostViewListItem extends HTMLElement {
@@ -981,34 +936,13 @@ class MemberHostViewListItem extends HTMLElement {
             </div>
         </li>`;
     }
-
-    connectedCallback() {
-        this.querySelector("button").addEventListener("click", () => this.deny_activity());
-    }
-
-    deny_activity() {
-        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
-            method: 'POST',
-            headers: {"Content-Type": "application/json"}
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message) {
-                console.log(data.message);
-                window.location.reload();
-            } else {
-                console.error("Failed to deny activity");
-            }
-        })
-        .catch(error => console.error("Error:", error));
-    }
 }
 
 class ActDetailJoinBtn extends HTMLElement {
     constructor() {
         super();
         this.activity_id = this.getAttribute("data-activity-id");
-        this.innerHTML = `<button class="btn large lb-w round act-detail-btn hover-w-bb-bb ani-bounce">join</button>`;
+        this.innerHTML = `<button class="btn large lb-w round act-detail-join-btn hover-w-bb-bb ani-bounce">join</button>`;
     }
     
     connectedCallback() {
@@ -1024,7 +958,6 @@ class ActDetailJoinBtn extends HTMLElement {
         .then(data => {
             if (data.message) {
                 console.log(data.message);
-                window.location.reload();
             } else {
                 console.error("Failed to join activity");
             }
@@ -1065,7 +998,7 @@ class ActDetailLeaveBtn extends HTMLElement {
 class ViewReviewBtn extends HTMLElement {
     constructor() {
         super();
-        this.innerHTML = `<button class="btn large y-w round act-detail-btn hover-w-y ani-bounce">view review</button>`;
+        this.innerHTML = `<button class="btn large y-w round act-detail-join-btn hover-w-y ani-bounce">view review</button>`;
     }
 }
 
@@ -1148,11 +1081,10 @@ class AllActBanner extends HTMLElement {
 }
 // SVG Components Class
 class BaseSVGElement extends HTMLElement {
-  constructor() {
-    super();
-    this.style.display = "inline-flex";
-    this.style.width = "fit-content"
-  }
+    constructor() {
+        super();
+        this.style.display = "inline-flex";
+    }
 }
 
 class SVGCalendar extends BaseSVGElement {
@@ -1443,21 +1375,11 @@ class SVGLogin extends BaseSVGElement {
   }
 }
 
-class SVGLogout extends BaseSVGElement {
-  constructor() {
-    super();
-    this.innerHTML = 
-    `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M6.75 15.75H3.75C3.35218 15.75 2.97064 15.592 2.68934 15.3107C2.40804 15.0294 2.25 14.6478 2.25 14.25V3.75C2.25 3.35218 2.40804 2.97064 2.68934 2.68934C2.97064 2.40804 3.35218 2.25 3.75 2.25H6.75M12 12.75L15.75 9M15.75 9L12 5.25M15.75 9H6.75" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>`;
-  }
-}
-customElements.define("svg-logout", SVGLogout);
-
 class SVGFilter extends BaseSVGElement {
-  constructor() {
-    super();
-    this.innerHTML = `<svg width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+    constructor() {
+        super();
+        this.innerHTML = 
+        `<svg width="27" height="25" viewBox="0 0 27 25" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M24.75 2.375H2.25L11.25 13.0175V20.375L15.75 22.625V13.0175L24.75 2.375Z" stroke="#90E1FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`;
   }
@@ -1486,10 +1408,9 @@ class SVGOrder extends BaseSVGElement {
 customElements.define("svg-order", SVGOrder);
 
 class SVGSnowflake extends BaseSVGElement {
-    constructor() {
-        super();
-        this.innerHTML =
-        `<svg width="25" height="27.5" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+  constructor() {
+    super();
+    this.innerHTML = `<svg width="25" height="27.5" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M1 12.5L5.5 13.5L4 18M1.35962 15.9887L18.6407 6.01141M16 4L14.5 8.5L19 9.5M4 4L5.5 8.5L1 9.5M1.3623 6L18.6828 16M19 12.5L14.5 13.5L16 18M7 2.5L10 5.5L13 2.5M10 1V21M7 19.5L10 16.5L13 19.5" stroke="var(--blue80)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`;
   }
@@ -1497,13 +1418,12 @@ class SVGSnowflake extends BaseSVGElement {
 customElements.define("svg-snowflake", SVGSnowflake);
 
 class SVGPending extends BaseSVGElement {
-    constructor() {
-        super();
-        this.innerHTML =
-        `<svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+  constructor() {
+    super();
+    this.innerHTML = `<svg width="24" height="22" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15.6666 11.0834H17.2291V14.0209L19.7708 15.4897L18.9895 16.8438L15.6666 14.9272V11.0834ZM16.7083 9.00008C15.327 9.00008 14.0022 9.54882 13.0254 10.5256C12.0487 11.5023 11.5 12.8271 11.5 14.2084C11.5 15.5898 12.0487 16.9145 13.0254 17.8913C14.0022 18.868 15.327 19.4167 16.7083 19.4167C18.0896 19.4167 19.4144 18.868 20.3911 17.8913C21.3679 16.9145 21.9166 15.5898 21.9166 14.2084C21.9166 12.8271 21.3679 11.5023 20.3911 10.5256C19.4144 9.54882 18.0896 9.00008 16.7083 9.00008ZM16.7083 6.91675C18.6422 6.91675 20.4968 7.68498 21.8643 9.05243C23.2317 10.4199 24 12.2745 24 14.2084C24 16.1423 23.2317 17.9969 21.8643 19.3644C20.4968 20.7319 18.6422 21.5001 16.7083 21.5001C13.802 21.5001 11.2916 19.7917 10.1145 17.3334H0.041626V14.2084C0.041626 11.4376 5.59371 10.0417 8.37496 10.0417C8.99996 10.0417 9.77079 10.1147 10.5833 10.2501C11.2439 9.22641 12.1507 8.38486 13.2208 7.8025C14.2909 7.22013 15.49 6.91559 16.7083 6.91675ZM9.41663 14.2084C9.41663 13.4792 9.52079 12.7709 9.71871 12.1251C9.28121 12.0522 8.82288 12.0209 8.37496 12.0209C5.28121 12.0209 2.02079 13.5417 2.02079 14.2084V15.3542H9.51038C9.44902 14.9754 9.41767 14.5922 9.41663 14.2084ZM8.37496 0.666748C9.48003 0.666748 10.5398 1.10573 11.3212 1.88714C12.1026 2.66854 12.5416 3.72835 12.5416 4.83342C12.5416 5.93848 12.1026 6.99829 11.3212 7.77969C10.5398 8.5611 9.48003 9.00008 8.37496 9.00008C7.26989 9.00008 6.21008 8.5611 5.42868 7.77969C4.64728 6.99829 4.20829 5.93848 4.20829 4.83342C4.20829 3.72835 4.64728 2.66854 5.42868 1.88714C6.21008 1.10573 7.26989 0.666748 8.37496 0.666748ZM8.37496 2.64591C7.7948 2.64591 7.2384 2.87638 6.82816 3.28662C6.41793 3.69685 6.18746 4.25325 6.18746 4.83342C6.18746 5.41358 6.41793 5.96998 6.82816 6.38021C7.2384 6.79045 7.7948 7.02092 8.37496 7.02092C8.95512 7.02092 9.51152 6.79045 9.92176 6.38021C10.332 5.96998 10.5625 5.41358 10.5625 4.83342C10.5625 4.25325 10.332 3.69685 9.92176 3.28662C9.51152 2.87638 8.95512 2.64591 8.37496 2.64591Z" fill="#FDC330"/>
         </svg>`;
-    }
+  }
 }
 customElements.define("svg-pending", SVGPending);
 
@@ -1679,118 +1599,116 @@ class SelectActivities extends HTMLElement {
     this.innerHTML = `
         <ul class="select_type">
             <li>
-                <button class="type" id="Upcoming_button">
-                    Upcoming
-                </button>
+                <button class="type" id="Upcoming_button">Upcoming</button>
             </li>
             <li>
-                <button class="type" id="History_button">
-                    History
-                </button>
+                <button class="type" id="History_button">History</button>
             </li>
         </ul>
-        `;
-    this.querySelector("#Upcoming_button").addEventListener("click", () =>
-      this.changeHeader("Upcoming")
-    );
-    this.querySelector("#History_button").addEventListener("click", () =>
-      this.changeHeader("History")
-    );
-  }
-
-  // changeHeader(headerText) {
-  //     const event = new CustomEvent('headerChange', { detail: { text: headerText } });
-  //     console.log(event)
-  //     this.dispatchEvent(event);
-  // }
-}
-
-customElements.define("select-activities", SelectActivities);
-
-class Member extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `
-        <li class="member">
-            <div class="member-content">
-                <img src="assets/Profile-w-b.png" alt="Profile">
-                <span class="member-name"></span>
-                <span class="member-role"></span>
-            </div>
-            <button class="rate-btn">
-                <img src="assets/yellow_star_outline.png" alt="Rate">
-                <span class="review-text">review</span>
-            </button>
-        </li>
         `;
   }
 
   connectedCallback() {
-    this.querySelector(".member-name").textContent =
-      this.getAttribute("name") || "Unknown";
-    this.querySelector(".member-role").textContent = `(${
-      this.getAttribute("role") || "Member"
-    })`;
+    const buttons = this.querySelectorAll(".type");
 
-    const ratingPopup = document.querySelector("rating-popup");
-    this.querySelector(".rate-btn").addEventListener("click", () => {
-      const activityName =
-        this.closest("activity-dropdown")?.getAttribute("activity-name") ||
-        "Unknown Activity";
-      const name =
-        this.querySelector(".member-name").textContent || "Unknown Name";
-      ratingPopup.openPopup(
-        this.querySelector(".member-name").textContent,
-        activityName
-      );
+    buttons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        buttons.forEach((btn) => btn.classList.remove("active"));
+
+        event.target.classList.add("active");
+
+        this.dispatchEvent(
+          new CustomEvent("change-header", {
+            detail: event.target.textContent,
+            bubbles: true,
+          })
+        );
+      });
     });
   }
 }
 
-class ActivityDropdown extends HTMLElement {
-  constructor() {
+class Member extends HTMLElement {
+  constructor(member, activity_title, username) {
     super();
-    this.innerHTML = `        
-        <div class="activity-dropdown">
-            <button class="activity-dropdown-btn">
-                <div class="activity-details">
-                    <span class="activity-name"></span>
-                    <div class="tags"></div>
-                    <span class="date">
-                        <img src="assets/calendar_icon.png" alt="calendar"> 
-                        <span class="date-text"></span>
-                    </span>
-                </div>
-                <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
-            </button>
-
-            <div class="activity-dropdown-content">
-                <div class="dropdown-container">
-                    <img src="assets/people_icon.png" alt="People">
-                    <ul class="members"></ul>
-                </div>
-                <button class="view-details">View Details</button>
-            </div>
-        </div>
-        `;
-
-    this.querySelector(".activity-dropdown-btn").addEventListener(
-      "click",
-      () => {
-        this.querySelector(".activity-dropdown").classList.toggle("open");
-      }
-    );
+    this.member = member;
+    this.activity_title = activity_title;
+    this.username = username;
   }
 
   connectedCallback() {
-    this.querySelector(".activity-name").textContent =
-      this.getAttribute("activity-name") || "No Activity";
-    this.querySelector(".date-text").textContent =
-      this.getAttribute("date") || "Unknown Date";
+    if (this.username !== this.member.username) {
+      this.innerHTML = `
+      <li class="member">
+        <div class="member-content">
+          <img src="assets/Profile-w-b.png" alt="Profile">
+          <span class="member-name">${this.member.username}</span>
+          <span class="member-role">${this.member.role}</span>
+        </div>
+        <button class="rate-btn">
+          <img src="assets/yellow_star_outline.png" alt="Rate">
+          <span class="review-text">review</span>
+        </button>
+      </li>
+      `;
 
+      let ratingPopup = document.querySelector("rating-popup");
+      if (!ratingPopup) {
+        ratingPopup = new RatingPopup();
+        document.body.appendChild(ratingPopup);
+      }
+
+      this.querySelector(".rate-btn").addEventListener("click", () => {
+        ratingPopup.openPopup(this.activity_title, this.member.username);
+      });
+    } else {
+      this.innerHTML = `
+      <li class="member">
+        <div class="member-content">
+          <img src="assets/Profile-w-b.png" alt="Profile">
+          <span class="member-name">${this.member.username}</span>
+          <span class="member-role">${this.member.role}</span>
+        </div>
+      </li>
+      `;
+    }
+  }
+}
+
+class ActivityDropdown extends HTMLElement {
+  constructor(activity, username) {
+    super();
+    this.activity = activity;
+    this.username = username;
+    [this.act_date, this.act_time] = activity.activity_time.split("-");
+    this.innerHTML = `        
+    <div class="activity-dropdown">
+      <button class="activity-dropdown-btn">
+        <div class="activity-details">
+          <span class="activity-name">${activity.title}</span>
+          <div class="tags"></div>
+          <span class="date">
+            <img src="assets/calendar_icon.png" alt="calendar"> 
+            <span class="date-text">${this.act_date} , ${this.act_time}</span>
+          </span>
+        </div>
+        <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
+      </button>
+      
+      <div class="activity-dropdown-content">
+        <div class="dropdown-container">
+          <img src="assets/people_icon.png" alt="People">
+          <ul class="members"></ul>
+        </div>
+        <button class="view-details">View Details</button>
+      </div>
+    </div>
+    `;
+  }
+
+  connectedCallback() {
     const tagsContainer = this.querySelector(".tags");
-    const tags = JSON.parse(this.getAttribute("tags") || "[]");
-    tags.forEach((tag) => {
+    this.activity.tags.forEach((tag) => {
       const span = document.createElement("span");
       span.classList.add("tag");
       span.textContent = tag;
@@ -1798,12 +1716,50 @@ class ActivityDropdown extends HTMLElement {
     });
 
     const membersContainer = this.querySelector(".members");
-    const members = JSON.parse(this.getAttribute("members") || "[]");
-    members.forEach((member) => {
-      const memberElement = document.createElement("custom-member");
-      memberElement.setAttribute("name", member.name);
-      memberElement.setAttribute("role", member.role);
+    this.activity.participants.forEach((member) => {
+      const memberElement = new Member(
+        member,
+        this.activity.title,
+        this.username
+      );
       membersContainer.appendChild(memberElement);
+    });
+
+    const dropdownBtn = this.querySelector(".activity-dropdown-btn");
+    dropdownBtn.addEventListener("click", () => {
+
+      document
+        .querySelectorAll(".activity-dropdown.open")
+        .forEach((openDropdown) => {
+          if (openDropdown !== this.querySelector(".activity-dropdown")) {
+            openDropdown.classList.remove("open");
+            const openContent = openDropdown.querySelector(
+              ".activity-dropdown-content"
+            );
+            openContent.style.height = "0px";
+            openContent.style.marginTop = "-0.5rem";
+          }
+        });
+
+      const dropdown = this.querySelector(".activity-dropdown");
+      const content = this.querySelector(".activity-dropdown-content");
+
+      if (dropdown.classList.contains("open")) {
+        content.style.height = content.scrollHeight + "px";
+        setTimeout(() => {
+          content.style.height = "0px";
+          content.style.marginTop = "-0.5rem";
+          dropdown.classList.remove("open");
+        }, 10);
+      } else {
+        dropdown.classList.add("open");
+        content.style.height = content.scrollHeight + "px";
+        content.style.marginTop = "1rem";
+
+        setTimeout(() => {
+          content.style.height = "auto";
+        }, 300);
+      }
     });
   }
 }
@@ -1812,127 +1768,147 @@ class ActivitiesList extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = `        
-        <div class="activities-bg">
-            <h2 class="activities-header">Upcoming</h2>
-            <div class="activities"></div>
-        </div>
-        `;
+    <div class="activities-bg">
+      <h2 class="activities-header">Upcoming</h2>
+      <div class="activities" id="activities"></div>
+    </div>
+    `;
   }
 
   connectedCallback() {
-    this.addEventListener("activity-selected", this.handleActivitySelected);
-
-    const activitiesContainer = this.querySelector(".activities");
-    const activities = JSON.parse(this.getAttribute("activities") || "[]");
-
-    activities.forEach((activity) => {
-      const activityElement = document.createElement("activity-dropdown");
-      activityElement.setAttribute("activity-name", activity.name);
-      activityElement.setAttribute("date", activity.date);
-      activityElement.setAttribute("tags", JSON.stringify(activity.tags));
-      activityElement.setAttribute("members", JSON.stringify(activity.members));
-      activitiesContainer.appendChild(activityElement);
+    document.addEventListener("change-header", (event) => {
+      this.querySelector(".activities-header").textContent = event.detail;
     });
   }
-
-  // handleActivitySelected(event) {
-  //     const activityType = event.detail.type;
-  //     const header = this.querySelector(".activities-header");
-  //     if (activityType === "Upcoming") {
-  //         header.textContent = "Upcoming";
-  //     } else if (activityType === "History") {
-  //         header.textContent = "History";
-  //     }
-  // }
 }
 
 class RatingPopup extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = `
-        <div class="rating-overlay"></div>
-        <div class="rating-pop-up">
-            <div class="rating-header">
-                Rate activity member
-            </div>
-            <div class="rating-info">
-                <div class="rating-activity-name">หาเพื่อนดูหนังครับ !!!</div>
-                <img src="assets/Profile-g.png" alt="">
-                <div class="rating-user-name">Peerawat Ingkhasantatikul</div>
-                <div class="rating-stars">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                </div>
-                <fieldset>
-                    <legend>comment</legend>
-                    <textarea placeholder="Write your comment..."></textarea>
-                </fieldset>
-            </div>
-            <div class="post-btn">
-                <button class="rating-cancel">Cancel</button>
-                <button class="rating-post">Post</button>
-            </div>
+    <div class="rating-overlay"></div>
+    <div class="rating-pop-up">
+      <div class="rating-header">Rate activity member</div>
+      <div class="rating-info">
+        <div class="rating-activity-name"></div>
+        <img src="assets/Profile-g.png" alt="">
+        <div class="rating-user-name"></div>
+        <div class="rating-change-component">
+          <div class="rating-stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+          <fieldset>
+            <legend>Comment</legend>
+            <textarea placeholder="Write your comment..."></textarea>
+          </fieldset>
+          <div class="post-btn">
+            <button class="rating-cancel">Cancel</button>
+            <button class="rating-post">Post</button>
+          </div>
         </div>
-        `;
+      </div>
+    </div>`;
+
     this.style.display = "none";
     this.classList.add("rating-popup-wrapper");
-
-    this.querySelector(".rating-cancel").addEventListener("click", () =>
-      this.closePopup()
-    );
-    this.querySelector(".rating-overlay").addEventListener("click", () =>
-      this.closePopup()
-    );
   }
 
-  openPopup(memberName, activityName) {
-    this.querySelector(".rating-user-name").textContent = memberName;
-    this.querySelector(".rating-activity-name").textContent = activityName;
+  connectedCallback() {
+    this.addEventListener("click", (event) => this.handleGlobalClick(event));
+    this.originalContent = this.querySelector(
+      ".rating-change-component"
+    ).cloneNode(true);
+    this.setupStarRating();
+  }
+
+  openPopup(activityTitle, username) {
+    this.querySelector(".rating-activity-name").textContent = activityTitle;
+    this.querySelector(".rating-user-name").textContent = username;
+    this.resetComponent();
     this.style.display = "block";
   }
 
   closePopup() {
     this.style.display = "none";
   }
+
+  resetComponent() {
+    const container = this.querySelector(".rating-change-component");
+    container.replaceWith(this.originalContent.cloneNode(true));
+    this.setupStarRating();
+  }
+
+  setupStarRating() {
+    const stars = this.querySelectorAll(".star");
+    let selectedRating = 0;
+
+    stars.forEach((star, index) => {
+      star.addEventListener("click", () => {
+        selectedRating = index + 1 === selectedRating ? 0 : index + 1;
+        this.highlightStars(selectedRating);
+      });
+      star.addEventListener("mouseover", () => {
+        this.highlightStars(index + 1);
+      });
+      this.querySelector(".rating-stars").addEventListener("mouseleave", () => {
+        this.highlightStars(selectedRating);
+      });
+    });
+  }
+
+  highlightStars(count) {
+    const stars = this.querySelectorAll(".star");
+    stars.forEach((s, i) => {
+      s.classList.toggle("active", i < count);
+    });
+  }
+
+  handleGlobalClick(event) {
+    if (
+      event.target.classList.contains("rating-cancel") ||
+      event.target.classList.contains("rating-overlay")
+    ) {
+      this.closePopup();
+    } else if (event.target.classList.contains("rating-post")) {
+      this.handlePostRating();
+    }
+  }
+
+  handlePostRating() {
+    const container = this.querySelector(".rating-change-component");
+
+    container.classList.add("fade-out");
+
+    setTimeout(() => {
+      const successMessage = document.createElement("div");
+      successMessage.classList.add("rating-success");
+      successMessage.innerHTML = `
+        <img src="assets/check_mark.png" alt="">
+        <h3>Rating completed</h3>
+      `;
+
+      container.classList.remove("fade-out");
+      container.innerHTML = "";
+      container.appendChild(successMessage);
+
+      setTimeout(() => {
+        successMessage.classList.add("fade-in");
+      }, 10);
+    }, 170);
+  }
 }
 
+customElements.define("select-activities", SelectActivities);
 customElements.define("rating-popup", RatingPopup);
 customElements.define("activities-list", ActivitiesList);
 customElements.define("activity-dropdown", ActivityDropdown);
 customElements.define("custom-member", Member);
 
-class CommentCard extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `
-        <div class="comment-card">
-            <div class="comment-header">
-                <div class="user-info">
-                    <div class="comment-profile"><img src="Profile-g.png" alt="" /></div>
-                    <div class="comment-details">
-                        <span class="comment-owner">Emily Chow</span>
-                        <span class="comment-date">15 ม.ค. 2567 เวลา 12:59 น.</span>
-                        <span class="user-comment">มาสายมากเลยค่ะ นัด 10 โมง มาจริง 11 โมง</span>
-                    </div>
-                </div>
 
-                <div class="comment-rating">
-                    <p>star star star</p>
-                </div>
-            </div>
-
-            <div class="comment-from">
-                <p>From:<a href="">Activity</a></p>
-            </div>
-        </div>
-        `;
-  }
-}
-
-customElements.define("comment-card", CommentCard);
 
 // var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
 // var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");

@@ -11,15 +11,11 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-<<<<<<< HEAD:Migrations/20250302091932_initialCreate.Designer.cs
-    [Migration("20250302091932_initialCreate")]
-=======
 <<<<<<<< HEAD:Migrations/20250224112307_UpdateUserModel.Designer.cs
     [Migration("20250224112307_UpdateUserModel")]
     partial class UpdateUserModel
 ========
     [Migration("20250224193345_initialCreate")]
->>>>>>> origin:Migrations/20250224193345_initialCreate.Designer.cs
     partial class initialCreate
 >>>>>>>> 0a1c971ee2f03720b58c62b7b11f905f916fb08d:Migrations/20250224193345_initialCreate.Designer.cs
     {

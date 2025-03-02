@@ -749,7 +749,7 @@ hr {
     color: var(--white);
     box-shadow: 0px 0px 4px 1px var(--shadow);
     svg path {
-      /* fill: var(--white); */
+      fill: var(--white);
       stroke: var(--white);
     }
   }
@@ -779,6 +779,7 @@ hr {
     color: var(--yellow);
     border: 2px solid var(--yellow);
     svg path {
+      fill: var(--yellow);
       stroke: var(--yellow);
     }
   }

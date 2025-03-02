@@ -58,6 +58,7 @@ public class ActivityDetailController: Controller
                     })
                     .ToList(),
                 a.Duration,
+                a.Status,
                 host = _context.Users
                     .Where(u => u.Username == a.Owner)
                     .Select(u => new 
@@ -79,6 +80,38 @@ public class ActivityDetailController: Controller
             ViewBag.Username = username;
 
         return activity == null ? NotFound("Activity not found") : View(activity);
+    }
+
+    [HttpPost("ActivityDetail/DeleteActivity/{Activity_id}")]
+    public IActionResult DeleteActivity(int Activity_id)
+    {
+        var activity = _context.Activities.Include(a => a.Participants).FirstOrDefault(a => a.Activity_id == Activity_id);
+        if (activity == null) {
+            return NotFound(new { message = "Activity Not Found"});
+        }
+        else {
+            activity.Status = "delete";
+            _context.SaveChanges();
+        }
+        
+
+        return Ok(new { message = "Successfully Delete Activity"});
+    }
+
+    [HttpPost("ActivityDetail/CloseActivity/{Activity_id}")]
+    public IActionResult CloseActivity(int Activity_id)
+    {
+        var activity = _context.Activities.Include(a => a.Participants).FirstOrDefault(a => a.Activity_id == Activity_id);
+        if (activity == null) {
+            return NotFound(new { message = "Activity Not Found"});
+        }
+        else {
+            activity.Status = "close";
+            _context.SaveChanges();
+        }
+        
+
+        return Ok(new { message = "Successfully Close Activity"});
     }
 
     [HttpPost("ActivityDetail/JoinActivity/{Activity_id}")]

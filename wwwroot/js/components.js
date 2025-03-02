@@ -1070,9 +1070,62 @@ class ViewReviewBtn extends HTMLElement {
 class DeleteBtn extends HTMLElement {
   constructor() {
     super();
+    this.activity_id = this.getAttribute("data-activity-id");
     this.innerHTML = `<button class="btn medium r-w round right hover-w-r-r">
             <svg-delete></svg-delete>delete
         </button>`;
+  }
+
+  connectedCallback() {
+      this.querySelector("button").addEventListener("click", () => this.delete_activity());
+  }
+
+  delete_activity() {
+      fetch(`DeleteActivity/${this.activity_id}`, {
+          method: 'POST',
+          headers: {"Content-Type": "application/json"}
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.message) {
+              console.log(data.message);
+              window.location.reload();
+          } else {
+              console.error("Failed to delete activity");
+          }
+      })
+      .catch(error => console.error("Error:", error));
+  }
+}
+
+class CloseBtn extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("data-activity-id");
+    this.innerHTML = `<button class="btn medium y-w round right hover-w-y-y">
+            <svg-close></svg-close>close
+        </button>`;
+  }
+
+  connectedCallback() {
+      this.querySelector("button").addEventListener("click", () => this.close_activity());
+  }
+
+  close_activity() {
+      fetch(`CloseActivity/${this.activity_id}`, {
+          method: 'POST',
+          headers: {"Content-Type": "application/json"}
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.message) {
+              console.log(data.message);
+              window.location.reload();
+          } else {
+              console.error("Failed to close activity");
+          }
+      })
+      .catch(error => console.error("Error:", error));
   }
 }
 
@@ -1379,6 +1432,15 @@ class SVGDelete extends BaseSVGElement {
   }
 }
 
+class SVGClose extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML = `<svg width="80px" height="80px" viewBox="0 0 31.668 31.668" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.835,0C7.089,0,0.001,7.09,0.001,15.834s7.088,15.834,15.834,15.834c8.743,0,15.832-7.09,15.832-15.834 S24.578,0,15.835,0z M22.167,22.168H9.501V9.5h12.666V22.168L22.167,22.168z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+  }
+}
+
 class SVGMail extends BaseSVGElement {
   constructor() {
     super();
@@ -1616,6 +1678,7 @@ customElements.define("act-detail-leave-btn", ActDetailLeaveBtn);
 customElements.define("all-act-banner", AllActBanner);
 customElements.define("view-review-btn", ViewReviewBtn);
 customElements.define("delete-btn", DeleteBtn);
+customElements.define("close-btn", CloseBtn);
 customElements.define("member-list-item", MemberListItem);
 customElements.define("host-list-item", HostListItem);
 customElements.define("pending-list-item", PendingListItem);
@@ -1642,6 +1705,7 @@ customElements.define("svg-check", SVGCheck);
 customElements.define("svg-deny", SVGDeny);
 customElements.define("svg-minus", SVGMinus);
 customElements.define("svg-delete", SVGDelete);
+customElements.define("svg-close", SVGClose);
 customElements.define("svg-mail", SVGMail);
 customElements.define("svg-phone", SVGPhone);
 customElements.define("svg-edit", SVGEdit);

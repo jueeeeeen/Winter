@@ -88,33 +88,79 @@
         </h2>
         <span>@Model.Member_count/@Model.Max_member</span>
     </header>
-    @if (username == @Model.host.Username)
+    @if (Model.Status == "open" || Model.Status == "full") 
     {
-        <ul>
-        @foreach (var participant in Model.Participants)
+        @if (username == @Model.host.Username)
         {
-            @if (participant.Role == "host")
+            <ul>
+            @foreach (var participant in Model.Participants)
             {
-                <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+                @if (participant.Role == "host")
+                {
+                    <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+                }
+                else if (participant.Role == "member")
+                {
+                    <member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
+                }
+                else if (participant.Role == "pending")
+                {
+                    <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
+                }
             }
-            @if (participant.Role == "member")
-            {
-                <member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
-            }
-            @if (participant.Role == "pending")
-            {
-                <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
-            }
+            </ul>
+            <div class="act-detail-btn-container">
+                <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
+                    <svg-chat></svg-chat> chat
+                </a>
+            </div>
         }
-        </ul>
-        <div class="act-detail-btn-container">
-            <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
-                <svg-chat></svg-chat> chat
-            </a>
-        </div>
-        
+        else 
+        {
+            <ul>
+            @foreach (var participant in Model.Participants)
+            {
+                @if (participant.Role == "host")
+                {
+                    <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+                }
+                else if (participant.Role == "member")
+                {
+                    <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
+                }
+            }
+            @if (@Model.Pending_count != 0)
+            {
+                <pending-list-item number="@Model.Pending_count"></pending-list-item>
+            }
+            @{
+                bool userIsMember = false;
+                foreach (var participant in Model.Participants)
+                {
+                    if (participant.Username == username)
+                    {
+                        userIsMember = true;
+                        break;
+                    }
+                }
+            }
+            </ul>
+            <div class="act-detail-btn-container">
+            @if (userIsMember)
+            {
+                <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
+                <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
+                    <svg-chat></svg-chat> chat
+                </a>
+            }
+            else if (Model.Member_count < @Model.Max_member)
+            {
+                <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+            }
+            </div>
+        }
     }
-    else 
+    else if (Model.Status == "close")
     {
         <ul>
         @foreach (var participant in Model.Participants)
@@ -123,14 +169,10 @@
             {
                 <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
             }
-            @if (participant.Role == "member")
+            else if (participant.Role == "member")
             {
                 <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
             }
-        }
-        @if (@Model.Pending_count != 0)
-        {
-            <pending-list-item number="@Model.Pending_count"></pending-list-item>
         }
         @{
             bool userIsMember = false;
@@ -147,22 +189,63 @@
         <div class="act-detail-btn-container">
         @if (userIsMember)
         {
-            <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
             <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
                 <svg-chat></svg-chat> chat
             </a>
         }
-        else if (Model.Member_count < @Model.Max_member)
+        </div>
+    }
+    else {
+        <ul>
+        @foreach (var participant in Model.Participants)
         {
-            <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+            @if (participant.Role == "host")
+                {
+                    <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+                }
+            else if (participant.Role == "member")
+            {
+                <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
+            }
+        }
+        @{
+                bool userIsMember = false;
+                foreach (var participant in Model.Participants)
+                {
+                    if (participant.Username == username)
+                    {
+                        userIsMember = true;
+                        break;
+                    }
+                }
+            }
+        </ul>
+        <div class="act-detail-btn-container">
+        <view-review-btn></view-review-btn>
+        @if (userIsMember)
+        {
+            <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
+                <svg-chat></svg-chat> chat
+            </a>
         }
         </div>
     }
+    
 </section>
 </div>
 @if (username == @Model.host.Username)
 {
-    <div class="delete-container">
-        <delete-btn></delete-btn>
-    </div>
+    @if (Model.Status == "open" || Model.Status == "full")
+    {
+        <div class="delete-container">
+            <close-btn data-activity-id="@Model.Activity_id"></close-btn>
+            <delete-btn data-activity-id="@Model.Activity_id"></delete-btn>
+        </div>
+    }
+    else if (Model.Status == "close" || Model.Status == "done")
+    {
+        <div class="delete-container">
+            <delete-btn data-activity-id="@Model.Activity_id"></delete-btn>
+        </div>
+    }
 }

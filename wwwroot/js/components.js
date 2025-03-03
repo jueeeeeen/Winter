@@ -1751,118 +1751,116 @@ class SelectActivities extends HTMLElement {
     this.innerHTML = `
         <ul class="select_type">
             <li>
-                <button class="type" id="Upcoming_button">
-                    Upcoming
-                </button>
+                <button class="type" id="Upcoming_button">Upcoming</button>
             </li>
             <li>
-                <button class="type" id="History_button">
-                    History
-                </button>
+                <button class="type" id="History_button">History</button>
             </li>
         </ul>
-        `;
-    this.querySelector("#Upcoming_button").addEventListener("click", () =>
-      this.changeHeader("Upcoming")
-    );
-    this.querySelector("#History_button").addEventListener("click", () =>
-      this.changeHeader("History")
-    );
-  }
-
-  // changeHeader(headerText) {
-  //     const event = new CustomEvent('headerChange', { detail: { text: headerText } });
-  //     console.log(event)
-  //     this.dispatchEvent(event);
-  // }
-}
-
-customElements.define("select-activities", SelectActivities);
-
-class Member extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `
-        <li class="member">
-            <div class="member-content">
-                <img src="assets/Profile-w-b.png" alt="Profile">
-                <span class="member-name"></span>
-                <span class="member-role"></span>
-            </div>
-            <button class="rate-btn">
-                <img src="assets/yellow_star_outline.png" alt="Rate">
-                <span class="review-text">review</span>
-            </button>
-        </li>
         `;
   }
 
   connectedCallback() {
-    this.querySelector(".member-name").textContent =
-      this.getAttribute("name") || "Unknown";
-    this.querySelector(".member-role").textContent = `(${
-      this.getAttribute("role") || "Member"
-    })`;
+    const buttons = this.querySelectorAll(".type");
 
-    const ratingPopup = document.querySelector("rating-popup");
-    this.querySelector(".rate-btn").addEventListener("click", () => {
-      const activityName =
-        this.closest("activity-dropdown")?.getAttribute("activity-name") ||
-        "Unknown Activity";
-      const name =
-        this.querySelector(".member-name").textContent || "Unknown Name";
-      ratingPopup.openPopup(
-        this.querySelector(".member-name").textContent,
-        activityName
-      );
+    buttons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        buttons.forEach((btn) => btn.classList.remove("active"));
+
+        event.target.classList.add("active");
+
+        this.dispatchEvent(
+          new CustomEvent("change-header", {
+            detail: event.target.textContent,
+            bubbles: true,
+          })
+        );
+      });
     });
   }
 }
 
-class ActivityDropdown extends HTMLElement {
-  constructor() {
+class Member extends HTMLElement {
+  constructor(member, activity_title, username) {
     super();
-    this.innerHTML = `        
-        <div class="activity-dropdown">
-            <button class="activity-dropdown-btn">
-                <div class="activity-details">
-                    <span class="activity-name"></span>
-                    <div class="tags"></div>
-                    <span class="date">
-                        <img src="assets/calendar_icon.png" alt="calendar"> 
-                        <span class="date-text"></span>
-                    </span>
-                </div>
-                <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
-            </button>
-
-            <div class="activity-dropdown-content">
-                <div class="dropdown-container">
-                    <img src="assets/people_icon.png" alt="People">
-                    <ul class="members"></ul>
-                </div>
-                <button class="view-details">View Details</button>
-            </div>
-        </div>
-        `;
-
-    this.querySelector(".activity-dropdown-btn").addEventListener(
-      "click",
-      () => {
-        this.querySelector(".activity-dropdown").classList.toggle("open");
-      }
-    );
+    this.member = member;
+    this.activity_title = activity_title;
+    this.username = username;
   }
 
   connectedCallback() {
-    this.querySelector(".activity-name").textContent =
-      this.getAttribute("activity-name") || "No Activity";
-    this.querySelector(".date-text").textContent =
-      this.getAttribute("date") || "Unknown Date";
+    if (this.username !== this.member.username) {
+      this.innerHTML = `
+      <li class="member">
+        <div class="member-content">
+          <img src="assets/Profile-w-b.png" alt="Profile">
+          <span class="member-name">${this.member.username}</span>
+          <span class="member-role">${this.member.role}</span>
+        </div>
+        <button class="rate-btn">
+          <img src="assets/yellow_star_outline.png" alt="Rate">
+          <span class="review-text">review</span>
+        </button>
+      </li>
+      `;
 
+      let ratingPopup = document.querySelector("rating-popup");
+      if (!ratingPopup) {
+        ratingPopup = new RatingPopup();
+        document.body.appendChild(ratingPopup);
+      }
+
+      this.querySelector(".rate-btn").addEventListener("click", () => {
+        ratingPopup.openPopup(this.activity_title, this.member.username);
+      });
+    } else {
+      this.innerHTML = `
+      <li class="member">
+        <div class="member-content">
+          <img src="assets/Profile-w-b.png" alt="Profile">
+          <span class="member-name">${this.member.username}</span>
+          <span class="member-role">${this.member.role}</span>
+        </div>
+      </li>
+      `;
+    }
+  }
+}
+
+class ActivityDropdown extends HTMLElement {
+  constructor(activity, username) {
+    super();
+    this.activity = activity;
+    this.username = username;
+    [this.act_date, this.act_time] = activity.activity_time.split("-");
+    this.innerHTML = `        
+    <div class="activity-dropdown">
+      <button class="activity-dropdown-btn">
+        <div class="activity-details">
+          <span class="activity-name">${activity.title}</span>
+          <div class="tags"></div>
+          <span class="date">
+            <img src="assets/calendar_icon.png" alt="calendar"> 
+            <span class="date-text">${this.act_date} , ${this.act_time}</span>
+          </span>
+        </div>
+        <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
+      </button>
+      
+      <div class="activity-dropdown-content">
+        <div class="dropdown-container">
+          <img src="assets/people_icon.png" alt="People">
+          <ul class="members"></ul>
+        </div>
+        <button class="view-details">View Details</button>
+      </div>
+    </div>
+    `;
+  }
+
+  connectedCallback() {
     const tagsContainer = this.querySelector(".tags");
-    const tags = JSON.parse(this.getAttribute("tags") || "[]");
-    tags.forEach((tag) => {
+    this.activity.tags.forEach((tag) => {
       const span = document.createElement("span");
       span.classList.add("tag");
       span.textContent = tag;
@@ -1870,12 +1868,50 @@ class ActivityDropdown extends HTMLElement {
     });
 
     const membersContainer = this.querySelector(".members");
-    const members = JSON.parse(this.getAttribute("members") || "[]");
-    members.forEach((member) => {
-      const memberElement = document.createElement("custom-member");
-      memberElement.setAttribute("name", member.name);
-      memberElement.setAttribute("role", member.role);
+    this.activity.participants.forEach((member) => {
+      const memberElement = new Member(
+        member,
+        this.activity.title,
+        this.username
+      );
       membersContainer.appendChild(memberElement);
+    });
+
+    const dropdownBtn = this.querySelector(".activity-dropdown-btn");
+    dropdownBtn.addEventListener("click", () => {
+
+      document
+        .querySelectorAll(".activity-dropdown.open")
+        .forEach((openDropdown) => {
+          if (openDropdown !== this.querySelector(".activity-dropdown")) {
+            openDropdown.classList.remove("open");
+            const openContent = openDropdown.querySelector(
+              ".activity-dropdown-content"
+            );
+            openContent.style.height = "0px";
+            openContent.style.marginTop = "-0.5rem";
+          }
+        });
+
+      const dropdown = this.querySelector(".activity-dropdown");
+      const content = this.querySelector(".activity-dropdown-content");
+
+      if (dropdown.classList.contains("open")) {
+        content.style.height = content.scrollHeight + "px";
+        setTimeout(() => {
+          content.style.height = "0px";
+          content.style.marginTop = "-0.5rem";
+          dropdown.classList.remove("open");
+        }, 10);
+      } else {
+        dropdown.classList.add("open");
+        content.style.height = content.scrollHeight + "px";
+        content.style.marginTop = "1rem";
+
+        setTimeout(() => {
+          content.style.height = "auto";
+        }, 300);
+      }
     });
   }
 }
@@ -1884,93 +1920,141 @@ class ActivitiesList extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = `        
-        <div class="activities-bg">
-            <h2 class="activities-header">Upcoming</h2>
-            <div class="activities"></div>
-        </div>
-        `;
+    <div class="activities-bg">
+      <h2 class="activities-header">Upcoming</h2>
+      <div class="activities" id="activities"></div>
+    </div>
+    `;
   }
 
   connectedCallback() {
-    this.addEventListener("activity-selected", this.handleActivitySelected);
-
-    const activitiesContainer = this.querySelector(".activities");
-    const activities = JSON.parse(this.getAttribute("activities") || "[]");
-
-    activities.forEach((activity) => {
-      const activityElement = document.createElement("activity-dropdown");
-      activityElement.setAttribute("activity-name", activity.name);
-      activityElement.setAttribute("date", activity.date);
-      activityElement.setAttribute("tags", JSON.stringify(activity.tags));
-      activityElement.setAttribute("members", JSON.stringify(activity.members));
-      activitiesContainer.appendChild(activityElement);
+    document.addEventListener("change-header", (event) => {
+      this.querySelector(".activities-header").textContent = event.detail;
     });
   }
-
-  // handleActivitySelected(event) {
-  //     const activityType = event.detail.type;
-  //     const header = this.querySelector(".activities-header");
-  //     if (activityType === "Upcoming") {
-  //         header.textContent = "Upcoming";
-  //     } else if (activityType === "History") {
-  //         header.textContent = "History";
-  //     }
-  // }
 }
 
 class RatingPopup extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = `
-        <div class="rating-overlay"></div>
-        <div class="rating-pop-up">
-            <div class="rating-header">
-                Rate activity member
-            </div>
-            <div class="rating-info">
-                <div class="rating-activity-name">หาเพื่อนดูหนังครับ !!!</div>
-                <img src="assets/Profile-g.png" alt="">
-                <div class="rating-user-name">Peerawat Ingkhasantatikul</div>
-                <div class="rating-stars">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                    <img src="assets/star_sharp.svg" alt="">
-                </div>
-                <fieldset>
-                    <legend>comment</legend>
-                    <textarea placeholder="Write your comment..."></textarea>
-                </fieldset>
-            </div>
-            <div class="post-btn">
-                <button class="rating-cancel">Cancel</button>
-                <button class="rating-post">Post</button>
-            </div>
+    <div class="rating-overlay"></div>
+    <div class="rating-pop-up">
+      <div class="rating-header">Rate activity member</div>
+      <div class="rating-info">
+        <div class="rating-activity-name"></div>
+        <img src="assets/Profile-g.png" alt="">
+        <div class="rating-user-name"></div>
+        <div class="rating-change-component">
+          <div class="rating-stars">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+          <fieldset>
+            <legend>Comment</legend>
+            <textarea placeholder="Write your comment..."></textarea>
+          </fieldset>
+          <div class="post-btn">
+            <button class="rating-cancel">Cancel</button>
+            <button class="rating-post">Post</button>
+          </div>
         </div>
-        `;
+      </div>
+    </div>`;
+
     this.style.display = "none";
     this.classList.add("rating-popup-wrapper");
-
-    this.querySelector(".rating-cancel").addEventListener("click", () =>
-      this.closePopup()
-    );
-    this.querySelector(".rating-overlay").addEventListener("click", () =>
-      this.closePopup()
-    );
   }
 
-  openPopup(memberName, activityName) {
-    this.querySelector(".rating-user-name").textContent = memberName;
-    this.querySelector(".rating-activity-name").textContent = activityName;
+  connectedCallback() {
+    this.addEventListener("click", (event) => this.handleGlobalClick(event));
+    this.originalContent = this.querySelector(
+      ".rating-change-component"
+    ).cloneNode(true);
+    this.setupStarRating();
+  }
+
+  openPopup(activityTitle, username) {
+    this.querySelector(".rating-activity-name").textContent = activityTitle;
+    this.querySelector(".rating-user-name").textContent = username;
+    this.resetComponent();
     this.style.display = "block";
   }
 
   closePopup() {
     this.style.display = "none";
   }
+
+  resetComponent() {
+    const container = this.querySelector(".rating-change-component");
+    container.replaceWith(this.originalContent.cloneNode(true));
+    this.setupStarRating();
+  }
+
+  setupStarRating() {
+    const stars = this.querySelectorAll(".star");
+    let selectedRating = 0;
+
+    stars.forEach((star, index) => {
+      star.addEventListener("click", () => {
+        selectedRating = index + 1 === selectedRating ? 0 : index + 1;
+        this.highlightStars(selectedRating);
+      });
+      star.addEventListener("mouseover", () => {
+        this.highlightStars(index + 1);
+      });
+      this.querySelector(".rating-stars").addEventListener("mouseleave", () => {
+        this.highlightStars(selectedRating);
+      });
+    });
+  }
+
+  highlightStars(count) {
+    const stars = this.querySelectorAll(".star");
+    stars.forEach((s, i) => {
+      s.classList.toggle("active", i < count);
+    });
+  }
+
+  handleGlobalClick(event) {
+    if (
+      event.target.classList.contains("rating-cancel") ||
+      event.target.classList.contains("rating-overlay")
+    ) {
+      this.closePopup();
+    } else if (event.target.classList.contains("rating-post")) {
+      this.handlePostRating();
+    }
+  }
+
+  handlePostRating() {
+    const container = this.querySelector(".rating-change-component");
+
+    container.classList.add("fade-out");
+
+    setTimeout(() => {
+      const successMessage = document.createElement("div");
+      successMessage.classList.add("rating-success");
+      successMessage.innerHTML = `
+        <img src="assets/check_mark.png" alt="">
+        <h3>Rating completed</h3>
+      `;
+
+      container.classList.remove("fade-out");
+      container.innerHTML = "";
+      container.appendChild(successMessage);
+
+      setTimeout(() => {
+        successMessage.classList.add("fade-in");
+      }, 10);
+    }, 170);
+  }
 }
 
+customElements.define("select-activities", SelectActivities);
 customElements.define("rating-popup", RatingPopup);
 customElements.define("activities-list", ActivitiesList);
 customElements.define("activity-dropdown", ActivityDropdown);

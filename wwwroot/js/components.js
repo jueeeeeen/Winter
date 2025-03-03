@@ -2060,36 +2060,6 @@ customElements.define("activities-list", ActivitiesList);
 customElements.define("activity-dropdown", ActivityDropdown);
 customElements.define("custom-member", Member);
 
-class CommentCard extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `
-        <div class="comment-card">
-            <div class="comment-header">
-                <div class="user-info">
-                    <div class="comment-profile"><img src="Profile-g.png" alt="" /></div>
-                    <div class="comment-details">
-                        <span class="comment-owner">Emily Chow</span>
-                        <span class="comment-date">15 ม.ค. 2567 เวลา 12:59 น.</span>
-                        <span class="user-comment">มาสายมากเลยค่ะ นัด 10 โมง มาจริง 11 โมง</span>
-                    </div>
-                </div>
-
-                <div class="comment-rating">
-                    <p>star star star</p>
-                </div>
-            </div>
-
-            <div class="comment-from">
-                <p>From:<a href="">Activity</a></p>
-            </div>
-        </div>
-        `;
-  }
-}
-
-customElements.define("comment-card", CommentCard);
-
 // var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
 // var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");
 // var lgbtq_icon = document.getElementById("lgbtq_icon");

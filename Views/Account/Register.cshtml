@@ -5,13 +5,13 @@
 <div class="progress-bar">
     <div class="step">
         <div class="bullet">
-            <span>1</span>
+            <p>1</p>
         </div>
         <p>Account</p>
     </div>
     <div class="step">
         <div class="bullet">
-            <span>2</span>
+            <p>2</p>
         </div>
         <p>Account</p>
     </div>
@@ -19,44 +19,50 @@
 
 <div class="register-card">
     <img src="\assets\winter_login_pic.jpg" alt="register background">
-    <h2>CREATE ACCOUNT</h2>
+    <p class="register-header">CREATE ACCOUNT</p>
     <div class="form-outer">
         <form id="registerForm">
             <div class="page active">
-                <div class="register-box1">
+                <div class="login-box">
                     <img src="\assets\Profile-b.png" alt="username">
                     <label for="username"></label>
                     <input type="text" id="username" name="username" placeholder="username" required>
                 </div>
-                <div class="register-box1">
-                    <img src="\assets\mail.svg" alt="email">
+                <div class="login-box">
+                    <img src="\assets\email_icon.svg" alt="email">
                     <label for="email"></label>
                     <input type="email" id="email" name="email" placeholder="email" required>
                 </div>
-                <div class="register-box1">
+                <div class="login-box">
                     <img src="\assets\lock.svg" alt="password">
                     <label for="password"></label>
                     <input type="password" id="password" name="password" placeholder="password" required>
+                    <button type="button" id="togglePassword">
+                        <img src="\assets\password.png" alt="">
+                    </button>
                 </div>
-                <div class="register-box1">
+                <div class="login-box">
                     <img src="\assets\lock.svg" alt="password">
                     <label for="confirm-password"></label>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="confirm password" required>
+                    <button type="button" id="togglePassword">
+                        <img src="\assets\password.png" alt="">
+                    </button>
                 </div>
                 <button id="nextButton" class="next-button">next</button>
             </div>
             
 
             <div class="page">
-                <div class="register-box2">
+                <div class="register-box">
                     <label for="first-name"></label>
                     <input type="text" id="firstname" name="first name" placeholder="first name" required>
                 </div>
-                <div class="register-box2">
+                <div class="register-box">
                     <label for="last-name"></label>
                     <input type="text" id="lastname" name="last name" placeholder="last name" required>
                 </div>
-                <div class="register-box2">
+                <div class="register-box">
                     <label for="date-of-birth"></label>
                     <input type="date" id="dateofbirth" name="date of birth" required>
                 </div>
@@ -77,9 +83,23 @@
                 <button type="submit" id="registerButton" class="register-button">create account</button>
             </div>
         </form>
-        <div class="login-description">
+        <div class="login-description" id="register-description">
             <p>Already have an account?</p>
             <a href="~/Account/Login">login</a>
         </div>
     </div>
 </div>
+
+<script>
+    const togglePassword = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
+
+    togglePassword.addEventListener("click", () => {
+        const type = passwordInput.type === "password" ? "text" : "password";
+        passwordInput.type = type;
+        
+        togglePassword.querySelector("img").src = type === "password" 
+            ? "\\assets\\password.png" 
+            : "\\assets\\eye.png";
+    });
+</script>

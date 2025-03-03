@@ -1,9 +1,13 @@
 @model Winter_Project.ViewModels.NavbarProfileViewModel
 
+@{
+    var notifications = (List<NotificationModel>)ViewData["Notifications"];
+}
+
 <nav class="gradient_blue shadow nav_bar_container">
     <ul class="no_select nav_bar">
-        <li><a href="/" class="flex flex_center"><img src="/assets/home.svg" width="30px" alt="home"></a></li>
-        <li><a href="/Activity">Activity</a></li>
+        <li><a href="/" class="flex flex_center nav-home"><img src="/assets/home.svg" alt="home"></a></li>
+        <li><a href="/Activity" class="nav-activity">Activity</a></li>
         <li class="logo">
             <a href="/" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter Logo" /></a>
         </li>
@@ -16,45 +20,86 @@
             <img src="/assets/bell_icon-g.svg" alt="bell"></button>
         </li>
         <li><button class="btn circle round w-mb hover-b-w" id="profile_button">
-            <img src="/assets/Profile-w-b.png" width="55px" alt="profile"></button>
+            <img src="/assets/Profile-w-b.png" alt="profile"></button>
+        </li>
+        <li class="pseudo-btn">
+            <input type="checkbox" id="hamburger-check">
+            <label class="hamburger" for="hamburger-check">
+                <svg-hamburger></svg-hamburger>
+                <svg-x></svg-x>
+            </label>
+            <ul class="hamburger-dropdown">
+                <li><a href="/"><svg-home></svg-home> Home</a></li>
+                <li><a href="/Activity"><svg-tile></svg-tile> View Activity</a></li>
+                <li><a href='/Create'><svg-plus></svg-plus> Create Activity</a></li>
+            </ul>
         </li>
     </ul>
-
     <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
-        <div class="info_dropdown">
-            <div class="profile-container-dropdown">
-                <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-w-b.png" width="40px">
+        <div>
+            <div class="info_dropdown">
+                <div class="profile-container-dropdown">
+                    <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-g.png" width="40px">
+                </div>
+                
+                <span class="first-name-dropdown">@Model.FirstName</span>
+                <span class="last-name-dropdown">@Model.LastName</span>
+                <span class="username_dropdown">@Model.Username</span>
             </div>
-            
-            <span class="first-name-dropdown">@Model.FirstName</span>
-            <span class="last-name-dropdown">@Model.LastName</span>
-            <span class="username_dropdown">@Model.Username</span>
+            <hr class="blue_line">
+            <ul>
+                <li class="btn_dropdown"><img src="/assets/person.svg"><a href="/Profile">My Profile</a></li>
+                <hr class="blue_line_dash">
+                <li class="btn_dropdown"><img src="/assets/activity.svg"><a href="/MyActivity">My Activity</a></li>
+                <hr class="blue_line_dash">
+                <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/MyRating">My Ratings</a></li>
+                <hr class="blue_line_dash">
+            </ul>
         </div>
-        <hr class="blue_line">
-        <ul>
-            <li class="btn_dropdown"><img src="/assets/person.svg"><a href="/Profile">My Profile</a></li>
-            <hr class="blue_line_dash">
-            <li class="btn_dropdown"><img src="/assets/activity.svg"><a href="/MyActivity">My Activity</a></li>
-            <hr class="blue_line_dash">
-            <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/MyRating">My Ratings</a></li>
-            <hr class="blue_line_dash">
-            <li>
-                <form method="post" asp-controller="Account" asp-action="Logout">
-                    <button class="log_out_dropdown h_center flex flex_center gap" id="logout_button">
-                        <img src="/assets/logout.svg">log out
-                    </button>
-                </form>
-            </li>
-        </ul>
+        
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <button class="btn small w-r-r hover-r-w edge" id="logout_button">
+                <svg-logout></svg-logout>log out
+            </button>
+        </form>
     </div>
 
     <div class="noti-dropdown-container shadow" id="noti_dropdown">
         <span class="noti-header">Notifications</span>
         <hr>
         <ul>
-            <approved-noti></approved-noti>
-            <denied-noti></denied-noti>
-            <joined-noti></joined-noti>
+            @* <approved-noti></approved-noti>
+            <denied-noti></denied-noti> *@
+            @foreach (var notification in notifications)
+            {
+                @if (notification.Notification_type == "pending")
+                {
+                    <joined-noti 
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </joined-noti>
+                }
+                else if (notification.Notification_type == "approved")
+                {
+                    <approved-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </approved-noti>
+                }
+                else if (notification.Notification_type == "denied")
+                {
+                    <denied-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </denied-noti>
+                }
+            }
         </ul>
     </div>
 </nav>

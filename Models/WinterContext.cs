@@ -16,6 +16,8 @@ namespace Winter_Project.Models
         public DbSet<RequirementModel> Requirements { get; set; }
         public DbSet<ParticipantModel> Participants { get; set; }
         public DbSet<ReviewModel> Reviews { get; set; }
+        public DbSet<ChatMessageModel> ChatMessages { get; set; }
+        public DbSet<NotificationModel> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

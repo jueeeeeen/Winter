@@ -12,6 +12,9 @@
 }
 
 .delete-container {
+    display: flex;
+    justify-content: end;
+    gap: 20px;
     width: 95%;
     margin: auto;
     padding: 0.5em 0;
@@ -31,8 +34,22 @@
 }
 
 .act-detail-main .act-card-profile-info{
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     margin: 0;
+}
+
+.member-count {
+    flex-direction: column;
+    align-items: center;
+    color: var(--blue80);
+    font-weight: bold;
+    position: absolute;
+    gap: 0.2em;
+    line-height: 1;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: none;
 }
 
 .act-detail-member {
@@ -40,6 +57,7 @@
     display: flex;
     flex-direction: column;
     padding: 1em 1em 2em 1em;
+    background-color: var(--white);
 }
 
 .act-detail-requirement {
@@ -49,7 +67,11 @@
     flex-direction: column;
     background-color: var(--white);
     border: 2px solid var(--blue60);
-    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+.act-detail-requirement svg {
+    width: 1.5em;
 }
 
 .act-detail-requirement ul{
@@ -59,6 +81,7 @@
 .act-detail-requirement p {
     font-size: 1.125em;
     padding: 0.5em;
+    height: 50%;
 }
 
 .act-detail-req-header {
@@ -108,27 +131,31 @@
 .act-detail-title {
     padding: 1em;
     display: grid;
-    grid-template-columns: 1.5em auto;
+    grid-template-columns: 1.75em auto;
     grid-template-rows: 1fr auto;
     grid-template-areas:
     "icon header"
     ". description";
-    gap:0 0.5em
+    gap:0 0.5em;
+    font-size: 1.25em;
 }
 
-.act-detail-title svg{
+.act-detail-title svg-bookmark{
     grid-area: icon;
     margin: auto;
 }
 
+.act-detail-title svg {
+    width: 1.75em;
+}
+
 .act-detail-title h1 {
     grid-area: header;
-    font-size: 2.5em;
+    font-size: 1.75em;
 }
 
 .act-detail-title p {
     grid-area: description;
-    font-size: 1.25em;
     overflow: hidden;
     word-wrap: break-word;
 }
@@ -137,24 +164,51 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--gray60);
-    font-size: 1.5em;
-    /* padding: 0.25em 0.2em 0.25em 0.2em; */
+    padding-bottom: 0.25em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 
-.act-detail-member header span{
-    color: var(--gray70);
-    font-size: 1.5em;
+.act-detail-member h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.25em;
+    color: var(--blue80);
+}
 
+.act-detail-member h2 svg {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+.act-detail-member header span{
+    color: var(--blue80);
+    font-size: 1.5em;
 }
 
 .act-detail-member ul {
-    margin: 1.5em 0;
+    padding: 0.5em 0.3em;
+    margin: 0.5em 0;
     display: flex;
     flex-direction: column;
     gap: 1em;
     flex-grow: 1;
-    /* overflow: scroll; */
+    overflow-y: scroll;
+}
+
+.act-detail-member ul::-webkit-scrollbar {
+    width: 0.2em;
+    height: 5px;
+}
+
+.act-detail-member ul::-webkit-scrollbar-thumb {
+    background: var(--blue60);
+    border-radius: 0.5em;
+}
+
+.act-detail-member ul::-webkit-scrollbar-track {
+    background: var(--gray50);
+    border-radius: 0.5em;
 }
 
 .pending-member-item {
@@ -210,6 +264,7 @@
 }
 
 .member-list-item-profile .crown{
+    width: 60%;
     position: absolute;
     transform: translate(-50%, -60%);
     left: 50%;
@@ -232,9 +287,28 @@
     color: var(--gray70);
 }
 
-.act-detail-join-btn {
-    align-self: flex-end;
-    margin: auto;
+.act-detail-btn-container {
+    display: flex;
+    gap: 0.2em;
+    align-items: center;
+    justify-content: center;
+}
+
+.act-detail-btn-container>* {
+    flex: 0 1 50%;
+}
+
+.act-detial-leave-btn {
+    min-width: 100%;
+}
+
+.act-detail-chat{
+    min-width: 0em;
+}
+
+.act-detail-chat svg{
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .member-list-item-approval {
@@ -244,8 +318,13 @@
 }
 
 .approval {
-    height: 2.375em;
-    width: 2.375em;
+    height: 2.25em;
+    width: 2.25em;
+}
+
+.approval svg {
+    width: 1.25em;
+    height: 1.25em;
 }
 
 .approval-req {
@@ -253,4 +332,57 @@
     gap: 1%;
     align-items: center;
     font-weight: 500;
+}
+
+@media screen and (max-width: 480px) {
+    .act-detail-container {
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 1em 0;
+    }
+    
+    .act-detail-container>* {
+        background-color: var(--white);
+        padding: 0.5em 1em;
+        border: none;
+    }
+
+    .act-detail-main {
+        border-radius: 0.4em 0.4em 0 0;
+        min-height: 280px;
+    }
+
+    .act-detail-main .act-card-profile-info{
+        font-size: 1.25rem;
+    }
+
+    .act-detail-title{
+        padding: 0.5em;
+        font-size: 1rem;
+    }
+
+    .act-detail-title svg{
+        width: 2em;
+        height: 2em;
+    }
+
+    .act-detail-member {
+        margin-top: 1em;
+        height: auto;
+    }
+
+    .act-detail-requirement {
+        border-radius: 0;
+    }
+
+    .act-detail-info {
+        border-radius: 0 0 0.4em 0.4em;
+    }
+
+    .member-count {
+        display: flex;
+    }
 }

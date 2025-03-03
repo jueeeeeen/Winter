@@ -70,6 +70,58 @@ namespace Winter_Project.Migrations
                     b.ToTable("Activities");
                 });
 
+            modelBuilder.Entity("Winter_Project.Models.ChatMessageModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Activity_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChatMessages");
+                });
+
+            modelBuilder.Entity("Winter_Project.Models.NotificationModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Activity_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Activity_user_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Notification_time")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notification_type")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("User_id")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
+                });
+
             modelBuilder.Entity("Winter_Project.Models.ParticipantModel", b =>
                 {
                     b.Property<string>("Username")

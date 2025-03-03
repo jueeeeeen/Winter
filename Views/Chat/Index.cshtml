@@ -1,0 +1,185 @@
+@model Winter_Project.ViewModels.ChatViewModel
+
+@{
+    ViewData["Title"] = "Chat";
+
+    var token = Context.Request.Cookies["token"];
+    var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+    var host = (string)ViewData["host"];
+    var activity_title = (string)ViewData["activity_title"];
+}
+
+<div class="chat-page-container">
+    <h1 class="chat-activity-title">
+        <svg-bookmark></svg-bookmark>
+        @activity_title
+    </h1>
+    <section class="act-detail-member edge shadow">
+        <header>
+            <h2 class="letter-spacing">
+                <svg-member></svg-member>
+                Members
+            </h2>
+            <span>(@Model.Group_member.Count())</span>
+            <svg-x></svg-x>
+        </header>
+        @if (Model.Group_member.Any())
+        {
+            <ul>
+            @foreach (var member in Model.Group_member)
+            {
+                @if (member.Role == "host")
+                {
+                    <host-list-item name="@member.First_name @member.Last_name"></host-list-item>
+                }
+                @if (member.Role == "member")
+                {
+                    <member-list-item name="@member.First_name @member.Last_name"></member-list-item>
+                }
+            }
+            </ul>
+        }
+    </section>
+    <section class="chat-container">
+        <header class="chat-header">
+            <strong>
+                <svg-bookmark></svg-bookmark>
+                @activity_title (@Model.Group_member.Count())
+            </strong>
+            <div class="pseudo-btn">
+                <input type="checkbox" id="view-member-check">
+                <label class="btn view-member-btn" for="view-member-check">
+                    <svg-member></svg-member>
+                </label>
+            </div>
+        </header>
+        <div class="message-container" id="message-container">
+            @foreach (var message in Model.Messages)
+            {
+                @if (message.Username == username){
+                    <div class="chat-bubble self">
+                        <span class="chat-bb-message self">
+                            @message.Message
+                        </span>
+                        <span class="chat-bb-date-time self">@message.Timestamp</span>
+                    </div>
+                }
+                else {
+                    <div class="chat-bubble">
+                        <div class="chat-bb-profile">
+                            <img src="../../assets/profile-g.png">
+                            @if (message.Username == host) {
+                                <img class="crown" src="../../assets/crown.svg" />
+                            }
+                        </div>
+                        <strong class="chat-bb-name">@message.First_name @message.Last_name</strong>
+                        <span class="chat-bb-message">
+                            @message.Message
+                        </span>
+                        <span class="chat-bb-date-time">@message.Timestamp</span>
+                    </div>
+                }
+            }
+        </div>
+        <form class="message-form">
+            <input class="round" type="text" placeholder="" id="message-input">
+            <button class="btn medium round bb-w hover-lb-w-glow send-button" type="button" id="send-button">
+                send<svg-send></svg-send>
+            </button>
+        </form>
+    </section>
+</div>
+
+<script>
+    let socket;
+    const message_container = document.getElementById('message-container');
+    const message_input = document.getElementById('message-input');
+    const send_button = document.getElementById('send-button');
+    const username = `@username`;
+
+    function initWebSocket() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const activity_id = urlParams.get('activity_id');
+        socket = new WebSocket(`ws://localhost:5115/chat/connect?activity_id=${activity_id}`);
+        
+        socket.onmessage = function (event) {
+            console.log("Message received: ", event.data);
+            const message = JSON.parse(event.data);
+            const chat_bubble = create_chat_bubble(message, username);
+            message_container.innerHTML += chat_bubble;
+            message_container.scrollTop = message_container.scrollHeight;
+        };
+
+        socket.onopen = function () {
+            console.log('WebSocket connection established');
+        };
+
+        socket.onclose = function () {
+            console.log('WebSocket connection closed');
+        };
+
+        socket.onerror = function (error) {
+            console.error('WebSocket Error:', error);
+        };
+    }
+
+    function create_chat_bubble(message, username) {
+        
+        const timestamp = `<span class="chat-bb-date-time">${message.Timestamp}</span>`;
+
+        if (message.Username === username) {
+            console.log(message.Username);
+            return `
+                <div class="chat-bubble self">
+                    <span class="chat-bb-message self">${message.Message}</span>
+                    ${timestamp}
+                </div>
+            `;
+        } else {
+            return `
+                <div class="chat-bubble">
+                    <div class="chat-bb-profile">
+                        <img src="../../assets/profile-g.png">
+                    </div>
+                    <strong class="chat-bb-name">${message.Name}</strong>
+                    <span class="chat-bb-message">${message.Message}</span>
+                    ${timestamp}
+                </div>
+            `;
+        }
+    }
+
+    send_button.addEventListener('click', function (event) {
+        event.preventDefault();
+        const message = message_input.value;
+        if (message && socket.readyState === WebSocket.OPEN) {
+            socket.send(message);
+            message_input.value = '';
+        }
+        return false;
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        message_container.scrollTop = message_container.scrollHeight;
+    });
+
+    window.onload = initWebSocket;
+
+    const member_section = document.querySelector(".act-detail-member");
+    const view_member_btn = document.querySelector("#view-member-check");
+    const close_view_member_btn = document.querySelector(".act-detail-member svg-x");
+
+    view_member_btn.addEventListener("change", () => {
+        member_section.classList.toggle("slide-in");
+    });
+
+    close_view_member_btn.addEventListener("click", () => {
+        member_section.classList.toggle("slide-in");
+    });
+
+</script>
+
+@* chat?activity_id=1:509 WebSocket connection established
+chat?activity_id=1:502 Message received:  {"Username":"jueeeeeen","Message":"test3","Timestamp":"2025-02-27T18:52:42.2634377Z"} 
+
+{Username: 'jueeeeeen', Message: 'test4', Timestamp: '2025-02-27T18:54:23.6994847Z'}*@

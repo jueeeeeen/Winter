@@ -61,7 +61,7 @@ public class CreateController : Controller
                 Title = model.Title,
                 Detail = model.Detail,
                 Create_time = DateTime.UtcNow.ToString("o"),
-                Activity_time = model.Activity_time, 
+                Activity_time = model.Activity_time,
                 Duration = model.Duration,
                 Location = model.Location,
                 Max_member = model.Max_member,
@@ -81,13 +81,10 @@ public class CreateController : Controller
                 },
                 Status = "open"
             };
-
             
             _context.Activities.Add(activity);
             await _context.SaveChangesAsync();
-            return Ok();
-            // return RedirectToAction("Index", "ActivityDetail", new { id = activity.Activity_id });
-
+            return Ok(new { activityId = activity.Activity_id });
         }
         catch (Exception ex)
     {

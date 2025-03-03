@@ -1,6 +1,5 @@
 .home {
     position: absolute;
-    top: 64px;
     left: 0;
 }
 
@@ -68,7 +67,6 @@
 
 .home-detail {
     width: 100%;
-    height: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,12 +74,12 @@
 }
 
 .home-detail-header {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    max-width: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin-top: 4%;
 }
 
@@ -111,25 +109,32 @@
 
 .home-text2-pic {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
 .home-text2-pic img {
-    width: 1214px;
-    height: 213px;
+    width: 280px;
+    height: 200px;
     margin-top: 80px;
+}
+
+.home-pic-next {
+    width: 80px !important;
+    height: 80px !important;   
 }
 
 .home-text2 {
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 20px;
 }
 
 .home-text2 h3 {
-    width: 21%;
+    width: 80%;
     color: #4D4D4D;
     font-weight: 400;
     text-align: center;
@@ -140,8 +145,8 @@
 }
 
 .home-text3-pic h2 {
-    padding-left: 65px;
-    padding-right: 65px;
+    padding-left: 5%;
+    padding-right: 5%;
     color: #4D4D4D;
     font-weight: 400;
 }
@@ -149,6 +154,7 @@
 .home-center {
     margin-top: 30px;
     margin-bottom: 30px;
+    font-size: x-large;
     text-align: center;
 }
 
@@ -163,27 +169,17 @@
     width: 250px;
 }
 
+
 .home-text3 h4 {
     width: 250px;
     text-align: center;
 }
 
 .home-line {
+    flex-grow: 1;
     border: 0;
     height: 3px;
     background-color: #56BEFF;
-}
-
-.home-line1 {
-    width: 65%;
-}
-
-.home-line2 {
-    width: 69%;
-}
-
-.home-line3 {
-    width: 77%;
 }
 
 .home-last-button {
@@ -195,7 +191,7 @@
     border: none;
     cursor: pointer;
     position: absolute;
-    transform: translateY(700px);
+    transform: translateY(600px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -213,3 +209,126 @@
     height: auto;
 }
 
+@media screen and (max-width: 480px) {
+
+    .home {
+        position: absolute;
+        left: 0;
+    }
+    
+    .home-background {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        left: 0;
+    }
+
+    .home-picture {
+        margin: 20px 0px 20px 0px;
+        background-size: cover;
+        width: 90vw;
+        height: 90vh;
+    }
+
+    .home-button {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .home-big-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .home-text {
+        row-gap: 20px;
+    }
+
+    .home-button {
+        gap: 20px;
+    }
+
+    .home-scroll {
+        transform: translateY(550px);
+    }
+
+    .home-detail {
+        width: 100vw;
+    }
+
+
+    .home-detail-header {
+        width: 90%;
+        max-width: 90%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-detail h1 {
+        color: #56BEFF;
+        margin-right: 0.5em;
+    }
+
+    .home-text1-pic {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        flex-direction: column;
+    }
+
+    .home-text1-pic img{
+        width: 200px;
+        height: 200px;
+    }
+
+    .home-text1-pic .home-text1 {
+        width: 80%;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    
+    .home-text2-pic {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .home-text2-pic img {
+        margin-top: 40px;
+    }
+
+    .home-pic-next {
+        display: none;
+    }
+    
+
+    .home-text3 {
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+        row-gap: 20px;
+    }
+
+    .home-text3-pic {
+        width: 80%;
+    }
+
+    .home-text3-pic h2{
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    .home-text3 h4 {
+        font-size: larger;
+    }
+
+    .home-center {
+        font-size: large !important;
+    }
+}

@@ -1,5 +1,6 @@
 ﻿@using Winter_Project.Services;
 @inject UserService _userService;
+@inject NotificationService _notificationService;
 
 @{
     var token = Context.Request.Cookies["token"];
@@ -9,6 +10,13 @@
     ? _userService.GetNavbarProfile(username)
     : null;
     bool isLoggedIn = !string.IsNullOrEmpty(token);
+
+    var notifications = navbarProfileViewModel != null 
+        ? await _notificationService.GetUserNotificationsAsync(username) 
+        : new List<NotificationModel>();
+
+    // Pass notifications to the _MainNavBar
+    ViewData["Notifications"] = notifications;
 }
 
 <!DOCTYPE html>
@@ -16,7 +24,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link
         href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -43,11 +51,11 @@
     }
     @if (((ViewData["Title"] as string) == "Activity"))
     {
-        <link rel="stylesheet" href="~/css/Activity.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/activity.css" asp-append-version="true" />
     }
     @if (((ViewData["Title"] as string) == "Activity Detail"))
     {
-        <link rel="stylesheet" href="~/css/ActivityDetail.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/activitydetail.css" asp-append-version="true" />
     }
     @if (((ViewData["Title"] as string) == "Create"))
     {
@@ -66,8 +74,13 @@
     {
         <link rel="stylesheet" href="~/css/activityReview.css" asp-append-version="true" />
     }
+    @if (((ViewData["Title"] as string) == "Chat"))
+    {
+        <link rel="stylesheet" href="~/css/activitydetail.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/chat.css" asp-append-version="true" />
+    }
 
-    <script src="/js/components.js" defer></script>
+    <script asp-append-version="true" src="/js/components.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @* <script src="/js/auth/register/register_form.js" defer></script> *@
 </head>

@@ -52,7 +52,10 @@ public class ActivityDetailController: Controller
                             .Select(u => new 
                             {
                                 u.FirstName,
-                                u.LastName
+                                u.LastName,
+                                Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
                             })
                             .FirstOrDefault()
                     })
@@ -63,7 +66,9 @@ public class ActivityDetailController: Controller
                     .Where(u => u.Username == a.Owner)
                     .Select(u => new 
                     {
-                        Profile_pic = "profile-g.png",
+                        Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png",
                         u.Username,
                         u.FirstName,
                         u.LastName,

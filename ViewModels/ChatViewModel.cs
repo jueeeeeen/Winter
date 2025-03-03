@@ -12,6 +12,7 @@ namespace Winter_Project.ViewModels
         public string Last_name { get; set; } = string.Empty;
         public string Message { get; set; } = string.Empty;
         public string Timestamp { get; set; } = string.Empty;
+        public string Profile_pic { get; set; } = string.Empty;
     }
 
         public class MemberViewModel
@@ -20,5 +21,6 @@ namespace Winter_Project.ViewModels
         public string First_name { get; set; } = string.Empty;
         public string Last_name { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
+        public string Profile_pic { get; set; } = string.Empty;
     }
 }

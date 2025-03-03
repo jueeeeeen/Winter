@@ -363,6 +363,13 @@ main {
   align-items: center;
 }
 
+.profile-picture-dropdown{
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .first-name-dropdown {
   grid-area: first-name;
   display: flex;
@@ -493,6 +500,13 @@ hr {
   margin: 0;
 }
 
+.profile{
+  width: 3em;
+  height: 3em;
+  border: solid 1px var(--blue60);
+  border-radius: 50%;
+  object-fit: cover;
+}
 .blue_line {
   border: 1px solid var(--blue20);
 }

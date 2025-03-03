@@ -142,6 +142,13 @@
     position: relative;
 }
 
+.profile-pic{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .chat-bb-profile img {
     width: 100%;
 }

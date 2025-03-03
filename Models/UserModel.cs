@@ -28,6 +28,7 @@ namespace Winter_Project.Models
 
         [Required(ErrorMessage = "Gender is required")]
         public string Gender { get; set; } = string.Empty;
+        public byte[]? ProfilePicture { get; set; }
         public ICollection<UserBio>? UserBios { get; set; }
     }
 }

@@ -36,6 +36,7 @@
   height: 120px;
   border: solid 1px var(--blue60);
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .profile-details {

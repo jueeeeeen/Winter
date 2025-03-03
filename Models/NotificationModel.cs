@@ -13,6 +13,9 @@ namespace Winter_Project.Models
 
         public int Activity_user_id { get; set; }
 
+        public byte[]? ProfilePicture { get; set; }
+        public ICollection<UserBio>? UserBios { get; set; }
+
         public DateTime Notification_time { get; set; } = DateTime.UtcNow;
     }
 }

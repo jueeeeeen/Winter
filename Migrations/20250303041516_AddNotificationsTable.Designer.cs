@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250302200917_UpdateUserModel")]
-    partial class UpdateUserModel
+    [Migration("20250303041516_AddNotificationsTable")]
+    partial class AddNotificationsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,7 +100,7 @@ namespace Winter_Project.Migrations
 
             modelBuilder.Entity("Winter_Project.Models.NotificationModel", b =>
                 {
-                    b.Property<int>("User_id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -117,7 +117,10 @@ namespace Winter_Project.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("User_id");
+                    b.Property<int>("User_id")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Notifications");
                 });

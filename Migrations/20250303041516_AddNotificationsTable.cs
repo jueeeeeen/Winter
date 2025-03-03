@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateUserModel : Migration
+    public partial class AddNotificationsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,8 +54,9 @@ namespace Winter_Project.Migrations
                 name: "Notifications",
                 columns: table => new
                 {
-                    User_id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    User_id = table.Column<int>(type: "INTEGER", nullable: false),
                     Notification_type = table.Column<string>(type: "TEXT", nullable: false),
                     Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
                     Activity_user_id = table.Column<int>(type: "INTEGER", nullable: false),
@@ -63,7 +64,7 @@ namespace Winter_Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Notifications", x => x.User_id);
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

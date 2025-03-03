@@ -1,10 +1,14 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Winter_Project.Models
 {
     public class NotificationModel
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; } // Primary key
+
         public int User_id { get; set; }
 
         public string Notification_type { get; set; } = string.Empty;

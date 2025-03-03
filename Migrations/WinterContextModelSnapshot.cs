@@ -97,7 +97,7 @@ namespace Winter_Project.Migrations
 
             modelBuilder.Entity("Winter_Project.Models.NotificationModel", b =>
                 {
-                    b.Property<int>("User_id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -118,6 +118,10 @@ namespace Winter_Project.Migrations
                         .HasColumnType("BLOB");
 
                     b.HasKey("User_id");
+                    b.Property<int>("User_id")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Notifications");
                 });

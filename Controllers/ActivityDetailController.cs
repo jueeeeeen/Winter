@@ -183,11 +183,13 @@ public class ActivityDetailController: Controller
             var notification = new NotificationModel
             {
                 User_id = host_user.Id,
-                Notification_type = "Join",
+                Notification_type = "join",
                 Activity_id = Activity_id,
                 Activity_user_id = join_user.Id,
                 Notification_time = DateTime.UtcNow
             };
+
+            _context.Notifications.Add(notification);
         }
 
         if (member_count + 1 >= activity.Max_member) activity.Status = "full";
@@ -228,12 +230,39 @@ public class ActivityDetailController: Controller
             return NotFound(new { message = "Activity Not Found"});
         }
         
+        var host_user = _context.Users
+            .FirstOrDefault(u => u.Username == activity.Owner);
+        
+        if (host_user == null)
+        {
+            return NotFound(new { message = "Host user not found" });
+        }
+
+        var join_user = _context.Users
+            .FirstOrDefault(u => u.Username == username);
+
+        if (join_user == null)
+        {
+            return NotFound(new { message = "Join user not found" });
+        }
+
         var participant = _context.Participants
             .FirstOrDefault(p => p.Username == username && p.Activity_id == Activity_id);
 
         if (participant != null)
         {
             _context.Participants.Remove(participant);
+
+            var notification = new NotificationModel
+            {
+                User_id = join_user.Id,
+                Notification_type = "denied",
+                Activity_id = Activity_id,
+                Activity_user_id = 0,
+                Notification_time = DateTime.UtcNow
+            };
+
+            _context.Notifications.Add(notification);
             _context.SaveChanges();
         }
 
@@ -247,6 +276,22 @@ public class ActivityDetailController: Controller
         if (activity == null) {
             return NotFound(new { message = "Activity Not Found"});
         }
+
+        var host_user = _context.Users
+            .FirstOrDefault(u => u.Username == activity.Owner);
+        
+        if (host_user == null)
+        {
+            return NotFound(new { message = "Host user not found" });
+        }
+
+        var join_user = _context.Users
+            .FirstOrDefault(u => u.Username == username);
+
+        if (join_user == null)
+        {
+            return NotFound(new { message = "Join user not found" });
+        }
         
         var participant = _context.Participants
             .FirstOrDefault(p => p.Username == username && p.Activity_id == Activity_id);
@@ -255,6 +300,17 @@ public class ActivityDetailController: Controller
         {
             participant.Role = "member";
             participant.Join_time = DateTime.UtcNow;
+
+            var notification = new NotificationModel
+            {
+                User_id = join_user.Id,
+                Notification_type = "approved",
+                Activity_id = Activity_id,
+                Activity_user_id = 0,
+                Notification_time = DateTime.UtcNow
+            };
+
+            _context.Notifications.Add(notification);
             _context.SaveChanges();
         }
 

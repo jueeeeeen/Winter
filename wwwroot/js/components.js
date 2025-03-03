@@ -81,11 +81,11 @@ class SearchBar extends HTMLElement {
     `<form class="search-bar shadow">
         <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
         <div class="search-bar-x">
-            <button class="btn" id="clear_search_button">
+            <button type="button" class="btn" id="clear-search-button">
                 <svg-x></svg-x>
             </button>
         </div>
-        <button type="button" class="btn search-bar-search" id="seach-button">
+        <button type="submit" class="btn search-bar-search" id="seach-button">
             <svg-search></svg-search>
         </button>
     </form>`;
@@ -94,13 +94,12 @@ class SearchBar extends HTMLElement {
   }
 
   connectedCallback() {
-    this.clear_search_button = this.querySelector("#clear_search_button");
+    this.clear_search_button = this.querySelector("#clear-search-button");
     this.clear_search_button.addEventListener("click", this.clear_search);
 
     this.search_btn = this.querySelector("#seach-button");
     this.search_input = this.querySelector("input");
     this.search_btn.addEventListener("click", () => {
-      console.log(this.search_input.value);
       this.search_key = this.search_input.value;
     });
   }
@@ -111,8 +110,8 @@ class SearchBar extends HTMLElement {
 
   clear_search() {
     this.search_input = this.querySelector("#search_input");
-    console.log("seach key: ", this.search_input);
     this.search_input.value = "";
+    this.search_key = null;
   }
 }
 
@@ -132,7 +131,7 @@ class TagFilter extends HTMLElement {
   constructor() {
     super();
     this.innerHTML =
-    `<form class="flex gap" id="tag_filter_form">
+    `<form class="flex gap tag-filter" id="tag_filter_form">
       <tag-selector data-tag_name="All"></tag-selector>
       <tag-selector data-tag_name="Art"></tag-selector>
       <tag-selector data-tag_name="Beauty"></tag-selector>
@@ -450,6 +449,10 @@ class DisplaySort extends HTMLElement {
                 <li class="pseudo-btn">
                     <input type="radio" value="Create_date" name="sort_option" id="create-date-sort" checked>
                     <label for="create-date-sort" class="btn sort-option-btn">Creation Date</label>    
+                </li>
+                <li class="pseudo-btn">
+                    <input type="radio" value="Popular" name="sort_option" id="popular-sort">
+                    <label for="popular-sort" class="btn sort-option-btn">Popular</label>    
                 </li>
                 <li class="pseudo-btn">
                     <input type="radio" value="Activity_time" name="sort_option" id="act-time-sort">

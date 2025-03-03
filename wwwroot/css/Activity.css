@@ -239,6 +239,10 @@ tag-filter::-webkit-scrollbar {
     display: none;
 }
 
+.tag-filter {
+    flex-wrap: wrap;
+}
+
 .filter-options {
     grid-area: filters;
     display: flex;

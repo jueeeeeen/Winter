@@ -9,7 +9,7 @@
     <tag-filter></tag-filter>
     <div class="filter-options">
         <div class="pseudo-btn">
-            <input type="checkbox" name="descending" id="display-order">
+            <input type="checkbox" name="descending" id="display-order" checked>
             <label for="display-order" class="filter-btn btn w-bb-bb display-order hover-bb-w">
                 <svg-order></svg-order>
             </label>
@@ -54,7 +54,9 @@
         const clear_filter_btn = document.querySelector('#clear-filter-btn');
         const save_filter_btn = document.querySelector('#save-filter-btn');
         const tag_filter = document.querySelector('tag-filter');
-        const search_button = document.querySelector('#seach-button');
+        const search_form = document.querySelector('search-bar');
+        const clear_search_button = document.querySelector('#clear-search-button')
+        console.log(search_form);
 
         fetch_activities()
         activity_pagination.addEventListener("page-changed", (event)=>fetch_activities(event.detail.page))
@@ -63,7 +65,11 @@
         clear_filter_btn.addEventListener("click", () => fetch_activities())
         save_filter_btn.addEventListener("click", () => fetch_activities())
         tag_filter.addEventListener("change", () => fetch_activities())
-        search_button.addEventListener("click", () => fetch_activities())
+        search_form.addEventListener("submit", () => {
+            event.preventDefault()
+            fetch_activities()
+        })
+        clear_search_button.addEventListener("click", () => fetch_activities())
 
         function get_filters() {
             tag_filter_result = tag_filter.result;

@@ -1,99 +1,64 @@
 @{
     ViewData["Title"] = "My Activity";
 }
+
 <select-activities></select-activities>
+<activities-list></activities-list>
+<custom-pagination id="activity-pagination"></custom-pagination>
 
-<activities-list
-    activities='[{
-        "name": "มาดูหนังกัน!!!!",
-        "date": "Feb 20, 2025",
-        "tags": ["entertain", "sport", "relax"],
-        "members": [
-            { "name": "Alice", "role": "owner" },
-            { "name": "Bob", "role": "member" }
-        ]
-    },
-    {
-        "name": "มาเล่นสวนน้ำกัน!!!!",
-        "date": "Feb 22, 2025",
-        "tags": ["relax", "entertain"],
-        "members": [
-            { "name": "Charlie", "role": "owner" },
-            { "name": "Dana", "role": "member" }
-        ]
-    }]'>
-</activities-list>
-<rating-popup></rating-popup>
+<script>
+    window.onload = () => {
+        const selectActivities = document.querySelector("select-activities");
+        const activityList = document.querySelector("activities-list");
+        const ratingPopup = document.querySelector("rating-popup")
+        const activity_pagination = document.querySelector('custom-pagination');
 
-@* <div class="activities-bg">
-    <h2 class="activities-header">Upcoming</h2>
-    <div class="activities">
-        <div class="activity-dropdown">
-            <button class="activity-dropdown-btn">
-                <div class="activity-details">
-                    <span class="activity-name">ไปสวนน้ำกัน</span>
-                    <div class="tags">
-                        <span class="tag">
-                            tags
-                        </span>
-                        <span class="tag">
-                            tags
-                        </span>
-                    </div>
-                    <span class="date">
-                        <img src="assets/calendar_icon.png" alt="calendar"> 
-                        <span class="date-text">
-                            Feb 20, 2025
-                        </span>
-                    </span>
-                </div>
-                <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
-            </button>
-            <div class="activity-dropdown-content">
-                <div class="dropdown-container">
-                    <img src="assets/people_icon.png" alt="People">
-                    <ul class="members">
-                        <li class="member">
-                            <div class="member-content">
-                                <img src="assets/Profile-w-b.png" alt="Profile">
-                                <span class="member-name">Alice</span>
-                                <span class="member-role">owner</span>
-                            </div>
-                            <button class="rate-btn">
-                                <img src="assets/yellow_star_outline.png" alt="Rate">
-                                <span class="review-text">review</span>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <button class="view-details">View Details</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="rating-overlay"></div>
-<div class="rating-pop-up">
-    <div class="rating-header">
-        Rate activity member
-    </div>
-    <div class="rating-info">
-        <div class="rating-activity-name">หาเพื่อนดูหนังครับ !!!</div>
-        <img src="assets/Profile-g.png" alt="">
-        <div class="rating-user-name">Peerawat Ingkhasantatikul</div>
-        <div class="rating-stars">
-            <img src="assets/star_sharp.svg" alt="">
-            <img src="assets/star_sharp.svg" alt="">
-            <img src="assets/star_sharp.svg" alt="">
-            <img src="assets/star_sharp.svg" alt="">
-            <img src="assets/star_sharp.svg" alt="">
-        </div>
-        <fieldset>
-            <legend>comment</legend>
-            <textarea placeholder="Write your comment..."></textarea>
-        </fieldset>
-    </div>
-    <div class="post-btn">
-        <button class="rating-cancel">Cancel</button>
-        <button class="rating-post">Post</button>
-    </div>
-</div> *@
+        var activityType = "upcoming";
+        
+        fetchActivities();
+        selectActivities.querySelector("#Upcoming_button").addEventListener("click", () => {
+            activityType = "upcoming";
+            fetchActivities();
+        });
+        selectActivities.querySelector("#History_button").addEventListener("click", () => {
+            activityType = "history";
+            fetchActivities();
+        });
+
+        activity_pagination.addEventListener("page-changed", (event) => {
+            fetchActivities(event.detail.page);
+        });
+
+        async function fetchActivities(page = 1) {
+        fetch(`MyActivity/GetActivities?activityType=${activityType}&page=${page}`)
+        .then(response => response.json())
+        .then(data => {
+            const activities = data.activities;
+            if (activities.length === 0) {
+                const activity_list = activityList.querySelector("#activities");
+                activity_list.innerHTML = "<div>Activity not found</div>";
+                activity_list.classList.add("rating-header")
+            }
+            else {
+                if (!Array.isArray(activities)) {
+                    console.error("activities is not an array or is missing:", activities);
+                    return;
+                }
+
+                const activity_list = activityList.querySelector("#activities");
+                activity_list.innerHTML = "";
+                activities.forEach((activity) => {
+                    const activityElement = new ActivityDropdown(activity, data.username);
+                    activity_list.appendChild(activityElement);
+                });
+
+                if (data.max_page) {
+                    activity_pagination.render(parseInt(data.max_page));
+                }
+
+            }
+        })
+        .catch(error => console.error("Fetch error:", error));
+        }
+    }
+</script>

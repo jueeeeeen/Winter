@@ -1,5 +1,5 @@
 .act-detail-container {
-    height: 85vh;
+    height: 82.5vh;
     width: 95%;
     display: grid;
     grid-template-columns: 2fr 1fr 1.5fr;
@@ -7,7 +7,7 @@
     grid-template-areas:
     "main main member"
     "requirement info member";
-    margin: auto;
+    margin: 1em auto 0 auto;
     gap: 0.5em;
 }
 

@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250303041516_AddNotificationsTable")]
-    partial class AddNotificationsTable
+    [Migration("20250304182523_UploadProfile")]
+    partial class UploadProfile
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -177,6 +177,36 @@ namespace Winter_Project.Migrations
                     b.ToTable("Requirements");
                 });
 
+            modelBuilder.Entity("Winter_Project.Models.ReviewModel", b =>
+                {
+                    b.Property<int>("Review_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Activity_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("Reviewed_user")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("User_id")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Review_id");
+
+                    b.ToTable("Reviews");
+                });
+
             modelBuilder.Entity("Winter_Project.Models.UserBio", b =>
                 {
                     b.Property<int>("Id")
@@ -245,6 +275,9 @@ namespace Winter_Project.Migrations
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Username")
                         .IsRequired()

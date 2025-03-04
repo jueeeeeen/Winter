@@ -1,5 +1,9 @@
 @model Winter_Project.ViewModels.NavbarProfileViewModel
 
+@{
+    var notifications = (List<NotificationModel>)ViewData["Notifications"];
+}
+
 <nav class="gradient_blue shadow nav_bar_container">
     <ul class="no_select nav_bar">
         <li><a href="/" class="flex flex_center nav-home"><img src="/assets/home.svg" alt="home"></a></li>
@@ -31,9 +35,6 @@
             </ul>
         </li>
     </ul>
-
-    
-
     <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
         <div>
             <div class="info_dropdown">
@@ -67,9 +68,38 @@
         <span class="noti-header">Notifications</span>
         <hr>
         <ul>
-            <approved-noti></approved-noti>
-            <denied-noti></denied-noti>
-            <joined-noti></joined-noti>
+            @* <approved-noti></approved-noti>
+            <denied-noti></denied-noti> *@
+            @foreach (var notification in notifications)
+            {
+                @if (notification.Notification_type == "pending")
+                {
+                    <joined-noti 
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </joined-noti>
+                }
+                else if (notification.Notification_type == "approved")
+                {
+                    <approved-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </approved-noti>
+                }
+                else if (notification.Notification_type == "denied")
+                {
+                    <denied-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </denied-noti>
+                }
+            }
         </ul>
     </div>
 </nav>

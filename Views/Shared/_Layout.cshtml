@@ -1,5 +1,6 @@
 ﻿@using Winter_Project.Services;
 @inject UserService _userService;
+@inject NotificationService _notificationService;
 
 @{
     var token = Context.Request.Cookies["token"];
@@ -9,6 +10,13 @@
     ? _userService.GetNavbarProfile(username)
     : null;
     bool isLoggedIn = !string.IsNullOrEmpty(token);
+
+    var notifications = navbarProfileViewModel != null 
+        ? await _notificationService.GetUserNotificationsAsync(username) 
+        : new List<NotificationModel>();
+
+    // Pass notifications to the _MainNavBar
+    ViewData["Notifications"] = notifications;
 }
 
 <!DOCTYPE html>
@@ -60,12 +68,11 @@
     @if (((ViewData["Title"] as string) == "Register"))
     {
         <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
-        <link rel="stylesheet" href="~/css/user.css" asp-append-version="true" />
         <script src="~/js/auth/register/register_form.js"></script>
     }
-    @if (((ViewData["Title"] as string) == "Activity Review"))
+    @if (((ViewData["Title"] as string) == "Activity Review") || ((ViewData["Title"] as string) == "My Review"))
     {
-        <link rel="stylesheet" href="~/css/activityreview.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/activityReview.css" asp-append-version="true" />
     }
     @if (((ViewData["Title"] as string) == "Chat"))
     {
@@ -73,7 +80,7 @@
         <link rel="stylesheet" href="~/css/chat.css" asp-append-version="true" />
     }
 
-    <script src="/js/components.js" defer></script>
+    <script asp-append-version="true" src="/js/components.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @* <script src="/js/auth/register/register_form.js" defer></script> *@
 </head>

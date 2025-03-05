@@ -34,6 +34,10 @@ namespace Winter_Project.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Deadline_time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Detail")
                         .IsRequired()
                         .HasColumnType("TEXT");

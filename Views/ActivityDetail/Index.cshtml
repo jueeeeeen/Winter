@@ -167,11 +167,11 @@
         {
             @if (participant.Role == "host")
             {
-                <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+                <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic"></host-list-item>
             }
             else if (participant.Role == "member")
             {
-                <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
+                <member-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic"></member-list-item>
             }
         }
         @{

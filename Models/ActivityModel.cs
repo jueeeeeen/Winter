@@ -16,6 +16,7 @@ namespace Winter_Project.Models
         public string Detail {get; set;} = string.Empty;
         public string Create_time {get; set;} = string.Empty;
         public string Activity_time {get; set;} = string.Empty;
+        public string Deadline_time {get; set;} = string.Empty;
         public string Duration {get; set;} = string.Empty;
         public string Location {get; set;} = string.Empty;
         public int Max_member {get; set;}

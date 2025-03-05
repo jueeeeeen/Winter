@@ -19,8 +19,13 @@
                 <span class="create-error-message"></span>
             </div>
             <div class="form-group">
-                <label for="create_date_time">Date - Time :</label>
+                <label for="create_date_time">Activity Date - Time :</label>
                 <input type="datetime-local" name="Activity_time" id="create_date_time" required/>
+                <span class="create-error-message"></span>
+            </div>
+            <div class="form-group">
+                <label for="dead_line_date_time">Join Deadline :</label>
+                <input type="datetime-local" name="Deadline_time" id="dead_line_date_time" required/>
                 <span class="create-error-message"></span>
             </div>
             <div class="form-group">
@@ -148,6 +153,7 @@
         const title = formData.get("Title")?.trim();
         const detail = formData.get("Detail")?.trim();
         const activityTime = formData.get("Activity_time");
+        const deadlineTime = formData.get("Deadline_time");
         const duration = formData.get("Duration");
         const location = formData.get("Location")?.trim();
         const maxMember = parseInt(formData.get("Max_member")) || 0;
@@ -178,9 +184,14 @@
             if (!firstError) firstError = document.getElementById("create_detail");
         }
         if (!activityTime) {
-            showError("create_date_time", "Please specify the date and time.");
+            showError("create_date_time", "Please specify the activity date and time.");
             isValid = false;
             if (!firstError) firstError = document.getElementById("create_date_time");
+        }
+        if (!deadlineTime) {
+            showError("dead_line_date_time", "Please specify the deadline date and time.");
+            isValid = false;
+            if (!firstError) firstError = document.getElementById("dead_line_date_time");
         }
         if (!duration) {
             showError("duration", "Please specify the duration.");
@@ -234,6 +245,7 @@
             Title: formData.get("Title"),
             Detail: formData.get("Detail"),
             Activity_time: formData.get("Activity_time"),
+            Deadline_time: formData.get("Deadline_time"),
             Duration: formData.get("Duration"),
             Location: formData.get("Location"),
             Max_member: parseInt(formData.get("Max_member")) || 0,

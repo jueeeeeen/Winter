@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250304182523_UploadProfile")]
-    partial class UploadProfile
+    [Migration("20250305034733_AddNotificationsTable")]
+    partial class AddNotificationsTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,10 @@ namespace Winter_Project.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Create_time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Deadline_time")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

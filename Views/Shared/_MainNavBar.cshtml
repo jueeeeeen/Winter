@@ -57,8 +57,8 @@
             </ul>
         </div>
         
-        <form method="post" asp-controller="Account" asp-action="Logout">
-            <button class="btn small w-r-r hover-r-w edge" id="logout_button">
+        <form method="post" asp-controller="Account" asp-action="Logout" id="logout-form">
+            <button class="btn small w-r-r hover-r-w edge" id="logout-button">
                 <svg-logout></svg-logout>log out
             </button>
         </form>
@@ -132,11 +132,11 @@
         const currentDropdown = document.querySelector(`#${currentId}`);
         const otherDropdown = document.querySelector(`#${otherId}`);
 
-        if (otherDropdown && otherDropdown.classList.contains("show")) {
-            otherDropdown.classList.remove("show");
+        if (otherDropdown && otherDropdown.classList.contains("show-dd")) {
+            otherDropdown.classList.remove("show-dd");
         }
 
-        currentDropdown.classList.toggle("show");
+        currentDropdown.classList.toggle("show-dd");
     }
 
     function toggle_profile_dropdown() {

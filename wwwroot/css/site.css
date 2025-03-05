@@ -332,12 +332,13 @@ main {
 
 .profile_dropdown {
   width: 230px;
-  height: fit-content;
+  height: 260px;
   padding: 0 1em;
   position: absolute;
   right: 6vw;
   font-weight: 400;
   display: none;
+  /* display: flex; */
   flex-direction: column;
   gap: 2em;
 }
@@ -409,10 +410,9 @@ main {
   align-items: center;
 }
 
-#logout_button {
+#logout-button {
   width: 80%;
   margin: auto;
-  margin-bottom: 1em;
 }
 
 .noti-dropdown-container{
@@ -1070,7 +1070,7 @@ header.act-card-profile-info{
   animation: bg-slide 10s infinite alternate linear;
 }
 
-.show {
+.show-dd {
   display: flex;
 }
 

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateReviewModel : Migration
+    public partial class initialcreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,6 +32,39 @@ namespace Winter_Project.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Activities", x => x.Activity_id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChatMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Username = table.Column<string>(type: "TEXT", nullable: false),
+                    Message = table.Column<string>(type: "TEXT", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChatMessages", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    User_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Notification_type = table.Column<string>(type: "TEXT", nullable: false),
+                    Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Activity_user_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Notification_time = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,6 +191,12 @@ namespace Winter_Project.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ChatMessages");
+
+            migrationBuilder.DropTable(
+                name: "Notifications");
+
             migrationBuilder.DropTable(
                 name: "Participants");
 

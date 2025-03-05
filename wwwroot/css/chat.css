@@ -198,6 +198,13 @@
     justify-self: flex-end;
 }
 
+.profile-pic{
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media screen and (max-width: 480px) {
     .chat-activity-title {
         display: none;

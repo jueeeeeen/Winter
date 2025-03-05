@@ -273,6 +273,9 @@ namespace Winter_Project.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("BLOB");
+
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(50)

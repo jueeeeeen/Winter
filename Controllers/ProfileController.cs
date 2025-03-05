@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Winter_Project.Models;
@@ -14,7 +15,7 @@ public class ProfileController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         var token = Request.Cookies["token"];
         Console.WriteLine($"Token: {token}");
@@ -42,7 +43,7 @@ public class ProfileController : Controller
                 return RedirectToAction("Login", "Account");
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
             if (user == null)
             {
@@ -63,7 +64,8 @@ public class ProfileController : Controller
                 Phone = userBio?.Phone ?? "No information",
                 AboutMe = userBio?.AboutMe ?? "No information",
                 MyInterests = userBio?.MyInterests ?? "No information",
-                MyHobby = userBio?.MyHobby ?? "No information"
+                MyHobby = userBio?.MyHobby ?? "No information",
+                ProfilePictureBase64 = user.ProfilePicture != null ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}" : null
             };
 
             Console.WriteLine($"✅ User Profile Loaded: {profileViewModel.Username}");
@@ -76,7 +78,7 @@ public class ProfileController : Controller
         }
     }
 
-    public IActionResult Edit()
+    public async Task<IActionResult> Edit()
     {
         var token = Request.Cookies["token"];
         Console.WriteLine($"Token: {token}");
@@ -104,7 +106,7 @@ public class ProfileController : Controller
                 return RedirectToAction("Login", "Account");
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
 
             if (user == null)
             {
@@ -125,7 +127,10 @@ public class ProfileController : Controller
                 Phone = userBio?.Phone ?? "No information",
                 AboutMe = userBio?.AboutMe ?? "No information",
                 MyInterests = userBio?.MyInterests ?? "No information",
-                MyHobby = userBio?.MyHobby ?? "No information"
+                MyHobby = userBio?.MyHobby ?? "No information",
+                ProfilePictureBase64 = user.ProfilePicture != null
+                    ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
+                    : Url.Content("~/assets/Profile-w-b.png")
             };
 
             Console.WriteLine($"✅ User Profile Loaded: {profileViewModel.Username}");
@@ -139,7 +144,7 @@ public class ProfileController : Controller
     }
 
     [HttpPost]
-    public IActionResult Edit(ProfileViewModel model)
+    public async Task<IActionResult> Edit(ProfileViewModel model)
     {
         if (!ModelState.IsValid)
         {
@@ -166,7 +171,7 @@ public class ProfileController : Controller
             return RedirectToAction("Login", "Account");
         }
 
-        var user = _context.Users.FirstOrDefault(u => u.Username == username);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
         if (user == null)
         {
             return NotFound();
@@ -199,6 +204,15 @@ public class ProfileController : Controller
         user.LastName = model.LastName;
         user.Email = model.Email;
         user.DateOfBirth = model.DateOfBirth;
+
+        if (model.ProfilePictureFile != null && model.ProfilePictureFile.Length > 0)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await model.ProfilePictureFile.CopyToAsync(memoryStream);
+                user.ProfilePicture = memoryStream.ToArray();
+            }
+        }
 
         try
         {

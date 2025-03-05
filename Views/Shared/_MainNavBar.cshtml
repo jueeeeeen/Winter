@@ -39,7 +39,7 @@
         <div>
             <div class="info_dropdown">
                 <div class="profile-container-dropdown">
-                    <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-g.png" width="40px">
+                    <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
                 </div>
                 
                 <span class="first-name-dropdown">@Model.FirstName</span>

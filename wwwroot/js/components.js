@@ -634,10 +634,8 @@ class ActivityCard extends HTMLElement {
                 <div class="act-card-header">
                     <div class="act-card-profile-info">
                         <div><img src="${
-                          path + activity.host.profile_pic
-                            ? path + activity.host.profile_pic
-                            : path + "profile-g.png"
-                        }"></div>
+                          activity.host.profile_pic
+                        }" class="profile-img" ></div>
                         <div>
                             <span>${
                               activity.host.firstName +
@@ -871,10 +869,11 @@ class MemberListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
-                    <img class="profile" src="../../assets/profile-g.png">
+                    <img class="profile" src="${this.profile_pic}">
                 </div>
                 <span class="member-list-item-name">${this.name}</span>
                 <span class="member-list-item-role flex">(Member)</span>
@@ -885,10 +884,11 @@ class HostListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
         `<li class="radial-blue-bg member-list-item shadow">
             <div class="member-list-item-profile">
-                <img class="profile" src="../../assets/profile-g.png">
+                <img class="profile" src="${this.profile_pic}">
                 <img class="crown" src="../../assets/crown.svg">
             </div>
             <span class="member-list-item-name">${this.name}</span>
@@ -914,10 +914,11 @@ class PendingHostViewListItem extends HTMLElement {
         this.activity_id = this.getAttribute("data-activity-id");
         this.name = this.getAttribute("name")
         this.username = this.getAttribute("username")
+        this.profile_pic = this.getAttribute("profile-pic")
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img class="profile" src="../../assets/profile-g.png">
+                <img class="profile" src="${this.profile_pic}">
             </div>
             <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">waiting for approval...</span>
@@ -978,10 +979,11 @@ class MemberHostViewListItem extends HTMLElement {
         this.activity_id = this.getAttribute("data-activity-id");
         this.name = this.getAttribute("name")
         this.username = this.getAttribute("username")
+        this.profile_pic = this.getAttribute("profile-pic")
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img class="profile" src="../../assets/profile-g.png">
+                <img class="profile" src="${this.profile_pic}">
             </div>
             <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">(Member)</span>

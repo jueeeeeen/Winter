@@ -17,8 +17,8 @@ public class MyActivityController: Controller
         return View();
     }
 
-   [HttpGet]
-    public JsonResult GetActivities([FromQuery] string activityType, [FromQuery] int page)
+    [HttpGet]
+    public JsonResult GetActivities([FromQuery] string activityType, [FromQuery] int page )
     {
         var token = Request.Cookies["token"];
         Console.WriteLine($"Token: {token}");
@@ -31,11 +31,11 @@ public class MyActivityController: Controller
         var jwtSecurityToken = handler.ReadJwtToken(token);
         Console.WriteLine($"Decoded JWT: {jwtSecurityToken}");
 
-        var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+        var curusername = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
 
-        Console.WriteLine($"Extracted Username: {username}");
+        Console.WriteLine($"Extracted Username: {curusername}");
 
-        if (string.IsNullOrEmpty(username))
+        if (string.IsNullOrEmpty(curusername))
         {
             Console.WriteLine("⚠️ Username is null or empty!");
         }
@@ -43,7 +43,7 @@ public class MyActivityController: Controller
         var page_size = 5;
         var filtered_activities = _context.Activities.AsQueryable();
   
-        filtered_activities = filtered_activities.Where(a => a.Participants.Any(p => p.Username == username));
+        filtered_activities = filtered_activities.Where(a => a.Participants.Any(p => p.Username == curusername));
 
         var activitiesList = filtered_activities
             .Include(a => a.Participants)
@@ -60,19 +60,36 @@ public class MyActivityController: Controller
                 .ToList();
         }
 
+
+
         var result = activitiesList;
         var response = new 
         {
-            username,
+            curusername,
             Activities = result
                 .Skip((page - 1) * page_size)
                 .Take(page_size)
                 .Select(a => new 
                 {
+                    a.Activity_id,
                     a.Title,
                     a.Tags,
                     Activity_time = DateTime.Parse(a.Activity_time).ToString("ddd, dd MMM yyyy-HH:mm"),
-                    Participants = a.Participants.Select(p => new
+                    host = _context.Users
+                    .Where(u => u.Username == a.Owner)
+                    .Select(u => new 
+                    {
+                        Profile_pic = "profile-g.png",
+                        u.Username,
+                        u.FirstName,
+                        u.LastName,
+                        u.Gender,
+                        Rating = "4.5"
+                    })
+                    .FirstOrDefault(),
+                    Participants = a.Participants
+                    .OrderBy(p => p.Role == "host" ? 0 : p.Role == "member" ? 1 : 2)
+                    .Select(p => new
                     {
                         p.Username,
                         p.Role,

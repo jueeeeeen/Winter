@@ -7,14 +7,16 @@
 <custom-pagination id="activity-pagination"></custom-pagination>
 
 <script>
+
     window.onload = () => {
         const selectActivities = document.querySelector("select-activities");
         const activityList = document.querySelector("activities-list");
         const ratingPopup = document.querySelector("rating-popup")
         const activity_pagination = document.querySelector('custom-pagination');
 
-        var activityType = "upcoming";
         
+        var activityType = "upcoming";
+        var username = "test1"
         fetchActivities();
         selectActivities.querySelector("#Upcoming_button").addEventListener("click", () => {
             activityType = "upcoming";
@@ -30,7 +32,7 @@
         });
 
         async function fetchActivities(page = 1) {
-        fetch(`MyActivity/GetActivities?activityType=${activityType}&page=${page}`)
+        fetch(`/MyActivity/GetActivities?activityType=${activityType}&page=${page}`)
         .then(response => response.json())
         .then(data => {
             const activities = data.activities;
@@ -48,7 +50,7 @@
                 const activity_list = activityList.querySelector("#activities");
                 activity_list.innerHTML = "";
                 activities.forEach((activity) => {
-                    const activityElement = new ActivityDropdown(activity, data.username);
+                    const activityElement = new ActivityDropdown(activity, data.curusername,activityType );
                     activity_list.appendChild(activityElement);
                 });
 

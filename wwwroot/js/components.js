@@ -1751,7 +1751,7 @@ class SelectActivities extends HTMLElement {
     this.innerHTML = `
         <ul class="select_type">
             <li>
-                <button class="type" id="Upcoming_button">Upcoming</button>
+                <button class="type active" id="Upcoming_button">Upcoming</button>
             </li>
             <li>
                 <button class="type" id="History_button">History</button>
@@ -1781,24 +1781,26 @@ class SelectActivities extends HTMLElement {
 }
 
 class Member extends HTMLElement {
-  constructor(member, activity_title, username) {
+  constructor(member,activity_title, activity_id, activity_type, username) {
     super();
+    this.activity_id = activity_id;
     this.member = member;
     this.activity_title = activity_title;
+    this.activity_type = activity_type
     this.username = username;
   }
 
   connectedCallback() {
-    if (this.username !== this.member.username) {
+    if (this.username !== this.member.username && this.activity_type == "history" && this.activity_type !== null) {
       this.innerHTML = `
       <li class="member">
         <div class="member-content">
-          <img src="assets/Profile-w-b.png" alt="Profile">
+          <img src="/assets/Profile-w-b.png" alt="Profile">
           <span class="member-name">${this.member.username}</span>
           <span class="member-role">${this.member.role}</span>
         </div>
         <button class="rate-btn">
-          <img src="assets/yellow_star_outline.png" alt="Rate">
+          <img src="/assets/yellow_star_outline.png" alt="Rate">
           <span class="review-text">review</span>
         </button>
       </li>
@@ -1811,13 +1813,13 @@ class Member extends HTMLElement {
       }
 
       this.querySelector(".rate-btn").addEventListener("click", () => {
-        ratingPopup.openPopup(this.activity_title, this.member.username);
+        ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
       });
     } else {
       this.innerHTML = `
       <li class="member">
         <div class="member-content">
-          <img src="assets/Profile-w-b.png" alt="Profile">
+          <img src="/assets/Profile-w-b.png" alt="Profile">
           <span class="member-name">${this.member.username}</span>
           <span class="member-role">${this.member.role}</span>
         </div>
@@ -1828,8 +1830,9 @@ class Member extends HTMLElement {
 }
 
 class ActivityDropdown extends HTMLElement {
-  constructor(activity, username) {
+  constructor(activity, username,activityType) {
     super();
+    this.activityType = activityType
     this.activity = activity;
     this.username = username;
     [this.act_date, this.act_time] = activity.activity_time.split("-");
@@ -1840,16 +1843,16 @@ class ActivityDropdown extends HTMLElement {
           <span class="activity-name">${activity.title}</span>
           <div class="tags"></div>
           <span class="date">
-            <img src="assets/calendar_icon.png" alt="calendar"> 
+            <img src="/assets/calendar_icon.png" alt="calendar"> 
             <span class="date-text">${this.act_date} , ${this.act_time}</span>
           </span>
         </div>
-        <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
+        <img src="/assets/down_arrow_icon.png" alt="Dropdown Arrow">
       </button>
       
       <div class="activity-dropdown-content">
         <div class="dropdown-container">
-          <img src="assets/people_icon.png" alt="People">
+          <img src="/assets/people_icon.png" alt="People">
           <ul class="members"></ul>
         </div>
         <button class="view-details">View Details</button>
@@ -1872,7 +1875,11 @@ class ActivityDropdown extends HTMLElement {
       const memberElement = new Member(
         member,
         this.activity.title,
+        this.activity.activity_id,
+        this.activityType,
         this.username
+
+        
       );
       membersContainer.appendChild(memberElement);
     });
@@ -1919,6 +1926,7 @@ class ActivityDropdown extends HTMLElement {
 class ActivitiesList extends HTMLElement {
   constructor() {
     super();
+    this.activity_id
     this.innerHTML = `        
     <div class="activities-bg">
       <h2 class="activities-header">Upcoming</h2>
@@ -1943,7 +1951,7 @@ class RatingPopup extends HTMLElement {
       <div class="rating-header">Rate activity member</div>
       <div class="rating-info">
         <div class="rating-activity-name"></div>
-        <img src="assets/Profile-g.png" alt="">
+        <img src="/assets/Profile-g.png" alt="">
         <div class="rating-user-name"></div>
         <div class="rating-change-component">
           <div class="rating-stars">
@@ -1977,7 +1985,9 @@ class RatingPopup extends HTMLElement {
     this.setupStarRating();
   }
 
-  openPopup(activityTitle, username) {
+  openPopup(activityTitle, activity_id,username) {
+    this.activity_id = activity_id
+    console.log(this.activity_id)
     this.querySelector(".rating-activity-name").textContent = activityTitle;
     this.querySelector(".rating-user-name").textContent = username;
     this.resetComponent();
@@ -2039,7 +2049,7 @@ class RatingPopup extends HTMLElement {
       const successMessage = document.createElement("div");
       successMessage.classList.add("rating-success");
       successMessage.innerHTML = `
-        <img src="assets/check_mark.png" alt="">
+        <img src="/assets/check_mark.png" alt="">
         <h3>Rating completed</h3>
       `;
 

@@ -363,6 +363,13 @@ main {
   align-items: center;
 }
 
+.profile-picture-dropdown{
+  width: 2.75em;
+  height: 2.75em;
+  border-radius: 5rem;
+  object-fit: cover;
+}
+
 .first-name-dropdown {
   grid-area: first-name;
   display: flex;
@@ -1137,6 +1144,20 @@ header.act-card-profile-info{
   color: var(--blue40);
 }
 
+
+.profile-img {
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile{
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 @media screen and (max-width: 480px) {
   .nav-home, .nav-activity, #create_button {

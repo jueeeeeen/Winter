@@ -7,21 +7,21 @@
         <div class="profile-header">
             <p>Profile</p>
         </div>
-
+        
         <div class="account-info">
-            <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
-            <h6>@Model.Username</h6>
-            <h4>@Model.FirstName @Model.LastName</h4>
-            <h6>@(DateTime.Now.Year - Model.DateOfBirth.Year) years old</h6>
+            <img src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" alt="profile picture" class="profile-picture">
+            <p class="username">@("@"+Model.Username)</p>
+            <p class="full-name">@Model.FirstName @Model.LastName</p>
+            <p class="age">@(DateTime.Now.Year - Model.DateOfBirth.Year) years old</p>
         </div>
 
         <div class="profile-details">
             <div>
-                <img src="\assets\location_on.svg" alt="location">
+                <img src="\assets\location_b.svg" alt="location">
                 <p>@(string.IsNullOrEmpty(Model.Location) ? "No information" : Model.Location)</p>
             </div>
             <div>
-                <img src="\assets\phone.svg" alt="phone">
+                <img src="\assets\phone.svg" alt="phone"> 
                 <p>@(string.IsNullOrEmpty(Model.Phone) ? "No information" : Model.Phone)</p>
             </div>
             <div>
@@ -45,7 +45,7 @@
             <div class="profile-reviews">
                 <p>5</p>
                 <p>Reviews</p>
-                <a href="#">View all review</a>
+                <a href="Profile/Review">View all review</a>
             </div>
         </div>
     </div>
@@ -84,17 +84,24 @@
                     <p class="bio-header">Gender</p>
                     <p class="personal-info">Male</p>
                 </div>
-            </div>
-        </div>
 
-        
+                <div class="edit-profile-button">
+                    <button onClick="location.href='@Url.Action("Edit", "Profile")'"> 
+                    <img src="\assets\edit.svg" alt="edit icon" class="edit-profile-img">
+                    <p>Edit</p>
+                    </button>
+                </div>
+            </div>
+            
+        </div>  
     </div>
-    <div class="edit-profile-button">
-        @* <a href="/User/Edit"> *@
-            <button onClick="location.href='@Url.Action("Edit", "Profile")'"> 
-                <img src="\assets\edit.svg" alt="edit icon">
-                <p>Edit</p>
-            </button>
-        @* </a> *@
-    </div>
+    
+    
 </div>
+
+@* <div class="edit-profile-button">
+        <button onClick="location.href='@Url.Action("Edit", "Profile")'"> 
+            <img src="\assets\edit.svg" alt="edit icon" class="edit-profile-img">
+            <p>Edit</p>
+        </button>
+    </div> *@

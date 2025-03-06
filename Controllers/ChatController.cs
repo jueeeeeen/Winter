@@ -72,6 +72,9 @@ public class ChatController: Controller
             Username = message.Username,
             First_name = user.FirstName,
             Last_name = user.LastName,
+            Profile_pic = user.ProfilePicture != null
+                ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
+                : "/assets/profile-g.png",
             Message = message.Message,
             Timestamp = message.Timestamp.ToString("dd MMM yyyy HH:mm"),  
         })
@@ -89,6 +92,9 @@ public class ChatController: Controller
                     Username = p.Username,
                     First_name = user.FirstName,
                     Last_name = user.LastName,
+                    Profile_pic = user.ProfilePicture != null
+                        ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
+                        : "/assets/profile-g.png",
                     Role = p.Role
                 })
             .ToList();

@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250302200917_UpdateUserModel")]
-    partial class UpdateUserModel
+    [Migration("20250306093055_UpdateReviewModel")]
+    partial class UpdateReviewModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,7 +100,7 @@ namespace Winter_Project.Migrations
 
             modelBuilder.Entity("Winter_Project.Models.NotificationModel", b =>
                 {
-                    b.Property<int>("User_id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -117,7 +117,10 @@ namespace Winter_Project.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("User_id");
+                    b.Property<int>("User_id")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Notifications");
                 });
@@ -172,6 +175,36 @@ namespace Winter_Project.Migrations
                         .IsUnique();
 
                     b.ToTable("Requirements");
+                });
+
+            modelBuilder.Entity("Winter_Project.Models.ReviewModel", b =>
+                {
+                    b.Property<int>("Review_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Activity_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Reviewed_user")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Reviewer")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Review_id");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("Winter_Project.Models.UserBio", b =>

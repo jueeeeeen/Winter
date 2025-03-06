@@ -1,8 +1,19 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .progress-bar {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto;
   width: 100%;
   gap: 20px;
 }
@@ -11,7 +22,6 @@
   color: var(--gray50);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
 }
@@ -20,44 +30,49 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30px;
-  height: 30px;
-  border: solid 2px var(--gray50);
+  width: 40px;
+  height: 40px;
+  border: solid 3px var(--gray50);
   border-radius: 50%;
-  background-color: var(--white); 
+  background-color: var(--white);
   color: var(--gray50);
   font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin: 10px 0px 0px 10px;
 }
 
-.bullet.active{
+.bullet.active {
   border-color: var(--blue40);
   background-color: var(--blue40);
-} 
+}
 
-.bullet.active span{
+.bullet.active span {
   display: none;
-} 
+}
 
 .bullet.active::after {
   content: "✓";
   color: var(--white);
 }
 
-.step p.active {
-  color: var(--blue40);
+.step p {
+  color: var(--gray50);
+  font-size: 20px;
   font-weight: bold;
 }
 
+.step p.active {
+  color: var(--blue40);
+}
+
 .step::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 30%;
   left: 85%;
-  width: 40px; 
-  height: 2px; 
-  background-color: var(--gray50); 
+  width: 40px;
+  height: 2px;
+  background-color: var(--gray50);
   transform: translateY(-50%);
 }
 
@@ -66,12 +81,11 @@
 }
 
 .step:last-child::after {
-  display: none; 
+  display: none;
 }
 
-
 @keyframes animate {
-  100%{
+  100% {
     transform: scaleX(2);
   }
 }
@@ -80,39 +94,56 @@
 .register-card {
   color: var(--blue90);
   background-color: var(--white);
-  width: 400px;
-  height: 550px;
+  width: 480px;
+  height: 640px;
   border-radius: 20px;
 }
 
 .login-card {
-  margin: 55px auto;
+  margin: 40px auto;
 }
 
-.login-card h2 {
-  margin: 20px 20px 0 50px;
+.header {
+  margin: 10px 10px 0 40px;
   color: var(--blue90);
+  font-size: 28px;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+.register-header {
+  margin: 10px 10px 0 40px;
+  color: var(--blue90);
+  font-size: 28px;
+  font-weight: bolder;
+  letter-spacing: 2px;
 }
 
 .login-box,
 .login-button button,
-.register-box1,
-.register-box2,
-.register-button,
-.next-button {
-  width: 300px;
-  height: 35px;
+.register-box,
+.register-button{
+  width: 420px;
+  height: 40px;
   border-radius: 40px;
+}
+
+.next-button {
+  width: 420px;
+  height: 40px;
+  border-radius: 40px;
+  margin-top: 12px;
 }
 
 .login-card img,
 .register-card img {
-  width: 400px;
-  height: 200px;
+  width: 100%;
+  height: 276px;
   border-radius: 20px 20px 0 0;
 }
 
 .login-card form {
+  margin-top: 10px;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -122,30 +153,30 @@
 
 .login-box {
   background-color: var(--blue40);
-  margin: 1px;
-  border-radius: 40px;
-  padding: 10px;
   display: flex;
   align-items: center;
+  justify-items: center;
 }
 
 .login-box img {
-  margin: 0 5px;
-  width: 20px;
-  height: 20px;
+  margin: 0 10px;
+  width: 25px;
+  height: 25px;
 }
 
-.login-box input {
+.login-box input,
+.register-box input {
   background-color: transparent;
   border: none;
 }
 
 .login-box input,
 .login-box input::placeholder {
+  width: 320px;
   color: var(--white);
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 10px;
 }
 
 .login-box button {
@@ -159,18 +190,25 @@
   height: 14px;
 }
 
+.username {
+  display: flex;
+  justify-content: center;
+}
+
 .login-button button {
   background-color: var(--white);
   color: var(--blue90);
   border: solid 2px var(--blue70);
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 600;
 }
 
-.login-button button:hover {
+.login-button button:hover,
+.register-button:hover {
   color: var(--gray90);
-  background-image: url("/assets/login_btn_bg.svg");
-  background-size: 400px;
+  border: none 0 var(--shadow);
+  background-image: url("/assets/login_mint_btn.png");
+  background-size: 500px;
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -180,113 +218,277 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin-left: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .login-description a {
   color: var(--blue40);
+  text-decoration: underline;
 }
 
 .register-card {
   margin: 10px auto;
 }
 
-.register-card h2 {
-  margin: 20px 20px 0 50px;
-  color: var(--blue90);
-}
-
 .form-outer {
-  width: 200%;
+  width: 100%;
   overflow: hidden;
 }
 
 .register-card form {
-  padding: 20px;
+  padding: 0px;
   display: flex;
   width: 400%;
   flex-direction: row;
 }
 
 .page {
-  width: 50%;
+  width: 100%;
   padding-left: 20px;
   transition: transform 0.3s ease-in-out;
   display: none;
+}
+
+.page div {
+  margin-bottom: 10px;
 }
 
 .page.active {
   display: block;
 }
 
-.register-box1 {
-  background-color: var(--blue40);
-  margin: 5px;
-  border-radius: 40px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.register-box1 img {
-  margin-right: 5px;
-  width: 20px;
-  height: 20px;
-}
-
-.register-box1 input {
-  background-color: transparent;
-  border: none;
-}
-
-.register-box1 input,
-.register-box1 input::placeholder {
-  color: var(--white);
-  font-size: 1rem;
-  font-weight: bold;
-  margin: 0.1rem;
-}
-
 .next-button {
   color: var(--blue90);
   background-color: var(--white);
   border: solid 2px var(--blue70);
-  margin: 5px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .next-button:hover {
   color: var(--white);
-  background-image: url("/assets/login_btn_bg.svg");
-  background-size: 400px;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.register-box2 {
-  background-color: var(--white);
-  border: solid 2px var(--blue80);
-  margin-bottom: 7px;
-  display: flex;
-  flex-direction: row;
-}
-
-.register-box2 input,
-.register-box2 input::placeholder {
-  background-color: transparent;
-  color: var(--blue80);
-  border: none;
-  margin-left: 20px;
-  font-weight: bold;
+  background-color: var(--blue40);
+  border: none 0 transparent;
 }
 
 .register-button {
   color: var(--white);
   background-color: var(--blue40);
   margin-top: 10px;
-  font-size: 1rem;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+#register-description {
+  display: flex;
+  justify-content: center;
+}
+
+.register-box {
+  border: solid 2px var(--blue80);
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.register-box input,
+.register-box input::placeholder {
+  width: 320px;
+  color: var(--blue80);
+  font-size: 22px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+
+.gender-button {
+  display: flex;
+  gap: 0;
+}
+
+.gender-button button {
+  background-color: var(--white);
+  width: 140px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.gender-button button.selected {
+  background-color: var(--blue10);
+}
+
+.gender-button button img {
+  width: 38px;
+  height: 38px;
+}
+
+.male-button:hover::after,
+.lgbtq-button:hover::after,
+.female-button:hover::after {
+  font-size: 22px;
+  white-space: nowrap;
+  left: 5px;
+  bottom: 2px;
+  position: relative;
+}
+
+.male-button:hover::after {
+  content: "male";
+  color: var(--blue80);
+}
+
+.male-button {
+  border: 2px solid var(--blue80);
+  border-radius: 20px 0 0 20px;
+}
+
+.male-button.active {
+  background-color: var(--blue40);
+  content: url("/assets/male_icon-w.svg");
+  border: none 0 transparent;
+}
+
+.lgbtq-button.active {
+  background-image: url("/assets/rainbow.png");
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position: center;
+  content: url("/assets/heart-w.svg");
+  border: none 0 transparent;
+}
+
+.female-button.active {
+  background-color: var(--pink);
+  content: url("/assets/female_icon-w.svg");
+  border: none 0 transparent;
+}
+
+.lgbtq-button {
+  border: solid 2px;
+  border-image: linear-gradient(
+      45deg,
+      red,
+      orange,
+      yellow,
+      green,
+      blue,
+      indigo,
+      violet
+    )
+    1;
+}
+
+.lgbtq-button:hover::after {
+  content: "lgbtq+";
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.female-button {
+  border: 2px solid var(--pink);
+  border-radius: 0 20px 20px 0;
+}
+
+.female-button:hover::after {
+  content: "female";
+  color: var(--pink);
+}
+
+#errorMessage {
+  font-size: 20px;
   font-weight: bold;
-  cursor: pointer;
+  font-style: oblique;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+  }
+
+  .login-card,
+  .register-card {
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .login-card img,
+  .register-card img {
+    margin-top: 48px;
+    width: 100%;
+    height: 30%;
+    border-radius: 0;
+    display: block;
+  }
+
+  .login-box,
+  .register-box,
+  .login-button,
+  .register-button,
+  .next-button {
+    width: 95%;
+    height: 32px;
+    border-radius: 40px;
+  }
+
+  .login-button button{
+    width: 100%;
+    height: 32px;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+  }
+
+  .login-box img {
+    margin: 0 10px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    font-size: 24px;
+  }
+
+  .login-box input,
+  .login-box input::placeholder,
+  .login-description {
+    font-size: 14px;
+  }
+
+  .login-box button {
+    margin-top: 2px;
+  }
 }

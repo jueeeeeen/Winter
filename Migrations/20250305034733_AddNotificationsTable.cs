@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateUserModel : Migration
+    public partial class AddNotificationsTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -22,6 +22,7 @@ namespace Winter_Project.Migrations
                     Detail = table.Column<string>(type: "TEXT", nullable: false),
                     Create_time = table.Column<string>(type: "TEXT", nullable: false),
                     Activity_time = table.Column<string>(type: "TEXT", nullable: false),
+                    Deadline_time = table.Column<string>(type: "TEXT", nullable: false),
                     Duration = table.Column<string>(type: "TEXT", nullable: false),
                     Location = table.Column<string>(type: "TEXT", nullable: false),
                     Max_member = table.Column<int>(type: "INTEGER", nullable: false),
@@ -54,8 +55,9 @@ namespace Winter_Project.Migrations
                 name: "Notifications",
                 columns: table => new
                 {
-                    User_id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
+                    User_id = table.Column<int>(type: "INTEGER", nullable: false),
                     Notification_type = table.Column<string>(type: "TEXT", nullable: false),
                     Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
                     Activity_user_id = table.Column<int>(type: "INTEGER", nullable: false),
@@ -63,7 +65,25 @@ namespace Winter_Project.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Notifications", x => x.User_id);
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Reviews",
+                columns: table => new
+                {
+                    Review_id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    User_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Reviewed_user = table.Column<int>(type: "INTEGER", nullable: false),
+                    Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
+                    Rating = table.Column<float>(type: "REAL", nullable: false),
+                    Comment = table.Column<string>(type: "TEXT", nullable: false),
+                    Time = table.Column<DateTime>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Reviews", x => x.Review_id);
                 });
 
             migrationBuilder.CreateTable(
@@ -78,7 +98,8 @@ namespace Winter_Project.Migrations
                     FirstName = table.Column<string>(type: "TEXT", nullable: false),
                     LastName = table.Column<string>(type: "TEXT", nullable: false),
                     DateOfBirth = table.Column<DateOnly>(type: "TEXT", nullable: false),
-                    Gender = table.Column<string>(type: "TEXT", nullable: false)
+                    Gender = table.Column<string>(type: "TEXT", nullable: false),
+                    ProfilePicture = table.Column<byte[]>(type: "BLOB", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -183,6 +204,9 @@ namespace Winter_Project.Migrations
 
             migrationBuilder.DropTable(
                 name: "Requirements");
+
+            migrationBuilder.DropTable(
+                name: "Reviews");
 
             migrationBuilder.DropTable(
                 name: "UserBios");

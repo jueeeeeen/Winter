@@ -1,0 +1,42 @@
+.profile-info {
+    display: flex;
+    flex-direction: row;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+    border: solid 1px var(--blue60);
+    border-radius: 50%;
+}
+
+.account-details {
+    margin-left: 20px;
+}
+
+.name {
+    color: var(--gray90);
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.username {
+    color: var(--gray90);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.rating {
+    background-color: var(--white);
+    width: 85px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 40px;
+    padding: 9px;
+}
+
+.rating img {
+    width: 23px;
+    height: 23px;
+}

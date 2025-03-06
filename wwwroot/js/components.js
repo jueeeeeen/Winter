@@ -631,10 +631,8 @@ class ActivityCard extends HTMLElement {
                 <div class="act-card-header">
                     <div class="act-card-profile-info">
                         <div><img src="${
-                          path + activity.host.profile_pic
-                            ? path + activity.host.profile_pic
-                            : path + "profile-g.png"
-                        }"></div>
+                          activity.host.profile_pic
+                        }" class="profile-img" ></div>
                         <div>
                             <span>${
                               activity.host.firstName +
@@ -868,10 +866,11 @@ class MemberListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
-                    <img class="profile" src="../../assets/profile-g.png">
+                    <img class="profile" src="${this.profile_pic}">
                 </div>
                 <span class="member-list-item-name">${this.name}</span>
                 <span class="member-list-item-role flex">(Member)</span>
@@ -882,10 +881,11 @@ class HostListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
         `<li class="radial-blue-bg member-list-item shadow">
             <div class="member-list-item-profile">
-                <img class="profile" src="../../assets/profile-g.png">
+                <img class="profile" src="${this.profile_pic}">
                 <img class="crown" src="../../assets/crown.svg">
             </div>
             <span class="member-list-item-name">${this.name}</span>
@@ -911,10 +911,11 @@ class PendingHostViewListItem extends HTMLElement {
         this.activity_id = this.getAttribute("data-activity-id");
         this.name = this.getAttribute("name")
         this.username = this.getAttribute("username")
+        this.profile_pic = this.getAttribute("profile-pic")
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img class="profile" src="../../assets/profile-g.png">
+                <img class="profile" src="${this.profile_pic}">
             </div>
             <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">waiting for approval...</span>
@@ -975,10 +976,11 @@ class MemberHostViewListItem extends HTMLElement {
         this.activity_id = this.getAttribute("data-activity-id");
         this.name = this.getAttribute("name")
         this.username = this.getAttribute("username")
+        this.profile_pic = this.getAttribute("profile-pic")
         this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
             <div class="member-list-item-profile">
-                <img class="profile" src="../../assets/profile-g.png">
+                <img class="profile" src="${this.profile_pic}">
             </div>
             <span class="member-list-item-name">${this.name}</span>
             <span class="member-list-item-role flex">(Member)</span>
@@ -1922,7 +1924,6 @@ class ActivityDropdown extends HTMLElement {
           content.style.marginTop = "-0.5rem";
           dropdown.classList.remove("open");
 
-          // Change the chevon icon back to the original
           chevon.innerHTML = `
             <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           `;
@@ -1936,7 +1937,6 @@ class ActivityDropdown extends HTMLElement {
           content.style.height = "auto";
         }, 300);
 
-        // Change the chevon icon to the new one
         chevon.innerHTML = `
           <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
         `;
@@ -2000,6 +2000,8 @@ class RatingPopup extends HTMLElement {
 
     this.style.display = "none";
     this.classList.add("rating-popup-wrapper");
+
+    
   }
 
   connectedCallback() {
@@ -2012,7 +2014,6 @@ class RatingPopup extends HTMLElement {
 
   openPopup(activityTitle, activity_id,username) {
     this.activity_id = activity_id
-    console.log(this.activity_id)
     this.querySelector(".rating-activity-name").textContent = activityTitle;
     this.querySelector(".rating-user-name").textContent = username;
     this.resetComponent();
@@ -2026,16 +2027,19 @@ class RatingPopup extends HTMLElement {
   resetComponent() {
     const container = this.querySelector(".rating-change-component");
     container.replaceWith(this.originalContent.cloneNode(true));
+    this.querySelector(".rating-change-component").setAttribute("data-rating", "0");
     this.setupStarRating();
   }
 
   setupStarRating() {
     const stars = this.querySelectorAll(".star");
+    const ratingComponent = this.querySelector(".rating-change-component");
     let selectedRating = 0;
 
     stars.forEach((star, index) => {
       star.addEventListener("click", () => {
         selectedRating = index + 1 === selectedRating ? 0 : index + 1;
+        ratingComponent.setAttribute("data-rating", selectedRating);
         this.highlightStars(selectedRating);
       });
       star.addEventListener("mouseover", () => {
@@ -2065,28 +2069,91 @@ class RatingPopup extends HTMLElement {
     }
   }
 
-  handlePostRating() {
-    const container = this.querySelector(".rating-change-component");
+  async handlePostRating() {
+    const comment = this.querySelector("textarea").value;
 
-    container.classList.add("fade-out");
+    const ratingComponent = this.querySelector(".rating-change-component");
+    const rating = parseInt(ratingComponent.getAttribute("data-rating") || "0");
+
+    const username = this.querySelector(".rating-user-name").textContent;
+
+    if (rating === 0) {
+      alert("Please select a rating");
+      return;
+    }
+
+    const reviewData = {
+      Reviewed_user: username,
+      Activity_id: this.activity_id,
+      Rating: rating,
+      Comment: comment
+    };
+    
+    try {
+      const container = this.querySelector(".rating-change-component");
+      container.classList.add("fade-out");
+
+      const response = await fetch("/Activity/Comment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reviewData),
+      });
+
+      if (!response.ok) {
+        console.log(reviewData);
+        throw new Error("Failed to submit review");
+      }
 
     setTimeout(() => {
       const successMessage = document.createElement("div");
       successMessage.classList.add("rating-success");
       successMessage.innerHTML = `
-        <img src="/assets/check_mark.png" alt="">
+        <img src="assets/check_mark.png" alt="">
         <h3>Rating completed</h3>
       `;
 
-      container.classList.remove("fade-out");
-      container.innerHTML = "";
-      container.appendChild(successMessage);
+        container.classList.remove("fade-out");
+        container.innerHTML = "";
+        container.appendChild(successMessage);
 
-      setTimeout(() => {
-        successMessage.classList.add("fade-in");
-      }, 10);
-    }, 170);
+        setTimeout(() => {
+          successMessage.classList.add("fade-in");
+        }, 10);
+      }, 170);
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      alert("Failed to submit review. Please try again.");
+
+      // Reset the fade-out effect
+      const container = this.querySelector(".rating-change-component");
+      container.classList.remove("fade-out");
+    }
   }
+
+  // handlePostRating() {
+  //   const container = this.querySelector(".rating-change-component");
+
+  //   container.classList.add("fade-out");
+
+  //   setTimeout(() => {
+  //     const successMessage = document.createElement("div");
+  //     successMessage.classList.add("rating-success");
+  //     successMessage.innerHTML = `
+  //       <img src="assets/check_mark.png" alt="">
+  //       <h3>Rating completed</h3>
+  //     `;
+
+  //     container.classList.remove("fade-out");
+  //     container.innerHTML = "";
+  //     container.appendChild(successMessage);
+
+  //     setTimeout(() => {
+  //       successMessage.classList.add("fade-in");
+  //     }, 10);
+  //   }, 170);
+  // }
 }
 
 customElements.define("select-activities", SelectActivities);
@@ -2094,36 +2161,6 @@ customElements.define("rating-popup", RatingPopup);
 customElements.define("activities-list", ActivitiesList);
 customElements.define("activity-dropdown", ActivityDropdown);
 customElements.define("custom-member", Member);
-
-class CommentCard extends HTMLElement {
-  constructor() {
-    super();
-    this.innerHTML = `
-        <div class="comment-card">
-            <div class="comment-header">
-                <div class="user-info">
-                    <div class="comment-profile"><img src="Profile-g.png" alt="" /></div>
-                    <div class="comment-details">
-                        <span class="comment-owner">Emily Chow</span>
-                        <span class="comment-date">15 ม.ค. 2567 เวลา 12:59 น.</span>
-                        <span class="user-comment">มาสายมากเลยค่ะ นัด 10 โมง มาจริง 11 โมง</span>
-                    </div>
-                </div>
-
-                <div class="comment-rating">
-                    <p>star star star</p>
-                </div>
-            </div>
-
-            <div class="comment-from">
-                <p>From:<a href="">Activity</a></p>
-            </div>
-        </div>
-        `;
-  }
-}
-
-customElements.define("comment-card", CommentCard);
 
 // var lgbtq_select_btn = document.getElementById("lgbtq_select_btn");
 // var select_lgbtq_txt = document.getElementById("select_lgbtq_txt");

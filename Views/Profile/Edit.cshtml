@@ -13,21 +13,22 @@
 
             <div class="account-info">
                 <div class="upload-profile-picture">
-                    <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
+                    <img id="profile-preview" src="@(Model.ProfilePictureBase64 ?? Url.Content("~/assets/Profile-w-b.png"))" alt="profile picture" class="profile-picture">
                     <button type="button" class="upload-profile-button">
+                        <img src="\assets\upload-03.svg" alt="">
                         <label for="input-file">Upload Photo</label>
-                        <input type="file" accept="image/jpg, image/png, image/jpeg" id="input-file">
+                        <input type="file" accept="image/jpg, image/png, image/jpeg" id="input-file" name="ProfilePictureFile" onchange="previewImage(event)">
                     </button>
                 </div>
 
-                <h6>@Model.Username</h6>
-                <h4>@Model.FirstName @Model.LastName</h4>
-                <h6>@(DateTime.Now.Year - Model.DateOfBirth.Year) years old</h6>
+                <p class="username">@("@"+Model.Username)</p>
+                <p class="full-name">@Model.FirstName @Model.LastName</p>
+                <p class="age">@(DateTime.Now.Year - Model.DateOfBirth.Year) years old</p>
             </div>
 
             <fieldset class="profile-details">
                 <div>
-                    <img src="\assets\location_on.svg" alt="location">
+                    <img src="\assets\location_b.svg" alt="location">
                     <input type="text" name="Location" value="@(string.IsNullOrEmpty(Model.Location) ? "No information" : Model.Location)">
                 </div>
                 <div>
@@ -39,6 +40,25 @@
                     <input type="text" name="Email" value="@Model.Email">
                 </div>
             </fieldset>
+
+            <div class="profile-rating">
+                <img src="\assets\icon _star.svg" alt="star icon">
+                <p>1.55</p>
+            </div>
+
+            <div class="joined-review">
+                <div class="profile-joined">
+                    <p>4</p>
+                    <p>Joined</p>
+                    <a href="#">View all activity</a>
+                </div>
+
+                <div class="profile-reviews">
+                    <p>5</p>
+                    <p>Reviews</p>
+                    <a href="Profile/Review">View all review</a>
+                </div>
+            </div>
         </div>
 
         <div class="profile-right-container">
@@ -49,15 +69,15 @@
 
                 <fieldset class="edit-bio">
                     <div class="bio-input">
-                        <label for="about-me">About me</label>
+                        <label for="about-me" class="bio-header">About me</label>
                         <textarea name="AboutMe">@(string.IsNullOrEmpty(Model.AboutMe) ? "No information" : Model.AboutMe)</textarea>
                     </div>
                     <div class="bio-input">
-                        <label for="MyInterests">My Interests</label>
+                        <label for="MyInterests" class="bio-header">My Interests</label>
                         <textarea name="MyInterests">@(string.IsNullOrEmpty(Model.MyInterests) ? "No information" : Model.MyInterests)</textarea>
                     </div>
                     <div class="bio-input">
-                        <label for="MyHobby">My Hobby</label>
+                        <label for="MyHobby" class="bio-header">My Hobby</label>
                         <textarea name="MyHobby">@(string.IsNullOrEmpty(Model.MyHobby) ? "No information" : Model.MyHobby)</textarea>
                     </div>
                 </fieldset>
@@ -70,31 +90,53 @@
 
                 <fieldset class="user-fullname">
                     <div class="profile-input">
-                        <label for="FirstName">First Name</label>
+                        <label for="FirstName" class="bio-header">First Name</label>
                         <input type="text" name="FirstName" value="@Model.FirstName">
                     </div>
                     <div class="profile-input">
-                        <label for="LastName">Last Name</label>
+                        <label for="LastName" class="bio-header">Last Name</label>
                         <input type="text" name="LastName" value="@Model.LastName">
                     </div>
                 </fieldset>
 
                 <fieldset class="user-fullname">
                     <div class="profile-input">
-                        <label for="DateOfBirth">Birth</label>
+                        <label for="DateOfBirth" class="bio-header">Birth</label>
                         <input type="date" name="DateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")">
                     </div>
                 </fieldset>
+
+                <div class="save-cancel-button">
+                <button type="submit" class="save-button">
+                    <p>Save</p>
+                </button>
+                <button type="button" class="cancel-button" onClick="location.href='@Url.Action("Index", "Profile")'">
+                    <p>Cancel</p>
+                </button>
             </div>
+            </div>
+
+            
         </div>
 
-        <div class="save-cancel-button">
+        @* <div class="save-cancel-button">
             <button type="submit" class="save-button">
                 <p>Save</p>
             </button>
             <button type="button" class="cancel-button" onClick="location.href='@Url.Action("Index", "Profile")'">
                 <p>Cancel</p>
             </button>
-        </div>
+        </div> *@
     </div>
 </form>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            var preview = document.getElementById("profile-preview");
+            preview.src = reader.result; // อัปเดตรูปทันที
+        };
+        reader.readAsDataURL(event.target.files[0]); // อ่านไฟล์ที่เลือก
+    }
+</script>

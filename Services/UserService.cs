@@ -20,7 +20,8 @@ namespace Winter_Project.Services {
                 {
                     Username = u.Username,
                     FirstName = u.FirstName,
-                    LastName = u.LastName
+                    LastName = u.LastName,
+                    ProfilePictureBase64 = u.ProfilePicture != null ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" : null
                 })
                 .FirstOrDefault();
         }

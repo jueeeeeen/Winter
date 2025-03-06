@@ -39,7 +39,7 @@
         <div>
             <div class="info_dropdown">
                 <div class="profile-container-dropdown">
-                    <img class="blue_border rounded" id="profile_pic_dropdown" src="/assets/Profile-g.png" width="40px">
+                    <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
                 </div>
                 
                 <span class="first-name-dropdown">@Model.FirstName</span>
@@ -52,7 +52,7 @@
                 <hr class="blue_line_dash">
                 <li class="btn_dropdown"><img src="/assets/activity.svg"><a href="/MyActivity">My Activity</a></li>
                 <hr class="blue_line_dash">
-                <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/MyRating">My Ratings</a></li>
+                <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/Profile/Review">My Ratings</a></li>
                 <hr class="blue_line_dash">
             </ul>
         </div>
@@ -80,6 +80,24 @@
                         name="asdfdsfadasfdsafdasfsadf" 
                         time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
                     </joined-noti>
+                }
+                else if (notification.Notification_type == "approved")
+                {
+                    <approved-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </approved-noti>
+                }
+                else if (notification.Notification_type == "denied")
+                {
+                    <denied-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="asdf" 
+                        name="asdfdsfadasfdsafdasfsadf" 
+                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                    </denied-noti>
                 }
             }
         </ul>

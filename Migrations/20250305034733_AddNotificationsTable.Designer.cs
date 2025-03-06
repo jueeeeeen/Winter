@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Winter_Project.Models;
 
@@ -10,9 +11,11 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    partial class WinterContextModelSnapshot : ModelSnapshot
+    [Migration("20250305034733_AddNotificationsTable")]
+    partial class AddNotificationsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -194,14 +197,14 @@ namespace Winter_Project.Migrations
                     b.Property<float>("Rating")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("Reviewed_user")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Reviewer")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Reviewed_user")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("User_id")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Review_id");
 

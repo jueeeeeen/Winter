@@ -62,6 +62,7 @@ public class CreateController : Controller
                 Detail = model.Detail,
                 Create_time = DateTime.UtcNow.ToString("o"),
                 Activity_time = model.Activity_time,
+                Deadline_time = model.Deadline_time,
                 Duration = model.Duration,
                 Location = model.Location,
                 Max_member = model.Max_member,

@@ -1781,8 +1781,9 @@ class SelectActivities extends HTMLElement {
 }
 
 class Member extends HTMLElement {
-  constructor(member, activity_title, username) {
+  constructor(member, activity_title, activity_id,username) {
     super();
+    this.activity_id = activity_id;
     this.member = member;
     this.activity_title = activity_title;
     this.username = username;
@@ -1811,7 +1812,7 @@ class Member extends HTMLElement {
       }
 
       this.querySelector(".rate-btn").addEventListener("click", () => {
-        ratingPopup.openPopup(this.activity_title, this.member.username);
+        ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
       });
     } else {
       this.innerHTML = `
@@ -1872,6 +1873,7 @@ class ActivityDropdown extends HTMLElement {
       const memberElement = new Member(
         member,
         this.activity.title,
+        this.activity.activity_id,
         this.username
       );
       membersContainer.appendChild(memberElement);
@@ -1967,6 +1969,8 @@ class RatingPopup extends HTMLElement {
 
     this.style.display = "none";
     this.classList.add("rating-popup-wrapper");
+
+    
   }
 
   connectedCallback() {
@@ -1977,7 +1981,8 @@ class RatingPopup extends HTMLElement {
     this.setupStarRating();
   }
 
-  openPopup(activityTitle, username) {
+  openPopup(activityTitle, activity_id, username) {
+    this.activity_id = activity_id
     this.querySelector(".rating-activity-name").textContent = activityTitle;
     this.querySelector(".rating-user-name").textContent = username;
     this.resetComponent();
@@ -1991,16 +1996,19 @@ class RatingPopup extends HTMLElement {
   resetComponent() {
     const container = this.querySelector(".rating-change-component");
     container.replaceWith(this.originalContent.cloneNode(true));
+    this.querySelector(".rating-change-component").setAttribute("data-rating", "0");
     this.setupStarRating();
   }
 
   setupStarRating() {
     const stars = this.querySelectorAll(".star");
+    const ratingComponent = this.querySelector(".rating-change-component");
     let selectedRating = 0;
 
     stars.forEach((star, index) => {
       star.addEventListener("click", () => {
         selectedRating = index + 1 === selectedRating ? 0 : index + 1;
+        ratingComponent.setAttribute("data-rating", selectedRating);
         this.highlightStars(selectedRating);
       });
       star.addEventListener("mouseover", () => {
@@ -2030,28 +2038,91 @@ class RatingPopup extends HTMLElement {
     }
   }
 
-  handlePostRating() {
-    const container = this.querySelector(".rating-change-component");
+  async handlePostRating() {
+    const comment = this.querySelector("textarea").value;
 
-    container.classList.add("fade-out");
+    const ratingComponent = this.querySelector(".rating-change-component");
+    const rating = parseInt(ratingComponent.getAttribute("data-rating") || "0");
 
-    setTimeout(() => {
-      const successMessage = document.createElement("div");
-      successMessage.classList.add("rating-success");
-      successMessage.innerHTML = `
-        <img src="assets/check_mark.png" alt="">
-        <h3>Rating completed</h3>
-      `;
+    const username = this.querySelector(".rating-user-name").textContent;
 
-      container.classList.remove("fade-out");
-      container.innerHTML = "";
-      container.appendChild(successMessage);
+    if (rating === 0) {
+      alert("Please select a rating");
+      return;
+    }
+
+    const reviewData = {
+      Reviewed_user: username,
+      Activity_id: this.activity_id,
+      Rating: rating,
+      Comment: comment
+    };
+    
+    try {
+      const container = this.querySelector(".rating-change-component");
+      container.classList.add("fade-out");
+
+      const response = await fetch("/Activity/Comment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reviewData),
+      });
+
+      if (!response.ok) {
+        console.log(reviewData);
+        throw new Error("Failed to submit review");
+      }
 
       setTimeout(() => {
-        successMessage.classList.add("fade-in");
-      }, 10);
-    }, 170);
+        const successMessage = document.createElement("div");
+        successMessage.classList.add("rating-success");
+        successMessage.innerHTML = `
+          <img src="/assets/check_mark.png" alt="">
+          <h3>Rating completed</h3>
+        `;
+
+        container.classList.remove("fade-out");
+        container.innerHTML = "";
+        container.appendChild(successMessage);
+
+        setTimeout(() => {
+          successMessage.classList.add("fade-in");
+        }, 10);
+      }, 170);
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      alert("Failed to submit review. Please try again.");
+
+      // Reset the fade-out effect
+      const container = this.querySelector(".rating-change-component");
+      container.classList.remove("fade-out");
+    }
   }
+
+  // handlePostRating() {
+  //   const container = this.querySelector(".rating-change-component");
+
+  //   container.classList.add("fade-out");
+
+  //   setTimeout(() => {
+  //     const successMessage = document.createElement("div");
+  //     successMessage.classList.add("rating-success");
+  //     successMessage.innerHTML = `
+  //       <img src="assets/check_mark.png" alt="">
+  //       <h3>Rating completed</h3>
+  //     `;
+
+  //     container.classList.remove("fade-out");
+  //     container.innerHTML = "";
+  //     container.appendChild(successMessage);
+
+  //     setTimeout(() => {
+  //       successMessage.classList.add("fade-in");
+  //     }, 10);
+  //   }, 170);
+  // }
 }
 
 customElements.define("select-activities", SelectActivities);

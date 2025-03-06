@@ -194,14 +194,14 @@ namespace Winter_Project.Migrations
                     b.Property<float>("Rating")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("Reviewed_user")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Reviewed_user")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Reviewer")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("User_id")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Review_id");
 

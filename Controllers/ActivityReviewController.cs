@@ -23,8 +23,30 @@ public class ActivityReviewController : Controller
     }
 
     [HttpPost("Activity/Comment")]
-    public async Task<IActionResult> SubmitReview([FromBody] ReviewModel model)
+    public async Task<IActionResult> SubmitReview([FromBody] ReviewModel model, [FromQuery] string reviewedUsername = null)
     {
+        var token = Request.Cookies["token"];
+        if (string.IsNullOrEmpty(token))
+        {
+            return Unauthorized(new { message = "Authentication required" });
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+        if (string.IsNullOrEmpty(username))
+        {
+            return Unauthorized(new { message = "Invalid token" });
+        }
+
+        var userName = await _context.Users
+            .Where(u => u.Username == username)
+            .Select(u => u.Username)
+            .FirstOrDefaultAsync();
+
+        model.Reviewer = userName;
+
         if (!ModelState.IsValid)
         {
             foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
@@ -33,11 +55,12 @@ public class ActivityReviewController : Controller
             }
             return BadRequest(ModelState);
         }
-        Console.WriteLine($"Received Reviewer: {model.User_id}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
+
+        Console.WriteLine($"Received Reviewer: {model.Reviewer}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
 
         var review = new ReviewModel
         {
-            User_id = model.User_id,
+            Reviewer = model.Reviewer,
             Reviewed_user = model.Reviewed_user,
             Activity_id = model.Activity_id,
             Rating = model.Rating,
@@ -72,7 +95,7 @@ public class ActivityReviewController : Controller
                             .Where(u => u.Username == p.Username)
                             .Select(u => new
                             {
-                                u.Id,
+                                u.Username,
                                 u.FirstName,
                                 u.LastName
                             })
@@ -91,13 +114,13 @@ public class ActivityReviewController : Controller
         .Where(r => r.Activity_id == Activity_id)
         .Select(r => new
         {
-            r.User_id,
+            r.Reviewer,
             r.Reviewed_user,
             r.Rating,
             r.Comment,
             r.Time,
             User = _context.Users
-                .Where(u => u.Id == r.User_id)
+                .Where(u => u.Username == r.Reviewer)
                 .Select(u => new
                 {
                     u.FirstName,
@@ -105,7 +128,7 @@ public class ActivityReviewController : Controller
                 })
                 .FirstOrDefault(),
             ReviewedUser = _context.Users
-            .Where(u => u.Id == r.Reviewed_user)
+            .Where(u => u.Username == r.Reviewed_user)
             .Select(u => new
             {
                 u.FirstName,
@@ -141,14 +164,14 @@ public class ActivityReviewController : Controller
 
         var userId = await _context.Users
         .Where(u => u.Username == username)
-        .Select(u => u.Id)
+        .Select(u => u.Username)
         .FirstOrDefaultAsync();
 
         var reviews = await _context.Reviews
         .Where(r => r.Reviewed_user == userId)
         .Select(r => new
         {
-            r.User_id,
+            r.Reviewer,
             r.Reviewed_user,
             r.Rating,
             r.Comment,
@@ -159,7 +182,7 @@ public class ActivityReviewController : Controller
                 .Select(a => a.Title)
                 .FirstOrDefault(),
             User = _context.Users
-                .Where(u => u.Id == r.User_id)
+                .Where(u => u.Username == r.Reviewer)
                 .Select(u => new
                 {
                     u.FirstName,
@@ -167,7 +190,7 @@ public class ActivityReviewController : Controller
                 })
                 .FirstOrDefault(),
             ReviewedUser = _context.Users
-                .Where(u => u.Id == r.Reviewed_user)
+                .Where(u => u.Username == r.Reviewed_user)
                 .Select(u => new
                 {
                     u.FirstName,
@@ -178,13 +201,19 @@ public class ActivityReviewController : Controller
         })
         .ToListAsync();
 
-        var averageRating = await _context.Reviews
-            .Where(r => r.Reviewed_user == userId)
-            .AverageAsync(r => (double?)r.Rating) ?? 0; // ถ้าไม่มีรีวิวให้ค่าเริ่มต้นเป็น 0
+        float averageRating = 0;
+
+        if (reviews != null && reviews.Any())
+        {
+            var ratings = reviews.Select(r => r.Rating).ToList();
+            if (ratings.Any()) {
+                averageRating = ratings.Average(); 
+            }
+        }
 
         ViewData["AverageRating"] = averageRating;
 
-        var reviewedUser = reviews.FirstOrDefault()?.ReviewedUser;
+        var reviewedUser = reviews?.FirstOrDefault()?.ReviewedUser;
 
         return View("~/Views/MyReview/Index.cshtml", new { Reviews = reviews, ReviewedUser = reviewedUser });
     }

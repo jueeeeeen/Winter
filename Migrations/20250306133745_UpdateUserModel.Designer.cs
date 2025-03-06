@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250306093055_UpdateReviewModel")]
-    partial class UpdateReviewModel
+    [Migration("20250306133745_UpdateUserModel")]
+    partial class UpdateUserModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,6 +34,10 @@ namespace Winter_Project.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Create_time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Deadline_time")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -275,6 +279,9 @@ namespace Winter_Project.Migrations
                     b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("Username")
                         .IsRequired()

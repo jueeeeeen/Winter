@@ -19,8 +19,6 @@ public class MyActivityController: Controller
 
     [HttpGet]
     public JsonResult GetActivities([FromQuery] string activityType, [FromQuery] int page )
-    [HttpGet]
-    public JsonResult GetActivities([FromQuery] string activityType, [FromQuery] int page )
     {
         var token = Request.Cookies["token"];
         Console.WriteLine($"Token: {token}");
@@ -34,12 +32,9 @@ public class MyActivityController: Controller
         Console.WriteLine($"Decoded JWT: {jwtSecurityToken}");
 
         var curusername = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
-        var curusername = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
 
         Console.WriteLine($"Extracted Username: {curusername}");
-        Console.WriteLine($"Extracted Username: {curusername}");
 
-        if (string.IsNullOrEmpty(curusername))
         if (string.IsNullOrEmpty(curusername))
         {
             Console.WriteLine("⚠️ Username is null or empty!");
@@ -47,8 +42,7 @@ public class MyActivityController: Controller
 
         var page_size = 5;
         var filtered_activities = _context.Activities.AsQueryable();
-  
-        filtered_activities = filtered_activities.Where(a => a.Participants.Any(p => p.Username == curusername));
+
         filtered_activities = filtered_activities.Where(a => a.Participants.Any(p => p.Username == curusername));
 
         var activitiesList = filtered_activities
@@ -72,13 +66,11 @@ public class MyActivityController: Controller
         var response = new 
         {
             curusername,
-            curusername,
             Activities = result
                 .Skip((page - 1) * page_size)
                 .Take(page_size)
                 .Select(a => new 
                 {
-                    a.Activity_id,
                     a.Activity_id,
                     a.Title,
                     a.Tags,

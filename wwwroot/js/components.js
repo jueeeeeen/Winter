@@ -1830,34 +1830,42 @@ class Member extends HTMLElement {
 }
 
 class ActivityDropdown extends HTMLElement {
-  constructor(activity, username,activityType) {
+  constructor(activity, username, activityType) {
     super();
-    this.activityType = activityType
+    this.activityType = activityType;
     this.activity = activity;
     this.username = username;
     [this.act_date, this.act_time] = activity.activity_time.split("-");
-    this.innerHTML = `        
-    <div class="activity-dropdown">
-      <button class="activity-dropdown-btn">
-        <div class="activity-details">
-          <span class="activity-name">${activity.title}</span>
-          <div class="tags"></div>
-          <span class="date">
-            <img src="/assets/calendar_icon.png" alt="calendar"> 
-            <span class="date-text">${this.act_date} , ${this.act_time}</span>
-          </span>
+    this.innerHTML = `
+      <div class="activity-dropdown">
+        <button class="activity-dropdown-btn">
+          <div class="activity-details">
+            <span class="activity-name">${activity.title}</span>
+            <div class="tags-date">
+              <div class="tags"></div>
+              <span class="date">
+                <svg width="24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="calendar">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+                <span class="date-text">${this.act_date} , ${this.act_time}</span>
+              </span>
+            </div>
+          </div>
+          <svg width="24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="chevon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+        </button>
+
+        <div class="activity-dropdown-content">
+          <div class="dropdown-container">
+            <svg width="24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="paticipants">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+            </svg>
+            <ul class="members"></ul>
+          </div>
+          <button class="view-details">View Details</button>
         </div>
-        <img src="/assets/down_arrow_icon.png" alt="Dropdown Arrow">
-      </button>
-      
-      <div class="activity-dropdown-content">
-        <div class="dropdown-container">
-          <img src="/assets/people_icon.png" alt="People">
-          <ul class="members"></ul>
-        </div>
-        <button class="view-details">View Details</button>
       </div>
-    </div>
     `;
   }
 
@@ -1878,30 +1886,34 @@ class ActivityDropdown extends HTMLElement {
         this.activity.activity_id,
         this.activityType,
         this.username
-
-        
       );
       membersContainer.appendChild(memberElement);
     });
 
     const dropdownBtn = this.querySelector(".activity-dropdown-btn");
+    const dropdown = this.querySelector(".activity-dropdown");
+    const content = this.querySelector(".activity-dropdown-content");
+    const chevon = dropdownBtn.querySelector(".chevon");
+
+    const closedPath = "m19.5 8.25-7.5 7.5-7.5-7.5";
+    const openPath = "m4.5 15.75 7.5-7.5 7.5 7.5";
+
     dropdownBtn.addEventListener("click", () => {
+      document.querySelectorAll(".activity-dropdown.open").forEach((openDropdown) => {
+        if (openDropdown !== dropdown) {
+          openDropdown.classList.remove("open");
+          const openContent = openDropdown.querySelector(".activity-dropdown-content");
+          openContent.style.height = "0px";
+          openContent.style.marginTop = "-0.5rem";
 
-      document
-        .querySelectorAll(".activity-dropdown.open")
-        .forEach((openDropdown) => {
-          if (openDropdown !== this.querySelector(".activity-dropdown")) {
-            openDropdown.classList.remove("open");
-            const openContent = openDropdown.querySelector(
-              ".activity-dropdown-content"
-            );
-            openContent.style.height = "0px";
-            openContent.style.marginTop = "-0.5rem";
+          const otherChevon = openDropdown.querySelector(".chevon");
+          if (otherChevon) {
+            otherChevon.innerHTML = `
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            `;
           }
-        });
-
-      const dropdown = this.querySelector(".activity-dropdown");
-      const content = this.querySelector(".activity-dropdown-content");
+        }
+      });
 
       if (dropdown.classList.contains("open")) {
         content.style.height = content.scrollHeight + "px";
@@ -1909,6 +1921,11 @@ class ActivityDropdown extends HTMLElement {
           content.style.height = "0px";
           content.style.marginTop = "-0.5rem";
           dropdown.classList.remove("open");
+
+          // Change the chevon icon back to the original
+          chevon.innerHTML = `
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          `;
         }, 10);
       } else {
         dropdown.classList.add("open");
@@ -1918,6 +1935,11 @@ class ActivityDropdown extends HTMLElement {
         setTimeout(() => {
           content.style.height = "auto";
         }, 300);
+
+        // Change the chevon icon to the new one
+        chevon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+        `;
       }
     });
   }
@@ -1926,19 +1948,22 @@ class ActivityDropdown extends HTMLElement {
 class ActivitiesList extends HTMLElement {
   constructor() {
     super();
-    this.activity_id
+    this.initialHeader = this.getAttribute("header") || "Upcoming";
+
     this.innerHTML = `        
-    <div class="activities-bg">
-      <h2 class="activities-header">Upcoming</h2>
-      <div class="activities" id="activities"></div>
-    </div>
+      <div class="activities-bg">
+        <h2 class="activities-header">${this.initialHeader}</h2>
+        <div class="activities" id="activities"></div>
+      </div>
     `;
   }
 
   connectedCallback() {
-    document.addEventListener("change-header", (event) => {
-      this.querySelector(".activities-header").textContent = event.detail;
-    });
+    if (!this.hasAttribute("fixed-header")) {
+      document.addEventListener("change-header", (event) => {
+        this.querySelector(".activities-header").textContent = event.detail;
+      });
+    }
   }
 }
 

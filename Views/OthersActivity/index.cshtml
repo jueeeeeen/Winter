@@ -2,9 +2,11 @@
     ViewData["Title"] = "Others Activity";
 }
 <div class="profile">
-    <img src="/assets/Profile-w-b.png" alt="">
+    <div class="profile-img">
+        <img src="/assets/Profile-w-b.png" alt="">
+    </div>
     <div class="profile-info">
-        <div class="profile-name">@Model.User.FirstName</div>
+        <div class="profile-name">@Model.User.FirstName @Model.User.LastName</div>
         <div class="profile-username">@Model.User.Username</div>
         <div class="profile-rating">
             <span class="profile-rating-star">
@@ -15,7 +17,7 @@
     </div>
 </div>
 
-<activities-list></activities-list>
+<activities-list header="History" fixed-header></activities-list>
 <custom-pagination id="activity-pagination"></custom-pagination>
 
 <script>

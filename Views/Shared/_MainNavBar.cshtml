@@ -12,9 +12,9 @@
             <a href="/" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter Logo" /></a>
         </li>
         <li class="m_left_auto">
-            <button class="btn medium w-mb round hover-db-w" id="create_button" onclick="window.location.href='/Create'">
+            <a class="btn medium w-mb round hover-db-w" id="create_button" href="/Create">
                 <img src="/assets/plus-b.svg" alt="plus icon">create
-            </button>
+            </a>
         </li>
         <li><button class="btn circle round w-mb hover-y-w" id="bell_button">
             <img src="/assets/bell_icon-g.svg" alt="bell"></button>
@@ -48,17 +48,17 @@
             </div>
             <hr class="blue_line">
             <ul>
-                <li class="btn_dropdown"><img src="/assets/person.svg"><a href="/Profile">My Profile</a></li>
+                <li><a class="btn_dropdown" href="/Profile"><img src="/assets/person.svg">My Profile</a></li>
                 <hr class="blue_line_dash">
-                <li class="btn_dropdown"><img src="/assets/activity.svg"><a href="/MyActivity">My Activity</a></li>
+                <li><a class="btn_dropdown" href="/MyActivity"><img src="/assets/activity.svg">My Activity</a></li>
                 <hr class="blue_line_dash">
-                <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/Profile/Review">My Ratings</a></li>
+                <li><a class="btn_dropdown" href="/Profile/Review"><img src="/assets/star_outline.svg">My Ratings</a></li>
                 <hr class="blue_line_dash">
             </ul>
         </div>
         
-        <form method="post" asp-controller="Account" asp-action="Logout">
-            <button class="btn small w-r-r hover-r-w edge" id="logout_button">
+        <form method="post" asp-controller="Account" asp-action="Logout" id="logout-form">
+            <button class="btn small w-r-r hover-r-w edge" id="logout-button">
                 <svg-logout></svg-logout>log out
             </button>
         </form>
@@ -132,11 +132,11 @@
         const currentDropdown = document.querySelector(`#${currentId}`);
         const otherDropdown = document.querySelector(`#${otherId}`);
 
-        if (otherDropdown && otherDropdown.classList.contains("show")) {
-            otherDropdown.classList.remove("show");
+        if (otherDropdown && otherDropdown.classList.contains("show-dd")) {
+            otherDropdown.classList.remove("show-dd");
         }
 
-        currentDropdown.classList.toggle("show");
+        currentDropdown.classList.toggle("show-dd");
     }
 
     function toggle_profile_dropdown() {

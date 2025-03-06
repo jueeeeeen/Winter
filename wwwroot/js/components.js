@@ -91,11 +91,11 @@ class SearchBar extends HTMLElement {
     `<form class="search-bar shadow">
         <input id="search_input" type="text" name="search_string" placeholder="search activities..." required>
         <div class="search-bar-x">
-            <button class="btn" id="clear_search_button">
+            <button type="button" class="btn" id="clear-search-button">
                 <svg-x></svg-x>
             </button>
         </div>
-        <button type="button" class="btn search-bar-search" id="seach-button">
+        <button type="submit" class="btn search-bar-search" id="seach-button">
             <svg-search></svg-search>
         </button>
     </form>`;
@@ -104,13 +104,12 @@ class SearchBar extends HTMLElement {
   }
 
   connectedCallback() {
-    this.clear_search_button = this.querySelector("#clear_search_button");
+    this.clear_search_button = this.querySelector("#clear-search-button");
     this.clear_search_button.addEventListener("click", this.clear_search);
 
     this.search_btn = this.querySelector("#seach-button");
     this.search_input = this.querySelector("input");
     this.search_btn.addEventListener("click", () => {
-      console.log(this.search_input.value);
       this.search_key = this.search_input.value;
     });
   }
@@ -121,8 +120,8 @@ class SearchBar extends HTMLElement {
 
   clear_search() {
     this.search_input = this.querySelector("#search_input");
-    console.log("seach key: ", this.search_input);
     this.search_input.value = "";
+    this.search_key = null;
   }
 }
 
@@ -142,7 +141,7 @@ class TagFilter extends HTMLElement {
   constructor() {
     super();
     this.innerHTML =
-    `<form class="flex gap" id="tag_filter_form">
+    `<form class="flex gap tag-filter" id="tag_filter_form">
       <tag-selector data-tag_name="All"></tag-selector>
       <tag-selector data-tag_name="Art"></tag-selector>
       <tag-selector data-tag_name="Beauty"></tag-selector>
@@ -460,6 +459,10 @@ class DisplaySort extends HTMLElement {
                 <li class="pseudo-btn">
                     <input type="radio" value="Create_date" name="sort_option" id="create-date-sort" checked>
                     <label for="create-date-sort" class="btn sort-option-btn">Creation Date</label>    
+                </li>
+                <li class="pseudo-btn">
+                    <input type="radio" value="Popular" name="sort_option" id="popular-sort">
+                    <label for="popular-sort" class="btn sort-option-btn">Popular</label>    
                 </li>
                 <li class="pseudo-btn">
                     <input type="radio" value="Activity_time" name="sort_option" id="act-time-sort">
@@ -1114,8 +1117,8 @@ class CloseBtn extends HTMLElement {
   constructor() {
     super();
     this.activity_id = this.getAttribute("data-activity-id");
-    this.innerHTML = `<button class="btn medium y-w round right hover-w-y-y">
-            <svg-close></svg-close>close
+    this.innerHTML = `<button class="btn medium y-w round right hover-w-y-y close-btn">
+            <svg-x></svg-x>close
         </button>`;
   }
 
@@ -1447,9 +1450,17 @@ class SVGDelete extends BaseSVGElement {
 class SVGClose extends BaseSVGElement {
   constructor() {
     super();
-    this.innerHTML = `<svg width="80px" height="80px" viewBox="0 0 31.668 31.668" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.835,0C7.089,0,0.001,7.09,0.001,15.834s7.088,15.834,15.834,15.834c8.743,0,15.832-7.09,15.832-15.834 S24.578,0,15.835,0z M22.167,22.168H9.501V9.5h12.666V22.168L22.167,22.168z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`;
+    this.innerHTML = `<?xml version="1.0" encoding="iso-8859-1"?>
+    <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+      width="800px" height="800px" viewBox="0 0 31.668 31.668"
+      xml:space="preserve">
+    <g>
+      <path d="M15.835,0C7.089,0,0.001,7.09,0.001,15.834s7.088,15.834,15.834,15.834c8.743,0,15.832-7.09,15.832-15.834
+        S24.578,0,15.835,0z M22.167,22.168H9.501V9.5h12.666V22.168L22.167,22.168z"/>
+    </g>
+    </svg>`;
   }
 }
 
@@ -1549,10 +1560,10 @@ customElements.define("svg-sort", SVGSort);
 class SVGOrder extends BaseSVGElement {
   constructor() {
     super();
-    this.innerHTML = `<svg width="15" height="19" viewBox="0 0 15 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.67636 10.3087C8.39511 10.0278 8.01386 9.87002 7.61636 9.87002C7.21885 9.87002 6.83761 10.0278 6.55635 10.3087L0.898356 15.9647C0.617093 16.2461 0.459135 16.6277 0.459229 17.0256C0.459322 17.4234 0.617461 17.8049 0.898855 18.0862C1.18025 18.3675 1.56185 18.5254 1.95971 18.5253C2.35757 18.5252 2.73909 18.3671 3.02036 18.0857L7.61636 13.4897L12.2124 18.0857C12.4951 18.3591 12.874 18.5104 13.2673 18.5072C13.6606 18.504 14.0369 18.3464 14.3151 18.0684C14.5933 17.7904 14.7513 17.4143 14.7549 17.021C14.7585 16.6277 14.6075 16.2487 14.3344 15.9657L8.67736 10.3077L8.67636 10.3087Z" stroke-width="2" fill="#56BEFF"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.67636 1.3087C8.39511 1.0278 8.01386 0.870022 7.61636 0.870022C7.21885 0.870022 6.83761 1.0278 6.55635 1.3087L0.898356 6.9647C0.617093 7.2461 0.459135 7.6277 0.459229 8.02556C0.459322 8.42342 0.617461 8.80494 0.898855 9.0862C1.18025 9.36746 1.56185 9.52542 1.95971 9.52533C2.35757 9.52524 2.73909 9.3671 3.02036 9.0857L7.61636 4.4897L12.2124 9.0857C12.4951 9.35908 12.874 9.51045 13.2673 9.50722C13.6606 9.50399 14.0369 9.34641 14.3151 9.06843C14.5933 8.79045 14.7513 8.4143 14.7549 8.02101C14.7585 7.62771 14.6075 7.24873 14.3344 6.9657L8.67736 1.3077L8.67636 1.3087Z" stroke-width="2" fill="#56BEFF"/>
-        </svg>`;
+    this.innerHTML = 
+      `<svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 8.66667L9 2L2 8.66667M16 18L9 11.3333L2 18" stroke="#90E1FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>`;
   }
 }
 customElements.define("svg-order", SVGOrder);

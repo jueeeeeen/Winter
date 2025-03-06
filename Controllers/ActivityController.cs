@@ -63,6 +63,12 @@ public class ActivityController: Controller
                     : filtered_activities.OrderBy(a => a.Max_member);
                 break;
 
+            case "Popular":
+                filtered_activities = filters.Descending
+                    ? filtered_activities.OrderByDescending(a => a.Participants.Count())
+                    : filtered_activities.OrderBy(a => a.Participants.Count());
+                break;
+
             default:
                 filtered_activities = filtered_activities.OrderBy(a => a.Activity_id);
                 break;

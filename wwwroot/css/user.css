@@ -2,6 +2,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: blue;
+}
+
+.profile-right-container {
+  background-color: red;
 }
 
 .profile-card {
@@ -16,16 +21,18 @@
 
 .profile-header {
   background-color: var(--blue50);
-  height: 53px;
+  height: 3rem;
   border-radius: 20px 20px 0 0;
-  padding: 10px 0 0 20px;
+  padding-left: 1rem;
   font-size: 1rem;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
 
 .profile-header p {
   color: var(--white);
-  font-size: 20px;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
@@ -44,13 +51,14 @@
   margin-top: 20px;
 }
 
-.username {
-  font-size: 20px;
+.username,
+.age {
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
 .full-name {
-  font-size: 26px;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 
@@ -60,15 +68,9 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.age {
-  font-size: 20px;
-  font-weight: 600;
-}
-
 .profile-details {
   color: var(--gray90);
   margin: 0 0 2px 0;
-  font-size: 1rem;
 }
 
 .profile-details input {
@@ -76,7 +78,7 @@
   padding: 1px;
   border: solid 1px var(--gray60);
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 1rem;
   padding-left: 10px;
   font-weight: 600;
 }
@@ -91,18 +93,19 @@
 .profile-details div {
   display: flex;
   flex-direction: row;
+  align-content: center;
   margin: 15px;
 }
 
 .profile-details p {
   margin-top: 5px;
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
 .profile-rating {
-  width: 83px;
-  height: 39px;
+  width: 5rem;
+  height: 3rem;
   margin: auto;
   padding: 5px;
   border-radius: 40px;
@@ -110,17 +113,17 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 10px var(--shadow);
+  box-shadow: 0 0 20px var(--shadow);
 }
 
 .profile-rating p {
   color: var(--blue80);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .profile-rating img {
-  width: 23px;
+  width: 1.2rem;
   margin-right: 5px;
 }
 
@@ -131,9 +134,9 @@
   margin: 40px;
 }
 
-.joined-review p{
+.joined-review p {
   color: var(--gray70);
-  font-size: 24px;
+  font-size: 1.4rem;
   font-weight: 500;
 }
 
@@ -147,7 +150,7 @@
 
 .joined-review a {
   color: var(--blue80);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: normal;
   text-decoration: underline;
 }
@@ -170,14 +173,14 @@
 
 .bio-header {
   color: var(--gray70);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
 .bio-info {
   color: var(--gray90);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
   height: 100px;
 }
@@ -193,13 +196,24 @@
 .personal-details {
   margin: 20px;
   display: flex;
+  flex-direction: column;
+}
+
+.top-info,
+.bottom-info {
+  display: flex;
   flex-direction: row;
-  gap: 40%;
+}
+
+.details-info {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 .personal-info {
   color: var(--gray90);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 20px;
 }
@@ -207,7 +221,7 @@
 .edit-profile-button {
   position: absolute;
   right: 1px;
-  bottom: -60px;
+  bottom: -5rem;
 }
 
 .edit-profile-button button {
@@ -220,13 +234,14 @@
   justify-content: center;
   gap: 5px;
   cursor: pointer;
-  width: 120px;
-  height: 50px;
+  width: 7rem;
+  height: 3rem;
+  margin-bottom: 1rem;
 }
 
 .edit-profile-button button p {
   color: var(--white);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
@@ -455,7 +470,7 @@ fieldset {
   align-items: center;
 }
 
-.save-button p ,
+.save-button p,
 .cancel-button p {
   color: var(--white);
   font-size: 20px;
@@ -467,7 +482,7 @@ fieldset {
   background-color: var(--white);
 }
 
-.save-button:hover p{
+.save-button:hover p {
   color: var(--blue70);
 }
 
@@ -475,6 +490,54 @@ fieldset {
   background-color: var(--red);
 }
 
-.cancel-button:hover p{
+.cancel-button:hover p {
   color: var(--red);
+}
+
+@media screen and (max-width: 480px) {
+  .profile-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 486px));
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .profile-card,
+  .bio-card,
+  .personal-card {
+    width: 100%;
+    height: 100%;
+  }
+
+  .profile-card {
+    margin: 0;
+  }
+
+  .profile-details img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    margin-left: 20px;
+  }
+
+  .top-info,
+  .bottom-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .details-info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .profile-picture {
+    width: 110px;
+    height: 110px;
+  }
+
+  .bio-info {
+    border: 1px solid var(--gray70);
+    border-radius: 20px;
+  }
 }

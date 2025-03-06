@@ -203,17 +203,24 @@ public class ActivityReviewController : Controller
 
         float averageRating = 0;
 
-        if (reviews != null && reviews.Any())
+        if (reviews.Count > 0)
         {
-            var ratings = reviews.Select(r => r.Rating).ToList();
-            if (ratings.Any()) {
-                averageRating = ratings.Average(); 
-            }
+            averageRating = reviews.Average(r => r.Rating);
         }
+
+        var reviewedUser = reviews.FirstOrDefault()?.ReviewedUser ?? await _context.Users
+            .Where(u => u.Username == userId)
+            .Select(u => new
+            {
+                u.FirstName,
+                u.LastName,
+                u.Username
+            })
+            .FirstOrDefaultAsync();
 
         ViewData["AverageRating"] = averageRating;
 
-        var reviewedUser = reviews?.FirstOrDefault()?.ReviewedUser;
+        Console.WriteLine($"Review Count: {reviews?.Count}");
 
         return View("~/Views/MyReview/Index.cshtml", new { Reviews = reviews, ReviewedUser = reviewedUser });
     }

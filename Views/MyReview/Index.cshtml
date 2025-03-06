@@ -2,7 +2,12 @@
     ViewData["Title"] = "My Review";
 }
 
-@* <div class="container"> *@
+@* @{
+    Console.WriteLine($"Model.Reviews: {Model.Reviews}");
+    Console.WriteLine($"Review Count: {Model.Reviews?.Count()}");
+} *@
+
+
     <div class="profile-info">
         <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
         <div class="account-details">
@@ -12,9 +17,9 @@
                 <img src="\assets\icon _star.svg" alt="star icon">
                 <p class="rating-count">@ViewData["AverageRating"]</p>
             </div>
+            <p>Count : @Model.Reviews.Count</p>
         </div>
     </div>
-
 
     <div class="comment-container">
         <div class="comment">
@@ -22,38 +27,45 @@
                 <p>All Review</p>
             </div>
             <div class="review">
-                @foreach (var review in Model.Reviews)
+                @if (Model.Reviews != null && Model.Reviews.Count > 0)
                 {
-                    <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
-                        <div class="user-info">
-                            <div class="comment-profile">
-                                <img src="../../assets/profile-g.png" alt="" />
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
+                            <div class="user-info">
+                                <div class="comment-profile">
+                                    <img src="../../assets/profile-g.png" alt="" />
+                                </div>
+                                <div class="comment-details">
+                                    <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
+                                    <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
+                                    <span class="user-comment">@review.Comment</span>
+                                    <span class="activity">From : <a href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
+                                </div>
                             </div>
-                            <div class="comment-details">
-                                <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
-                                <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
-                                <span class="user-comment">@review.Comment</span>
-                                <span class="activity">From : <a
-                                        href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
-                            </div>
-                        </div>
 
-                        <div class="comment-rating">
-                            @for (int i = 1; i <= 5; i++)
-                            {
-                                if (i <= @review.Rating)
+                            <div class="comment-rating">
+                                @for (int i = 1; i <= 5; i++)
                                 {
-                                    <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
+                                    if (i <= @review.Rating)
+                                    {
+                                        <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
+                                    }
+                                    else
+                                    {
+                                        <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
+                                    }
                                 }
-                                else
-                                {
-                                    <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
-                                }
-                            }
+                            </div>
                         </div>
+                    }
+                }
+                else
+                {
+                    <div class="no-reviews">
+                        <p>No reviews</p>
                     </div>
                 }
             </div>
         </div>
     </div>
-@* </div> *@

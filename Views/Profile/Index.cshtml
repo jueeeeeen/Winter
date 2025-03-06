@@ -72,17 +72,26 @@
             </div>
 
             <div class="personal-details">
-                <div class="left-info">
-                    <p class="bio-header">First Name</p>
-                    <p class="personal-info">@Model.FirstName</p>
-                    <p class="bio-header">Birth</p>
-                    <p class="personal-info">@Model.DateOfBirth</p>
+                <div class="top-info">
+                    <div class="details-info">
+                        <span class="bio-header">First Name</span>
+                        <span class="personal-info">@Model.FirstName</span>
+                    </div>
+                    <div class="details-info">
+                        <span class="bio-header">Last Name</span>
+                        <span class="personal-info">@Model.LastName</span>
+                    </div>
                 </div>
-                <div class="right-info">
-                    <p class="bio-header">Last Name</p>
-                    <p class="personal-info">@Model.LastName</p>
-                    <p class="bio-header">Gender</p>
-                    <p class="personal-info">Male</p>
+                <div class="bottom-info">
+                    <div class="details-info">
+                        <span class="bio-header">Birth</span>
+                        <span class="personal-info">@Model.DateOfBirth</span>
+                    </div>
+                    <div class="details-info">
+                        <span class="bio-header">Gender</span>
+                        <span class="personal-info">Male</span>
+                    </div>
+
                 </div>
 
                 <div class="edit-profile-button">
@@ -92,16 +101,6 @@
                     </button>
                 </div>
             </div>
-            
         </div>  
     </div>
-    
-    
 </div>
-
-@* <div class="edit-profile-button">
-        <button onClick="location.href='@Url.Action("Edit", "Profile")'"> 
-            <img src="\assets\edit.svg" alt="edit icon" class="edit-profile-img">
-            <p>Edit</p>
-        </button>
-    </div> *@

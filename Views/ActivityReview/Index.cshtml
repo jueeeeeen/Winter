@@ -25,7 +25,8 @@
             </select>
         </div>
         <div class="review-count">
-            <span>@Model.Participants.Count/@Model.Max_member reviewed</span>
+            @* <span>@Model.Participants.Count/@Model.Max_member reviewed</span> *@
+            <span id="reviewCountDisplay"></span>
         </div>
     </div>
 </header>
@@ -36,39 +37,32 @@
             <p>All comment</p>
         </div>
         <div id="reviewList">
-            @if (reviews == null)
+            @foreach (var review in reviews)
             {
-                <p>No Reviews</p>
-            }
-            else
-            {
-                @foreach (var review in reviews)
-                {
-                    <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
-                        <div class="user-info">
-                            <div class="comment-profile"><img src="../../assets/profile-g.png" alt="" /></div>
-                            <div class="comment-details">
-                                <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
-                                <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
-                                <span class="user-comment">@review.Comment</span>
-                            </div>
-                        </div>
-
-                        <div class="comment-rating">
-                            @for (int i = 1; i <= 5; i++)
-                            {
-                                if (i <= @review.Rating)
-                                {
-                                    <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
-                                }
-                                else
-                                {
-                                    <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
-                                }
-                            }
+                <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
+                    <div class="user-info">
+                        <div class="comment-profile"><img src="../../assets/profile-g.png" alt="" /></div>
+                        <div class="comment-details">
+                            <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
+                            <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
+                            <span class="user-comment">@review.Comment</span>
                         </div>
                     </div>
-                }
+
+                    <div class="comment-rating">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            if (i <= @review.Rating)
+                            {
+                                <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
+                            }
+                            else
+                            {
+                                <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
+                            }
+                        }
+                    </div>
+                </div>
             }
         </div>
     </div>
@@ -76,6 +70,7 @@
 
 <script>
     let allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
+    let totalParticipants = @Model.Participants.Count;
 
     window.onload = function () {
         getUserReviews();
@@ -84,11 +79,25 @@
     function getUserReviews() {
         let selectedUser = document.getElementById("reviewedUser").value;
         let reviewList = document.getElementById("reviewList");
+        let reviewCountDisplay = document.getElementById("reviewCountDisplay");
 
         reviewList.innerHTML = "";
 
         let filtered = allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
 
         filtered.forEach(review => reviewList.appendChild(review));
+
+        if (filtered.length > 0) {
+            filtered.forEach(review => reviewList.appendChild(review));
+        } else {
+            let noReviewsDiv = document.createElement("div");
+            noReviewsDiv.className = "no-reviews";
+            let noReviewsText = document.createElement("p");
+            noReviewsText.textContent = "No reviews";
+            noReviewsDiv.appendChild(noReviewsText);
+            reviewList.appendChild(noReviewsDiv);
+        }
+
+        reviewCountDisplay.textContent = `${filtered.length}/${totalParticipants - 1} reviewed`;
     }
 </script>

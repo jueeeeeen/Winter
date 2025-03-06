@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class AddNotificationsTable : Migration
+    public partial class UpdateUserModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -74,8 +74,8 @@ namespace Winter_Project.Migrations
                 {
                     Review_id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    User_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    Reviewed_user = table.Column<int>(type: "INTEGER", nullable: false),
+                    Reviewer = table.Column<string>(type: "TEXT", nullable: true),
+                    Reviewed_user = table.Column<string>(type: "TEXT", nullable: true),
                     Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
                     Rating = table.Column<float>(type: "REAL", nullable: false),
                     Comment = table.Column<string>(type: "TEXT", nullable: false),

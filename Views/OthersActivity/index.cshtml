@@ -1,45 +1,46 @@
 @{
     ViewData["Title"] = "Others Activity";
 }
-
-
-
 <div class="profile">
-    <img src="assets/Profile-w-b.png" alt="">
+    <div class="profile-img">
+        <img src="/assets/Profile-w-b.png" alt="">
+    </div>
     <div class="profile-info">
-        <div class="profile-name">Peerawat  Ingkhasantatikul</div>
-        <div class="profile-username">marklnwza007</div>
+        <div class="profile-name">@Model.User.FirstName @Model.User.LastName</div>
+        <div class="profile-username">@Model.User.Username</div>
         <div class="profile-rating">
             <span class="profile-rating-star">
-                <img src="assets/star_sharp.svg" alt="">
-                <img src="assets/star_sharp.svg" alt="">
-                <img src="assets/star_sharp.svg" alt="">
-                <img src="assets/star_sharp.svg" alt="">
-                <img src="assets/star_sharp.svg" alt="">
+                <img src="/assets/star_sharp.svg" alt="">
             </span>
-            <span class="profile-rating-points">1.55 (5)</span>
+            <span class="profile-rating-points">@Model.User.Rating</span>
         </div>
     </div>
 </div>
 
-<activities-list
-    activities='[{
-        "name": "มาดูหนังกัน!!!!",
-        "date": "Feb 20, 2025",
-        "tags": ["entertain", "sport", "relax"],
-        "members": [
-            { "name": "Alice", "role": "owner" },
-            { "name": "Bob", "role": "member" }
-        ]
-    },
-    {
-        "name": "มาเล่นสวนน้ำกัน!!!!",
-        "date": "Feb 22, 2025",
-        "tags": ["relax", "entertain"],
-        "members": [
-            { "name": "Charlie", "role": "owner" },
-            { "name": "Dana", "role": "member" }
-        ]
-    }]'>
-</activities-list>
-<rating-popup></rating-popup>
+<activities-list header="History" fixed-header></activities-list>
+<custom-pagination id="activity-pagination"></custom-pagination>
+
+<script>
+    window.activities = @Html.Raw(Json.Serialize(Model.Activities));
+    window.max_page =@Html.Raw(Json.Serialize(Model.Max_page));
+</script>
+
+<script>
+    window.onload = () => {
+        const activityList = document.querySelector("activities-list");
+        const ratingPopup = document.querySelector("rating-popup");
+        const activity_pagination = document.querySelector('custom-pagination');
+
+        const activity_list = activityList.querySelector("#activities");
+        activity_list.innerHTML = "";
+
+        window.activities.forEach((activity) => {
+            const activityElement = new ActivityDropdown(activity);
+            activity_list.appendChild(activityElement);
+        });
+        console.log(window.activities.length)
+        if (window.max_page) {
+            activity_pagination.render(window.max_page);
+        }
+    }
+</script>

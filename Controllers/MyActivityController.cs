@@ -42,7 +42,7 @@ public class MyActivityController: Controller
 
         var page_size = 5;
         var filtered_activities = _context.Activities.AsQueryable();
-  
+
         filtered_activities = filtered_activities.Where(a => a.Participants.Any(p => p.Username == curusername));
 
         var activitiesList = filtered_activities
@@ -59,6 +59,8 @@ public class MyActivityController: Controller
                     DateTime.Parse(a.Activity_time).Add(TimeSpan.Parse(a.Duration)) >= DateTime.UtcNow.AddHours(7))
                 .ToList();
         }
+
+
 
         var result = activitiesList;
         var response = new 
@@ -78,7 +80,6 @@ public class MyActivityController: Controller
                     .Select(u => new 
                     {
                         Profile_pic = "profile-g.png",
-                        u.Id,
                         u.Username,
                         u.FirstName,
                         u.LastName,

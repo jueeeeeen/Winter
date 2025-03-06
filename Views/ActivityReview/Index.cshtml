@@ -18,7 +18,7 @@
             <select name="" id="reviewedUser" onchange="getUserReviews()">
                 @foreach (var participant in Model.Participants)
                 {
-                    <option value="@participant.User.Id">
+                    <option value="@participant.User.Username">
                         @participant.User.FirstName @participant.User.LastName
                     </option>
                 }
@@ -78,7 +78,7 @@
     let allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
 
     window.onload = function () {
-        getUserReviews(); // Call function on page load
+        getUserReviews();
     };
 
     function getUserReviews() {

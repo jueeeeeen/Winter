@@ -23,7 +23,7 @@ public class ActivityReviewController : Controller
     }
 
     [HttpPost("Activity/Comment")]
-    public async Task<IActionResult> SubmitReview([FromBody] ReviewModel model, [FromQuery] string reviewedUsername = null)
+    public async Task<IActionResult> SubmitReview([FromBody] ReviewModel model)
     {
         var token = Request.Cookies["token"];
         if (string.IsNullOrEmpty(token))
@@ -219,7 +219,7 @@ public class ActivityReviewController : Controller
             })
             .FirstOrDefaultAsync();
 
-        ViewData["AverageRating"] = averageRating;
+        ViewData["AverageRating"] = averageRating.ToString("F2");
 
         Console.WriteLine($"Review Count: {reviews?.Count}");
 

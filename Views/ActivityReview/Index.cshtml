@@ -6,26 +6,28 @@
 
 @model dynamic
 
+<div class="main-container">
 <header>
-    <div class="header-container">
-        <img src="../../assets/bookmark.svg" alt="bookmark">
-        <p>@Model.Title</p>
-    </div>
-
     <div class="banner">
-        <div class="select-member">
-            <label for="">Select Member</label>
-            <select name="" id="reviewedUser" onchange="getUserReviews()">
-                @foreach (var participant in Model.Participants)
-                {
-                    <option value="@participant.User.Username">
-                        @participant.User.FirstName @participant.User.LastName
-                    </option>
-                }
-            </select>
+        <div class="header-container">
+            <img src="../../assets/bookmark.svg" alt="bookmark">
+            <p>@Model.Title</p>
         </div>
-        <div class="review-count">
-            <span id="reviewCountDisplay"></span>
+        <div class="banner-content">
+            <div class="select-member">
+                <label for="">Select Member</label>
+                <select name="" id="reviewedUser" onchange="getUserReviews()">
+                    @foreach (var participant in Model.Participants)
+                    {
+                        <option value="@participant.User.Username">
+                            @participant.User.FirstName @participant.User.LastName
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="review-count">
+                <span id="reviewCountDisplay"></span>
+            </div>
         </div>
     </div>
 </header>
@@ -68,6 +70,7 @@
             }
         </div>
     </div>
+</div>
 </div>
 <custom-pagination id="activity-pagination"></custom-pagination>
 

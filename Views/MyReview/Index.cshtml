@@ -38,7 +38,8 @@
                                     <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
                                     <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
                                     <span class="user-comment">@review.Comment</span>
-                                    <span class="activity">From : <a href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
+                                    <span class="activity">From : <a
+                                            href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
                                 </div>
                             </div>
 
@@ -65,18 +66,18 @@
                     </div>
                 }
             </div>
-        </div>  
+        </div>
     </div>
-    <custom-pagination id="activity-pagination"></custom-pagination>
 </div>
+<custom-pagination id="activity-pagination"></custom-pagination>
 
 <script>
     const activity_pagination = document.querySelector('custom-pagination');
     let allReviews = [];
     let currentPage = 1;
     const commentsPerPage = 5;
-    
-    window.onload = function() {
+
+    window.onload = function () {
         allReviews = Array.from(document.querySelectorAll(".comment-card"));
         const totalPages = allReviews.length <= commentsPerPage ? 1 : Math.ceil(allReviews.length / commentsPerPage);
         activity_pagination.render(totalPages);
@@ -84,17 +85,17 @@
             currentPage = event.detail.page;
             displayComments();
         });
-        
+
         displayComments();
     };
-    
+
     function displayComments() {
         const reviewList = document.getElementById("reviewList");
-        
+
         allReviews.forEach(review => {
             review.style.display = "none";
         });
-        
+
         if (allReviews.length > 0) {
             const startIndex = (currentPage - 1) * commentsPerPage;
             const endIndex = Math.min(startIndex + commentsPerPage, allReviews.length);

@@ -10,12 +10,20 @@ header div {
   display: flex;
   flex-direction: row;
   /* top right bottom left */
-  margin: 40px 0 40px 130px;
+  margin: 40px auto;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .header-container img {
-  width: 72px;
-  height: 104px;
+  width: 3.8rem;
+  height: 6rem;
 }
 
 .my-review {
@@ -24,7 +32,7 @@ header div {
 
 .header-container p {
   color: var(--gray90);
-  font-size: 64px;
+  font-size: 3rem;
   font-weight: bold;
   margin-left: 20px;
 }
@@ -32,9 +40,16 @@ header div {
 .banner {
   width: 80%;
   display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.banner-content {
+  width: 100%;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .select-member {
@@ -53,12 +68,12 @@ header div {
   background-image: url('/assets/chevron_down.svg');
   background-repeat: no-repeat;
   background-position: right 12px center;
-  background-size: 40px;
-  width: 494px;
-  height: 46px;
+  background-size: 2rem;
+  width: 27rem;
+  height: 3rem;
   border: solid 3px var(--blue40);
-  border-radius: 1.2rem;
-  padding-left: 20px;
+  border-radius: 1.3rem;
+  padding-left: 1rem;
   color: var(--gray90);
   font-size: 1.2rem;
   font-weight: 400;
@@ -69,8 +84,9 @@ header div {
 }
 
 .review-count {
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: bold;
+  margin: 0;
 }
 
 .comment-container {
@@ -267,12 +283,14 @@ header div {
 }
 
 @media screen and (max-width: 480px) {
+
   .main-container {
     width: 100%;
     background-color: var(--white);
     border-radius: 15px;
     padding: 10px 20px;
     margin: 20px 0;
+    box-shadow: 0 0 10px var(--shadow);
   }
 
   .my-review {
@@ -310,8 +328,66 @@ header div {
     width: 100%;
   }
 
-  .review {
+  .comment-rating {
+    width: 105px;
+  }
+
+  .review,
+  #reviewList {
     padding: 0;
   }
 
+  .banner {
+    width: 100%;
+    margin: 0;
+  }
+
+  .banner-content {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: normal;
+  }
+
+  .header-container {
+    margin: 0;
+  }
+
+  .header-container img{
+    width: 2.5rem;
+    height: 3rem;
+  }
+
+  .header-container p {
+    font-size: 2rem;
+    margin-left: 10px;
+  }
+
+  .select-member {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .select-member label {
+    width: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .select-member select {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .review-count {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #reviewCountDisplay {
+    color: var(--gray60);
+    font-size: 1.2rem;
+  }
 }

@@ -2,22 +2,20 @@
     ViewData["Title"] = "My Review";
 }
 
-@* @{
-    Console.WriteLine($"Model.Reviews: {Model.Reviews}");
-    Console.WriteLine($"Review Count: {Model.Reviews?.Count()}");
-} *@
-
-
+<div class="main-container">
+    <header class="my-review">My Review</header>
     <div class="profile-info">
         <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
         <div class="account-details">
             <span class="name">@Model.ReviewedUser.FirstName @Model.ReviewedUser.LastName</span>
             <span class="username">@("@" + Model.ReviewedUser.Username)</span>
-            <div class="rating">
-                <img src="\assets\icon _star.svg" alt="star icon">
-                <p class="rating-count">@ViewData["AverageRating"]</p>
+            <div class="rating-container">
+                <div class="rating">
+                    <img src="\assets\icon _star.svg" alt="star icon">
+                    <p class="rating-count">@ViewData["AverageRating"]</p>
+                </div>
+                <span class="count-review">(@Model.Reviews.Count)</span>
             </div>
-            <p>Count : @Model.Reviews.Count</p>
         </div>
     </div>
 
@@ -63,9 +61,10 @@
                 else
                 {
                     <div class="no-reviews">
-                        <p>No reviews</p>
+                        <span>No reviews</span>
                     </div>
                 }
             </div>
         </div>
     </div>
+</div>

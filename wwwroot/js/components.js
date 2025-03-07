@@ -2142,29 +2142,6 @@ class RatingPopup extends HTMLElement {
       container.classList.remove("fade-out");
     }
   }
-
-  // handlePostRating() {
-  //   const container = this.querySelector(".rating-change-component");
-
-  //   container.classList.add("fade-out");
-
-  //   setTimeout(() => {
-  //     const successMessage = document.createElement("div");
-  //     successMessage.classList.add("rating-success");
-  //     successMessage.innerHTML = `
-  //       <img src="assets/check_mark.png" alt="">
-  //       <h3>Rating completed</h3>
-  //     `;
-
-  //     container.classList.remove("fade-out");
-  //     container.innerHTML = "";
-  //     container.appendChild(successMessage);
-
-  //     setTimeout(() => {
-  //       successMessage.classList.add("fade-in");
-  //     }, 10);
-  //   }, 170);
-  // }
 }
 
 customElements.define("select-activities", SelectActivities);

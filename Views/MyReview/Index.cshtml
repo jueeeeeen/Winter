@@ -65,6 +65,44 @@
                     </div>
                 }
             </div>
-        </div>
+        </div>  
     </div>
+    <custom-pagination id="activity-pagination"></custom-pagination>
 </div>
+
+<script>
+    const activity_pagination = document.querySelector('custom-pagination');
+    let allReviews = [];
+    let currentPage = 1;
+    const commentsPerPage = 5;
+    
+    window.onload = function() {
+        allReviews = Array.from(document.querySelectorAll(".comment-card"));
+        const totalPages = allReviews.length <= commentsPerPage ? 1 : Math.ceil(allReviews.length / commentsPerPage);
+        activity_pagination.render(totalPages);
+        activity_pagination.addEventListener("page-changed", (event) => {
+            currentPage = event.detail.page;
+            displayComments();
+        });
+        
+        displayComments();
+    };
+    
+    function displayComments() {
+        const reviewList = document.getElementById("reviewList");
+        
+        allReviews.forEach(review => {
+            review.style.display = "none";
+        });
+        
+        if (allReviews.length > 0) {
+            const startIndex = (currentPage - 1) * commentsPerPage;
+            const endIndex = Math.min(startIndex + commentsPerPage, allReviews.length);
+            for (let i = startIndex; i < endIndex; i++) {
+                allReviews[i].style.display = "flex";
+            }
+        } else {
+            const noReviews = document.querySelector(".no-reviews");
+        }
+    }
+</script>

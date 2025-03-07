@@ -74,6 +74,7 @@ public class ActivityReviewController : Controller
         return Ok(new { message = "Review submitted successfully." });
     }
 
+
     [HttpGet("Activity/Review/{Activity_id}")]
     public async Task<IActionResult> Index(int Activity_id)
     {
@@ -205,7 +206,7 @@ public class ActivityReviewController : Controller
 
         if (reviews.Count > 0)
         {
-            averageRating = reviews.Average(r => r.Rating);
+            averageRating = (float)Math.Round(reviews.Average(r => r.Rating), 2);
         }
 
         var reviewedUser = reviews.FirstOrDefault()?.ReviewedUser ?? await _context.Users

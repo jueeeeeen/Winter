@@ -14,14 +14,41 @@ document.addEventListener("DOMContentLoaded", function () {
 
   nextButton.addEventListener("click", function (event) {
     event.preventDefault();
-    current += 1;
-    slidePage.style.transform = `translateX(-${current * 49}%)`;
-    bullet[current - 1].classList.add("active");
-    progressText[current - 1].classList.add("active");
-    step[current - 1].classList.add("active");
-    pages[current].classList.remove('active');
-    current = Math.min(current + 1, pages.length - 1);
-    pages[current].classList.add('active');
+        const activePage = pages[current];
+        const inputs = activePage.querySelectorAll("input[required]");
+        let isValid = true;
+
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add("error");
+                input.placeholder = "This field is required";
+            } else {
+                input.classList.remove("error");
+            }
+        });
+
+        if (current === 0) {
+          const password = document.getElementById("password").value
+          const confirmPassword = document.getElementById("confirm-password").value
+    
+          if (password !== confirmPassword) {
+            isValid = false
+            document.getElementById("confirm-password").classList.add("error")
+            document.getElementById("password-error").innerHTML = "Passwords don't match"
+          }
+        }
+
+        if (isValid) {
+            current += 1;
+            slidePage.style.transform = `translateX(-${current}%)`;
+            bullet[current - 1].classList.add("active");
+            progressText[current - 1].classList.add("active");
+            step[current - 1].classList.add("active");
+            pages[current - 1].classList.remove('active');
+            current = Math.min(current, pages.length - 1);
+            pages[current].classList.add('active');
+        }
   });
 
   console.log(pages);

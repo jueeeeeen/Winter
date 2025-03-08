@@ -40,6 +40,11 @@ public class ActivityReviewController : Controller
             return Unauthorized(new { message = "Invalid token" });
         }
 
+        // check existing review
+        var existingReview = await _context.Reviews
+            .Where(r => r.Reviewer == username && r.Activity_id == model.Activity_id && r.Reviewed_user == model.Reviewed_user)
+            .FirstOrDefaultAsync();
+
         var userName = await _context.Users
             .Where(u => u.Username == username)
             .Select(u => u.Username)
@@ -56,22 +61,47 @@ public class ActivityReviewController : Controller
             return BadRequest(ModelState);
         }
 
-        Console.WriteLine($"Received Reviewer: {model.Reviewer}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
-
-        var review = new ReviewModel
+        if (existingReview != null)
         {
-            Reviewer = model.Reviewer,
-            Reviewed_user = model.Reviewed_user,
-            Activity_id = model.Activity_id,
-            Rating = model.Rating,
-            Comment = model.Comment,
-            Time = DateTime.UtcNow
-        };
+            Console.WriteLine("Review already exists!");
+            return BadRequest(new { message = "Review already exists!" });
+        }
+        else
+        {
+            Console.WriteLine($"Received Reviewer: {model.Reviewer}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
 
-        _context.Reviews.Add(review);
-        await _context.SaveChangesAsync();
+            var review = new ReviewModel
+            {
+                Reviewer = model.Reviewer,
+                Reviewed_user = model.Reviewed_user,
+                Activity_id = model.Activity_id,
+                Rating = model.Rating,
+                Comment = model.Comment,
+                Time = DateTime.UtcNow
+            };
 
-        return Ok(new { message = "Review submitted successfully." });
+            _context.Reviews.Add(review);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Review submitted successfully." });
+        }
+
+        // Console.WriteLine($"Received Reviewer: {model.Reviewer}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
+
+        // var review = new ReviewModel
+        // {
+        //     Reviewer = model.Reviewer,
+        //     Reviewed_user = model.Reviewed_user,
+        //     Activity_id = model.Activity_id,
+        //     Rating = model.Rating,
+        //     Comment = model.Comment,
+        //     Time = DateTime.UtcNow
+        // };
+
+        // _context.Reviews.Add(review);
+        // await _context.SaveChangesAsync();
+
+        // return Ok(new { message = "Review submitted successfully." });
     }
 
 

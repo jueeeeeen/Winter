@@ -362,6 +362,10 @@ fieldset {
   background-color: var(--white);
   width: 100px;
   height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .gender-button button.selected {
@@ -369,8 +373,8 @@ fieldset {
 }
 
 .gender-button button img {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .male-button:hover::after,
@@ -378,14 +382,14 @@ fieldset {
 .female-button:hover::after {
   font-size: 1rem;
   white-space: nowrap;
-  left: 5px;
-  bottom: 7px;
-  position: relative;
+  position: absolute;
+  transform: translate(0, 0);
 }
 
 .male-button:hover::after {
   content: "male";
   color: var(--blue80);
+  position: relative;
 }
 
 .male-button {
@@ -393,10 +397,25 @@ fieldset {
   border-radius: 20px 0 0 20px;
 }
 
-.male-button.active,
-.lgbtq-button.active,
+.male-button.active {
+  background-color: var(--blue40);
+  content: url("/assets/male_icon-w.svg");
+  border: none 0 transparent;
+}
+
+.lgbtq-button.active {
+  background-image: url("/assets/rainbow.png");
+  background-size: 120%;
+  background-repeat: no-repeat;
+  background-position: center;
+  content: url("/assets/heart-w.svg");
+  border: none 0 transparent;
+}
+
 .female-button.active {
-  background-color: var(--gray50);
+  background-color: var(--pink);
+  content: url("/assets/female_icon-w.svg");
+  border: none 0 transparent;
 }
 
 .lgbtq-button {
@@ -429,6 +448,7 @@ fieldset {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
 }
 
 .female-button {
@@ -439,6 +459,7 @@ fieldset {
 .female-button:hover::after {
   content: "female";
   color: var(--pink);
+  position: relative;
 }
 
 .save-cancel-button {
@@ -514,7 +535,7 @@ fieldset {
     height: 100%;
   }
 
-  .bio-card, 
+  .bio-card,
   .personal-card {
     padding-bottom: 5px;
   }
@@ -577,5 +598,11 @@ fieldset {
 
   .user-fullname {
     margin: 5px 10px;
+  }
+
+  .male-button:hover::after,
+  .lgbtq-button:hover::after,
+  .female-button:hover::after {
+    font-size: 1.2rem;
   }
 }

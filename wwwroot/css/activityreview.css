@@ -65,7 +65,7 @@ header div {
 
 .select-member select {
   appearance: none;
-  background-image: url('/assets/chevron_down.svg');
+  background-image: url("/assets/chevron_down.svg");
   background-repeat: no-repeat;
   background-position: right 12px center;
   background-size: 2rem;
@@ -192,7 +192,8 @@ header div {
   margin: auto 20px;
 }
 
-.name, .username {
+.name,
+.username {
   text-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -271,7 +272,7 @@ header div {
   margin: 40px;
 }
 
-.no-reviews span{
+.no-reviews span {
   color: var(--gray60);
   font-size: 2rem;
   font-weight: 500;
@@ -283,7 +284,6 @@ header div {
 }
 
 @media screen and (max-width: 480px) {
-
   .main-container {
     width: 100%;
     background-color: var(--white);
@@ -353,7 +353,7 @@ header div {
     margin: 0;
   }
 
-  .header-container img{
+  .header-container img {
     width: 2.5rem;
     height: 3rem;
   }

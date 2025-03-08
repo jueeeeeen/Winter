@@ -1805,40 +1805,72 @@ class Member extends HTMLElement {
 
   connectedCallback() {
     if (this.username !== this.member.username && this.activity_type == "history" && this.activity_type !== null) {
-      this.innerHTML = `
-      <li class="member">
-        <div class="member-content">
-          <img src="/assets/Profile-w-b.png" alt="Profile">
-          <span class="member-name">${this.member.username}</span>
-          <span class="member-role">${this.member.role}</span>
-        </div>
-        <button class="rate-btn">
-          <img src="/assets/yellow_star_outline.png" alt="Rate">
-          <span class="review-text">review</span>
-        </button>
-      </li>
-      `;
+      this.checkReviewStatus().then((hasReview) => {
+        if (!hasReview) {
+          this.innerHTML = `
+          <li class="member">
+            <div class="member-content">
+              <img src="/assets/Profile-w-b.png" alt="Profile">
+              <span class="member-name">${this.member.username}</span>
+              <span class="member-role">${this.member.role}</span>
+            </div>
+            <button class="rate-btn">
+              <img src="/assets/yellow_star_outline.png" alt="Rate">
+              <span class="review-text">review</span>
+            </button>
+          </li>
+          `;
 
-      let ratingPopup = document.querySelector("rating-popup");
-      if (!ratingPopup) {
-        ratingPopup = new RatingPopup();
-        document.body.appendChild(ratingPopup);
-      }
+        let ratingPopup = document.querySelector("rating-popup");
+        if (!ratingPopup) {
+          ratingPopup = new RatingPopup();
+          document.body.appendChild(ratingPopup);
+        }
 
-      this.querySelector(".rate-btn").addEventListener("click", () => {
-        ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
-      });
-    } else {
-      this.innerHTML = `
-      <li class="member">
-        <div class="member-content">
-          <img src="/assets/Profile-w-b.png" alt="Profile">
-          <span class="member-name">${this.member.username}</span>
-          <span class="member-role">${this.member.role}</span>
-        </div>
-      </li>
-      `;
+        document.addEventListener("rating-completed", (event) => {
+          if (event.detail.reviewedUser === this.member.username && 
+              event.detail.activityId === this.activity_id) {
+            const rateBtn = this.querySelector(".rate-btn");
+            if (rateBtn) {
+              rateBtn.style.display = "none";
+            }
+          }
+        });
+
+        this.querySelector(".rate-btn").addEventListener("click", () => {
+          ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
+        });
+        } else {
+          this.renderWithoutButton();
+        }
+    });
+  } else {
+    this.renderWithoutButton();
+  }
+}
+
+  async checkReviewStatus() {
+    try {
+      const response = await fetch(`/Activity/HasReview?activityId=${this.activity_id}&reviewedUser=${this.member.username}`);
+      if (!response.ok) throw new Error("Failed to check review status");
+      const { hasReview } = await response.json();
+      return hasReview;
+    } catch (error) {
+      console.error("Error checking review status:", error);
+      return false;
     }
+  }
+
+  renderWithoutButton() {
+    this.innerHTML = `
+      <li class="member">
+        <div class="member-content">
+          <img src="/assets/Profile-w-b.png" alt="Profile">
+          <span class="member-name">${this.member.username}</span>
+          <span class="member-role">${this.member.role}</span>
+        </div>
+      </li>
+      `;
   }
 }
 
@@ -2128,6 +2160,15 @@ class RatingPopup extends HTMLElement {
         container.classList.remove("fade-out");
         container.innerHTML = "";
         container.appendChild(successMessage);
+
+        const ratingCompletedEvent = new CustomEvent('rating-completed', {
+          detail: {
+            reviewedUser: username,
+            activityId: this.activity_id
+          },
+          bubbles: true
+        });
+        this.dispatchEvent(ratingCompletedEvent);
 
         setTimeout(() => {
           successMessage.classList.add("fade-in");

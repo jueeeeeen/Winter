@@ -85,24 +85,33 @@ public class ActivityReviewController : Controller
 
             return Ok(new { message = "Review submitted successfully." });
         }
-
-        // Console.WriteLine($"Received Reviewer: {model.Reviewer}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
-
-        // var review = new ReviewModel
-        // {
-        //     Reviewer = model.Reviewer,
-        //     Reviewed_user = model.Reviewed_user,
-        //     Activity_id = model.Activity_id,
-        //     Rating = model.Rating,
-        //     Comment = model.Comment,
-        //     Time = DateTime.UtcNow
-        // };
-
-        // _context.Reviews.Add(review);
-        // await _context.SaveChangesAsync();
-
-        // return Ok(new { message = "Review submitted successfully." });
     }
+
+    [HttpGet("Activity/HasReview")]
+    public async Task<IActionResult> CheckReview([FromQuery] int activityId, [FromQuery] string reviewedUser)
+    {
+        var token = Request.Cookies["token"];
+        if (string.IsNullOrEmpty(token))
+        {
+            return Unauthorized(new { message = "Authentication required" });
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+        if (string.IsNullOrEmpty(username))
+        {
+            return Unauthorized(new { message = "Invalid token" });
+        }
+
+        // ตรวจสอบว่ามีรีวิวอยู่แล้วหรือไม่
+        var hasReview = await _context.Reviews
+            .AnyAsync(r => r.Reviewer == username && r.Activity_id == activityId && r.Reviewed_user == reviewedUser);
+
+        return Ok(new { hasReview });
+    }
+
 
 
     [HttpGet("Activity/Review/{Activity_id}")]

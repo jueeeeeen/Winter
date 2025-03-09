@@ -109,7 +109,7 @@ html, body {
 }
 
 .login-card {
-  margin: 40px auto;
+  margin: 60px auto;
 }
 
 .header {
@@ -210,7 +210,7 @@ html, body {
   background-color: var(--white);
   color: var(--blue90);
   border: solid 2px var(--blue70);
-  font-size: 22px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -569,7 +569,14 @@ html, body {
     margin-left: -10px;
   }
 
-  #register-description {
+  #register-description,
+  .login-description {
     font-size: 1.3rem;
+  }
+
+  .login-box input,
+  .login-box input::placeholder,
+  .login-button button {
+  font-size: 1.3rem;
   }
 }

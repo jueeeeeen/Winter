@@ -2,22 +2,20 @@
     ViewData["Title"] = "My Review";
 }
 
-@* @{
-    Console.WriteLine($"Model.Reviews: {Model.Reviews}");
-    Console.WriteLine($"Review Count: {Model.Reviews?.Count()}");
-} *@
-
-
+<div class="main-container">
+    <header class="my-review">My Review</header>
     <div class="profile-info">
         <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
         <div class="account-details">
             <span class="name">@Model.ReviewedUser.FirstName @Model.ReviewedUser.LastName</span>
             <span class="username">@("@" + Model.ReviewedUser.Username)</span>
-            <div class="rating">
-                <img src="\assets\icon _star.svg" alt="star icon">
-                <p class="rating-count">@ViewData["AverageRating"]</p>
+            <div class="rating-container">
+                <div class="rating">
+                    <img src="\assets\icon _star.svg" alt="star icon">
+                    <p class="rating-count">@ViewData["AverageRating"]</p>
+                </div>
+                <span class="count-review">(@Model.Reviews.Count)</span>
             </div>
-            <p>Count : @Model.Reviews.Count</p>
         </div>
     </div>
 
@@ -40,7 +38,8 @@
                                     <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
                                     <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
                                     <span class="user-comment">@review.Comment</span>
-                                    <span class="activity">From : <a href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
+                                    <span class="activity">From : <a
+                                            href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
                                 </div>
                             </div>
 
@@ -63,9 +62,48 @@
                 else
                 {
                     <div class="no-reviews">
-                        <p>No reviews</p>
+                        <span>No reviews</span>
                     </div>
                 }
             </div>
         </div>
     </div>
+</div>
+<custom-pagination id="activity-pagination"></custom-pagination>
+
+<script>
+    const activity_pagination = document.querySelector('custom-pagination');
+    let allReviews = [];
+    let currentPage = 1;
+    const commentsPerPage = 5;
+
+    window.onload = function () {
+        allReviews = Array.from(document.querySelectorAll(".comment-card"));
+        const totalPages = allReviews.length <= commentsPerPage ? 1 : Math.ceil(allReviews.length / commentsPerPage);
+        activity_pagination.render(totalPages);
+        activity_pagination.addEventListener("page-changed", (event) => {
+            currentPage = event.detail.page;
+            displayComments();
+        });
+
+        displayComments();
+    };
+
+    function displayComments() {
+        const reviewList = document.getElementById("reviewList");
+
+        allReviews.forEach(review => {
+            review.style.display = "none";
+        });
+
+        if (allReviews.length > 0) {
+            const startIndex = (currentPage - 1) * commentsPerPage;
+            const endIndex = Math.min(startIndex + commentsPerPage, allReviews.length);
+            for (let i = startIndex; i < endIndex; i++) {
+                allReviews[i].style.display = "flex";
+            }
+        } else {
+            const noReviews = document.querySelector(".no-reviews");
+        }
+    }
+</script>

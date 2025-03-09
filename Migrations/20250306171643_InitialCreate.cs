@@ -6,11 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:Migrations/20250305042621_initialCreate.cs
-    public partial class initialCreate : Migration
-========
-    public partial class UpdateUserModel : Migration
->>>>>>>> f3f432fe7b363ad7550704340f680c1c3f5ee834:Migrations/20250306133745_UpdateUserModel.cs
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

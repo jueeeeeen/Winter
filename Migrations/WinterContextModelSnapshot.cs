@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Winter_Project.Models;
 
@@ -11,16 +10,9 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-<<<<<<<< HEAD:Migrations/20250305042621_initialCreate.Designer.cs
-    [Migration("20250305042621_initialCreate")]
-    partial class initialCreate
-========
-    [Migration("20250306133745_UpdateUserModel")]
-    partial class UpdateUserModel
->>>>>>>> f3f432fe7b363ad7550704340f680c1c3f5ee834:Migrations/20250306133745_UpdateUserModel.Designer.cs
+    partial class WinterContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");

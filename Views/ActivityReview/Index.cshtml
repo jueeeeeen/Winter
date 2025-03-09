@@ -6,27 +6,28 @@
 
 @model dynamic
 
+<div class="main-container">
 <header>
-    <div class="header-container">
-        <img src="../../assets/bookmark.svg" alt="bookmark">
-        <p>@Model.Title</p>
-    </div>
-
     <div class="banner">
-        <div class="select-member">
-            <label for="">Select Member</label>
-            <select name="" id="reviewedUser" onchange="getUserReviews()">
-                @foreach (var participant in Model.Participants)
-                {
-                    <option value="@participant.User.Username">
-                        @participant.User.FirstName @participant.User.LastName
-                    </option>
-                }
-            </select>
+        <div class="header-container">
+            <img src="../../assets/bookmark.svg" alt="bookmark">
+            <p>@Model.Title</p>
         </div>
-        <div class="review-count">
-            @* <span>@Model.Participants.Count/@Model.Max_member reviewed</span> *@
-            <span id="reviewCountDisplay"></span>
+        <div class="banner-content">
+            <div class="select-member">
+                <label for="">Select Member</label>
+                <select name="" id="reviewedUser" onchange="getUserReviews()">
+                    @foreach (var participant in Model.Participants)
+                    {
+                        <option value="@participant.User.Username">
+                            @participant.User.FirstName @participant.User.LastName
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="review-count">
+                <span id="reviewCountDisplay"></span>
+            </div>
         </div>
     </div>
 </header>
@@ -37,67 +38,90 @@
             <p>All comment</p>
         </div>
         <div id="reviewList">
-            @foreach (var review in reviews)
+            @if (reviews != null)
             {
-                <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
-                    <div class="user-info">
-                        <div class="comment-profile"><img src="../../assets/profile-g.png" alt="" /></div>
-                        <div class="comment-details">
-                            <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
-                            <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
-                            <span class="user-comment">@review.Comment</span>
+                @foreach (var review in reviews)
+                {
+                    <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
+                        <div class="user-info">
+                            <div class="comment-profile"><img src="../../assets/profile-g.png" alt="" /></div>
+                            <div class="comment-details">
+                                <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
+                                <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
+                                <span class="user-comment">@review.Comment</span>
+                            </div>
+                        </div>
+
+                        <div class="comment-rating">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= @review.Rating)
+                                {
+                                    <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
+                                }
+                                else
+                                {
+                                    <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
+                                }
+                            }
                         </div>
                     </div>
-
-                    <div class="comment-rating">
-                        @for (int i = 1; i <= 5; i++)
-                        {
-                            if (i <= @review.Rating)
-                            {
-                                <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
-                            }
-                            else
-                            {
-                                <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
-                            }
-                        }
-                    </div>
-                </div>
+                }
             }
         </div>
     </div>
 </div>
+</div>
+<custom-pagination id="activity-pagination"></custom-pagination>
 
 <script>
-    let allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
-    let totalParticipants = @Model.Participants.Count;
+    const activity_pagination = document.querySelector('custom-pagination');
+    const allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
+    const totalParticipants = @Model.Participants.Count;
+    let currentPage = 1;
+    const commentsPerPage = 5;
+    let filteredReviews = [];
 
-    window.onload = function () {
+    window.onload = () => {
         getUserReviews();
+        
+        activity_pagination.addEventListener("page-changed", (event) => {
+            currentPage = event.detail.page;
+            displayComments();
+        });
     };
 
     function getUserReviews() {
-        let selectedUser = document.getElementById("reviewedUser").value;
-        let reviewList = document.getElementById("reviewList");
-        let reviewCountDisplay = document.getElementById("reviewCountDisplay");
+        const selectedUser = document.getElementById("reviewedUser").value;
+        const reviewCountDisplay = document.getElementById("reviewCountDisplay");
 
+        filteredReviews = allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
+        reviewCountDisplay.textContent = `${filteredReviews.length}/${totalParticipants - 1} reviewed`;
+        currentPage = 1;
+
+        const totalPages = filteredReviews.length <= commentsPerPage ? 1 : Math.ceil(allReviews.length / commentsPerPage);
+        activity_pagination.render(totalPages);
+        
+        displayComments();
+    }
+    
+    function displayComments() {
+        const reviewList = document.getElementById("reviewList");
         reviewList.innerHTML = "";
-
-        let filtered = allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
-
-        filtered.forEach(review => reviewList.appendChild(review));
-
-        if (filtered.length > 0) {
-            filtered.forEach(review => reviewList.appendChild(review));
+        
+        if (filteredReviews.length > 0) {
+            const startIndex = (currentPage - 1) * commentsPerPage;
+            const endIndex = Math.min(startIndex + commentsPerPage, filteredReviews.length);
+            for (let i = startIndex; i < endIndex; i++) {
+                reviewList.appendChild(filteredReviews[i].cloneNode(true));
+            }
         } else {
-            let noReviewsDiv = document.createElement("div");
+            const noReviewsDiv = document.createElement("div");
             noReviewsDiv.className = "no-reviews";
-            let noReviewsText = document.createElement("p");
+            const noReviewsText = document.createElement("span");
             noReviewsText.textContent = "No reviews";
             noReviewsDiv.appendChild(noReviewsText);
             reviewList.appendChild(noReviewsDiv);
         }
-
-        reviewCountDisplay.textContent = `${filtered.length}/${totalParticipants - 1} reviewed`;
     }
 </script>

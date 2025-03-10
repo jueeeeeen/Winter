@@ -373,6 +373,19 @@ namespace Winter_Project.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserBios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AboutMe = "I enjoy storytelling and writing about various topics.",
+                            Bio = "Creative writer and avid reader.",
+                            Location = "Los Angeles, USA",
+                            MyHobby = "Painting, Traveling",
+                            MyInterests = "Writing, Art, Literature",
+                            Phone = "+1-555-5678",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("Winter_Project.Models.UserModel", b =>
@@ -415,6 +428,19 @@ namespace Winter_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateOfBirth = new DateOnly(1995, 6, 15),
+                            Email = "john@example.com",
+                            FirstName = "John",
+                            Gender = "male",
+                            LastName = "Doe",
+                            PasswordHash = "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+                            Username = "test1"
+                        });
                 });
 
             modelBuilder.Entity("Winter_Project.Models.FriendModel", b =>

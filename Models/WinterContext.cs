@@ -60,18 +60,45 @@ namespace Winter_Project.Models
 
             base.OnModelCreating(modelBuilder);
 
-    modelBuilder.Entity<ReviewModel>().HasData(
-        new ReviewModel { Review_id = 1, Reviewer = "UserA", Reviewed_user = "Alice", Activity_id = 101, Rating = 4.5f, Comment = "Great!", Time = new DateTime(2024, 1, 1, 12, 0, 0) },
-        new ReviewModel { Review_id = 2, Reviewer = "UserB", Reviewed_user = "Alice", Activity_id = 102, Rating = 5.0f, Comment = "Excellent!", Time = new DateTime(2024, 1, 2, 15, 30, 0) },
-        new ReviewModel { Review_id = 3, Reviewer = "UserC", Reviewed_user = "Bob", Activity_id = 103, Rating = 3.8f, Comment = "Good job", Time = new DateTime(2024, 1, 3, 10, 45, 0) },
-        new ReviewModel { Review_id = 4, Reviewer = "UserD", Reviewed_user = "Charlie", Activity_id = 104, Rating = 2.5f, Comment = "Needs improvement", Time = new DateTime(2024, 1, 4, 18, 20, 0) },
-        new ReviewModel { Review_id = 5, Reviewer = "UserE", Reviewed_user = "Bob", Activity_id = 105, Rating = 4.2f, Comment = "Nice work", Time = new DateTime(2024, 1, 5, 8, 10, 0) },
-        new ReviewModel { Review_id = 6, Reviewer = "UserF", Reviewed_user = "Charlie", Activity_id = 106, Rating = 3.5f, Comment = "Average", Time = new DateTime(2024, 1, 6, 11, 0, 0) },
-        new ReviewModel { Review_id = 7, Reviewer = "UserG", Reviewed_user = "Alice", Activity_id = 107, Rating = 4.8f, Comment = "Amazing!", Time = new DateTime(2024, 1, 7, 9, 25, 0) },
-        new ReviewModel { Review_id = 8, Reviewer = "UserH", Reviewed_user = "Bob", Activity_id = 108, Rating = 3.9f, Comment = "Pretty good", Time = new DateTime(2024, 1, 8, 16, 55, 0) },
-        new ReviewModel { Review_id = 9, Reviewer = "UserI", Reviewed_user = "Charlie", Activity_id = 109, Rating = 2.0f, Comment = "Could be better", Time = new DateTime(2024, 1, 9, 13, 5, 0) },
-        new ReviewModel { Review_id = 10, Reviewer = "UserJ", Reviewed_user = "Alice", Activity_id = 110, Rating = 4.2f, Comment = "Nice!", Time = new DateTime(2024, 1, 10, 20, 30, 0) }
-    );
+        modelBuilder.Entity<UserModel>().HasData(
+            new UserModel {
+                Id = 1,
+                Username = "test1",
+                Email = "john@example.com",
+                PasswordHash = "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+                FirstName = "John",
+                LastName = "Doe",
+                DateOfBirth = new DateOnly(1995, 6, 15),
+                Gender = "male",
+                ProfilePicture = null
+            }
+        );
+
+        modelBuilder.Entity<UserBio>().HasData(
+            new UserBio {
+                Id = 1,
+                UserId = 1,
+                Bio = "Creative writer and avid reader.",
+                Location = "Los Angeles, USA",
+                Phone = "+1-555-5678",
+                AboutMe = "I enjoy storytelling and writing about various topics.",
+                MyInterests = "Writing, Art, Literature",
+                MyHobby = "Painting, Traveling"
+            }
+        );
+
+        modelBuilder.Entity<ReviewModel>().HasData(
+            new ReviewModel { Review_id = 1, Reviewer = "UserA", Reviewed_user = "Alice", Activity_id = 101, Rating = 4.5f, Comment = "Great!", Time = new DateTime(2024, 1, 1, 12, 0, 0) },
+            new ReviewModel { Review_id = 2, Reviewer = "UserB", Reviewed_user = "Alice", Activity_id = 102, Rating = 5.0f, Comment = "Excellent!", Time = new DateTime(2024, 1, 2, 15, 30, 0) },
+            new ReviewModel { Review_id = 3, Reviewer = "UserC", Reviewed_user = "Bob", Activity_id = 103, Rating = 3.8f, Comment = "Good job", Time = new DateTime(2024, 1, 3, 10, 45, 0) },
+            new ReviewModel { Review_id = 4, Reviewer = "UserD", Reviewed_user = "Charlie", Activity_id = 104, Rating = 2.5f, Comment = "Needs improvement", Time = new DateTime(2024, 1, 4, 18, 20, 0) },
+            new ReviewModel { Review_id = 5, Reviewer = "UserE", Reviewed_user = "Bob", Activity_id = 105, Rating = 4.2f, Comment = "Nice work", Time = new DateTime(2024, 1, 5, 8, 10, 0) },
+            new ReviewModel { Review_id = 6, Reviewer = "UserF", Reviewed_user = "Charlie", Activity_id = 106, Rating = 3.5f, Comment = "Average", Time = new DateTime(2024, 1, 6, 11, 0, 0) },
+            new ReviewModel { Review_id = 7, Reviewer = "UserG", Reviewed_user = "Alice", Activity_id = 107, Rating = 4.8f, Comment = "Amazing!", Time = new DateTime(2024, 1, 7, 9, 25, 0) },
+            new ReviewModel { Review_id = 8, Reviewer = "UserH", Reviewed_user = "Bob", Activity_id = 108, Rating = 3.9f, Comment = "Pretty good", Time = new DateTime(2024, 1, 8, 16, 55, 0) },
+            new ReviewModel { Review_id = 9, Reviewer = "UserI", Reviewed_user = "Charlie", Activity_id = 109, Rating = 2.0f, Comment = "Could be better", Time = new DateTime(2024, 1, 9, 13, 5, 0) },
+            new ReviewModel { Review_id = 10, Reviewer = "UserJ", Reviewed_user = "Alice", Activity_id = 110, Rating = 4.2f, Comment = "Nice!", Time = new DateTime(2024, 1, 10, 20, 30, 0) }
+        );
         }
     }
 }

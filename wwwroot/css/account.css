@@ -345,7 +345,7 @@ html, body {
 
 .gender-button button {
   background-color: var(--white);
-  width: 116px;
+  width: 100px;
   height: 35px;
   display: flex;
   justify-content: center;

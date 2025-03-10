@@ -101,7 +101,7 @@ namespace Winter_Project.Controllers
                 HttpOnly = true,   // ป้องกันการเข้าถึงจาก JavaScript
                 Secure = true,     // ใช้ HTTPS เท่านั้น (ถ้าทดสอบใน localhost อาจต้องปิด)
                 SameSite = SameSiteMode.None,  // รองรับ cross-site requests
-                Expires = DateTime.UtcNow.AddHours(1)  // หมดอายุใน 1 ชั่วโมง
+                Expires = DateTime.UtcNow.AddDays(30)  // หมดอายุใน 1 ชั่วโมง
             };
 
             Response.Cookies.Append("token", token, cookieOptions);

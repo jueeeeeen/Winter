@@ -248,6 +248,48 @@ class SearchBar extends HTMLElement {
   }
 }
 
+class SearchFriendBar extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = 
+    `<form class="search-bar shadow">
+        <input id="search_input" type="text" name="search_string" placeholder="search friend username..." required>
+        <div class="search-bar-x">
+            <button class="btn" id="clear_search_button">
+                <svg-x></svg-x>
+            </button>
+        </div>
+        <button type="button" class="btn search-bar-search" id="seach-button">
+            <svg-search></svg-search>
+        </button>
+    </form>`;
+    this.search_key = null;
+    this.clear_search = this.clear_search.bind(this);
+  }
+
+  connectedCallback() {
+    this.clear_search_button = this.querySelector("#clear_search_button");
+    this.clear_search_button.addEventListener("click", this.clear_search);
+
+    this.search_btn = this.querySelector("#seach-button");
+    this.search_input = this.querySelector("input");
+    this.search_btn.addEventListener("click", () => {
+      console.log(this.search_input.value);
+      this.search_key = this.search_input.value;
+    });
+  }
+
+  get result() {
+    return this.search_key;
+  }
+
+  clear_search() {
+    this.search_input = this.querySelector("#search_input");
+    console.log("seach key: ", this.search_input);
+    this.search_input.value = "";
+  }
+}
+
 class TagsSelector extends HTMLElement {
   constructor() {
     super();
@@ -992,13 +1034,14 @@ class MemberListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.username = this.getAttribute("username")
         this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
                     <img class="profile" src="${this.profile_pic}">
                 </div>
-                <span class="member-list-item-name">${this.name}</span>
+                <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
                 <span class="member-list-item-role flex">(Member)</span>
             </li>`;
   }
@@ -1007,6 +1050,7 @@ class HostListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.username = this.getAttribute("username")
         this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
         `<li class="radial-blue-bg member-list-item shadow">
@@ -1014,7 +1058,7 @@ class HostListItem extends HTMLElement {
                 <img class="profile" src="${this.profile_pic}">
                 <img class="crown" src="../../assets/crown.svg">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">(Host)</span>
         </li>`;
   }
@@ -1043,7 +1087,7 @@ class PendingHostViewListItem extends HTMLElement {
             <div class="member-list-item-profile">
                 <img class="profile" src="${this.profile_pic}">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">waiting for approval...</span>
             <div class="member-list-item-approval flex">
                 <button id="approveBtn" class="btn approval gr-w hover-w-gr-gr round">
@@ -1108,7 +1152,7 @@ class MemberHostViewListItem extends HTMLElement {
             <div class="member-list-item-profile">
                 <img class="profile" src="${this.profile_pic}">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">(Member)</span>
             <div class="member-list-item-approval flex">
                 <button class="btn approval r-w hover-w-r-r round">
@@ -1810,6 +1854,7 @@ class SVGSend extends BaseSVGElement {
 customElements.define("svg-send", SVGSend);
 
 customElements.define("search-bar", SearchBar);
+customElements.define("search-friend-bar", SearchFriendBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
 customElements.define("tag-select", TagSelect);

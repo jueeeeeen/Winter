@@ -94,11 +94,21 @@
 
                 </div>
 
-                <div class="edit-profile-button">
-                    <button onClick="location.href='@Url.Action("Edit", "Profile")'"> 
-                    <img src="\assets\edit.svg" alt="edit icon" class="edit-profile-img">
-                    <p>Edit</p>
-                    </button>
+                @if (ViewBag.IsOwner)
+                {
+                    <div class="edit-profile-button">
+                        <button onClick="location.href='@Url.Action("Edit", "Profile")'"> 
+                            <img src="~/assets/edit.svg" alt="edit icon" class="edit-profile-img">
+                            <p>Edit</p>
+                        </button>
+                    </div>
+                }
+
+                <div class="add-friend-button">
+                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                            <img src="~/assets/edit.svg" alt="add-friend-button Friend icon" class="add-friend-img">
+                            <p>Add Friend</p>
+                        </button>
                 </div>
             </div>
         </div>  

@@ -29,23 +29,19 @@ namespace Winter_Project.Services
                 .Distinct()
                 .ToListAsync();
 
-            // ดึงข้อมูลผู้ใช้ที่เกี่ยวข้องกับ Activity_user_id
             var activityUsers = await _context.Users
                 .Where(u => activityData.Select(a => a.Activity_user_id).Contains(u.Id))
                 .ToDictionaryAsync(u => u.Id, u => new { u.FirstName, u.LastName });
 
-            // ดึงข้อมูล Activities ที่ตรงกับ Activity_id จาก Notifications
             var activities = await _context.Activities
                 .Where(a => activityData.Select(d => d.Activity_id).Contains(a.Activity_id))
                 .ToDictionaryAsync(a => a.Activity_id, a => a.Title);
 
-            // ดึงข้อมูล Notifications สำหรับผู้ใช้
             var notifications = await _context.Notifications
                 .Where(n => n.User_id == user.Id)
                 .OrderByDescending(n => n.Notification_time)
                 .ToListAsync();
 
-            // สร้าง NotificationViewModel สำหรับแสดงผล
             return notifications.Select(n => new NotificationViewModel
             {
                 Id = n.Id,

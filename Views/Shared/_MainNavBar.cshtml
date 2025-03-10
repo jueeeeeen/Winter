@@ -68,18 +68,16 @@
         <span class="noti-header">Notifications</span>
         <hr>
         <ul>
-            @* <approved-noti></approved-noti>
-            <denied-noti></denied-noti> *@
             @foreach (var notification in notifications)
             {
                 @if (notification.Notification_type == "pending")
                 {
-                    <joined-noti 
+                    <pending-noti 
                         activity-id="@notification.Activity_id" 
                         activity-title="@notification.ActivityTitle" 
                         name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
                         time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
-                    </joined-noti>
+                    </pending-noti>
                 }
                 else if (notification.Notification_type == "approved")
                 {
@@ -104,6 +102,24 @@
                         activity-title="@notification.ActivityTitle" 
                         time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
                     </kick-noti>
+                }
+                else if (notification.Notification_type == "join")
+                {
+                    <joined-noti 
+                        activity-id="@notification.Activity_id" 
+                        activity-title="@notification.ActivityTitle" 
+                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
+                    </joined-noti>
+                }
+                else if (notification.Notification_type == "leave")
+                {
+                    <leave-noti 
+                        activity-id="@notification.Activity_id" 
+                        activity-title="@notification.ActivityTitle" 
+                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
+                    </leave-noti>
                 }
             }
         </ul>

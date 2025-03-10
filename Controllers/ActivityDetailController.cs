@@ -192,8 +192,6 @@ public class ActivityDetailController: Controller
             _context.Notifications.Add(notification);
         }
 
-        if (member_count + 1 >= activity.Max_member) activity.Status = "full";
-
         _context.SaveChanges();
 
         return Ok(new { message = "Successfully Joined Activity"});
@@ -213,11 +211,41 @@ public class ActivityDetailController: Controller
         var participant = _context.Participants
             .FirstOrDefault(p => p.Username == username && p.Activity_id == Activity_id);
 
+        var host_user = _context.Users
+            .FirstOrDefault(u => u.Username == activity.Owner);
+        
+        if (host_user == null)
+        {
+            return NotFound(new { message = "Host user not found" });
+        }
+
+        var leave_user = _context.Users
+            .FirstOrDefault(u => u.Username == username);
+
+        if (leave_user == null)
+        {
+            return NotFound(new { message = "Leave user not found" });
+        }
+
         if (participant != null)
         {
+            if (participant.Role == "member")
+            {
+                var notification = new NotificationModel
+                {
+                    User_id = host_user.Id,
+                    Notification_type = "leave",
+                    Activity_id = Activity_id,
+                    Activity_user_id = leave_user.Id,
+                    Notification_time = DateTime.UtcNow
+                };
+                _context.Notifications.Add(notification);
+            }
+
             _context.Participants.Remove(participant);
-            _context.SaveChanges();
         }
+
+        _context.SaveChanges();
 
         return Ok(new { message = "Successfully Left Activity"});
     }

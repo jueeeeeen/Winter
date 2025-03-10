@@ -29,5 +29,34 @@ namespace Winter_Project.Models
 
         public string Status { get; set; } = string.Empty;
 
+        public void Create_ActivityModel(string owner, string title, string detail, string activity_time, string deadline_time, string duration, string location, int max_member, bool approval,List<string> tags, string gender, int age, string other)
+        {
+            Owner = owner;
+            Title = title;
+            Detail = detail;
+            Create_time = DateTime.UtcNow.ToString("o");
+            Activity_time = activity_time;
+            Deadline_time = deadline_time;
+            Duration = duration;
+            Location = location;
+            Max_member = max_member;
+            Approval = approval;
+            Tags = tags;
+            Requirement = new RequirementModel
+            {
+                Gender = gender,
+                Age = age,
+                Other = other
+            };
+            Participants = [
+                new ParticipantModel {
+                    Username = owner,
+                    Role = "host"
+                }
+            ];
+            Status = "open";
+        }
     }
+
+
 }

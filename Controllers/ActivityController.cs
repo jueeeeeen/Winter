@@ -41,7 +41,7 @@ public class ActivityController: Controller
         Console.WriteLine(filters);
         var page_size = 12;
 
-        var filtered_activities = _context.Activities.AsQueryable();
+        var filtered_activities = _context.Activities.Where(a => a.Status == "open").AsQueryable();
 
         switch (filters.Sort)
         {

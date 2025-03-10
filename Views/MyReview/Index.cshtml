@@ -2,19 +2,22 @@
     ViewData["Title"] = "My Review";
 }
 
-@* <div class="container"> *@
+<div class="main-container">
+    <header class="my-review">My Review</header>
     <div class="profile-info">
         <img src="\assets\Profile-w-b.png" alt="profile picture" class="profile-picture">
         <div class="account-details">
             <span class="name">@Model.ReviewedUser.FirstName @Model.ReviewedUser.LastName</span>
             <span class="username">@("@" + Model.ReviewedUser.Username)</span>
-            <div class="rating">
-                <img src="\assets\icon _star.svg" alt="star icon">
-                <p class="rating-count">@ViewData["AverageRating"]</p>
+            <div class="rating-container">
+                <div class="rating">
+                    <img src="\assets\icon _star.svg" alt="star icon">
+                    <p class="rating-count">@ViewData["AverageRating"]</p>
+                </div>
+                <span class="count-review">(@Model.Reviews.Count)</span>
             </div>
         </div>
     </div>
-
 
     <div class="comment-container">
         <div class="comment">
@@ -22,38 +25,85 @@
                 <p>All Review</p>
             </div>
             <div class="review">
-                @foreach (var review in Model.Reviews)
+                @if (Model.Reviews != null && Model.Reviews.Count > 0)
                 {
-                    <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
-                        <div class="user-info">
-                            <div class="comment-profile">
-                                <img src="../../assets/profile-g.png" alt="" />
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
+                            <div class="user-info">
+                                <div class="comment-profile">
+                                    <img src="../../assets/profile-g.png" alt="" />
+                                </div>
+                                <div class="comment-details">
+                                    <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
+                                    <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
+                                    <span class="user-comment">@review.Comment</span>
+                                    <span class="activity">From : <a
+                                            href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
+                                </div>
                             </div>
-                            <div class="comment-details">
-                                <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
-                                <span class="comment-date">@review.Time.ToString("dd MMM yyyy HH:mm")</span>
-                                <span class="user-comment">@review.Comment</span>
-                                <span class="activity">From : <a
-                                        href="/ActivityDetail/@review.Activity_id">@review.ActivityTitle</a></span>
-                            </div>
-                        </div>
 
-                        <div class="comment-rating">
-                            @for (int i = 1; i <= 5; i++)
-                            {
-                                if (i <= @review.Rating)
+                            <div class="comment-rating">
+                                @for (int i = 1; i <= 5; i++)
                                 {
-                                    <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
+                                    if (i <= @review.Rating)
+                                    {
+                                        <img src="../../assets/icon _star.svg" alt="star filled" class="star-icon">
+                                    }
+                                    else
+                                    {
+                                        <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
+                                    }
                                 }
-                                else
-                                {
-                                    <img src="../../assets/icon_star_empty.svg" alt="star empty" class="star-icon">
-                                }
-                            }
+                            </div>
                         </div>
+                    }
+                }
+                else
+                {
+                    <div class="no-reviews">
+                        <span>No reviews</span>
                     </div>
                 }
             </div>
         </div>
     </div>
-@* </div> *@
+</div>
+<custom-pagination id="activity-pagination"></custom-pagination>
+
+<script>
+    const activity_pagination = document.querySelector('custom-pagination');
+    let allReviews = [];
+    let currentPage = 1;
+    const commentsPerPage = 5;
+
+    window.onload = function () {
+        allReviews = Array.from(document.querySelectorAll(".comment-card"));
+        const totalPages = allReviews.length <= commentsPerPage ? 1 : Math.ceil(allReviews.length / commentsPerPage);
+        activity_pagination.render(totalPages);
+        activity_pagination.addEventListener("page-changed", (event) => {
+            currentPage = event.detail.page;
+            displayComments();
+        });
+
+        displayComments();
+    };
+
+    function displayComments() {
+        const reviewList = document.getElementById("reviewList");
+
+        allReviews.forEach(review => {
+            review.style.display = "none";
+        });
+
+        if (allReviews.length > 0) {
+            const startIndex = (currentPage - 1) * commentsPerPage;
+            const endIndex = Math.min(startIndex + commentsPerPage, allReviews.length);
+            for (let i = startIndex; i < endIndex; i++) {
+                allReviews[i].style.display = "flex";
+            }
+        } else {
+            const noReviews = document.querySelector(".no-reviews");
+        }
+    }
+</script>

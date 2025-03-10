@@ -109,6 +109,7 @@
         socket.onmessage = function (event) {
             console.log("Message received: ", event.data);
             const message = JSON.parse(event.data);
+
             const chat_bubble = create_chat_bubble(message, username);
             message_container.innerHTML += chat_bubble;
             message_container.scrollTop = message_container.scrollHeight;
@@ -140,7 +141,8 @@
             return `
                 <div class="chat-bubble">
                     <div class="chat-bb-profile">
-                        <img src="../../assets/profile-g.png">
+                        <img src="${message.Profile_pic}" class="profile-pic">
+                        ${message.Role === "host" ? '<img class="crown" src="../../assets/crown.svg" />' : ''}
                     </div>
                     <strong class="chat-bb-name">${message.Name}</strong>
                     <span class="chat-bb-message">${message.Message}</span>

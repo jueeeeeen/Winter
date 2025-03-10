@@ -23,7 +23,7 @@ public class ActivityReviewController : Controller
     }
 
     [HttpPost("Activity/Comment")]
-    public async Task<IActionResult> SubmitReview([FromBody] ReviewModel model, [FromQuery] string reviewedUsername = null)
+    public async Task<IActionResult> SubmitReview([FromBody] ReviewModel model)
     {
         var token = Request.Cookies["token"];
         if (string.IsNullOrEmpty(token))
@@ -39,6 +39,11 @@ public class ActivityReviewController : Controller
         {
             return Unauthorized(new { message = "Invalid token" });
         }
+
+        // check existing review
+        var existingReview = await _context.Reviews
+            .Where(r => r.Reviewer == username && r.Activity_id == model.Activity_id && r.Reviewed_user == model.Reviewed_user)
+            .FirstOrDefaultAsync();
 
         var userName = await _context.Users
             .Where(u => u.Username == username)
@@ -56,23 +61,58 @@ public class ActivityReviewController : Controller
             return BadRequest(ModelState);
         }
 
-        Console.WriteLine($"Received Reviewer: {model.Reviewer}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
-
-        var review = new ReviewModel
+        if (existingReview != null)
         {
-            Reviewer = model.Reviewer,
-            Reviewed_user = model.Reviewed_user,
-            Activity_id = model.Activity_id,
-            Rating = model.Rating,
-            Comment = model.Comment,
-            Time = DateTime.UtcNow
-        };
+            Console.WriteLine("Review already exists!");
+            return BadRequest(new { message = "Review already exists!" });
+        }
+        else
+        {
+            Console.WriteLine($"Received Reviewer: {model.Reviewer}, Reviewed_user: {model.Reviewed_user}, Activity_id: {model.Activity_id}, Rating: {model.Rating}, Comment: {model.Comment}, Time: {DateTime.UtcNow.ToString("o")}");
 
-        _context.Reviews.Add(review);
-        await _context.SaveChangesAsync();
+            var review = new ReviewModel
+            {
+                Reviewer = model.Reviewer,
+                Reviewed_user = model.Reviewed_user,
+                Activity_id = model.Activity_id,
+                Rating = model.Rating,
+                Comment = model.Comment,
+                Time = DateTime.UtcNow
+            };
 
-        return Ok(new { message = "Review submitted successfully." });
+            _context.Reviews.Add(review);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Review submitted successfully." });
+        }
     }
+
+    [HttpGet("Activity/HasReview")]
+    public async Task<IActionResult> CheckReview([FromQuery] int activityId, [FromQuery] string reviewedUser)
+    {
+        var token = Request.Cookies["token"];
+        if (string.IsNullOrEmpty(token))
+        {
+            return Unauthorized(new { message = "Authentication required" });
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+        if (string.IsNullOrEmpty(username))
+        {
+            return Unauthorized(new { message = "Invalid token" });
+        }
+
+        // ตรวจสอบว่ามีรีวิวอยู่แล้วหรือไม่
+        var hasReview = await _context.Reviews
+            .AnyAsync(r => r.Reviewer == username && r.Activity_id == activityId && r.Reviewed_user == reviewedUser);
+
+        return Ok(new { hasReview });
+    }
+
+
 
     [HttpGet("Activity/Review/{Activity_id}")]
     public async Task<IActionResult> Index(int Activity_id)
@@ -203,17 +243,24 @@ public class ActivityReviewController : Controller
 
         float averageRating = 0;
 
-        if (reviews != null && reviews.Any())
+        if (reviews.Count > 0)
         {
-            var ratings = reviews.Select(r => r.Rating).ToList();
-            if (ratings.Any()) {
-                averageRating = ratings.Average(); 
-            }
+            averageRating = (float)Math.Round(reviews.Average(r => r.Rating), 2);
         }
 
-        ViewData["AverageRating"] = averageRating;
+        var reviewedUser = reviews.FirstOrDefault()?.ReviewedUser ?? await _context.Users
+            .Where(u => u.Username == userId)
+            .Select(u => new
+            {
+                u.FirstName,
+                u.LastName,
+                u.Username
+            })
+            .FirstOrDefaultAsync();
 
-        var reviewedUser = reviews?.FirstOrDefault()?.ReviewedUser;
+        ViewData["AverageRating"] = averageRating.ToString("F2");
+
+        Console.WriteLine($"Review Count: {reviews?.Count}");
 
         return View("~/Views/MyReview/Index.cshtml", new { Reviews = reviews, ReviewedUser = reviewedUser });
     }

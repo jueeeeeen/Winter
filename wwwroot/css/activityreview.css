@@ -6,82 +6,110 @@
   margin-top: 56px;
 }
 
-header div {
+.header {
   display: flex;
   flex-direction: row;
-  /* top right bottom left */
-  margin: 40px 0 40px 130px;
+  justify-content: center;
+  margin: 40px auto;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .header-container img {
-  width: 72px;
-  height: 104px;
+  width: 3.8rem;
+  height: 6rem;
+}
+
+.my-review {
+  display: none;
 }
 
 .header-container p {
   color: var(--gray90);
-  font-size: 64px;
+  font-size: 3rem;
   font-weight: bold;
   margin-left: 20px;
 }
 
 .banner {
+  width: 80%;
   display: flex;
-  flex-direction: space-between;
+  flex-direction: column;
+  justify-items: center;
+}
+
+.banner-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0;
 }
 
 .select-member {
   display: flex;
   flex-direction: column;
+  margin: 0;
 }
 
 .select-member label {
-  font-size: 26px;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .select-member select {
   appearance: none;
-  background-image: url('/assets/down_arrow.svg');
+  background-image: url("/assets/chevron_down.svg");
   background-repeat: no-repeat;
   background-position: right 12px center;
-  width: 494px;
-  height: 46px;
+  background-size: 2rem;
+  width: 27rem;
+  height: 3rem;
   border: solid 3px var(--blue40);
-  border-radius: 20px;
-  padding-left: 20px;
+  border-radius: 1.3rem;
+  padding-left: 1rem;
   color: var(--gray90);
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
 .select-member option {
-  font-size: 20px;
+  font-size: 1.2rem;
 }
 
 .review-count {
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: bold;
+  margin: 0;
 }
 
 .comment-container {
+  width: 100%;
   display: flex;
-  /* flex-direction: column; */
   justify-content: center;
 }
 
 .comment {
   background-color: var(--white);
-  width: 1100px;
+  width: 80%;
   height: 100%;
   border-radius: 20px;
 }
 
+.review {
+  padding: 0 20px;
+}
+
 .comment-card {
-  width: 1067px;
+  width: 100%;
   height: 169px;
-  margin: 10px;
+  margin: 1rem auto;
   padding: 15px;
   border: solid 2px var(--blue80);
   border-radius: 20px;
@@ -93,7 +121,7 @@ header div {
 
 .comment-header {
   background-color: var(--blue50);
-  width: 1100px;
+  width: 100%;
   height: 53px;
   margin: 0;
   border-radius: 20px 20px 0 0;
@@ -114,8 +142,8 @@ header div {
 }
 
 .comment-profile img {
-  width: 50px;
-  height: 50px;
+  width: 3rem;
+  height: 3rem;
 }
 
 .comment-details {
@@ -127,24 +155,24 @@ header div {
 .comment-owner {
   background-color: var(--white);
   color: var(--gray90);
-  font-size: 20px;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
 .comment-date {
   color: var(--gray60);
-  font-size: 10px;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
 .user-comment {
   color: var(--gray90);
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 400;
 }
 
 .profile-info {
-  width: 1100px;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-items: center;
@@ -152,8 +180,10 @@ header div {
 }
 
 .profile-picture {
-  width: 120px;
-  height: 120px;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--shadow);
 }
 
 .account-details {
@@ -162,49 +192,64 @@ header div {
   margin: auto 20px;
 }
 
-.name, .username {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+.name,
+.username {
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
 .account-details .name {
   color: var(--gray90);
-  font-size: 26px;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 
 .account-details .username {
   color: var(--gray90);
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
+}
+
+.rating-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 5px 0;
 }
 
 .rating {
   background-color: var(--white);
-  width: 73px;
-  height: 29px;
+  width: 4.5rem;
+  height: 2rem;
   border-radius: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 0 4px var(--shadow);
+}
+
+.count-review {
+  margin-left: 5px;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .rating img {
-  width: 16px;
-  height: 16px;
+  width: 1rem;
+  height: 1rem;
   margin-right: 5px;
 }
 
 .rating-count {
   color: var(--blue80);
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1rem;
   align-items: center;
 }
 
 .activity {
   color: var(--gray90);
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   position: absolute;
   bottom: 10px;
   left: 20px;
@@ -216,5 +261,133 @@ header div {
 }
 
 .star-icon {
-  height: 27px;
+  height: 1.5rem;
+}
+
+.no-reviews {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+}
+
+.no-reviews span {
+  color: var(--gray60);
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 20px;
+}
+
+#reviewList {
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 480px) {
+  .main-container {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 10px var(--shadow);
+  }
+
+  .my-review {
+    color: var(--blue90);
+    font-weight: bold;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .account-details {
+    margin: 0 10px;
+  }
+
+  .profile-info {
+    margin: 0 0 20px;
+    width: 100%;
+  }
+
+  .comment-header {
+    display: none;
+  }
+
+  .comment-card {
+    height: 20vh;
+    border: none;
+    border-bottom: solid 2px var(--gray50);
+    border-radius: 0;
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .comment {
+    width: 100%;
+  }
+
+  .comment-rating {
+    width: 105px;
+  }
+
+  .review,
+  #reviewList {
+    padding: 0;
+  }
+
+  .banner {
+    width: 100%;
+    margin: 0;
+  }
+
+  .banner-content {
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: normal;
+  }
+
+  .header-container {
+    margin: 0;
+  }
+
+  .header-container img {
+    width: 2.5rem;
+    height: 3rem;
+  }
+
+  .header-container p {
+    font-size: 2rem;
+    margin-left: 10px;
+  }
+
+  .select-member {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+  }
+
+  .select-member label {
+    width: 100%;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .select-member select {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .review-count {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  #reviewCountDisplay {
+    color: var(--gray60);
+    font-size: 1.2rem;
+  }
 }

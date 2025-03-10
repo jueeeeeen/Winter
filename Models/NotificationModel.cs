@@ -7,7 +7,7 @@ namespace Winter_Project.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; } // Primary key
+        public int Id { get; set; }
 
         public int User_id { get; set; }
 
@@ -18,5 +18,7 @@ namespace Winter_Project.Models
         public int Activity_user_id { get; set; }
 
         public DateTime Notification_time { get; set; } = DateTime.UtcNow;
+
+        public bool New { get; set; } = false;
     }
 }

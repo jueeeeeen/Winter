@@ -31,6 +31,14 @@ class ApprovedNoti extends HTMLElement {
               ${this.time}
             </span>
         </li>`;
+
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
   }
 }
 customElements.define("approved-noti", ApprovedNoti);
@@ -55,11 +63,118 @@ class DeniedNoti extends HTMLElement {
                 ${this.time}
             </span>
         </li>`;
+      
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
   }
 }
 customElements.define("denied-noti", DeniedNoti);
 
+class KickNoti extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.time = this.getAttribute("time");
+    this.innerHTML = `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-minus></svg-minus>
+            </div>
+            <span class="noti-act-title">
+                ${this.activity_title}
+            </span>
+            <span class="noti-message">
+                You have been kicked out of this activity.
+            </span>
+            <span class="noti-datetime">
+                ${this.time}
+            </span>
+        </li>`;
+
+        this.addEventListener('click', this.navigateToActivityDetail);
+        this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
+  }
+}
+customElements.define("kick-noti", KickNoti);
+
+
 class JoinedNoti extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.name = this.getAttribute("name");
+    this.time = this.getAttribute("time");
+    this.innerHTML = `<li class="noti-list">
+            <div class="noti-icon gr-w flex">
+                <svg-plus></svg-plus>
+            </div>
+            <span class="noti-act-title">
+                ${this.activity_title}
+            </span>
+            <span class="noti-message">
+                ${this.name} has joined your activity.
+            </span>
+            <span class="noti-datetime">
+                ${this.time}
+            </span>
+        </li>`;
+  
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
+  }
+}
+customElements.define("joined-noti", JoinedNoti);
+
+class LeaveNoti extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.name = this.getAttribute("name");
+    this.time = this.getAttribute("time");
+    this.innerHTML = `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-minus></svg-minus>
+            </div>
+            <span class="noti-act-title">
+                ${this.activity_title}
+            </span>
+            <span class="noti-message">
+                ${this.name} has left your activity.
+            </span>
+            <span class="noti-datetime">
+                ${this.time}
+            </span>
+        </li>`;
+  
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
+  }
+}
+customElements.define("leave-noti", LeaveNoti);
+
+class PendingNoti extends HTMLElement {
   constructor() {
     super();
     this.activity_id = this.getAttribute("activity-id");
@@ -80,9 +195,17 @@ class JoinedNoti extends HTMLElement {
                 ${this.time}
             </span>
         </li>`;
+  
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
   }
 }
-customElements.define("joined-noti", JoinedNoti);
+customElements.define("pending-noti", PendingNoti);
 
 class SearchBar extends HTMLElement {
   constructor() {
@@ -122,6 +245,48 @@ class SearchBar extends HTMLElement {
     this.search_input = this.querySelector("#search_input");
     this.search_input.value = "";
     this.search_key = null;
+  }
+}
+
+class SearchFriendBar extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = 
+    `<form class="search-bar shadow">
+        <input id="search_input" type="text" name="search_string" placeholder="search friend username..." required>
+        <div class="search-bar-x">
+            <button class="btn" id="clear_search_button">
+                <svg-x></svg-x>
+            </button>
+        </div>
+        <button type="button" class="btn search-bar-search" id="seach-button">
+            <svg-search></svg-search>
+        </button>
+    </form>`;
+    this.search_key = null;
+    this.clear_search = this.clear_search.bind(this);
+  }
+
+  connectedCallback() {
+    this.clear_search_button = this.querySelector("#clear_search_button");
+    this.clear_search_button.addEventListener("click", this.clear_search);
+
+    this.search_btn = this.querySelector("#seach-button");
+    this.search_input = this.querySelector("input");
+    this.search_btn.addEventListener("click", () => {
+      console.log(this.search_input.value);
+      this.search_key = this.search_input.value;
+    });
+  }
+
+  get result() {
+    return this.search_key;
+  }
+
+  clear_search() {
+    this.search_input = this.querySelector("#search_input");
+    console.log("seach key: ", this.search_input);
+    this.search_input.value = "";
   }
 }
 
@@ -868,13 +1033,14 @@ class MemberListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.username = this.getAttribute("username")
         this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
                     <img class="profile" src="${this.profile_pic}">
                 </div>
-                <span class="member-list-item-name">${this.name}</span>
+                <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
                 <span class="member-list-item-role flex">(Member)</span>
             </li>`;
   }
@@ -883,6 +1049,7 @@ class HostListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.username = this.getAttribute("username")
         this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
         `<li class="radial-blue-bg member-list-item shadow">
@@ -890,7 +1057,7 @@ class HostListItem extends HTMLElement {
                 <img class="profile" src="${this.profile_pic}">
                 <img class="crown" src="../../assets/crown.svg">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">(Host)</span>
         </li>`;
   }
@@ -919,7 +1086,7 @@ class PendingHostViewListItem extends HTMLElement {
             <div class="member-list-item-profile">
                 <img class="profile" src="${this.profile_pic}">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">waiting for approval...</span>
             <div class="member-list-item-approval flex">
                 <button id="approveBtn" class="btn approval gr-w hover-w-gr-gr round">
@@ -984,7 +1151,7 @@ class MemberHostViewListItem extends HTMLElement {
             <div class="member-list-item-profile">
                 <img class="profile" src="${this.profile_pic}">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">(Member)</span>
             <div class="member-list-item-approval flex">
                 <button class="btn approval r-w hover-w-r-r round">
@@ -995,11 +1162,11 @@ class MemberHostViewListItem extends HTMLElement {
     }
 
     connectedCallback() {
-        this.querySelector("button").addEventListener("click", () => this.deny_activity());
+        this.querySelector("button").addEventListener("click", () => this.kick_activity());
     }
 
-    deny_activity() {
-        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
+    kick_activity() {
+        fetch(`KickActivity/${this.activity_id}?username=${this.username}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"}
         })
@@ -1009,7 +1176,7 @@ class MemberHostViewListItem extends HTMLElement {
                 console.log(data.message);
                 window.location.reload();
             } else {
-                console.error("Failed to deny activity");
+                console.error("Failed to kick this member from activity");
             }
         })
         .catch(error => console.error("Error:", error));
@@ -1053,10 +1220,10 @@ class ActDetailLeaveBtn extends HTMLElement {
     }
     
     connectedCallback() {
-        this.querySelector("button").addEventListener("click", () => this.join_activity());
+        this.querySelector("button").addEventListener("click", () => this.leave_activity());
     }
 
-    join_activity() {
+    leave_activity() {
         fetch(`LeaveActivity/${this.activity_id}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"}
@@ -1697,6 +1864,7 @@ class SVGBell extends BaseSVGElement {
 customElements.define("svg-bell", SVGBell);
 
 customElements.define("search-bar", SearchBar);
+customElements.define("search-friend-bar", SearchFriendBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
 customElements.define("tag-select", TagSelect);
@@ -1815,40 +1983,72 @@ class Member extends HTMLElement {
 
   connectedCallback() {
     if (this.username !== this.member.username && this.activity_type == "history" && this.activity_type !== null) {
-      this.innerHTML = `
-      <li class="member">
-        <div class="member-content">
-          <img src="/assets/Profile-w-b.png" alt="Profile">
-          <span class="member-name">${this.member.username}</span>
-          <span class="member-role">${this.member.role}</span>
-        </div>
-        <button class="rate-btn">
-          <img src="/assets/yellow_star_outline.png" alt="Rate">
-          <span class="review-text">review</span>
-        </button>
-      </li>
-      `;
+      this.checkReviewStatus().then((hasReview) => {
+        if (!hasReview) {
+          this.innerHTML = `
+          <li class="member">
+            <div class="member-content">
+              <img src="/assets/Profile-w-b.png" alt="Profile">
+              <span class="member-name">${this.member.username}</span>
+              <span class="member-role">${this.member.role}</span>
+            </div>
+            <button class="rate-btn">
+              <img src="/assets/yellow_star_outline.png" alt="Rate">
+              <span class="review-text">review</span>
+            </button>
+          </li>
+          `;
 
-      let ratingPopup = document.querySelector("rating-popup");
-      if (!ratingPopup) {
-        ratingPopup = new RatingPopup();
-        document.body.appendChild(ratingPopup);
-      }
+        let ratingPopup = document.querySelector("rating-popup");
+        if (!ratingPopup) {
+          ratingPopup = new RatingPopup();
+          document.body.appendChild(ratingPopup);
+        }
 
-      this.querySelector(".rate-btn").addEventListener("click", () => {
-        ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
-      });
-    } else {
-      this.innerHTML = `
-      <li class="member">
-        <div class="member-content">
-          <img src="/assets/Profile-w-b.png" alt="Profile">
-          <span class="member-name">${this.member.username}</span>
-          <span class="member-role">${this.member.role}</span>
-        </div>
-      </li>
-      `;
+        document.addEventListener("rating-completed", (event) => {
+          if (event.detail.reviewedUser === this.member.username && 
+              event.detail.activityId === this.activity_id) {
+            const rateBtn = this.querySelector(".rate-btn");
+            if (rateBtn) {
+              rateBtn.style.display = "none";
+            }
+          }
+        });
+
+        this.querySelector(".rate-btn").addEventListener("click", () => {
+          ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
+        });
+        } else {
+          this.renderWithoutButton();
+        }
+    });
+  } else {
+    this.renderWithoutButton();
+  }
+}
+
+  async checkReviewStatus() {
+    try {
+      const response = await fetch(`/Activity/HasReview?activityId=${this.activity_id}&reviewedUser=${this.member.username}`);
+      if (!response.ok) throw new Error("Failed to check review status");
+      const { hasReview } = await response.json();
+      return hasReview;
+    } catch (error) {
+      console.error("Error checking review status:", error);
+      return false;
     }
+  }
+
+  renderWithoutButton() {
+    this.innerHTML = `
+      <li class="member">
+        <div class="member-content">
+          <img src="/assets/Profile-w-b.png" alt="Profile">
+          <span class="member-name">${this.member.username}</span>
+          <span class="member-role">${this.member.role}</span>
+        </div>
+      </li>
+      `;
   }
 }
 
@@ -2139,6 +2339,15 @@ class RatingPopup extends HTMLElement {
         container.innerHTML = "";
         container.appendChild(successMessage);
 
+        const ratingCompletedEvent = new CustomEvent('rating-completed', {
+          detail: {
+            reviewedUser: username,
+            activityId: this.activity_id
+          },
+          bubbles: true
+        });
+        this.dispatchEvent(ratingCompletedEvent);
+
         setTimeout(() => {
           successMessage.classList.add("fade-in");
         }, 10);
@@ -2152,29 +2361,6 @@ class RatingPopup extends HTMLElement {
       container.classList.remove("fade-out");
     }
   }
-
-  // handlePostRating() {
-  //   const container = this.querySelector(".rating-change-component");
-
-  //   container.classList.add("fade-out");
-
-  //   setTimeout(() => {
-  //     const successMessage = document.createElement("div");
-  //     successMessage.classList.add("rating-success");
-  //     successMessage.innerHTML = `
-  //       <img src="assets/check_mark.png" alt="">
-  //       <h3>Rating completed</h3>
-  //     `;
-
-  //     container.classList.remove("fade-out");
-  //     container.innerHTML = "";
-  //     container.appendChild(successMessage);
-
-  //     setTimeout(() => {
-  //       successMessage.classList.add("fade-in");
-  //     }, 10);
-  //   }, 170);
-  // }
 }
 
 customElements.define("select-activities", SelectActivities);

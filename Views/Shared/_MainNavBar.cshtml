@@ -1,7 +1,7 @@
-@model Winter_Project.ViewModels.NavbarProfileViewModel
+@using Winter_Project.ViewModels
 
 @{
-    var notifications = (List<NotificationModel>)ViewData["Notifications"];
+    var notifications = (List<NotificationViewModel>)ViewData["Notifications"];
 }
 
 <nav class="gradient_blue shadow nav_bar_container">

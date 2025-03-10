@@ -269,6 +269,53 @@ public class ActivityDetailController: Controller
         return Ok(new { message = $"Denied Username: {username} Successfully"});
     }
 
+    [HttpPost("ActivityDetail/KickActivity/{Activity_id}")]
+    public IActionResult KickActivity(int Activity_id, [FromQuery] string username)
+    {
+        var activity = _context.Activities.Include(a => a.Participants).FirstOrDefault(a => a.Activity_id == Activity_id);
+        if (activity == null) {
+            return NotFound(new { message = "Activity Not Found"});
+        }
+        
+        var host_user = _context.Users
+            .FirstOrDefault(u => u.Username == activity.Owner);
+        
+        if (host_user == null)
+        {
+            return NotFound(new { message = "Host user not found" });
+        }
+
+        var join_user = _context.Users
+            .FirstOrDefault(u => u.Username == username);
+
+        if (join_user == null)
+        {
+            return NotFound(new { message = "Join user not found" });
+        }
+
+        var participant = _context.Participants
+            .FirstOrDefault(p => p.Username == username && p.Activity_id == Activity_id);
+
+        if (participant != null)
+        {
+            _context.Participants.Remove(participant);
+
+            var notification = new NotificationModel
+            {
+                User_id = join_user.Id,
+                Notification_type = "kick",
+                Activity_id = Activity_id,
+                Activity_user_id = 0,
+                Notification_time = DateTime.UtcNow
+            };
+
+            _context.Notifications.Add(notification);
+            _context.SaveChanges();
+        }
+
+        return Ok(new { message = $"Denied Username: {username} Successfully"});
+    }
+
     [HttpPost("ActivityDetail/ApproveActivity/{Activity_id}")]
     public IActionResult ApproveActivity(int Activity_id, [FromQuery] string username)
     {

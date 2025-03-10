@@ -1,7 +1,7 @@
-@model Winter_Project.ViewModels.NavbarProfileViewModel
+@using Winter_Project.ViewModels
 
 @{
-    var notifications = (List<NotificationModel>)ViewData["Notifications"];
+    var notifications = (List<NotificationViewModel>)ViewData["Notifications"];
 }
 
 <nav class="gradient_blue shadow nav_bar_container">
@@ -76,28 +76,34 @@
                 {
                     <joined-noti 
                         activity-id="@notification.Activity_id" 
-                        activity-title="asdf" 
-                        name="asdfdsfadasfdsafdasfsadf" 
-                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                        activity-title="@notification.ActivityTitle" 
+                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
                     </joined-noti>
                 }
                 else if (notification.Notification_type == "approved")
                 {
                     <approved-noti
                         activity-id="@notification.Activity_id" 
-                        activity-title="asdf" 
-                        name="asdfdsfadasfdsafdasfsadf" 
-                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                        activity-title="@notification.ActivityTitle" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
                     </approved-noti>
                 }
                 else if (notification.Notification_type == "denied")
                 {
                     <denied-noti
                         activity-id="@notification.Activity_id" 
-                        activity-title="asdf" 
-                        name="asdfdsfadasfdsafdasfsadf" 
-                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                        activity-title="@notification.ActivityTitle" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
                     </denied-noti>
+                }
+                else if (notification.Notification_type == "kick")
+                {
+                    <kick-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="@notification.ActivityTitle" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
+                    </kick-noti>
                 }
             }
         </ul>

@@ -59,6 +59,30 @@ class DeniedNoti extends HTMLElement {
 }
 customElements.define("denied-noti", DeniedNoti);
 
+class KickNoti extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.time = this.getAttribute("time");
+    this.innerHTML = `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-deny></svg-deny>
+            </div>
+            <span class="noti-act-title">
+                ${this.activity_title}
+            </span>
+            <span class="noti-message">
+                You have been kicked out of this activity.
+            </span>
+            <span class="noti-datetime">
+                ${this.time}
+            </span>
+        </li>`;
+  }
+}
+customElements.define("kick-noti", KickNoti);
+
 class JoinedNoti extends HTMLElement {
   constructor() {
     super();
@@ -996,11 +1020,11 @@ class MemberHostViewListItem extends HTMLElement {
     }
 
     connectedCallback() {
-        this.querySelector("button").addEventListener("click", () => this.deny_activity());
+        this.querySelector("button").addEventListener("click", () => this.kick_activity());
     }
 
-    deny_activity() {
-        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
+    kick_activity() {
+        fetch(`KickActivity/${this.activity_id}?username=${this.username}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"}
         })
@@ -1010,7 +1034,7 @@ class MemberHostViewListItem extends HTMLElement {
                 console.log(data.message);
                 window.location.reload();
             } else {
-                console.error("Failed to deny activity");
+                console.error("Failed to kick this member from activity");
             }
         })
         .catch(error => console.error("Error:", error));

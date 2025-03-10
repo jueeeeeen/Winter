@@ -1,3 +1,15 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .progress-bar {
   display: flex;
   justify-content: center;
@@ -22,21 +34,21 @@
   height: 40px;
   border: solid 3px var(--gray50);
   border-radius: 50%;
-  background-color: var(--white); 
+  background-color: var(--white);
   color: var(--gray50);
   font-size: 1rem;
   font-weight: bold;
   margin: 10px 0px 0px 10px;
 }
 
-.bullet.active{
+.bullet.active {
   border-color: var(--blue40);
   background-color: var(--blue40);
-} 
+}
 
-.bullet.active span{
+.bullet.active span {
   display: none;
-} 
+}
 
 .bullet.active::after {
   content: "✓";
@@ -54,13 +66,13 @@
 }
 
 .step::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 30%;
   left: 85%;
-  width: 40px; 
-  height: 2px; 
-  background-color: var(--gray50); 
+  width: 40px;
+  height: 2px;
+  background-color: var(--gray50);
   transform: translateY(-50%);
 }
 
@@ -69,12 +81,11 @@
 }
 
 .step:last-child::after {
-  display: none; 
+  display: none;
 }
 
-
 @keyframes animate {
-  100%{
+  100% {
     transform: scaleX(2);
   }
 }
@@ -153,7 +164,8 @@
   height: 25px;
 }
 
-.login-box input, .register-box input {
+.login-box input,
+.register-box input {
   background-color: transparent;
   border: none;
 }
@@ -183,11 +195,6 @@
   justify-content: center;
 }
 
-.username img{
-  border: solid 1px var(--white);
-  border-radius: 50%;
-}
-
 .login-button button {
   background-color: var(--white);
   color: var(--blue90);
@@ -196,7 +203,8 @@
   font-weight: 600;
 }
 
-.login-button button:hover, .register-button:hover {
+.login-button button:hover,
+.register-button:hover {
   color: var(--gray90);
   border: none 0 var(--shadow);
   background-image: url("/assets/login_mint_btn.png");
@@ -305,7 +313,7 @@
   width: 140px;
   height: 48px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
   align-items: center;
   text-align: center;
 }
@@ -341,22 +349,22 @@
 
 .male-button.active {
   background-color: var(--blue40);
-  content: url('/assets/male_icon-w.svg');
+  content: url("/assets/male_icon-w.svg");
   border: none 0 transparent;
 }
 
 .lgbtq-button.active {
-  background-image: url('/assets/rainbow.png');
+  background-image: url("/assets/rainbow.png");
   background-size: 120%;
   background-repeat: no-repeat;
   background-position: center;
-  content: url('/assets/heart-w.svg');
+  content: url("/assets/heart-w.svg");
   border: none 0 transparent;
 }
 
 .female-button.active {
   background-color: var(--pink);
-  content: url('/assets/female_icon-w.svg');
+  content: url("/assets/female_icon-w.svg");
   border: none 0 transparent;
 }
 
@@ -400,4 +408,87 @@
 .female-button:hover::after {
   content: "female";
   color: var(--pink);
+}
+
+#errorMessage {
+  font-size: 20px;
+  font-weight: bold;
+  font-style: oblique;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    height: 100%;
+  }
+
+  .login-card,
+  .register-card {
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  .login-card img,
+  .register-card img {
+    margin-top: 48px;
+    width: 100%;
+    height: 30%;
+    border-radius: 0;
+    display: block;
+  }
+
+  .login-box,
+  .register-box,
+  .login-button,
+  .register-button,
+  .next-button {
+    width: 95%;
+    height: 32px;
+    border-radius: 40px;
+  }
+
+  .login-button button{
+    width: 100%;
+    height: 32px;
+    border-radius: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+  }
+
+  .login-box img {
+    margin: 0 10px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    font-size: 24px;
+  }
+
+  .login-box input,
+  .login-box input::placeholder,
+  .login-description {
+    font-size: 14px;
+  }
+
+  .login-box button {
+    margin-top: 2px;
+  }
 }

@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250306071847_UpdateDataBase")]
-    partial class UpdateDataBase
+    [Migration("20250306165317_FrienUpdate")]
+    partial class FrienUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,6 +100,31 @@ namespace Winter_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ChatMessages");
+                });
+
+            modelBuilder.Entity("Winter_Project.Models.FriendModel", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FriendId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsFriend")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsPending")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "FriendId");
+
+                    b.HasIndex("FriendId");
+
+                    b.ToTable("Friends");
                 });
 
             modelBuilder.Entity("Winter_Project.Models.NotificationModel", b =>
@@ -197,14 +222,14 @@ namespace Winter_Project.Migrations
                     b.Property<float>("Rating")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("Reviewed_user")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Reviewed_user")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Reviewer")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Time")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("User_id")
-                        .HasColumnType("INTEGER");
 
                     b.HasKey("Review_id");
 
@@ -291,6 +316,21 @@ namespace Winter_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Winter_Project.Models.FriendModel", b =>
+                {
+                    b.HasOne("Winter_Project.Models.UserModel", null)
+                        .WithMany()
+                        .HasForeignKey("FriendId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Winter_Project.Models.UserModel", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Winter_Project.Models.ParticipantModel", b =>

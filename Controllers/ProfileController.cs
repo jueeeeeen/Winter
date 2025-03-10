@@ -18,11 +18,9 @@ public class ProfileController : Controller
     public async Task<IActionResult> Index()
     {
         var token = Request.Cookies["token"];
-        Console.WriteLine($"Token: {token}");
 
         if (string.IsNullOrEmpty(token))
         {
-            Console.WriteLine("⚠️ Token is missing");
             return RedirectToAction("Login", "Account");
         }
 
@@ -30,46 +28,15 @@ public class ProfileController : Controller
         {
             var handler = new JwtSecurityTokenHandler();
             var jwtSecurityToken = handler.ReadJwtToken(token);
-            Console.WriteLine($"Decoded JWT: {jwtSecurityToken}");
-
-            // ดึง Username จาก "sub"
             var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
-
-            Console.WriteLine($"Extracted Username: {username}");
 
             if (string.IsNullOrEmpty(username))
             {
-                Console.WriteLine("⚠️ Username is null or empty!");
                 return RedirectToAction("Login", "Account");
             }
 
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
-
-            if (user == null)
-            {
-                Console.WriteLine("⚠️ User not found in database");
-                return NotFound();
-            }
-
-            var userBio = _context.UserBios.FirstOrDefault(b => b.UserId == user.Id);
-
-            var profileViewModel = new ProfileViewModel
-            {
-                Username = user.Username,
-                Email = user.Email,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                DateOfBirth = user.DateOfBirth,
-                Location = userBio?.Location ?? "No information",
-                Phone = userBio?.Phone ?? "No information",
-                AboutMe = userBio?.AboutMe ?? "No information",
-                MyInterests = userBio?.MyInterests ?? "No information",
-                MyHobby = userBio?.MyHobby ?? "No information",
-                ProfilePictureBase64 = user.ProfilePicture != null ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}" : null
-            };
-
-            Console.WriteLine($"✅ User Profile Loaded: {profileViewModel.Username}");
-            return View(profileViewModel);
+            // 🔥 Redirect ไปที่ `/Profile/{username}`
+            return RedirectToAction("ViewProfile", new { username = username });
         }
         catch (Exception ex)
         {
@@ -78,6 +45,7 @@ public class ProfileController : Controller
         }
     }
 
+    [HttpGet("profile/edit")]
     public async Task<IActionResult> Edit()
     {
         var token = Request.Cookies["token"];
@@ -97,7 +65,6 @@ public class ProfileController : Controller
 
             // ดึง Username จาก "sub"
             var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
-
             Console.WriteLine($"Extracted Username: {username}");
 
             if (string.IsNullOrEmpty(username))
@@ -143,7 +110,7 @@ public class ProfileController : Controller
         }
     }
 
-    [HttpPost]
+    [HttpPost("profile/edit")]
     public async Task<IActionResult> Edit(ProfileViewModel model)
     {
         if (!ModelState.IsValid)
@@ -227,5 +194,50 @@ public class ProfileController : Controller
             ModelState.AddModelError(string.Empty, "An error occurred while saving the profile.");
             return View(model);  // Return the same view if there is an error
         }
+    }
+
+    [Route("profile/{username}")]
+    public async Task<IActionResult> ViewProfile(string username)
+    {
+        if (string.IsNullOrEmpty(username))
+        {
+            return NotFound("Username is required");
+        }
+
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+        if (user == null)
+        {
+            return NotFound("User not found");
+        }
+
+        // ดึงข้อมูลผู้ใช้ที่ล็อกอิน
+        var token = Request.Cookies["token"];
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        var loggedInUsername = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+        ViewBag.IsOwner = (username == loggedInUsername); // เช็คว่าเป็นเจ้าของโปรไฟล์หรือไม่
+
+        var userBio = _context.UserBios.FirstOrDefault(b => b.UserId == user.Id);
+
+        var profileViewModel = new ProfileViewModel
+        {
+            Username = user.Username,
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            DateOfBirth = user.DateOfBirth,
+            Location = userBio?.Location ?? "No information",
+            Phone = userBio?.Phone ?? "No information",
+            AboutMe = userBio?.AboutMe ?? "No information",
+            MyInterests = userBio?.MyInterests ?? "No information",
+            MyHobby = userBio?.MyHobby ?? "No information",
+            ProfilePictureBase64 = user.ProfilePicture != null
+                ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
+                : Url.Content("~/assets/Profile-w-b.png")
+        };
+        
+
+        return View("Index", profileViewModel);
     }
 }

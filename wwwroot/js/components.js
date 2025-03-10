@@ -126,6 +126,48 @@ class SearchBar extends HTMLElement {
   }
 }
 
+class SearchFriendBar extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = 
+    `<form class="search-bar shadow">
+        <input id="search_input" type="text" name="search_string" placeholder="search friend username..." required>
+        <div class="search-bar-x">
+            <button class="btn" id="clear_search_button">
+                <svg-x></svg-x>
+            </button>
+        </div>
+        <button type="button" class="btn search-bar-search" id="seach-button">
+            <svg-search></svg-search>
+        </button>
+    </form>`;
+    this.search_key = null;
+    this.clear_search = this.clear_search.bind(this);
+  }
+
+  connectedCallback() {
+    this.clear_search_button = this.querySelector("#clear_search_button");
+    this.clear_search_button.addEventListener("click", this.clear_search);
+
+    this.search_btn = this.querySelector("#seach-button");
+    this.search_input = this.querySelector("input");
+    this.search_btn.addEventListener("click", () => {
+      console.log(this.search_input.value);
+      this.search_key = this.search_input.value;
+    });
+  }
+
+  get result() {
+    return this.search_key;
+  }
+
+  clear_search() {
+    this.search_input = this.querySelector("#search_input");
+    console.log("seach key: ", this.search_input);
+    this.search_input.value = "";
+  }
+}
+
 class TagsSelector extends HTMLElement {
   constructor() {
     super();
@@ -866,13 +908,14 @@ class MemberListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.username = this.getAttribute("username")
         this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
                     <img class="profile" src="${this.profile_pic}">
                 </div>
-                <span class="member-list-item-name">${this.name}</span>
+                <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
                 <span class="member-list-item-role flex">(Member)</span>
             </li>`;
   }
@@ -881,6 +924,7 @@ class HostListItem extends HTMLElement {
     constructor() {
         super();
         this.name = this.getAttribute("name");
+        this.username = this.getAttribute("username")
         this.profile_pic = this.getAttribute("profile-pic");
         this.innerHTML = 
         `<li class="radial-blue-bg member-list-item shadow">
@@ -888,7 +932,7 @@ class HostListItem extends HTMLElement {
                 <img class="profile" src="${this.profile_pic}">
                 <img class="crown" src="../../assets/crown.svg">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">(Host)</span>
         </li>`;
   }
@@ -917,7 +961,7 @@ class PendingHostViewListItem extends HTMLElement {
             <div class="member-list-item-profile">
                 <img class="profile" src="${this.profile_pic}">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">waiting for approval...</span>
             <div class="member-list-item-approval flex">
                 <button id="approveBtn" class="btn approval gr-w hover-w-gr-gr round">
@@ -982,7 +1026,7 @@ class MemberHostViewListItem extends HTMLElement {
             <div class="member-list-item-profile">
                 <img class="profile" src="${this.profile_pic}">
             </div>
-            <span class="member-list-item-name">${this.name}</span>
+            <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
             <span class="member-list-item-role flex">(Member)</span>
             <div class="member-list-item-approval flex">
                 <button class="btn approval r-w hover-w-r-r round">
@@ -1676,6 +1720,7 @@ class SVGSend extends BaseSVGElement {
 customElements.define("svg-send", SVGSend);
 
 customElements.define("search-bar", SearchBar);
+customElements.define("search-friend-bar", SearchFriendBar);
 customElements.define("tag-selector", TagsSelector);
 customElements.define("tag-filter", TagFilter);
 customElements.define("tag-select", TagSelect);
@@ -1753,7 +1798,7 @@ class SelectActivities extends HTMLElement {
     this.innerHTML = `
         <ul class="select_type">
             <li>
-                <button class="type" id="Upcoming_button">Upcoming</button>
+                <button class="type active" id="Upcoming_button">Upcoming</button>
             </li>
             <li>
                 <button class="type" id="History_button">History</button>
@@ -1783,24 +1828,26 @@ class SelectActivities extends HTMLElement {
 }
 
 class Member extends HTMLElement {
-  constructor(member, activity_title, username) {
+  constructor(member,activity_title, activity_id, activity_type, username) {
     super();
+    this.activity_id = activity_id;
     this.member = member;
     this.activity_title = activity_title;
+    this.activity_type = activity_type
     this.username = username;
   }
 
   connectedCallback() {
-    if (this.username !== this.member.username) {
+    if (this.username !== this.member.username && this.activity_type == "history" && this.activity_type !== null) {
       this.innerHTML = `
       <li class="member">
         <div class="member-content">
-          <img src="assets/Profile-w-b.png" alt="Profile">
+          <img src="/assets/Profile-w-b.png" alt="Profile">
           <span class="member-name">${this.member.username}</span>
           <span class="member-role">${this.member.role}</span>
         </div>
         <button class="rate-btn">
-          <img src="assets/yellow_star_outline.png" alt="Rate">
+          <img src="/assets/yellow_star_outline.png" alt="Rate">
           <span class="review-text">review</span>
         </button>
       </li>
@@ -1813,13 +1860,13 @@ class Member extends HTMLElement {
       }
 
       this.querySelector(".rate-btn").addEventListener("click", () => {
-        ratingPopup.openPopup(this.activity_title, this.member.username);
+        ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
       });
     } else {
       this.innerHTML = `
       <li class="member">
         <div class="member-content">
-          <img src="assets/Profile-w-b.png" alt="Profile">
+          <img src="/assets/Profile-w-b.png" alt="Profile">
           <span class="member-name">${this.member.username}</span>
           <span class="member-role">${this.member.role}</span>
         </div>
@@ -1830,33 +1877,42 @@ class Member extends HTMLElement {
 }
 
 class ActivityDropdown extends HTMLElement {
-  constructor(activity, username) {
+  constructor(activity, username, activityType) {
     super();
+    this.activityType = activityType;
     this.activity = activity;
     this.username = username;
     [this.act_date, this.act_time] = activity.activity_time.split("-");
-    this.innerHTML = `        
-    <div class="activity-dropdown">
-      <button class="activity-dropdown-btn">
-        <div class="activity-details">
-          <span class="activity-name">${activity.title}</span>
-          <div class="tags"></div>
-          <span class="date">
-            <img src="assets/calendar_icon.png" alt="calendar"> 
-            <span class="date-text">${this.act_date} , ${this.act_time}</span>
-          </span>
+    this.innerHTML = `
+      <div class="activity-dropdown">
+        <button class="activity-dropdown-btn">
+          <div class="activity-details">
+            <span class="activity-name">${activity.title}</span>
+            <div class="tags-date">
+              <div class="tags"></div>
+              <span class="date">
+                <svg width="24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="calendar">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+                <span class="date-text">${this.act_date} , ${this.act_time}</span>
+              </span>
+            </div>
+          </div>
+          <svg width="24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="chevon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+        </button>
+
+        <div class="activity-dropdown-content">
+          <div class="dropdown-container">
+            <svg width="24px" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="paticipants">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+            </svg>
+            <ul class="members"></ul>
+          </div>
+          <button class="view-details">View Details</button>
         </div>
-        <img src="assets/down_arrow_icon.png" alt="Dropdown Arrow">
-      </button>
-      
-      <div class="activity-dropdown-content">
-        <div class="dropdown-container">
-          <img src="assets/people_icon.png" alt="People">
-          <ul class="members"></ul>
-        </div>
-        <button class="view-details">View Details</button>
       </div>
-    </div>
     `;
   }
 
@@ -1874,29 +1930,37 @@ class ActivityDropdown extends HTMLElement {
       const memberElement = new Member(
         member,
         this.activity.title,
+        this.activity.activity_id,
+        this.activityType,
         this.username
       );
       membersContainer.appendChild(memberElement);
     });
 
     const dropdownBtn = this.querySelector(".activity-dropdown-btn");
+    const dropdown = this.querySelector(".activity-dropdown");
+    const content = this.querySelector(".activity-dropdown-content");
+    const chevon = dropdownBtn.querySelector(".chevon");
+
+    const closedPath = "m19.5 8.25-7.5 7.5-7.5-7.5";
+    const openPath = "m4.5 15.75 7.5-7.5 7.5 7.5";
+
     dropdownBtn.addEventListener("click", () => {
+      document.querySelectorAll(".activity-dropdown.open").forEach((openDropdown) => {
+        if (openDropdown !== dropdown) {
+          openDropdown.classList.remove("open");
+          const openContent = openDropdown.querySelector(".activity-dropdown-content");
+          openContent.style.height = "0px";
+          openContent.style.marginTop = "-0.5rem";
 
-      document
-        .querySelectorAll(".activity-dropdown.open")
-        .forEach((openDropdown) => {
-          if (openDropdown !== this.querySelector(".activity-dropdown")) {
-            openDropdown.classList.remove("open");
-            const openContent = openDropdown.querySelector(
-              ".activity-dropdown-content"
-            );
-            openContent.style.height = "0px";
-            openContent.style.marginTop = "-0.5rem";
+          const otherChevon = openDropdown.querySelector(".chevon");
+          if (otherChevon) {
+            otherChevon.innerHTML = `
+              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            `;
           }
-        });
-
-      const dropdown = this.querySelector(".activity-dropdown");
-      const content = this.querySelector(".activity-dropdown-content");
+        }
+      });
 
       if (dropdown.classList.contains("open")) {
         content.style.height = content.scrollHeight + "px";
@@ -1904,6 +1968,10 @@ class ActivityDropdown extends HTMLElement {
           content.style.height = "0px";
           content.style.marginTop = "-0.5rem";
           dropdown.classList.remove("open");
+
+          chevon.innerHTML = `
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          `;
         }, 10);
       } else {
         dropdown.classList.add("open");
@@ -1913,6 +1981,10 @@ class ActivityDropdown extends HTMLElement {
         setTimeout(() => {
           content.style.height = "auto";
         }, 300);
+
+        chevon.innerHTML = `
+          <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+        `;
       }
     });
   }
@@ -1921,18 +1993,22 @@ class ActivityDropdown extends HTMLElement {
 class ActivitiesList extends HTMLElement {
   constructor() {
     super();
+    this.initialHeader = this.getAttribute("header") || "Upcoming";
+
     this.innerHTML = `        
-    <div class="activities-bg">
-      <h2 class="activities-header">Upcoming</h2>
-      <div class="activities" id="activities"></div>
-    </div>
+      <div class="activities-bg">
+        <h2 class="activities-header">${this.initialHeader}</h2>
+        <div class="activities" id="activities"></div>
+      </div>
     `;
   }
 
   connectedCallback() {
-    document.addEventListener("change-header", (event) => {
-      this.querySelector(".activities-header").textContent = event.detail;
-    });
+    if (!this.hasAttribute("fixed-header")) {
+      document.addEventListener("change-header", (event) => {
+        this.querySelector(".activities-header").textContent = event.detail;
+      });
+    }
   }
 }
 
@@ -1945,7 +2021,7 @@ class RatingPopup extends HTMLElement {
       <div class="rating-header">Rate activity member</div>
       <div class="rating-info">
         <div class="rating-activity-name"></div>
-        <img src="assets/Profile-g.png" alt="">
+        <img src="/assets/Profile-g.png" alt="">
         <div class="rating-user-name"></div>
         <div class="rating-change-component">
           <div class="rating-stars">
@@ -1969,6 +2045,8 @@ class RatingPopup extends HTMLElement {
 
     this.style.display = "none";
     this.classList.add("rating-popup-wrapper");
+
+    
   }
 
   connectedCallback() {
@@ -1979,7 +2057,8 @@ class RatingPopup extends HTMLElement {
     this.setupStarRating();
   }
 
-  openPopup(activityTitle, username) {
+  openPopup(activityTitle, activity_id,username) {
+    this.activity_id = activity_id
     this.querySelector(".rating-activity-name").textContent = activityTitle;
     this.querySelector(".rating-user-name").textContent = username;
     this.resetComponent();
@@ -1993,16 +2072,19 @@ class RatingPopup extends HTMLElement {
   resetComponent() {
     const container = this.querySelector(".rating-change-component");
     container.replaceWith(this.originalContent.cloneNode(true));
+    this.querySelector(".rating-change-component").setAttribute("data-rating", "0");
     this.setupStarRating();
   }
 
   setupStarRating() {
     const stars = this.querySelectorAll(".star");
+    const ratingComponent = this.querySelector(".rating-change-component");
     let selectedRating = 0;
 
     stars.forEach((star, index) => {
       star.addEventListener("click", () => {
         selectedRating = index + 1 === selectedRating ? 0 : index + 1;
+        ratingComponent.setAttribute("data-rating", selectedRating);
         this.highlightStars(selectedRating);
       });
       star.addEventListener("mouseover", () => {
@@ -2032,10 +2114,42 @@ class RatingPopup extends HTMLElement {
     }
   }
 
-  handlePostRating() {
-    const container = this.querySelector(".rating-change-component");
+  async handlePostRating() {
+    const comment = this.querySelector("textarea").value;
 
-    container.classList.add("fade-out");
+    const ratingComponent = this.querySelector(".rating-change-component");
+    const rating = parseInt(ratingComponent.getAttribute("data-rating") || "0");
+
+    const username = this.querySelector(".rating-user-name").textContent;
+
+    if (rating === 0) {
+      alert("Please select a rating");
+      return;
+    }
+
+    const reviewData = {
+      Reviewed_user: username,
+      Activity_id: this.activity_id,
+      Rating: rating,
+      Comment: comment
+    };
+    
+    try {
+      const container = this.querySelector(".rating-change-component");
+      container.classList.add("fade-out");
+
+      const response = await fetch("/Activity/Comment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reviewData),
+      });
+
+      if (!response.ok) {
+        console.log(reviewData);
+        throw new Error("Failed to submit review");
+      }
 
     setTimeout(() => {
       const successMessage = document.createElement("div");
@@ -2045,15 +2159,46 @@ class RatingPopup extends HTMLElement {
         <h3>Rating completed</h3>
       `;
 
-      container.classList.remove("fade-out");
-      container.innerHTML = "";
-      container.appendChild(successMessage);
+        container.classList.remove("fade-out");
+        container.innerHTML = "";
+        container.appendChild(successMessage);
 
-      setTimeout(() => {
-        successMessage.classList.add("fade-in");
-      }, 10);
-    }, 170);
+        setTimeout(() => {
+          successMessage.classList.add("fade-in");
+        }, 10);
+      }, 170);
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      alert("Failed to submit review. Please try again.");
+
+      // Reset the fade-out effect
+      const container = this.querySelector(".rating-change-component");
+      container.classList.remove("fade-out");
+    }
   }
+
+  // handlePostRating() {
+  //   const container = this.querySelector(".rating-change-component");
+
+  //   container.classList.add("fade-out");
+
+  //   setTimeout(() => {
+  //     const successMessage = document.createElement("div");
+  //     successMessage.classList.add("rating-success");
+  //     successMessage.innerHTML = `
+  //       <img src="assets/check_mark.png" alt="">
+  //       <h3>Rating completed</h3>
+  //     `;
+
+  //     container.classList.remove("fade-out");
+  //     container.innerHTML = "";
+  //     container.appendChild(successMessage);
+
+  //     setTimeout(() => {
+  //       successMessage.classList.add("fade-in");
+  //     }, 10);
+  //   }, 170);
+  // }
 }
 
 customElements.define("select-activities", SelectActivities);

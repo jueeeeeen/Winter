@@ -11,7 +11,7 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250309170438_initialCreate")]
+    [Migration("20250310135947_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
@@ -26,19 +26,16 @@ namespace Winter_Project.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Activity_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Activity_time")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Approval")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Create_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Create_time")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Deadline_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Deadline_time")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Detail")
@@ -102,6 +99,31 @@ namespace Winter_Project.Migrations
                     b.ToTable("ChatMessages");
                 });
 
+            modelBuilder.Entity("Winter_Project.Models.FriendModel", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FriendId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsFriend")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsPending")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("time")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "FriendId");
+
+                    b.HasIndex("FriendId");
+
+                    b.ToTable("Friends");
+                });
+
             modelBuilder.Entity("Winter_Project.Models.NotificationModel", b =>
                 {
                     b.Property<int>("Id")
@@ -112,6 +134,9 @@ namespace Winter_Project.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Activity_user_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("New")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Notification_time")
@@ -291,6 +316,21 @@ namespace Winter_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Winter_Project.Models.FriendModel", b =>
+                {
+                    b.HasOne("Winter_Project.Models.UserModel", null)
+                        .WithMany()
+                        .HasForeignKey("FriendId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Winter_Project.Models.UserModel", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Winter_Project.Models.ParticipantModel", b =>

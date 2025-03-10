@@ -20,9 +20,9 @@ namespace Winter_Project.Migrations
                     Owner = table.Column<string>(type: "TEXT", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Detail = table.Column<string>(type: "TEXT", nullable: false),
-                    Create_time = table.Column<string>(type: "TEXT", nullable: false),
-                    Activity_time = table.Column<string>(type: "TEXT", nullable: false),
-                    Deadline_time = table.Column<string>(type: "TEXT", nullable: false),
+                    Create_time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Activity_time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Deadline_time = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Duration = table.Column<string>(type: "TEXT", nullable: false),
                     Location = table.Column<string>(type: "TEXT", nullable: false),
                     Max_member = table.Column<int>(type: "INTEGER", nullable: false),
@@ -61,7 +61,8 @@ namespace Winter_Project.Migrations
                     Notification_type = table.Column<string>(type: "TEXT", nullable: false),
                     Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
                     Activity_user_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    Notification_time = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Notification_time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    New = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -149,6 +150,33 @@ namespace Winter_Project.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Friends",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    FriendId = table.Column<int>(type: "INTEGER", nullable: false),
+                    IsFriend = table.Column<bool>(type: "INTEGER", nullable: false),
+                    IsPending = table.Column<bool>(type: "INTEGER", nullable: false),
+                    time = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Friends", x => new { x.UserId, x.FriendId });
+                    table.ForeignKey(
+                        name: "FK_Friends_Users_FriendId",
+                        column: x => x.FriendId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Friends_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "UserBios",
                 columns: table => new
                 {
@@ -174,6 +202,11 @@ namespace Winter_Project.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Friends_FriendId",
+                table: "Friends",
+                column: "FriendId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Participants_Activity_id",
                 table: "Participants",
                 column: "Activity_id");
@@ -195,6 +228,9 @@ namespace Winter_Project.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ChatMessages");
+
+            migrationBuilder.DropTable(
+                name: "Friends");
 
             migrationBuilder.DropTable(
                 name: "Notifications");

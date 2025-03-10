@@ -343,12 +343,12 @@ main {
 }
 
 .profile-button input:checked ~ .profile-dropdown{
-  height: 270px;
+  height: 300px;
   opacity: 1;
 }
 
 .profile-dropdown {
-  width: 230px;
+  width: 250px;
   opacity: 0;
   height: 0px;
   padding: 0 1em 0.75em;

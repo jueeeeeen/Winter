@@ -252,14 +252,14 @@ class SearchFriendBar extends HTMLElement {
   constructor() {
     super();
     this.innerHTML = 
-    `<form class="search-bar shadow">
+    `<form class="search-bar shadow" asp-controller="Friend" asp-action="FindFriend">
         <input id="search_input" type="text" name="search_string" placeholder="search friend username..." required>
         <div class="search-bar-x">
-            <button class="btn" id="clear_search_button">
+            <button type="button" class="btn" id="clear_search_button">
                 <svg-x></svg-x>
             </button>
         </div>
-        <button type="button" class="btn search-bar-search" id="seach-button">
+        <button type="submit" class="btn search-bar-search" id="seach-button">
             <svg-search></svg-search>
         </button>
     </form>`;
@@ -1038,7 +1038,7 @@ class MemberListItem extends HTMLElement {
         this.innerHTML = 
             `<li class="w-bb-bb member-list-item">
                 <div class="member-list-item-profile">
-                    <img class="profile" src="${this.profile_pic}">
+                    <img class="profile" src="${this.profile_pic ? this.profile_pic:"/assets/profile-g.png"}">
                 </div>
                 <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
                 <span class="member-list-item-role flex">(Member)</span>
@@ -1378,6 +1378,103 @@ class AllActBanner extends HTMLElement {
     }, 500);
   }
 }
+
+class FriendLiADD extends HTMLElement {
+  constructor() {
+      super();
+      this.name = this.getAttribute("name");
+      this.username = this.getAttribute("username")
+      this.profile_pic = this.getAttribute("profile-pic");
+      this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+          <div class="member-list-item-profile">
+              <img class="profile" src="${this.profile_pic}">
+          </div>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <span class="member-list-item-role flex"></span>
+          <div class="member-list-item-approval flex">
+            <button id="add-friend-btn" class="btn approval lb-w hover-db-w round">
+                <svg-more-people></svg-more-people>
+            </button>
+          </div>
+        </li>`;
+  }
+}
+customElements.define("friend-li-add", FriendLiADD);
+
+class FriendLiApprove extends HTMLElement {
+  constructor() {
+      super();
+      this.name = this.getAttribute("name");
+      this.username = this.getAttribute("username")
+      this.profile_pic = this.getAttribute("profile-pic");
+      this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+          <div class="member-list-item-profile">
+              <img class="profile" src="${this.profile_pic}">
+          </div>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <span class="member-list-item-role flex">wants to be your friend</span>
+          <div class="member-list-item-approval flex">
+            <button id="accept-friend-btn" class="btn approval gr-w hover-w-gr-gr round">
+                <svg-check></svg-check>
+            </button>
+            <button id="deny-friend-btn" class="btn approval r-w hover-w-r-r round">
+                <svg-deny></svg-deny>
+            </button>
+          </div>
+        </li>`;
+  }
+}
+customElements.define("friend-li-approve", FriendLiApprove);
+
+class FriendLiCancel extends HTMLElement {
+  constructor() {
+      super();
+      this.name = this.getAttribute("name");
+      this.username = this.getAttribute("username")
+      this.profile_pic = this.getAttribute("profile-pic");
+      this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+          <div class="member-list-item-profile">
+              <img class="profile" src="${this.profile_pic}">
+          </div>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <span class="member-list-item-role flex">waiting for acceptance</span>
+          <div class="member-list-item-approval flex">
+            <button id="cancel-friend-btn" class="btn approval y-w hover-w-y-y round">
+                <svg-minus></svg-minus>
+            </button>
+          </div>
+        </li>`;
+  }
+}
+customElements.define("friend-li-cancel", FriendLiCancel);
+
+class FriendLiDelete extends HTMLElement {
+  constructor() {
+      super();
+      this.name = this.getAttribute("name");
+      this.username = this.getAttribute("username")
+      this.profile_pic = this.getAttribute("profile-pic");
+      this.since = this.getAttribute("since");
+      this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+          <div class="member-list-item-profile">
+              <img class="profile" src="${this.profile_pic}">
+          </div>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <span class="member-list-item-role flex">since - ${this.since}</span>
+          <div class="member-list-item-approval flex">
+            <button id="delete-friend-btn" class="btn approval r-w hover-w-r-r round">
+                <svg-delete></svg-delete>
+            </button>
+          </div>
+        </li>`;
+  }
+}
+customElements.define("friend-li-delete", FriendLiDelete);
+
 // SVG Components Class
 class BaseSVGElement extends HTMLElement {
   constructor() {
@@ -1543,7 +1640,7 @@ class SVGMorePeople extends BaseSVGElement {
   constructor() {
     super();
     this.innerHTML = `<svg width="55" height="33" viewBox="0 0 55 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M43.5417 27.9584V32.5417H16.0417V27.9584C16.0417 27.9584 16.0417 18.7917 29.7917 18.7917C43.5417 18.7917 43.5417 27.9584 43.5417 27.9584ZM36.6667 7.33338C36.6667 5.97363 36.2635 4.64442 35.508 3.51383C34.7526 2.38324 33.6789 1.50206 32.4226 0.981705C31.1664 0.461353 29.784 0.325205 28.4504 0.590478C27.1168 0.855752 25.8918 1.51053 24.9303 2.47202C23.9688 3.4335 23.314 4.65851 23.0488 5.99213C22.7835 7.32575 22.9196 8.70808 23.44 9.96433C23.9603 11.2206 24.8415 12.2943 25.9721 13.0497C27.1027 13.8052 28.4319 14.2084 29.7917 14.2084C31.615 14.2084 33.3637 13.484 34.653 12.1947C35.9423 10.9054 36.6667 9.15674 36.6667 7.33338ZM44 18.9292C45.2527 20.0849 46.2626 21.4786 46.9709 23.0288C47.6791 24.5791 48.0715 26.2548 48.125 27.9584V32.5417H55V27.9584C55 27.9584 55 20.0521 44 18.9292ZM41.25 0.458377C40.5576 0.458417 39.8694 0.566667 39.2104 0.77921C40.5512 2.70185 41.27 4.98942 41.27 7.33338C41.27 9.67733 40.5512 11.9649 39.2104 13.8875C39.8694 14.1001 40.5576 14.2083 41.25 14.2084C43.0734 14.2084 44.822 13.484 46.1114 12.1947C47.4007 10.9054 48.125 9.15674 48.125 7.33338C48.125 5.51001 47.4007 3.76133 46.1114 2.47202C44.822 1.18271 43.0734 0.458377 41.25 0.458377ZM18.3333 11.9167H11.4583V5.04171H6.875V11.9167H0V16.5H6.875V23.375H11.4583V16.5H18.3333V11.9167Z" fill="#90E1FF"/>
+            <path d="M43.5417 27.9584V32.5417H16.0417V27.9584C16.0417 27.9584 16.0417 18.7917 29.7917 18.7917C43.5417 18.7917 43.5417 27.9584 43.5417 27.9584ZM36.6667 7.33338C36.6667 5.97363 36.2635 4.64442 35.508 3.51383C34.7526 2.38324 33.6789 1.50206 32.4226 0.981705C31.1664 0.461353 29.784 0.325205 28.4504 0.590478C27.1168 0.855752 25.8918 1.51053 24.9303 2.47202C23.9688 3.4335 23.314 4.65851 23.0488 5.99213C22.7835 7.32575 22.9196 8.70808 23.44 9.96433C23.9603 11.2206 24.8415 12.2943 25.9721 13.0497C27.1027 13.8052 28.4319 14.2084 29.7917 14.2084C31.615 14.2084 33.3637 13.484 34.653 12.1947C35.9423 10.9054 36.6667 9.15674 36.6667 7.33338ZM44 18.9292C45.2527 20.0849 46.2626 21.4786 46.9709 23.0288C47.6791 24.5791 48.0715 26.2548 48.125 27.9584V32.5417H55V27.9584C55 27.9584 55 20.0521 44 18.9292ZM41.25 0.458377C40.5576 0.458417 39.8694 0.566667 39.2104 0.77921C40.5512 2.70185 41.27 4.98942 41.27 7.33338C41.27 9.67733 40.5512 11.9649 39.2104 13.8875C39.8694 14.1001 40.5576 14.2083 41.25 14.2084C43.0734 14.2084 44.822 13.484 46.1114 12.1947C47.4007 10.9054 48.125 9.15674 48.125 7.33338C48.125 5.51001 47.4007 3.76133 46.1114 2.47202C44.822 1.18271 43.0734 0.458377 41.25 0.458377ZM18.3333 11.9167H11.4583V5.04171H6.875V11.9167H0V16.5H6.875V23.375H11.4583V16.5H18.3333V11.9167Z" stroke-width="0" fill="#90E1FF"/>
         </svg>
         `;
   }

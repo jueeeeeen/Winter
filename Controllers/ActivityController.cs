@@ -18,7 +18,6 @@ public class ActivityController: Controller
     
     public IActionResult Index()
     {
-        
         return View();
     }
 
@@ -116,7 +115,7 @@ public class ActivityController: Controller
                                     {
                                         Profile_pic = u.ProfilePicture != null 
                                                         ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
-                                                        : "/assets/profile-g.png", // ใช้ค่าเริ่มต้นหากไม่มีรูป
+                                                        : "/assets/profile-g.png",
                                         u.Username,
                                         u.FirstName,
                                         u.LastName,

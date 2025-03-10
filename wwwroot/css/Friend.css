@@ -3,7 +3,7 @@
     width: max(38%, 20rem);
     height: 2.5em;
     display: flex;
-    margin: 0 auto;
+    margin: 1rem auto;
     border-radius: 5rem;
     overflow: hidden;
     background-color: var(--white);
@@ -66,36 +66,113 @@ search-friend-bar {
     width: 100%;
 }
 
-.create-container {
-    position: relative;
+.friend-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    align-items: center;
+    width: 80%;
+    height: 80vh;
+    background-color: var(--white);
+    border-radius: 1.25rem;
+    margin: 1rem auto;
+    overflow: hidden;
+}
+
+.friend-header {
+    background-color: var(--blue50);
+    color: var(--white);
+    height: 40px;
+    padding: 0 1.5rem;
+    font-weight: bold;
+    display: flex;
     align-items: center;
     width: 100%;
 }
 
-.create-card {
-    background-color: var(--white);
-    width: 60vw;
-    border-radius: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 1rem;
-}
-
-.create-header {
-    background-color: var(--blue50);
-    color: var(--white);
-    height: 40px;
-    border-radius: 20px 20px 0 0;
-    padding: 1rem;
-    font-size: 16px;
-    font-weight: bold;
+.friend-li-container {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 4rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.create-header p {
-    color: var(--white);
+.friend-li-container>*{
+    height: fit-content;
+}
+
+.member-list-item {
+    display: grid;
+    height: 4em;
+    grid-template-columns: 1fr 5fr 1.5fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "profile name approval"
+    "profile role approval";
+    gap: 0.1em 0.5em;
+    line-height: 1;
+    padding: 0.4em 0.75em;
+    border-radius: 0.75em;
+}
+
+.member-list-item-profile{
+    grid-area: profile;
+    display: flex;
+    position: relative;
+    width: fit-content;
+}
+
+.member-list-item-profile .profile{
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-list-item-name {
+    grid-area: name;
+    font-size: 1.25em;
+    align-self: end;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.member-list-item-role {
+    grid-area: role;
+    font-weight: 500;
+    color: var(--gray70);
+}
+
+
+.member-list-item-approval {
+    grid-area: approval;
+    justify-content: flex-end;
+    column-gap: 0.25em;
+}
+
+.approval {
+    height: 2em;
+    width: 2em;
+}
+
+.approval svg {
+    width: 1.125em;
+    height: 1.125em;
+}
+
+#add-friend-btn svg {
+    width: 1.375em;
+    height: 1.375em;
+    transform: translateX(-4%);
+    transition: all 0.3s;
+}
+
+#add-friend-btn:hover svg {
+    transform:translateX(-4%) scale(1.1);
+}
+
+.svg-check svg path{
+    fill: none !important;
 }

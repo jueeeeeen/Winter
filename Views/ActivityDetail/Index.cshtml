@@ -13,7 +13,7 @@
                 <svg-male aria-label="male"></svg-male>
             </div>
             <div>
-                <span>@DateTime.Parse(@Model.Create_time).ToString("dd MMM yyyy HH:mm")</span>
+                <span>@Model.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm")</span>
                 <span aria-label="review" class="act-card-review">
                     <svg-star-sharp></svg-star-sharp>
                     @Model.host.Rating
@@ -43,7 +43,7 @@
                 </span>
             }
             <span class="act-detail-close-date">
-                Closes: @DateTime.Parse(@Model.Deadline_time).ToString("ddd, dd MMM yyyy HH:mm")
+                Closes: @Model.Deadline_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm")
             </span>
         </div>
     </div>
@@ -154,7 +154,7 @@
                 @if (participant.Role == "host")
                 {
                     
-                        <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username"></host-list-item>
+                    <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username"></host-list-item>
                     
                 }
                 else if (participant.Role == "member")

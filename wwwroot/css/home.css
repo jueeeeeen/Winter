@@ -167,10 +167,22 @@
 
 .home-text3 img {
     width: 250px;
+    height: 250px;
+    border: 8px solid #50b6f5;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
+}
+
+.home-text3 img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 
 .home-text3 h4 {
+    margin-top: 10px;
     width: 250px;
     text-align: center;
 }

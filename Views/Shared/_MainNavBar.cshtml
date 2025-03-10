@@ -12,15 +12,85 @@
             <a href="/" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter Logo" /></a>
         </li>
         <li class="m_left_auto">
-            <a class="btn medium w-mb round hover-db-w" id="create_button" href="/Create">
-                <img src="/assets/plus-b.svg" alt="plus icon">create
+            <a class="btn medium w-mb round hover-db-w" id="create-button" href="/Create">
+                <svg-plus></svg-plus>create
             </a>
         </li>
-        <li><button class="btn circle round w-mb hover-y-w" id="bell_button">
-            <img src="/assets/bell_icon-g.svg" alt="bell"></button>
+        <li>
+            <div class="bell-button  pseudo-btn">
+                <input type="checkbox" id="bell-button-check">
+                <label class="btn round w-y hover-y-w circle" for="bell-button-check" id="bell-button"><svg-bell></svg-bell></label>
+                <div class="noti-dropdown-container shadow" id="noti_dropdown">
+                    <span class="noti-header">Notifications</span>
+                    <hr>
+                    <ul>
+                        @* <approved-noti></approved-noti>
+                        <denied-noti></denied-noti> *@
+                        @foreach (var notification in notifications)
+                        {
+                            @if (notification.Notification_type == "pending")
+                            {
+                                <joined-noti 
+                                    activity-id="@notification.Activity_id" 
+                                    activity-title="asdf" 
+                                    name="asdfdsfadasfdsafdasfsadf" 
+                                    time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                                </joined-noti>
+                            }
+                            else if (notification.Notification_type == "approved")
+                            {
+                                <approved-noti
+                                    activity-id="@notification.Activity_id" 
+                                    activity-title="asdf" 
+                                    name="asdfdsfadasfdsafdasfsadf" 
+                                    time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                                </approved-noti>
+                            }
+                            else if (notification.Notification_type == "denied")
+                            {
+                                <denied-noti
+                                    activity-id="@notification.Activity_id" 
+                                    activity-title="asdf" 
+                                    name="asdfdsfadasfdsafdasfsadf" 
+                                    time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                                </denied-noti>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
         </li>
-        <li><button class="btn circle round w-mb hover-b-w" id="profile_button">
-            <img src="/assets/Profile-w-b.png" alt="profile"></button>
+        <li>
+            <div class="profile-button circle pseudo-btn">
+                <input type="checkbox" id="profile-button-check">
+                <label class="btn round w-mb hover-b-w" for="profile-button-check" id="profile-button"><img src="/assets/Profile-w-b.png" alt="profile"></label>
+                <div class="profile-dropdown w-mb-mb edge" id="profile_dropdown">
+                        <div class="profile-dropdown-info">
+                            <div class="profile-container-dropdown">
+                                <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
+                            </div>
+                            
+                            <span class="first-name-dropdown">@Model.FirstName</span>
+                            <span class="last-name-dropdown">@Model.LastName</span>
+                            <span class="username_dropdown">@Model.Username</span>
+                        </div>
+                        
+                        <ul>
+                            <li><a class="profile-dropdown-nav" href="/Profile"><img src="/assets/person.svg">My Profile</a></li>
+                            <hr class="blue_line_dash">
+                            <li><a class="profile-dropdown-nav" href="/MyActivity"><img src="/assets/activity.svg">My Activity</a></li>
+                            <hr class="blue_line_dash">
+                            <li><a class="profile-dropdown-nav" href="/Profile/Review"><img src="/assets/star_outline.svg">My Ratings</a></li>
+                            <hr class="blue_line_dash">
+                        </ul>
+                    
+                    <form method="post" asp-controller="Account" asp-action="Logout" id="logout-form">
+                        <button class="btn small w-r-r hover-r-w edge" id="logout-button">
+                            <svg-logout></svg-logout>log out
+                        </button>
+                    </form>
+                </div>
+            </div>
         </li>
         <li class="pseudo-btn">
             <input type="checkbox" id="hamburger-check">
@@ -35,97 +105,6 @@
             </ul>
         </li>
     </ul>
-    <div class="profile_dropdown w-mb-mb edge" id="profile_dropdown">
-        <div>
-            <div class="info_dropdown">
-                <div class="profile-container-dropdown">
-                    <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
-                </div>
-                
-                <span class="first-name-dropdown">@Model.FirstName</span>
-                <span class="last-name-dropdown">@Model.LastName</span>
-                <span class="username_dropdown">@Model.Username</span>
-            </div>
-            <hr class="blue_line">
-            <ul>
-                <li><a class="btn_dropdown" href="/Profile"><img src="/assets/person.svg">My Profile</a></li>
-                <hr class="blue_line_dash">
-                <li><a class="btn_dropdown" href="/MyActivity"><img src="/assets/activity.svg">My Activity</a></li>
-                <hr class="blue_line_dash">
-                <li><a class="btn_dropdown" href="/Profile/Review"><img src="/assets/star_outline.svg">My Ratings</a></li>
-                <hr class="blue_line_dash">
-                <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/Friend">My Frined</a></li>
-                <hr class="blue_line_dash">
-            </ul>
-        </div>
-        
-        <form method="post" asp-controller="Account" asp-action="Logout" id="logout-form">
-            <button class="btn small w-r-r hover-r-w edge" id="logout-button">
-                <svg-logout></svg-logout>log out
-            </button>
-        </form>
-    </div>
-
-    <div class="noti-dropdown-container shadow" id="noti_dropdown">
-        <span class="noti-header">Notifications</span>
-        <hr>
-        <ul>
-            @foreach (var notification in notifications)
-            {
-                @if (notification.Notification_type == "pending")
-                {
-                    <pending-noti 
-                        activity-id="@notification.Activity_id" 
-                        activity-title="@notification.ActivityTitle" 
-                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
-                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
-                    </pending-noti>
-                }
-                else if (notification.Notification_type == "approved")
-                {
-                    <approved-noti
-                        activity-id="@notification.Activity_id" 
-                        activity-title="@notification.ActivityTitle" 
-                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
-                    </approved-noti>
-                }
-                else if (notification.Notification_type == "denied")
-                {
-                    <denied-noti
-                        activity-id="@notification.Activity_id" 
-                        activity-title="@notification.ActivityTitle" 
-                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
-                    </denied-noti>
-                }
-                else if (notification.Notification_type == "kick")
-                {
-                    <kick-noti
-                        activity-id="@notification.Activity_id" 
-                        activity-title="@notification.ActivityTitle" 
-                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
-                    </kick-noti>
-                }
-                else if (notification.Notification_type == "join")
-                {
-                    <joined-noti 
-                        activity-id="@notification.Activity_id" 
-                        activity-title="@notification.ActivityTitle" 
-                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
-                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
-                    </joined-noti>
-                }
-                else if (notification.Notification_type == "leave")
-                {
-                    <leave-noti 
-                        activity-id="@notification.Activity_id" 
-                        activity-title="@notification.ActivityTitle" 
-                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
-                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
-                    </leave-noti>
-                }
-            }
-        </ul>
-    </div>
 </nav>
 
 <script>
@@ -139,35 +118,27 @@
         }
     }
 
-    const profile_button = document.querySelector("#profile_button");
-    const bell_button = document.querySelector("#bell_button");
-    const create_button = document.querySelector("#create_button");
+    const profile_button = document.querySelector("#profile-button-check");
+    const profile_pic_nav = document.querySelector("#profile-button");
+    const bell_button = document.querySelector("#bell-button-check");
     const logout_button = document.querySelector("#logout_button");
 
-    profile_button.addEventListener("click", toggle_profile_dropdown);
-    bell_button.addEventListener("click", toggle_noti_dropdown);
+    profile_button.addEventListener("change", toggle_profile_dropdown);
+    bell_button.addEventListener("change", toggle_noti_dropdown);
 
-    change_icon(profile_button, "Profile-b.png", "Profile-w-b.png");
-    change_icon(bell_button, "bell_icon-w.svg", "bell_icon-g.svg");
-    change_icon(create_button, "plus-w.svg", "plus-b.svg");
-    change_icon(logout_button, "logout-w.svg", "logout.svg");
+    change_icon(profile_pic_nav, "Profile-b.png", "Profile-w-b.png");
 
-    function toggleDropdown(currentId, otherId) {
-        const currentDropdown = document.querySelector(`#${currentId}`);
-        const otherDropdown = document.querySelector(`#${otherId}`);
-
-        if (otherDropdown && otherDropdown.classList.contains("show-dd")) {
-            otherDropdown.classList.remove("show-dd");
+    function toggleDropdown(other_check) {
+        if (other_check.checked) {
+            other_check.checked = false;
         }
-
-        currentDropdown.classList.toggle("show-dd");
     }
 
     function toggle_profile_dropdown() {
-        toggleDropdown("profile_dropdown", "noti_dropdown");
+        toggleDropdown(bell_button);
     }
 
     function toggle_noti_dropdown() {
-        toggleDropdown("noti_dropdown", "profile_dropdown");
+        toggleDropdown(profile_button);
     }
 </script>

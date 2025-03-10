@@ -298,7 +298,6 @@ class TagsSelector extends HTMLElement {
             <input type="checkbox" name="Tags" value="${this.tag_name}" id="tag_${this.tag_name}">
             <label for="tag_${this.tag_name}" class="btn tag-selector round shadow hover-w-bb-bb">${this.tag_name}</label>
         </div>`;
-    this.input = this.querySelector("input");
   }
 }
 
@@ -363,31 +362,31 @@ class TagFilter extends HTMLElement {
 class RangeFilterLi extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = `<li>
-            <div class="btn filter-header w-db hover-bb-w">
-                <svg-star-outline></svg-star-outline>
-                Age range
-                <svg-down-arrow class="right"></svg-down-arrow>
+    this.innerHTML = 
+      `<li>
+        <div class="btn filter-header w-db hover-bb-w">
+            <svg-star-outline></svg-star-outline>
+            Age range
+            <svg-down-arrow class="right"></svg-down-arrow>
+        </div>
+        <div class="range-filter-container">
+            <div class="number-input">
+                <input type="number" min="0" max="100" id="min-age-input" value="0">
+                <input type="number" min="0" max="100" id="max-age-input" value="100">
             </div>
-            <div class="range-filter-container">
-                <div class="number-input">
-                    <input type="number" min="0" max="100" id="min-age-input" value="0">
-                    <input type="number" min="0" max="100" id="max-age-input" value="100">
-                </div>
-                <div class="pseudo-slider">
-                    <div class="pseudo-slider-progress"></div>
-                </div>
-                <div class="range-slider">
-                    <input type="range" min="0" max="100" value="0" step="1" id="min-age-input-range">
-                    <input type="range" min="0" max="100" value="100" step="1" id="max-age-input-range">
-                </div>
-                <div class="min-max-text">
-                    <span>min</span>
-                    <span>max</span>
-                </div>
+            <div class="pseudo-slider">
+                <div class="pseudo-slider-progress"></div>
             </div>
-        </li>
-        `;
+            <div class="range-slider">
+                <input type="range" min="0" max="100" value="0" step="1" id="min-age-input-range">
+                <input type="range" min="0" max="100" value="100" step="1" id="max-age-input-range">
+            </div>
+            <div class="min-max-text">
+                <span>min</span>
+                <span>max</span>
+            </div>
+        </div>
+    </li>`;
   }
 
   connectedCallback() {
@@ -425,30 +424,31 @@ class RangeFilterLi extends HTMLElement {
     this.progress.style.right = 0;
   }
 
-  // หาวิธีเขียนที่ดีกว่านี้ ตอนนี้ input ยังไม่ดัก invalid
   handle_num_input() {
-    this.num_input.forEach((input) => {
-      input.addEventListener("input", (e) => {
-        (this.min_num = parseInt(this.num_input[0].value)),
-          (this.max_num = parseInt(this.num_input[1].value));
+  this.num_input.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      let min_num = parseInt(this.num_input[0].value) || 0;
+      let max_num = parseInt(this.num_input[1].value) || 100;
 
-        if (
-          this.max_num - this.min_num >= this.num_gap &&
-          this.max_num <= this.range_input[1].max
-        ) {
-          if (e.target.id === "min-age-input") {
-            this.range_input[0].value = this.min_num;
-            this.progress.style.left =
-              (this.min_num / this.range_input[0].max) * 100 + "%";
-          } else {
-            this.range_input[1].value = this.max_num;
-            this.progress.style.right =
-              100 - (this.max_num / this.range_input[1].max) * 100 + "%";
-          }
-        }
-      });
+      if (min_num >= max_num) {
+        min_num = max_num - this.num_gap;
+        this.num_input[0].value = min_num;
+      }
+
+      if (max_num <= min_num) {
+        max_num = min_num + this.num_gap;
+        this.num_input[1].value = max_num;
+      }
+
+      this.range_input[0].value = min_num;
+      this.range_input[1].value = max_num;
+
+      this.progress.style.left = (min_num / this.range_input[0].max) * 100 + "%";
+      this.progress.style.right = 100 - (max_num / this.range_input[1].max) * 100 + "%";
     });
-  }
+  });
+}
+
 
   handle_range_input() {
     this.range_input.forEach((input) => {
@@ -590,21 +590,20 @@ class DisplayFilter extends HTMLElement {
   }
 
   open() {
-    this.filter_dropdown.classList.toggle("show");
+    this.filter_dropdown.classList.toggle("show-dropdown");
     this.display_filter.classList.toggle("bb-w");
     this.sort = document.querySelector("display-sort");
     this.sort.close();
   }
 
   close() {
-    if (this.filter_dropdown.classList.contains("show")) {
-      this.filter_dropdown.classList.toggle("show");
+    if (this.filter_dropdown.classList.contains("show-dropdown")) {
+      this.filter_dropdown.classList.toggle("show-dropdown");
       this.display_filter.classList.toggle("bb-w");
     }
   }
 
   clear_filter() {
-    console.log("clear");
     this.gender_filter.reset();
     this.age_filter.reset();
     this.age_range = null;
@@ -627,7 +626,7 @@ class DisplaySort extends HTMLElement {
                 </li>
                 <li class="pseudo-btn">
                     <input type="radio" value="Popular" name="sort_option" id="popular-sort">
-                    <label for="popular-sort" class="btn sort-option-btn">Popular</label>    
+                    <label for="popular-sort" class="btn sort-option-btn">Popularity</label>    
                 </li>
                 <li class="pseudo-btn">
                     <input type="radio" value="Activity_time" name="sort_option" id="act-time-sort">
@@ -660,15 +659,15 @@ class DisplaySort extends HTMLElement {
   }
 
   open() {
-    this.dropdown.classList.toggle("show");
+    this.dropdown.classList.toggle("show-dropdown");
     this.display_sort.classList.toggle("bb-w");
     this.filter = document.querySelector("display-filter");
     this.filter.close();
   }
 
   close() {
-    if (this.dropdown.classList.contains("show")) {
-      this.dropdown.classList.toggle("show");
+    if (this.dropdown.classList.contains("show-dropdown")) {
+      this.dropdown.classList.toggle("show-dropdown");
       this.display_sort.classList.toggle("bb-w");
     }
   }
@@ -1852,6 +1851,17 @@ class SVGSend extends BaseSVGElement {
   }
 }
 customElements.define("svg-send", SVGSend);
+
+class SVGBell extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML =
+    `<svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.0954 0C10.9441 0 7.54768 3.39645 7.54768 7.54768C7.54768 11.4725 5.58528 15.0199 2.49073 17.5861C0.94346 18.8692 0 20.6806 0 22.643H30.1907C30.1907 20.6806 29.285 18.8692 27.7 17.5861C24.6054 15.0199 22.643 11.4725 22.643 7.54768C22.643 3.39645 19.2843 0 15.0954 0ZM11.3215 26.4169C11.3215 28.4925 13.0197 30.1907 15.0954 30.1907C17.171 30.1907 18.8692 28.4925 18.8692 26.4169H11.3215Z" stroke-width="0px" fill="white"/>
+    </svg>`;
+  }
+}
+customElements.define("svg-bell", SVGBell);
 
 customElements.define("search-bar", SearchBar);
 customElements.define("search-friend-bar", SearchFriendBar);

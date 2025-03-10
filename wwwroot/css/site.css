@@ -252,16 +252,19 @@ main {
 }
 
 .circle {
-  height: 90%;
+  height: 3.6rem;
+  width: 3.6rem;
   aspect-ratio: 1;
+  display: flex;
 }
 
 .circle img{
   height: 100%;
 }
 
-#bell_button img{
-  height: 65%;
+.circle svg {
+  width: 2.25rem;
+  height: 2.25rem;
 }
 
 .hamburger {
@@ -330,20 +333,36 @@ main {
   display: block !important;
 }
 
-.profile_dropdown {
-  width: 230px;
-  height: 260px;
-  padding: 0 1em;
-  position: absolute;
-  right: 6vw;
-  font-weight: 400;
-  display: none;
-  /* display: flex; */
-  flex-direction: column;
-  gap: 2em;
+#create-button svg{
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
-.info_dropdown {
+#bell-button:hover svg path{
+  fill: var(--white);
+}
+
+.profile-button input:checked ~ .profile-dropdown{
+  height: 270px;
+  opacity: 1;
+}
+
+.profile-dropdown {
+  width: 230px;
+  opacity: 0;
+  height: 0px;
+  padding: 0 1em 0.75em;
+  position: absolute;
+  top: 4rem;
+  right: 6vw;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.profile-dropdown-info {
   line-height: 1;
   display: grid;
   padding: 0.5em 0 0.7em;
@@ -355,6 +374,13 @@ main {
     "profile last-name"
     "profile username";
   color: var(--gray90);
+  border-bottom: 1px solid var(--blue20);
+}
+
+.profile-dropdown ul {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: auto;
 }
 
 .profile-container-dropdown {
@@ -393,28 +419,26 @@ main {
   content: "@";
 }
 
-.btn_dropdown {
+.profile-dropdown-nav {
   display: flex;
   align-items: center;
   height: 2rem;
+  width: 100%;
   margin: 0.2rem 0;
   color: var(--gray90);
   cursor: pointer;
   user-select: none;
   border-radius: 0.3rem;
   font-size: 1rem;
+  transition: all 0.3s;
   &:hover {
       background-color:var(--gray50);
   }
-  img {
-      margin: 0 7px 0 7px;
-      position: relative;
-  }
 }
 
-.btn_dropdown a {
-  display: flex;
-  align-items: center;
+.profile-dropdown-nav img{
+  height: 1.25rem;
+  margin: 0 7px 0 7px;
 }
 
 #logout-button {
@@ -422,16 +446,25 @@ main {
   margin: auto;
 }
 
+.bell-button input:checked ~ .noti-dropdown-container{
+  height: 310px;
+  opacity: 1;
+  overflow: auto;
+}
+
 .noti-dropdown-container{
   width: 270px;
-  height: 310px;
+  height: 0;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
   position: absolute;
+  top: 4rem;
   right: 10vw;
-  display: none;
   overflow-y: scroll;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  opacity: 0;
 }
 
 .noti-header {
@@ -591,13 +624,13 @@ hr {
 }
 
 .pseudo-btn {
-  display: inline-block;
-  /* text-align: center; */
+  /* display: inline-block; */
   user-select: none;
 }
 
 .tag-show {
   width: 100%;
+
 }
 
 .small {
@@ -731,6 +764,13 @@ hr {
     }
   }
 
+  .w-r, .hover-w-r:hover {
+    background-color: var(--white);
+    color: var(--red);
+    svg path {
+      stroke: var(--red);
+    }
+  }
   .w-r-r, .hover-w-r-r:hover {
     background-color: var(--white);
     color: var(--red);
@@ -781,10 +821,27 @@ hr {
     }
   }
 
+  .w-gr, .hover-w-gr:hover {
+    background-color: var(--white);
+    color: var(--green);
+    svg path {
+      stroke: var(--green);
+    }
+  }
+
   .w-y-y, .hover-w-y-y:hover {
     background-color: var(--white);
     color: var(--yellow);
     border: 2px solid var(--yellow);
+    svg path {
+      fill: var(--yellow);
+      stroke: var(--yellow);
+    }
+  }
+
+  .w-y, .hover-w-y:hover {
+    background-color: var(--white);
+    color: var(--yellow);
     svg path {
       fill: var(--yellow);
       stroke: var(--yellow);
@@ -866,6 +923,8 @@ hr {
   padding: 0.25em 1em;
   font-size: 1.125rem;
   color: var(--gray70);
+  border: 2px solid transparent;
+
 }
 
 .tag {
@@ -940,10 +999,6 @@ hr {
   gap:0 0.25em;
   height: fit-content;
   position: relative;
-}
-
-header.act-card-profile-info{
-  border-bottom: 1px solid var(--gray60);
 }
 
 .act-card-profile-info div:nth-child(1){
@@ -1096,7 +1151,7 @@ header.act-card-profile-info{
 }
 
 @media screen and (max-width: 480px) {
-  .nav-home, .nav-activity, #create_button {
+  .nav-home, .nav-activity, #create-button {
     display: none;
   }
 
@@ -1109,13 +1164,13 @@ header.act-card-profile-info{
     translate: 0%;
   }
 
-  .profile_dropdown {
+  .profile-dropdown {
     width: 100%;
     left: 0;
     gap: 0;
   }
 
-  .info_dropdown {
+  .profile-dropdown-info {
     grid-template-columns: 2.75em 75%;
     grid-template-rows: 40% 40% 20%;
     grid-template-areas: 

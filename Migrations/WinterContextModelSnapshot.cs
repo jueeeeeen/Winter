@@ -23,19 +23,16 @@ namespace Winter_Project.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Activity_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Activity_time")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Approval")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Create_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Create_time")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Deadline_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Deadline_time")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Detail")
@@ -109,6 +106,9 @@ namespace Winter_Project.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Activity_user_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("New")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Notification_time")

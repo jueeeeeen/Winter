@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Winter_Project.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class UpdateUserModel : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,9 +20,9 @@ namespace Winter_Project.Migrations
                     Owner = table.Column<string>(type: "TEXT", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Detail = table.Column<string>(type: "TEXT", nullable: false),
-                    Create_time = table.Column<string>(type: "TEXT", nullable: false),
-                    Activity_time = table.Column<string>(type: "TEXT", nullable: false),
-                    Deadline_time = table.Column<string>(type: "TEXT", nullable: false),
+                    Create_time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Activity_time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Deadline_time = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Duration = table.Column<string>(type: "TEXT", nullable: false),
                     Location = table.Column<string>(type: "TEXT", nullable: false),
                     Max_member = table.Column<int>(type: "INTEGER", nullable: false),
@@ -61,7 +61,8 @@ namespace Winter_Project.Migrations
                     Notification_type = table.Column<string>(type: "TEXT", nullable: false),
                     Activity_id = table.Column<int>(type: "INTEGER", nullable: false),
                     Activity_user_id = table.Column<int>(type: "INTEGER", nullable: false),
-                    Notification_time = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Notification_time = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    New = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {

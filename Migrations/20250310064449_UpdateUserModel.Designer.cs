@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250306171643_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250310064449_UpdateUserModel")]
+    partial class UpdateUserModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,19 +26,16 @@ namespace Winter_Project.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Activity_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Activity_time")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Approval")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Create_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Create_time")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Deadline_time")
-                        .IsRequired()
+                    b.Property<DateTime>("Deadline_time")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Detail")
@@ -112,6 +109,9 @@ namespace Winter_Project.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Activity_user_id")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("New")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Notification_time")

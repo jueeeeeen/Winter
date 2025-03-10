@@ -44,7 +44,7 @@ public class OthersActivityController: Controller
             .ToList(); 
 
         activitiesList = activitiesList.Where(a =>
-            DateTime.Parse(a.Activity_time).Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
+            a.Activity_time.Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
         .ToList();    
 
         var result = activitiesList;
@@ -71,7 +71,7 @@ public class OthersActivityController: Controller
                     a.Activity_id,
                     a.Title,
                     a.Tags,
-                    Activity_time = DateTime.Parse(a.Activity_time).ToString("ddd, dd MMM yyyy-HH:mm"),
+                    Activity_time = a.Activity_time.ToString("ddd, dd MMM yyyy-HH:mm"),
                     Participants = a.Participants
                     .OrderBy(p => p.Role == "host" ? 0 : p.Role == "member" ? 1 : 2)
                     .Select(p => new

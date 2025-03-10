@@ -7,6 +7,8 @@
     var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
     var host = (string)ViewData["host"];
     var activity_title = (string)ViewData["activity_title"];
+    var more_messages = (string)ViewData["more_messages"];
+    Console.WriteLine(more_messages);
 }
 
 <div class="chat-page-container">
@@ -81,9 +83,9 @@
                 }
             }
         </div>
-        <form class="message-form">
+        <form id="send-message-form" class="message-form">
             <input class="round" type="text" placeholder="" id="message-input">
-            <button class="btn medium round bb-w hover-lb-w-glow send-button" type="button" id="send-button">
+            <button class="btn medium round bb-w hover-lb-w-glow send-button" type="submit" id="send-button">
                 send<svg-send></svg-send>
             </button>
         </form>
@@ -94,12 +96,14 @@
     let socket;
     const message_container = document.getElementById('message-container');
     const message_input = document.getElementById('message-input');
-    const send_button = document.getElementById('send-button');
+    const send_message_form = document.getElementById('send-message-form');
     const username = `@username`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const activity_id = urlParams.get('activity_id');
+    let loading = false;
 
     function initWebSocket() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const activity_id = urlParams.get('activity_id');
+        
         socket = new WebSocket(`ws://localhost:5115/chat/connect?activity_id=${activity_id}`);
         
         socket.onmessage = function (event) {
@@ -125,15 +129,12 @@
     }
 
     function create_chat_bubble(message, username) {
-        
-        const timestamp = `<span class="chat-bb-date-time">${message.Timestamp}</span>`;
-
         if (message.Username === username) {
             console.log(message.Username);
             return `
                 <div class="chat-bubble self">
                     <span class="chat-bb-message self">${message.Message}</span>
-                    ${timestamp}
+                    <span class="chat-bb-date-time self">${message.Timestamp}</span>
                 </div>
             `;
         } else {
@@ -145,13 +146,13 @@
                     </div>
                     <strong class="chat-bb-name">${message.Name}</strong>
                     <span class="chat-bb-message">${message.Message}</span>
-                    ${timestamp}
+                    <span class="chat-bb-date-time">${message.Timestamp}</span>
                 </div>
             `;
         }
     }
 
-    send_button.addEventListener('click', function (event) {
+    send_message_form.addEventListener('submit', function (event) {
         event.preventDefault();
         const message = message_input.value;
         if (message && socket.readyState === WebSocket.OPEN) {

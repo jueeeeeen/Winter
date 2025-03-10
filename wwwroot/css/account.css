@@ -10,12 +10,25 @@ html, body {
   box-sizing: border-box;
 }
 
+.bullet.current {
+  border: solid 3px var(--blue40);
+  background-color: var(--blue40);
+}
+
+.bullet.current span {
+  color: var(--white);
+}
+
+.step.current p{
+  color: var(--blue40);
+}
+
 .progress-bar {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 20px;
+  gap: 40px;
 }
 
 .step {
@@ -30,8 +43,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border: solid 3px var(--gray50);
   border-radius: 50%;
   background-color: var(--white);
@@ -39,6 +52,10 @@ html, body {
   font-size: 1rem;
   font-weight: bold;
   margin: 10px 0px 0px 10px;
+}
+
+.bullet span {
+  color: var(--gray50);
 }
 
 .bullet.active {
@@ -51,13 +68,18 @@ html, body {
 }
 
 .bullet.active::after {
-  content: "✓";
-  color: var(--white);
+  content: "";
+  background-image: url("/assets/check.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 15px; 
+  height: 15px; 
+  display: inline-block; 
 }
 
 .step p {
   color: var(--gray50);
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -68,10 +90,10 @@ html, body {
 .step::after {
   content: "";
   position: absolute;
-  top: 30%;
-  left: 85%;
+  top: 40%;
+  left: 100%;
   width: 40px;
-  height: 2px;
+  height: 3px;
   background-color: var(--gray50);
   transform: translateY(-50%);
 }
@@ -94,13 +116,13 @@ html, body {
 .register-card {
   color: var(--blue90);
   background-color: var(--white);
-  width: 480px;
-  height: 640px;
+  width: 380px;
+  height: 550px;
   border-radius: 20px;
 }
 
 .login-card {
-  margin: 40px auto;
+  margin: 70px auto;
 }
 
 .header {
@@ -112,33 +134,17 @@ html, body {
 }
 
 .register-header {
-  margin: 10px 10px 0 40px;
+  margin: 10px 10px 10px 40px;
   color: var(--blue90);
   font-size: 28px;
   font-weight: bolder;
   letter-spacing: 2px;
 }
 
-.login-box,
-.login-button button,
-.register-box,
-.register-button{
-  width: 420px;
-  height: 40px;
-  border-radius: 40px;
-}
-
-.next-button {
-  width: 420px;
-  height: 40px;
-  border-radius: 40px;
-  margin-top: 12px;
-}
-
 .login-card img,
 .register-card img {
   width: 100%;
-  height: 276px;
+  height: 40%;
   border-radius: 20px 20px 0 0;
 }
 
@@ -151,43 +157,61 @@ html, body {
   gap: 20px;
 }
 
-.login-box {
+.login-box,
+.login-button button,
+.register-box1,
+.register-box,
+.register-button,
+.next-button {
+  width: 300px;
+  height: 35px;
+  border-radius: 40px;
+}
+
+.login-box,
+.register-box1 {
   background-color: var(--blue40);
   display: flex;
   align-items: center;
   justify-items: center;
 }
 
-.login-box img {
+.login-box img,
+.register-box1 img {
   margin: 0 10px;
   width: 25px;
   height: 25px;
 }
 
 .login-box input,
+.register-box1 input,
 .register-box input {
   background-color: transparent;
   border: none;
 }
 
 .login-box input,
-.login-box input::placeholder {
+.login-box input::placeholder,
+.register-box1 input,
+.register-box1 input::placeholder {
   width: 320px;
   color: var(--white);
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 500;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
-.login-box button {
+.login-box button,
+.register-box1 button {
   margin-top: 5px;
   background-color: transparent;
   cursor: pointer;
 }
 
-.login-box button img {
-  width: 20px;
-  height: 14px;
+.login-box button img,
+.register-box1 button img {
+  width: 1rem;
+  height: 0.8rem;
 }
 
 .username {
@@ -199,7 +223,7 @@ html, body {
   background-color: var(--white);
   color: var(--blue90);
   border: solid 2px var(--blue70);
-  font-size: 22px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -218,7 +242,7 @@ html, body {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -240,30 +264,40 @@ html, body {
 .register-card form {
   padding: 0px;
   display: flex;
-  width: 400%;
+  width: 200%;
   flex-direction: row;
 }
 
 .page {
   width: 100%;
-  padding-left: 20px;
+  padding: 0 40px;
   transition: transform 0.3s ease-in-out;
-  display: none;
-}
-
-.page div {
-  margin-bottom: 10px;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
 }
 
 .page.active {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error {
+  height: 12px;
+  color: red;
+  font-size: 10px;
+  font-weight: bold;
 }
 
 .next-button {
   color: var(--blue90);
   background-color: var(--white);
   border: solid 2px var(--blue70);
-  font-size: 22px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -271,13 +305,14 @@ html, body {
   color: var(--white);
   background-color: var(--blue40);
   border: none 0 transparent;
+  cursor: pointer;
 }
 
 .register-button {
   color: var(--white);
   background-color: var(--blue40);
   margin-top: 10px;
-  font-size: 22px;
+  font-size: 1.1rem;
   font-weight: 600;
 }
 
@@ -298,7 +333,7 @@ html, body {
 .register-box input::placeholder {
   width: 320px;
   color: var(--blue80);
-  font-size: 22px;
+  font-size: 1.1rem;
   font-weight: 500;
   margin-left: 20px;
 }
@@ -310,8 +345,8 @@ html, body {
 
 .gender-button button {
   background-color: var(--white);
-  width: 140px;
-  height: 48px;
+  width: 100px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -323,23 +358,23 @@ html, body {
 }
 
 .gender-button button img {
-  width: 38px;
-  height: 38px;
+  width: 30px;
+  height: 30px;
 }
 
 .male-button:hover::after,
 .lgbtq-button:hover::after,
 .female-button:hover::after {
-  font-size: 22px;
+  font-size: 1.1rem;
   white-space: nowrap;
-  left: 5px;
-  bottom: 2px;
-  position: relative;
+  position: absolute;
+  transform: translate(0, 0);
 }
 
 .male-button:hover::after {
   content: "male";
   color: var(--blue80);
+  position: relative;
 }
 
 .male-button {
@@ -398,6 +433,7 @@ html, body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
 }
 
 .female-button {
@@ -408,6 +444,7 @@ html, body {
 .female-button:hover::after {
   content: "female";
   color: var(--pink);
+  position: relative;
 }
 
 #errorMessage {
@@ -416,6 +453,10 @@ html, body {
   font-style: oblique;
   display: flex;
   justify-content: center;
+}
+
+.register-button {
+  margin: 0;
 }
 
 @media screen and (max-width: 480px) {
@@ -441,6 +482,12 @@ html, body {
     top: 0;
   }
 
+  .register-header {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+  }
+
   .login-card img,
   .register-card img {
     margin-top: 48px;
@@ -451,13 +498,34 @@ html, body {
   }
 
   .login-box,
-  .register-box,
-  .login-button,
-  .register-button,
-  .next-button {
-    width: 95%;
+  .login-button
+  {
+    width: 100%;
     height: 32px;
     border-radius: 40px;
+  }
+
+  .register-box1,
+  .next-button,
+  .register-box,
+  .register-button {
+    width: 320px;
+    height: 40px;
+    border-radius: 40px;
+  }
+
+  .register-box1 input,
+  .register-box1 input::placeholder,
+  .register-box input,
+  .register-box input::placeholder,
+  .next-button,
+  .register-button {
+    font-size: 1.4rem;
+  }
+
+  .page {
+    padding: 0 30px;
+    margin: 0 0 20px;
   }
 
   .login-button button{
@@ -469,10 +537,20 @@ html, body {
     font-size: 14px;
   }
 
-  .login-box img {
+  .login-box img,
+  .register-box1 img {
     margin: 0 10px;
     width: 16px;
     height: 16px;
+  }
+
+  .register-box1 button img {
+    width: 1.4rem;
+    height: 1rem;
+  }
+
+  .register-button {
+    margin: 0;
   }
 
   .header {
@@ -483,12 +561,39 @@ html, body {
   }
 
   .login-box input,
-  .login-box input::placeholder,
+  .login-box input::placeholder
   .login-description {
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   .login-box button {
     margin-top: 2px;
+  }
+
+  .gender-button button {
+    width: 106px;
+    height: 40px;
+    margin: 0;
+  }
+
+  .gender-button button img {
+    width: 30px;
+    height: 30px; 
+    margin: 0;
+  }
+
+  #page2 {
+    margin-left: -10px;
+  }
+
+  #register-description,
+  .login-description {
+    font-size: 1.3rem;
+  }
+
+  .login-box input,
+  .login-box input::placeholder,
+  .login-button button {
+  font-size: 1.3rem;
   }
 }

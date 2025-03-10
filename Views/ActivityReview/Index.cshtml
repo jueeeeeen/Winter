@@ -6,29 +6,31 @@
 
 @model dynamic
 
-<header>
-    <div class="header-container">
-        <img src="../../assets/bookmark.svg" alt="bookmark">
-        <p>@Model.Title</p>
-    </div>
-
+<div class="main-container">
+<div class="header">
     <div class="banner">
-        <div class="select-member">
-            <label for="">Select Member</label>
-            <select name="" id="reviewedUser" onchange="getUserReviews()">
-                @foreach (var participant in Model.Participants)
-                {
-                    <option value="@participant.User.Username">
-                        @participant.User.FirstName @participant.User.LastName
-                    </option>
-                }
-            </select>
+        <div class="header-container">
+            <img src="../../assets/bookmark.svg" alt="bookmark">
+            <p>@Model.Title</p>
         </div>
-        <div class="review-count">
-            <span>@Model.Participants.Count/@Model.Max_member reviewed</span>
+        <div class="banner-content">
+            <div class="select-member">
+                <label for="">Select Member</label>
+                <select name="" id="reviewedUser" onchange="getUserReviews()">
+                    @foreach (var participant in Model.Participants)
+                    {
+                        <option value="@participant.User.Username">
+                            @participant.User.FirstName @participant.User.LastName
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="review-count">
+                <span id="reviewCountDisplay"></span>
+            </div>
         </div>
     </div>
-</header>
+</div>
 
 <div class="comment-container">
     <div class="comment">
@@ -36,11 +38,7 @@
             <p>All comment</p>
         </div>
         <div id="reviewList">
-            @if (reviews == null)
-            {
-                <p>No Reviews</p>
-            }
-            else
+            @if (reviews != null)
             {
                 @foreach (var review in reviews)
                 {
@@ -73,22 +71,57 @@
         </div>
     </div>
 </div>
+</div>
+<custom-pagination id="activity-pagination"></custom-pagination>
 
 <script>
-    let allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
+    const activity_pagination = document.querySelector('custom-pagination');
+    const allReviews = Array.from(document.querySelectorAll("#reviewList .comment-card"));
+    const totalParticipants = @Model.Participants.Count;
+    let currentPage = 1;
+    const commentsPerPage = 5;
+    let filteredReviews = [];
 
-    window.onload = function () {
+    window.onload = () => {
         getUserReviews();
+        
+        activity_pagination.addEventListener("page-changed", (event) => {
+            currentPage = event.detail.page;
+            displayComments();
+        });
     };
 
     function getUserReviews() {
-        let selectedUser = document.getElementById("reviewedUser").value;
-        let reviewList = document.getElementById("reviewList");
+        const selectedUser = document.getElementById("reviewedUser").value;
+        const reviewCountDisplay = document.getElementById("reviewCountDisplay");
 
+        filteredReviews = allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
+        reviewCountDisplay.textContent = `${filteredReviews.length}/${totalParticipants - 1} reviewed`;
+        currentPage = 1;
+
+        const totalPages = filteredReviews.length <= commentsPerPage ? 1 : Math.ceil(allReviews.length / commentsPerPage);
+        activity_pagination.render(totalPages);
+        
+        displayComments();
+    }
+    
+    function displayComments() {
+        const reviewList = document.getElementById("reviewList");
         reviewList.innerHTML = "";
-
-        let filtered = allReviews.filter(review => review.dataset.reviewedUser === selectedUser);
-
-        filtered.forEach(review => reviewList.appendChild(review));
+        
+        if (filteredReviews.length > 0) {
+            const startIndex = (currentPage - 1) * commentsPerPage;
+            const endIndex = Math.min(startIndex + commentsPerPage, filteredReviews.length);
+            for (let i = startIndex; i < endIndex; i++) {
+                reviewList.appendChild(filteredReviews[i].cloneNode(true));
+            }
+        } else {
+            const noReviewsDiv = document.createElement("div");
+            noReviewsDiv.className = "no-reviews";
+            const noReviewsText = document.createElement("span");
+            noReviewsText.textContent = "No reviews";
+            noReviewsDiv.appendChild(noReviewsText);
+            reviewList.appendChild(noReviewsDiv);
+        }
     }
 </script>

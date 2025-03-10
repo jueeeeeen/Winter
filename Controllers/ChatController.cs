@@ -2,7 +2,7 @@ using System.Diagnostics;
 namespace Winter_Project.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
-using Winter_Project.Models; 
+using Winter_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using Winter_Project.Services;
 using System.Net.WebSockets;
@@ -10,11 +10,10 @@ using System.Text.RegularExpressions;
 using Winter_Project.ViewModels;
 
 [Route("chat")]
-public class ChatController: Controller
+public class ChatController : Controller
 {
     private readonly WebSocketHandler _webSocketHandler;
     private readonly WinterContext _context;
-
     public ChatController(WebSocketHandler webSocketHandler, WinterContext context)
     {
         _webSocketHandler = webSocketHandler;
@@ -29,7 +28,7 @@ public class ChatController: Controller
             !int.TryParse(Request.Query["activity_id"], out int activity_id) ||
             string.IsNullOrEmpty(token))
         {
-            return Redirect("/activity");
+            return NotFound();
         }
 
         var username = JwtHelper.DecodeJwt(token);
@@ -41,18 +40,18 @@ public class ChatController: Controller
 
         if (activity == null)
         {
-            return Redirect($"/activitydetail/{activity_id}");
+            return NotFound();
         }
-        
-        
+
+
         bool isParticipant = activity.Participants
             .Any(p => p.Username == username && (p.Role == "member" || p.Role == "host"));
 
         if (!isParticipant)
         {
-            return Redirect($"/activitydetail/{activity_id}");
+            return NotFound();
         }
-        
+
         //data to send into View
         var activity_title = activity.Title;
         ViewData["activity_title"] = activity_title ?? "";
@@ -76,7 +75,7 @@ public class ChatController: Controller
                 ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
                 : "/assets/profile-g.png",
             Message = message.Message,
-            Timestamp = message.Timestamp.ToString("dd MMM yyyy HH:mm"),  
+            Timestamp = message.Timestamp.ToString("dd MMM yyyy HH:mm"),
         })
         .ToList();
 
@@ -99,7 +98,8 @@ public class ChatController: Controller
                 })
             .ToList();
 
-        var view_model = new ChatViewModel {
+        var view_model = new ChatViewModel
+        {
             Messages = messages,
             Group_member = activity_members
         };
@@ -115,9 +115,9 @@ public class ChatController: Controller
             {
                 return BadRequest("WebSocket connection required");
             }
-            
+
             var token = Request.Cookies["token"];
-            if (!Request.Query.ContainsKey("activity_id") || 
+            if (!Request.Query.ContainsKey("activity_id") ||
             !int.TryParse(Request.Query["activity_id"], out int activity_id) ||
             string.IsNullOrEmpty(token))
             {
@@ -136,5 +136,4 @@ public class ChatController: Controller
             return new EmptyResult();
         }
     }
-
 }

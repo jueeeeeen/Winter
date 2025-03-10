@@ -8,13 +8,15 @@
 <div class="login-card">
     <img src="\assets\winter_login_pic2.jpg" alt="login background">
     <p class="header">LOGIN</p>
-    <form id="loginForm">
+    <div id="error-input" style="color: red;"></div>
+    <form id="loginForm" onsubmit="validateForm(event)">
         <div class="login-box">
             <div class="username">
                 <img src="\assets\Profile-outline.png" alt="username">
             </div>
             <label for="username"></label>
             <input type="text" id="username" name="username" placeholder="username" required />
+            <span id="username-error" class="error-message"></span>
         </div>
         <div class="login-box">
             <img src="\assets\lock.svg" alt="password">
@@ -23,6 +25,7 @@
             <button type="button" id="togglePassword">
                 <img src="\assets\password.png" alt="">
             </button>
+            <span id="password-error" class="error-message"></span>
         </div>
         <div class="login-button">
             <button type="submit" id="loginButton">login</button>

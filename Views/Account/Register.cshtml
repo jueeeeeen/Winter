@@ -5,13 +5,13 @@
 <div class="progress-bar">
     <div class="step">
         <div class="bullet">
-            <p>1</p>
+            <span>1</span>
         </div>
         <p>Account</p>
     </div>
     <div class="step">
         <div class="bullet">
-            <p>2</p>
+            <span>2</span>
         </div>
         <p>Account</p>
     </div>
@@ -23,50 +23,61 @@
     <div class="form-outer">
         <form id="registerForm">
             <div class="page active">
-                <div class="login-box">
+                <div class="register-box1">
                     <img src="\assets\Profile-b.png" alt="username">
                     <label for="username"></label>
                     <input type="text" id="username" name="username" placeholder="username" required>
                 </div>
-                <div class="login-box">
+                <span class="error"></span>
+                <div class="register-box1">
                     <img src="\assets\email_icon.svg" alt="email">
                     <label for="email"></label>
                     <input type="email" id="email" name="email" placeholder="email" required>
                 </div>
-                <div class="login-box">
+                <span class="error"></span>
+                <div class="register-box1">
                     <img src="\assets\lock.svg" alt="password">
                     <label for="password"></label>
-                    <input type="password" id="password" name="password" placeholder="password" required>
+                    <input type="password" id="password" name="password" placeholder="password" 
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&])[A-Za-z\d@@$!%*?&]{8,}$"
+                        title="Must contain at least one number, one uppercase and lowercase letter and one special character, and at least 8 or more characters"
+                        required>
                     <button type="button" id="togglePassword">
                         <img src="\assets\password.png" alt="">
                     </button>
                 </div>
-                <div class="login-box">
+                <span class="error"></span>
+                <div class="password-error" style="color: red;"></div>
+                <div class="register-box1">
                     <img src="\assets\lock.svg" alt="password">
                     <label for="confirm-password"></label>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="confirm password" required>
-                    <button type="button" id="togglePassword">
+                    <button type="button" id="toggleRePassword">
                         <img src="\assets\password.png" alt="">
                     </button>
                 </div>
+                <span class="error"></span>
                 <button id="nextButton" class="next-button">next</button>
             </div>
             
 
-            <div class="page">
+            <div class="page" id="page2">
                 <div class="register-box">
                     <label for="first-name"></label>
                     <input type="text" id="firstname" name="first name" placeholder="first name" required>
                 </div>
+                <span class="error"></span>
                 <div class="register-box">
                     <label for="last-name"></label>
                     <input type="text" id="lastname" name="last name" placeholder="last name" required>
                 </div>
+                <span class="error"></span>
                 <div class="register-box">
                     <label for="date-of-birth"></label>
                     <input type="date" id="dateofbirth" name="date of birth" required>
                 </div>
-                <div>
+                <span class="error"></span>
+                <div class="gender-box">
                     <div class="gender-button">
                         <button class="male-button" data-gender="male">
                             <img src="\assets\male_icon-b.svg" alt="male icon">
@@ -80,6 +91,7 @@
                     </div>
                     <input type="hidden" id="gender" name="gender" value="">
                 </div>
+                <span class="error"></span>
                 <button type="submit" id="registerButton" class="register-button">create account</button>
             </div>
         </form>
@@ -92,13 +104,24 @@
 
 <script>
     const togglePassword = document.getElementById("togglePassword");
+    const toggleRePassword = document.getElementById("toggleRePassword");
     const passwordInput = document.getElementById("password");
+    const rePasswordInput = document.getElementById("confirm-password");
 
     togglePassword.addEventListener("click", () => {
         const type = passwordInput.type === "password" ? "text" : "password";
         passwordInput.type = type;
         
         togglePassword.querySelector("img").src = type === "password" 
+            ? "\\assets\\password.png" 
+            : "\\assets\\eye.png";
+    });
+
+    toggleRePassword.addEventListener("click", () => {
+        const type = rePasswordInput.type === "password" ? "text" : "password";
+        rePasswordInput.type = type;
+        
+        toggleRePassword.querySelector("img").src = type === "password" 
             ? "\\assets\\password.png" 
             : "\\assets\\eye.png";
     });

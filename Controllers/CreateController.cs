@@ -60,7 +60,7 @@ public class CreateController : Controller
                 Owner = model.Owner,
                 Title = model.Title,
                 Detail = model.Detail,
-                Create_time = DateTime.UtcNow.ToString("o"),
+                Create_time = DateTime.UtcNow,
                 Activity_time = model.Activity_time,
                 Deadline_time = model.Deadline_time,
                 Duration = model.Duration,

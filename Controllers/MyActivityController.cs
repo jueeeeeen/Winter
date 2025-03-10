@@ -51,12 +51,12 @@ public class MyActivityController: Controller
 
         if (activityType == "history"){
             activitiesList = activitiesList.Where(a =>
-                    DateTime.Parse(a.Activity_time).Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
+                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
                 .ToList();
         }
         else if (activityType == "upcoming"){
             activitiesList = activitiesList.Where(a =>
-                    DateTime.Parse(a.Activity_time).Add(TimeSpan.Parse(a.Duration)) >= DateTime.UtcNow.AddHours(7))
+                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) >= DateTime.UtcNow.AddHours(7))
                 .ToList();
         }
 
@@ -74,7 +74,7 @@ public class MyActivityController: Controller
                     a.Activity_id,
                     a.Title,
                     a.Tags,
-                    Activity_time = DateTime.Parse(a.Activity_time).ToString("ddd, dd MMM yyyy-HH:mm"),
+                    Activity_time = a.Activity_time.ToString("ddd, dd MMM yyyy-HH:mm"),
                     host = _context.Users
                     .Where(u => u.Username == a.Owner)
                     .Select(u => new 

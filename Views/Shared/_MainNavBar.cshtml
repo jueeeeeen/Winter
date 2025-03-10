@@ -1,7 +1,7 @@
-@model Winter_Project.ViewModels.NavbarProfileViewModel
+@using Winter_Project.ViewModels
 
 @{
-    var notifications = (List<NotificationModel>)ViewData["Notifications"];
+    var notifications = (List<NotificationViewModel>)ViewData["Notifications"];
 }
 
 <nav class="gradient_blue shadow nav_bar_container">
@@ -54,6 +54,8 @@
                 <hr class="blue_line_dash">
                 <li><a class="btn_dropdown" href="/Profile/Review"><img src="/assets/star_outline.svg">My Ratings</a></li>
                 <hr class="blue_line_dash">
+                <li class="btn_dropdown"><img src="/assets/star_outline.svg"><a href="/Friend">My Frined</a></li>
+                <hr class="blue_line_dash">
             </ul>
         </div>
         
@@ -68,36 +70,58 @@
         <span class="noti-header">Notifications</span>
         <hr>
         <ul>
-            @* <approved-noti></approved-noti>
-            <denied-noti></denied-noti> *@
             @foreach (var notification in notifications)
             {
                 @if (notification.Notification_type == "pending")
                 {
-                    <joined-noti 
+                    <pending-noti 
                         activity-id="@notification.Activity_id" 
-                        activity-title="asdf" 
-                        name="asdfdsfadasfdsafdasfsadf" 
-                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
-                    </joined-noti>
+                        activity-title="@notification.ActivityTitle" 
+                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
+                    </pending-noti>
                 }
                 else if (notification.Notification_type == "approved")
                 {
                     <approved-noti
                         activity-id="@notification.Activity_id" 
-                        activity-title="asdf" 
-                        name="asdfdsfadasfdsafdasfsadf" 
-                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                        activity-title="@notification.ActivityTitle" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
                     </approved-noti>
                 }
                 else if (notification.Notification_type == "denied")
                 {
                     <denied-noti
                         activity-id="@notification.Activity_id" 
-                        activity-title="asdf" 
-                        name="asdfdsfadasfdsafdasfsadf" 
-                        time="@notification.Notification_time.ToString("dd MMM yyyy HH:mm")">
+                        activity-title="@notification.ActivityTitle" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
                     </denied-noti>
+                }
+                else if (notification.Notification_type == "kick")
+                {
+                    <kick-noti
+                        activity-id="@notification.Activity_id" 
+                        activity-title="@notification.ActivityTitle" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
+                    </kick-noti>
+                }
+                else if (notification.Notification_type == "join")
+                {
+                    <joined-noti 
+                        activity-id="@notification.Activity_id" 
+                        activity-title="@notification.ActivityTitle" 
+                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
+                    </joined-noti>
+                }
+                else if (notification.Notification_type == "leave")
+                {
+                    <leave-noti 
+                        activity-id="@notification.Activity_id" 
+                        activity-title="@notification.ActivityTitle" 
+                        name="@notification.ActivityUserFirstName @notification.ActivityUserLastName" 
+                        time="@notification.Notification_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")">
+                    </leave-noti>
                 }
             }
         </ul>

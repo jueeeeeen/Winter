@@ -12,7 +12,7 @@
             <svg-male aria-label="male"></svg-male>
         </div>
         <div>
-            <span>@DateTime.Parse(@Model.Create_time).ToString("dd MMM yyyy HH:mm")</span>
+            <span>@Model.Create_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")</span>
             <span aria-label="review" class="act-card-review">
                 <svg-star-sharp></svg-star-sharp>
                 @Model.host.Rating
@@ -68,11 +68,11 @@
     <ul>
         <li>
             <svg-calendar></svg-calendar>
-            @DateTime.Parse(@Model.Create_time).ToString("ddd, dd MMM yyyy")
+            @Model.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy")
         </li>
         <li>
             <svg-clock></svg-clock>
-            @DateTime.Parse(@Model.Create_time).ToString("HH:mm") (@Model.Duration Hour)
+            @Model.Activity_time.ToLocalTime().ToString("HH:mm") (@Model.Duration Hour)
         </li>
         <li class="act-detail-location">
             <svg-location></svg-location>
@@ -97,15 +97,21 @@
             {
                 @if (participant.Role == "host")
                 {
-                    <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic"></host-list-item>
+                
+                        <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username"></host-list-item>
+                    
                 }
                 else if (participant.Role == "member")
                 {
-                    <member-host-view name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
+                    
+                        <member-host-view name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username" data-activity-id="@Model.Activity_id"></member-host-view>
+                    
                 }
                 else if (participant.Role == "pending")
                 {
-                    <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
+                    
+                        <pending-member-host-view name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username" data-activity-id="@Model.Activity_id"></pending-member-host-view>
+                    
                 }
             }
             </ul>
@@ -122,11 +128,15 @@
             {
                 @if (participant.Role == "host")
                 {
-                    <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic"></host-list-item>
+                    
+                        <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username"></host-list-item>
+                    
                 }
                 else if (participant.Role == "member")
                 {
-                    <member-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic"></member-list-item>
+                    
+                    <member-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username"></member-list-item>
+                    
                 }
             }
             @if (@Model.Pending_count != 0)
@@ -135,11 +145,17 @@
             }
             @{
                 bool userIsMember = false;
+                bool userIsPending = false;
                 foreach (var participant in Model.Participants)
                 {
-                    if (participant.Username == username)
+                    if (participant.Username == username && participant.Role == "member")
                     {
                         userIsMember = true;
+                        break;
+                    }
+                    else if (participant.Username == username && participant.Role == "pending")
+                    {
+                        userIsPending = true;
                         break;
                     }
                 }
@@ -152,6 +168,10 @@
                 <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
                     <svg-chat></svg-chat> chat
                 </a>
+            }
+            else if (userIsPending)
+            {
+                <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
             }
             else if (Model.Member_count < @Model.Max_member)
             {
@@ -167,11 +187,11 @@
         {
             @if (participant.Role == "host")
             {
-                <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic"></host-list-item>
+                <host-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username"></host-list-item>
             }
             else if (participant.Role == "member")
             {
-                <member-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic"></member-list-item>
+                <member-list-item name="@participant.User.FirstName @participant.User.LastName" profile-pic="@participant.User.Profile_pic" username="@participant.Username"></member-list-item>
             }
         }
         @{
@@ -201,11 +221,11 @@
         {
             @if (participant.Role == "host")
                 {
-                    <host-list-item name="@participant.User.FirstName @participant.User.LastName"></host-list-item>
+                    <host-list-item name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username"></host-list-item>
                 }
             else if (participant.Role == "member")
             {
-                <member-list-item name="@participant.User.FirstName @participant.User.LastName"></member-list-item>
+                <member-list-item name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username"></member-list-item>
             }
         }
         @{

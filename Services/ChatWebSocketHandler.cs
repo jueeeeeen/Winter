@@ -103,7 +103,7 @@ namespace Winter_Project.Services
                 var now = DateTime.UtcNow;
                 Console.WriteLine(now);
 
-                string first_name = "", last_name = "";
+                string first_name = "", last_name = "" , Profile_picture="" , RoleUser="";
 
                 using (var scope = _scopeFactory.CreateScope())
                 {
@@ -112,12 +112,23 @@ namespace Winter_Project.Services
                     // Fetch User Info First
                     var userInfo = dbContext.Users
                         .Where(u => u.Username == username)
-                        .Select(u => new { u.FirstName, u.LastName })
+                        .Select(u => new { u.FirstName, u.LastName ,u.ProfilePicture })
                         .FirstOrDefault();
 
                     first_name = userInfo?.FirstName ?? "";
                     last_name = userInfo?.LastName ?? "";
+                    Profile_picture = userInfo?.ProfilePicture != null
+                        ? $"data:image/png;base64,{Convert.ToBase64String(userInfo.ProfilePicture)}"
+                        : "/assets/profile-g.png";
 
+                    var userRole = dbContext.Activities
+                        .Where(a => a.Activity_id == activity_id)
+                        .SelectMany(a => a.Participants)
+                        .Where(p => p.Username == username)
+                        .Select(p => new { p.Role} )
+                        .FirstOrDefault();
+
+                    RoleUser = userRole?.Role ?? "";
                     // Insert Chat Message AFTER Retrieving User Info
                     var chat_message = new ChatMessageModel
                     {
@@ -138,6 +149,8 @@ namespace Winter_Project.Services
                     Name = $"{first_name} {last_name}".Trim(),
                     Message = message,
                     Timestamp = now.ToString("dd MMM yyyy HH:mm"),
+                    Profile_pic = Profile_picture,
+                    Role = RoleUser
                 };
 
                 var jsonMessage = JsonSerializer.Serialize(chatMessageJson);

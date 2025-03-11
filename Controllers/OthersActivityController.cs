@@ -55,7 +55,9 @@ public class OthersActivityController: Controller
             .Where(u => u.Username == username)
             .Select(u => new
             {
-                Profile_pic = "profile-g.png",
+                Profile_pic = u.ProfilePicture != null 
+                    ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                    : "/assets/profile-g.png",
                 u.Username,
                 u.FirstName,
                 u.LastName,
@@ -82,6 +84,9 @@ public class OthersActivityController: Controller
                             .Where(u => u.Username == p.Username)
                             .Select(u => new
                             {
+                                Profile_pic = u.ProfilePicture != null 
+                                    ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                    : "/assets/profile-g.png",
                                 u.Username,
                                 u.FirstName,
                                 u.LastName,

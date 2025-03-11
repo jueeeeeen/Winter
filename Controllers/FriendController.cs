@@ -4,6 +4,7 @@ using Winter_Project.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using Winter_Project.Services;
 
 public class FriendController : Controller
 {
@@ -138,7 +139,8 @@ public async Task<IActionResult> Index()
     // Add Friend
     [HttpPost("friends/add")]
     public async Task<IActionResult> AddFriend(int friendId)
-    {
+    {   
+        Console.WriteLine($"✅ FriendId From front: {friendId}");
         var token = Request.Cookies["token"];
         Console.WriteLine($"🛑 Received Token: {token}");
 
@@ -371,38 +373,75 @@ public async Task<IActionResult> Index()
     [HttpGet("friend/findfriend")]
     public IActionResult FindFriend(string search_string)
     {
-        if (string.IsNullOrEmpty(search_string))
-        {
+        var username = Get_username_from_token();
+        ViewData["username"] = username;
+
+        if(username == null) {
             return View();
         }
 
-        var users = _context.Users
-    .Where(u => u.Username.Contains(search_string))
-    .GroupJoin(
-        _context.Friends,
-        user => user.Id,
-        friend => friend.UserId,
-        (user, friends) => new { user, friends }
-    )
-    .SelectMany(
-        x => x.friends.DefaultIfEmpty(), // Left Join equivalent
-        (x, friend) => new FriendViewModel
+        var userId = _context.Users.FirstOrDefault(u => u.Username == username)?.Id;
+
+        if(search_string == null)
         {
-            UserId = x.user.Id, // Always using user.Id
-            Username = x.user.Username,
-            FirstName = x.user.FirstName,
-            LastName = x.user.LastName,
-            IsFriend = friend != null ? friend.IsFriend : false, // If no friend, set to false
-            IsPending = friend != null ? friend.IsPending : false, // If no friend, set to false
-            ProfilePicture = x.user.ProfilePicture != null
-                        ? $"data:image/png;base64,{Convert.ToBase64String(x.user.ProfilePicture)}"
-                        : "/assets/profile-g.png",
-        })
-    .ToList();
+            var initial_users = _context.Users
+            .Where(u => u.Id != userId && !_context.Friends
+                .Any(f => (f.UserId == u.Id && f.FriendId == userId) || (f.UserId == userId && f.FriendId == u.Id)))
+            .Select(u => new FriendViewModel
+            {
+                UserId = u.Id,
+                Username = u.Username,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                ProfilePicture = u.ProfilePicture != null
+                    ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}"
+                    : "/assets/profile-g.png"
+            })
+            .Take(10)
+            .ToList();
+            Console.WriteLine(initial_users.Count());
+            ViewData["search"] = false;
+            return View(initial_users);
+        }
+        
+
+        var users = _context.Users
+        .Where(u => u.Username.Contains(search_string) || (u.FirstName + " " + u.LastName).Contains(search_string))
+        .ToList();
+
+        if(users == null){
+            return View();
+        }
+
+        var friends = _context.Friends
+        .Where(f => (f.UserId == userId || f.FriendId == userId) && (users.Select(u => u.Id).Contains(f.UserId) || users.Select(u => u.Id).Contains(f.FriendId)))
+        .ToList();
 
 
+        var result = users.Select(user => new FriendViewModel
+        {
+            UserId = user.Id,
+            FriendId = friends?.FirstOrDefault(f => f.UserId == user.Id || f.FriendId == user.Id)?.FriendId,
+            Username = user.Username,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            IsFriend = friends?.FirstOrDefault(f => f.UserId == user.Id)?.IsFriend ?? false,
+            IsPending = friends?.FirstOrDefault(f => f.UserId == user.Id || f.FriendId == user.Id)?.IsPending ?? false,
+            Time = friends?.FirstOrDefault(f => f.UserId == user.Id || f.FriendId == user.Id)?.time ?? DateTime.UtcNow,
+            ProfilePicture = user.ProfilePicture != null
+                ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
+                : "/assets/profile-g.png",
+        }).ToList();
 
-        return View(users);
+        ViewData["search"] = true;
+        return View(result);
+    }
+
+    private string Get_username_from_token()
+    {
+        var token = Request.Cookies["token"];
+        var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+        return username;
     }
 
     public class FriendRequestModel

@@ -170,7 +170,6 @@ public class ProfileController : Controller
 
         user.FirstName = model.FirstName;
         user.LastName = model.LastName;
-        user.Email = model.Email;
         user.DateOfBirth = model.DateOfBirth;
         user.Gender = model.Gender;
 
@@ -218,12 +217,64 @@ public class ProfileController : Controller
         var jwtSecurityToken = handler.ReadJwtToken(token);
         var loggedInUsername = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
 
-        ViewBag.IsOwner = (username == loggedInUsername); // เช็คว่าเป็นเจ้าของโปรไฟล์หรือไม่
+        ViewBag.IsOwner = (username == loggedInUsername);
+        
+        string GetFriendStatus(int loggedInUserId, int profileUserId)
+        {
+            var friends = _context.Friends.ToList();
+
+            var friend = friends.FirstOrDefault(f =>
+                (f.UserId == loggedInUserId && f.FriendId == profileUserId) ||
+                (f.UserId == profileUserId && f.FriendId == loggedInUserId));
+
+            if (friend == null)
+            {
+                return "No relationship"; // ไม่มีกลุ่มความสัมพันธ์
+            }
+            else if (friend.IsFriend)
+            {
+                return $"you have been friends with them since {friend.time.ToLocalTime().ToString("MMMM dd, yyyy")}"; // เป็นเพื่อนกันแล้ว
+            }
+            else if (friend.IsPending)
+            {
+                if (friend.UserId == loggedInUserId)
+                    return "Request sent"; // คำขอเป็นเพื่อนถูกส่งแล้ว
+                else
+                    return "Request received"; // คำขอเป็นเพื่อนที่รับมา
+            }
+            return "No relationship"; // ถ้าไม่มีสถานะอื่น
+        }
+
+        var loggedInUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == loggedInUsername);
+        string status = "No relationship"; // ค่า default
+        if (loggedInUser != null)
+        {
+            status = GetFriendStatus(loggedInUser.Id, user.Id);
+        }
+
+        ViewBag.FriendStatus = status;
 
         var userBio = _context.UserBios.FirstOrDefault(b => b.UserId == user.Id);
 
+        var reviewCount = await _context.Reviews
+            .CountAsync(r => r.Reviewed_user == user.Username);
+        
+        var activityCount = await _context.Participants
+            .Join(_context.Activities,
+                p => p.Activity_id,
+                a => a.Activity_id,
+                (p, a) => new { Participant = p, Activity = a })
+            .CountAsync(pa => pa.Participant.Username == user.Username && pa.Activity.Status == "done");
+
+        var averageRating = await _context.Reviews
+            .Where(r => r.Reviewed_user == user.Username)
+            .Select(r => (double?)r.Rating) // ใช้ double? เพื่อป้องกัน error หากไม่มีข้อมูล
+            .AverageAsync() ?? 0;
+
+
         var profileViewModel = new ProfileViewModel
         {
+            UserId = user.Id,
             Username = user.Username,
             Email = user.Email,
             FirstName = user.FirstName,
@@ -237,7 +288,10 @@ public class ProfileController : Controller
             MyHobby = userBio?.MyHobby ?? "No information",
             ProfilePictureBase64 = user.ProfilePicture != null
                 ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
-                : Url.Content("~/assets/Profile-w-b.png")
+                : Url.Content("~/assets/Profile-w-b.png"),
+            ReviewCount = reviewCount,
+            ActivityCount = activityCount,
+            AverageRating = averageRating
         };
         
 

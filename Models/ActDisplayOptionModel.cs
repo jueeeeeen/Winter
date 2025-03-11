@@ -18,6 +18,8 @@ namespace Winter_Project.Models
     {
         public AgeFilter? Age { get; set; }
         public List<string>? Gender { get; set; }
+        public bool Friend { get; set; }
+
 
     }
 

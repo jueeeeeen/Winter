@@ -10,6 +10,31 @@ public class ActivityDetailController: Controller
 {
     private readonly WinterContext _context;
 
+    public async Task UpdateActivityStatusAsync()
+    {
+        var activities = await _context.Activities
+            .Where(a => a.Status != "delete") 
+            .ToListAsync();
+
+        var currentTime = DateTime.UtcNow;
+
+        foreach (var activity in activities)
+        {
+            if (activity.Status == "open" && activity.Deadline_time <= currentTime)
+            {
+                activity.Status = "close"; 
+            }
+            if (activity.Activity_time.Add(TimeSpan.Parse(activity.Duration)) <= currentTime)
+            {
+                activity.Status = "done";
+            }
+
+            _context.Activities.Update(activity);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
     public ActivityDetailController(ILogger<CreateController> logger, WinterContext context)
     {
         _context = context;
@@ -18,6 +43,7 @@ public class ActivityDetailController: Controller
     [HttpGet("ActivityDetail/{id}")]
     public IActionResult Index(int id)
     {
+        UpdateActivityStatusAsync().Wait();
         var activity = _context.Activities
             .Where(a => a.Activity_id == id)
             .Select(a => new 
@@ -190,6 +216,8 @@ public class ActivityDetailController: Controller
                 Notification_time = DateTime.UtcNow
             };
 
+            if (member_count + 1 >= activity.Max_member) activity.Status = "full";
+
             _context.Notifications.Add(notification);
         }
 
@@ -245,6 +273,8 @@ public class ActivityDetailController: Controller
 
             _context.Participants.Remove(participant);
         }
+
+        if (activity.Status == "full") activity.Status = "open";
 
         _context.SaveChanges();
 
@@ -339,6 +369,7 @@ public class ActivityDetailController: Controller
             };
 
             _context.Notifications.Add(notification);
+            if (activity.Status == "full") activity.Status = "open";
             _context.SaveChanges();
         }
 
@@ -389,6 +420,37 @@ public class ActivityDetailController: Controller
             _context.Notifications.Add(notification);
             _context.SaveChanges();
         }
+        
+        var member_count = activity.Participants.Count(p => p.Role == "member" || p.Role == "host");
+
+        if (member_count >= activity.Max_member) {
+            
+            activity.Status = "full";
+
+            var pendingParticipants = _context.Participants
+                .Where(p => p.Activity_id == activity.Activity_id && p.Role == "pending")
+                .ToList();
+
+            foreach (var par in pendingParticipants)
+            {
+                _context.Participants.Remove(par);
+
+                var participant_user = _context.Users.FirstOrDefault(u => u.Username == par.Username);
+                
+                var notification = new NotificationModel
+                {
+                    User_id = participant_user.Id,
+                    Notification_type = "denied",
+                    Activity_id = activity.Activity_id,
+                    Activity_user_id = 0,
+                    Notification_time = DateTime.UtcNow
+                };
+
+                _context.Notifications.Add(notification);
+            }
+        }
+
+        _context.SaveChanges();
 
         return Ok(new { message = $"Approved Username: {username} Successfully"});
     }

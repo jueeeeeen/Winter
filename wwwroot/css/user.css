@@ -234,9 +234,99 @@
   justify-content: center;
   gap: 5px;
   cursor: pointer;
-  width: 7rem;
   height: 3rem;
   margin-bottom: 1rem;
+}
+
+.friend-approve {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: absolute;
+  right: 1px;
+  bottom: -5rem;
+}
+
+.friend-approve button {
+  background-color: var(--blue70);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: fit-content;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.friend-approve button p {
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.friend-text {
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+
+.friend-text p {
+  font-weight: bold;
+  font-size: large;
+  color: var(--gray80);
+}
+
+.friend-approve p {
+  font-weight: bold;
+  font-size: large;
+  color: var(--gray80);
+}
+
+.friend-approve button{
+  width: 100px !important;
+}
+
+.friend-button {
+  position: absolute;
+  right: 1px;
+  bottom: -5rem;
+}
+
+.friend-red button {
+  background-color: var(--red) !important;
+}
+
+.friend-green button {
+  background-color: var(--green) !important;
+}
+
+.friend-yellow button {
+  background-color: var(--yellow) !important;
+}
+
+.friend-button button {
+  background-color: var(--blue70);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: fit-content;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.friend-button button p {
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .edit-profile-button button p {
@@ -610,4 +700,81 @@ fieldset {
   .female-button:hover::after {
     font-size: 1.2rem;
   }
+
+  .friend-approve {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 1px;
+    bottom: -5rem;
+  }
+  
+  .friend-approve button {
+    background-color: var(--blue70);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    width: fit-content;
+    height: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .friend-approve button p {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .friend-text {
+    display: flex;
+    align-items: center;
+    gap: 10px
+  }
+  
+  .friend-text p {
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+  }
+  
+  .friend-approve p {
+    font-size: small;
+  }
+  
+  .friend-approve button{
+    width: 60px !important;
+  }
+  
+  .friend-button {
+    position: absolute;
+    right: 1px;
+    bottom: -5rem;
+  }
+  
+  .friend-red button {
+    background-color: var(--red) !important;
+  }
+  
+  .friend-green button {
+    background-color: var(--green) !important;
+  }
+  
+  .friend-yellow button {
+    background-color: var(--yellow) !important;
+  }
+  
+  .friend-button button {
+    width: fit-content;
+  }
+
+  .friend-button p {
+    font-size: 1rem !important;
+  }
+  
 }

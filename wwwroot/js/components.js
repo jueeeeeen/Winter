@@ -253,9 +253,9 @@ class SearchFriendBar extends HTMLElement {
     super();
     this.innerHTML = 
     `<form class="search-bar shadow" asp-controller="Friend" asp-action="FindFriend">
-        <input id="search_input" type="text" name="search_string" placeholder="search friend username..." required>
+        <input id="search_input" type="text" name="search_string" placeholder="search friends..." required>
         <div class="search-bar-x">
-            <button type="button" class="btn" id="clear_search_button">
+            <button type="button" class="btn" id="clear-search-button">
                 <svg-x></svg-x>
             </button>
         </div>
@@ -268,15 +268,8 @@ class SearchFriendBar extends HTMLElement {
   }
 
   connectedCallback() {
-    this.clear_search_button = this.querySelector("#clear_search_button");
+    this.clear_search_button = this.querySelector("#clear-search-button");
     this.clear_search_button.addEventListener("click", this.clear_search);
-
-    this.search_btn = this.querySelector("#seach-button");
-    this.search_input = this.querySelector("input");
-    this.search_btn.addEventListener("click", () => {
-      console.log(this.search_input.value);
-      this.search_key = this.search_input.value;
-    });
   }
 
   get result() {
@@ -285,8 +278,8 @@ class SearchFriendBar extends HTMLElement {
 
   clear_search() {
     this.search_input = this.querySelector("#search_input");
-    console.log("seach key: ", this.search_input);
     this.search_input.value = "";
+    window.location.href = "findfriend"
   }
 }
 
@@ -366,7 +359,7 @@ class RangeFilterLi extends HTMLElement {
       `<li>
         <div class="btn filter-header w-db hover-bb-w">
             <svg-star-outline></svg-star-outline>
-            Age range
+            Age Requirement
             <svg-down-arrow class="right"></svg-down-arrow>
         </div>
         <div class="range-filter-container">
@@ -481,8 +474,8 @@ class CheckFilterLi extends HTMLElement {
     super();
     this.innerHTML = `<li>
             <div class="btn filter-header w-db hover-bb-w">
-                <svg-star-outline></svg-star-outline>
-                Gender
+                <svg-lgbtq></svg-lgbtq>
+                Gender Requirement
                 <svg-down-arrow class="right"></svg-down-arrow>
             </div>
             <div class="check-filter-container" id="gender-filter-container">
@@ -529,16 +522,62 @@ class CheckFilterLi extends HTMLElement {
 }
 customElements.define("check-filter-li", CheckFilterLi);
 
+class FriendFilterLi extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = 
+    `<li>
+        <div class="btn filter-header w-db hover-bb-w">
+            <svg-friend></svg-friend>
+            Friend
+            <svg-down-arrow class="right"></svg-down-arrow>
+        </div>
+        <div class="check-filter-container" id="friend-filter-container">
+            <span class="check-filter-item">
+                <input type="checkbox" id="filter-friend-check" name="friend" value="true">
+                <label for="filter-friend-check">only friend</label>
+            </span>
+        </div>
+    </li>`;
+  }
+
+  connectedCallback() {
+    this.filter_header = this.querySelector(".filter-header");
+    this.check_filter_container = this.querySelector(".check-filter-container");
+    this.filter_header.addEventListener("click", () => {
+      this.check_filter_container.classList.toggle("show");
+      this.filter_header.classList.toggle("bb-w");
+    });
+  }
+
+  disconnectedCallback() {
+    this.filter_header.removeEventListener("click");
+  }
+
+  get result() {
+    return this.querySelector('#filter-friend-check').value === "true";
+  }
+
+  reset() {
+    this.querySelectorAll("input").forEach((input) => {
+      input.checked = false;
+    });
+  }
+}
+customElements.define("friend-filter-li", FriendFilterLi);
+
 class DisplayFilter extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = `<button class="filter-btn btn w-bb-bb display-filter hover-bb-w" id="display-filter">
+    this.innerHTML = 
+      `<button class="filter-btn btn w-bb-bb display-filter hover-bb-w" id="display-filter">
             <svg-filter></svg-filter>
         </button>
         <div class="filter-dropdown shadow">
             <ul>
                 <range-filter-li id="age-filter"></range-filter-li>
                 <check-filter-li id="gender-filter"></check-filter-li>
+                <friend-filter-li id="friend-filter"></friend-filter-li>
             </ul>
             <div class="filter-button-container">
                 <button class="btn w-bb-bb edge hover-w-mb-mb" id="clear-filter-btn">
@@ -564,6 +603,7 @@ class DisplayFilter extends HTMLElement {
 
     this.age_filter = this.querySelector("#age-filter");
     this.gender_filter = this.querySelector("#gender-filter");
+    this.friend_filter = this.querySelector("#friend-filter");
 
     this.querySelector("#clear-filter-btn").addEventListener("click", () => {
       this.clear_filter();
@@ -572,6 +612,7 @@ class DisplayFilter extends HTMLElement {
     this.querySelector("#save-filter-btn").addEventListener("click", () => {
       this.age_range = this.age_filter.result;
       this.gender = this.gender_filter.result;
+      this.friend = this.friend_filter.result;
     });
   }
 
@@ -585,6 +626,7 @@ class DisplayFilter extends HTMLElement {
     this.data = {
       age: this.age_range,
       gender: this.gender,
+      friend: this.friend
     };
     return this.data;
   }
@@ -606,8 +648,10 @@ class DisplayFilter extends HTMLElement {
   clear_filter() {
     this.gender_filter.reset();
     this.age_filter.reset();
+    this.friend_filter.reset();
     this.age_range = null;
     this.gender = null;
+    this.friend = null;
   }
 }
 customElements.define("display-filter", DisplayFilter);
@@ -794,69 +838,61 @@ class ActivityCard extends HTMLElement {
     if (activity) {
       [this.act_date, this.act_time] = activity.activity_time.split("-");
       this.innerHTML = `
-            <div class="activity-card shadow">
-                <div class="act-card-header">
-                    <div class="act-card-profile-info">
-                        <div><img src="${
-                          activity.host.profile_pic
-                        }" class="profile-img" ></div>
-                        <div>
-                            <span>${
-                              activity.host.firstName +
-                              " " +
-                              activity.host.lastName
-                            }</span>
-                            <svg-${activity.host.gender} aria-label="${
-        activity.host.gender
-      }"></svg-${activity.host.gender}>
-                        </div>
-                        <div>
-                            <span>${activity.create_time}</span>
-                            <span aria-label="review" class="act-card-review">
-                                <svg-star-sharp></svg-star-sharp>
-                                ${activity.host.review}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="act-card-member">${activity.member_count + "/" + activity.max_member}</div>
-                </div>
-                
-                <ul class="act-card-tags-container">
-                    ${activity.tags
-                      .map(
-                        (tag) => `
-                        <li>
-                            <tag-display data-tag_name="${tag}"></tag-display>
-                        </li>
-                    `
-                      )
-                      .join("")}
-                </ul>
-                <div class="title">
-                    <h2>${activity.title}</h2>
-                </div>
-                <ul class="act-card-tags-container">
-                    ${activity.requirement.age ? `<req-tag data-type="age" data-value="${activity.requirement.age}"></req-tag>`:""}
-                    ${activity.requirement.gender=="none" ? "":`<req-tag data-type="gender" data-value="${activity.requirement.gender}"></req-tag>`}
-                </ul>
-                <ul class="act-card-info">
-                    <li>
-                        <svg-clock></svg-clock><span>${
-                          this.act_time + " (" + activity.duration + " hr)"
-                        }</span>
-                    </li>
-                    <li>
-                        <svg-calendar></svg-calendar><span>${
-                          this.act_date
-                        }</span>
-                    </li>
-                    <li>
-                        <act-card-join-btn data-act-id="${
-                          activity.activity_id
-                        }"></act-card-join-btn>
-                    </li>
-                </ul>
-            </div>`;
+        <div class="activity-card shadow">
+          <div class="act-card-header">
+            <div class="act-card-profile-info">
+              <div><a href="/Profile/${activity.host.username}"><img src="${activity.host.profile_pic}" class="profile-img"></a></div>
+              <div class="act-card-name-gender">
+                <span><a href="/Profile/${activity.host.username}">${activity.host.firstName +" " +activity.host.lastName}</a></span>
+                <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+              </div>
+              <div>
+                  <span>${activity.create_time}</span>
+                  <span aria-label="review" class="act-card-review">
+                      <svg-star-sharp></svg-star-sharp>
+                      ${activity.host.review}
+                  </span>
+              </div>
+            </div>
+          <div class="act-card-member">${activity.member_count + "/" + activity.max_member}</div>
+        </div>
+          
+        <ul class="act-card-tags-container">
+            ${activity.tags
+              .map(
+                (tag) => `
+                <li>
+                    <tag-display data-tag_name="${tag}"></tag-display>
+                </li>
+            `
+              )
+              .join("")}
+        </ul>
+        <div class="title">
+            <h2>${activity.title}</h2>
+        </div>
+        <ul class="act-card-tags-container">
+            ${activity.requirement.age ? `<req-tag data-type="age" data-value="${activity.requirement.age}"></req-tag>`:""}
+            ${activity.requirement.gender=="none" ? "":`<req-tag data-type="gender" data-value="${activity.requirement.gender}"></req-tag>`}
+        </ul>
+        <ul class="act-card-info">
+            <li>
+                <svg-clock></svg-clock><span>${
+                  this.act_time + " (" + activity.duration + " hr)"
+                }</span>
+            </li>
+            <li>
+                <svg-calendar></svg-calendar><span>${
+                  this.act_date
+                }</span>
+            </li>
+            <li>
+              <act-card-join-btn data-act-id="${
+                activity.activity_id
+              }"></act-card-join-btn>
+            </li>
+          </ul>
+        </div>`;
     } else {
       this.innerHTML = `
             <div class="activity-card shadow">
@@ -921,7 +957,7 @@ class Pagination extends HTMLElement {
     this._current_page = 1;
     this.innerHTML = `<div class="pagination-container round shadow">
             <button class="pagination-btn btn round" id="prev_button"><svg-prev></svg-prev></button>
-            <div id="page-number-container"></div>
+            <div class="flex" id="page-number-container"></div>
             <button class="pagination-btn btn round" id="next_button"><svg-next></svg-next></button>
         </div>`;
   }
@@ -1242,10 +1278,16 @@ class ActDetailLeaveBtn extends HTMLElement {
 }
 
 class ViewReviewBtn extends HTMLElement {
-    constructor() {
-        super();
-        this.innerHTML = `<button class="btn large y-w round act-detail-btn hover-w-y ani-bounce">view review</button>`;
-    }
+  constructor() {
+      super();
+      this.activity_id = this.getAttribute("activity-id");
+
+      this.innerHTML = `<button class="btn large y-w round act-detail-btn hover-w-y ani-bounce">view review</button>`;
+
+      this.querySelector("button").addEventListener("click", () => {
+          window.location.href = `http://localhost:5115/ActivityReview/${this.activity_id}`;
+      });
+  }
 }
 
 class DeleteBtn extends HTMLElement {
@@ -1405,9 +1447,9 @@ class FriendLiADD extends HTMLElement {
     this.innerHTML = `
       <li class="w-bb-bb member-list-item">
         <div class="member-list-item-profile">
-          <img class="profile" src="${this.profile_pic}">
+          <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
         </div>
-        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
         <span class="member-list-item-role flex"></span>
         <div class="member-list-item-approval flex">
           <button id="add-friend-btn" class="btn approval lb-w hover-db-w round">
@@ -1429,9 +1471,10 @@ class FriendLiADD extends HTMLElement {
         },
         body: new URLSearchParams({ friendId: this.friendId }),
       });
-
+      console.log(`✅ ${this.friendId}`);
       if (response.ok) {
         console.log(`✅ Friend request sent to Friend ID: ${this.friendId}`);
+
         alert("คำขอเป็นเพื่อนถูกส่งแล้ว!");
       } else {
         console.log("❌ Friend request failed");
@@ -1457,9 +1500,9 @@ class FriendLiApprove extends HTMLElement {
     this.innerHTML = `
       <li class="w-bb-bb member-list-item">
         <div class="member-list-item-profile">
-          <img class="profile" src="${this.profile_pic}">
+          <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
         </div>
-        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}}</a>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
         <span class="member-list-item-role flex">wants to be your friend</span>
         <div class="member-list-item-approval flex">
           <button id="accept-friend-btn" class="btn approval gr-w hover-w-gr-gr round">
@@ -1550,9 +1593,9 @@ class FriendLiCancel extends HTMLElement {
     this.innerHTML = `
       <li class="w-bb-bb member-list-item">
         <div class="member-list-item-profile">
-          <img class="profile" src="${this.profile_pic}">
+          <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
         </div>
-        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
         <span class="member-list-item-role flex">waiting for acceptance</span>
         <div class="member-list-item-approval flex">
           <button id="cancel-friend-btn" class="btn approval y-w hover-w-y-y round">
@@ -1604,9 +1647,9 @@ class FriendLiDelete extends HTMLElement {
       this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
           <div class="member-list-item-profile">
-              <img class="profile" src="${this.profile_pic}">
+              <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
           </div>
-          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
           <span class="member-list-item-role flex">since - ${this.since}</span>
           <div class="member-list-item-approval flex">
             <button class="btn approval r-w hover-w-r-r round delete-friend-btn">
@@ -1646,7 +1689,24 @@ class FriendLiDelete extends HTMLElement {
 }
 customElements.define("friend-li-delete", FriendLiDelete);
 
-
+class FriendLiYou extends HTMLElement {
+  constructor() {
+      super();
+      this.name = this.getAttribute("name");
+      this.username = this.getAttribute("username")
+      this.profile_pic = this.getAttribute("profile-pic");
+      this.since = this.getAttribute("since");
+      this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+          <div class="member-list-item-profile">
+              <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
+          </div>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
+          <span class="member-list-item-role flex">You</span>
+        </li>`;
+  }
+}
+customElements.define("friend-li-you", FriendLiYou);
 
 // SVG Components Class
 class BaseSVGElement extends HTMLElement {
@@ -1705,7 +1765,7 @@ class SVGGenderFemale extends BaseSVGElement {
   }
 }
 
-class SVGGenderLGBT extends BaseSVGElement {
+class SVGGenderLGBTQ extends BaseSVGElement {
   constructor() {
     super();
     this.innerHTML = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2133,6 +2193,23 @@ class SVGBell extends BaseSVGElement {
 }
 customElements.define("svg-bell", SVGBell);
 
+class SVGFriend extends BaseSVGElement {
+  constructor() {
+    super();
+    this.innerHTML =
+    `<svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.49602 5.49885C3.49622 4.55077 3.74149 3.61883 4.20804 2.79348C4.67459 1.96814 5.34656 1.2774 6.15876 0.788319C6.97096 0.299234
+      7.89579 0.0284054 8.84351 0.00211538C9.79123 -0.0241747 10.7297 0.194966 11.5677 0.638273C12.4058 1.08158 13.115 1.734 13.6266 2.53221C14.1382
+      3.33043 14.4347 4.24733 14.4875 5.19395C14.5403 6.14056 14.3474 7.08474 13.9277 7.93486C13.508 8.78498 12.8756 9.51217 12.092 10.0459C13.7795
+      10.6648 15.2432 11.7746 16.2947 13.2324C17.3461 14.6902 17.9373 16.4293 17.992 18.2259C17.9897 18.4196 17.9126 18.6049 17.7769 18.7431C17.6411
+      18.8813 17.4572 18.9617 17.2636 18.9675C17.07 18.9733 16.8816 18.9041 16.7378 18.7742C16.594 18.6444 16.506 18.4641 16.492 18.2709C16.4325 16.3223
+      15.6166 14.4735 14.2172 13.1163C12.8178 11.759 10.945 11 8.99552 11C7.04607 11 5.17322 11.759 3.77385 13.1163C2.37448 14.4735 1.55857 16.3223 1.49902 18.2709C1.48901 18.4667 1.4027 18.6508 1.25858 18.7838C1.11446 18.9168 0.924 18.988 0.727995 18.9822C0.53199 18.9765 0.346033 18.8942 0.209963 18.753C0.0738921 18.6118 -0.0014699 18.4229 2.17278e-05 18.2269C0.0545731 16.4301 0.645629 14.6908 1.69711 13.2328C2.74859 11.7748 4.21236 10.6649 5.90002 10.0459C5.1591 9.54124 4.55275 8.86317 4.13376 8.07068C3.71477 7.27819 3.49583 6.39529 3.49602 5.49885ZM8.99602 1.49885C7.93516 1.49885 6.91774 1.92028 6.16759 2.67043C5.41745 3.42057 4.99602 4.43799 4.99602 5.49885C4.99602 6.55972 5.41745 7.57714 6.16759 8.32728C6.91774 9.07743 7.93516 9.49885 8.99602 9.49885C10.0569 9.49885 11.0743 9.07743 11.8244 8.32728C12.5746 7.57714 12.996 6.55972 12.996 5.49885C12.996 4.43799 12.5746 3.42057 11.8244 2.67043C11.0743 1.92028 10.0569 1.49885 8.99602 1.49885ZM17.286 5.49885C17.1387 5.49885 16.994 5.50885 16.852 5.52885C16.7529 5.54661 16.6512 5.54421 16.553 5.5218C16.4548 5.49939 16.3621 5.45744 16.2805 5.39844C16.1989 5.33944 16.1299 5.2646 16.0779 5.17839C16.0258 5.09218 15.9916 4.99637 15.9774 4.89666C15.9631 4.79696 15.9691 4.6954 15.995 4.59806C16.0208 4.50072 16.066 4.40958 16.1279 4.33008C16.1897 4.25058 16.2669 4.18436 16.3549 4.13535C16.4429 4.08635 16.5399 4.05557 16.64 4.04485C17.6346 3.90106 18.6488 4.09205 19.5229 4.58778C20.397 5.0835 21.0815 5.85582 21.4686 6.78318C21.8557 7.71054 21.9235 8.7403 21.6613 9.71039C21.399 10.6805 20.8217 11.5358 20.02 12.1419C21.1984 12.6695 22.1989 13.5269 22.9009 14.6105C23.6029 15.6941 23.9762 16.9577 23.976 18.2489C23.976 18.4478 23.897 18.6385 23.7564 18.7792C23.6157 18.9198 23.4249 18.9989 23.226 18.9989C23.0271 18.9989 22.8363 18.9198 22.6957 18.7792C22.555 18.6385 22.476 18.4478 22.476 18.2489C22.4764 17.1329 22.117 16.0465 21.4513 15.1509C20.7855 14.2553 19.8488 13.5981 18.78 13.2769L18.246 13.1169V11.4409L18.656 11.2319C19.2638 10.924 19.75 10.4203 20.0363 9.8021C20.3226 9.18388 20.3922 8.48723 20.2339 7.82461C20.0755 7.16199 19.6985 
+      6.57207 19.1636 6.15008C18.6288 5.72809 17.9673 5.49867 17.286 5.49885Z" fill="#5FA2FF"/>
+    </svg>`;
+  }
+}
+customElements.define("svg-friend", SVGFriend);
+
 customElements.define("search-bar", SearchBar);
 customElements.define("search-friend-bar", SearchFriendBar);
 customElements.define("tag-selector", TagsSelector);
@@ -2163,7 +2240,7 @@ customElements.define("svg-x", SVGXMark);
 customElements.define("svg-search", SVGSearch);
 customElements.define("svg-star-sharp", SVGStarSharp);
 customElements.define("svg-male", SVGGenderMale);
-customElements.define("svg-lgbt", SVGGenderLGBT);
+customElements.define("svg-lgbtq", SVGGenderLGBTQ);
 customElements.define("svg-female", SVGGenderFemale);
 customElements.define("svg-prev", SVGPrev);
 customElements.define("svg-next", SVGNext);
@@ -2331,6 +2408,7 @@ class Member extends HTMLElement {
             <div class="member-role">${this.member.role}</div>
           </div>
         </div>
+        <div class="member-rate-button"></div>
       </li>
       `;
 
@@ -2359,7 +2437,10 @@ class ActivityDropdown extends HTMLElement {
       <div class="activity-dropdown">
         <button class="activity-dropdown-btn">
           <div class="activity-details">
-            <span class="activity-name">${activity.title}</span>
+            <div class="activity-name-status">
+              <span class="activity-name">${activity.title}</span>
+              <span class="activity-status">${activity.status}</span>
+            </div>
             <div class="tags-date">
               <div class="tags"></div>
               <span class="date">
@@ -2413,10 +2494,23 @@ class ActivityDropdown extends HTMLElement {
     const dropdown = this.querySelector(".activity-dropdown");
     const content = this.querySelector(".activity-dropdown-content");
     const chevon = dropdownBtn.querySelector(".chevon");
+    const status = this.querySelector(".activity-status");
+
+    const statusColors = {
+        open: "green",
+        close: "#fdc330",
+        full: "blue",
+        delete: "red",
+        done: "var(--blue50)"
+    };
+
+    if (statusColors[this.activity.status]) {
+        status.style.backgroundColor = statusColors[this.activity.status];
+    }
 
     const closedPath = "m19.5 8.25-7.5 7.5-7.5-7.5";
     const openPath = "m4.5 15.75 7.5-7.5 7.5 7.5";
-
+    
     dropdownBtn.addEventListener("click", () => {
       document.querySelectorAll(".activity-dropdown.open").forEach((openDropdown) => {
         if (openDropdown !== dropdown) {
@@ -2460,6 +2554,7 @@ class ActivityDropdown extends HTMLElement {
       }
     });
   }
+
 }
 
 class ActivitiesList extends HTMLElement {

@@ -11,6 +11,31 @@ public class ActivityController: Controller
 {
     private readonly WinterContext _context;
 
+    public async Task UpdateActivityStatusAsync()
+    {
+        var activities = await _context.Activities
+            .Where(a => a.Status != "delete") 
+            .ToListAsync();
+
+        var currentTime = DateTime.UtcNow;
+
+        foreach (var activity in activities)
+        {
+            if (activity.Status == "open" && activity.Deadline_time <= currentTime)
+            {
+                activity.Status = "close"; 
+            }
+            if (activity.Activity_time.Add(TimeSpan.Parse(activity.Duration)) <= currentTime)
+            {
+                activity.Status = "done";
+            }
+
+            _context.Activities.Update(activity);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
     public ActivityController(WinterContext context)
     {
         _context = context;
@@ -37,6 +62,7 @@ public class ActivityController: Controller
     [HttpPost]
     public JsonResult GetActivityCards([FromBody] ActDisplayOptionModel filters)
     {
+        UpdateActivityStatusAsync().Wait();
         Console.WriteLine(filters);
         var page_size = 12;
 
@@ -81,6 +107,10 @@ public class ActivityController: Controller
             filtered_activities = filtered_activities.Where(a => a.Requirement.Age >= filters.Filter.Age.Min && a.Requirement.Age <= filters.Filter.Age.Max);
         }
 
+        // if (filters.Filter.Friend == true) {
+        //     filtered_activities = filtered_activities.Where(a => a.Owner);
+        // }
+
         if (filters.Tag_filter.Any()) {
             filtered_activities = filtered_activities.Where(a => filters.Tag_filter.Any(tag => a.Tags.Contains(tag)));
         }
@@ -105,7 +135,7 @@ public class ActivityController: Controller
                         a.Requirement.Age,
                     },
                     a.Location,
-                    Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm"),
+                    Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy-HH:mm"),
                     a.Max_member,
                     Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
                     a.Duration,

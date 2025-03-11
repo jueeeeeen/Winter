@@ -70,24 +70,29 @@ public class MyActivityController: Controller
         var filtered_activities = _context.Activities.AsQueryable();
 
         filtered_activities = filtered_activities.Where(a => a.Participants.Any(p => p.Username == curusername));
-
+        
         var activitiesList = filtered_activities
             .Include(a => a.Participants)
             .ToList(); 
 
-        if (activityType == "history"){
+        if (activityType == "history")
+        {
             activitiesList = activitiesList.Where(a =>
-                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
+                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7)
+                    || a.Status == "done" 
+                    || a.Status == "delete")
+                    .OrderByDescending(a => a.Status == "done")
+                    .ThenByDescending(a => a.Activity_time)   
                 .ToList();
         }
-        else if (activityType == "upcoming"){
+        else if (activityType == "upcoming")
+        {
             activitiesList = activitiesList.Where(a =>
-                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) >= DateTime.UtcNow.AddHours(7))
+                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) >= DateTime.UtcNow.AddHours(7)
+                    && a.Status != "delete") 
+                    .OrderByDescending(a => a.Activity_time)
                 .ToList();
         }
-
-
-
         var result = activitiesList;
         var response = new 
         {
@@ -97,9 +102,12 @@ public class MyActivityController: Controller
                 .Take(page_size)
                 .Select(a => new 
                 {
+                    EndTime = a.Activity_time.Add(TimeSpan.Parse(a.Duration)),     
+                    now = DateTime.UtcNow.AddHours(7),
                     a.Activity_id,
                     a.Title,
                     a.Tags,
+                    a.Status,
                     Activity_time = a.Activity_time.ToString("ddd, dd MMM yyyy-HH:mm"),
                     host = _context.Users
                     .Where(u => u.Username == a.Owner)

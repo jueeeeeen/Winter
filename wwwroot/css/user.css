@@ -81,8 +81,8 @@
 }
 
 .profile-details img {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   margin-right: 10px;
   margin-left: 20px;
 }
@@ -90,8 +90,8 @@
 .profile-details div {
   display: flex;
   flex-direction: row;
-  align-content: center;
-  margin: 15px;
+  align-items: center;
+  margin: 10px;
 }
 
 .profile-details p {
@@ -133,7 +133,7 @@
 
 .joined-review p {
   color: var(--gray70);
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 

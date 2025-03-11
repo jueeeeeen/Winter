@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250311071303_UpdateUserModel")]
-    partial class UpdateUserModel
+    [Migration("20250311112150_addDatabase")]
+    partial class addDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

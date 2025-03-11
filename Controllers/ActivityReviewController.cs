@@ -226,7 +226,10 @@ public class ActivityReviewController : Controller
                 .Select(u => new
                 {
                     u.FirstName,
-                    u.LastName
+                    u.LastName,
+                    Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
                 })
                 .FirstOrDefault(),
             ReviewedUser = _context.Users
@@ -235,7 +238,10 @@ public class ActivityReviewController : Controller
                 {
                     u.FirstName,
                     u.LastName,
-                    u.Username
+                    u.Username,
+                    Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
                 })
                 .FirstOrDefault()
         })
@@ -252,9 +258,13 @@ public class ActivityReviewController : Controller
             .Where(u => u.Username == userId)
             .Select(u => new
             {
+                
                 u.FirstName,
                 u.LastName,
-                u.Username
+                u.Username,
+                Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
             })
             .FirstOrDefaultAsync();
 
@@ -264,4 +274,99 @@ public class ActivityReviewController : Controller
 
         return View("~/Views/MyReview/Index.cshtml", new { Reviews = reviews, ReviewedUser = reviewedUser });
     }
+
+    [HttpGet("Profile/Review/{username}")]
+    public async Task<IActionResult> ShowProfileCommentByUsername(string username)
+    {
+        var token = Request.Cookies["token"];
+        if (string.IsNullOrEmpty(token))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        var currentUser = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+
+        if (string.IsNullOrEmpty(currentUser))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        // ตรวจสอบว่า username ที่ระบุใน URL เป็นของผู้ใช้ที่มีอยู่จริง
+        var userExists = await _context.Users
+            .AnyAsync(u => u.Username == username);
+
+        if (!userExists)
+        {
+            return NotFound("User not found");
+        }
+
+        var reviews = await _context.Reviews
+            .Where(r => r.Reviewed_user == username)
+            .Select(r => new
+            {
+                r.Reviewer,
+                r.Reviewed_user,
+                r.Rating,
+                r.Comment,
+                r.Time,
+                r.Activity_id,
+                ActivityTitle = _context.Activities
+                    .Where(a => a.Activity_id == r.Activity_id)
+                    .Select(a => a.Title)
+                    .FirstOrDefault(),
+                User = _context.Users
+                    .Where(u => u.Username == r.Reviewer)
+                    .Select(u => new
+                    {
+                        u.FirstName,
+                        u.LastName,
+                        Profile_pic = u.ProfilePicture != null 
+                                                            ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                            : "/assets/profile-g.png"
+                    })
+                    .FirstOrDefault(),
+                ReviewedUser = _context.Users
+                    .Where(u => u.Username == r.Reviewed_user)
+                    .Select(u => new
+                    {
+                        u.FirstName,
+                        u.LastName,
+                        u.Username,
+                        Profile_pic = u.ProfilePicture != null 
+                                                            ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                            : "/assets/profile-g.png"
+                    })
+                    .FirstOrDefault()
+            })
+            .ToListAsync();
+
+        float averageRating = 0;
+
+        if (reviews.Count > 0)
+        {
+            averageRating = (float)Math.Round(reviews.Average(r => r.Rating), 2);
+        }
+
+        var reviewedUser = reviews.FirstOrDefault()?.ReviewedUser ?? await _context.Users
+            .Where(u => u.Username == username)
+            .Select(u => new
+            {
+                u.FirstName,
+                u.LastName,
+                u.Username,
+                Profile_pic = u.ProfilePicture != null 
+                                                            ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                            : "/assets/profile-g.png"
+            })
+            .FirstOrDefaultAsync();
+
+        ViewData["AverageRating"] = averageRating.ToString("F2");
+
+        Console.WriteLine($"Review Count: {reviews?.Count}");
+
+        return View("~/Views/MyReview/Index.cshtml", new { Reviews = reviews, ReviewedUser = reviewedUser });
+    }
+
 }

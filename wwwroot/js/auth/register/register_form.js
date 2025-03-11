@@ -38,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
   clearErrorOnInput("dateofbirth", "birth-error");
   clearErrorOnInput("gender", "gender-error");
 
-  nextButton.addEventListener("click", function (event) {
+  nextButton.addEventListener("click", async function (event) {
     event.preventDefault();
     const activePage = pages[current];
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&])[A-Za-z\d@@$!%*?&]{8,}$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&_])[A-Za-z\d@@$!%*?&_]{8,}$/;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     let isValid = true;
@@ -54,7 +54,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if(!username) {
         isValid = false;
         document.getElementById("username-error").innerHTML = "username is required"
+      } else {
+          try {
+              let response = await fetch(`/account/checkUsername?username=${username}`);
+              let data = await response.json();
+              if (data.exists) {
+                  isValid = false;
+                  document.getElementById("username-error").innerHTML = "Username already exists.";
+              }
+          } catch (error) {
+              console.error("Error checking username:", error);
+          }
       }
+
       if(!email) {
         isValid = false;
         document.getElementById("email-error").innerHTML = "email is required"
@@ -67,14 +79,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("password-error").innerHTML = "password is required"
       } else if (!passwordPattern.test(password)) {
         isValid = false;
-        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character.")
+        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character (@, $, !, %, *, ?, &, _).")
       }
       if(!confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password-error").innerHTML = "confirm password is required"
-      }
+      } 
 
-      if (password !== confirmPassword) {
+      if (password && confirmPassword && password !== confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password").classList.add("error");
         document.getElementById("check-password-error").innerHTML =
@@ -127,6 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
     registerButton.disabled = true;
     registerButton.innerText = "Registering...";
 
+    let isValid = true;
+
     const Username = document.getElementById("username").value;
     const Email = document.getElementById("email").value;
     const Password = document.getElementById("password").value;
@@ -139,14 +153,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if(!FirstName) {
       isValid = false;
       document.getElementById("firstname-error").innerHTML = "firstname is required"
-    } else if (!namePattern.test(FirstName)) {
-      alert("Firstname must contains just characters.")
+    } 
+    if (!namePattern.test(FirstName)) {
+      isValid = false;
+      document.getElementById("firstname-error").innerHTML = "Firstname must contains just characters."
     }
     if(!LastName) {
       isValid = false;
       document.getElementById("lastname-error").innerHTML = "lastname is required"
-    } else if (!namePattern.test(LastName)) {
-      alert("Lastname must contains just characters.")
+    } 
+    if (!namePattern.test(LastName)) {
+      isValid = false;
+      document.getElementById("lastname-error").innerHTML = "Lastname must contains just characters."
     }
     if(!DateOfBirth) {
       isValid = false;
@@ -157,34 +175,41 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("gender-error").innerHTML = "gender is required"
     }
 
-    try {
-      const response = await fetch("/account/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          Username,
-          Email,
-          Password,
-          FirstName,
-          LastName,
-          DateOfBirth,
-          Gender,
-        }),
-        credentials: "include",
-      });
-
-      if (response.ok) {
-        window.location.href = "/account/login";
-      } else {
-        document.getElementById("errorMessage").innerText =
-          "Invalid username or password.";
-      }
-    } catch (error) {
-      document.getElementById("errorMessage").innerText =
-        "An error occurred. Please try again later.";
-    } finally {
+    if (!isValid) {
       registerButton.disabled = false;
       registerButton.innerText = "Register";
+      return;
     }
+
+      try {
+        const response = await fetch("/account/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Username,
+            Email,
+            Password,
+            FirstName,
+            LastName,
+            DateOfBirth,
+            Gender,
+          }),
+          credentials: "include",
+        });
+  
+        if (response.ok) {
+          window.location.href = "/account/login";
+        } else {
+          document.getElementById("errorMessage").innerText =
+            "Invalid username or password.";
+        }
+      } catch (error) {
+        document.getElementById("errorMessage").innerText =
+          "An error occurred. Please try again later.";
+      } finally {
+        registerButton.disabled = false;
+        registerButton.innerText = "Register";
+      }
+    
   });
 });

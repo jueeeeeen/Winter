@@ -32,20 +32,20 @@
 
         <div class="profile-rating">
             <img src="\assets\icon _star.svg" alt="star icon">
-            <p>1.55</p>
+            <p>@Model.AverageRating</p>
         </div>
 
         <div class="joined-review">
             <div class="profile-joined">
-                <p>4</p>
+                <p>@Model.ActivityCount</p>
                 <p>Joined</p>
-                <a href="#">View all activity</a>
+                <a href="/ActivityProfile/@Model.Username">View all activity</a>
             </div>
 
             <div class="profile-reviews">
-                <p>5</p>
+                <p>@Model.ReviewCount</p>
                 <p>Reviews</p>
-                <a href="Profile/Review">View all review</a>
+                <a href="/Profile/Review/@Model.Username">View all review</a>
             </div>
         </div>
     </div>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="details-info">
                         <span class="personal-header">Gender</span>
-                        <span class="personal-info">Male</span>
+                        <span class="personal-info">@Model.Gender</span>
                     </div>
 
                 </div>

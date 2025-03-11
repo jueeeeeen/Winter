@@ -18,7 +18,7 @@
         {
             @foreach (var user in Model)
             {
-                <friend-li-add name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-add>
+                <friend-li-add name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username" friend-id="@user.UserId"></friend-li-add>
             }
         }
     </div>

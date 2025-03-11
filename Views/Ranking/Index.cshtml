@@ -7,37 +7,52 @@
 <h1 class="text-center">🏆 Rating Ranking 🏆</h1>
 <div class="podium">
         <div class="podium-place second">
-            <img class="profile" src="/assets/edit_blue.svg">
-            <p>🥈</p>
-            <div class="rating-container">
-                <h2>@Model[1].ReviewedUser</h2>
-                <div class="rating">
-                    <p class="rating-count">⭐ @Model[1].AverageRating.ToString("0.00")</p>
-                </div>
-                <span class="count-review">(@Model[1].ReviewCount)</span>
-            </div>
+            @if (Model[1].ReviewedUser != "-"){
+                <a href="/profile/@Model[1].ReviewedUser">
+                    <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[1].ProfilePicture)" />
+                    <p class="emoji">🥈</p>
+                    <p class="username">@("@" + Model[0].ReviewedUser)</p>
+                    <h2 class="name">@Model[1].FirstName @Model[1].LastName</h2>
+                    <div class="rating-container">
+                        <div class="rating">
+                            <p class="rating-count">⭐ @Model[1].AverageRating.ToString("0.00")</p>
+                        </div>
+                        <p class="count-review">(@Model[1].ReviewCount)</p>
+                    </div>
+                </a>
+            }
         </div>
         <div class="podium-place first">
-            <img class="profile" src="/assets/edit_blue.svg">
-            <p>🥇</p>
-            <div class="rating-container">
-                <h2>@Model[0].ReviewedUser</h2>
-                <div class="rating">
-                    <p class="rating-count">⭐ @Model[0].AverageRating.ToString("0.00")</p>
-                </div>
-                <span class="count-review">(@Model[0].ReviewCount)</span>
-            </div>
+            @if (Model[0].ReviewedUser != "-"){
+                <a href="/profile/@Model[0].ReviewedUser">
+                    <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[0].ProfilePicture)" />
+                    <p class="emoji">🥇</p>
+                    <p class="username">@("@" + Model[0].ReviewedUser)</p>
+                    <h2 class="name">@Model[0].FirstName @Model[0].LastName</h2>
+                    <div class="rating-container">
+                        <div class="rating">
+                            <p class="rating-count">⭐ @Model[0].AverageRating.ToString("0.00")</p>
+                        </div>
+                        <p class="count-review">(@Model[0].ReviewCount)</p>
+                    </div>
+                </a>
+            }
         </div>
         <div class="podium-place third">
-            <img class="profile" src="/assets/edit_blue.svg">
-            <p>🥉</p>
-            <h2>@Model[2].ReviewedUser</h2>
-            <div class="rating-container">
-                <div class="rating">
-                    <p class="rating-count">⭐ @Model[2].AverageRating.ToString("0.00")</p>
-                </div>
-                <span class="count-review">(@Model[2].ReviewCount)</span>
-            </div>
+            @if (Model[2].ReviewedUser != "-"){
+                <a href="/profile/@Model[2].ReviewedUser">
+                    <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[2].ProfilePicture)" />
+                    <p class="emoji">🥉</p>
+                    <p class="username">@("@" + Model[2].ReviewedUser)</p>
+                    <h2 class="name">@Model[2].FirstName @Model[2].LastName</h2>
+                    <div class="rating-container">
+                        <div class="rating">
+                            <p class="rating-count">⭐ @Model[2].AverageRating.ToString("0.00")</p>
+                        </div>
+                        <p class="count-review">(@Model[2].ReviewCount)</p>
+                    </div>
+                </a>
+            }
         </div>
 </div>
 
@@ -53,15 +68,26 @@
             </tr>
         </thead>
         <tbody>
-            @for (int i = 3; i < Model.Count; i++)
+            @for (int i = 0; i < Model.Count; i++)
             {
-                <tr>
-                    <td>@(i + 1)</td>
-                    <td>@Model[i].ReviewedUser</td>
-                    <td>@Model[i].ReviewedUser</td>
-                    <td>⭐ @Model[i].AverageRating.ToString("0.0")</td>
-                    <td>@Model[i].ReviewCount</td>
-                </tr>
+                @if (Model[i].ReviewedUser != "-"){
+                    <tr onclick="window.location='/profile/@Model[i].ReviewedUser'">
+                        <td>@(i + 1)</td>
+                        <td>@("@" + @Model[i].ReviewedUser)</td>
+                        <td>@Model[i].FirstName @Model[i].LastName</td>
+                        <td>⭐ @Model[i].AverageRating.ToString("0.00")</td>
+                        <td>@Model[i].ReviewCount</td>
+                    </tr>
+                }
+                else{
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@Model[i].ReviewedUser</td>
+                        <td>@Model[i].FirstName @Model[i].LastName</td>
+                        <td>⭐ @Model[i].AverageRating.ToString("0.00")</td>
+                        <td>@Model[i].ReviewCount</td>
+                    </tr>
+                }
             }
         </tbody>
     </table>

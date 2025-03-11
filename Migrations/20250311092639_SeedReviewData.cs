@@ -204,31 +204,22 @@ namespace Winter_Project.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Reviews",
-                columns: new[] { "Review_id", "Activity_id", "Comment", "Rating", "Reviewed_user", "Reviewer", "Time" },
-                values: new object[,]
-                {
-                    { 1, 101, "Great!", 4.5f, "Alice", "UserA", new DateTime(2024, 1, 1, 12, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 2, 102, "Excellent!", 5f, "Alice", "UserB", new DateTime(2024, 1, 2, 15, 30, 0, 0, DateTimeKind.Unspecified) },
-                    { 3, 103, "Good job", 3.8f, "Bob", "UserC", new DateTime(2024, 1, 3, 10, 45, 0, 0, DateTimeKind.Unspecified) },
-                    { 4, 104, "Needs improvement", 2.5f, "Charlie", "UserD", new DateTime(2024, 1, 4, 18, 20, 0, 0, DateTimeKind.Unspecified) },
-                    { 5, 105, "Nice work", 4.2f, "Bob", "UserE", new DateTime(2024, 1, 5, 8, 10, 0, 0, DateTimeKind.Unspecified) },
-                    { 6, 106, "Average", 3.5f, "Charlie", "UserF", new DateTime(2024, 1, 6, 11, 0, 0, 0, DateTimeKind.Unspecified) },
-                    { 7, 107, "Amazing!", 4.8f, "Alice", "UserG", new DateTime(2024, 1, 7, 9, 25, 0, 0, DateTimeKind.Unspecified) },
-                    { 8, 108, "Pretty good", 3.9f, "Bob", "UserH", new DateTime(2024, 1, 8, 16, 55, 0, 0, DateTimeKind.Unspecified) },
-                    { 9, 109, "Could be better", 2f, "Charlie", "UserI", new DateTime(2024, 1, 9, 13, 5, 0, 0, DateTimeKind.Unspecified) },
-                    { 10, 110, "Nice!", 4.2f, "Alice", "UserJ", new DateTime(2024, 1, 10, 20, 30, 0, 0, DateTimeKind.Unspecified) }
-                });
-
-            migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "DateOfBirth", "Email", "FirstName", "Gender", "LastName", "PasswordHash", "ProfilePicture", "Username" },
-                values: new object[] { 1, new DateOnly(1995, 6, 15), "john@example.com", "John", "male", "Doe", "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=", null, "test1" });
+                values: new object[,]
+                {
+                    { 1, new DateOnly(1995, 6, 15), "john@example.com", "John", "male", "Doe", "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=", null, "test1" },
+                    { 2, new DateOnly(1995, 6, 15), "jane@example.com", "Jane", "female", "Doe", "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=", null, "test2" }
+                });
 
             migrationBuilder.InsertData(
                 table: "UserBios",
                 columns: new[] { "Id", "AboutMe", "Bio", "Location", "MyHobby", "MyInterests", "Phone", "UserId" },
-                values: new object[] { 1, "I enjoy storytelling and writing about various topics.", "Creative writer and avid reader.", "Los Angeles, USA", "Painting, Traveling", "Writing, Art, Literature", "+1-555-5678", 1 });
+                values: new object[,]
+                {
+                    { 1, "I enjoy storytelling and writing about various topics.", "Creative writer and avid reader.", "Los Angeles, USA", "Painting, Traveling", "Writing, Art, Literature", "+1-555-5678", 1 },
+                    { 2, "I enjoy storytelling and writing about various topics.", "Creative writer and avid reader.", "Los Angeles, USA", "Painting, Traveling", "Writing, Art, Literature", "+1-555-5678", 2 }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Friends_FriendId",

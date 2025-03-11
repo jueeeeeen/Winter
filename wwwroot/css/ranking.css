@@ -59,20 +59,15 @@
     position: relative;
 }
 
-.podium-place > p {
-    font-size: 24px;
-    font-weight: bold;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-.podium-place > img {
+.podium-place img {
     width: 70px;
     height: 70px;
     transition: transform 0.3s ease;
+    border: 3px solid white;
 }
 
 
-.podium-place:hover > img {
+.podium-place:hover img {
     transform: scale(1.1);
 }
 
@@ -83,7 +78,7 @@
 }
 
 .first {
-    animation: podium-glow 2s infinite alternate;
+    animation: podium-glow 3s infinite;
 }
 
 .show-table {
@@ -110,11 +105,20 @@
 
 .ranking-table td {
     background-color: var(--blue20);
+    text-overflow: ellipsis;
 }
 
 .ranking-table tr:hover td {
     background-color: var(--blue40);
     cursor: pointer;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .rating {
@@ -127,7 +131,34 @@
     padding: 9px;
 }
 
+.rating-container p {
+    font-weight: bold;
+}
+
 .rating img {
     width: 23px;
     height: 23px;
 }
+
+.emoji {
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+.username {
+    font-size: small;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.name {
+    font-size: medium;
+}
+
+
+@media (max-width: 480px){
+    .podium {
+        display: none;
+    }
+}
+

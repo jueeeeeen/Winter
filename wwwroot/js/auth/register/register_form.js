@@ -139,6 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
     registerButton.disabled = true;
     registerButton.innerText = "Registering...";
 
+    let isValid = true;
+
     const Username = document.getElementById("username").value;
     const Email = document.getElementById("email").value;
     const Password = document.getElementById("password").value;
@@ -151,14 +153,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if(!FirstName) {
       isValid = false;
       document.getElementById("firstname-error").innerHTML = "firstname is required"
-    } else if (!namePattern.test(FirstName)) {
-      alert("Firstname must contains just characters.")
+    } 
+    if (!namePattern.test(FirstName)) {
+      isValid = false;
+      document.getElementById("firstname-error").innerHTML = "Firstname must contains just characters."
     }
     if(!LastName) {
       isValid = false;
       document.getElementById("lastname-error").innerHTML = "lastname is required"
-    } else if (!namePattern.test(LastName)) {
-      alert("Lastname must contains just characters.")
+    } 
+    if (!namePattern.test(LastName)) {
+      isValid = false;
+      document.getElementById("lastname-error").innerHTML = "Lastname must contains just characters."
     }
     if(!DateOfBirth) {
       isValid = false;
@@ -169,34 +175,41 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("gender-error").innerHTML = "gender is required"
     }
 
-    try {
-      const response = await fetch("/account/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          Username,
-          Email,
-          Password,
-          FirstName,
-          LastName,
-          DateOfBirth,
-          Gender,
-        }),
-        credentials: "include",
-      });
-
-      if (response.ok) {
-        window.location.href = "/account/login";
-      } else {
-        document.getElementById("errorMessage").innerText =
-          "Invalid username or password.";
-      }
-    } catch (error) {
-      document.getElementById("errorMessage").innerText =
-        "An error occurred. Please try again later.";
-    } finally {
+    if (!isValid) {
       registerButton.disabled = false;
       registerButton.innerText = "Register";
+      return;
     }
+
+      try {
+        const response = await fetch("/account/register", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Username,
+            Email,
+            Password,
+            FirstName,
+            LastName,
+            DateOfBirth,
+            Gender,
+          }),
+          credentials: "include",
+        });
+  
+        if (response.ok) {
+          window.location.href = "/account/login";
+        } else {
+          document.getElementById("errorMessage").innerText =
+            "Invalid username or password.";
+        }
+      } catch (error) {
+        document.getElementById("errorMessage").innerText =
+          "An error occurred. Please try again later.";
+      } finally {
+        registerButton.disabled = false;
+        registerButton.innerText = "Register";
+      }
+    
   });
 });

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   clearErrorOnInput("dateofbirth", "birth-error");
   clearErrorOnInput("gender", "gender-error");
 
-  nextButton.addEventListener("click", function (event) {
+  nextButton.addEventListener("click", async function (event) {
     event.preventDefault();
     const activePage = pages[current];
     const username = document.getElementById("username").value;
@@ -54,7 +54,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if(!username) {
         isValid = false;
         document.getElementById("username-error").innerHTML = "username is required"
+      } else {
+          try {
+              let response = await fetch(`/account/checkUsername?username=${username}`);
+              let data = await response.json();
+              if (data.exists) {
+                  isValid = false;
+                  document.getElementById("username-error").innerHTML = "Username already exists.";
+              }
+          } catch (error) {
+              console.error("Error checking username:", error);
+          }
       }
+
       if(!email) {
         isValid = false;
         document.getElementById("email-error").innerHTML = "email is required"
@@ -74,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("confirm-password-error").innerHTML = "confirm password is required"
       } 
 
-      if (password !== confirmPassword) {
+      if (password && confirmPassword && password !== confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password").classList.add("error");
         document.getElementById("check-password-error").innerHTML =

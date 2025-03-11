@@ -11,11 +11,11 @@
         Find Friends
     </header>
     @if (!(bool)ViewData["search"]){
-        <span class="friend-text">Friend Suggestions</span>
+        <div class="friend-text">Friend Suggestions</div>
     }
     @if (Model == null || !Model.Any()) 
     {
-        <span class="friend-not-found">No user found !</span>
+        <div class="friend-not-found">No user found !</div>
         
     }
     else

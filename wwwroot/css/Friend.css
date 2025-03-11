@@ -76,18 +76,20 @@ search-friend-bar {
 }
 
 .friend-text {
-    width: 100%;
+    width: calc(100% - 8rem);
     background-color: var(--blue20);
     text-align: center;
     color: var(--gray90);
     font-weight: 500;
-    margin: 0 4rem;
+    margin: 1rem 4rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
 }
 
 .friend-li-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 1rem 4rem;
+    padding: 0 4rem;
     align-items: flex-start;
     gap: 1rem;
     width: 100%;

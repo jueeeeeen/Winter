@@ -8,6 +8,7 @@
     <ul class="no_select nav_bar">
         <li><a href="/" class="flex flex_center nav-home"><img src="/assets/home.svg" alt="home"></a></li>
         <li><a href="/Activity" class="nav-activity">Activity</a></li>
+        <li><a href="/Ranking" class="nav-activity">Ranking</a></li>
         <li class="logo">
             <a href="/" class="flex"><img src="/assets/winter_logo-w.svg" alt="Winter Logo" /></a>
         </li>
@@ -89,11 +90,12 @@
                 <div class="profile-dropdown w-mb-mb edge" id="profile_dropdown">
                         <div class="profile-dropdown-info">
                             <div class="profile-container-dropdown">
-                                <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
+                                <a  href="/Profile/@Model.Username">
+                                    <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-g.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
+                                </a>
                             </div>
-                            
-                            <span class="first-name-dropdown">@Model.FirstName</span>
-                            <span class="last-name-dropdown">@Model.LastName</span>
+                            <a  href="/Profile/@Model.Username"><span class="first-name-dropdown">@Model.FirstName</span>
+                            <span class="last-name-dropdown">@Model.LastName</span></a>
                             <span class="username_dropdown">@Model.Username</span>
                         </div>
                         

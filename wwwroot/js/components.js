@@ -359,7 +359,7 @@ class RangeFilterLi extends HTMLElement {
       `<li>
         <div class="btn filter-header w-db hover-bb-w">
             <svg-star-outline></svg-star-outline>
-            Age range
+            Age Requirement
             <svg-down-arrow class="right"></svg-down-arrow>
         </div>
         <div class="range-filter-container">
@@ -474,8 +474,8 @@ class CheckFilterLi extends HTMLElement {
     super();
     this.innerHTML = `<li>
             <div class="btn filter-header w-db hover-bb-w">
-                <svg-star-outline></svg-star-outline>
-                Gender
+                <svg-lgbtq></svg-lgbtq>
+                Gender Requirement
                 <svg-down-arrow class="right"></svg-down-arrow>
             </div>
             <div class="check-filter-container" id="gender-filter-container">
@@ -522,16 +522,62 @@ class CheckFilterLi extends HTMLElement {
 }
 customElements.define("check-filter-li", CheckFilterLi);
 
+class FriendFilterLi extends HTMLElement {
+  constructor() {
+    super();
+    this.innerHTML = 
+    `<li>
+        <div class="btn filter-header w-db hover-bb-w">
+            <svg-friend></svg-friend>
+            Friend
+            <svg-down-arrow class="right"></svg-down-arrow>
+        </div>
+        <div class="check-filter-container" id="friend-filter-container">
+            <span class="check-filter-item">
+                <input type="checkbox" id="filter-friend-check" name="friend" value="true">
+                <label for="filter-friend-check">only friend</label>
+            </span>
+        </div>
+    </li>`;
+  }
+
+  connectedCallback() {
+    this.filter_header = this.querySelector(".filter-header");
+    this.check_filter_container = this.querySelector(".check-filter-container");
+    this.filter_header.addEventListener("click", () => {
+      this.check_filter_container.classList.toggle("show");
+      this.filter_header.classList.toggle("bb-w");
+    });
+  }
+
+  disconnectedCallback() {
+    this.filter_header.removeEventListener("click");
+  }
+
+  get result() {
+    return this.querySelector('#filter-friend-check').value === "true";
+  }
+
+  reset() {
+    this.querySelectorAll("input").forEach((input) => {
+      input.checked = false;
+    });
+  }
+}
+customElements.define("friend-filter-li", FriendFilterLi);
+
 class DisplayFilter extends HTMLElement {
   constructor() {
     super();
-    this.innerHTML = `<button class="filter-btn btn w-bb-bb display-filter hover-bb-w" id="display-filter">
+    this.innerHTML = 
+      `<button class="filter-btn btn w-bb-bb display-filter hover-bb-w" id="display-filter">
             <svg-filter></svg-filter>
         </button>
         <div class="filter-dropdown shadow">
             <ul>
                 <range-filter-li id="age-filter"></range-filter-li>
                 <check-filter-li id="gender-filter"></check-filter-li>
+                <friend-filter-li id="friend-filter"></friend-filter-li>
             </ul>
             <div class="filter-button-container">
                 <button class="btn w-bb-bb edge hover-w-mb-mb" id="clear-filter-btn">
@@ -557,6 +603,7 @@ class DisplayFilter extends HTMLElement {
 
     this.age_filter = this.querySelector("#age-filter");
     this.gender_filter = this.querySelector("#gender-filter");
+    this.friend_filter = this.querySelector("#friend-filter");
 
     this.querySelector("#clear-filter-btn").addEventListener("click", () => {
       this.clear_filter();
@@ -565,6 +612,7 @@ class DisplayFilter extends HTMLElement {
     this.querySelector("#save-filter-btn").addEventListener("click", () => {
       this.age_range = this.age_filter.result;
       this.gender = this.gender_filter.result;
+      this.friend = this.friend_filter.result;
     });
   }
 
@@ -578,6 +626,7 @@ class DisplayFilter extends HTMLElement {
     this.data = {
       age: this.age_range,
       gender: this.gender,
+      friend: this.friend
     };
     return this.data;
   }
@@ -599,8 +648,10 @@ class DisplayFilter extends HTMLElement {
   clear_filter() {
     this.gender_filter.reset();
     this.age_filter.reset();
+    this.friend_filter.reset();
     this.age_range = null;
     this.gender = null;
+    this.friend = null;
   }
 }
 customElements.define("display-filter", DisplayFilter);
@@ -787,69 +838,61 @@ class ActivityCard extends HTMLElement {
     if (activity) {
       [this.act_date, this.act_time] = activity.activity_time.split("-");
       this.innerHTML = `
-            <div class="activity-card shadow">
-                <div class="act-card-header">
-                    <div class="act-card-profile-info">
-                        <div><img src="${
-                          activity.host.profile_pic
-                        }" class="profile-img" ></div>
-                        <div>
-                            <span>${
-                              activity.host.firstName +
-                              " " +
-                              activity.host.lastName
-                            }</span>
-                            <svg-${activity.host.gender} aria-label="${
-        activity.host.gender
-      }"></svg-${activity.host.gender}>
-                        </div>
-                        <div>
-                            <span>${activity.create_time}</span>
-                            <span aria-label="review" class="act-card-review">
-                                <svg-star-sharp></svg-star-sharp>
-                                ${activity.host.review}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="act-card-member">${activity.member_count + "/" + activity.max_member}</div>
-                </div>
-                
-                <ul class="act-card-tags-container">
-                    ${activity.tags
-                      .map(
-                        (tag) => `
-                        <li>
-                            <tag-display data-tag_name="${tag}"></tag-display>
-                        </li>
-                    `
-                      )
-                      .join("")}
-                </ul>
-                <div class="title">
-                    <h2>${activity.title}</h2>
-                </div>
-                <ul class="act-card-tags-container">
-                    ${activity.requirement.age ? `<req-tag data-type="age" data-value="${activity.requirement.age}"></req-tag>`:""}
-                    ${activity.requirement.gender=="none" ? "":`<req-tag data-type="gender" data-value="${activity.requirement.gender}"></req-tag>`}
-                </ul>
-                <ul class="act-card-info">
-                    <li>
-                        <svg-clock></svg-clock><span>${
-                          this.act_time + " (" + activity.duration + " hr)"
-                        }</span>
-                    </li>
-                    <li>
-                        <svg-calendar></svg-calendar><span>${
-                          this.act_date
-                        }</span>
-                    </li>
-                    <li>
-                        <act-card-join-btn data-act-id="${
-                          activity.activity_id
-                        }"></act-card-join-btn>
-                    </li>
-                </ul>
-            </div>`;
+        <div class="activity-card shadow">
+          <div class="act-card-header">
+            <div class="act-card-profile-info">
+              <div><a href="/Profile/${activity.host.username}"><img src="${activity.host.profile_pic}" class="profile-img"></a></div>
+              <div class="act-card-name-gender">
+                <span><a href="/Profile/${activity.host.username}">${activity.host.firstName +" " +activity.host.lastName}</a></span>
+                <svg-${activity.host.gender} aria-label="${activity.host.gender}"></svg-${activity.host.gender}>
+              </div>
+              <div>
+                  <span>${activity.create_time}</span>
+                  <span aria-label="review" class="act-card-review">
+                      <svg-star-sharp></svg-star-sharp>
+                      ${activity.host.review}
+                  </span>
+              </div>
+            </div>
+          <div class="act-card-member">${activity.member_count + "/" + activity.max_member}</div>
+        </div>
+          
+        <ul class="act-card-tags-container">
+            ${activity.tags
+              .map(
+                (tag) => `
+                <li>
+                    <tag-display data-tag_name="${tag}"></tag-display>
+                </li>
+            `
+              )
+              .join("")}
+        </ul>
+        <div class="title">
+            <h2>${activity.title}</h2>
+        </div>
+        <ul class="act-card-tags-container">
+            ${activity.requirement.age ? `<req-tag data-type="age" data-value="${activity.requirement.age}"></req-tag>`:""}
+            ${activity.requirement.gender=="none" ? "":`<req-tag data-type="gender" data-value="${activity.requirement.gender}"></req-tag>`}
+        </ul>
+        <ul class="act-card-info">
+            <li>
+                <svg-clock></svg-clock><span>${
+                  this.act_time + " (" + activity.duration + " hr)"
+                }</span>
+            </li>
+            <li>
+                <svg-calendar></svg-calendar><span>${
+                  this.act_date
+                }</span>
+            </li>
+            <li>
+              <act-card-join-btn data-act-id="${
+                activity.activity_id
+              }"></act-card-join-btn>
+            </li>
+          </ul>
+        </div>`;
     } else {
       this.innerHTML = `
             <div class="activity-card shadow">
@@ -914,7 +957,7 @@ class Pagination extends HTMLElement {
     this._current_page = 1;
     this.innerHTML = `<div class="pagination-container round shadow">
             <button class="pagination-btn btn round" id="prev_button"><svg-prev></svg-prev></button>
-            <div id="page-number-container"></div>
+            <div class="flex" id="page-number-container"></div>
             <button class="pagination-btn btn round" id="next_button"><svg-next></svg-next></button>
         </div>`;
   }
@@ -1308,9 +1351,9 @@ class AllActBanner extends HTMLElement {
     super();
     this.current_page = 0;
     this.pictures = [
-      "winter_login_pic2.jpg",
-      "winter_login_pic.jpg",
-      "1657770518.jpeg",
+      "/banner/CE.jpg",
+      "/banner/Isag.jpg",
+      "/banner/Network.jpg",
     ];
 
     this.innerHTML = `<div class="banner-container">
@@ -1341,15 +1384,30 @@ class AllActBanner extends HTMLElement {
     this.handle_banner_change = this.handle_banner_change.bind(this);
 
     this.page_list = this.querySelectorAll("span");
+
+    this.startAutoSlide();
   }
   connectedCallback() {
     this.handle_banner_change(0);
-    this.querySelector("#prev-banner-btn").addEventListener("click", () =>
-      this.handle_banner_change(-1)
-    );
+    this.querySelector("#prev-banner-btn").addEventListener("click", () => {
+      this.handle_banner_change(-1);
+      this.resetAutoSlide();
+    });
     this.querySelector("#next-banner-btn").addEventListener("click", () => {
       this.handle_banner_change(1);
+      this.resetAutoSlide();
     });
+  }
+
+  startAutoSlide() {
+    this.autoSlide = setInterval(() => {
+      this.handle_banner_change(1);
+    }, 10000);
+  }
+
+  resetAutoSlide() {
+    clearInterval(this.autoSlide);
+    this.startAutoSlide();
   }
 
   handle_banner_change(value) {
@@ -1544,7 +1602,7 @@ class SVGGenderFemale extends BaseSVGElement {
   }
 }
 
-class SVGGenderLGBT extends BaseSVGElement {
+class SVGGenderLGBTQ extends BaseSVGElement {
   constructor() {
     super();
     this.innerHTML = `<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2019,7 +2077,7 @@ customElements.define("svg-x", SVGXMark);
 customElements.define("svg-search", SVGSearch);
 customElements.define("svg-star-sharp", SVGStarSharp);
 customElements.define("svg-male", SVGGenderMale);
-customElements.define("svg-lgbt", SVGGenderLGBT);
+customElements.define("svg-lgbtq", SVGGenderLGBTQ);
 customElements.define("svg-female", SVGGenderFemale);
 customElements.define("svg-prev", SVGPrev);
 customElements.define("svg-next", SVGNext);
@@ -2133,6 +2191,8 @@ class Member extends HTMLElement {
           </li>
           `;
 
+          this.addProfileClickEvent();
+
           let ratingPopup = document.querySelector("rating-popup");
           if (!ratingPopup) {
             ratingPopup = new RatingPopup();
@@ -2187,6 +2247,18 @@ class Member extends HTMLElement {
         </div>
       </li>
       `;
+
+    this.addProfileClickEvent();
+  }
+
+  addProfileClickEvent() {
+    const profilePic = this.querySelector(".member-profile-pic");
+    if (profilePic) {
+      profilePic.style.cursor = "pointer";
+      profilePic.addEventListener("click", () => {
+        window.location.href = `/profile/${this.member.userDetails.username}`;
+      });
+    }
   }
 }
 

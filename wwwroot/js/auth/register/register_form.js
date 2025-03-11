@@ -38,14 +38,14 @@ document.addEventListener("DOMContentLoaded", function () {
   clearErrorOnInput("dateofbirth", "birth-error");
   clearErrorOnInput("gender", "gender-error");
 
-  nextButton.addEventListener("click", function (event) {
+  nextButton.addEventListener("click", async function (event) {
     event.preventDefault();
     const activePage = pages[current];
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&])[A-Za-z\d@@$!%*?&]{8,}$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&_])[A-Za-z\d@@$!%*?&_]{8,}$/;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     let isValid = true;
@@ -54,7 +54,19 @@ document.addEventListener("DOMContentLoaded", function () {
       if(!username) {
         isValid = false;
         document.getElementById("username-error").innerHTML = "username is required"
+      } else {
+          try {
+              let response = await fetch(`/account/checkUsername?username=${username}`);
+              let data = await response.json();
+              if (data.exists) {
+                  isValid = false;
+                  document.getElementById("username-error").innerHTML = "Username already exists.";
+              }
+          } catch (error) {
+              console.error("Error checking username:", error);
+          }
       }
+
       if(!email) {
         isValid = false;
         document.getElementById("email-error").innerHTML = "email is required"
@@ -67,14 +79,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("password-error").innerHTML = "password is required"
       } else if (!passwordPattern.test(password)) {
         isValid = false;
-        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character.")
+        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character (@, $, !, %, *, ?, &, _).")
       }
       if(!confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password-error").innerHTML = "confirm password is required"
-      }
+      } 
 
-      if (password !== confirmPassword) {
+      if (password && confirmPassword && password !== confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password").classList.add("error");
         document.getElementById("check-password-error").innerHTML =

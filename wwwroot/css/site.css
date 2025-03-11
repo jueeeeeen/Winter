@@ -35,7 +35,7 @@ body {
   overflow-x: hidden !important;
 }
 
-* {
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -947,6 +947,7 @@ hr {
   padding: 0.1em 0;
   margin: 3rem auto;
   display: flex;
+  flex-direction: row;
   align-items: center;
   width: fit-content;
 }
@@ -1221,3 +1222,6 @@ hr {
   }
 }
 
+svg-check path{
+  fill: none !important;
+}

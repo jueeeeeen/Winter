@@ -44,6 +44,29 @@ namespace Winter_Project.Controllers
                 rankings = rankings.Concat(placeholders).ToList();
             }
 
+            var reviewedUsers = rankings.Select(r => r.ReviewedUser).Distinct().ToList();
+            var userDetails = await _context.Users
+                .Where(u => reviewedUsers.Contains(u.Username)) 
+                .Select(u => new
+                {
+                    u.Username,
+                    u.FirstName,
+                    u.LastName,
+                    u.ProfilePicture
+                })
+                .ToListAsync();
+
+            foreach (var ranking in rankings)
+            {
+                var userDetail = userDetails.FirstOrDefault(u => u.Username == ranking.ReviewedUser);
+                if (userDetail != null)
+                {
+                    ranking.FirstName = userDetail.FirstName;
+                    ranking.LastName = userDetail.LastName;
+                    ranking.ProfilePicture = userDetail.ProfilePicture;
+                }
+            }
+
             return View(rankings);
         }
 

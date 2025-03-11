@@ -61,7 +61,7 @@
                 <span class="create-error-message"></span>
             </div>
             <div class="form-group create-tag">
-                <label>Membership approval :</label>
+                <label>Membership Approval :</label>
                 <div class="radio-input">
                     <div class="radio-input-choice">
                         <input type="radio" name="Approval" value="true" required/>
@@ -102,7 +102,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <label>Age :</label>
+                <label>Minimum Age :</label>
                 <number-input data-name="Age" default-value="0" id="age"></number-input>
                 <span class="create-error-message"></span>
             </div>
@@ -125,6 +125,14 @@
 </form>
 
 <script>
+
+    document.getElementById("create_date_time").addEventListener("change", function() {
+        const activityTime = this.value;
+        const deadlineInput = document.getElementById("dead_line_date_time");
+        
+        deadlineInput.value = activityTime;
+    });
+
     function showError(inputId, message='') {
         const inputField = document.getElementById(inputId);
         if (message){
@@ -190,10 +198,36 @@
             isValid = false;
             if (!firstError) firstError = document.getElementById("create_date_time");
         }
+        else {
+            const now = new Date();
+            const minActivityTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+            const activityDate = new Date(activityTime);
+            @* if (activityDate <= minActivityTime) {
+                showError("create_date_time", "Activity time must be at least 24 hours from now.");
+                isValid = false;
+                if (!firstError) firstError = document.getElementById("create_date_time");
+            } *@
+        }
         if (!deadlineTime) {
-            showError("dead_line_date_time", "Please specify the deadline date and time.");
+            showError("dead_line_date_time", "Please specify the join deadline date and time.");
             isValid = false;
             if (!firstError) firstError = document.getElementById("dead_line_date_time");
+        }
+        else {
+            const now = new Date();
+            const minDeadlineTime = new Date(now.getTime() + 12 * 60 * 60 * 1000);
+            const deadlineDate = new Date(deadlineTime);
+            const activityDate = new Date(activityTime);
+            @* if (deadlineDate < minDeadlineTime) {
+                showError("dead_line_date_time", "Deadline time must be at least 12 hours from now.");
+                isValid = false;
+                if (!firstError) firstError = document.getElementById("dead_line_date_time");
+            }
+            else if (deadlineDate > activityDate) {
+                showError("dead_line_date_time", "Deadline time must be before or equal to activity time.");
+                isValid = false;
+                if (!firstError) firstError = document.getElementById("dead_line_date_time");
+            } *@
         }
         if (!duration) {
             showError("duration", "Please specify the duration.");

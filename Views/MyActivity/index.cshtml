@@ -37,16 +37,19 @@
             const activities = data.activities;
             if (activities.length === 0) {
                 const activity_list = activityList.querySelector("#activities");
-                activity_list.innerHTML = "<div>Activity not found</div>";
-                activity_list.classList.add("rating-header")
+                activity_list.innerHTML = "Activity not found";
+                activity_list.classList.add("activity-not-found")
             }
             else {
+                const activity_list = activityList.querySelector("#activities");
+                if (activity_list.classList.contains("activity-not-found")){
+                    activity_list.classList.remove("activity-not-found")
+                }
                 if (!Array.isArray(activities)) {
                     console.error("activities is not an array or is missing:", activities);
                     return;
                 }
 
-                const activity_list = activityList.querySelector("#activities");
                 activity_list.innerHTML = "";
                 activities.forEach((activity) => {
                     const activityElement = new ActivityDropdown(activity, data.curusername,activityType );

@@ -168,5 +168,15 @@
         font-size: 28px;
         font-weight: bold;
     }
+
+    .ranking-table {
+        width: 100%;
+    }
+
+    .ranking-table td, .ranking-table th {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        padding: 8px;
+    }
 }
 

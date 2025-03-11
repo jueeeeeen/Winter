@@ -72,10 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if(!confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password-error").innerHTML = "confirm password is required"
-      } else if (!passwordPattern.test(confirmPassword)) {
-        isValid = false;
-        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character (@, $, !, %, *, ?, &, _).")
-      }
+      } 
 
       if (password !== confirmPassword) {
         isValid = false;

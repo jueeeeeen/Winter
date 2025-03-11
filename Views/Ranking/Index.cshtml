@@ -9,9 +9,14 @@
         <div class="podium-place second">
             @if (Model[1].ReviewedUser != "-"){
                 <a href="/profile/@Model[1].ReviewedUser">
-                    <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[1].ProfilePicture)" />
+                    @if (Model[1].ProfilePicture != null){
+                        <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[1].ProfilePicture)" />
+                    }
+                    else {
+                        <img class="profile" src="/assets/Profile-w-b.png"/>
+                    }
                     <p class="emoji">🥈</p>
-                    <p class="username">@("@" + Model[0].ReviewedUser)</p>
+                    <p class="username">@("@" + Model[1].ReviewedUser)</p>
                     <h2 class="name">@Model[1].FirstName @Model[1].LastName</h2>
                     <div class="rating-container">
                         <div class="rating">
@@ -25,7 +30,12 @@
         <div class="podium-place first">
             @if (Model[0].ReviewedUser != "-"){
                 <a href="/profile/@Model[0].ReviewedUser">
-                    <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[0].ProfilePicture)" />
+                    @if (Model[0].ProfilePicture != null){
+                        <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[0].ProfilePicture)" />
+                    }
+                    else {
+                        <img class="profile" src="/assets/Profile-w-b.png" />
+                    }
                     <p class="emoji">🥇</p>
                     <p class="username">@("@" + Model[0].ReviewedUser)</p>
                     <h2 class="name">@Model[0].FirstName @Model[0].LastName</h2>
@@ -41,7 +51,12 @@
         <div class="podium-place third">
             @if (Model[2].ReviewedUser != "-"){
                 <a href="/profile/@Model[2].ReviewedUser">
-                    <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[2].ProfilePicture)" />
+                    @if (Model[2].ProfilePicture != null){
+                        <img class="profile" src="data:image/png;base64,@Convert.ToBase64String(Model[2].ProfilePicture)" />
+                    }
+                    else {
+                        <img class="profile" src="/assets/Profile-w-b.png"/>
+                    }
                     <p class="emoji">🥉</p>
                     <p class="username">@("@" + Model[2].ReviewedUser)</p>
                     <h2 class="name">@Model[2].FirstName @Model[2].LastName</h2>

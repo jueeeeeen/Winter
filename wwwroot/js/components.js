@@ -189,7 +189,7 @@ class PendingNoti extends HTMLElement {
                 ${this.activity_title}
             </span>
             <span class="noti-message">
-                ${this.name} want to join your activity.
+                ${this.name} wants to join your activity.
             </span>
             <span class="noti-datetime">
                 ${this.time}
@@ -2338,7 +2338,8 @@ class Member extends HTMLElement {
           <li class="member">
             <div class="member-content">
               <div class="member-profile-pic">
-                <img src="${this.member.userDetails.profile_pic}" alt="Profile">
+                <img class="profile-img" src="${this.member.userDetails.profile_pic}" alt="Profile">
+                ${this.member.role === "host" ? '<img class="crown" src="../../assets/crown.svg">':""}
               </div>
               <div class="member-name-role">
                 <div class="member-name">${this.member.userDetails.firstName} ${this.member.userDetails.lastName}</div>
@@ -2375,7 +2376,7 @@ class Member extends HTMLElement {
           });
 
           this.querySelector(".rate-btn").addEventListener("click", () => {
-            ratingPopup.openPopup(this.activity_title, this.activity_id, this.member.userDetails.username);
+            ratingPopup.openPopup(this.activity_title, this.activity_id, this.member.userDetails.username,this.member.userDetails.profile_pic);
           });
         } else {
           this.renderWithoutButton();
@@ -2403,7 +2404,8 @@ class Member extends HTMLElement {
       <li class="member">
         <div class="member-content">
           <div class="member-profile-pic">
-            <img src="${this.member.userDetails.profile_pic}" alt="Profile">
+            <img class="profile-img" src="${this.member.userDetails.profile_pic}" alt="Profile">
+            ${this.member.role === "host" ? '<img class="crown" src="../../assets/crown.svg">':""}
           </div>
           <div class="member-name-role">
             <div class="member-name">${this.member.userDetails.firstName} ${this.member.userDetails.lastName}</div>
@@ -2499,11 +2501,11 @@ class ActivityDropdown extends HTMLElement {
     const status = this.querySelector(".activity-status");
 
     const statusColors = {
-        open: "green",
-        close: "#fdc330",
-        full: "blue",
-        delete: "red",
-        done: "var(--blue50)"
+        open: "var(--green)",
+        close: "var(--red)",
+        full: "var(--yellow)",
+        delete: "var(--gray90)",
+        done: "var(--blue80)"
     };
 
     if (statusColors[this.activity.status]) {
@@ -2590,7 +2592,9 @@ class RatingPopup extends HTMLElement {
       <div class="rating-header">Rate activity member</div>
       <div class="rating-info">
         <div class="rating-activity-name"></div>
-        <img src="/assets/Profile-g.png" alt="">
+        <div class="rating_member_profile_pic">
+          <img src="/assets/Profile-g.png" alt="Profile" id="member_profile_pic">
+        </div>
         <div class="rating-user-name"></div>
         <div class="rating-change-component">
           <div class="rating-stars">
@@ -2626,10 +2630,11 @@ class RatingPopup extends HTMLElement {
     this.setupStarRating();
   }
 
-  openPopup(activityTitle, activity_id,username) {
+  openPopup(activityTitle, activity_id,username,profile_pic) {
     this.activity_id = activity_id
     this.querySelector(".rating-activity-name").textContent = activityTitle;
     this.querySelector(".rating-user-name").textContent = username;
+    this.querySelector("#member_profile_pic").src = profile_pic
 
     this.resetComponent();
     this.style.display = "block";

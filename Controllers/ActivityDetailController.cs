@@ -41,78 +41,107 @@ public class ActivityDetailController: Controller
     }
     
     [HttpGet("ActivityDetail/{id}")]
-    public IActionResult Index(int id)
+    public async Task<IActionResult> Index(int id)
     {
-        UpdateActivityStatusAsync().Wait();
-        var activity = _context.Activities
+        await UpdateActivityStatusAsync();
+
+        var activity = await _context.Activities
             .Where(a => a.Activity_id == id)
-            .Select(a => new 
+            .FirstOrDefaultAsync();
+
+        if (activity == null)
+        {
+            return NotFound("Activity not found");
+        }
+
+        // คำนวณ averageRating ของ host
+        var averageRating = await _context.Reviews
+            .Where(r => r.Reviewed_user == activity.Owner)
+            .Select(r => (double?)r.Rating)
+            .AverageAsync() ?? 0;
+
+        // ดึงข้อมูล host
+        var host = await _context.Users
+            .Where(u => u.Username == activity.Owner)
+            .Select(u => new 
             {
-                a.Activity_id,
-                a.Title,
-                a.Detail,
-                a.Tags,
-                a.Create_time,
-                Requirement = a.Requirement != null ? new 
-                {
-                    a.Requirement.Gender,
-                    a.Requirement.Age,
-                    a.Requirement.Other
-                } : null,
-                a.Approval,
-                a.Location,
-                a.Activity_time,
-                a.Deadline_time,
-                a.Max_member,
-                Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
-                Pending_count = a.Participants.Count(p => p.Role == "pending"),
-                Participants = _context.Participants
-                    .Where(p => p.Activity_id == a.Activity_id)
-                    .OrderBy(p => p.Role == "host" ? 0 : p.Role == "member" ? 1 : 2) // เรียง Role ตาม host -> member -> pending
-                    .ThenBy(p => p.Join_time)
-                    .Select(p => new 
-                    {
-                        p.Username,
-                        p.Role,
-                        User = _context.Users
-                            .Where(u => u.Username == p.Username)
-                            .Select(u => new 
-                            {
-                                u.FirstName,
-                                u.LastName,
-                                Profile_pic = u.ProfilePicture != null 
-                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
-                                                        : "/assets/profile-g.png"
-                            })
-                            .FirstOrDefault()
-                    })
-                    .ToList(),
-                a.Duration,
-                a.Status,
-                host = _context.Users
-                    .Where(u => u.Username == a.Owner)
-                    .Select(u => new 
-                    {
-                        Profile_pic = u.ProfilePicture != null 
-                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
-                                                        : "/assets/profile-g.png",
-                        u.Username,
-                        u.FirstName,
-                        u.LastName,
-                        u.Gender,
-                        Rating = "4.5"
-                    })
-                    .FirstOrDefault()
+                Profile_pic = u.ProfilePicture != null 
+                                    ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                    : "/assets/profile-g.png",
+                u.Username,
+                u.FirstName,
+                u.LastName,
+                u.Gender,
+                Rating= averageRating
             })
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
 
-            var token = Request.Cookies["token"];
-            var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+        // ดึงข้อมูลของ Participants
+        var participants = await _context.Participants
+            .Where(p => p.Activity_id == activity.Activity_id)
+            .OrderBy(p => p.Role == "host" ? 0 : p.Role == "member" ? 1 : 2)
+            .ThenBy(p => p.Join_time)
+            .ToListAsync();
 
-            ViewBag.Username = username;
+        // ดึงข้อมูล Users ของ Participants
+        var usernames = participants.Select(p => p.Username).ToList();
+        var users = await _context.Users
+            .Where(u => usernames.Contains(u.Username))
+            .ToListAsync();
 
-        return activity == null ? NotFound("Activity not found") : View(activity);
+        // Map Participants กับ Users
+        var participantList = participants.Select(p => new 
+        {
+            p.Username,
+            p.Role,
+            User = users
+                .Where(u => u.Username == p.Username)
+                .Select(u => new 
+                {
+                    u.FirstName,
+                    u.LastName,
+                    Profile_pic = u.ProfilePicture != null 
+                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                        : "/assets/profile-g.png"
+                })
+                .FirstOrDefault()
+        }).ToList();
+
+        // ดึง Token และดึง username จาก JWT
+        var token = Request.Cookies["token"];
+        var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+
+        ViewBag.Username = username;
+
+        var response = new 
+        {
+            activity.Activity_id,
+            activity.Title,
+            activity.Detail,
+            activity.Tags,
+            activity.Create_time,
+            Requirement = activity.Requirement != null ? new 
+            {
+                activity.Requirement.Gender,
+                activity.Requirement.Age,
+                activity.Requirement.Other
+            } : null,
+            activity.Approval,
+            activity.Location,
+            activity.Activity_time,
+            activity.Deadline_time,
+            activity.Max_member,
+            Member_count = participants.Count(p => p.Role == "member" || p.Role == "host"),
+            Pending_count = participants.Count(p => p.Role == "pending"),
+            Participants = participantList,
+            activity.Duration,
+            activity.Status,
+            host
+        };
+
+        return View(response);
     }
+
 
     [HttpPost("ActivityDetail/DeleteActivity/{Activity_id}")]
     public IActionResult DeleteActivity(int Activity_id)

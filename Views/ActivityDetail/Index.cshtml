@@ -246,11 +246,11 @@
         {
             @if (participant.Role == "host")
                 {
-                    <host-list-item name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username"></host-list-item>
+                    <host-list-item name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" profile-pic="@participant.User.Profile_pic"></host-list-item>
                 }
             else if (participant.Role == "member")
             {
-                <member-list-item name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username"></member-list-item>
+                <member-list-item name="@participant.User.FirstName @participant.User.LastName" username="@participant.Username" profile-pic="@participant.User.Profile_pic"></member-list-item>
             }
         }
         @{
@@ -266,7 +266,7 @@
             }
         </ul>
         <div class="act-detail-btn-container">
-        <view-review-btn></view-review-btn>
+        <view-review-btn activity-id="@Model.Activity_id"></view-review-btn>
         @if (userIsMember)
         {
             <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
@@ -287,7 +287,7 @@
             <delete-btn data-activity-id="@Model.Activity_id"></delete-btn>
         </div>
     }
-    else if (Model.Status == "close" || Model.Status == "done")
+    else if (Model.Status == "close")
     {
         <div class="delete-container">
             <delete-btn data-activity-id="@Model.Activity_id"></delete-btn>

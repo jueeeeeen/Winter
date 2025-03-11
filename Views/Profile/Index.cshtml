@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Profile";
+    var friendStatus = ViewBag.FriendStatus ?? "No relationship";
 }
 
 <div class="profile-container">
@@ -31,8 +32,7 @@
         </div>
 
         <div class="profile-rating">
-            <img src="\assets\icon _star.svg" alt="star icon">
-            <p>@Model.AverageRating</p>
+            <p>⭐ @Model.AverageRating</p>
         </div>
 
         <div class="joined-review">
@@ -84,7 +84,7 @@
                 </div>
                 <div class="bottom-info">
                     <div class="details-info">
-                        <span class="personal-header">Birth</span>
+                        <span class="personal-header">Birthday</span>
                         <span class="personal-info">@Model.DateOfBirth</span>
                     </div>
                     <div class="details-info">
@@ -103,14 +103,167 @@
                         </button>
                     </div>
                 }
-
-                <div class="add-friend-button">
-                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
-                            <img src="~/assets/edit.svg" alt="add-friend-button Friend icon" class="add-friend-img">
+                else if (friendStatus.Contains("friends")){
+                    <div class="friend-button friend-red friend-text">
+                    <p>@friendStatus</p>
+                    <button onclick="removeFriend(this)" data-friend-id="@Model.UserId" friend-name="@Model.FirstName @Model.LastName">
+                        <p>Remove Friend</p>
+                    </button>
+                </div>
+                }
+                else if(friendStatus == "Request sent")
+                {
+                    <div class="friend-button friend-yellow friend-text">
+                        <p>waiting for their accept</p>
+                        <button onclick="CancelRequest(this)" data-friend-id="@Model.UserId"> 
+                            <p>Cancel Friend Request</p>
+                        </button>
+                    </div>
+                }
+                else if(friendStatus == "Request received")
+                {
+                    <div class="friend-approve friend-text">
+                        <p>they want to be your friend</p>
+                        <div class="approve-friend-button friend-green">
+                            <button onclick="acceptFriendRequest(this)" data-friend-id="@Model.UserId"> 
+                                <p>Accept</p>
+                            </button>
+                        </div>
+                        <div class="approve-friend-button friend-red">
+                            <button onclick="denyFriendRequest(this)" data-friend-id="@Model.UserId"> 
+                                <p>Deny</p>
+                            </button>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="friend-button">
+                        <button onclick="addFriend(this)" data-friend-id="@Model.UserId"> 
                             <p>Add Friend</p>
                         </button>
-                </div>
+                    </div>
+                }
             </div>
         </div>  
     </div>
 </div>
+
+<script>
+async function addFriend(button) {
+
+    const friendId = button.getAttribute("data-friend-id");
+
+    try {
+        const response = await fetch("/friends/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ friendId }),
+        });
+
+        if (response.ok) {
+            console.log(`Friend request sent to Friend ID: ${friendId}`);
+            location.reload();
+            alert("Friend request has been sent!");
+        } else {
+            console.log("Friend request failed");
+            alert("Failed to send friend request");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while sending the request");
+    }
+}
+async function CancelRequest(button) {
+
+    const friendId = button.getAttribute("data-friend-id");
+
+    const response = await fetch("/friends/cancel", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId })
+    });
+
+    if (response.ok) {
+      alert("The friend request has been canceled!");
+      location.reload();
+    } else {
+      alert("An error occurred, unable to cancel the friend request.");
+    }
+  }
+
+async function acceptFriendRequest(button) {
+    const friendId = button.getAttribute("data-friend-id");
+    console.log(`Accepting friend request from Friend ID: ${friendId}`);
+    const response = await fetch("/friends/accept-friend", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId })
+    });
+    if (response.ok) {
+      alert("Friend request accepted!");
+      location.reload();
+    } else {
+      alert("Failed to accept friend request.");
+      const errorText = await response.text();
+      console.error(`Server Error: ${errorText}`);
+    }
+}
+
+async function denyFriendRequest(button) {
+    const friendId = button.getAttribute("data-friend-id");
+    console.log(`Denying friend request from Friend ID: ${friendId}`);
+    const response = await fetch("/friends/deny", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId })
+    });
+
+    if (response.ok) {
+      alert("Friend request denied!");
+      location.reload();
+    } else {
+      alert("Failed to deny friend request.");
+      const errorText = await response.text();
+      console.error(`Server Error: ${errorText}`);
+    }
+}
+
+  async function removeFriend(button) {
+
+    const name = button.getAttribute("friend-name");
+
+      const confirmDelete = confirm(`Are you sure you want to delete ${name} from your friend list?`);
+      if (!confirmDelete) return;
+
+      const friendId = button.getAttribute("data-friend-id");
+
+      try {
+          const response = await fetch(`/friends/remove`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ friendId }),
+          });
+
+          if (response.ok) {
+              alert(`${name} has been removed from the friend list.`);
+              location.reload();
+          } else {
+              alert("An error occurred while removing the friend.");
+          }
+      } catch (error) {
+          console.error("Error:", error);
+          alert("Unable to connect to the server.");
+      }
+  }
+</script>

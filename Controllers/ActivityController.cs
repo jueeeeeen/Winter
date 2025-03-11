@@ -11,11 +11,18 @@ public class ActivityController: Controller
 {
     private readonly WinterContext _context;
 
-    public async Task UpdateActivityStatusAsync()
+    private string Get_username_from_token()
     {
-        var activities = await _context.Activities
+        var token = Request.Cookies["token"];
+        var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+        return username;
+    }
+
+    public void UpdateActivityStatus()
+    {
+        var activities = _context.Activities
             .Where(a => a.Status != "delete") 
-            .ToListAsync();
+            .ToList();
 
         var currentTime = DateTime.UtcNow;
 
@@ -33,7 +40,7 @@ public class ActivityController: Controller
             _context.Activities.Update(activity);
         }
 
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 
     public ActivityController(WinterContext context)
@@ -62,11 +69,11 @@ public class ActivityController: Controller
     [HttpPost]
     public JsonResult GetActivityCards([FromBody] ActDisplayOptionModel filters)
     {
-        UpdateActivityStatusAsync().Wait();
+        UpdateActivityStatus();
         Console.WriteLine(filters);
         var page_size = 12;
 
-        var filtered_activities = _context.Activities.Where(a => a.Status == "open");
+        var filtered_activities = _context.Activities.Where(a => a.Status == "open").AsQueryable();
 
         switch (filters.Sort)
         {
@@ -99,43 +106,10 @@ public class ActivityController: Controller
             filtered_activities = filtered_activities.Where(a => filters.Filter.Gender.Contains(a.Requirement.Gender));
         }
 
-        if (filters.Filter.Friend == true) 
-        {
-            var token = Request.Cookies["token"];
-            var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
-
-            int userId = GetUserIdFromToken(username);
-
-            List<int> friendIds = _context.Friends
-                .Where(f => (f.UserId == userId || f.FriendId == userId) && f.IsFriend)
-                .Select(f => f.UserId == userId ? f.FriendId : f.UserId)
-                .ToList();
-
-            List<string> friendUsernames = _context.Users
-                .Where(u => friendIds.Contains(u.Id))
-                .Select(u => u.Username)
-                .ToList();
-
-                Console.WriteLine("Friend IDs: " + string.Join(", ", friendIds));
-                Console.WriteLine("Friend Usernames: " + string.Join(", ", friendUsernames));
-
-                filtered_activities = filtered_activities
-                .Where(activity => friendUsernames.Contains(activity.Owner));
-
-        }
-
-        int GetUserIdFromToken(string username)
-        {
-            return _context.Users
-                .Where(u => u.Username == username)
-                .Select(u => u.Id)
-                .FirstOrDefault();
-        }
-
         if (filters.Filter.Age != null) {
             filtered_activities = filtered_activities.Where(a => a.Requirement.Age >= filters.Filter.Age.Min && a.Requirement.Age <= filters.Filter.Age.Max);
         }
-
+        
         if (filters.Tag_filter.Any()) {
             filtered_activities = filtered_activities.Where(a => filters.Tag_filter.Any(tag => a.Tags.Contains(tag)));
         }
@@ -144,44 +118,52 @@ public class ActivityController: Controller
             filtered_activities = filtered_activities.Where(a => a.Title.Contains(filters.Seach_key));
         }
 
+        // คำนวณหน้าสูงสุดก่อนรัน ToListAsync()
+        var total_activities = filtered_activities.Count();
+        var max_page = (total_activities + page_size - 1) / page_size;
+
+        var responseActivities = filtered_activities
+            .Skip((filters.Page - 1) * page_size)
+            .Take(page_size)
+            .Select(a => new 
+            {
+                a.Activity_id,
+                a.Title,
+                a.Tags,
+                Create_time = a.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm"),
+                Requirement = new {
+                    a.Requirement.Gender,
+                    a.Requirement.Age,
+                },
+                a.Location,
+                Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy-HH:mm"),
+                a.Max_member,
+                Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
+                a.Duration,
+                host = _context.Users
+                .Where(u => u.Username == a.Owner)
+                .Select(u => new 
+                {
+                    Profile_pic = u.ProfilePicture != null 
+                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                        : "/assets/profile-g.png",
+                    u.Username,
+                    u.FirstName,
+                    u.LastName,
+                    u.Gender,
+                    Review = _context.Reviews
+                        .Where(r => r.Reviewed_user == u.Username)
+                        .Average(r => (double?)r.Rating) ?? 0
+                }).FirstOrDefault()
+            })
+            .ToList();
+
         var response = new 
         {
-            Activities = filtered_activities
-                .Skip((filters.Page - 1) * page_size)
-                .Take(page_size)
-                .Select(a => new 
-                {
-                    a.Activity_id,
-                    a.Title,
-                    a.Tags,
-                    Create_time = a.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm"),
-                    Requirement = new {
-                        a.Requirement.Gender,
-                        a.Requirement.Age,
-                    },
-                    a.Location,
-                    Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy-HH:mm"),
-                    a.Max_member,
-                    Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
-                    a.Duration,
-                    host = _context.Users
-                                    .Where(u => u.Username == a.Owner)
-                                    .Select(u => new 
-                                    {
-                                        Profile_pic = u.ProfilePicture != null 
-                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
-                                                        : "/assets/profile-g.png",
-                                        u.Username,
-                                        u.FirstName,
-                                        u.LastName,
-                                        u.Gender,
-                                        Review = "4.5"
-                                    })
-                                    .FirstOrDefault()
-                })
-                .ToList(),
-            Max_page = (filtered_activities.Count() + 11) / 12
+            Activities = responseActivities,
+            Max_page = max_page
         };
+
         return Json(response);
     }
 

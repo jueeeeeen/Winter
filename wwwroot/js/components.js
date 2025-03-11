@@ -2333,7 +2333,7 @@ class Member extends HTMLElement {
   connectedCallback() {
     if (this.username !== this.member.userDetails.username && this.activity_type == "history" && this.activity_type !== null) {
       this.checkReviewStatus().then((hasReview) => {
-        if (!hasReview) {
+        if (hasReview) {
           this.innerHTML = `
           <li class="member">
             <div class="member-content">

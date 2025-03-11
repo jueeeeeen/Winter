@@ -2499,11 +2499,11 @@ class ActivityDropdown extends HTMLElement {
     const status = this.querySelector(".activity-status");
 
     const statusColors = {
-        open: "green",
-        close: "#fdc330",
-        full: "blue",
-        delete: "red",
-        done: "var(--blue50)"
+        open: "var(--green)",
+        close: "var(--red)",
+        full: "var(--yellow)",
+        delete: "var(--gray90)",
+        done: "var(--blue80)"
     };
 
     if (statusColors[this.activity.status]) {

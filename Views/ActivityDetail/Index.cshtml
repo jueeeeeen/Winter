@@ -10,7 +10,7 @@
             <div><img src="@Model.host.Profile_pic" class="profile-img"></div>
             <div>
                 <span>@Model.host.FirstName @Model.host.LastName</span>
-                <svg-male aria-label="male"></svg-male>
+                <svg-@Model.host.Gender aria-label="@Model.host.Gender"></svg-@Model.host.Gender>
             </div>
             <div>
                 <span>@Model.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm")</span>
@@ -34,7 +34,7 @@
                     <svg-x></svg-x>close
                 </span>
             }else if (@Model.Status == "done"){
-                <span class="act-detail-status w-gr">
+                <span class="act-detail-status w-mb">
                     <svg-clock></svg-clock>done
                 </span>
             }else if (@Model.Status == "full"){

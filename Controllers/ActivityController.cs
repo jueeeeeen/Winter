@@ -107,6 +107,10 @@ public class ActivityController: Controller
             filtered_activities = filtered_activities.Where(a => a.Requirement.Age >= filters.Filter.Age.Min && a.Requirement.Age <= filters.Filter.Age.Max);
         }
 
+        // if (filters.Filter.Friend == true) {
+        //     filtered_activities = filtered_activities.Where(a => a.Owner);
+        // }
+
         if (filters.Tag_filter.Any()) {
             filtered_activities = filtered_activities.Where(a => filters.Tag_filter.Any(tag => a.Tags.Contains(tag)));
         }
@@ -131,7 +135,7 @@ public class ActivityController: Controller
                         a.Requirement.Age,
                     },
                     a.Location,
-                    Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm"),
+                    Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy-HH:mm"),
                     a.Max_member,
                     Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
                     a.Duration,

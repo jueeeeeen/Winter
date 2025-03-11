@@ -90,11 +90,12 @@
                 <div class="profile-dropdown w-mb-mb edge" id="profile_dropdown">
                         <div class="profile-dropdown-info">
                             <div class="profile-container-dropdown">
-                                <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-w-b.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
+                                <a  href="/Profile/@Model.Username">
+                                    <img id="profile_pic_dropdown" src="@(string.IsNullOrEmpty(Model.ProfilePictureBase64) ? Url.Content("~/assets/Profile-g.png") : Model.ProfilePictureBase64)" width="40px" class="profile-picture-dropdown">
+                                </a>
                             </div>
-                            
-                            <span class="first-name-dropdown">@Model.FirstName</span>
-                            <span class="last-name-dropdown">@Model.LastName</span>
+                            <a  href="/Profile/@Model.Username"><span class="first-name-dropdown">@Model.FirstName</span>
+                            <span class="last-name-dropdown">@Model.LastName</span></a>
                             <span class="username_dropdown">@Model.Username</span>
                         </div>
                         
@@ -105,7 +106,7 @@
                             <hr class="blue_line_dash">
                             <li><a class="profile-dropdown-nav" href="/Profile/Review"><img src="/assets/star_outline.svg">My Ratings</a></li>
                             <hr class="blue_line_dash">
-                            <li class="profile-dropdown-nav"><a href="/Friend"><img src="/assets/star_outline.svg">My Friend</a></li>
+                            <li><a class="profile-dropdown-nav" href="/Friend"><svg-friend></svg-friend>My Friend</a></li>
                             <hr class="blue_line_dash">
                         </ul>
                     
@@ -146,7 +147,7 @@
     const profile_button = document.querySelector("#profile-button-check");
     const profile_pic_nav = document.querySelector("#profile-button");
     const bell_button = document.querySelector("#bell-button-check");
-    const logout_button = document.querySelector("#logout_button");
+    const logout_button = document.querySelector("#logout-button");
 
     profile_button.addEventListener("change", toggle_profile_dropdown);
     bell_button.addEventListener("change", toggle_noti_dropdown);

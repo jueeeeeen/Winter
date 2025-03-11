@@ -46,20 +46,6 @@
     transform: scale(1.05);
 }
 
-.display-option-container {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-        "search search"
-        "tag filters";
-    align-items: center;
-    row-gap: 1em;
-    column-gap: 0.5em;
-    margin-bottom: 2em;
-    max-width: 100%;
-}
-
 search-friend-bar {
     margin-top: 50px;
     grid-area: search;
@@ -69,7 +55,6 @@ search-friend-bar {
 .friend-container {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     width: 80%;
     height: 80vh;
@@ -88,19 +73,36 @@ search-friend-bar {
     display: flex;
     align-items: center;
     width: 100%;
+    margin-bottom: 1rem;
+}
+
+.friend-text {
+    width: calc(100% - 8rem);
+    background-color: var(--blue20);
+    text-align: center;
+    color: var(--gray90);
+    font-weight: 500;
+    margin: 0 4rem 1rem;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
 }
 
 .friend-li-container {
     display: flex;
     flex-wrap: wrap;
-    padding: 2rem 4rem;
+    padding: 0 4rem;
     align-items: flex-start;
-    justify-content: space-between;
     gap: 1rem;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .friend-li-container>*{
     height: fit-content;
+    flex: 1 1 calc(50% - 0.5rem);
+    max-width: calc(50% - 0.5rem);
 }
 
 .member-list-item {
@@ -131,7 +133,7 @@ search-friend-bar {
 
 .member-list-item-name {
     grid-area: name;
-    font-size: 1.25em;
+    font-size: 1.125em;
     align-self: end;
     font-weight: 600;
     overflow: hidden;
@@ -139,7 +141,14 @@ search-friend-bar {
     white-space: nowrap;
 }
 
+.member-list-item-username {
+    font-size: 0.9rem;
+    color: var(--gray70);
+    font-weight: 400;
+}
+
 .member-list-item-role {
+    font-size: 0.875em;
     grid-area: role;
     font-weight: 500;
     color: var(--gray70);
@@ -173,6 +182,39 @@ search-friend-bar {
     transform:translateX(-4%) scale(1.1);
 }
 
-.svg-check svg path{
+svg-check svg path{
     fill: none !important;
+}
+
+.friend-not-found {
+    margin: auto;
+    font-size: 1.125rem;
+    color: var(--gray70);
+}
+
+.find-friend-btn {
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+@media screen and (max-width: 480px) {
+
+    .friend-container {
+        width: 90%;
+        /* flex: 1; */
+    }
+
+    .friend-li-container {
+        padding: 1rem 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        height: 100%;
+        flex-wrap: nowrap;
+    }
+
+    .friend-li-container>* {
+        max-width: 100%;
+        flex: none;
+    }
 }

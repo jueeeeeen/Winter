@@ -8,6 +8,35 @@ namespace Winter_Project.Controllers;
 public class MyActivityController: Controller
 {
     private readonly WinterContext _context;
+
+    public async Task UpdateActivityStatusAsync()
+    {
+        var activities = await _context.Activities
+            .Where(a => a.Status != "delete") 
+            .ToListAsync();
+
+        var currentTime = DateTime.UtcNow;
+
+        foreach (var activity in activities)
+        {
+            if (activity.Deadline_time == activity.Activity_time && currentTime >= activity.Activity_time)
+            {
+                activity.Status = "done";
+            }
+            else if (activity.Deadline_time <= currentTime)
+            {
+                activity.Status = "close"; 
+            }
+            else if (activity.Activity_time <= currentTime)
+            {
+                activity.Status = "done";
+            }
+
+            _context.Activities.Update(activity);
+        }
+
+        await _context.SaveChangesAsync();
+    }
     public MyActivityController(WinterContext context)
     {
         _context = context;
@@ -20,6 +49,7 @@ public class MyActivityController: Controller
     [HttpGet]
     public JsonResult GetActivities([FromQuery] string activityType, [FromQuery] int page )
     {
+        UpdateActivityStatusAsync().Wait();
         var token = Request.Cookies["token"];
         Console.WriteLine($"Token: {token}");
 

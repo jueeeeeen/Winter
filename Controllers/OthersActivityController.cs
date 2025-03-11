@@ -6,6 +6,34 @@ using Winter_Project.Models;
 using Microsoft.EntityFrameworkCore;
 public class OthersActivityController: Controller
 {
+    public async Task UpdateActivityStatusAsync()
+    {
+        var activities = await _context.Activities
+            .Where(a => a.Status != "delete") 
+            .ToListAsync();
+
+        var currentTime = DateTime.UtcNow;
+
+        foreach (var activity in activities)
+        {
+            if (activity.Deadline_time == activity.Activity_time && currentTime >= activity.Activity_time)
+            {
+                activity.Status = "done";
+            }
+            else if (activity.Deadline_time <= currentTime)
+            {
+                activity.Status = "close"; 
+            }
+            else if (activity.Activity_time <= currentTime)
+            {
+                activity.Status = "done";
+            }
+
+            _context.Activities.Update(activity);
+        }
+
+        await _context.SaveChangesAsync();
+    }
     private readonly WinterContext _context;
     public OthersActivityController(WinterContext context)
     {
@@ -14,6 +42,7 @@ public class OthersActivityController: Controller
     [HttpGet("ActivityProfile/{username}")]
     public IActionResult Index(string username, [FromQuery] int page)
     {
+        UpdateActivityStatusAsync().Wait();
         var token = Request.Cookies["token"];
         Console.WriteLine($"Token: {token}");
 

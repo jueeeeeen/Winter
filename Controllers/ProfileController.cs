@@ -90,6 +90,7 @@ public class ProfileController : Controller
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 DateOfBirth = user.DateOfBirth,
+                Gender = user.Gender,
                 Location = userBio?.Location ?? "No information",
                 Phone = userBio?.Phone ?? "No information",
                 AboutMe = userBio?.AboutMe ?? "No information",
@@ -171,6 +172,7 @@ public class ProfileController : Controller
         user.LastName = model.LastName;
         user.Email = model.Email;
         user.DateOfBirth = model.DateOfBirth;
+        user.Gender = model.Gender;
 
         if (model.ProfilePictureFile != null && model.ProfilePictureFile.Length > 0)
         {
@@ -227,6 +229,7 @@ public class ProfileController : Controller
             FirstName = user.FirstName,
             LastName = user.LastName,
             DateOfBirth = user.DateOfBirth,
+            Gender = user.Gender,
             Location = userBio?.Location ?? "No information",
             Phone = userBio?.Phone ?? "No information",
             AboutMe = userBio?.AboutMe ?? "No information",

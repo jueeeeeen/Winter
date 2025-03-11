@@ -1315,9 +1315,9 @@ class AllActBanner extends HTMLElement {
     super();
     this.current_page = 0;
     this.pictures = [
-      "winter_login_pic2.jpg",
-      "winter_login_pic.jpg",
-      "1657770518.jpeg",
+      "/banner/CE.jpg",
+      "/banner/Isag.jpg",
+      "/banner/Network.jpg",
     ];
 
     this.innerHTML = `<div class="banner-container">
@@ -1348,15 +1348,30 @@ class AllActBanner extends HTMLElement {
     this.handle_banner_change = this.handle_banner_change.bind(this);
 
     this.page_list = this.querySelectorAll("span");
+
+    this.startAutoSlide();
   }
   connectedCallback() {
     this.handle_banner_change(0);
-    this.querySelector("#prev-banner-btn").addEventListener("click", () =>
-      this.handle_banner_change(-1)
-    );
+    this.querySelector("#prev-banner-btn").addEventListener("click", () => {
+      this.handle_banner_change(-1);
+      this.resetAutoSlide();
+    });
     this.querySelector("#next-banner-btn").addEventListener("click", () => {
       this.handle_banner_change(1);
+      this.resetAutoSlide();
     });
+  }
+
+  startAutoSlide() {
+    this.autoSlide = setInterval(() => {
+      this.handle_banner_change(1);
+    }, 10000);
+  }
+
+  resetAutoSlide() {
+    clearInterval(this.autoSlide);
+    this.startAutoSlide();
   }
 
   handle_banner_change(value) {

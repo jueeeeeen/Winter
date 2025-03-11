@@ -60,9 +60,9 @@ public class ActivityController: Controller
     }
 
     [HttpPost]
-    public async Task<JsonResult> GetActivityCards([FromBody] ActDisplayOptionModel filters)
+    public JsonResult GetActivityCards([FromBody] ActDisplayOptionModel filters)
     {
-        await UpdateActivityStatusAsync();
+        UpdateActivityStatusAsync().Wait();
         Console.WriteLine(filters);
         var page_size = 12;
 
@@ -116,8 +116,8 @@ public class ActivityController: Controller
                 .Select(u => u.Username)
                 .ToList();
 
-Console.WriteLine("Friend IDs: " + string.Join(", ", friendIds));
-Console.WriteLine("Friend Usernames: " + string.Join(", ", friendUsernames));
+                Console.WriteLine("Friend IDs: " + string.Join(", ", friendIds));
+                Console.WriteLine("Friend Usernames: " + string.Join(", ", friendUsernames));
 
                 filtered_activities = filtered_activities
                 .Where(activity => friendUsernames.Contains(activity.Owner));
@@ -144,71 +144,44 @@ Console.WriteLine("Friend Usernames: " + string.Join(", ", friendUsernames));
             filtered_activities = filtered_activities.Where(a => a.Title.Contains(filters.Seach_key));
         }
 
-        // คำนวณหน้าสูงสุดก่อนรัน ToListAsync()
-        var total_activities = await filtered_activities.CountAsync();
-        var max_page = (total_activities + page_size - 1) / page_size;
-
-        var activitiesList = await filtered_activities
-            .Skip((filters.Page - 1) * page_size)
-            .Take(page_size)
-            .ToListAsync();
-
-        var responseActivities = new List<object>();
-
-        foreach (var a in activitiesList)
-        {
-            var host = await _context.Users
-                .Where(u => u.Username == a.Owner)
-                .Select(u => new 
-                {
-                    Profile_pic = u.ProfilePicture != null 
-                                    ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
-                                    : "/assets/profile-g.png",
-                    u.Username,
-                    u.FirstName,
-                    u.LastName,
-                    u.Gender
-                })
-                .FirstOrDefaultAsync();
-
-            var averageRating = await _context.Reviews
-                .Where(r => r.Reviewed_user == a.Owner)
-                .Select(r => (double?)r.Rating)
-                .AverageAsync() ?? 0;
-
-            responseActivities.Add(new
-            {
-                a.Activity_id,
-                a.Title,
-                a.Tags,
-                Create_time = a.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm"),
-                Requirement = new {
-                    a.Requirement.Gender,
-                    a.Requirement.Age,
-                },
-                a.Location,
-                Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy-HH:mm"),
-                a.Max_member,
-                Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
-                a.Duration,
-                host = new
-                {
-                    host?.Profile_pic,
-                    host?.Username,
-                    host?.FirstName,
-                    host?.LastName,
-                    host?.Gender,
-                    Review = averageRating
-                }
-            });
-        }
-
         var response = new 
         {
-            Activities = responseActivities,
-            Max_page = max_page
+            Activities = filtered_activities
+                .Skip((filters.Page - 1) * page_size)
+                .Take(page_size)
+                .Select(a => new 
+                {
+                    a.Activity_id,
+                    a.Title,
+                    a.Tags,
+                    Create_time = a.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm"),
+                    Requirement = new {
+                        a.Requirement.Gender,
+                        a.Requirement.Age,
+                    },
+                    a.Location,
+                    Activity_time = a.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy-HH:mm"),
+                    a.Max_member,
+                    Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
+                    a.Duration,
+                    host = _context.Users
+                                    .Where(u => u.Username == a.Owner)
+                                    .Select(u => new 
+                                    {
+                                        Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png",
+                                        u.Username,
+                                        u.FirstName,
+                                        u.LastName,
+                                        u.Gender,
+                                        Review = "4.5"
+                                    })
+                                    .FirstOrDefault()
+                })
+                .ToList(),
+            Max_page = (filtered_activities.Count() + 11) / 12
         };
-
         return Json(response);
     }
 

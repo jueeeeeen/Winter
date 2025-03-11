@@ -51,12 +51,12 @@ public class MyActivityController: Controller
 
         if (activityType == "history"){
             activitiesList = activitiesList.Where(a =>
-                    DateTime.Parse(a.Activity_time).Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
+                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
                 .ToList();
         }
         else if (activityType == "upcoming"){
             activitiesList = activitiesList.Where(a =>
-                    DateTime.Parse(a.Activity_time).Add(TimeSpan.Parse(a.Duration)) >= DateTime.UtcNow.AddHours(7))
+                    a.Activity_time.Add(TimeSpan.Parse(a.Duration)) >= DateTime.UtcNow.AddHours(7))
                 .ToList();
         }
 
@@ -74,7 +74,7 @@ public class MyActivityController: Controller
                     a.Activity_id,
                     a.Title,
                     a.Tags,
-                    Activity_time = DateTime.Parse(a.Activity_time).ToString("ddd, dd MMM yyyy-HH:mm"),
+                    Activity_time = a.Activity_time.ToString("ddd, dd MMM yyyy-HH:mm"),
                     host = _context.Users
                     .Where(u => u.Username == a.Owner)
                     .Select(u => new 
@@ -90,12 +90,14 @@ public class MyActivityController: Controller
                     .OrderBy(p => p.Role == "host" ? 0 : p.Role == "member" ? 1 : 2)
                     .Select(p => new
                     {
-                        p.Username,
                         p.Role,
                         UserDetails = _context.Users
                             .Where(u => u.Username == p.Username)
                             .Select(u => new
                             {
+                                Profile_pic = u.ProfilePicture != null 
+                                    ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                    : "/assets/profile-g.png",
                                 u.Id,
                                 u.Username,
                                 u.FirstName,

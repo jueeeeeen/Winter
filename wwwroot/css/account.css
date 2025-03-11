@@ -10,6 +10,11 @@ html, body {
   box-sizing: border-box;
 }
 
+#email-icon {
+  width: 25px;
+  height: 35px;
+}
+
 .bullet.current {
   border: solid 3px var(--blue40);
   background-color: var(--blue40);
@@ -117,7 +122,7 @@ html, body {
   color: var(--blue90);
   background-color: var(--white);
   width: 380px;
-  height: 550px;
+  height: 600px;
   border-radius: 20px;
 }
 
@@ -286,11 +291,13 @@ html, body {
   justify-content: center;
 }
 
-.error {
+.error,
+#password-error {
   height: 12px;
   color: red;
   font-size: 10px;
   font-weight: bold;
+  margin-left: 40px;
 }
 
 .next-button {

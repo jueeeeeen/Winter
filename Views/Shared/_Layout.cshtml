@@ -1,6 +1,7 @@
-﻿@using Winter_Project.Services;
-@inject UserService _userService;
-@inject NotificationService _notificationService;
+﻿@using Winter_Project.Services
+@using Winter_Project.ViewModels
+@inject UserService _userService
+@inject NotificationService _notificationService
 
 @{
     var token = Context.Request.Cookies["token"];
@@ -12,8 +13,8 @@
     bool isLoggedIn = !string.IsNullOrEmpty(token);
 
     var notifications = navbarProfileViewModel != null 
-        ? await _notificationService.GetUserNotificationsAsync(username) 
-        : new List<NotificationModel>();
+        ? (await _notificationService.GetUserNotificationsAsync(username)) // Use the correct NotificationViewModel
+        : new List<NotificationViewModel>(); // Ensure this is from Winter_Project.ViewModels
 
     // Pass notifications to the _MainNavBar
     ViewData["Notifications"] = notifications;
@@ -53,9 +54,13 @@
     {
         <link rel="stylesheet" href="~/css/activity.css" asp-append-version="true" />
     }
-    @if (((ViewData["Title"] as string) == "Friend"))
+    @if (((ViewData["Title"] as string) == "Friend") || ((ViewData["Title"] as string) == "Find Friend"))
     {
         <link rel="stylesheet" href="~/css/Friend.css" asp-append-version="true" />
+    }
+    @if (((ViewData["Title"] as string) == "Ranking"))
+    {
+        <link rel="stylesheet" href="~/css/ranking.css" asp-append-version="true" />
     }
     @if (((ViewData["Title"] as string) == "Activity Detail"))
     {

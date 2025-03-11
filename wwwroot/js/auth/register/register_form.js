@@ -16,43 +16,71 @@ document.addEventListener("DOMContentLoaded", function () {
     step[0].classList.add("current");
   }
 
+  const clearErrorOnInput = (inputId, errorId) => {
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+
+    const eventType = input.type === "hidden" ? "change" : "input";
+
+    input.addEventListener(eventType, () => {
+      if (input.value.trim() !== "") {
+        error.innerHTML = "";
+      }
+    });
+  }
+
+  clearErrorOnInput("username", "username-error");
+  clearErrorOnInput("email", "email-error");
+  clearErrorOnInput("password", "password-error");
+  clearErrorOnInput("confirm-password", "confirm-password-error");
+  clearErrorOnInput("firstname", "firstname-error");
+  clearErrorOnInput("lastname", "lastname-error");
+  clearErrorOnInput("dateofbirth", "birth-error");
+  clearErrorOnInput("gender", "gender-error");
+
   nextButton.addEventListener("click", function (event) {
     event.preventDefault();
     const activePage = pages[current];
-    const inputs = activePage.querySelectorAll("input[required]");
-    let isValid = true;
-    const errorSpans = document.querySelectorAll(".error");
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&_])[A-Za-z\d@@$!%*?&_]{8,}$/;
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-    inputs.forEach((input, index) => {
-      // ตรวจสอบช่องว่างเมื่อคลิกปุ่ม
-      if (!input.value.trim()) {
-          isValid = false;
-          input.classList.add("error");
-          if (errorSpans[index]) {
-              errorSpans[index].innerText = `${input.placeholder} is required`;
-              console.log(`${input.placeholder} is required`);
-          }
-      }
-  
-      // ลบข้อความ error เมื่อเริ่มพิมพ์
-      input.addEventListener("input", () => {
-          if (input.value.trim()) {
-              input.classList.remove("error");
-              if (errorSpans[index]) {
-                  errorSpans[index].innerText = "";
-              }
-          }
-      });
-  });
+    let isValid = true;
 
     if (current === 0) {
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirm-password").value;
+      if(!username) {
+        isValid = false;
+        document.getElementById("username-error").innerHTML = "username is required"
+      }
+      if(!email) {
+        isValid = false;
+        document.getElementById("email-error").innerHTML = "email is required"
+      } else if (!emailPattern.test(email)) {
+        isValid = false;
+        alert("Invalid email format.")
+      }
+      if(!password) {
+        isValid = false;
+        document.getElementById("password-error").innerHTML = "password is required"
+      } else if (!passwordPattern.test(password)) {
+        isValid = false;
+        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character (@, $, !, %, *, ?, &, _).")
+      }
+      if(!confirmPassword) {
+        isValid = false;
+        document.getElementById("confirm-password-error").innerHTML = "confirm password is required"
+      } else if (!passwordPattern.test(confirmPassword)) {
+        isValid = false;
+        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character (@, $, !, %, *, ?, &, _).")
+      }
 
       if (password !== confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password").classList.add("error");
-        document.getElementById("password-error").innerHTML =
+        document.getElementById("check-password-error").innerHTML =
           "Passwords don't match";
       }
     }
@@ -85,6 +113,10 @@ document.addEventListener("DOMContentLoaded", function () {
       genderButtons.forEach((btn) => btn.classList.remove("active"));
       this.classList.add("active");
       genderInput.value = this.getAttribute("data-gender");
+      const genderError = document.getElementById("gender-error");
+      if (genderInput.value) {
+        genderError.innerHTML = "";
+      }
       console.log("Gender selected:", genderInput.value);
     });
   });
@@ -105,7 +137,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const LastName = document.getElementById("lastname").value;
     const DateOfBirth = document.getElementById("dateofbirth").value;
     const Gender = document.getElementById("gender").value;
-    console.log(Gender);
+    const namePattern = /^[A-Za-z]{2,50}$/;
+
+    if(!FirstName) {
+      isValid = false;
+      document.getElementById("firstname-error").innerHTML = "firstname is required"
+    } else if (!namePattern.test(FirstName)) {
+      alert("Firstname must contains just characters.")
+    }
+    if(!LastName) {
+      isValid = false;
+      document.getElementById("lastname-error").innerHTML = "lastname is required"
+    } else if (!namePattern.test(LastName)) {
+      alert("Lastname must contains just characters.")
+    }
+    if(!DateOfBirth) {
+      isValid = false;
+      document.getElementById("birth-error").innerHTML = "date of birth is required"
+    }
+    if(!Gender) {
+      isValid = false;
+      document.getElementById("gender-error").innerHTML = "gender is required"
+    }
 
     try {
       const response = await fetch("/account/register", {

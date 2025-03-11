@@ -1,0 +1,30 @@
+@model List<Winter_Project.ViewModels.FriendViewModel>
+
+@{
+    ViewData["Title"] = "Find Friend";
+}
+
+<search-friend-bar></search-friend-bar>
+<div class="friend-container">
+    <header class="friend-header">
+        Find Friends
+    </header>
+    <div class="friend-li-container" id="friend-li-container">
+        @if (Model == null)
+        {
+            <p>search a friend username</p>
+        }
+        else
+        {
+            @foreach (var user in Model)
+            {
+                <friend-li-add name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username" friend-id="@user.UserId"></friend-li-add>
+            }
+        }
+    </div>
+</div>
+
+<script>
+    const search_form = document.querySelector('search-bar');
+
+</script>

@@ -14,9 +14,9 @@ namespace Winter_Project.Models
         public string Owner {get; set;} = string.Empty;
         public string Title {get; set;} = string.Empty;
         public string Detail {get; set;} = string.Empty;
-        public string Create_time {get; set;} = string.Empty;
-        public string Activity_time {get; set;} = string.Empty;
-        public string Deadline_time {get; set;} = string.Empty;
+        public DateTime Create_time { get; set; } = DateTime.UtcNow;
+        public DateTime Activity_time { get; set; } = DateTime.UtcNow;
+        public DateTime Deadline_time { get; set; } = DateTime.UtcNow;
         public string Duration {get; set;} = string.Empty;
         public string Location {get; set;} = string.Empty;
         public int Max_member {get; set;}
@@ -28,6 +28,7 @@ namespace Winter_Project.Models
         public ICollection<ParticipantModel> Participants { get; set; } = new List<ParticipantModel>();
 
         public string Status { get; set; } = string.Empty;
-
     }
+
+
 }

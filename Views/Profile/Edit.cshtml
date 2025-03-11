@@ -75,17 +75,20 @@
                 <fieldset class="edit-bio">
                     <div class="bio-input">
                         <label for="about-me" class="bio-header">About me</label>
-                        <textarea
+                        <textarea 
+                            maxlength="150"
                             name="AboutMe">@(string.IsNullOrEmpty(Model.AboutMe) ? "No information" : Model.AboutMe)</textarea>
                     </div>
                     <div class="bio-input">
                         <label for="MyInterests" class="bio-header">My Interests</label>
                         <textarea
+                            maxlength="150"
                             name="MyInterests">@(string.IsNullOrEmpty(Model.MyInterests) ? "No information" : Model.MyInterests)</textarea>
                     </div>
                     <div class="bio-input">
                         <label for="MyHobby" class="bio-header">My Hobby</label>
                         <textarea
+                            maxlength="150"
                             name="MyHobby">@(string.IsNullOrEmpty(Model.MyHobby) ? "No information" : Model.MyHobby)</textarea>
                     </div>
                 </fieldset>
@@ -125,7 +128,7 @@
                                 <img src="\assets\female_icon-p.svg" alt="female icon">
                             </button>
                         </div>
-                        <input type="hidden" id="gender" name="gender" value="">
+                        <input type="hidden" id="gender" name="Gender" value="@Model.Gender">
                     </div>
                 </fieldset>
 

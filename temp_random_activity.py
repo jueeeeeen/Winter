@@ -58,7 +58,7 @@ def random_datetime(start_year=1994, end_year=2008):
     minute = random.randint(0, 59)
 
     birthdate = datetime(year, month, day, hour, minute)
-    return birthdate.strftime("%Y-%m-%dT%H:%M")
+    return birthdate
 
 def random_gender():
     return random.choice(["male", "female", "lgbtq"])
@@ -89,7 +89,7 @@ def random_tag():
     selected_tags = random.sample(tags, num_tags)  # sample without repetition
     return str(selected_tags).replace("'", '"')
 
-def generate_users():
+def generate_user():
     for user in users.keys():
         print(f"""new UserModel
     {{
@@ -100,6 +100,19 @@ def generate_users():
         LastName = "{users[user].split(" ")[1]}", 
         DateOfBirth = DateOnly.FromDateTime(DateTime.Parse("{random_datetime()}")),
         Gender = "{random_gender()}"
+    }},""")
+        
+def generate_users_json():
+    for user in users.keys():
+        print(f"""
+    {{
+    "Username": "{user}",
+    "Email": "{user}@gmail.com",
+    "Password": "Password1!",
+    "FirstName": "{users[user].split(" ")[0]}",
+    "LastName": "{users[user].split(" ")[1]}",
+    "DateOfBirth": "{random_datetime().strftime('%Y-%m-%d')}",
+    "Gender": "{random_gender()}"
     }},""")
         
 
@@ -160,5 +173,7 @@ def generate_activities_json():
     }},""")
         
 # generate_users()
-for i in range(1):
-    generate_activities_json()
+# for i in range(1):
+#     generate_activities_json()
+
+generate_users_json()

@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Find Friend";
+    var username = (string)ViewData["username"];
 }
 
 <search-friend-bar></search-friend-bar>
@@ -9,22 +10,32 @@
     <header class="friend-header">
         Find Friends
     </header>
+    @if (!(bool)ViewData["search"]){
+        <span class="friend-text">Friend Suggestions</span>
+    }
+    @if (Model == null)
+    {
+        <span class="friend-text">No user found</span>
+    }else
+    { 
     <div class="friend-li-container" id="friend-li-container">
-        @if (Model == null)
-        {
-            <p>search a friend username</p>
-        }
-        else
-        {
             @foreach (var user in Model)
             {
-                <friend-li-add name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-add>
+                if (username == user.Username){
+                    <friend-li-you name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-you>
+                }
+                else if (user.IsFriend) {
+                    <friend-li-delete name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-delete>
+                }
+                else if (!user.IsFriend && !user.IsPending) {
+                    <friend-li-add name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-add>
+                }
+                else if (!user.IsFriend && user.IsPending) {
+                    <friend-li-cancel name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-cancel>
+                }
+                else if (!user.IsPending) {
+                    <friend-li-approve name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-approve>
+                }
             }
-        }
-    </div>
+    </div>}
 </div>
-
-<script>
-    const search_form = document.querySelector('search-bar');
-
-</script>

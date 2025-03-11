@@ -255,7 +255,7 @@ class SearchFriendBar extends HTMLElement {
     `<form class="search-bar shadow" asp-controller="Friend" asp-action="FindFriend">
         <input id="search_input" type="text" name="search_string" placeholder="search friend username..." required>
         <div class="search-bar-x">
-            <button type="button" class="btn" id="clear_search_button">
+            <button type="button" class="btn" id="clear-search-button">
                 <svg-x></svg-x>
             </button>
         </div>
@@ -268,15 +268,8 @@ class SearchFriendBar extends HTMLElement {
   }
 
   connectedCallback() {
-    this.clear_search_button = this.querySelector("#clear_search_button");
+    this.clear_search_button = this.querySelector("#clear-search-button");
     this.clear_search_button.addEventListener("click", this.clear_search);
-
-    this.search_btn = this.querySelector("#seach-button");
-    this.search_input = this.querySelector("input");
-    this.search_btn.addEventListener("click", () => {
-      console.log(this.search_input.value);
-      this.search_key = this.search_input.value;
-    });
   }
 
   get result() {
@@ -285,8 +278,8 @@ class SearchFriendBar extends HTMLElement {
 
   clear_search() {
     this.search_input = this.querySelector("#search_input");
-    console.log("seach key: ", this.search_input);
     this.search_input.value = "";
+    window.location.href = "findfriend"
   }
 }
 
@@ -1474,6 +1467,25 @@ class FriendLiDelete extends HTMLElement {
   }
 }
 customElements.define("friend-li-delete", FriendLiDelete);
+
+class FriendLiYou extends HTMLElement {
+  constructor() {
+      super();
+      this.name = this.getAttribute("name");
+      this.username = this.getAttribute("username")
+      this.profile_pic = this.getAttribute("profile-pic");
+      this.since = this.getAttribute("since");
+      this.innerHTML = 
+        `<li class="w-bb-bb member-list-item">
+          <div class="member-list-item-profile">
+              <img class="profile" src="${this.profile_pic}">
+          </div>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <span class="member-list-item-role flex">You</span>
+        </li>`;
+  }
+}
+customElements.define("friend-li-you", FriendLiYou);
 
 // SVG Components Class
 class BaseSVGElement extends HTMLElement {

@@ -88,19 +88,23 @@ search-friend-bar {
     display: flex;
     align-items: center;
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .friend-li-container {
     display: flex;
+    width: 100%;
     flex-wrap: wrap;
-    padding: 2rem 4rem;
+    padding: 1rem 4rem;
     align-items: flex-start;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 1rem;
 }
 
 .friend-li-container>*{
     height: fit-content;
+    flex: 1 1 40%;
+    max-width: 50%;
 }
 
 .member-list-item {
@@ -173,6 +177,6 @@ search-friend-bar {
     transform:translateX(-4%) scale(1.1);
 }
 
-.svg-check svg path{
+svg-check svg path{
     fill: none !important;
 }

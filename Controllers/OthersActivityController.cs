@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 public class OthersActivityController: Controller
 {
+    private readonly WinterContext _context;
     public async Task UpdateActivityStatusAsync()
     {
         var activities = await _context.Activities
@@ -32,17 +33,16 @@ public class OthersActivityController: Controller
 
         await _context.SaveChangesAsync();
     }
-    private readonly WinterContext _context;
     public OthersActivityController(WinterContext context)
     {
         _context = context;
     }
-    [HttpGet("ActivityProfile/{username}")]
-    public IActionResult Index(string username, [FromQuery] int page)
-    {
-        UpdateActivityStatusAsync().Wait();
-        var token = Request.Cookies["token"];
-        Console.WriteLine($"Token: {token}");
+[HttpGet("ActivityProfile/{username}")]
+public async Task<IActionResult> Index(string username, [FromQuery] int page)
+{
+    UpdateActivityStatusAsync().Wait();
+    var token = Request.Cookies["token"];
+    Console.WriteLine($"Token: {token}");
 
     if (string.IsNullOrEmpty(token))
     { 
@@ -95,7 +95,7 @@ public class OthersActivityController: Controller
             u.FirstName,
             u.LastName,
             u.Gender,
-            Rating = averageRating
+            Rating = 4.5
         })
         .FirstOrDefault(),
         Activities = result

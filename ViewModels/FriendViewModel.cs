@@ -9,6 +9,7 @@ namespace Winter_Project.ViewModels
         public string? ProfilePicture { get; set; } = string.Empty;
         public bool IsFriend { get; set; }
         public bool IsPending { get; set; }
-        public string? Time {get; set;} = string.Empty;
+        public bool? sent { get; set; }
+        public DateTime Time { get; set; } = DateTime.UtcNow;
     }
 }

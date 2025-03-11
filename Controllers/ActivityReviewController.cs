@@ -226,7 +226,10 @@ public class ActivityReviewController : Controller
                 .Select(u => new
                 {
                     u.FirstName,
-                    u.LastName
+                    u.LastName,
+                    Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
                 })
                 .FirstOrDefault(),
             ReviewedUser = _context.Users
@@ -235,7 +238,10 @@ public class ActivityReviewController : Controller
                 {
                     u.FirstName,
                     u.LastName,
-                    u.Username
+                    u.Username,
+                    Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
                 })
                 .FirstOrDefault()
         })
@@ -252,9 +258,13 @@ public class ActivityReviewController : Controller
             .Where(u => u.Username == userId)
             .Select(u => new
             {
+                
                 u.FirstName,
                 u.LastName,
-                u.Username
+                u.Username,
+                Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
             })
             .FirstOrDefaultAsync();
 

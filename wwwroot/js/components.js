@@ -1459,7 +1459,7 @@ class FriendLiApprove extends HTMLElement {
         <div class="member-list-item-profile">
           <img class="profile" src="${this.profile_pic}">
         </div>
-        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}}</a>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
         <span class="member-list-item-role flex">wants to be your friend</span>
         <div class="member-list-item-approval flex">
           <button id="accept-friend-btn" class="btn approval gr-w hover-w-gr-gr round">

@@ -104,7 +104,7 @@
                             <hr class="blue_line_dash">
                             <li><a class="profile-dropdown-nav" href="/Profile/Review"><img src="/assets/star_outline.svg">My Ratings</a></li>
                             <hr class="blue_line_dash">
-                            <li class="profile-dropdown-nav"><a href="/Friend"><img src="/assets/star_outline.svg">My Friend</a></li>
+                            <li><a class="profile-dropdown-nav" href="/Friend"><svg-friend></svg-friend>My Friend</a></li>
                             <hr class="blue_line_dash">
                         </ul>
                     
@@ -145,7 +145,7 @@
     const profile_button = document.querySelector("#profile-button-check");
     const profile_pic_nav = document.querySelector("#profile-button");
     const bell_button = document.querySelector("#bell-button-check");
-    const logout_button = document.querySelector("#logout_button");
+    const logout_button = document.querySelector("#logout-button");
 
     profile_button.addEventListener("change", toggle_profile_dropdown);
     bell_button.addEventListener("change", toggle_noti_dropdown);

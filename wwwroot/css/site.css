@@ -436,9 +436,14 @@ main {
   }
 }
 
-.profile-dropdown-nav img{
-  height: 1.25rem;
+.profile-dropdown-nav img, .profile-dropdown-nav svg{
+  width: 1.25rem;
   margin: 0 7px 0 7px;
+}
+
+.profile-dropdown-nav svg path{
+  fill: var(--blue90) !important;
+  stroke: var(--blue90) !important;
 }
 
 #logout-button {
@@ -1170,6 +1175,11 @@ hr {
     gap: 0;
   }
 
+  .profile-button input:checked ~ .profile-dropdown{
+    height: 180px;
+    opacity: 1;
+  }
+
   .profile-dropdown-info {
     grid-template-columns: 2.75em 75%;
     grid-template-rows: 40% 40% 20%;
@@ -1180,14 +1190,14 @@ hr {
     color: var(--gray90);
   }
 
-  #logout_button {
+  #logout-button {
     width: fit-content;
     position: absolute;
     top: 1.25em;
     right: 1em;
   }
 
-  #logout_button svg{
+  #logout-button svg{
     width: 1.2em;
   }
 

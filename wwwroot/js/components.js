@@ -852,7 +852,7 @@ class ActivityCard extends HTMLElement {
                   <span>${activity.create_time}</span>
                   <span aria-label="review" class="act-card-review">
                       <svg-star-sharp></svg-star-sharp>
-                      ${activity.host.review}
+                      ${activity.host.review.toFixed(2)}
                   </span>
               </div>
             </div>

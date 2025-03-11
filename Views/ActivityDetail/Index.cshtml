@@ -18,7 +18,7 @@
                 <span>@Model.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm")</span>
                 <span aria-label="review" class="act-card-review">
                     <svg-star-sharp></svg-star-sharp>
-                    @Model.host.Rating
+                    @Model.host.Rating.ToString("F2")
                 </span>
             </div>
         </header>
@@ -32,7 +32,7 @@
                     <svg-x></svg-x>close
                 </span>
             }else if (@Model.Status == "done"){
-                <span class="act-detail-status w-mb">
+                <span class="act-detail-status w-mb-fix">
                     <svg-clock></svg-clock>done
                 </span>
             }else if (@Model.Status == "full"){

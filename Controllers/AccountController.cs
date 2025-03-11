@@ -45,7 +45,7 @@ namespace Winter_Project.Controllers
                     Email = model.Email,
                     PasswordHash = HashPassword(model.Password),
                     FirstName = model.FirstName,
-                    LastName = model.LastName, 
+                    LastName = model.LastName,
                     DateOfBirth = model.DateOfBirth,
                     Gender = model.Gender
                 };
@@ -74,6 +74,17 @@ namespace Winter_Project.Controllers
                 return StatusCode(500, new { message = "Internal server error", details = ex.Message });
             }
         }
+
+        [HttpGet("checkUsername")]
+        public async Task<IActionResult> CheckUsername(string username)
+        {
+            if (await _context.Users.AnyAsync(u => u.Username == username))
+            {
+                return Ok(new { exists = true });
+            }
+            return Ok(new { exists = false });
+        }
+
         [HttpGet("login")]
         public IActionResult Login()
         {
@@ -85,7 +96,7 @@ namespace Winter_Project.Controllers
         public async Task<IActionResult> Login([FromBody] LoginModel model)
         {
             Console.WriteLine($"Received Username: {model.Username}, Password: {model.Password}");
-            
+
             var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == model.Username);
             if (user == null || !VerifyPassword(model.Password, user.PasswordHash))
             {

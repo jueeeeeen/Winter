@@ -1316,9 +1316,9 @@ class AllActBanner extends HTMLElement {
     super();
     this.current_page = 0;
     this.pictures = [
+      "/banner/CE.jpg",
       "/banner/Isag.jpg",
       "/banner/Network.jpg",
-      "/banner/CE.jpg",
     ];
 
     this.innerHTML = `<div class="banner-container">

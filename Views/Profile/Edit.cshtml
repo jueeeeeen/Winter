@@ -85,11 +85,17 @@
                 <fieldset class="user-fullname">
                     <div class="profile-input">
                         <label for="FirstName" class="bio-header">First Name</label>
-                        <input type="text" name="FirstName" value="@Model.FirstName">
+                        <input type="text" name="FirstName" 
+                            pattern="^[A-Za-z]{2,50}$" 
+                            title="Firstname must contains just characters."
+                            value="@Model.FirstName">
                     </div>
                     <div class="profile-input">
                         <label for="LastName" class="bio-header">Last Name</label>
-                        <input type="text" name="LastName" value="@Model.LastName">
+                        <input type="text" name="LastName" 
+                            pattern="^[A-Za-z]{2,50}$" 
+                            title="Lastname must contains just characters."
+                            value="@Model.LastName">
                     </div>
                 </fieldset>
 

@@ -4,11 +4,8 @@
     ViewData["Title"] = "Ranking";
 }
 
-<h1 class="text-center">🏆 User Rankings</h1>
-
+<h1 class="text-center">🏆 Rating Ranking 🏆</h1>
 <div class="podium">
-    @if (Model.Count >= 3)
-    {
         <div class="podium-place second">
             <img class="profile" src="/assets/edit_blue.svg">
             <p>🥈</p>
@@ -42,27 +39,30 @@
                 <span class="count-review">(@Model[2].ReviewCount)</span>
             </div>
         </div>
-    }
 </div>
 
-<table class="ranking-table">
-    <thead>
-        <tr>
-            <th>Rank</th>
-            <th>User</th>
-            <th>Average Rating</th>
-            <th>Review Count</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (int i = 3; i < Model.Count; i++)
-        {
+<div class="show-table">
+    <table class="ranking-table">
+        <thead>
             <tr>
-                <td>@(i + 1)</td>
-                <td>@Model[i].ReviewedUser</td>
-                <td>⭐ @Model[i].AverageRating.ToString("0.0")</td>
-                <td>@Model[i].ReviewCount</td>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Average Rating</th>
+                <th>Review Count</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @for (int i = 3; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@Model[i].ReviewedUser</td>
+                    <td>@Model[i].ReviewedUser</td>
+                    <td>⭐ @Model[i].AverageRating.ToString("0.0")</td>
+                    <td>@Model[i].ReviewCount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

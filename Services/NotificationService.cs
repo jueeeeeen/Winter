@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Winter_Project.Models;
+using Winter_Project.ViewModels;
 
 namespace Winter_Project.Services
 {
@@ -7,33 +8,51 @@ namespace Winter_Project.Services
     {
         private readonly WinterContext _context;
 
-        // Constructor ที่รับ WinterContext เพื่อใช้ในการเข้าถึงฐานข้อมูล
         public NotificationService(WinterContext context)
         {
             _context = context;
         }
 
-        // เมธอดที่ใช้ดึงข้อมูล Notification ของผู้ใช้จากฐานข้อมูล
-        public async Task<List<NotificationModel>> GetUserNotificationsAsync(string username)
+        public async Task<List<NotificationViewModel>> GetUserNotificationsAsync(string username)
         {
-            // หาผู้ใช้จากฐานข้อมูลโดยใช้ username
             var user = await _context.Users
                 .FirstOrDefaultAsync(u => u.Username == username);
 
-            // ถ้าผู้ใช้ไม่พบ ให้ส่งกลับ List ว่าง
             if (user == null)
             {
-                return new List<NotificationModel>();
+                return new List<NotificationViewModel>();
             }
 
-            // ดึงข้อมูล Notifications ของผู้ใช้จากฐานข้อมูล
-            var notifications = await _context.Notifications
-                .Where(n => n.User_id == user.Id)  // กรองตาม User_id
-                .OrderByDescending(n => n.Notification_time) // เรียงลำดับตามเวลา (ล่าสุดไปเก่า)
+            var activityData = await _context.Notifications
+                .Where(n => n.User_id == user.Id)
+                .Select(n => new { n.Activity_user_id, n.Activity_id })
+                .Distinct()
                 .ToListAsync();
 
-            // คืนค่ารายการ Notification
-            return notifications;
+            var activityUsers = await _context.Users
+                .Where(u => activityData.Select(a => a.Activity_user_id).Contains(u.Id))
+                .ToDictionaryAsync(u => u.Id, u => new { u.FirstName, u.LastName });
+
+            var activities = await _context.Activities
+                .Where(a => activityData.Select(d => d.Activity_id).Contains(a.Activity_id))
+                .ToDictionaryAsync(a => a.Activity_id, a => a.Title);
+
+            var notifications = await _context.Notifications
+                .Where(n => n.User_id == user.Id)
+                .OrderByDescending(n => n.Notification_time)
+                .ToListAsync();
+
+            return notifications.Select(n => new NotificationViewModel
+            {
+                Id = n.Id,
+                User_id = n.User_id,
+                Notification_time = n.Notification_time,
+                Notification_type = n.Notification_type,
+                Activity_id = n.Activity_id,
+                ActivityTitle = activities.ContainsKey(n.Activity_id) ? activities[n.Activity_id] : null,
+                ActivityUserFirstName = activityUsers.ContainsKey(n.Activity_user_id) ? activityUsers[n.Activity_user_id].FirstName : null,
+                ActivityUserLastName = activityUsers.ContainsKey(n.Activity_user_id) ? activityUsers[n.Activity_user_id].LastName : null
+            }).ToList();
         }
     }
 }

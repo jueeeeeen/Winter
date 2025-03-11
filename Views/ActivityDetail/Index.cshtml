@@ -12,7 +12,7 @@
             <svg-male aria-label="male"></svg-male>
         </div>
         <div>
-            <span>@DateTime.Parse(@Model.Create_time).ToString("dd MMM yyyy HH:mm")</span>
+            <span>@Model.Create_time.ToLocalTime().ToString("dd MMM yyyy HH:mm")</span>
             <span aria-label="review" class="act-card-review">
                 <svg-star-sharp></svg-star-sharp>
                 @Model.host.Rating
@@ -68,11 +68,11 @@
     <ul>
         <li>
             <svg-calendar></svg-calendar>
-            @DateTime.Parse(@Model.Create_time).ToString("ddd, dd MMM yyyy")
+            @Model.Activity_time.ToLocalTime().ToString("ddd, dd MMM yyyy")
         </li>
         <li>
             <svg-clock></svg-clock>
-            @DateTime.Parse(@Model.Create_time).ToString("HH:mm") (@Model.Duration Hour)
+            @Model.Activity_time.ToLocalTime().ToString("HH:mm") (@Model.Duration Hour)
         </li>
         <li class="act-detail-location">
             <svg-location></svg-location>
@@ -145,11 +145,17 @@
             }
             @{
                 bool userIsMember = false;
+                bool userIsPending = false;
                 foreach (var participant in Model.Participants)
                 {
-                    if (participant.Username == username)
+                    if (participant.Username == username && participant.Role == "member")
                     {
                         userIsMember = true;
+                        break;
+                    }
+                    else if (participant.Username == username && participant.Role == "pending")
+                    {
+                        userIsPending = true;
                         break;
                     }
                 }
@@ -162,6 +168,10 @@
                 <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">
                     <svg-chat></svg-chat> chat
                 </a>
+            }
+            else if (userIsPending)
+            {
+                <act-detail-leave-btn data-activity-id="@Model.Activity_id"></act-detail-leave-btn>
             }
             else if (Model.Member_count < @Model.Max_member)
             {

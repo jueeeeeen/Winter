@@ -28,13 +28,13 @@
                     <label for="username"></label>
                     <input type="text" id="username" name="username" placeholder="username" required>
                 </div>
-                <span class="error"></span>
+                <span id="username-error" class="error"></span>
                 <div class="register-box1">
-                    <img src="\assets\email_icon.svg" alt="email">
+                    <img src="\assets\email_icon.svg" alt="email" id="email-icon">
                     <label for="email"></label>
                     <input type="email" id="email" name="email" placeholder="email" required>
                 </div>
-                <span class="error"></span>
+                <span id="email-error" class="error"></span>
                 <div class="register-box1">
                     <img src="\assets\lock.svg" alt="password">
                     <label for="password"></label>
@@ -46,8 +46,7 @@
                         <img src="\assets\password.png" alt="">
                     </button>
                 </div>
-                <span class="error"></span>
-                <div class="password-error" style="color: red;"></div>
+                <span id="password-error" class="error"></span>
                 <div class="register-box1">
                     <img src="\assets\lock.svg" alt="password">
                     <label for="confirm-password"></label>
@@ -56,7 +55,8 @@
                         <img src="\assets\password.png" alt="">
                     </button>
                 </div>
-                <span class="error"></span>
+                <span id="confirm-password-error" class="error"></span>
+                <div id="check-password-error" style="color: red;"></div>
                 <button id="nextButton" class="next-button">next</button>
             </div>
             
@@ -66,17 +66,17 @@
                     <label for="first-name"></label>
                     <input type="text" id="firstname" name="first name" placeholder="first name" required>
                 </div>
-                <span class="error"></span>
+                <span id="firstname-error" class="error"></span>
                 <div class="register-box">
                     <label for="last-name"></label>
                     <input type="text" id="lastname" name="last name" placeholder="last name" required>
                 </div>
-                <span class="error"></span>
+                <span id="lastname-error" class="error"></span>
                 <div class="register-box">
                     <label for="date-of-birth"></label>
                     <input type="date" id="dateofbirth" name="date of birth" required>
                 </div>
-                <span class="error"></span>
+                <span id="birth-error" class="error"></span>
                 <div class="gender-box">
                     <div class="gender-button">
                         <button class="male-button" data-gender="male">
@@ -91,7 +91,7 @@
                     </div>
                     <input type="hidden" id="gender" name="gender" value="">
                 </div>
-                <span class="error"></span>
+                <span id="gender-error" class="error"></span>
                 <button type="submit" id="registerButton" class="register-button">create account</button>
             </div>
         </form>

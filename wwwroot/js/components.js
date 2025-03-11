@@ -31,6 +31,14 @@ class ApprovedNoti extends HTMLElement {
               ${this.time}
             </span>
         </li>`;
+
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
   }
 }
 customElements.define("approved-noti", ApprovedNoti);
@@ -55,11 +63,118 @@ class DeniedNoti extends HTMLElement {
                 ${this.time}
             </span>
         </li>`;
+      
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
   }
 }
 customElements.define("denied-noti", DeniedNoti);
 
+class KickNoti extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.time = this.getAttribute("time");
+    this.innerHTML = `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-minus></svg-minus>
+            </div>
+            <span class="noti-act-title">
+                ${this.activity_title}
+            </span>
+            <span class="noti-message">
+                You have been kicked out of this activity.
+            </span>
+            <span class="noti-datetime">
+                ${this.time}
+            </span>
+        </li>`;
+
+        this.addEventListener('click', this.navigateToActivityDetail);
+        this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
+  }
+}
+customElements.define("kick-noti", KickNoti);
+
+
 class JoinedNoti extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.name = this.getAttribute("name");
+    this.time = this.getAttribute("time");
+    this.innerHTML = `<li class="noti-list">
+            <div class="noti-icon gr-w flex">
+                <svg-plus></svg-plus>
+            </div>
+            <span class="noti-act-title">
+                ${this.activity_title}
+            </span>
+            <span class="noti-message">
+                ${this.name} has joined your activity.
+            </span>
+            <span class="noti-datetime">
+                ${this.time}
+            </span>
+        </li>`;
+  
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
+  }
+}
+customElements.define("joined-noti", JoinedNoti);
+
+class LeaveNoti extends HTMLElement {
+  constructor() {
+    super();
+    this.activity_id = this.getAttribute("activity-id");
+    this.activity_title = this.getAttribute("activity-title");
+    this.name = this.getAttribute("name");
+    this.time = this.getAttribute("time");
+    this.innerHTML = `<li class="noti-list">
+            <div class="noti-icon r-w flex">
+                <svg-minus></svg-minus>
+            </div>
+            <span class="noti-act-title">
+                ${this.activity_title}
+            </span>
+            <span class="noti-message">
+                ${this.name} has left your activity.
+            </span>
+            <span class="noti-datetime">
+                ${this.time}
+            </span>
+        </li>`;
+  
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
+  }
+}
+customElements.define("leave-noti", LeaveNoti);
+
+class PendingNoti extends HTMLElement {
   constructor() {
     super();
     this.activity_id = this.getAttribute("activity-id");
@@ -80,9 +195,17 @@ class JoinedNoti extends HTMLElement {
                 ${this.time}
             </span>
         </li>`;
+  
+    this.addEventListener('click', this.navigateToActivityDetail);
+    this.style.cursor = 'pointer';
+  }
+
+  navigateToActivityDetail() {
+    const url = `${window.location.origin}/ActivityDetail/${this.activity_id}`;
+    window.location.href = url;
   }
 }
-customElements.define("joined-noti", JoinedNoti);
+customElements.define("pending-noti", PendingNoti);
 
 class SearchBar extends HTMLElement {
   constructor() {
@@ -1040,11 +1163,11 @@ class MemberHostViewListItem extends HTMLElement {
     }
 
     connectedCallback() {
-        this.querySelector("button").addEventListener("click", () => this.deny_activity());
+        this.querySelector("button").addEventListener("click", () => this.kick_activity());
     }
 
-    deny_activity() {
-        fetch(`DenyActivity/${this.activity_id}?username=${this.username}`, {
+    kick_activity() {
+        fetch(`KickActivity/${this.activity_id}?username=${this.username}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"}
         })
@@ -1054,7 +1177,7 @@ class MemberHostViewListItem extends HTMLElement {
                 console.log(data.message);
                 window.location.reload();
             } else {
-                console.error("Failed to deny activity");
+                console.error("Failed to kick this member from activity");
             }
         })
         .catch(error => console.error("Error:", error));
@@ -1098,10 +1221,10 @@ class ActDetailLeaveBtn extends HTMLElement {
     }
     
     connectedCallback() {
-        this.querySelector("button").addEventListener("click", () => this.join_activity());
+        this.querySelector("button").addEventListener("click", () => this.leave_activity());
     }
 
-    join_activity() {
+    leave_activity() {
         fetch(`LeaveActivity/${this.activity_id}`, {
             method: 'POST',
             headers: {"Content-Type": "application/json"}

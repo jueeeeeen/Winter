@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Winter_Project.Models;
+using Winter_Project.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -13,9 +14,39 @@ public class FriendController : Controller
         _context = context;
     }
 
-    public IActionResult Index()
+    // View Friends
+    [HttpGet("Friend")]
+    public async Task<IActionResult> Index()
     {
-        return View();
+        var token = Request.Cookies["token"];
+        Console.WriteLine($"🛑 Received Token: {token}");
+
+        if (string.IsNullOrEmpty(token))
+        {
+            Console.WriteLine("⚠️ Token is missing");
+            return RedirectToAction("Login", "Account");
+        }
+
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
+        Console.WriteLine($"🔑 Username from Token: {username}");
+
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+
+        if (user == null)
+        {
+            Console.WriteLine("⚠️ User not found for username: " + username);
+            return RedirectToAction("Login", "Account");
+        }
+
+        var friends = await _context.Friends
+            .Where(f => f.UserId == user.Id && f.IsFriend)
+            .ToListAsync();
+
+        Console.WriteLine($"✅ {friends.Count} friends found for username: {username}");
+
+        return View(friends);
     }
 
     // Add Friend
@@ -105,38 +136,41 @@ public class FriendController : Controller
         return RedirectToAction("Index");
     }
 
-    // View Friends
-    [HttpGet("friends/view")]
-    public async Task<IActionResult> MyFriends()
+    [HttpGet("friend/findfriend")]
+    public IActionResult FindFriend(string search_string)
     {
-        var token = Request.Cookies["token"];
-        Console.WriteLine($"🛑 Received Token: {token}");
-
-        if (string.IsNullOrEmpty(token))
+        if (string.IsNullOrEmpty(search_string))
         {
-            Console.WriteLine("⚠️ Token is missing");
-            return RedirectToAction("Login", "Account");
+            return View();
         }
 
-        var handler = new JwtSecurityTokenHandler();
-        var jwtSecurityToken = handler.ReadJwtToken(token);
-        var username = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
-        Console.WriteLine($"🔑 Username from Token: {username}");
-
-        var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
-
-        if (user == null)
+        var users = _context.Users
+    .Where(u => u.Username.Contains(search_string))
+    .GroupJoin(
+        _context.Friends,
+        user => user.Id,
+        friend => friend.UserId,
+        (user, friends) => new { user, friends }
+    )
+    .SelectMany(
+        x => x.friends.DefaultIfEmpty(), // Left Join equivalent
+        (x, friend) => new FriendViewModel
         {
-            Console.WriteLine("⚠️ User not found for username: " + username);
-            return RedirectToAction("Login", "Account");
-        }
+            UserId = x.user.Id, // Always using user.Id
+            Username = x.user.Username,
+            FirstName = x.user.FirstName,
+            LastName = x.user.LastName,
+            IsFriend = friend != null ? friend.IsFriend : false, // If no friend, set to false
+            IsPending = friend != null ? friend.IsPending : false, // If no friend, set to false
+            Time = friend != null ? friend.time : null, // If no friend, this will be null
+            ProfilePicture = x.user.ProfilePicture != null
+                        ? $"data:image/png;base64,{Convert.ToBase64String(x.user.ProfilePicture)}"
+                        : "/assets/profile-g.png",
+        })
+    .ToList();
 
-        var friends = await _context.Friends
-            .Where(f => f.UserId == user.Id && f.IsFriend)
-            .ToListAsync();
 
-        Console.WriteLine($"✅ {friends.Count} friends found for username: {username}");
 
-        return View(friends);
+        return View(users);
     }
 }

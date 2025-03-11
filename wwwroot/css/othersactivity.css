@@ -255,8 +255,8 @@
 
 .member-profile-pic{
   margin: 0.5rem;
-  width: 2.5vw;
-  height: 2.5vw;
+  width: 3.5vw;
+  height: 3.5vw;
   min-width: 40px;
   min-height: 40px;
   border-radius: 50%;
@@ -268,6 +268,9 @@
   height: 100%;
   object-fit: contain;
 }
+.member-profile-pic:hover{
+  cursor: pointer;
+}
 
 .member-name-role{
   width: 70%;
@@ -276,6 +279,7 @@
 }
 
 .member-name {
+  text-align: left;
   font-size: 1.2rem;
   white-space: nowrap;
   overflow: hidden;
@@ -290,7 +294,7 @@
 
 .rate-btn {
   border-radius: 10rem;
-  border: 1px #fdc330 solid;
+  border: 2px #fdc330 solid;
   color: #fdc330;
   background-color: white;
   padding: 0.3rem 0.6rem;
@@ -300,7 +304,7 @@
   justify-content: center;
   justify-self: right;
   gap: 0.2rem;
-  width: auto;
+  width: 7rem;
   max-width: 120px;
   min-width: 50px;
 }
@@ -309,12 +313,22 @@
   color: white;
 }
 
+.rate-btn:hover svg {
+  stroke: white;
+}
+
+.rate-btn:hover .review-text {
+  color: white;
+}
+
 .rate-btn img {
   width: 1.5rem;
 }
 
 .review-text {
+  color: #fdc330;
   font-size: 1.1rem;
+  font-weight:500;
 }
 
 .activity-dropdown.open .activity-dropdown-content {
@@ -335,7 +349,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 504px) {
   .rate-btn {
     width: 30px;
   }

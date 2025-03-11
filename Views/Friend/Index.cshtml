@@ -23,21 +23,20 @@
                 @if (friend.IsPending && !friend.IsFriend && friend.sent == false) 
                 {
                     <!-- หากเป็นคำขอที่รอการตอบรับจากเรา (receivedFriendRequests) -->
-                    <friend-li-approve name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId" ></friend-li-approve>
+                    <friend-li-approve username="@friend.Username" name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId" ></friend-li-approve>
                 }
                 else if (friend.IsPending && friend.IsFriend == false && friend.sent == true) 
                 {
                     <!-- หากเป็นคำขอที่เราได้ส่งไปและรอการตอบรับ (sentFriendRequests) -->
-                    <friend-li-cancel name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId"></friend-li-cancel>
+                    <friend-li-cancel username="@friend.Username" name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId"></friend-li-cancel>
                 }
                 else if (friend.IsFriend) 
                 {
                     <!-- หากเป็นเพื่อนที่ได้รับการยืนยันแล้ว (friends) -->
-                    <friend-li-delete name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId" since="@friend.Time"></friend-li-delete>
+                    <friend-li-delete username="@friend.Username" name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId" since="@friend.Time"></friend-li-delete>
                 }
             }
         </div>
-
     }
 
 </div>

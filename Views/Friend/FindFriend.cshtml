@@ -16,7 +16,6 @@
     @if (Model == null || !Model.Any()) 
     {
         <div class="friend-not-found">No user found !</div>
-        
     }
     else
     { 
@@ -27,16 +26,16 @@
                 <friend-li-you name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-you>
             }
             else if (user.IsFriend) {
-                <friend-li-delete name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-delete>
+                <friend-li-delete name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username" friend-id="@user.UserId" since="@user.Time"></friend-li-delete>
             }
             else if (!user.IsFriend && !user.IsPending) {
-                <friend-li-add name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-add>
+                <friend-li-add name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username" friend-id="@user.UserId"></friend-li-add>
             }
             else if (!user.IsFriend && user.IsPending) {
-                <friend-li-cancel name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-cancel>
+                <friend-li-cancel name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username" friend-id="@user.UserId"></friend-li-cancel>
             }
             else if (!user.IsPending) {
-                <friend-li-approve name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username"></friend-li-approve>
+                <friend-li-approve name="@user.FirstName @user.LastName" profile-pic="@user.ProfilePicture" username="@user.Username" friend-id="@user.UserId"></friend-li-approve>
             }
         }
     </div>}

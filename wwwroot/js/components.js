@@ -253,7 +253,7 @@ class SearchFriendBar extends HTMLElement {
     super();
     this.innerHTML = 
     `<form class="search-bar shadow" asp-controller="Friend" asp-action="FindFriend">
-        <input id="search_input" type="text" name="search_string" placeholder="search friend username..." required>
+        <input id="search_input" type="text" name="search_string" placeholder="search friends..." required>
         <div class="search-bar-x">
             <button type="button" class="btn" id="clear-search-button">
                 <svg-x></svg-x>
@@ -1443,7 +1443,7 @@ class FriendLiADD extends HTMLElement {
         <div class="member-list-item-profile">
           <img class="profile" src="${this.profile_pic}">
         </div>
-        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
         <span class="member-list-item-role flex"></span>
         <div class="member-list-item-approval flex">
           <button id="add-friend-btn" class="btn approval lb-w hover-db-w round">
@@ -1465,9 +1465,10 @@ class FriendLiADD extends HTMLElement {
         },
         body: new URLSearchParams({ friendId: this.friendId }),
       });
-
+      console.log(`✅ ${this.friendId}`);
       if (response.ok) {
         console.log(`✅ Friend request sent to Friend ID: ${this.friendId}`);
+
         alert("คำขอเป็นเพื่อนถูกส่งแล้ว!");
       } else {
         console.log("❌ Friend request failed");
@@ -1493,9 +1494,9 @@ class FriendLiApprove extends HTMLElement {
     this.innerHTML = `
       <li class="w-bb-bb member-list-item">
         <div class="member-list-item-profile">
-          <img class="profile" src="${this.profile_pic}">
+          <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
         </div>
-        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}}</a>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
         <span class="member-list-item-role flex">wants to be your friend</span>
         <div class="member-list-item-approval flex">
           <button id="accept-friend-btn" class="btn approval gr-w hover-w-gr-gr round">
@@ -1586,9 +1587,9 @@ class FriendLiCancel extends HTMLElement {
     this.innerHTML = `
       <li class="w-bb-bb member-list-item">
         <div class="member-list-item-profile">
-          <img class="profile" src="${this.profile_pic}">
+          <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
         </div>
-        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
         <span class="member-list-item-role flex">waiting for acceptance</span>
         <div class="member-list-item-approval flex">
           <button id="cancel-friend-btn" class="btn approval y-w hover-w-y-y round">
@@ -1640,9 +1641,9 @@ class FriendLiDelete extends HTMLElement {
       this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
           <div class="member-list-item-profile">
-              <img class="profile" src="${this.profile_pic}">
+              <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
           </div>
-          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
           <span class="member-list-item-role flex">since - ${this.since}</span>
           <div class="member-list-item-approval flex">
             <button class="btn approval r-w hover-w-r-r round delete-friend-btn">
@@ -1692,9 +1693,9 @@ class FriendLiYou extends HTMLElement {
       this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
           <div class="member-list-item-profile">
-              <img class="profile" src="${this.profile_pic}">
+              <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
           </div>
-          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
           <span class="member-list-item-role flex">You</span>
         </li>`;
   }

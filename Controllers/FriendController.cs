@@ -140,6 +140,7 @@ public async Task<IActionResult> Index()
     [HttpPost("friends/add")]
     public async Task<IActionResult> AddFriend(int friendId)
     {
+        Console.WriteLine("🛑🛑🛑🛑🛑" + friendId);
         var token = Request.Cookies["token"];
         Console.WriteLine($"🛑 Received Token: {token}");
 
@@ -405,7 +406,7 @@ public async Task<IActionResult> Index()
         
 
         var users = _context.Users
-        .Where(u => u.Username.Contains(search_string))
+        .Where(u => u.Username.Contains(search_string) || (u.FirstName + " " + u.LastName).Contains(search_string))
         .ToList();
 
         if(users == null){
@@ -425,8 +426,8 @@ public async Task<IActionResult> Index()
             FirstName = user.FirstName,
             LastName = user.LastName,
             IsFriend = friends?.FirstOrDefault(f => f.UserId == user.Id)?.IsFriend ?? false,
-            IsPending = friends?.FirstOrDefault(f => f.UserId == user.Id)?.IsPending ?? false,
-            Time = friends.FirstOrDefault(f => f.UserId == user.Id || f.FriendId == user.Id).time,
+            IsPending = friends?.FirstOrDefault(f => f.UserId == user.Id || f.FriendId == user.Id)?.IsPending ?? false,
+            Time = friends?.FirstOrDefault(f => f.UserId == user.Id || f.FriendId == user.Id)?.time ?? DateTime.UtcNow,
             ProfilePicture = user.ProfilePicture != null
                 ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
                 : "/assets/profile-g.png",

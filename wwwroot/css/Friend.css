@@ -73,6 +73,7 @@ search-friend-bar {
     display: flex;
     align-items: center;
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .friend-text {
@@ -81,7 +82,7 @@ search-friend-bar {
     text-align: center;
     color: var(--gray90);
     font-weight: 500;
-    margin: 1rem 4rem;
+    margin: 0 4rem 1rem;
     padding: 0.25rem;
     border-radius: 0.5rem;
 }
@@ -138,6 +139,12 @@ search-friend-bar {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.member-list-item-username {
+    font-size: 0.9rem;
+    color: var(--gray70);
+    font-weight: 400;
 }
 
 .member-list-item-role {

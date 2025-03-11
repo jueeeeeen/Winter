@@ -417,6 +417,12 @@ svg-order {
     position: relative;
 }
 
+.profile-img {
+    width: 2.5em !important;
+    height: 2.5em !important;
+    border-radius: 50%;
+  }
+
 .range-slider input {
     position: absolute;
     width: 100%;

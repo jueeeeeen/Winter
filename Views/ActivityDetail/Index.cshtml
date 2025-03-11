@@ -10,7 +10,7 @@
             <div><img src="@Model.host.Profile_pic" class="profile-img"></div>
             <div>
                 <span>@Model.host.FirstName @Model.host.LastName</span>
-                <svg-male aria-label="male"></svg-male>
+                <svg-@Model.host.Gender aria-label="@Model.host.Gender"></svg-@Model.host.Gender>
             </div>
             <div>
                 <span>@Model.Create_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm")</span>

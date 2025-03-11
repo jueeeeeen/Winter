@@ -189,7 +189,7 @@ class PendingNoti extends HTMLElement {
                 ${this.activity_title}
             </span>
             <span class="noti-message">
-                ${this.name} want to join your activity.
+                ${this.name} wants to join your activity.
             </span>
             <span class="noti-datetime">
                 ${this.time}
@@ -2336,7 +2336,8 @@ class Member extends HTMLElement {
           <li class="member">
             <div class="member-content">
               <div class="member-profile-pic">
-                <img src="${this.member.userDetails.profile_pic}" alt="Profile">
+                <img class="profile-img" src="${this.member.userDetails.profile_pic}" alt="Profile">
+                ${this.member.role === "host" ? '<img class="crown" src="../../assets/crown.svg">':""}
               </div>
               <div class="member-name-role">
                 <div class="member-name">${this.member.userDetails.firstName} ${this.member.userDetails.lastName}</div>
@@ -2401,7 +2402,8 @@ class Member extends HTMLElement {
       <li class="member">
         <div class="member-content">
           <div class="member-profile-pic">
-            <img src="${this.member.userDetails.profile_pic}" alt="Profile">
+            <img class="profile-img" src="${this.member.userDetails.profile_pic}" alt="Profile">
+            ${this.member.role === "host" ? '<img class="crown" src="../../assets/crown.svg">':""}
           </div>
           <div class="member-name-role">
             <div class="member-name">${this.member.userDetails.firstName} ${this.member.userDetails.lastName}</div>

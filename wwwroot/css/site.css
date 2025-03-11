@@ -215,7 +215,7 @@ main {
   height: 4rem;
 }
 
-.nav_bar li{
+.nav_bar > li{
   display: flex;
   align-items: center;
   height: 100%;
@@ -481,9 +481,9 @@ main {
 }
 
 .noti-list {
-  display: grid !important;
-  grid-template-columns: 40px auto !important;
-  grid-template-rows: 35% 45% 20% !important;
+  display: grid;
+  grid-template-columns: 40px auto;
+  grid-template-rows: 35% 45% 20%;
   grid-template-areas: 
     "icon title"
     "icon message"
@@ -491,7 +491,11 @@ main {
   padding: 3.5% !important;
   row-gap: 1% !important;
   column-gap: 0.5em !important;
-  border-bottom: 1px solid var(--gray50) !important;
+  border-bottom: 1px solid var(--gray50);
+}
+
+.noti-list:hover {
+  background-color: var(--blue10);
 }
 
 .noti-icon {
@@ -521,7 +525,8 @@ main {
   grid-area: message;
   line-height: 1;
   display: flex;
-  font-size: 0.85em !important;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--gray80)
 }
 

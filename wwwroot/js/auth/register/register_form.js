@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirm-password").value;
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&])[A-Za-z\d@@$!%*?&]{8,}$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@@$!%*?&_])[A-Za-z\d@@$!%*?&_]{8,}$/;
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     let isValid = true;
@@ -67,12 +67,12 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("password-error").innerHTML = "password is required"
       } else if (!passwordPattern.test(password)) {
         isValid = false;
-        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character.")
+        alert("Password must contain at least 8 characters, including uppercase, lowercase, a number, and a special character (@, $, !, %, *, ?, &, _).")
       }
       if(!confirmPassword) {
         isValid = false;
         document.getElementById("confirm-password-error").innerHTML = "confirm password is required"
-      }
+      } 
 
       if (password !== confirmPassword) {
         isValid = false;

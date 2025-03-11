@@ -257,6 +257,22 @@ public class ProfileController : Controller
 
         var userBio = _context.UserBios.FirstOrDefault(b => b.UserId == user.Id);
 
+        var reviewCount = await _context.Reviews
+            .CountAsync(r => r.Reviewed_user == user.Username);
+        
+        var activityCount = await _context.Participants
+            .Join(_context.Activities,
+                p => p.Activity_id,
+                a => a.Activity_id,
+                (p, a) => new { Participant = p, Activity = a })
+            .CountAsync(pa => pa.Participant.Username == user.Username && pa.Activity.Status == "done");
+
+        var averageRating = await _context.Reviews
+            .Where(r => r.Reviewed_user == user.Username)
+            .Select(r => (double?)r.Rating) // ใช้ double? เพื่อป้องกัน error หากไม่มีข้อมูล
+            .AverageAsync() ?? 0;
+
+
         var profileViewModel = new ProfileViewModel
         {
             UserId = user.Id,
@@ -273,7 +289,10 @@ public class ProfileController : Controller
             MyHobby = userBio?.MyHobby ?? "No information",
             ProfilePictureBase64 = user.ProfilePicture != null
                 ? $"data:image/png;base64,{Convert.ToBase64String(user.ProfilePicture)}"
-                : Url.Content("~/assets/Profile-w-b.png")
+                : Url.Content("~/assets/Profile-w-b.png"),
+            ReviewCount = reviewCount,
+            ActivityCount = activityCount,
+            AverageRating = averageRating
         };
         
 

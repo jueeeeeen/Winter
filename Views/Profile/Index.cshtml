@@ -33,18 +33,18 @@
 
         <div class="profile-rating">
             <img src="\assets\icon _star.svg" alt="star icon">
-            <p>1.55</p>
+            <p>@Model.AverageRating</p>
         </div>
 
         <div class="joined-review">
             <div class="profile-joined">
-                <p>4</p>
+                <p>@Model.ActivityCount</p>
                 <p>Joined</p>
                 <a href="/ActivityProfile/@Model.Username">View all activity</a>
             </div>
 
             <div class="profile-reviews">
-                <p>5</p>
+                <p>@Model.ReviewCount</p>
                 <p>Reviews</p>
                 <a href="/Profile/Review/@Model.Username">View all review</a>
             </div>

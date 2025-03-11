@@ -138,7 +138,8 @@ public async Task<IActionResult> Index()
     // Add Friend
     [HttpPost("friends/add")]
     public async Task<IActionResult> AddFriend(int friendId)
-    {
+    {   
+        Console.WriteLine($"✅ FriendId From front: {friendId}");
         var token = Request.Cookies["token"];
         Console.WriteLine($"🛑 Received Token: {token}");
 

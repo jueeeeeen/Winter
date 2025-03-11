@@ -27,7 +27,7 @@
 }
 .activities-bg {
   background-color: var(--white);
-  border-radius: 0.4rem;
+  border-radius: 2rem;
   width: 100%;
   min-width: 310px;
   height: auto;
@@ -41,7 +41,8 @@
   color: var(--white);
   background-color: var(--blue50);
   padding: 1rem;
-  border-radius: 0.4rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
   font-weight: bold;
   margin-bottom: 2rem;
 }

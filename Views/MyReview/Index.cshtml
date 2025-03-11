@@ -11,8 +11,7 @@
             <span class="username">@("@" + Model.ReviewedUser.Username)</span>
             <div class="rating-container">
                 <div class="rating">
-                    <img src="\assets\icon _star.svg" alt="star icon">
-                    <p class="rating-count">@ViewData["AverageRating"]</p>
+                    <p class="rating-count">⭐ @ViewData["AverageRating"]</p>
                 </div>
                 <span class="count-review">(@Model.Reviews.Count)</span>
             </div>

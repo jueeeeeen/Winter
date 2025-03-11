@@ -481,17 +481,17 @@ main {
 }
 
 .noti-list {
-  display: grid;
-  grid-template-columns: 40px auto;
-  grid-template-rows: 35% 45% 20%;
+  display: grid !important;
+  grid-template-columns: 40px auto !important;
+  grid-template-rows: 35% 45% 20% !important;
   grid-template-areas: 
     "icon title"
     "icon message"
-    "icon datetime";
-  padding: 3.5%;
-  row-gap: 1%;
-  column-gap: 0.5em;
-  border-bottom: 1px solid var(--gray50);
+    "icon datetime" !important;
+  padding: 3.5% !important;
+  row-gap: 1% !important;
+  column-gap: 0.5em !important;
+  border-bottom: 1px solid var(--gray50) !important;
 }
 
 .noti-icon {
@@ -521,7 +521,7 @@ main {
   grid-area: message;
   line-height: 1;
   display: flex;
-  font-size: 0.85em;
+  font-size: 0.85em !important;
   color: var(--gray80)
 }
 

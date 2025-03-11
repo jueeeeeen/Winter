@@ -1441,7 +1441,7 @@ class FriendLiADD extends HTMLElement {
     this.innerHTML = `
       <li class="w-bb-bb member-list-item">
         <div class="member-list-item-profile">
-          <img class="profile" src="${this.profile_pic}">
+          <a href="/Profile/${this.username}"><img class="profile" src="${this.profile_pic}"></a>
         </div>
         <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}<span class="member-list-item-username"> @${this.username}</span></a>
         <span class="member-list-item-role flex"></span>
@@ -2402,6 +2402,7 @@ class Member extends HTMLElement {
             <div class="member-role">${this.member.role}</div>
           </div>
         </div>
+        <div class="member-rate-button"></div>
       </li>
       `;
 
@@ -2430,7 +2431,10 @@ class ActivityDropdown extends HTMLElement {
       <div class="activity-dropdown">
         <button class="activity-dropdown-btn">
           <div class="activity-details">
-            <span class="activity-name">${activity.title}</span>
+            <div class="activity-name-status">
+              <span class="activity-name">${activity.title}</span>
+              <span class="activity-status">${activity.status}</span>
+            </div>
             <div class="tags-date">
               <div class="tags"></div>
               <span class="date">
@@ -2484,10 +2488,23 @@ class ActivityDropdown extends HTMLElement {
     const dropdown = this.querySelector(".activity-dropdown");
     const content = this.querySelector(".activity-dropdown-content");
     const chevon = dropdownBtn.querySelector(".chevon");
+    const status = this.querySelector(".activity-status");
+
+    const statusColors = {
+        open: "green",
+        close: "#fdc330",
+        full: "blue",
+        delete: "red",
+        done: "var(--blue50)"
+    };
+
+    if (statusColors[this.activity.status]) {
+        status.style.backgroundColor = statusColors[this.activity.status];
+    }
 
     const closedPath = "m19.5 8.25-7.5 7.5-7.5-7.5";
     const openPath = "m4.5 15.75 7.5-7.5 7.5 7.5";
-
+    
     dropdownBtn.addEventListener("click", () => {
       document.querySelectorAll(".activity-dropdown.open").forEach((openDropdown) => {
         if (openDropdown !== dropdown) {
@@ -2531,6 +2548,7 @@ class ActivityDropdown extends HTMLElement {
       }
     });
   }
+
 }
 
 class ActivitiesList extends HTMLElement {

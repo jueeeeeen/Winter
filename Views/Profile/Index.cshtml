@@ -1,5 +1,6 @@
 @{
     ViewData["Title"] = "Profile";
+    var friendStatus = ViewBag.FriendStatus ?? "No relationship";
 }
 
 <div class="profile-container">
@@ -103,40 +104,77 @@
                         </button>
                     </div>
                 }
-                else
+                else if(friendStatus == "Friends")
                 {
-                <div class="friend-button">
-                    <button onClick="location.href='@Url.Action("add", "friends")'"> 
-                        <p>Add Friend</p>
-                    </button>
-                </div>
-                }
-                @* <div class="friend-approve friend-text">
-                    <p>he want to be your friend</p>
-                    <div class="friend-button friend-green">
-                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
-                            <p>Accept</p>
-                        </button>
-                    </div>
-                    <div class="friend-button friend-red">
-                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
-                            <p>Deny</p>
-                        </button>
-                    </div>
-                </div>
-                <div class="friend-button friend-yellow friend-text">
-                    <p>waiting for his accept</p>
-                    <button onClick="location.href='@Url.Action("add", "friends")'"> 
-                        <p>Cancel Friend Request</p>
-                    </button>
-                </div>
                 <div class="friend-button friend-red friend-text">
                     <p>you have been friends with him since 23 Feb 2025</p>
                     <button onClick="location.href='@Url.Action("add", "friends")'"> 
                         <p>Remove Friend</p>
                     </button>
-                </div> *@
+                </div>
+                }
+                else if(friendStatus == "Request sent")
+                {
+                    <div class="friend-button friend-yellow friend-text">
+                        <p>waiting for his accept</p>
+                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                            <p>Cancel Friend Request</p>
+                        </button>
+                    </div>
+                }
+                else if(friendStatus == "Request received")
+                {
+                    <div class="friend-approve friend-text">
+                        <p>he want to be your friend</p>
+                        <div class="friend-button friend-green">
+                            <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                                <p>Accept</p>
+                            </button>
+                        </div>
+                        <div class="friend-button friend-red">
+                            <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                                <p>Deny</p>
+                            </button>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="friend-button">
+                        <button onclick="addFriend(this)" data-friend-id="@Model.UserId"> 
+                            <p>Add Friend</p>
+                        </button>
+                    </div>
+                }
             </div>
         </div>  
     </div>
 </div>
+
+<script>
+async function addFriend(button) {
+    console.log(button);
+    const friendId = button.getAttribute("data-friend-id"); // ใช้ this หรือ button ที่ส่งมา
+    console.log(friendId)
+    try {
+        const response = await fetch("/friends/add", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: new URLSearchParams({ friendId }), // ส่งข้อมูล friendId
+        });
+
+        if (response.ok) {
+            console.log(`✅ Friend request sent to Friend ID: ${friendId}`);
+            alert("คำขอเป็นเพื่อนถูกส่งแล้ว!");
+        } else {
+            console.log("❌ Friend request failed");
+            alert("ส่งคำขอเป็นเพื่อนล้มเหลว");
+        }
+    } catch (error) {
+        console.error("⚠️ Error:", error);
+        alert("เกิดข้อผิดพลาดในการส่งคำขอ");
+    }
+}
+</script>

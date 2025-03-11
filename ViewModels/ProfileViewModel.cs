@@ -2,6 +2,7 @@ namespace Winter_Project.ViewModels
 {
     public class ProfileViewModel
     {
+        public int UserId { get; set; }
         public string Username { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string FirstName { get; set; } = string.Empty;
@@ -16,7 +17,7 @@ namespace Winter_Project.ViewModels
         public string MyInterests { get; set; } = "No information";
         public string MyHobby { get; set; } = "No information";
 
-        public IFormFile? ProfilePictureFile { get; set; } // ✅ รับไฟล์จากฟอร์ม
-        public string? ProfilePictureBase64 { get; set; } // ✅ ส่งไปเก็บในฐานข้อมูล
+        public IFormFile? ProfilePictureFile { get; set; }
+        public string? ProfilePictureBase64 { get; set; }
     }
 }

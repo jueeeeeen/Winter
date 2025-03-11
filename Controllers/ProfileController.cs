@@ -218,12 +218,48 @@ public class ProfileController : Controller
         var jwtSecurityToken = handler.ReadJwtToken(token);
         var loggedInUsername = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value;
 
-        ViewBag.IsOwner = (username == loggedInUsername); // เช็คว่าเป็นเจ้าของโปรไฟล์หรือไม่
+        ViewBag.IsOwner = (username == loggedInUsername);
+        
+        string GetFriendStatus(int loggedInUserId, int profileUserId)
+        {
+            var friends = _context.Friends.ToList();
+
+            var friend = friends.FirstOrDefault(f =>
+                (f.UserId == loggedInUserId && f.FriendId == profileUserId) ||
+                (f.UserId == profileUserId && f.FriendId == loggedInUserId));
+
+            if (friend == null)
+            {
+                return "No relationship"; // ไม่มีกลุ่มความสัมพันธ์
+            }
+            else if (friend.IsFriend)
+            {
+                return $"Friends, since {friend.time.ToString("MMMM dd, yyyy HH:mm")}"; // เป็นเพื่อนกันแล้ว
+            }
+            else if (friend.IsPending)
+            {
+                if (friend.UserId == loggedInUserId)
+                    return "Request sent"; // คำขอเป็นเพื่อนถูกส่งแล้ว
+                else
+                    return "Request received"; // คำขอเป็นเพื่อนที่รับมา
+            }
+            return "No relationship"; // ถ้าไม่มีสถานะอื่น
+        }
+
+        var loggedInUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == loggedInUsername);
+        string status = "No relationship"; // ค่า default
+        if (loggedInUser != null)
+        {
+            status = GetFriendStatus(loggedInUser.Id, user.Id);
+        }
+
+        ViewBag.FriendStatus = status;
 
         var userBio = _context.UserBios.FirstOrDefault(b => b.UserId == user.Id);
 
         var profileViewModel = new ProfileViewModel
         {
+            UserId = user.Id,
             Username = user.Username,
             Email = user.Email,
             FirstName = user.FirstName,

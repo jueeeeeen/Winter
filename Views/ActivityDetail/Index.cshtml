@@ -1,6 +1,8 @@
 ﻿﻿@{
     ViewData["Title"] = "Activity Detail";
     var username = ViewBag.Username;
+    var token = Context.Request.Cookies["token"];
+    bool isLoggedIn = !string.IsNullOrEmpty(token);
 }
 
 <div class="act-detail-container">
@@ -196,7 +198,12 @@
             }
             else if (Model.Member_count < @Model.Max_member)
             {
-                <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+                @if (isLoggedIn) {
+                    <act-detail-join-btn data-activity-id="@Model.Activity_id"></act-detail-join-btn>
+                }
+                else {
+                    <button class="btn large lb-w round act-detail-btn hover-w-bb-bb ani-bounce" onclick="window.location.href='/Account/Login'">join</button>
+                }
             }
             </div>
         }

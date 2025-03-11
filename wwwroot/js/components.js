@@ -548,6 +548,8 @@ class FriendFilterLi extends HTMLElement {
       this.check_filter_container.classList.toggle("show");
       this.filter_header.classList.toggle("bb-w");
     });
+
+    this.querySelector("#filter-friend-check").checked = false;
   }
 
   disconnectedCallback() {

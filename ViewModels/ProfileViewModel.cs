@@ -7,6 +7,7 @@ namespace Winter_Project.ViewModels
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public DateOnly DateOfBirth { get; set; }
+        public string Gender { get; set; } = string.Empty;
 
         // ข้อมูลจาก UserBio
         public string Location { get; set; } = "No information";

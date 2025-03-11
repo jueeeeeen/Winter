@@ -79,7 +79,6 @@ public class MyActivityController: Controller
                     .Where(u => u.Username == a.Owner)
                     .Select(u => new 
                     {
-                        Profile_pic = "profile-g.png",
                         u.Username,
                         u.FirstName,
                         u.LastName,

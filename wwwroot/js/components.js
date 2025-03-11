@@ -2104,6 +2104,8 @@ class Member extends HTMLElement {
           </li>
           `;
 
+          this.addProfileClickEvent();
+
           let ratingPopup = document.querySelector("rating-popup");
           if (!ratingPopup) {
             ratingPopup = new RatingPopup();
@@ -2158,6 +2160,18 @@ class Member extends HTMLElement {
         </div>
       </li>
       `;
+
+    this.addProfileClickEvent();
+  }
+
+  addProfileClickEvent() {
+    const profilePic = this.querySelector(".member-profile-pic");
+    if (profilePic) {
+      profilePic.style.cursor = "pointer";
+      profilePic.addEventListener("click", () => {
+        window.location.href = `/profile/${this.member.userDetails.username}`;
+      });
+    }
   }
 }
 

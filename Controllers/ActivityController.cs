@@ -11,6 +11,35 @@ public class ActivityController: Controller
 {
     private readonly WinterContext _context;
 
+    public async Task UpdateActivityStatusAsync()
+    {
+        var activities = await _context.Activities
+            .Where(a => a.Status != "delete") 
+            .ToListAsync();
+
+        var currentTime = DateTime.UtcNow;
+
+        foreach (var activity in activities)
+        {
+            if (activity.Deadline_time == activity.Activity_time && currentTime >= activity.Activity_time)
+            {
+                activity.Status = "done";
+            }
+            else if (activity.Deadline_time <= currentTime)
+            {
+                activity.Status = "close"; 
+            }
+            else if (activity.Activity_time <= currentTime)
+            {
+                activity.Status = "done";
+            }
+
+            _context.Activities.Update(activity);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
     public ActivityController(WinterContext context)
     {
         _context = context;
@@ -37,6 +66,7 @@ public class ActivityController: Controller
     [HttpPost]
     public JsonResult GetActivityCards([FromBody] ActDisplayOptionModel filters)
     {
+        UpdateActivityStatusAsync().Wait();
         Console.WriteLine(filters);
         var page_size = 12;
 

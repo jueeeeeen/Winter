@@ -190,6 +190,8 @@ public class ActivityDetailController: Controller
                 Notification_time = DateTime.UtcNow
             };
 
+            if (member_count + 1 >= activity.Max_member) activity.Status = "full";
+
             _context.Notifications.Add(notification);
         }
 
@@ -245,6 +247,8 @@ public class ActivityDetailController: Controller
 
             _context.Participants.Remove(participant);
         }
+
+        if (activity.Status == "full") activity.Status = "open";
 
         _context.SaveChanges();
 
@@ -389,6 +393,37 @@ public class ActivityDetailController: Controller
             _context.Notifications.Add(notification);
             _context.SaveChanges();
         }
+        
+        var member_count = activity.Participants.Count(p => p.Role == "member" || p.Role == "host");
+
+        if (member_count + 1 >= activity.Max_member) {
+            
+            activity.Status = "full";
+
+            var pendingParticipants = _context.Participants
+                .Where(p => p.Activity_id == activity.Activity_id && p.Role == "pending")
+                .ToList();
+
+            foreach (var par in pendingParticipants)
+            {
+                _context.Participants.Remove(par);
+
+                var participant_user = _context.Users.FirstOrDefault(u => u.Username == par.Username);
+                
+                var notification = new NotificationModel
+                {
+                    User_id = participant_user.Id,
+                    Notification_type = "denied",
+                    Activity_id = activity.Activity_id,
+                    Activity_user_id = 0,
+                    Notification_time = DateTime.UtcNow
+                };
+
+                _context.Notifications.Add(notification);
+            }
+        }
+
+        _context.SaveChanges();
 
         return Ok(new { message = $"Approved Username: {username} Successfully"});
     }

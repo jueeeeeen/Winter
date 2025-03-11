@@ -11,8 +11,8 @@ using Winter_Project.Models;
 namespace Winter_Project.Migrations
 {
     [DbContext(typeof(WinterContext))]
-    [Migration("20250310135947_initialCreate")]
-    partial class initialCreate
+    [Migration("20250311083354_SeedReviewData")]
+    partial class SeedReviewData
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -234,6 +234,108 @@ namespace Winter_Project.Migrations
                     b.HasKey("Review_id");
 
                     b.ToTable("Reviews");
+
+                    b.HasData(
+                        new
+                        {
+                            Review_id = 1,
+                            Activity_id = 101,
+                            Comment = "Great!",
+                            Rating = 4.5f,
+                            Reviewed_user = "Alice",
+                            Reviewer = "UserA",
+                            Time = new DateTime(2024, 1, 1, 12, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 2,
+                            Activity_id = 102,
+                            Comment = "Excellent!",
+                            Rating = 5f,
+                            Reviewed_user = "Alice",
+                            Reviewer = "UserB",
+                            Time = new DateTime(2024, 1, 2, 15, 30, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 3,
+                            Activity_id = 103,
+                            Comment = "Good job",
+                            Rating = 3.8f,
+                            Reviewed_user = "Bob",
+                            Reviewer = "UserC",
+                            Time = new DateTime(2024, 1, 3, 10, 45, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 4,
+                            Activity_id = 104,
+                            Comment = "Needs improvement",
+                            Rating = 2.5f,
+                            Reviewed_user = "Charlie",
+                            Reviewer = "UserD",
+                            Time = new DateTime(2024, 1, 4, 18, 20, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 5,
+                            Activity_id = 105,
+                            Comment = "Nice work",
+                            Rating = 4.2f,
+                            Reviewed_user = "Bob",
+                            Reviewer = "UserE",
+                            Time = new DateTime(2024, 1, 5, 8, 10, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 6,
+                            Activity_id = 106,
+                            Comment = "Average",
+                            Rating = 3.5f,
+                            Reviewed_user = "Charlie",
+                            Reviewer = "UserF",
+                            Time = new DateTime(2024, 1, 6, 11, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 7,
+                            Activity_id = 107,
+                            Comment = "Amazing!",
+                            Rating = 4.8f,
+                            Reviewed_user = "Alice",
+                            Reviewer = "UserG",
+                            Time = new DateTime(2024, 1, 7, 9, 25, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 8,
+                            Activity_id = 108,
+                            Comment = "Pretty good",
+                            Rating = 3.9f,
+                            Reviewed_user = "Bob",
+                            Reviewer = "UserH",
+                            Time = new DateTime(2024, 1, 8, 16, 55, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 9,
+                            Activity_id = 109,
+                            Comment = "Could be better",
+                            Rating = 2f,
+                            Reviewed_user = "Charlie",
+                            Reviewer = "UserI",
+                            Time = new DateTime(2024, 1, 9, 13, 5, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Review_id = 10,
+                            Activity_id = 110,
+                            Comment = "Nice!",
+                            Rating = 4.2f,
+                            Reviewed_user = "Alice",
+                            Reviewer = "UserJ",
+                            Time = new DateTime(2024, 1, 10, 20, 30, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Winter_Project.Models.UserBio", b =>
@@ -274,6 +376,19 @@ namespace Winter_Project.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserBios");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AboutMe = "I enjoy storytelling and writing about various topics.",
+                            Bio = "Creative writer and avid reader.",
+                            Location = "Los Angeles, USA",
+                            MyHobby = "Painting, Traveling",
+                            MyInterests = "Writing, Art, Literature",
+                            Phone = "+1-555-5678",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("Winter_Project.Models.UserModel", b =>
@@ -316,6 +431,19 @@ namespace Winter_Project.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateOfBirth = new DateOnly(1995, 6, 15),
+                            Email = "john@example.com",
+                            FirstName = "John",
+                            Gender = "male",
+                            LastName = "Doe",
+                            PasswordHash = "A6xnQhbz4Vx2HuGl4lXwZ5U2I8iziLRFnhP5eNfIRvQ=",
+                            Username = "test1"
+                        });
                 });
 
             modelBuilder.Entity("Winter_Project.Models.FriendModel", b =>

@@ -28,6 +28,7 @@ namespace Winter_Project.Models
         public ICollection<ParticipantModel> Participants { get; set; } = new List<ParticipantModel>();
 
         public string Status { get; set; } = string.Empty;
-
     }
+
+
 }

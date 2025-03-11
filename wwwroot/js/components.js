@@ -2374,7 +2374,7 @@ class Member extends HTMLElement {
           });
 
           this.querySelector(".rate-btn").addEventListener("click", () => {
-            ratingPopup.openPopup(this.activity_title, this.activity_id, this.member.userDetails.username);
+            ratingPopup.openPopup(this.activity_title, this.activity_id, this.member.userDetails.username,this.member.userDetails.profile_pic);
           });
         } else {
           this.renderWithoutButton();
@@ -2590,7 +2590,9 @@ class RatingPopup extends HTMLElement {
       <div class="rating-header">Rate activity member</div>
       <div class="rating-info">
         <div class="rating-activity-name"></div>
-        <img src="/assets/Profile-g.png" alt="">
+        <div class="rating_member_profile_pic">
+          <img src="/assets/Profile-g.png" alt="Profile" id="member_profile_pic">
+        </div>
         <div class="rating-user-name"></div>
         <div class="rating-change-component">
           <div class="rating-stars">
@@ -2626,10 +2628,11 @@ class RatingPopup extends HTMLElement {
     this.setupStarRating();
   }
 
-  openPopup(activityTitle, activity_id,username) {
+  openPopup(activityTitle, activity_id,username,profile_pic) {
     this.activity_id = activity_id
     this.querySelector(".rating-activity-name").textContent = activityTitle;
     this.querySelector(".rating-user-name").textContent = username;
+    this.querySelector("#member_profile_pic").src = profile_pic
 
     this.resetComponent();
     this.style.display = "block";

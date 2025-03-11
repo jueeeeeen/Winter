@@ -114,7 +114,7 @@ public class ActivityReviewController : Controller
 
 
 
-    [HttpGet("Activity/Review/{Activity_id}")]
+    [HttpGet("ActivityReview/{Activity_id}")]
     public async Task<IActionResult> Index(int Activity_id)
     {
         Console.WriteLine($"Received activityId: {Activity_id}");

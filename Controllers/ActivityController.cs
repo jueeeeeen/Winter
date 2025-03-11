@@ -25,11 +25,11 @@ public class ActivityController: Controller
             {
                 activity.Status = "done";
             }
-            else if (activity.Deadline_time <= currentTime)
+            if (activity.Status == "open" && activity.Deadline_time <= currentTime)
             {
                 activity.Status = "close"; 
             }
-            else if (activity.Activity_time <= currentTime)
+            if (activity.Activity_time <= currentTime)
             {
                 activity.Status = "done";
             }

@@ -10,6 +10,35 @@ public class ActivityDetailController: Controller
 {
     private readonly WinterContext _context;
 
+    public async Task UpdateActivityStatusAsync()
+    {
+        var activities = await _context.Activities
+            .Where(a => a.Status != "delete") 
+            .ToListAsync();
+
+        var currentTime = DateTime.UtcNow;
+
+        foreach (var activity in activities)
+        {
+            if (activity.Deadline_time == activity.Activity_time && currentTime >= activity.Activity_time)
+            {
+                activity.Status = "done";
+            }
+            if (activity.Status == "open" && activity.Deadline_time <= currentTime)
+            {
+                activity.Status = "close"; 
+            }
+            if (activity.Activity_time <= currentTime)
+            {
+                activity.Status = "done";
+            }
+
+            _context.Activities.Update(activity);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
     public ActivityDetailController(ILogger<CreateController> logger, WinterContext context)
     {
         _context = context;
@@ -18,6 +47,7 @@ public class ActivityDetailController: Controller
     [HttpGet("ActivityDetail/{id}")]
     public IActionResult Index(int id)
     {
+        UpdateActivityStatusAsync().Wait();
         var activity = _context.Activities
             .Where(a => a.Activity_id == id)
             .Select(a => new 

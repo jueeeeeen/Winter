@@ -1242,10 +1242,16 @@ class ActDetailLeaveBtn extends HTMLElement {
 }
 
 class ViewReviewBtn extends HTMLElement {
-    constructor() {
-        super();
-        this.innerHTML = `<button class="btn large y-w round act-detail-btn hover-w-y ani-bounce">view review</button>`;
-    }
+  constructor() {
+      super();
+      this.activity_id = this.getAttribute("activity-id");
+
+      this.innerHTML = `<button class="btn large y-w round act-detail-btn hover-w-y ani-bounce">view review</button>`;
+
+      this.querySelector("button").addEventListener("click", () => {
+          window.location.href = `http://localhost:5115/ActivityReview/${this.activity_id}`;
+      });
+  }
 }
 
 class DeleteBtn extends HTMLElement {

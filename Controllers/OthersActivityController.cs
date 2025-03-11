@@ -23,7 +23,7 @@ public class OthersActivityController: Controller
             {
                 activity.Status = "close"; 
             }
-            if (activity.Activity_time.Add(TimeSpan.FromHours(Convert.ToDouble(activity.Duration))) <= currentTime)
+            if (activity.Activity_time.Add(TimeSpan.Parse(activity.Duration)) <= currentTime)
             {
                 activity.Status = "done";
             }
@@ -95,7 +95,7 @@ public async Task<IActionResult> Index(string username, [FromQuery] int page)
             u.FirstName,
             u.LastName,
             u.Gender,
-            Rating = 4.5
+            Rating = averageRating
         })
         .FirstOrDefault(),
         Activities = result

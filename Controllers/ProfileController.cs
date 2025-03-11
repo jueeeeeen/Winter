@@ -170,7 +170,6 @@ public class ProfileController : Controller
 
         user.FirstName = model.FirstName;
         user.LastName = model.LastName;
-        user.Email = model.Email;
         user.DateOfBirth = model.DateOfBirth;
         user.Gender = model.Gender;
 

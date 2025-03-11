@@ -24,7 +24,7 @@ public class ActivityDetailController: Controller
             {
                 activity.Status = "close"; 
             }
-            if (activity.Activity_time.Add(TimeSpan.FromHours(Convert.ToDouble(activity.Duration))) <= currentTime)
+            if (activity.Activity_time.Add(TimeSpan.Parse(activity.Duration)) <= currentTime)
             {
                 activity.Status = "done";
             }
@@ -369,6 +369,7 @@ public class ActivityDetailController: Controller
             };
 
             _context.Notifications.Add(notification);
+            if (activity.Status == "full") activity.Status = "open";
             _context.SaveChanges();
         }
 
@@ -422,7 +423,7 @@ public class ActivityDetailController: Controller
         
         var member_count = activity.Participants.Count(p => p.Role == "member" || p.Role == "host");
 
-        if (member_count + 1 >= activity.Max_member) {
+        if (member_count >= activity.Max_member) {
             
             activity.Status = "full";
 

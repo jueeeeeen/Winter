@@ -25,7 +25,7 @@ public class ActivityController: Controller
             {
                 activity.Status = "close"; 
             }
-            if (activity.Activity_time.Add(TimeSpan.FromHours(Convert.ToDouble(activity.Duration))) <= currentTime)
+            if (activity.Activity_time.Add(TimeSpan.Parse(activity.Duration)) <= currentTime)
             {
                 activity.Status = "done";
             }

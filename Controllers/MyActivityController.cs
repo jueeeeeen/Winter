@@ -19,15 +19,11 @@ public class MyActivityController: Controller
 
         foreach (var activity in activities)
         {
-            if (activity.Deadline_time == activity.Activity_time && currentTime >= activity.Activity_time)
-            {
-                activity.Status = "done";
-            }
             if (activity.Status == "open" && activity.Deadline_time <= currentTime)
             {
                 activity.Status = "close"; 
             }
-            if (activity.Activity_time <= currentTime)
+            if (activity.Activity_time.Add(TimeSpan.FromHours(Convert.ToDouble(activity.Duration))) <= currentTime)
             {
                 activity.Status = "done";
             }

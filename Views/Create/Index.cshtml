@@ -202,11 +202,11 @@
             const now = new Date();
             const minActivityTime = new Date(now.getTime() + 24 * 60 * 60 * 1000);
             const activityDate = new Date(activityTime);
-            @* if (activityDate <= minActivityTime) {
+            if (activityDate <= minActivityTime) {
                 showError("create_date_time", "Activity time must be at least 24 hours from now.");
                 isValid = false;
                 if (!firstError) firstError = document.getElementById("create_date_time");
-            } *@
+            }
         }
         if (!deadlineTime) {
             showError("dead_line_date_time", "Please specify the join deadline date and time.");
@@ -218,7 +218,7 @@
             const minDeadlineTime = new Date(now.getTime() + 12 * 60 * 60 * 1000);
             const deadlineDate = new Date(deadlineTime);
             const activityDate = new Date(activityTime);
-            @* if (deadlineDate < minDeadlineTime) {
+            if (deadlineDate < minDeadlineTime) {
                 showError("dead_line_date_time", "Deadline time must be at least 12 hours from now.");
                 isValid = false;
                 if (!firstError) firstError = document.getElementById("dead_line_date_time");
@@ -227,7 +227,7 @@
                 showError("dead_line_date_time", "Deadline time must be before or equal to activity time.");
                 isValid = false;
                 if (!firstError) firstError = document.getElementById("dead_line_date_time");
-            } *@
+            }
         }
         if (!duration) {
             showError("duration", "Please specify the duration.");

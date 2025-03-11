@@ -18,11 +18,11 @@ public class ActivityController: Controller
         return username;
     }
 
-    public async Task UpdateActivityStatusAsync()
+    public void UpdateActivityStatus()
     {
-        var activities = await _context.Activities
+        var activities = _context.Activities
             .Where(a => a.Status != "delete") 
-            .ToListAsync();
+            .ToList();
 
         var currentTime = DateTime.UtcNow;
 
@@ -40,7 +40,7 @@ public class ActivityController: Controller
             _context.Activities.Update(activity);
         }
 
-        await _context.SaveChangesAsync();
+        _context.SaveChanges();
     }
 
     public ActivityController(WinterContext context)
@@ -67,13 +67,13 @@ public class ActivityController: Controller
     }
 
     [HttpPost]
-    public async Task<JsonResult> GetActivityCards([FromBody] ActDisplayOptionModel filters)
+    public JsonResult GetActivityCards([FromBody] ActDisplayOptionModel filters)
     {
-        await UpdateActivityStatusAsync();
+        UpdateActivityStatus();
         Console.WriteLine(filters);
         var page_size = 12;
 
-        var filtered_activities = _context.Activities.Where(a => a.Status == "open");
+        var filtered_activities = _context.Activities.Where(a => a.Status == "open").AsQueryable();
 
         switch (filters.Sort)
         {
@@ -119,38 +119,13 @@ public class ActivityController: Controller
         }
 
         // คำนวณหน้าสูงสุดก่อนรัน ToListAsync()
-        var total_activities = await filtered_activities.CountAsync();
+        var total_activities = filtered_activities.Count();
         var max_page = (total_activities + page_size - 1) / page_size;
 
-        var activitiesList = await filtered_activities
+        var responseActivities = filtered_activities
             .Skip((filters.Page - 1) * page_size)
             .Take(page_size)
-            .ToListAsync();
-
-        var responseActivities = new List<object>();
-
-        foreach (var a in activitiesList)
-        {
-            var host = await _context.Users
-                .Where(u => u.Username == a.Owner)
-                .Select(u => new 
-                {
-                    Profile_pic = u.ProfilePicture != null 
-                                    ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
-                                    : "/assets/profile-g.png",
-                    u.Username,
-                    u.FirstName,
-                    u.LastName,
-                    u.Gender
-                })
-                .FirstOrDefaultAsync();
-
-            var averageRating = await _context.Reviews
-                .Where(r => r.Reviewed_user == a.Owner)
-                .Select(r => (double?)r.Rating)
-                .AverageAsync() ?? 0;
-
-            responseActivities.Add(new
+            .Select(a => new 
             {
                 a.Activity_id,
                 a.Title,
@@ -165,17 +140,23 @@ public class ActivityController: Controller
                 a.Max_member,
                 Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
                 a.Duration,
-                host = new
+                host = _context.Users
+                .Where(u => u.Username == a.Owner)
+                .Select(u => new 
                 {
-                    host?.Profile_pic,
-                    host?.Username,
-                    host?.FirstName,
-                    host?.LastName,
-                    host?.Gender,
-                    Review = averageRating
-                }
-            });
-        }
+                    Profile_pic = u.ProfilePicture != null 
+                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                        : "/assets/profile-g.png",
+                    u.Username,
+                    u.FirstName,
+                    u.LastName,
+                    u.Gender,
+                    Review = _context.Reviews
+                        .Where(r => r.Reviewed_user == u.Username)
+                        .Average(r => (double?)r.Rating) ?? 0
+                }).FirstOrDefault()
+            })
+            .ToList();
 
         var response = new 
         {

@@ -343,6 +343,7 @@
 }
 
 .act-detail-head {
+    position: relative;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid var(--gray60);
@@ -415,7 +416,9 @@
         border-radius: 0 0 0.4em 0.4em;
     }
 
-    .member-count {
-        display: flex;
+    .act-detail-head-info {
+        position: absolute;
+        top: 230px;
+        right: 0;
     }
 }

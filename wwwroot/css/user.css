@@ -178,6 +178,9 @@
   font-size: 1.2rem;
   font-weight: 600;
   height: 83px;
+  word-break: break-word;
+  overflow: auto;
+  margin-bottom: 10px;
 }
 
 .personal-card {
@@ -361,7 +364,7 @@ fieldset {
 .gender-button button {
   background-color: var(--white);
   width: 100px;
-  height: 30px;
+  height: 35px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -373,14 +376,14 @@ fieldset {
 }
 
 .gender-button button img {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
 
 .male-button:hover::after,
 .lgbtq-button:hover::after,
 .female-button:hover::after {
-  font-size: 1rem;
+  font-size: 1.1rem;
   white-space: nowrap;
   position: absolute;
   transform: translate(0, 0);

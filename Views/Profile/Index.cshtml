@@ -103,13 +103,39 @@
                         </button>
                     </div>
                 }
-
-                <div class="add-friend-button">
-                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
-                            <img src="~/assets/edit.svg" alt="add-friend-button Friend icon" class="add-friend-img">
-                            <p>Add Friend</p>
-                        </button>
+                else
+                {
+                <div class="friend-button">
+                    <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                        <p>Add Friend</p>
+                    </button>
                 </div>
+                }
+                @* <div class="friend-approve friend-text">
+                    <p>he want to be your friend</p>
+                    <div class="friend-button friend-green">
+                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                            <p>Accept</p>
+                        </button>
+                    </div>
+                    <div class="friend-button friend-red">
+                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                            <p>Deny</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="friend-button friend-yellow friend-text">
+                    <p>waiting for his accept</p>
+                    <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                        <p>Cancel Friend Request</p>
+                    </button>
+                </div>
+                <div class="friend-button friend-red friend-text">
+                    <p>you have been friends with him since 23 Feb 2025</p>
+                    <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                        <p>Remove Friend</p>
+                    </button>
+                </div> *@
             </div>
         </div>  
     </div>

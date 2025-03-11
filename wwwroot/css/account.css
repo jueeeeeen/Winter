@@ -359,6 +359,7 @@ html, body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  cursor: pointer;
 }
 
 .gender-button button.selected {

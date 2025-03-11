@@ -103,13 +103,42 @@ public class ActivityController: Controller
             filtered_activities = filtered_activities.Where(a => filters.Filter.Gender.Contains(a.Requirement.Gender));
         }
 
+        if (filters.Filter.Friend == true) 
+        {
+            var token = Request.Cookies["token"];
+            var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+
+            int userId = GetUserIdFromToken(username);
+
+            List<int> friendIds = _context.Friends
+                .Where(f => (f.UserId == userId || f.FriendId == userId) && f.IsFriend)
+                .Select(f => f.UserId == userId ? f.FriendId : f.UserId)
+                .ToList();
+
+            List<string> friendUsernames = _context.Users
+                .Where(u => friendIds.Contains(u.Id))
+                .Select(u => u.Username)
+                .ToList();
+
+Console.WriteLine("Friend IDs: " + string.Join(", ", friendIds));
+Console.WriteLine("Friend Usernames: " + string.Join(", ", friendUsernames));
+
+                filtered_activities = filtered_activities
+                .Where(activity => friendUsernames.Contains(activity.Owner));
+
+        }
+
+        int GetUserIdFromToken(string username)
+        {
+            return _context.Users
+                .Where(u => u.Username == username)
+                .Select(u => u.Id)
+                .FirstOrDefault();
+        }
+
         if (filters.Filter.Age != null) {
             filtered_activities = filtered_activities.Where(a => a.Requirement.Age >= filters.Filter.Age.Min && a.Requirement.Age <= filters.Filter.Age.Max);
         }
-
-        // if (filters.Filter.Friend == true) {
-        //     filtered_activities = filtered_activities.Where(a => a.Owner);
-        // }
 
         if (filters.Tag_filter.Any()) {
             filtered_activities = filtered_activities.Where(a => filters.Tag_filter.Any(tag => a.Tags.Contains(tag)));

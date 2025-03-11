@@ -555,7 +555,7 @@ class FriendFilterLi extends HTMLElement {
   }
 
   get result() {
-    return this.querySelector('#filter-friend-check').value === "true";
+    return this.querySelector('#filter-friend-check').checked;
   }
 
   reset() {
@@ -651,7 +651,7 @@ class DisplayFilter extends HTMLElement {
     this.friend_filter.reset();
     this.age_range = null;
     this.gender = null;
-    this.friend = null;
+    this.friend = false;
   }
 }
 customElements.define("display-filter", DisplayFilter);

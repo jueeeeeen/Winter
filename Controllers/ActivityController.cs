@@ -11,6 +11,13 @@ public class ActivityController: Controller
 {
     private readonly WinterContext _context;
 
+    private string Get_username_from_token()
+    {
+        var token = Request.Cookies["token"];
+        var username = string.IsNullOrEmpty(token) ? "" : JwtHelper.DecodeJwt(token);
+        return username;
+    }
+
     public async Task UpdateActivityStatusAsync()
     {
         var activities = await _context.Activities
@@ -62,6 +69,9 @@ public class ActivityController: Controller
     [HttpPost]
     public JsonResult GetActivityCards([FromBody] ActDisplayOptionModel filters)
     {
+        var username = Get_username_from_token();
+        var userId = _context.Users.FirstOrDefault(u => u.Username == username)?.Id;
+
         UpdateActivityStatusAsync().Wait();
         Console.WriteLine(filters);
         var page_size = 12;
@@ -106,11 +116,7 @@ public class ActivityController: Controller
         if (filters.Filter.Age != null) {
             filtered_activities = filtered_activities.Where(a => a.Requirement.Age >= filters.Filter.Age.Min && a.Requirement.Age <= filters.Filter.Age.Max);
         }
-
-        // if (filters.Filter.Friend == true) {
-        //     filtered_activities = filtered_activities.Where(a => a.Owner);
-        // }
-
+        
         if (filters.Tag_filter.Any()) {
             filtered_activities = filtered_activities.Where(a => filters.Tag_filter.Any(tag => a.Tags.Contains(tag)));
         }

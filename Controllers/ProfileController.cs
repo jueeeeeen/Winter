@@ -234,7 +234,7 @@ public class ProfileController : Controller
             }
             else if (friend.IsFriend)
             {
-                return $"Friends, since {friend.time.ToString("MMMM dd, yyyy HH:mm")}"; // เป็นเพื่อนกันแล้ว
+                return $"you have been friends with them since {friend.time.ToLocalTime().ToString("MMMM dd, yyyy")}"; // เป็นเพื่อนกันแล้ว
             }
             else if (friend.IsPending)
             {

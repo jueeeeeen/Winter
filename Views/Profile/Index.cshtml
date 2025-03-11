@@ -104,11 +104,10 @@
                         </button>
                     </div>
                 }
-                else if(friendStatus == "Friends")
-                {
-                <div class="friend-button friend-red friend-text">
-                    <p>you have been friends with him since 23 Feb 2025</p>
-                    <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                else if (friendStatus.Contains("friends")){
+                    <div class="friend-button friend-red friend-text">
+                    <p>@friendStatus</p>
+                    <button onclick="removeFriend(this)" data-friend-id="@Model.UserId" friend-name="@Model.FirstName @Model.LastName">
                         <p>Remove Friend</p>
                     </button>
                 </div>
@@ -116,8 +115,8 @@
                 else if(friendStatus == "Request sent")
                 {
                     <div class="friend-button friend-yellow friend-text">
-                        <p>waiting for his accept</p>
-                        <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                        <p>waiting for their accept</p>
+                        <button onclick="CancelRequest(this)" data-friend-id="@Model.UserId"> 
                             <p>Cancel Friend Request</p>
                         </button>
                     </div>
@@ -125,14 +124,14 @@
                 else if(friendStatus == "Request received")
                 {
                     <div class="friend-approve friend-text">
-                        <p>he want to be your friend</p>
-                        <div class="friend-button friend-green">
-                            <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                        <p>they want to be your friend</p>
+                        <div class="approve-friend-button friend-green">
+                            <button onclick="acceptFriendRequest(this)" data-friend-id="@Model.UserId"> 
                                 <p>Accept</p>
                             </button>
                         </div>
-                        <div class="friend-button friend-red">
-                            <button onClick="location.href='@Url.Action("add", "friends")'"> 
+                        <div class="approve-friend-button friend-red">
+                            <button onclick="denyFriendRequest(this)" data-friend-id="@Model.UserId"> 
                                 <p>Deny</p>
                             </button>
                         </div>
@@ -153,28 +152,119 @@
 
 <script>
 async function addFriend(button) {
-    console.log(button);
-    const friendId = button.getAttribute("data-friend-id"); // ใช้ this หรือ button ที่ส่งมา
-    console.log(friendId)
+
+    const friendId = button.getAttribute("data-friend-id");
+
     try {
         const response = await fetch("/friends/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: new URLSearchParams({ friendId }), // ส่งข้อมูล friendId
+            body: new URLSearchParams({ friendId }),
         });
 
         if (response.ok) {
-            console.log(`✅ Friend request sent to Friend ID: ${friendId}`);
-            alert("คำขอเป็นเพื่อนถูกส่งแล้ว!");
+            console.log(`Friend request sent to Friend ID: ${friendId}`);
+            location.reload();
+            alert("Friend request has been sent!");
         } else {
-            console.log("❌ Friend request failed");
-            alert("ส่งคำขอเป็นเพื่อนล้มเหลว");
+            console.log("Friend request failed");
+            alert("Failed to send friend request");
         }
     } catch (error) {
-        console.error("⚠️ Error:", error);
-        alert("เกิดข้อผิดพลาดในการส่งคำขอ");
+        console.error("Error:", error);
+        alert("An error occurred while sending the request");
     }
 }
+async function CancelRequest(button) {
+
+    const friendId = button.getAttribute("data-friend-id");
+
+    const response = await fetch("/friends/cancel", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId })
+    });
+
+    if (response.ok) {
+      alert("The friend request has been canceled!");
+      location.reload();
+    } else {
+      alert("An error occurred, unable to cancel the friend request.");
+    }
+  }
+
+async function acceptFriendRequest(button) {
+    const friendId = button.getAttribute("data-friend-id");
+    console.log(`Accepting friend request from Friend ID: ${friendId}`);
+    const response = await fetch("/friends/accept-friend", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId })
+    });
+    if (response.ok) {
+      alert("Friend request accepted!");
+      location.reload();
+    } else {
+      alert("Failed to accept friend request.");
+      const errorText = await response.text();
+      console.error(`Server Error: ${errorText}`);
+    }
+}
+
+async function denyFriendRequest(button) {
+    const friendId = button.getAttribute("data-friend-id");
+    console.log(`Denying friend request from Friend ID: ${friendId}`);
+    const response = await fetch("/friends/deny", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId })
+    });
+
+    if (response.ok) {
+      alert("Friend request denied!");
+      location.reload();
+    } else {
+      alert("Failed to deny friend request.");
+      const errorText = await response.text();
+      console.error(`Server Error: ${errorText}`);
+    }
+}
+
+  async function removeFriend(button) {
+
+    const name = button.getAttribute("friend-name");
+
+      const confirmDelete = confirm(`Are you sure you want to delete ${name} from your friend list?`);
+      if (!confirmDelete) return;
+
+      const friendId = button.getAttribute("data-friend-id");
+
+      try {
+          const response = await fetch(`/friends/remove`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ friendId }),
+          });
+
+          if (response.ok) {
+              alert(`${name} has been removed from the friend list.`);
+              location.reload();
+          } else {
+              alert("An error occurred while removing the friend.");
+          }
+      } catch (error) {
+          console.error("Error:", error);
+          alert("Unable to connect to the server.");
+      }
+  }
 </script>

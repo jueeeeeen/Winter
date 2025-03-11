@@ -241,7 +241,31 @@
 .friend-approve {
   display: flex;
   align-items: center;
-  gap: 10px
+  gap: 10px;
+  position: absolute;
+  right: 1px;
+  bottom: -5rem;
+}
+
+.friend-approve button {
+  background-color: var(--blue70);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: fit-content;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.friend-approve button p {
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .friend-text {

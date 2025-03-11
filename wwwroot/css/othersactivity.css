@@ -6,8 +6,8 @@
     align-self: center;
     width: 6vw;
     height: 6vw;
-    min-width: 80px;
-    min-height: 80px;
+    min-width: 150px;
+    min-height: 150px;
     border-radius: 50%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -15,13 +15,14 @@
 .profile-activity-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 .profile-info {
     padding: 1rem;
     display: flex;
     width: 100%;
     flex-direction: column;
+    gap: 0.2rem;
 }
 
 .profile-name {
@@ -32,19 +33,29 @@
     font-size: 1.125rem;
 }
 .profile-rating {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    
+  border-radius: 10rem;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  color: #fdc330;
+  background-color: white;
+  padding: 0.3rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 5rem;
+  max-width: 120px;
+  min-width: 25px;
 }
-.profile-rating-star {
-    display: flex;
-}
-.profile-rating-star > img {
-    width: 1rem;
+
+.profile-rating > img {
+  width: 20px;
+  height: 20px;
 }
 .profile-rating-points{
     font-size: 1.125rem;
+    align-self: center;
+    color: var(--blue80);
+    font-weight: 600;
 }
 
 .activities-bg {
@@ -71,7 +82,13 @@
 .activities {
   padding: 0.5rem 1rem;
 }
-
+.activity-not-found{
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+  color: gray;
+  opacity: 50%;
+}
 .activity-dropdown {
   position: relative;
   display: inline-block;
@@ -97,24 +114,41 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
 }
-
 .activity-name {
   text-align: left;
-  width: 30%;
-  min-width: 300px;
+  align-self: center;
+  width: 280px;
   font-size: 1.3rem;
   color: black;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .tags-date {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  width: fit-content;
+  width: auto;
+}
+.activity-status{
+  border: 1.5px solid var(--white);
+  background-color: var(--blue70);
+  padding: 0.3rem 0.5rem;
+  border-radius: 2rem;
+  color: white;
+  box-shadow: 0px 3px 4px 1px var(--shadow);
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.1rem;
+  width: 69.2px;
+}
+.activity-name-status{
+  display: flex;
+  flex-direction: row;
+  width: 380px;
 }
 
 .tags {
@@ -136,7 +170,6 @@
   text-align: center;
   width: 100px;
 }
-
 .date {
   gap: 0.5rem;
   width: 300px;
@@ -165,14 +198,14 @@
   
   .activity-details {
     gap: 0.5rem;
-    flex-direction: column;
+    flex-direction:row;
     align-items: flex-start;
   }
   
   .activity-name {
     min-width: 0px;
     font-size: 1.2rem;
-    width: fit-content;
+    width: 200px;
   }
   
   .tags-date {
@@ -250,7 +283,8 @@
 }
 
 .member-rate-button{
-  width: fit-content;
+  height: 2px;
+  width: 112px;
 }
 
 .member-profile-pic{
@@ -259,6 +293,8 @@
   height: 3.5vw;
   min-width: 40px;
   min-height: 40px;
+  max-width: 65px;
+  max-height: 65px;
   border-radius: 50%;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -266,10 +302,7 @@
 .member-profile-pic img{
   width: 100%;
   height: 100%;
-  object-fit: contain;
-}
-.member-profile-pic:hover{
-  cursor: pointer;
+  object-fit: cover;
 }
 
 .member-name-role{
@@ -289,7 +322,6 @@
 .member-role {
   font-size: 0.875rem;
   text-align: left;
-  color: gray;
 }
 
 .rate-btn {
@@ -337,6 +369,7 @@
 }
 
 .view-details {
+  color: #fdc330;
   display: flex;
   background-color: var(--blue70);
   color: white;

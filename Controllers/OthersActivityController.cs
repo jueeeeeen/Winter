@@ -44,8 +44,12 @@ public class OthersActivityController: Controller
             .ToList(); 
 
         activitiesList = activitiesList.Where(a =>
-            a.Activity_time.Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow.AddHours(7))
+            a.Activity_time.Add(TimeSpan.Parse(a.Duration)) < DateTime.UtcNow)
         .ToList();    
+
+        // var averageRating = _context.Reviews
+        //     .Where(r => r.Reviewed_user == username)
+        //     .Average(r => r.Rating);
 
         var result = activitiesList;
         var response = new 
@@ -62,7 +66,7 @@ public class OthersActivityController: Controller
                 u.FirstName,
                 u.LastName,
                 u.Gender,
-                Rating = "4.5"
+                Rating = 4.5
             })
             .FirstOrDefault(),
             Activities = result
@@ -73,6 +77,7 @@ public class OthersActivityController: Controller
                     a.Activity_id,
                     a.Title,
                     a.Tags,
+                    a.Status,
                     Activity_time = a.Activity_time.ToString("ddd, dd MMM yyyy-HH:mm"),
                     Participants = a.Participants
                     .OrderBy(p => p.Role == "host" ? 0 : p.Role == "member" ? 1 : 2)

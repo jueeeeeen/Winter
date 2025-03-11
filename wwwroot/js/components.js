@@ -2069,64 +2069,72 @@ class SelectActivities extends HTMLElement {
 }
 
 class Member extends HTMLElement {
-  constructor(member,activity_title, activity_id, activity_type, username) {
+  constructor(member, activity_title, activity_id, activity_type, username) {
     super();
     this.activity_id = activity_id;
     this.member = member;
     this.activity_title = activity_title;
-    this.activity_type = activity_type
+    this.activity_type = activity_type;
     this.username = username;
   }
 
   connectedCallback() {
-    if (this.username !== this.member.username && this.activity_type == "history" && this.activity_type !== null) {
+    if (this.username !== this.member.userDetails.username && this.activity_type == "history" && this.activity_type !== null) {
       this.checkReviewStatus().then((hasReview) => {
         if (!hasReview) {
           this.innerHTML = `
           <li class="member">
             <div class="member-content">
-              <img src="/assets/Profile-w-b.png" alt="Profile">
-              <span class="member-name">${this.member.username}</span>
-              <span class="member-role">${this.member.role}</span>
+              <div class="member-profile-pic">
+                <img src="${this.member.userDetails.profile_pic}" alt="Profile">
+              </div>
+              <div class="member-name-role">
+                <div class="member-name">${this.member.userDetails.firstName} ${this.member.userDetails.lastName}</div>
+                <div class="member-role">${this.member.role}</div>
+              </div>
             </div>
+            <div class="member-rate-button">
             <button class="rate-btn">
-              <img src="/assets/yellow_star_outline.png" alt="Rate">
+              <svg width="24px"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke=" #fdc330" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+              </svg>
               <span class="review-text">review</span>
             </button>
+            </div>
           </li>
           `;
 
-        let ratingPopup = document.querySelector("rating-popup");
-        if (!ratingPopup) {
-          ratingPopup = new RatingPopup();
-          document.body.appendChild(ratingPopup);
-        }
-
-        document.addEventListener("rating-completed", (event) => {
-          if (event.detail.reviewedUser === this.member.username && 
-              event.detail.activityId === this.activity_id) {
-            const rateBtn = this.querySelector(".rate-btn");
-            if (rateBtn) {
-              rateBtn.style.display = "none";
-            }
+          let ratingPopup = document.querySelector("rating-popup");
+          if (!ratingPopup) {
+            ratingPopup = new RatingPopup();
+            document.body.appendChild(ratingPopup);
           }
-        });
 
-        this.querySelector(".rate-btn").addEventListener("click", () => {
-          ratingPopup.openPopup(this.activity_title, this.activity_id,this.member.username);
-        });
+          document.addEventListener("rating-completed", (event) => {
+            if (event.detail.reviewedUser === this.member.userDetails.username &&
+              event.detail.activityId === this.activity_id) {
+              const rateBtn = this.querySelector(".rate-btn");
+              if (rateBtn) {
+                rateBtn.style.display = "none";
+              }
+            }
+          });
+
+          this.querySelector(".rate-btn").addEventListener("click", () => {
+            ratingPopup.openPopup(this.activity_title, this.activity_id, this.member.userDetails.username);
+          });
         } else {
           this.renderWithoutButton();
         }
-    });
-  } else {
-    this.renderWithoutButton();
+      });
+    } else {
+      this.renderWithoutButton();
+    }
   }
-}
 
   async checkReviewStatus() {
     try {
-      const response = await fetch(`/Activity/HasReview?activityId=${this.activity_id}&reviewedUser=${this.member.username}`);
+      const response = await fetch(`/Activity/HasReview?activityId=${this.activity_id}&reviewedUser=${this.member.userDetails.username}`);
       if (!response.ok) throw new Error("Failed to check review status");
       const { hasReview } = await response.json();
       return hasReview;
@@ -2140,9 +2148,13 @@ class Member extends HTMLElement {
     this.innerHTML = `
       <li class="member">
         <div class="member-content">
-          <img src="/assets/Profile-w-b.png" alt="Profile">
-          <span class="member-name">${this.member.username}</span>
-          <span class="member-role">${this.member.role}</span>
+          <div class="member-profile-pic">
+            <img src="${this.member.userDetails.profile_pic}" alt="Profile">
+          </div>
+          <div class="member-name-role">
+            <div class="member-name">${this.member.userDetails.firstName} ${this.member.userDetails.lastName}</div>
+            <div class="member-role">${this.member.role}</div>
+          </div>
         </div>
       </li>
       `;
@@ -2183,7 +2195,7 @@ class ActivityDropdown extends HTMLElement {
             </svg>
             <ul class="members"></ul>
           </div>
-          <button class="view-details">View Details</button>
+          <button class="view-details" onclick="window.location.href='/ActivityDetail/${activity.activity_id}';" >View Details</button>
         </div>
       </div>
     `;
@@ -2334,6 +2346,7 @@ class RatingPopup extends HTMLElement {
     this.activity_id = activity_id
     this.querySelector(".rating-activity-name").textContent = activityTitle;
     this.querySelector(".rating-user-name").textContent = username;
+
     this.resetComponent();
     this.style.display = "block";
   }

@@ -1,16 +1,16 @@
 @{
     ViewData["Title"] = "Others Activity";
 }
-<div class="profile">
-    <div class="profile-img">
-        <img src="/assets/Profile-w-b.png" alt="">
+<div class="profile-activity">
+    <div class="profile-activity-img">
+        <img src="@Model.User.Profile_pic" alt="profile-img">
     </div>
     <div class="profile-info">
         <div class="profile-name">@Model.User.FirstName @Model.User.LastName</div>
         <div class="profile-username">@Model.User.Username</div>
         <div class="profile-rating">
             <span class="profile-rating-star">
-                <img src="/assets/star_sharp.svg" alt="">
+                <img src="/assets/star_sharp.svg" alt="star">
             </span>
             <span class="profile-rating-points">@Model.User.Rating</span>
         </div>

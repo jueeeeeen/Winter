@@ -9,12 +9,35 @@
     <header class="friend-header">
         My Friend
     </header>
-    <div class="friend-li-container">
-        <friend-li-add name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-add>
-        <friend-li-you name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-you>
-        <friend-li-cancel name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-cancel>
-        <friend-li-approve name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-approve>
-        <friend-li-delete name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen" since="23 Feb 2025"></friend-li-delete>
-        <friend-li-delete name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen" since="23 Feb 2025"></friend-li-delete>
-    </div>
+
+    <!-- เช็คว่าไม่มีเพื่อนเลย -->
+    @if (Model == null)
+    {
+        <p>You don't have any friends right now.</p>
+    }
+    else
+    {
+        <div class="friend-li-container">
+            @foreach (var friend in Model)
+            {
+                @if (friend.IsPending && !friend.IsFriend && friend.sent == false) 
+                {
+                    <!-- หากเป็นคำขอที่รอการตอบรับจากเรา (receivedFriendRequests) -->
+                    <friend-li-approve name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId" ></friend-li-approve>
+                }
+                else if (friend.IsPending && friend.IsFriend == false && friend.sent == true) 
+                {
+                    <!-- หากเป็นคำขอที่เราได้ส่งไปและรอการตอบรับ (sentFriendRequests) -->
+                    <friend-li-cancel name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId"></friend-li-cancel>
+                }
+                else if (friend.IsFriend) 
+                {
+                    <!-- หากเป็นเพื่อนที่ได้รับการยืนยันแล้ว (friends) -->
+                    <friend-li-delete name="@friend.FirstName @friend.LastName" profile-pic="@friend.ProfilePicture" friend-id="@friend.UserId" since="@friend.Time"></friend-li-delete>
+                }
+            }
+        </div>
+
+    }
+
 </div>

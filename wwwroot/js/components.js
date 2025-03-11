@@ -1432,83 +1432,211 @@ class AllActBanner extends HTMLElement {
 
 class FriendLiADD extends HTMLElement {
   constructor() {
-      super();
-      this.name = this.getAttribute("name");
-      this.username = this.getAttribute("username")
-      this.profile_pic = this.getAttribute("profile-pic");
-      this.innerHTML = 
-        `<li class="w-bb-bb member-list-item">
-          <div class="member-list-item-profile">
-              <img class="profile" src="${this.profile_pic}">
-          </div>
-          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
-          <span class="member-list-item-role flex"></span>
-          <div class="member-list-item-approval flex">
-            <button id="add-friend-btn" class="btn approval lb-w hover-db-w round">
-                <svg-more-people></svg-more-people>
-            </button>
-          </div>
-        </li>`;
+    super();
+    this.name = this.getAttribute("name");
+    this.username = this.getAttribute("username");
+    this.profile_pic = this.getAttribute("profile-pic");
+    this.friendId = this.getAttribute("friend-id"); // ดึง friendId
+
+    this.innerHTML = `
+      <li class="w-bb-bb member-list-item">
+        <div class="member-list-item-profile">
+          <img class="profile" src="${this.profile_pic}">
+        </div>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+        <span class="member-list-item-role flex"></span>
+        <div class="member-list-item-approval flex">
+          <button id="add-friend-btn" class="btn approval lb-w hover-db-w round">
+            <svg-more-people></svg-more-people>
+          </button>
+        </div>
+      </li>
+    `;
+
+    this.querySelector("#add-friend-btn").addEventListener("click", () => this.addFriend());
+  }
+
+  async addFriend() {
+    try {
+      const response = await fetch("/friends/add", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({ friendId: this.friendId }),
+      });
+
+      if (response.ok) {
+        console.log(`✅ Friend request sent to Friend ID: ${this.friendId}`);
+        alert("คำขอเป็นเพื่อนถูกส่งแล้ว!");
+      } else {
+        console.log("❌ Friend request failed");
+        alert("ส่งคำขอเป็นเพื่อนล้มเหลว");
+      }
+    } catch (error) {
+      console.error("⚠️ Error:", error);
+      alert("เกิดข้อผิดพลาดในการส่งคำขอ");
+    }
   }
 }
+
 customElements.define("friend-li-add", FriendLiADD);
 
 class FriendLiApprove extends HTMLElement {
   constructor() {
-      super();
-      this.name = this.getAttribute("name");
-      this.username = this.getAttribute("username")
-      this.profile_pic = this.getAttribute("profile-pic");
-      this.innerHTML = 
-        `<li class="w-bb-bb member-list-item">
-          <div class="member-list-item-profile">
-              <img class="profile" src="${this.profile_pic}">
-          </div>
-          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
-          <span class="member-list-item-role flex">wants to be your friend</span>
-          <div class="member-list-item-approval flex">
-            <button id="accept-friend-btn" class="btn approval gr-w hover-w-gr-gr round">
-                <svg-check></svg-check>
-            </button>
-            <button id="deny-friend-btn" class="btn approval r-w hover-w-r-r round">
-                <svg-deny></svg-deny>
-            </button>
-          </div>
-        </li>`;
+    super();
+    this.name = this.getAttribute("name");
+    this.username = this.getAttribute("username");
+    this.profile_pic = this.getAttribute("profile-pic");
+    this.friendId = this.getAttribute("friend-id"); // เพิ่ม friendId ไว้ใช้ในภายหลัง
+
+    this.innerHTML = `
+      <li class="w-bb-bb member-list-item">
+        <div class="member-list-item-profile">
+          <img class="profile" src="${this.profile_pic}">
+        </div>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}}</a>
+        <span class="member-list-item-role flex">wants to be your friend</span>
+        <div class="member-list-item-approval flex">
+          <button id="accept-friend-btn" class="btn approval gr-w hover-w-gr-gr round">
+            <svg-check></svg-check>
+          </button>
+          <button id="deny-friend-btn" class="btn approval r-w hover-w-r-r round">
+            <svg-deny></svg-deny>
+          </button>
+        </div>
+      </li>`;
+
+    // จับเหตุการณ์คลิกที่ปุ่ม accept
+    this.querySelector("#accept-friend-btn").addEventListener("click", () => {
+      this.acceptFriendRequest();
+    });
+
+    // จับเหตุการณ์คลิกที่ปุ่ม deny
+    this.querySelector("#deny-friend-btn").addEventListener("click", () => {
+      this.denyFriendRequest();
+    });
+  }
+
+  // ฟังก์ชันยอมรับคำขอเพื่อน
+  async acceptFriendRequest() {
+    const friendId = parseInt(this.friendId, 10); // แปลงค่าเป็นตัวเลข
+    if (isNaN(friendId)) {
+      console.error("❌ Invalid friendId:", this.friendId);
+      return;
+    }
+    console.log(`✅✅✅✅ Accepting friend request from Friend ID: ${friendId}`);
+    const response = await fetch("/friends/accept-friend", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId: friendId }) // ส่ง friendId เป็นตัวเลข
+    });
+    console.log(JSON.stringify({ friendId: friendId }));
+    if (response.ok) {
+      alert("Friend request accepted!");
+      location.reload();
+    } else {
+      alert("Failed to accept friend request.");
+      const errorText = await response.text();
+      console.error(`❌ Server Error: ${errorText}`);
+    }
+  }
+
+  // ฟังก์ชันปฏิเสธคำขอเพื่อน
+  async denyFriendRequest() {
+    const friendId = parseInt(this.friendId, 10); // แปลงค่าเป็นตัวเลข
+    if (isNaN(friendId)) {
+      console.error("❌ Invalid friendId:", this.friendId);
+      return;
+    }
+    console.log(`❌❌❌❌ Denying friend request from Friend ID: ${friendId}`);
+    const response = await fetch("/friends/deny", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ friendId: friendId }) // ส่ง friendId เป็นตัวเลข
+    });
+
+    if (response.ok) {
+      alert("Friend request denied!");
+      location.reload(); // รีโหลดหน้า
+    } else {
+      alert("Failed to deny friend request.");
+      const errorText = await response.text();
+      console.error(`❌ Server Error: ${errorText}`);
+    }
   }
 }
+
+// ลงทะเบียน custom element
 customElements.define("friend-li-approve", FriendLiApprove);
+
+
 
 class FriendLiCancel extends HTMLElement {
   constructor() {
-      super();
-      this.name = this.getAttribute("name");
-      this.username = this.getAttribute("username")
-      this.profile_pic = this.getAttribute("profile-pic");
-      this.innerHTML = 
-        `<li class="w-bb-bb member-list-item">
-          <div class="member-list-item-profile">
-              <img class="profile" src="${this.profile_pic}">
-          </div>
-          <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
-          <span class="member-list-item-role flex">waiting for acceptance</span>
-          <div class="member-list-item-approval flex">
-            <button id="cancel-friend-btn" class="btn approval y-w hover-w-y-y round">
-                <svg-minus></svg-minus>
-            </button>
-          </div>
-        </li>`;
+    super();
+    this.name = this.getAttribute("name");
+    this.username = this.getAttribute("username");
+    this.profile_pic = this.getAttribute("profile-pic");
+    this.friendId = this.getAttribute("friend-id"); // เพิ่ม friendId ไว้ใช้ในภายหลัง
+    this.innerHTML = `
+      <li class="w-bb-bb member-list-item">
+        <div class="member-list-item-profile">
+          <img class="profile" src="${this.profile_pic}">
+        </div>
+        <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
+        <span class="member-list-item-role flex">waiting for acceptance</span>
+        <div class="member-list-item-approval flex">
+          <button id="cancel-friend-btn" class="btn approval y-w hover-w-y-y round">
+            <svg-minus></svg-minus>
+          </button>
+        </div>
+      </li>
+    `;
+  }
+
+  connectedCallback() {
+    const cancelButton = this.querySelector("#cancel-friend-btn");
+    cancelButton.addEventListener("click", this.handleCancelRequest.bind(this));
+  }
+
+  async handleCancelRequest() {
+    if (!confirm("คุณต้องการยกเลิกคำขอเป็นเพื่อนใช่หรือไม่?")) return;
+
+    const response = await fetch("/friends/cancel", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ FriendId: this.friendId })
+    });
+    console.log(JSON.stringify({ FriendId: this.friendId }));
+
+    if (response.ok) {
+      alert("คำขอเป็นเพื่อนถูกยกเลิกแล้ว!");
+      location.reload(); // รีโหลดหน้า
+    } else {
+      alert("เกิดข้อผิดพลาด ไม่สามารถยกเลิกคำขอเป็นเพื่อนได้");
+    }
   }
 }
+
 customElements.define("friend-li-cancel", FriendLiCancel);
+
 
 class FriendLiDelete extends HTMLElement {
   constructor() {
       super();
       this.name = this.getAttribute("name");
-      this.username = this.getAttribute("username")
+      this.username = this.getAttribute("username");
       this.profile_pic = this.getAttribute("profile-pic");
       this.since = this.getAttribute("since");
+      this.friendId = this.getAttribute("friend-id"); // เพิ่ม friendId ไว้ใช้ในภายหลัง
+
       this.innerHTML = 
         `<li class="w-bb-bb member-list-item">
           <div class="member-list-item-profile">
@@ -1517,11 +1645,39 @@ class FriendLiDelete extends HTMLElement {
           <a href="/Profile/${this.username}" class="member-list-item-name">${this.name}</a>
           <span class="member-list-item-role flex">since - ${this.since}</span>
           <div class="member-list-item-approval flex">
-            <button id="delete-friend-btn" class="btn approval r-w hover-w-r-r round">
+            <button class="btn approval r-w hover-w-r-r round delete-friend-btn">
                 <svg-delete></svg-delete>
             </button>
           </div>
         </li>`;
+
+      // ✅ เพิ่ม Event Listener ให้ปุ่มลบ
+      this.querySelector(".delete-friend-btn").addEventListener("click", () => this.removeFriend());
+  }
+
+  async removeFriend() {
+      const confirmDelete = confirm(`ต้องการลบ ${this.name} ออกจากรายชื่อเพื่อนหรือไม่?`);
+      if (!confirmDelete) return;
+
+      try {
+          const response = await fetch(`/friends/remove`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ friendId: this.friendId }),
+          });
+
+          if (response.ok) {
+              this.remove(); // ✅ ลบ Element ออกจาก DOM
+              alert(`${this.name} ถูกลบออกจากรายชื่อเพื่อนแล้ว`);
+          } else {
+              alert("เกิดข้อผิดพลาดในการลบเพื่อน");
+          }
+      } catch (error) {
+          console.error("❌ Error:", error);
+          alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้");
+      }
   }
 }
 customElements.define("friend-li-delete", FriendLiDelete);

@@ -8,6 +8,6 @@ namespace Winter_Project.Models
         public int FriendId { get; set; }
         public bool IsFriend { get; set; }
         public bool IsPending { get; set; }
-        public string time {get; set;} = string.Empty;
+        public DateTime time { get; set; } = DateTime.UtcNow;
     }
 }

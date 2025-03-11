@@ -36,6 +36,7 @@ public class ActivityDetailController: Controller
                 a.Approval,
                 a.Location,
                 a.Activity_time,
+                a.Deadline_time,
                 a.Max_member,
                 Member_count = a.Participants.Count(p => p.Role == "member" || p.Role == "host"),
                 Pending_count = a.Participants.Count(p => p.Role == "pending"),

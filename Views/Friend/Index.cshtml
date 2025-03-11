@@ -2,13 +2,19 @@
     ViewData["Title"] = "Friend";
 }
 
-@* <div class="display-option-container">
-    <search-friend-bar></search-friend-bar>
-</div> *@
-<div class="create-container">
-    <div class="create-card">
-        <div class="create-header">
-                <p>My Friend</p>
-        </div>
+<div class="friend-container">
+    <header class="friend-header">
+        My Friend
+    </header>
+    <div class="friend-li-container">
+        <friend-li-add name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-add>
+        <friend-li-add name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-add>
+        <friend-li-add name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-add>
+        <friend-li-cancel name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen"></friend-li-cancel>
+        <friend-li-delete name="Emily Chow" profile-pic="/assets/profile-g.png" username="jueeeeeen" since="23 Feb 2025"></friend-li-delete>
     </div>
+    <a href="/friend/findfriend" class="btn medium lb-w hover-mb-w edge">
+        <svg-more-people></svg-more-people>
+        find more friends
+    </a>
 </div>

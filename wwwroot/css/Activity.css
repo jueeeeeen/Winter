@@ -228,11 +228,15 @@ search-bar {
 
 tag-filter {
     grid-area: tag;
-    padding: 1% 0;
     contain: layout;
     overflow-x: scroll;
     padding: 0.3em;
     max-width: 100%;
+}
+
+#tag_filter_form {
+    padding: 0.3em;
+    height: 4rem;
 }
 
 tag-filter::-webkit-scrollbar {
@@ -317,13 +321,17 @@ tag-filter::-webkit-scrollbar {
     content: "filter by";
 }
 
+svg-order {
+    transition: all 0.3s;
+}
+
 #display-order:checked+.filter-btn svg-order {
     transform: scaleY(-1);
 }
 
 .filter-dropdown {
     position: absolute;
-    display: none;
+    /* display: none; */
     flex-direction: column;
     right: 0;
     top: 110%;
@@ -331,6 +339,11 @@ tag-filter::-webkit-scrollbar {
     background-color: var(--white);
     border-radius: 0.5em;
     overflow: hidden;
+
+    transition: all 0.1s ease-in-out;
+    opacity: 0;
+    transform: scale(0.8);
+    visibility: hidden;
 }
 
 .filter-header {
@@ -490,7 +503,6 @@ tag-filter::-webkit-scrollbar {
 
 .sort-dropdown {
     position: absolute;
-    display: none;
     flex-direction: column;
     right: 0;
     top: 110%;
@@ -498,6 +510,11 @@ tag-filter::-webkit-scrollbar {
     background-color: var(--white);
     border-radius: 0.3em;
     overflow: hidden;
+
+    transition: all 0.1s ease-in-out;
+    opacity: 0;
+    transform: scale(0.8);
+    visibility: hidden;
 }
 
 .sort-dropdown li {
@@ -522,6 +539,12 @@ tag-filter::-webkit-scrollbar {
 .sort-dropdown .pseudo-btn input:checked+label {
     background-color: var(--blue20);
     font-weight: 1000;
+}
+
+.show-dropdown {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
 }
 
 .show {

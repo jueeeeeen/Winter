@@ -422,3 +422,8 @@
         right: 0;
     }
 }
+
+.w-g svg-delete path{
+    fill: none;
+    stroke: var(--gray90);
+}

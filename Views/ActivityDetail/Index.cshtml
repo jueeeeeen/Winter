@@ -39,6 +39,10 @@
                 <span class="act-detail-status w-y">
                     <svg-member></svg-member>full
                 </span>
+            }else if (@Model.Status == "delete"){
+                <span class="act-detail-status w-g">
+                    <svg-delete></svg-delete>detele
+                </span>
             }
             <span class="act-detail-close-date">
                 Closes: @Model.Deadline_time.ToLocalTime().ToString("ddd, dd MMM yyyy HH:mm")
@@ -269,7 +273,10 @@
             }
         </ul>
         <div class="act-detail-btn-container">
-        <view-review-btn activity-id="@Model.Activity_id"></view-review-btn>
+        @if (Model.Status != "delete")
+        {
+            <view-review-btn activity-id="@Model.Activity_id"></view-review-btn>
+        }
         @if (userIsMember)
         {
             <a class="btn mb-w round hover-lb-w-glow act-detail-chat large" href="/chat?activity_id=@Model.Activity_id">

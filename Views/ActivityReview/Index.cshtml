@@ -44,7 +44,7 @@
                 {
                     <div class="comment-card" data-reviewed-user="@review.Reviewed_user">
                         <div class="user-info">
-                            <div class="comment-profile"><img src="../../assets/profile-g.png" alt="" /></div>
+                            <div class="comment-profile"><img src="@review.User.Profile_pic" alt="" /></div>
                             <div class="comment-details">
                                 <span class="comment-owner">@review.User.FirstName @review.User.LastName</span>
                                 <span class="comment-date">@review.Time.ToLocalTime().ToString("ddd, dd MMM yyyy")</span>

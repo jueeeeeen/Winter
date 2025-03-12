@@ -35,6 +35,7 @@
         .then(response => response.json())
         .then(data => {
             const activities = data.activities;
+            console.log(activities)
             if (activities.length === 0) {
                 const activity_list = activityList.querySelector("#activities");
                 activity_list.innerHTML = "Activity not found";

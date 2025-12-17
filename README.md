@@ -1,18 +1,18 @@
-# Winter
+# ❄️ Winter
 A website with group activity posting and joining, real-time group chat
 via WebSocket, and friend management system.
 
-## Demo
+## 🖼️ Demo
 ![screenshot](./docs/activity-list.png)
 ![screenshot](./docs/activity-detail.png)
 ![screenshot](./docs/chat.png)
 
-## Tech Stack
+## 🛠️ Tech Stack
 - **Frontend:** HTML, CSS, Razor
 - **Backend:** ASP.NET Core MVC
 - **Database:** SQLite
 
-## Features
+## ✨ Features
 - **Browse Activities** - Search and view lists of available activities.
 - **Post Activities** – Post activities with detailed descriptions and participation requirements.
 - **Join Activities** – Join activities and get approved by the activity host.
@@ -22,13 +22,13 @@ via WebSocket, and friend management system.
 - **User Ranking** - View user rankings based on their ratings.
 - **User Accounts** – Register, log in, manage profile.
 
-## Installation
+## 🔧 Installation
 Clone the repository  
    ```bash
    git clone https://github.com/jueeeeeen/Winter.git
    ```
 
-## How to Run
+## 🚀 How to Run
 1. Run the project
     ```
     dotnet run

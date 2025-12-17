@@ -144,6 +144,8 @@
 .comment-profile img {
   width: 3rem;
   height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .comment-details {
@@ -255,6 +257,7 @@
   bottom: 10px;
   left: 20px;
 }
+
 
 .activity a {
   color: var(--blue40);

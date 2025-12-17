@@ -699,6 +699,20 @@ hr {
     }
   }
 
+  .banner-page {
+    margin-top: 10px;
+  }
+
+  .w-mb-fix {
+    background-color: var(--white);
+    color: var(--blue80);
+    text-shadow: none;
+    svg path {
+      stroke: var(--blue80);
+      fill: var(--blue80);
+    }
+  }
+
   .w-db, .hover-w-db:hover {
     background-color: var(--white);
     color: var(--blue90);

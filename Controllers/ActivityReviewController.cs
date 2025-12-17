@@ -164,7 +164,10 @@ public class ActivityReviewController : Controller
                 .Select(u => new
                 {
                     u.FirstName,
-                    u.LastName
+                    u.LastName,
+                    Profile_pic = u.ProfilePicture != null 
+                                                        ? $"data:image/png;base64,{Convert.ToBase64String(u.ProfilePicture)}" 
+                                                        : "/assets/profile-g.png"
                 })
                 .FirstOrDefault(),
             ReviewedUser = _context.Users
@@ -209,6 +212,7 @@ public class ActivityReviewController : Controller
 
         var reviews = await _context.Reviews
         .Where(r => r.Reviewed_user == userId)
+        .OrderByDescending(r => r.Time)
         .Select(r => new
         {
             r.Reviewer,
@@ -304,6 +308,7 @@ public class ActivityReviewController : Controller
 
         var reviews = await _context.Reviews
             .Where(r => r.Reviewed_user == username)
+            .OrderByDescending(r => r.Time)
             .Select(r => new
             {
                 r.Reviewer,

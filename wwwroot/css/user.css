@@ -39,12 +39,11 @@
 }
 
 .profile-picture {
-  width: 10rem;
-  /* height: 5rem; */
+  width: 120px;
+  height: 120px;
   border: solid 1px var(--blue60);
   border-radius: 50%;
   margin-top: 20px;
-  height:8em;
   object-fit: cover;
 }
 
@@ -101,7 +100,7 @@
 }
 
 .profile-rating {
-  width: 4.3rem;
+  width: 5rem;
   height: 2.2rem;
   margin: auto;
   padding: 5px;
